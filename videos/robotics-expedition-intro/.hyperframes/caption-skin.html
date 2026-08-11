@@ -1,5 +1,5 @@
 <!--
-  Broadside — caption skin (preset-local source).
+  Blue Professional — caption skin (preset-local source).
 
   This is the preset's own lower-third karaoke caption look. product-launch-video's
   Step 2 copies it into the project as caption-skin.html; captions.mjs then fills the
@@ -10,8 +10,8 @@
     · the empty data-brand-tokens style → :root tokens derived from the project's frame.md
 
   Token contract — reference ONLY this fixed vocab (captions.mjs injects it from
-  frame.md, so the Step-2 brand overlay flows through; each var has a broadside literal
-  fallback for standalone preview):
+  frame.md, so the Step-2 brand overlay flows through; each var has a blue-professional
+  literal fallback for standalone preview):
     --cap-ink · --cap-canvas · --cap-accent · --cap-accent-2 · --font-display ·
     --font-body · --cap-band-top · --cap-band-height
   Hooks (do not rename): .caption-group / .caption-word + states .is-active / .is-spoken,
@@ -19,12 +19,12 @@
   State changes use gsap.set({className}) (applied on the engine's frame-by-frame seek);
   never tl.call() callbacks (seek does not fire them → wrong state on render).
 
-  Visual: a protest-poster lower third — an ink-black plate on a single 1px fire-orange
-  hairline, SHARP corners, NO shadow (broadside's plane is flat, never cast). Massive
-  lowercase Barlow 900 as graphic primitive, cream glyphs on ink. Upcoming words sit in
-  faint cream; the current word flips register — a hard flat fire-orange block with ink
-  reading on top (broadside's signature two-register flip, no blur), the brand's lone
-  accent; spoken words settle to solid cream, the orange block cleared.
+  Visual: a soft cobalt-tinted card on warm cream — a 4% cobalt fill inside a 1.5px
+  20%-cobalt border, soft 14px rounded corners, NO shadow (the system's premium signal
+  is the absence of cast depth; the tinted card does the lift). Space Grotesk, sentence
+  case, near-black glyphs. Upcoming words sit in muted gray; the current word becomes a
+  solid cobalt chip — the brand's signature single-accent gesture, a pill-rounded fill
+  with cream reading on top; spoken words settle to near-black ink, chip cleared.
 -->
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
 
@@ -65,66 +65,64 @@
     opacity: 0;
   }
 
-  /* THE ink-black plate — single 1px fire-orange hairline (broadside's lone accent),
-     SHARP corners (0 radius), NO shadow (the plane is flat) */
+  /* THE tinted card — 4% cobalt fill, 1.5px 20%-cobalt border, soft 14px corners,
+     NO shadow (the tinted card does the lift; cast depth is forbidden) */
   .caption-pill {
-    max-width: 80%;
-    padding: 18px 44px 22px;
-    background: var(--cap-ink, #111111);
-    border: 1px solid var(--cap-accent, #e85d26);
-    border-radius: 0;
+    max-width: 78%;
+    padding: 20px 44px 24px;
+    background: color-mix(in srgb, var(--cap-accent, #1e2bfa) 4%, var(--cap-canvas, #fdfae7));
+    border: 1.5px solid color-mix(in srgb, var(--cap-accent, #1e2bfa) 20%, transparent);
+    border-radius: 14px;
   }
   .caption-line {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 0.04em 0.3em;
-    font-family: var(--font-display, "Barlow"), system-ui, sans-serif;
-    font-weight: 900;
-    font-size: clamp(38px, 4.2vw, 56px);
-    line-height: 1.02;
-    letter-spacing: -0.03em;
-    text-transform: lowercase;
+    gap: 0.1em 0.34em;
+    font-family: var(--font-display, "Space Grotesk"), system-ui, sans-serif;
+    font-weight: 600;
+    font-size: clamp(40px, 4.4vw, 58px);
+    line-height: 1.16;
+    letter-spacing: -0.02em;
   }
 
-  /* upcoming — faint cream, no block (massive lowercase Barlow 900 as graphic primitive) */
+  /* upcoming — muted gray, no chip */
   .caption-word {
     display: inline-block;
-    padding: 0 0.08em;
-    color: color-mix(in srgb, var(--cap-canvas, #f0ece5) 42%, var(--cap-ink, #111111));
+    padding: 0 0.18em;
+    border-radius: 0.32em;
+    color: color-mix(in srgb, var(--cap-ink, #111111) 52%, var(--cap-canvas, #fdfae7));
   }
-  /* current word — THE register flip: a hard flat fire-orange block (box-shadow spread =
-     a sharp rectangle w/o layout shift; no blur), ink reading on top — the lone accent */
+  /* current word — THE solid cobalt chip (the single-accent gesture; pill-rounded
+     fill, NO shadow), cream reading on top */
   .caption-word.is-active {
-    color: var(--cap-ink, #111111);
-    background: var(--cap-accent, #e85d26);
-    box-shadow: 0 0 0 0.06em var(--cap-accent, #e85d26);
+    color: var(--cap-canvas, #fdfae7);
+    background: var(--cap-accent, #1e2bfa);
+    box-shadow: none;
   }
-  /* already spoken — solid cream, the orange block cleared */
+  /* already spoken — solid near-black ink, chip cleared */
   .caption-word.is-spoken {
-    color: var(--cap-canvas, #f0ece5);
+    color: var(--cap-ink, #111111);
     background: transparent;
     box-shadow: none;
   }
 
   /* optional per-word accents (dormant until a word-classer tags them) */
-  /* brand / key term — fire-orange ink, the cream-on-ink register's only inflection */
+  /* brand / key term — cobalt, the system's one accent on a key word */
   .caption-word.cap-brand {
-    color: var(--cap-accent, #e85d26);
+    color: var(--cap-accent, #1e2bfa);
   }
-  /* numerals / data — the IBM Plex Mono chrome voice, uppercase + tracked, recessed */
+  /* numerals / data — cobalt 700, the figure voice */
   .caption-word.cap-num {
-    font-family: var(--font-body, "IBM Plex Mono"), ui-monospace, monospace;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: color-mix(in srgb, var(--cap-canvas, #f0ece5) 72%, var(--cap-ink, #111111));
+    font-family: var(--font-display, "Space Grotesk"), system-ui, sans-serif;
+    font-weight: 700;
+    color: var(--cap-accent, #1e2bfa);
   }
-  /* emphasis — a fire-orange hairline underline (no second hue; the lone accent again) */
+  /* emphasis — a directional-red hairline underline (inline only, never a fill) */
   .caption-word.cap-cta {
     text-decoration: underline;
     text-decoration-thickness: 2px;
-    text-decoration-color: var(--cap-accent-2, #e85d26);
+    text-decoration-color: var(--cap-accent-2, #dc2626);
     text-underline-offset: 0.1em;
   }
 
@@ -133,7 +131,7 @@
       max-width: 92%;
     }
     .caption-line {
-      font-size: clamp(32px, 5.2vw, 46px);
+      font-size: clamp(34px, 5.4vw, 48px);
     }
   }
 </style>
@@ -205,7 +203,7 @@
         var at = Math.max(start, Number(w.start));
         tl.set(el, { className: "caption-word" }, start); // upcoming (also resets on reverse-seek)
         tl.set(el, { className: "caption-word is-active" }, at); // current
-        tl.fromTo(el, { scale: 0.92 }, { scale: 1, duration: 0.1, ease: "power3.out" }, at);
+        tl.fromTo(el, { scale: 0.985 }, { scale: 1, duration: 0.18, ease: "power1.out" }, at);
         if (i + 1 < words.length) {
           var nextAt = Math.max(start, Number(words[i + 1].start));
           tl.set(el, { className: "caption-word is-spoken" }, nextAt); // demote when next activates
