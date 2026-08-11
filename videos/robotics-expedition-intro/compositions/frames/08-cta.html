@@ -134,7 +134,7 @@
     }
   </style>
 
-  <div id="root">
+  <div id="root" data-composition-id="08-cta">
     <div class="cta08-bg clip" data-start="0" data-duration="7" data-track-index="0"></div>
 
     <div class="cta08-hairline cta08-hairline--top clip" data-start="0" data-duration="7" data-track-index="1"></div>
@@ -169,11 +169,8 @@
 
   <script>
     (function () {
-      var root = document.currentScript.closest("template").content
-        ? null
-        : null; // no-op placeholder, root element selected below via DOM query at register time
-
-      function build(scopeEl) {
+      function build() {
+        var scopeEl = document.querySelector('[data-composition-id="08-cta"]');
         var wordmark = scopeEl.querySelector(".cta08-wordmark");
         var tagline = scopeEl.querySelector(".cta08-tagline");
         var pillWrap = scopeEl.querySelector(".cta08-pill-wrap");
@@ -220,7 +217,7 @@
 
         // Scene 3 (2.6-4.0s): fire-orange pill scales up from the same center; cursor arrives
         // from off-stage on a decelerating path, landing a few px off the pill's center.
-        gsap.set(pillWrap, { top: 800, transformOrigin: "50% 50%" });
+        gsap.set(pillWrap, { transformOrigin: "50% 50%" });
         tl.fromTo(
           pillWrap,
           { opacity: 0, scale: 0.18 },
@@ -230,9 +227,8 @@
         tl.fromTo(
           cursor,
           { left: "51%", top: "118%" },
-          { left: "58.5%", top: "48.2%", duration: 0.82, ease: "power3.out" },
-          3.0,
-          undefined
+          { left: "52.3%", top: "45.6%", duration: 0.82, ease: "power3.out" },
+          3.0
         );
 
         // Scene 4 (4.0-7.0s): physical click — pill and cursor compress together, release
@@ -255,12 +251,8 @@
         return tl;
       }
 
-      var tpl = document.currentScript.closest("template");
-      var content = tpl.content;
-      var rootEl = content.querySelector("#root");
-
       window.__timelines = window.__timelines || {};
-      window.__timelines["08-cta"] = build(rootEl);
+      window.__timelines["08-cta"] = build();
     })();
   </script>
 </template>

@@ -1,0 +1,367 @@
+<template data-composition-id="02-positioning-route">
+  <style>
+    @font-face {
+      font-family: "Rubik";
+      font-weight: 400;
+      font-style: normal;
+      src: url("assets/fonts/rubik-latin-400-normal.woff2") format("woff2");
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+2212;
+    }
+    @font-face {
+      font-family: "Rubik";
+      font-weight: 400;
+      font-style: normal;
+      src: url("assets/fonts/rubik-cyrillic-400-normal.woff2") format("woff2");
+      unicode-range: U+0400-04FF, U+2000-206F, U+2116;
+    }
+    @font-face {
+      font-family: "Rubik";
+      font-weight: 600;
+      font-style: normal;
+      src: url("assets/fonts/rubik-latin-600-normal.woff2") format("woff2");
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+2212;
+    }
+    @font-face {
+      font-family: "Rubik";
+      font-weight: 600;
+      font-style: normal;
+      src: url("assets/fonts/rubik-cyrillic-600-normal.woff2") format("woff2");
+      unicode-range: U+0400-04FF, U+2000-206F, U+2116;
+    }
+    @font-face {
+      font-family: "Rubik";
+      font-weight: 700;
+      font-style: normal;
+      src: url("assets/fonts/rubik-latin-700-normal.woff2") format("woff2");
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+2212;
+    }
+    @font-face {
+      font-family: "Rubik";
+      font-weight: 700;
+      font-style: normal;
+      src: url("assets/fonts/rubik-cyrillic-700-normal.woff2") format("woff2");
+      unicode-range: U+0400-04FF, U+2000-206F, U+2116;
+    }
+    @font-face {
+      font-family: "Rubik";
+      font-weight: 800;
+      font-style: normal;
+      src: url("assets/fonts/rubik-latin-800-normal.woff2") format("woff2");
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+2212;
+    }
+    @font-face {
+      font-family: "Rubik";
+      font-weight: 800;
+      font-style: normal;
+      src: url("assets/fonts/rubik-cyrillic-800-normal.woff2") format("woff2");
+      unicode-range: U+0400-04FF, U+2000-206F, U+2116;
+    }
+    @font-face {
+      font-family: "Rubik";
+      font-weight: 900;
+      font-style: normal;
+      src: url("assets/fonts/rubik-latin-900-normal.woff2") format("woff2");
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+2212;
+    }
+    @font-face {
+      font-family: "Rubik";
+      font-weight: 900;
+      font-style: normal;
+      src: url("assets/fonts/rubik-cyrillic-900-normal.woff2") format("woff2");
+      unicode-range: U+0400-04FF, U+2000-206F, U+2116;
+    }
+    @font-face {
+      font-family: "IBM Plex Mono";
+      font-weight: 500;
+      font-style: normal;
+      src: url("assets/fonts/ibm-plex-mono-latin-500-normal.woff2") format("woff2");
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+2212;
+    }
+    @font-face {
+      font-family: "IBM Plex Mono";
+      font-weight: 500;
+      font-style: normal;
+      src: url("assets/fonts/ibm-plex-mono-cyrillic-500-normal.woff2") format("woff2");
+      unicode-range: U+0400-04FF, U+2000-206F, U+2116;
+    }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      container-type: size;
+      background: transparent;
+      overflow: hidden;
+      font-family: "Rubik", sans-serif;
+    }
+
+    #root .clip {
+      position: absolute;
+      inset: 0;
+    }
+
+    /* full-bleed ground */
+    .route02-bg {
+      background: #111111;
+    }
+
+    /* — positioning statement (scenes 1-2) — */
+    .route02-statement {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: 20cqh;
+      height: 44cqh;
+      left: 0;
+      right: 0;
+      padding: 0 5.5cqw;
+      text-align: center;
+    }
+    .route02-clause1,
+    .route02-clause2 {
+      position: absolute;
+      max-width: 78cqw;
+      margin: 0 auto;
+      color: #f0ece5;
+      text-transform: lowercase;
+      opacity: 0;
+    }
+    .route02-clause1 {
+      font-family: "Rubik", sans-serif;
+      font-weight: 800;
+      font-size: 7.5cqw;
+      line-height: 0.98;
+      letter-spacing: -0.03em;
+    }
+    .route02-clause2 {
+      font-family: "Rubik", sans-serif;
+      font-weight: 700;
+      font-size: 4.5cqw;
+      line-height: 1.14;
+      letter-spacing: -0.02em;
+    }
+
+    /* — persistent wordmark — */
+    .route02-wordmark {
+      left: 5.5cqw;
+      top: 80.6cqh;
+      right: auto;
+      bottom: auto;
+      width: auto;
+      height: auto;
+      font-family: "IBM Plex Mono", monospace;
+      font-weight: 500;
+      font-size: 1.4cqw;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #f0ece5;
+      opacity: 0;
+    }
+
+    /* — route map — */
+    .route02-map {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .route02-map svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .route02-route-path {
+      fill: none;
+      stroke: #e85d26;
+      stroke-width: 4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .route02-city {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6cqh;
+      transform-origin: center bottom;
+      opacity: 0;
+    }
+    .route02-city-dot {
+      width: 1.1cqw;
+      height: 1.1cqw;
+      border-radius: 50%;
+      background: #e85d26;
+    }
+    .route02-city-label {
+      font-family: "IBM Plex Mono", monospace;
+      font-weight: 500;
+      font-size: 1.7cqw;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #f0ece5;
+      white-space: nowrap;
+    }
+    .route02-city[data-pt="1"] { left: 13cqw; top: 56.25cqh; }
+    .route02-city[data-pt="2"] { left: 50cqw; top: 59.9cqh; }
+    .route02-city[data-pt="3"] { left: 87cqw; top: 63.5cqh; }
+
+    /* — stat chips — */
+    .route02-chips {
+      display: flex;
+      align-items: stretch;
+      justify-content: space-between;
+      gap: 2cqw;
+      left: 0;
+      right: 0;
+      top: 72.9cqh;
+      height: 12.6cqh;
+      padding: 0 5.5cqw;
+    }
+    .route02-chip {
+      flex: 1 1 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 0.4cqh;
+      padding: 1.2cqh 1.2cqw 0.8cqh;
+      border-top: 1px solid #282826;
+      opacity: 0;
+      transform: scale(0.4);
+      transform-origin: left center;
+    }
+    .route02-chip-num {
+      font-family: "Rubik", sans-serif;
+      font-weight: 900;
+      font-size: 4.4cqw;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: #e85d26;
+    }
+    .route02-chip-label {
+      font-family: "IBM Plex Mono", monospace;
+      font-weight: 500;
+      font-size: 1.15cqw;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #f0ece5;
+    }
+  </style>
+
+  <div id="root" data-composition-id="02-positioning-route">
+    <div class="clip route02-bg" data-start="0" data-duration="7" data-track-index="0"></div>
+
+    <div class="clip route02-statement" data-start="0" data-duration="4" data-track-index="1">
+      <div class="route02-clause1">закрытые визиты</div>
+      <div class="route02-clause2">на производства лидеров робототехники китая</div>
+    </div>
+
+    <div class="clip route02-wordmark" data-start="2.2" data-duration="4.8" data-track-index="2">
+      global tech tour
+    </div>
+
+    <div class="clip route02-map" data-start="4" data-duration="3" data-track-index="1">
+      <svg viewBox="0 0 1080 1920" preserveAspectRatio="none">
+        <path class="route02-route-path" d="M140,1080 L540,1150 L940,1220" />
+      </svg>
+      <div class="route02-city" data-pt="1">
+        <div class="route02-city-label">пекин</div>
+        <div class="route02-city-dot"></div>
+      </div>
+      <div class="route02-city" data-pt="2">
+        <div class="route02-city-label">шанхай</div>
+        <div class="route02-city-dot"></div>
+      </div>
+      <div class="route02-city" data-pt="3">
+        <div class="route02-city-label">шэньчжэнь</div>
+        <div class="route02-city-dot"></div>
+      </div>
+    </div>
+
+    <div class="clip route02-chips" data-start="6" data-duration="1" data-track-index="3">
+      <div class="route02-chip">
+        <div class="route02-chip-num">3</div>
+        <div class="route02-chip-label">города</div>
+      </div>
+      <div class="route02-chip">
+        <div class="route02-chip-num">5</div>
+        <div class="route02-chip-label">дней</div>
+      </div>
+      <div class="route02-chip">
+        <div class="route02-chip-num">12</div>
+        <div class="route02-chip-label">компаний</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var tl = gsap.timeline({ paused: true });
+      var ROOT = '[data-composition-id="02-positioning-route"] ';
+
+      // Scene 1 (0.0-2.2s): hard-cut positioning clause 1, dead-center, no slide/fade.
+      tl.set(ROOT + ".route02-clause1", { opacity: 1 }, 0);
+      tl.set(ROOT + ".route02-clause1", { opacity: 0 }, 2.2);
+
+      // Scene 2 (2.2-4.0s): hard-cut replaces with clause 2; wordmark fades up low-opacity and holds.
+      tl.set(ROOT + ".route02-clause2", { opacity: 1 }, 2.2);
+      tl.set(ROOT + ".route02-clause2", { opacity: 0 }, 4.0);
+      tl.fromTo(
+        ROOT + ".route02-wordmark",
+        { opacity: 0 },
+        { opacity: 0.4, duration: 0.6, ease: "power1.out" },
+        2.2
+      );
+
+      // Scene 3 (4.0-6.0s): route line self-draws, city points light up as the line reaches them.
+      tl.fromTo(
+        ROOT + ".route02-route-path",
+        { strokeDasharray: 812, strokeDashoffset: 812 },
+        { strokeDashoffset: 0, duration: 2.0, ease: "power2.inOut" },
+        4.0
+      );
+      tl.fromTo(
+        ROOT + '.route02-city[data-pt="1"]',
+        { opacity: 0, scale: 0.5 },
+        { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2.5)" },
+        4.5
+      );
+      tl.fromTo(
+        ROOT + '.route02-city[data-pt="2"]',
+        { opacity: 0, scale: 0.5 },
+        { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2.5)" },
+        5.25
+      );
+      tl.fromTo(
+        ROOT + '.route02-city[data-pt="3"]',
+        { opacity: 0, scale: 0.5 },
+        { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2.5)" },
+        5.95
+      );
+
+      // Scene 4 (6.0-7.0s): three stat chips spring-pop in, left to right, ~0.3s apart, then hold.
+      tl.fromTo(
+        ROOT + ".route02-chip:nth-child(1)",
+        { opacity: 0, scale: 0.4 },
+        { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(3)" },
+        6.0
+      );
+      tl.fromTo(
+        ROOT + ".route02-chip:nth-child(2)",
+        { opacity: 0, scale: 0.4 },
+        { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(3)" },
+        6.3
+      );
+      tl.fromTo(
+        ROOT + ".route02-chip:nth-child(3)",
+        { opacity: 0, scale: 0.4 },
+        { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(3)" },
+        6.6
+      );
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["02-positioning-route"] = tl;
+    })();
+  </script>
+</template>
