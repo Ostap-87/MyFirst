@@ -1,0 +1,266 @@
+<template data-composition-id="08-cta">
+  <style>
+    #root {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      container-type: size;
+      font-family: "IBM Plex Mono", monospace;
+    }
+
+    @font-face {
+      font-family: "IBM Plex Mono";
+      src: url("assets/fonts/ibm-plex-mono-latin-500-normal.woff2") format("woff2");
+      font-weight: 500;
+      font-style: normal;
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    @font-face {
+      font-family: "IBM Plex Mono";
+      src: url("assets/fonts/ibm-plex-mono-cyrillic-500-normal.woff2") format("woff2");
+      font-weight: 500;
+      font-style: normal;
+      unicode-range: U+0400-045F, U+0460-052F, U+1C80-1C88, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+    }
+
+    .cta08-bg {
+      position: absolute;
+      inset: 0;
+      background: #111111;
+    }
+
+    /* faint structural hairlines, restrained per broadside plane doctrine */
+    .cta08-hairline {
+      position: absolute;
+      left: 5.5cqw;
+      right: 5.5cqw;
+      height: 1px;
+      background: #282826;
+      opacity: 0;
+    }
+    .cta08-hairline--top { top: 5.5cqh; }
+    .cta08-hairline--bottom { bottom: 12cqh; }
+
+    .cta08-wordmark-row {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      text-align: center;
+    }
+    .cta08-wordmark {
+      display: inline-block;
+      font-family: "IBM Plex Mono", monospace;
+      font-weight: 500;
+      font-size: 6cqw;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #f0ece5;
+      opacity: 0;
+      transform-origin: 50% 100%;
+    }
+
+    .cta08-tagline-row {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      text-align: center;
+    }
+    .cta08-tagline {
+      display: inline-block;
+      font-family: "IBM Plex Mono", monospace;
+      font-weight: 500;
+      font-size: 2.6cqw;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #e85d26;
+      opacity: 0;
+    }
+
+    .cta08-glow {
+      position: absolute;
+      left: 50%;
+      top: 44cqh;
+      width: 60cqw;
+      height: 60cqw;
+      margin-left: -30cqw;
+      margin-top: -30cqw;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(232, 93, 38, 0.55) 0%, rgba(232, 93, 38, 0) 68%);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .cta08-pill-wrap {
+      position: absolute;
+      left: 50%;
+      top: 44cqh;
+      width: 68cqw;
+      margin-left: -34cqw;
+      display: flex;
+      justify-content: center;
+      opacity: 0;
+    }
+    .cta08-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2.4cqw 4.2cqw;
+      background: #e85d26;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    .cta08-pill span {
+      font-family: "IBM Plex Mono", monospace;
+      font-weight: 500;
+      font-size: 1.85cqw;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #111111;
+    }
+
+    .cta08-cursor {
+      position: absolute;
+      width: 7cqw;
+      height: 7cqw;
+      left: 50%;
+      top: 118%;
+      z-index: 20;
+      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.4));
+      pointer-events: none;
+      will-change: transform, top, left;
+    }
+  </style>
+
+  <div id="root">
+    <div class="cta08-bg clip" data-start="0" data-duration="7" data-track-index="0"></div>
+
+    <div class="cta08-hairline cta08-hairline--top clip" data-start="0" data-duration="7" data-track-index="1"></div>
+    <div class="cta08-hairline cta08-hairline--bottom clip" data-start="0" data-duration="7" data-track-index="1"></div>
+
+    <div class="cta08-wordmark-row clip" data-start="0" data-duration="7" data-track-index="2">
+      <span class="cta08-wordmark">Global Tech Tour</span>
+    </div>
+
+    <div class="cta08-tagline-row clip" data-start="1.4" data-duration="5.6" data-track-index="2">
+      <span class="cta08-tagline">Robotics Expedition</span>
+    </div>
+
+    <div class="cta08-glow clip" data-start="3.9" data-duration="3.1" data-track-index="3"></div>
+
+    <div class="cta08-pill-wrap clip" data-start="2.6" data-duration="4.4" data-track-index="4">
+      <div class="cta08-pill">
+        <span>Telegram &middot; @ostapdotcenko</span>
+      </div>
+    </div>
+
+    <svg class="cta08-cursor clip" data-start="2.6" data-duration="4.4" data-track-index="5" viewBox="0 0 24 24">
+      <path
+        d="M4 2 L4 20 L8.5 16.3 L11.4 21.9 L14.1 20.5 L11.2 15 L17 15 Z"
+        fill="#f0ece5"
+        stroke="#111111"
+        stroke-width="1.3"
+        stroke-linejoin="round"
+      />
+    </svg>
+  </div>
+
+  <script>
+    (function () {
+      var root = document.currentScript.closest("template").content
+        ? null
+        : null; // no-op placeholder, root element selected below via DOM query at register time
+
+      function build(scopeEl) {
+        var wordmark = scopeEl.querySelector(".cta08-wordmark");
+        var tagline = scopeEl.querySelector(".cta08-tagline");
+        var pillWrap = scopeEl.querySelector(".cta08-pill-wrap");
+        var pill = scopeEl.querySelector(".cta08-pill");
+        var cursor = scopeEl.querySelector(".cta08-cursor");
+        var glow = scopeEl.querySelector(".cta08-glow");
+        var hairlines = scopeEl.querySelectorAll(".cta08-hairline");
+
+        var tl = gsap.timeline({ paused: true });
+
+        // Scene 1 (0.0-1.4s): hard cut in, wordmark holds dead-center, faint breath.
+        tl.fromTo(
+          wordmark,
+          { opacity: 0, scale: 0.94, y: 640 },
+          { opacity: 1, scale: 1, y: 640, duration: 0.25, ease: "power2.out" },
+          0
+        );
+        tl.fromTo(
+          hairlines,
+          { opacity: 0 },
+          { opacity: 1, duration: 0.4, ease: "power1.out" },
+          0.1
+        );
+        tl.fromTo(
+          wordmark,
+          { rotation: -0.7 },
+          { rotation: 0.7, duration: 1.1, ease: "sine.inOut" },
+          0.3
+        );
+
+        // Scene 2 (1.4-2.6s): wordmark condenses at the same center; "Robotics Expedition"
+        // locks underneath in label weight — one continuous transform, shared transform-origin.
+        tl.to(
+          wordmark,
+          { scale: 0.52, y: 560, rotation: 0, duration: 0.6, ease: "power3.inOut" },
+          1.4
+        );
+        tl.fromTo(
+          tagline,
+          { opacity: 0, y: 660 },
+          { opacity: 1, y: 630, duration: 0.55, ease: "power2.out" },
+          1.85
+        );
+
+        // Scene 3 (2.6-4.0s): fire-orange pill scales up from the same center; cursor arrives
+        // from off-stage on a decelerating path, landing a few px off the pill's center.
+        gsap.set(pillWrap, { top: 800, transformOrigin: "50% 50%" });
+        tl.fromTo(
+          pillWrap,
+          { opacity: 0, scale: 0.18 },
+          { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.5)" },
+          2.6
+        );
+        tl.fromTo(
+          cursor,
+          { left: "51%", top: "118%" },
+          { left: "58.5%", top: "48.2%", duration: 0.82, ease: "power3.out" },
+          3.0,
+          undefined
+        );
+
+        // Scene 4 (4.0-7.0s): physical click — pill and cursor compress together, release
+        // with a soft glow-bloom, then hold static to the final frame (no exit, last frame).
+        var CLICK = 4.0;
+        tl.to(cursor, { scale: 0.82, duration: 0.1, ease: "power2.in", transformOrigin: "21% 14%" }, CLICK);
+        tl.to(cursor, { scale: 1, duration: 0.22, ease: "power2.out", transformOrigin: "21% 14%" }, CLICK + 0.1);
+        tl.to(pill, { scale: 0.93, duration: 0.1, ease: "power2.in" }, CLICK);
+        tl.to(pill, { scale: 1.03, duration: 0.16, ease: "power2.out" }, CLICK + 0.1);
+        tl.to(pill, { scale: 1, duration: 0.18, ease: "power2.out" }, CLICK + 0.26);
+
+        tl.fromTo(
+          glow,
+          { opacity: 0, scale: 0.55 },
+          { opacity: 0.55, scale: 1, duration: 0.35, ease: "power2.out" },
+          CLICK - 0.1
+        );
+        tl.to(glow, { opacity: 0.22, scale: 1.15, duration: 0.65, ease: "power2.out" }, CLICK + 0.25);
+
+        return tl;
+      }
+
+      var tpl = document.currentScript.closest("template");
+      var content = tpl.content;
+      var rootEl = content.querySelector("#root");
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["08-cta"] = build(rootEl);
+    })();
+  </script>
+</template>

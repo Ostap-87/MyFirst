@@ -1,0 +1,252 @@
+<template data-composition-id="03-beijing">
+  <style>
+    #root {
+      container-type: size;
+      font-family: "Rubik", sans-serif;
+      overflow: hidden;
+    }
+
+    #root .clip {
+      position: absolute;
+      inset: 0;
+    }
+
+    @font-face {
+      font-family: "Rubik";
+      src: url("assets/fonts/rubik-latin-600-normal.woff2") format("woff2");
+      font-weight: 600;
+      font-style: normal;
+      font-display: block;
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    @font-face {
+      font-family: "Rubik";
+      src: url("assets/fonts/rubik-cyrillic-600-normal.woff2") format("woff2");
+      font-weight: 600;
+      font-style: normal;
+      font-display: block;
+      unicode-range: U+0400-04FF, U+0500-052F, U+2DE0-2DFF, U+A640-A69F, U+1C80-1C88;
+    }
+    @font-face {
+      font-family: "Rubik";
+      src: url("assets/fonts/rubik-latin-900-normal.woff2") format("woff2");
+      font-weight: 900;
+      font-style: normal;
+      font-display: block;
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    @font-face {
+      font-family: "Rubik";
+      src: url("assets/fonts/rubik-cyrillic-900-normal.woff2") format("woff2");
+      font-weight: 900;
+      font-style: normal;
+      font-display: block;
+      unicode-range: U+0400-04FF, U+0500-052F, U+2DE0-2DFF, U+A640-A69F, U+1C80-1C88;
+    }
+    @font-face {
+      font-family: "IBM Plex Mono";
+      src: url("assets/fonts/ibm-plex-mono-latin-500-normal.woff2") format("woff2");
+      font-weight: 500;
+      font-style: normal;
+      font-display: block;
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    @font-face {
+      font-family: "IBM Plex Mono";
+      src: url("assets/fonts/ibm-plex-mono-cyrillic-500-normal.woff2") format("woff2");
+      font-weight: 500;
+      font-style: normal;
+      font-display: block;
+      unicode-range: U+0400-04FF, U+0500-052F, U+2DE0-2DFF, U+A640-A69F, U+1C80-1C88;
+    }
+
+    .beijing-ground {
+      background: #111111;
+      z-index: 0;
+    }
+
+    /* faint vertical hairline field so the flat ground isn't a dead void */
+    .beijing-ground::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(180deg, rgba(240, 236, 229, 0.05) 1px, transparent 1px);
+      background-size: 100% 12.5cqh;
+      opacity: 0.5;
+    }
+
+    .beijing-city {
+      z-index: 2;
+      top: 12cqh;
+      left: 5.5cqw;
+      right: 5.5cqw;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1cqh;
+    }
+
+    .beijing-city-label {
+      font-family: "Rubik", sans-serif;
+      font-weight: 600;
+      font-size: 8cqw;
+      line-height: 1;
+      letter-spacing: -0.01em;
+      color: #F0ECE5;
+      transform-origin: 0% 50%;
+      will-change: transform, opacity;
+    }
+
+    .beijing-city-underline {
+      width: 42cqw;
+      height: 3px;
+      background: #E85D26;
+      transform-origin: 0% 50%;
+      will-change: transform;
+    }
+
+    .beijing-cards {
+      z-index: 3;
+      top: 42cqh;
+      left: 5.5cqw;
+      right: 5.5cqw;
+      display: flex;
+      align-items: flex-start;
+      gap: 3.5cqw;
+    }
+
+    .beijing-card {
+      background: #1A1A18;
+      border: 1px solid #282826;
+      padding: 3.2cqw 2.6cqw;
+      display: flex;
+      flex-direction: column;
+      gap: 2cqh;
+      will-change: transform, opacity;
+    }
+
+    .beijing-card-galbot {
+      width: 40cqw;
+    }
+
+    .beijing-card-robotera {
+      width: 33cqw;
+    }
+
+    .beijing-card-chrome {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .beijing-card-rule {
+      width: 36px;
+      height: 2px;
+      background: #E85D26;
+    }
+
+    .beijing-card-num {
+      font-family: "IBM Plex Mono", monospace;
+      font-weight: 500;
+      font-size: 1.4cqw;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #888880;
+    }
+
+    .beijing-card-word {
+      font-family: "Rubik", sans-serif;
+      font-weight: 900;
+      line-height: 0.92;
+      letter-spacing: -0.03em;
+      text-transform: lowercase;
+      color: #F0ECE5;
+    }
+
+    .beijing-card-galbot .beijing-card-word {
+      font-size: 9cqw;
+    }
+
+    .beijing-card-robotera .beijing-card-word {
+      font-size: 7cqw;
+    }
+
+    .beijing-card-tag {
+      font-family: "IBM Plex Mono", monospace;
+      font-weight: 500;
+      font-size: 1.1cqw;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #E85D26;
+    }
+  </style>
+
+  <div id="root" data-composition-id="03-beijing">
+    <div class="clip beijing-ground" data-start="0" data-duration="6" data-track-index="0"></div>
+
+    <div class="clip beijing-city" data-start="0" data-duration="6" data-track-index="1">
+      <div class="beijing-city-label" id="beijing-city-label">ПЕКИН</div>
+      <div class="beijing-city-underline" id="beijing-city-underline"></div>
+    </div>
+
+    <div class="clip beijing-cards" data-start="0" data-duration="6" data-track-index="2">
+      <div class="beijing-card beijing-card-galbot" id="beijing-card-galbot">
+        <div class="beijing-card-chrome">
+          <span class="beijing-card-rule"></span>
+          <span class="beijing-card-num">01</span>
+        </div>
+        <div class="beijing-card-word">galbot</div>
+        <span class="beijing-card-tag">Partner</span>
+      </div>
+      <div class="beijing-card beijing-card-robotera" id="beijing-card-robotera">
+        <div class="beijing-card-chrome">
+          <span class="beijing-card-rule"></span>
+          <span class="beijing-card-num">02</span>
+        </div>
+        <div class="beijing-card-word">robotera</div>
+        <span class="beijing-card-tag">Partner</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var tl = gsap.timeline({ paused: true });
+
+      // Scene 1 (0.0-1.2s): city label hard-cuts in, underline draws left->right.
+      tl.fromTo(
+        "#beijing-city-label",
+        { opacity: 0 },
+        { opacity: 1, duration: 0.12, ease: "none" },
+        0.0,
+      );
+      tl.fromTo(
+        "#beijing-city-underline",
+        { scaleX: 0 },
+        { scaleX: 1, duration: 0.85, ease: "power2.out" },
+        0.15,
+      );
+
+      // Scene 2 (1.2-3.4s): Galbot card cascades in from the left edge with overshoot.
+      tl.fromTo(
+        "#beijing-card-galbot",
+        { x: "-140cqw", opacity: 0, scale: 0.94 },
+        { x: 0, opacity: 1, scale: 1, duration: 0.7, ease: "back.out(1.5)" },
+        1.2,
+      );
+
+      // Scene 3 (3.4-5.6s): Robotera card cascades in from the right edge with overshoot.
+      tl.fromTo(
+        "#beijing-card-robotera",
+        { x: "140cqw", opacity: 0, scale: 0.94 },
+        { x: 0, opacity: 1, scale: 1, duration: 0.7, ease: "back.out(1.5)" },
+        3.4,
+      );
+
+      // Scene 4 (5.6-6.0s): both cards hold still together — no further motion.
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["03-beijing"] = tl;
+    })();
+  </script>
+</template>

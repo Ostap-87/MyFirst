@@ -1,0 +1,177 @@
+<template>
+  <style>
+    @font-face {
+      font-family: "Rubik";
+      src: url("assets/fonts/rubik-latin-700-normal.woff2") format("woff2");
+      font-weight: 700;
+      font-style: normal;
+      font-display: block;
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+20AC, U+2122;
+    }
+    @font-face {
+      font-family: "Rubik";
+      src: url("assets/fonts/rubik-cyrillic-700-normal.woff2") format("woff2");
+      font-weight: 700;
+      font-style: normal;
+      font-display: block;
+      unicode-range: U+0400-04FF, U+0500-052F, U+2DE0-2DFF, U+A640-A69F, U+1C80-1C88;
+    }
+    @font-face {
+      font-family: "IBM Plex Mono";
+      src: url("assets/fonts/ibm-plex-mono-latin-500-normal.woff2") format("woff2");
+      font-weight: 500;
+      font-style: normal;
+      font-display: block;
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+20AC, U+2122;
+    }
+    @font-face {
+      font-family: "IBM Plex Mono";
+      src: url("assets/fonts/ibm-plex-mono-cyrillic-500-normal.woff2") format("woff2");
+      font-weight: 500;
+      font-style: normal;
+      font-display: block;
+      unicode-range: U+0400-04FF, U+0500-052F, U+2DE0-2DFF, U+A640-A69F, U+1C80-1C88;
+    }
+
+    #root {
+      container-type: size;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      background: #111111;
+      font-family: "Rubik", sans-serif;
+    }
+
+    #root .fr06-bg {
+      position: absolute;
+      inset: 0;
+      background: #111111;
+    }
+
+    #root .fr06-mark {
+      position: absolute;
+      left: 5.5cqw;
+      bottom: 22cqh;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.72cqw;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #f0ece5;
+      opacity: 0.35;
+    }
+
+    #root .fr06-num {
+      position: absolute;
+      left: 5.5cqw;
+      top: 5.5cqw;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.72cqw;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #f0ece5;
+      opacity: 0.3;
+    }
+
+    #root .fr06-stage {
+      position: absolute;
+      inset: 0 0 17cqh 0;
+      display: grid;
+      place-items: center;
+    }
+
+    #root .fr06-beat {
+      grid-column: 1;
+      grid-row: 1;
+      width: 78cqw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      opacity: 0;
+    }
+
+    #root .fr06-beat .fr06-rule {
+      width: 36px;
+      height: 2px;
+      background: #e85d26;
+      margin-bottom: 2.4cqh;
+      transform-origin: center;
+      transform: scaleX(0);
+    }
+
+    #root .fr06-beat .fr06-text {
+      font-family: "Rubik", sans-serif;
+      font-weight: 700;
+      font-size: 4.5cqw;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      text-transform: lowercase;
+      color: #f0ece5;
+      text-align: center;
+    }
+  </style>
+
+  <div id="root" data-composition-id="06-included">
+    <div class="clip fr06-bg" data-start="0" data-duration="4" data-track-index="0"></div>
+
+    <div class="clip fr06-num" data-start="0" data-duration="4" data-track-index="1">06</div>
+
+    <div class="clip fr06-mark" data-start="0" data-duration="4" data-track-index="1">
+      global tech tour
+    </div>
+
+    <div id="fr06-beat-1" class="clip fr06-beat" data-start="0" data-duration="2" data-track-index="2">
+      <div class="fr06-rule"></div>
+      <div class="fr06-text">живые демо гуманоидов</div>
+    </div>
+
+    <div id="fr06-beat-2" class="clip fr06-beat" data-start="2" data-duration="2" data-track-index="2">
+      <div class="fr06-rule"></div>
+      <div class="fr06-text">переговоры с&nbsp;топ-менеджментом</div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var beat1 = document.getElementById("fr06-beat-1");
+      var beat2 = document.getElementById("fr06-beat-2");
+      var rule1 = beat1.querySelector(".fr06-rule");
+      var rule2 = beat2.querySelector(".fr06-rule");
+
+      var tl = gsap.timeline({ paused: true });
+
+      // Scene 1 (0.0-2.0s): hard-cut flash-in, holds ~1.6s, hard cut to Scene 2 at t=2
+      tl.fromTo(
+        beat1,
+        { opacity: 0, scale: 1.06 },
+        { opacity: 1, scale: 1, duration: 0.08, ease: "none" },
+        0
+      );
+      tl.fromTo(
+        rule1,
+        { scaleX: 0 },
+        { scaleX: 1, duration: 0.18, ease: "power2.out" },
+        0.1
+      );
+
+      // Scene 2 (2.0-4.0s): hard-cut replacement, same treatment, holds to the cut
+      tl.fromTo(
+        beat2,
+        { opacity: 0, scale: 1.06 },
+        { opacity: 1, scale: 1, duration: 0.08, ease: "none" },
+        2
+      );
+      tl.fromTo(
+        rule2,
+        { scaleX: 0 },
+        { scaleX: 1, duration: 0.18, ease: "power2.out" },
+        2.1
+      );
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["06-included"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,173 @@
+<template>
+  <style>
+    @font-face {
+      font-family: "Rubik";
+      font-style: normal;
+      font-weight: 400;
+      src: url("assets/fonts/rubik-latin-400-normal.woff2") format("woff2");
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+        U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    @font-face {
+      font-family: "Rubik";
+      font-style: normal;
+      font-weight: 400;
+      src: url("assets/fonts/rubik-cyrillic-400-normal.woff2") format("woff2");
+      unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+    }
+    @font-face {
+      font-family: "Rubik";
+      font-style: normal;
+      font-weight: 900;
+      src: url("assets/fonts/rubik-latin-900-normal.woff2") format("woff2");
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+        U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    @font-face {
+      font-family: "Rubik";
+      font-style: normal;
+      font-weight: 900;
+      src: url("assets/fonts/rubik-cyrillic-900-normal.woff2") format("woff2");
+      unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+    }
+
+    #root {
+      position: relative;
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      container-type: size;
+      container-name: clim07;
+      font-family: "Rubik", sans-serif;
+    }
+
+    .clim07-backdrop {
+      position: absolute;
+      inset: 0;
+      background: #e85d26;
+    }
+
+    .clim07-number-stage {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .clim07-number {
+      display: inline-block;
+      font-family: "Rubik", sans-serif;
+      font-weight: 900;
+      font-size: 58cqw;
+      line-height: 0.85;
+      letter-spacing: -0.04em;
+      color: #111111;
+      font-variant-numeric: tabular-nums;
+      transform-origin: center center;
+      will-change: transform, opacity;
+    }
+
+    .clim07-lines {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 68cqh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.2cqh;
+      padding: 0 5.5cqw;
+      text-align: center;
+    }
+    .clim07-line {
+      margin: 0;
+      font-family: "Rubik", sans-serif;
+      font-weight: 400;
+      font-size: 3.6cqw;
+      line-height: 1.5;
+      color: #111111;
+      will-change: transform, opacity;
+    }
+  </style>
+
+  <div id="root" data-composition-id="07-climax" data-width="1080" data-height="1920">
+    <div
+      class="clim07-backdrop clip"
+      data-start="0"
+      data-duration="5"
+      data-track-index="0"
+    ></div>
+
+    <div
+      class="clim07-number-stage clip"
+      data-start="0.4"
+      data-duration="4.6"
+      data-track-index="1"
+    >
+      <span class="clim07-number" id="clim07-number">0</span>
+    </div>
+
+    <div
+      class="clim07-lines clip"
+      data-start="2.8"
+      data-duration="2.2"
+      data-track-index="2"
+    >
+      <p class="clim07-line" id="clim07-line1">лидеров индустрии.</p>
+      <p class="clim07-line" id="clim07-line2">один маршрут.</p>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      var scope = document.querySelectorAll('[data-composition-id="07-climax"]');
+      var rootEl = scope[scope.length - 1];
+      var numberEl = rootEl.querySelector("#clim07-number");
+      var line1 = rootEl.querySelector("#clim07-line1");
+      var line2 = rootEl.querySelector("#clim07-line2");
+
+      gsap.set(numberEl, { scale: 0.12, opacity: 0 });
+      gsap.set([line1, line2], { opacity: 0, y: 24 });
+
+      window.__timelines = window.__timelines || {};
+      var tl = gsap.timeline({ paused: true });
+      window.__timelines["07-climax"] = tl;
+
+      /* Scene 2 (0.4–2.8s): spring-pop explosion to full size, one beat. */
+      var COUNT_START = 0.4;
+      var COUNT_DUR = 0.9;
+
+      tl.fromTo(
+        numberEl,
+        { scale: 0.12, opacity: 0 },
+        { scale: 1, opacity: 1, duration: COUNT_DUR, ease: "back.out(1.8)" },
+        COUNT_START
+      );
+
+      /* Count 0 -> 12 as discrete, seek-safe keyframes on the same beat,
+         fast-in / settle-out easing so the count lands with the pop. */
+      var TARGET = 12;
+      for (var i = 0; i <= TARGET; i += 1) {
+        var p = i / TARGET;
+        var eased = 1 - Math.pow(1 - p, 2.2);
+        var t = COUNT_START + eased * COUNT_DUR;
+        tl.set(numberEl, { textContent: String(i) }, t);
+      }
+
+      /* Scene 3 (2.8–5.0s): held beat, then the two closing lines lock in once. */
+      tl.fromTo(
+        line1,
+        { opacity: 0, y: 24 },
+        { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
+        2.9
+      );
+      tl.fromTo(
+        line2,
+        { opacity: 0, y: 24 },
+        { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
+        3.05
+      );
+    })();
+  </script>
+</template>
