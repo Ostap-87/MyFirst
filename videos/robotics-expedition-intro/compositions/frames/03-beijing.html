@@ -1,4 +1,4 @@
-<template data-composition-id="03-beijing">
+<template data-composition-id="03-beijing" data-duration="6">
   <style>
     #root {
       container-type: size;
@@ -8,7 +8,6 @@
 
     #root .clip {
       position: absolute;
-      inset: 0;
     }
 
     @font-face {
@@ -61,6 +60,7 @@
     }
 
     .beijing-ground {
+      inset: 0;
       background: #111111;
       z-index: 0;
     }
@@ -181,7 +181,7 @@
     }
   </style>
 
-  <div id="root" data-composition-id="03-beijing">
+  <div id="root" data-composition-id="03-beijing" data-width="1080" data-height="1920">
     <div class="clip beijing-ground" data-start="0" data-duration="6" data-track-index="0"></div>
 
     <div class="clip beijing-city" data-start="0" data-duration="6" data-track-index="1">
@@ -225,6 +225,14 @@
         { scaleX: 0 },
         { scaleX: 1, duration: 0.85, ease: "power2.out" },
         0.15,
+      );
+
+      // Recede to a low-opacity corner reference before the cards cascade in, so the
+      // city label never visually overlaps the card grid content.
+      tl.to(
+        ["#beijing-city-label", "#beijing-city-underline"],
+        { opacity: 0, duration: 0.4, ease: "power1.out" },
+        1.2,
       );
 
       // Scene 2 (1.2-3.4s): Galbot card cascades in from the left edge with overshoot.

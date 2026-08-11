@@ -1,4 +1,4 @@
-<template>
+<template data-composition-id="07-climax" data-duration="5.5">
   <style>
     @font-face {
       font-family: "Rubik";
@@ -53,12 +53,13 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      padding-bottom: 22cqh;
     }
     .clim07-number {
       display: inline-block;
       font-family: "Rubik", sans-serif;
       font-weight: 900;
-      font-size: 58cqw;
+      font-size: 42cqw;
       line-height: 0.85;
       letter-spacing: -0.04em;
       color: #111111;
@@ -94,14 +95,14 @@
     <div
       class="clim07-backdrop clip"
       data-start="0"
-      data-duration="5"
+      data-duration="5.5"
       data-track-index="0"
     ></div>
 
     <div
       class="clim07-number-stage clip"
       data-start="0.4"
-      data-duration="4.6"
+      data-duration="5.1"
       data-track-index="1"
     >
       <span class="clim07-number" id="clim07-number">0</span>
@@ -110,7 +111,7 @@
     <div
       class="clim07-lines clip"
       data-start="2.8"
-      data-duration="2.2"
+      data-duration="2.7"
       data-track-index="2"
     >
       <p class="clim07-line" id="clim07-line1">лидеров индустрии.</p>
@@ -118,7 +119,6 @@
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
   <script>
     (function () {
       var scope = document.querySelectorAll('[data-composition-id="07-climax"]');

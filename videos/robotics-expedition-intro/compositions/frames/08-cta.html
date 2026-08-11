@@ -1,4 +1,4 @@
-<template data-composition-id="08-cta">
+<template data-composition-id="08-cta" data-duration="7">
   <style>
     #root {
       position: relative;
@@ -125,26 +125,26 @@
       position: absolute;
       width: 7cqw;
       height: 7cqw;
-      left: 50%;
-      top: 118%;
+      left: 52.3%;
+      top: 45.6%;
       z-index: 20;
       filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.4));
       pointer-events: none;
-      will-change: transform, top, left;
+      will-change: transform;
     }
   </style>
 
-  <div id="root" data-composition-id="08-cta">
+  <div id="root" data-composition-id="08-cta" data-width="1080" data-height="1920">
     <div class="cta08-bg clip" data-start="0" data-duration="7" data-track-index="0"></div>
 
     <div class="cta08-hairline cta08-hairline--top clip" data-start="0" data-duration="7" data-track-index="1"></div>
-    <div class="cta08-hairline cta08-hairline--bottom clip" data-start="0" data-duration="7" data-track-index="1"></div>
+    <div class="cta08-hairline cta08-hairline--bottom clip" data-start="0" data-duration="7" data-track-index="6"></div>
 
     <div class="cta08-wordmark-row clip" data-start="0" data-duration="7" data-track-index="2">
       <span class="cta08-wordmark">Global Tech Tour</span>
     </div>
 
-    <div class="cta08-tagline-row clip" data-start="1.4" data-duration="5.6" data-track-index="2">
+    <div class="cta08-tagline-row clip" data-start="1.4" data-duration="5.6" data-track-index="7">
       <span class="cta08-tagline">Robotics Expedition</span>
     </div>
 
@@ -197,7 +197,7 @@
         tl.fromTo(
           wordmark,
           { rotation: -0.7 },
-          { rotation: 0.7, duration: 1.1, ease: "sine.inOut" },
+          { rotation: 0.7, duration: 1.09, ease: "sine.inOut" },
           0.3
         );
 
@@ -205,13 +205,13 @@
         // locks underneath in label weight — one continuous transform, shared transform-origin.
         tl.to(
           wordmark,
-          { scale: 0.52, y: 560, rotation: 0, duration: 0.6, ease: "power3.inOut" },
+          { scale: 0.44, y: 540, rotation: 0, duration: 0.6, ease: "power3.inOut" },
           1.4
         );
         tl.fromTo(
           tagline,
-          { opacity: 0, y: 660 },
-          { opacity: 1, y: 630, duration: 0.55, ease: "power2.out" },
+          { opacity: 0, y: 675 },
+          { opacity: 1, y: 655, duration: 0.55, ease: "power2.out" },
           1.85
         );
 
@@ -226,8 +226,8 @@
         );
         tl.fromTo(
           cursor,
-          { left: "51%", top: "118%" },
-          { left: "52.3%", top: "45.6%", duration: 0.82, ease: "power3.out" },
+          { x: -14, y: 1390 },
+          { x: 0, y: 0, duration: 0.82, ease: "power3.out" },
           3.0
         );
 

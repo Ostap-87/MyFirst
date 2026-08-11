@@ -1,4 +1,4 @@
-<template>
+<template data-composition-id="06-included" data-duration="4">
   <style>
     @font-face {
       font-family: "Rubik";
@@ -113,23 +113,23 @@
     }
   </style>
 
-  <div id="root" data-composition-id="06-included">
+  <div id="root" data-composition-id="06-included" data-width="1080" data-height="1920">
     <div class="clip fr06-bg" data-start="0" data-duration="4" data-track-index="0"></div>
 
     <div class="clip fr06-num" data-start="0" data-duration="4" data-track-index="1">06</div>
 
-    <div class="clip fr06-mark" data-start="0" data-duration="4" data-track-index="1">
+    <div class="clip fr06-mark" data-start="0" data-duration="4" data-track-index="3">
       global tech tour
     </div>
 
     <div class="fr06-stage">
       <div id="fr06-beat-1" class="clip fr06-beat" data-start="0" data-duration="2" data-track-index="2">
-        <div class="fr06-rule"></div>
+        <div id="fr06-rule-1" class="fr06-rule"></div>
         <div class="fr06-text">живые демо гуманоидов</div>
       </div>
 
       <div id="fr06-beat-2" class="clip fr06-beat" data-start="2" data-duration="2" data-track-index="2">
-        <div class="fr06-rule"></div>
+        <div id="fr06-rule-2" class="fr06-rule"></div>
         <div class="fr06-text">переговоры с&nbsp;топ-менеджментом</div>
       </div>
     </div>
@@ -139,8 +139,8 @@
     (function () {
       var beat1 = document.getElementById("fr06-beat-1");
       var beat2 = document.getElementById("fr06-beat-2");
-      var rule1 = beat1.querySelector(".fr06-rule");
-      var rule2 = beat2.querySelector(".fr06-rule");
+      var rule1 = document.getElementById("fr06-rule-1");
+      var rule2 = document.getElementById("fr06-rule-2");
 
       var tl = gsap.timeline({ paused: true });
 

@@ -1,0 +1,360 @@
+<template data-composition-id="05-shenzhen" data-duration="8.5">
+  <style>
+    #root {
+      container-type: size;
+      font-family: "Rubik", sans-serif;
+      overflow: hidden;
+    }
+
+    #root .clip {
+      position: absolute;
+    }
+
+    @font-face {
+      font-family: "Rubik";
+      src: url("assets/fonts/rubik-latin-600-normal.woff2") format("woff2");
+      font-weight: 600;
+      font-style: normal;
+      font-display: block;
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    @font-face {
+      font-family: "Rubik";
+      src: url("assets/fonts/rubik-cyrillic-600-normal.woff2") format("woff2");
+      font-weight: 600;
+      font-style: normal;
+      font-display: block;
+      unicode-range: U+0400-04FF, U+0500-052F, U+2DE0-2DFF, U+A640-A69F, U+1C80-1C88;
+    }
+    @font-face {
+      font-family: "Rubik";
+      src: url("assets/fonts/rubik-latin-900-normal.woff2") format("woff2");
+      font-weight: 900;
+      font-style: normal;
+      font-display: block;
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    @font-face {
+      font-family: "Rubik";
+      src: url("assets/fonts/rubik-cyrillic-900-normal.woff2") format("woff2");
+      font-weight: 900;
+      font-style: normal;
+      font-display: block;
+      unicode-range: U+0400-04FF, U+0500-052F, U+2DE0-2DFF, U+A640-A69F, U+1C80-1C88;
+    }
+    @font-face {
+      font-family: "IBM Plex Mono";
+      src: url("assets/fonts/ibm-plex-mono-latin-500-normal.woff2") format("woff2");
+      font-weight: 500;
+      font-style: normal;
+      font-display: block;
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    @font-face {
+      font-family: "IBM Plex Mono";
+      src: url("assets/fonts/ibm-plex-mono-cyrillic-500-normal.woff2") format("woff2");
+      font-weight: 500;
+      font-style: normal;
+      font-display: block;
+      unicode-range: U+0400-04FF, U+0500-052F, U+2DE0-2DFF, U+A640-A69F, U+1C80-1C88;
+    }
+
+    .sz-ground {
+      inset: 0;
+      background: #111111;
+      z-index: 0;
+    }
+
+    /* faint horizontal hairline field so the flat ground isn't a dead void */
+    .sz-ground::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(180deg, rgba(240, 236, 229, 0.05) 1px, transparent 1px);
+      background-size: 100% 8cqh;
+      opacity: 0.5;
+    }
+
+    .sz-city {
+      z-index: 2;
+      top: 8cqh;
+      left: 5.5cqw;
+      right: 5.5cqw;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1cqh;
+    }
+
+    .sz-city-num {
+      font-family: "IBM Plex Mono", monospace;
+      font-weight: 500;
+      font-size: 1.3cqw;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #888880;
+      opacity: 0.7;
+      margin-bottom: 0.6cqh;
+    }
+
+    .sz-city-label {
+      font-family: "Rubik", sans-serif;
+      font-weight: 600;
+      font-size: 7.6cqw;
+      line-height: 1;
+      letter-spacing: -0.01em;
+      color: #F0ECE5;
+      transform-origin: 0% 50%;
+      will-change: transform, opacity;
+      opacity: 0;
+    }
+
+    .sz-city-underline {
+      width: 58cqw;
+      height: 3px;
+      background: #E85D26;
+      transform-origin: 0% 50%;
+      transform: scaleX(0);
+      will-change: transform;
+    }
+
+    .sz-cards {
+      z-index: 3;
+      top: 27cqh;
+      left: 5.5cqw;
+      right: 5.5cqw;
+      display: flex;
+      flex-direction: column;
+      gap: 2.6cqh;
+    }
+
+    .sz-cards-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 3cqw;
+    }
+
+    .sz-cards-row-2 {
+      justify-content: center;
+    }
+
+    .sz-card {
+      background: #1A1A18;
+      border: 1px solid #282826;
+      width: 27.6cqw;
+      padding: 2.8cqw 2.2cqw;
+      display: flex;
+      flex-direction: column;
+      gap: 1.4cqh;
+      opacity: 0;
+      will-change: transform, opacity;
+    }
+
+    .sz-card-chrome {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .sz-card-rule {
+      width: 30px;
+      height: 2px;
+      background: #E85D26;
+      flex-shrink: 0;
+    }
+
+    .sz-card-num {
+      font-family: "IBM Plex Mono", monospace;
+      font-weight: 500;
+      font-size: 1.15cqw;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #888880;
+    }
+
+    .sz-card-word {
+      font-family: "Rubik", sans-serif;
+      font-weight: 900;
+      font-size: 5.1cqw;
+      line-height: 0.98;
+      letter-spacing: -0.02em;
+      text-transform: lowercase;
+      color: #F0ECE5;
+    }
+
+    .sz-card-tag {
+      font-family: "IBM Plex Mono", monospace;
+      font-weight: 500;
+      font-size: 0.95cqw;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #E85D26;
+    }
+
+    .sz-counter {
+      z-index: 4;
+      top: 76cqh;
+      right: 5.5cqw;
+      left: auto;
+      bottom: auto;
+      display: flex;
+      align-items: baseline;
+      justify-content: flex-end;
+      gap: 0.4cqw;
+      opacity: 0;
+      will-change: opacity;
+    }
+
+    .sz-counter-x {
+      font-family: "IBM Plex Mono", monospace;
+      font-weight: 500;
+      font-size: 1.6cqw;
+      color: #505048;
+    }
+
+    .sz-counter-num {
+      font-family: "IBM Plex Mono", monospace;
+      font-weight: 500;
+      font-size: 2.6cqw;
+      letter-spacing: 0.02em;
+      color: #505048;
+    }
+  </style>
+
+  <div id="root" data-composition-id="05-shenzhen" data-width="1080" data-height="1920">
+    <div class="clip sz-ground" data-start="0" data-duration="8.5" data-track-index="0"></div>
+
+    <div class="clip sz-city" data-start="0" data-duration="8.5" data-track-index="1">
+      <span class="sz-city-num">03</span>
+      <div class="sz-city-label" id="sz-city-label">ШЭНЬЧЖЭНЬ</div>
+      <div class="sz-city-underline" id="sz-city-underline"></div>
+    </div>
+
+    <div class="clip sz-cards" data-start="0" data-duration="8.5" data-track-index="2">
+      <div class="sz-cards-row" id="sz-row1">
+        <div class="sz-card" id="sz-card-ubtech">
+          <div class="sz-card-chrome">
+            <span class="sz-card-rule"></span>
+            <span class="sz-card-num">01</span>
+          </div>
+          <div class="sz-card-word">ubtech</div>
+          <span class="sz-card-tag">Partner</span>
+        </div>
+        <div class="sz-card" id="sz-card-leju">
+          <div class="sz-card-chrome">
+            <span class="sz-card-rule"></span>
+            <span class="sz-card-num">02</span>
+          </div>
+          <div class="sz-card-word">leju robotics</div>
+          <span class="sz-card-tag">Partner</span>
+        </div>
+        <div class="sz-card" id="sz-card-limx">
+          <div class="sz-card-chrome">
+            <span class="sz-card-rule"></span>
+            <span class="sz-card-num">03</span>
+          </div>
+          <div class="sz-card-word">limx dynamics</div>
+          <span class="sz-card-tag">Partner</span>
+        </div>
+      </div>
+      <div class="sz-cards-row sz-cards-row-2" id="sz-row2">
+        <div class="sz-card" id="sz-card-engineai">
+          <div class="sz-card-chrome">
+            <span class="sz-card-rule"></span>
+            <span class="sz-card-num">04</span>
+          </div>
+          <div class="sz-card-word">engineai</div>
+          <span class="sz-card-tag">Partner</span>
+        </div>
+        <div class="sz-card" id="sz-card-pudu">
+          <div class="sz-card-chrome">
+            <span class="sz-card-rule"></span>
+            <span class="sz-card-num">05</span>
+          </div>
+          <div class="sz-card-word">pudu robotics</div>
+          <span class="sz-card-tag">Partner</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="clip sz-counter" data-start="0" data-duration="8.5" data-track-index="3" id="sz-counter">
+      <span class="sz-counter-x">&times;</span>
+      <span class="sz-counter-num" id="sz-counter-num">9</span>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var tl = gsap.timeline({ paused: true });
+
+      // Scene 1 (0.0-1.0s): city label hard-cuts in, underline draws left->right.
+      tl.fromTo(
+        "#sz-city-label",
+        { opacity: 0 },
+        { opacity: 1, duration: 0.12, ease: "none" },
+        0.0,
+      );
+      tl.fromTo(
+        "#sz-city-underline",
+        { scaleX: 0 },
+        { scaleX: 1, duration: 0.75, ease: "power2.out" },
+        0.15,
+      );
+
+      // Recede to a low-opacity corner reference before the cards cascade in, so the
+      // city label never visually overlaps the card grid content.
+      tl.to(
+        ["#sz-city-label", "#sz-city-underline"],
+        { opacity: 0, duration: 0.35, ease: "power1.out" },
+        1.0,
+      );
+
+      // Scene 2 (1.0-6.5s): five brand cards cascade into the 2-row grid, waterfall-entry
+      // style, whipping in from below with binary opacity and an accelerating rhythm
+      // (matches the card-pop x5 accelerating sfx / same fast cadence as Frame 4).
+      var cascade = [
+        { id: "#sz-card-ubtech", start: 1.00 },
+        { id: "#sz-card-leju", start: 1.30 },
+        { id: "#sz-card-limx", start: 1.55 },
+        { id: "#sz-card-engineai", start: 1.75 },
+        { id: "#sz-card-pudu", start: 1.90 },
+      ];
+      cascade.forEach(function (c) {
+        tl.set(c.id, { opacity: 1 }, c.start);
+        tl.fromTo(
+          c.id,
+          { y: 48 },
+          { y: 0, duration: 0.16, ease: "power4.out" },
+          c.start,
+        );
+      });
+
+      // Scene 3 (6.5-8.0s): grid holds still. In the final ~0.5s a small "12"
+      // ghost-counter briefly ticks up in the corner (12 cards seen across
+      // Frames 3-5 combined) -- a quiet bridge into Frame 7's climax number.
+      tl.fromTo(
+        "#sz-counter",
+        { opacity: 0 },
+        { opacity: 0.6, duration: 0.15, ease: "power2.out" },
+        7.5,
+      );
+      var counterProxy = { val: 9 };
+      tl.to(
+        counterProxy,
+        {
+          val: 12,
+          duration: 0.4,
+          ease: "power1.inOut",
+          onUpdate: function () {
+            var el = document.getElementById("sz-counter-num");
+            if (el) el.textContent = Math.round(counterProxy.val);
+          },
+        },
+        7.55,
+      );
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["05-shenzhen"] = tl;
+    })();
+  </script>
+</template>

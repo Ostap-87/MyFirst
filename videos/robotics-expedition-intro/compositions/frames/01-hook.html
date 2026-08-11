@@ -1,5 +1,5 @@
-<template>
-<div id="root" data-composition-id="01-hook">
+<template data-composition-id="01-hook" data-duration="5.5">
+<div id="root" data-composition-id="01-hook" data-width="1080" data-height="1920">
   <style>
     @font-face {
       font-family: "Rubik";
@@ -97,7 +97,7 @@
     }
   </style>
 
-  <div class="clip hook01-clip-bg" data-start="0" data-duration="5" data-track-index="0"></div>
+  <div class="clip hook01-clip-bg" data-start="0" data-duration="5.5" data-track-index="0"></div>
 
   <div class="hook01-stage">
     <div class="hook01-number-wrap">
@@ -106,10 +106,9 @@
     <div id="hook01-caption" class="hook01-caption">мирового рынка роботов — в Китае</div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
   <script>
     (function () {
-      var rootEl = document.currentScript.closest("#root");
+      var rootEl = document.querySelector('[data-composition-id="01-hook"]');
       var numberEl = rootEl.querySelector("#hook01-number");
       var percentEl = rootEl.querySelector("#hook01-percent");
       var captionEl = rootEl.querySelector("#hook01-caption");
