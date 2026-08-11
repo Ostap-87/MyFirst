@@ -280,5 +280,15 @@ them. Catalogue numbers (No. 01) are decorative chrome and may be sequential.
 
 - **Motion intentionally out of scope.** frame.md specifies composition only; the source's 0.8s deck slide + per-element entry animations are deck mechanics.
 - **Barlow + IBM Plex Mono via Google Fonts**; Noto Sans SC is the CJK fallback (the lowercase-display signal has no CJK equivalent — the two-register color system carries the identity, per the source).
+- **PROJECT OVERRIDE — Cyrillic fallback:** this project's copy is entirely Russian. Barlow ships
+  Latin/Latin-ext/Vietnamese only — **no Cyrillic glyphs** — so every `Barlow`-role token
+  (`body`, `lead`, `caption`, `h3`, `quote-text`, `h2`, `stat-value`, `h1`, `fadelist-item`,
+  `quote-mark`, `fadelist-title`, `display`) substitutes **Rubik** for this project only (same
+  weights/sizes/tracking/lowercase treatment — Rubik is a similarly rounded grotesk, so the
+  two-register identity carries over). `IBM Plex Mono` (`label` role) is unchanged — it already
+  ships full Cyrillic. Font files for both live in `assets/fonts/` (`rubik-{latin,cyrillic}-{400,
+  600,700,800,900}-normal.woff2`, `ibm-plex-mono-{latin,cyrillic}-500-normal.woff2`) — every
+  `@font-face` in every frame must point at these real files, not Google Fonts CDN (unreachable
+  from this sandbox) and not the family name `Barlow` (no glyphs for our copy).
 - **9:16 / 1:1 are guidance**; verify the one big line stays ≤78cqw and above the floor per ratio.
 - Bars, compare panels, and the dashed image placeholder are CSS-only; no external imagery is required.
