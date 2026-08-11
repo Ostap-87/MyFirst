@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "preferences": {
+    "style_preset.product-launch-video": {
+      "value": "broadside",
+      "confirmed_in": [
+        "robotics-expedition-intro"
+      ],
+      "updated_at": "2026-08-11T06:40:40.997Z"
+    }
+  },
+  "sightings": {}
+}
