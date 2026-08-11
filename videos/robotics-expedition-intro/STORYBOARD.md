@@ -1,8 +1,8 @@
 ---
 format: 1080x1920
-duration: 82s
+duration: 50s
 message: "Закрытые визиты к 12 лидерам робототехники Китая — за 5 дней, в одном туре."
-arc: Hook (stat) → Positioning → Route reveal → Beijing → Shanghai → Shenzhen → What's included → Climax stat → CTA
+arc: Hook (stat) → Positioning+Route → Beijing → Shanghai → Shenzhen → What's included → Climax stat → CTA
 audience: "Российские предприниматели, инвесторы и закупщики, интересующиеся робототехникой и производством в Китае"
 music: driving instrumental, tech-forward, mid-tempo build, no lyrics — cut-driven pacing (no narration)
 mode: collaborative
@@ -11,107 +11,95 @@ mode: collaborative
 ## Frame 1 — Hook: China owns robotics
 
 - status: outline
-- duration: 7s
+- duration: 5s
 - transition_in: cut
-- scene: Cold open, black canvas. Giant "86%" count-up fills the frame. Below it, the claim lands.
+- scene: Cold open, black canvas. Giant "86%" count-up fills the frame, locks under a one-line claim.
 - blueprint: dataviz-countup
 
-No narration — the stat IS the hook. On-screen: oversized "86%" counts up from 0 (matches the
-reference's oversized-number-as-punctuation technique), then a line locks under it: "мирового
-рынка роботов — в Китае" (source: tours.json `market_note_ru`, real figure — do not alter).
+No narration — the stat IS the hook. On-screen: oversized "86%" counts up fast, then locks:
+"мирового рынка роботов — в Китае" (source: tours.json `market_note_ru`, real figure).
 
-## Frame 2 — Positioning
+## Frame 2 — Positioning + route reveal
 
 - status: outline
 - duration: 7s
 - transition_in: crossfade
-- scene: Kinetic type, phrase by phrase, dark canvas. Global Tech Tour wordmark appears bottom-corner and persists from here on (the reference's persistent-handle technique, translated to our brand).
+- scene: Kinetic type lands the thesis in 2 quick phrases, Global Tech Tour wordmark appears bottom-corner (persists from here on), then a route line draws Beijing → Shanghai → Shenzhen with 3 stat chips punching in beside it — all in one compressed beat.
 - blueprint: kinetic-type-beats
 
-On-screen text cues (phrase-by-phrase, matching real positioning copy from tours.json
-`positioning_ru`): "Закрытые визиты" → "на производства лидеров робототехники Китая" → "Прямой
-доступ. / Куда не попасть самостоятельно." Small persistent mark: "GLOBAL TECH TOUR" bottom-left,
-low-opacity, stays through remaining frames.
+Compressed vs. the 90s cut (was two frames, now one): "Закрытые визиты на производства лидеров
+робототехники Китая" (real `positioning_ru`, trimmed to its core clause) → route draws (real
+`route_cities`) → stat chips land fast in sequence: "3 ГОРОДА" · "5 ДНЕЙ" · "12 КОМПАНИЙ" (real
+`stats`). Small persistent mark: "GLOBAL TECH TOUR" bottom-left, low-opacity, stays through the
+rest of the film.
 
-## Frame 3 — Route reveal
+## Frame 3 — Beijing (Day 1)
+
+- status: outline
+- duration: 6s
+- transition_in: cut
+- scene: City label "ПЕКИН" locks in, two company cards enter fast (brand mark + name only — no
+  descriptor sentence, to hold the 50s cut) — reference's screen-insert-card motif as brand cards.
+- blueprint: logo-assemble-lockup
+
+Real names only, no invented copy: Galbot, Robotera (from tours.json day-1 itinerary).
+
+## Frame 4 — Shanghai (Robot Valley)
 
 - status: outline
 - duration: 8s
-- transition_in: crossfade
-- scene: A route line draws itself north to south — Beijing → Shanghai → Shenzhen — with three stat chips punching in beside it.
-- blueprint: spatial-pan-stations
-
-On-screen: "ROBOTICS EXPEDITION" title card, then the route draws (real cities from tours.json
-`route_cities`). Three stat chips land in sequence: "3 ГОРОДА" · "5 ДНЕЙ" · "12 КОМПАНИЙ" (real
-`stats` object — cities:3, days:5, companies:12).
-
-## Frame 4 — Beijing (Day 1)
-
-- status: outline
-- duration: 9s
 - transition_in: cut
-- scene: City label "ПЕКИН · ДЕНЬ 1" locks in, then two company cards enter in sequence (logo mark + one-line real descriptor each), reference's screen-insert-card motif translated to brand-card motif.
+- scene: City label "ШАНХАЙ" locks in, five company cards cascade fast (waterfall entry, brand
+  mark + name only, no descriptor sentences — the density of names IS the proof at this pace).
 - blueprint: logo-assemble-lockup
 
-Real content only (tours.json itinerary day 1 + companies.json): Galbot — "колёсные гуманоиды,
-демо на CCTV 2026"; Robotera — "человекоподобный робот L7, 55 степеней свободы". Area note:
-"Хайдянь / PKU Lab".
+Real names only: AgiBot, Kepler, DroidUp, Fourier, Seer Robotics (from tours.json days 2-3
+itinerary).
 
-## Frame 5 — Shanghai (Days 2–3, Robot Valley)
-
-- status: outline
-- duration: 12s
-- transition_in: cut
-- scene: City label "ШАНХАЙ · ROBOT VALLEY" locks in, five company cards cascade faster than Frame 4 (more names, same card language, tighter rhythm) — waterfall entry.
-- blueprint: logo-assemble-lockup
-
-Real content only: AgiBot — "рекорд Гиннесса по дальности ходьбы гуманоида"; Kepler — "работает на
-конвейере SAIC-GM"; DroidUp — "3-е место на первом в мире полумарафоне роботов"; Fourier —
-"2000+ больниц в 40+ странах"; Seer Robotics — "AMR-контроллеры для складской логистики". Area
-note: "Zhangjiang Hi-Tech Park".
-
-## Frame 6 — Shenzhen (Days 4–5, finale)
-
-- status: outline
-- duration: 12s
-- transition_in: cut
-- scene: City label "ШЭНЬЧЖЭНЬ · ФИНАЛ" locks in, five company cards cascade, same rhythm as Frame 5.
-- blueprint: logo-assemble-lockup
-
-Real content only: UBTech — "крупнейший производитель гуманоидов в Китае, HKEX"; Leju Robotics —
-"робот Kuavo нёс олимпийский огонь в -20°C"; LimX Dynamics — "pre-IPO раунд $200M в июле 2026";
-EngineAI — "первое сальто среди гуманоидов, дек. 2024"; Pudu Robotics — "поставки в 60+ стран".
-
-## Frame 7 — What's included
+## Frame 5 — Shenzhen (finale)
 
 - status: outline
 - duration: 8s
+- transition_in: cut
+- scene: City label "ШЭНЬЧЖЭНЬ" locks in, five company cards cascade at the same fast rhythm as
+  Frame 4.
+- blueprint: logo-assemble-lockup
+
+Real names only: UBTech, Leju Robotics, LimX Dynamics, EngineAI, Pudu Robotics (from tours.json
+days 4-5 itinerary).
+
+## Frame 6 — What's included
+
+- status: outline
+- duration: 4s
 - transition_in: crossfade
-- scene: Four short phrases punch in rapid-fire, one per beat, each with a small icon-like glyph.
+- scene: Two short phrases punch in rapid-fire, one per beat — trimmed from 4 items to the 2 with
+  the highest proof value for a 50s cut.
 - blueprint: kinetic-type-beats
 
-Real content only (tours.json `includes`): "Живые демо гуманоидов" · "Переговоры с
-топ-менеджментом" · "Техническая экспертиза" · "Перевод и сопровождение".
+Real content only (tours.json `includes`, 2 of 6 selected for pace): "Живые демо гуманоидов" ·
+"Переговоры с топ-менеджментом".
 
-## Frame 8 — Climax stat
+## Frame 7 — Climax stat
+
+- status: outline
+- duration: 5s
+- transition_in: cut
+- scene: Oversized "12" fills the frame again (visual rhyme with Frame 1's number technique),
+  locks under it a closing line.
+- blueprint: dataviz-countup
+
+On-screen: giant "12" → "лидеров индустрии. / Один маршрут." (real `stats.companies`).
+
+## Frame 8 — CTA
 
 - status: outline
 - duration: 7s
-- transition_in: cut
-- scene: Oversized "12" fills the frame again (echoes Frame 1's number technique — the film's visual rhyme), locks under it a closing line.
-- blueprint: dataviz-countup
-
-On-screen: giant "12" → "лидеров индустрии. / Один маршрут." (real `stats.companies`, no invented
-number).
-
-## Frame 9 — CTA
-
-- status: outline
-- duration: 12s
 - transition_in: crossfade
-- scene: Global Tech Tour wordmark centers, "ROBOTICS EXPEDITION" locks under it, then a pill-style CTA button in the frame's fire-orange accent with the real contact.
+- scene: Global Tech Tour wordmark centers, "ROBOTICS EXPEDITION" locks under it, then a
+  pill-style CTA button in the frame's fire-orange accent with the real contact.
 - blueprint: cta-morph-press
 
 Real content only (tours.json `contact`): "Global Tech Tour" · "Robotics Expedition" · CTA pill:
-"Telegram · @ostapdotcenko". This is the reference's CTA-pill technique, in our own brand color
-(fire-orange from the `broadside` preset), not the reference's yellow/black.
+"Telegram · @ostapdotcenko" — reference's CTA-pill technique, our own brand color (fire-orange
+from `broadside`), not the reference's yellow/black.
