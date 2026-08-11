@@ -2,34 +2,6 @@
   <style>
     @font-face {
       font-family: "Rubik";
-      font-weight: 400;
-      font-style: normal;
-      src: url("assets/fonts/rubik-latin-400-normal.woff2") format("woff2");
-      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+2212;
-    }
-    @font-face {
-      font-family: "Rubik";
-      font-weight: 400;
-      font-style: normal;
-      src: url("assets/fonts/rubik-cyrillic-400-normal.woff2") format("woff2");
-      unicode-range: U+0400-04FF, U+2000-206F, U+2116;
-    }
-    @font-face {
-      font-family: "Rubik";
-      font-weight: 600;
-      font-style: normal;
-      src: url("assets/fonts/rubik-latin-600-normal.woff2") format("woff2");
-      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+2212;
-    }
-    @font-face {
-      font-family: "Rubik";
-      font-weight: 600;
-      font-style: normal;
-      src: url("assets/fonts/rubik-cyrillic-600-normal.woff2") format("woff2");
-      unicode-range: U+0400-04FF, U+2000-206F, U+2116;
-    }
-    @font-face {
-      font-family: "Rubik";
       font-weight: 700;
       font-style: normal;
       src: url("assets/fonts/rubik-latin-700-normal.woff2") format("woff2");
@@ -100,10 +72,10 @@
       position: absolute;
     }
 
-    /* full-bleed ground */
+    /* full-bleed ground — colors.bg (white) */
     .route02-bg {
       inset: 0;
-      background: #111111;
+      background: #FFFFFF;
     }
 
     /* — positioning statement (scenes 1-2) — */
@@ -124,7 +96,6 @@
       position: absolute;
       max-width: 78cqw;
       margin: 0 auto;
-      color: #f0ece5;
       text-transform: lowercase;
       opacity: 0;
     }
@@ -134,6 +105,7 @@
       font-size: 7.5cqw;
       line-height: 0.98;
       letter-spacing: -0.03em;
+      color: #17171D; /* colors.text */
     }
     .route02-clause2 {
       font-family: "Rubik", sans-serif;
@@ -141,6 +113,7 @@
       font-size: 4.5cqw;
       line-height: 1.14;
       letter-spacing: -0.02em;
+      color: #17171D; /* colors.text */
     }
 
     /* — persistent wordmark — */
@@ -151,13 +124,26 @@
       bottom: auto;
       width: auto;
       height: auto;
+      display: flex;
+      align-items: center;
+      gap: 0.9cqw;
+      opacity: 0;
+    }
+    .route02-wordmark-rule {
+      width: 1.6cqw;
+      height: 2px;
+      border-radius: 2px;
+      background: #2563EB; /* colors.primary — the one accent touch on the chrome rule */
+      flex: none;
+    }
+    .route02-wordmark-text {
       font-family: "IBM Plex Mono", monospace;
       font-weight: 500;
       font-size: 1.4cqw;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: #f0ece5;
-      opacity: 0;
+      color: #6B6B76; /* colors.text-muted — wordmark stays muted, never accent-colored */
+      white-space: nowrap;
     }
 
     /* — route map — */
@@ -174,8 +160,8 @@
     }
     .route02-route-path {
       fill: none;
-      stroke: #e85d26;
-      stroke-width: 4;
+      stroke: #2563EB; /* colors.primary */
+      stroke-width: 3.5;
       stroke-linecap: round;
       stroke-linejoin: round;
     }
@@ -192,7 +178,8 @@
       width: 1.1cqw;
       height: 1.1cqw;
       border-radius: 50%;
-      background: #e85d26;
+      background: #2563EB; /* colors.primary */
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15); /* soft tinted halo, no hard shadow */
     }
     .route02-city-label {
       font-family: "IBM Plex Mono", monospace;
@@ -200,14 +187,14 @@
       font-size: 1.7cqw;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: #f0ece5;
+      color: #45454E; /* colors.silver-mist — icon/secondary accent tone for map chrome */
       white-space: nowrap;
     }
     .route02-city[data-pt="1"] { left: 13cqw; top: 56.25cqh; }
     .route02-city[data-pt="2"] { left: 50cqw; top: 59.9cqh; }
     .route02-city[data-pt="3"] { left: 87cqw; top: 63.5cqh; }
 
-    /* — stat chips — */
+    /* — stat chips (metric-card component) — */
     .route02-chips {
       display: flex;
       align-items: stretch;
@@ -215,8 +202,8 @@
       gap: 2cqw;
       left: 0;
       right: 0;
-      top: 70.8cqh;
-      height: 8.3cqh;
+      top: 69.5cqh;
+      height: 9.5cqh;
       padding: 0 5.5cqw;
     }
     .route02-chip {
@@ -226,27 +213,29 @@
       justify-content: center;
       align-items: flex-start;
       gap: 0.4cqh;
-      padding: 1.2cqh 1.2cqw 0.8cqh;
-      border-top: 1px solid #282826;
+      padding: 1.3cqh 1.3cqw;
+      background: rgba(37, 99, 235, 0.04); /* colors.card-bg */
+      border: 1.5px solid rgba(37, 99, 235, 0.2); /* colors.border */
+      border-radius: 12px; /* radii.card-md */
       opacity: 0;
       transform: scale(0.4);
       transform-origin: left center;
     }
     .route02-chip-num {
       font-family: "Rubik", sans-serif;
-      font-weight: 900;
-      font-size: 4.4cqw;
+      font-weight: 700;
+      font-size: 3.6cqw;
       line-height: 1;
-      letter-spacing: -0.03em;
-      color: #e85d26;
+      letter-spacing: -0.02em;
+      color: #2563EB; /* colors.primary */
     }
     .route02-chip-label {
       font-family: "IBM Plex Mono", monospace;
       font-weight: 500;
-      font-size: 1.15cqw;
-      letter-spacing: 0.14em;
+      font-size: 1.05cqw;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #f0ece5;
+      color: #6B6B76; /* colors.text-muted */
     }
   </style>
 
@@ -259,7 +248,8 @@
     </div>
 
     <div class="clip route02-wordmark" data-start="2.2" data-duration="4.8" data-track-index="2">
-      global tech tour
+      <div class="route02-wordmark-rule"></div>
+      <div class="route02-wordmark-text">global tech tour</div>
     </div>
 
     <div class="clip route02-map" data-start="4" data-duration="3" data-track-index="1">
@@ -311,7 +301,7 @@
       tl.fromTo(
         ROOT + ".route02-wordmark",
         { opacity: 0 },
-        { opacity: 0.4, duration: 0.6, ease: "power1.out" },
+        { opacity: 0.6, duration: 0.6, ease: "power1.out" },
         2.2
       );
 

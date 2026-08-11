@@ -59,20 +59,11 @@
       unicode-range: U+0400-04FF, U+0500-052F, U+2DE0-2DFF, U+A640-A69F, U+1C80-1C88;
     }
 
+    /* full-bleed ground — the brand's warm/void white, on its own dedicated clip layer */
     .beijing-ground {
       inset: 0;
-      background: #111111;
+      background: #FFFFFF;
       z-index: 0;
-    }
-
-    /* faint vertical hairline field so the flat ground isn't a dead void */
-    .beijing-ground::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image: linear-gradient(180deg, rgba(240, 236, 229, 0.05) 1px, transparent 1px);
-      background-size: 100% 12.5cqh;
-      opacity: 0.5;
     }
 
     .beijing-city {
@@ -83,7 +74,7 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 1cqh;
+      gap: 1.4cqh;
     }
 
     .beijing-city-label {
@@ -91,16 +82,17 @@
       font-weight: 600;
       font-size: 8cqw;
       line-height: 1;
-      letter-spacing: -0.01em;
-      color: #F0ECE5;
+      letter-spacing: -0.02em;
+      color: #17171D;
       transform-origin: 0% 50%;
       will-change: transform, opacity;
     }
 
     .beijing-city-underline {
       width: 42cqw;
-      height: 3px;
-      background: #E85D26;
+      height: 4px;
+      border-radius: 2px;
+      background: #2563EB;
       transform-origin: 0% 50%;
       will-change: transform;
     }
@@ -115,9 +107,12 @@
       gap: 3.5cqw;
     }
 
+    /* card-tinted component: soft blue fill, 20% blue border, 14px radius, no shadow */
     .beijing-card {
-      background: #1A1A18;
-      border: 1px solid #282826;
+      background: rgba(37, 99, 235, 0.04);
+      border: 1.5px solid rgba(37, 99, 235, 0.2);
+      border-radius: 14px;
+      box-shadow: none;
       padding: 3.2cqw 2.6cqw;
       display: flex;
       flex-direction: column;
@@ -140,27 +135,28 @@
     }
 
     .beijing-card-rule {
-      width: 36px;
-      height: 2px;
-      background: #E85D26;
+      width: 32px;
+      height: 3px;
+      border-radius: 1.5px;
+      background: #2563EB;
     }
 
     .beijing-card-num {
       font-family: "IBM Plex Mono", monospace;
       font-weight: 500;
       font-size: 1.4cqw;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: #888880;
+      color: #45454E;
     }
 
     .beijing-card-word {
       font-family: "Rubik", sans-serif;
       font-weight: 900;
-      line-height: 0.92;
-      letter-spacing: -0.03em;
+      line-height: 0.94;
+      letter-spacing: -0.02em;
       text-transform: lowercase;
-      color: #F0ECE5;
+      color: #17171D;
     }
 
     .beijing-card-galbot .beijing-card-word {
@@ -172,12 +168,16 @@
     }
 
     .beijing-card-tag {
+      align-self: flex-start;
       font-family: "IBM Plex Mono", monospace;
       font-weight: 500;
       font-size: 1.1cqw;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: #E85D26;
+      color: #1D4ED8;
+      background: rgba(37, 99, 235, 0.08);
+      border-radius: 100px;
+      padding: 0.5cqh 1.4cqw;
     }
   </style>
 
@@ -227,8 +227,8 @@
         0.15,
       );
 
-      // Recede to a low-opacity corner reference before the cards cascade in, so the
-      // city label never visually overlaps the card grid content.
+      // Recede to zero opacity before the cards cascade in, so the city label never
+      // visually overlaps the card grid content (avoids a content_overlap layout error).
       tl.to(
         ["#beijing-city-label", "#beijing-city-underline"],
         { opacity: 0, duration: 0.4, ease: "power1.out" },

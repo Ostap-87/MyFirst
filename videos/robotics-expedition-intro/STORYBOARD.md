@@ -11,12 +11,25 @@ mode: collaborative
 
 ## Video direction
 
-- **Palette system** (from `frame.md`, `broadside` preset): two registers only, one per frame.
-  Default register **dark** (ground `colors.ink-black`, text `colors.cream`, accent
-  `colors.fire-orange`) for Frames 1–6. Register flips to **orange** (ground
-  `colors.fire-orange`, text `colors.ink-black`) for Frame 7 (the climax stat) to punch the
-  rhythm right before the CTA, then Frame 8 (CTA) returns to **dark** so the fire-orange pill
-  reads as the one hot accent against black. Never invent a third register or an off-palette hue.
+- **REVISION (real brand palette applied)**: the video was first built on the `broadside` preset's
+  own dark ink-black/fire-orange palette because no brand colors could be captured (site network-
+  blocked). The user supplied the site's REAL palette and asked for an exact match — this replaces
+  the dark/orange system below with a light, blue-accented system. `frame.md` is now the
+  `blue-professional` preset remixed onto the real brand tokens in `capture/extracted/tokens.json`:
+  `--color-void #FFFFFF` (canvas/background), `--color-bone-white #17171D` (primary text — dark,
+  despite the name), `--color-ash-gray #6B6B76` (secondary text/captions), `--color-silver-mist
+  #45454E` (icon/secondary accents), `--color-electric-iris #2563EB` (the ONE accent — buttons,
+  links, active borders, hover). Reference these by `frame.md` role (`colors.bg`, `colors.text`,
+  `colors.text-muted`, `colors.primary`), never invent or approximate a hex.
+- **Palette system**: ONE register, used on every frame — white ground, near-black text, a single
+  saturated blue accent for anything interactive/emphasized (stat numbers, underlines, CTA pill,
+  card borders/tint). No dark-mode frames, no orange anywhere, no register flip on the climax
+  frame — Frame 7's giant "12" now sits on the same white ground as every other frame, colored in
+  the blue accent, not inverted to a colored backdrop. Cards use the preset's soft tint (a few %
+  blue fill, ~20% blue border, no shadow) rather than solid dark panels.
+- **Typography**: `frame.md`'s type ramp (display/numerals/chrome vs. body) — see its Cyrillic-
+  fallback note for which real font family backs each role; reference by role, never by literal
+  preset font name.
 - **Motion grammar + reveal model**: long-tail eases, `power3` default (smooth, no bounce except
   the named spring-pop moments the blueprints call for). No spoken VO exists, so "pace to the
   voiceover" becomes **pace to the on-screen text cue / beat** — nothing appears before its own
@@ -27,15 +40,20 @@ mode: collaborative
   bad motion). Frames 3–5 (city cascades) are the busiest, highest-density frames — that
   density is the point (12 real brands, fast). Frame 8 ends on a genuine held final hold (no
   exit — it's the last frame).
-- **Negative list**: no off-brand hues (only ink-black / cream / fire-orange), no purple-blue
-  "AI" gradient clichés, no floating bokeh, no browser chrome / cursors except the one
-  intentional CTA-click cursor in Frame 8, no front-loaded-then-frozen frames, no aimless
-  screensaver drift — every move serves a specific reveal.
-- **Persistent brand mark**: "GLOBAL TECH TOUR" wordmark (IBM Plex Mono, `label` role, low
-  opacity ~35%) enters bottom-left in Frame 2 and stays mounted through Frame 7 (it resolves
-  into the full lockup in Frame 8, so it doesn't duplicate itself there).
+- **Negative list**: no off-brand hues (only the 5 real tokens above), no purple-blue "AI"
+  gradient clichés, no floating bokeh, no drop shadows (the brand's cards are flat/tinted, never
+  shadowed), no browser chrome / cursors except the one intentional CTA-click cursor in Frame 8,
+  no front-loaded-then-frozen frames, no aimless screensaver drift — every move serves a specific
+  reveal.
+- **Persistent brand mark**: "GLOBAL TECH TOUR" wordmark (chrome/label role, muted gray or low-
+  opacity dark text — never the blue accent, which is reserved for interactive/emphasis moments)
+  enters bottom-left in Frame 2 and stays mounted through Frame 7 (it resolves into the full
+  lockup in Frame 8, so it doesn't duplicate itself there).
 - **Caption band**: captions are disabled (no narration — see BRIEF.md), but the bottom ~17% stays
   clear of primary content regardless, for bottom-edge consistency with the persistent wordmark.
+- **Logos**: still typographic wordmark cards for now (no real logo files on disk yet) — the user
+  may supply real PNG logos via Google Drive next; frames stay easy to re-dress with real
+  `<img>` marks later without restructuring the card layout/timing.
 
 ## Frame 1 — Hook: China owns robotics
 

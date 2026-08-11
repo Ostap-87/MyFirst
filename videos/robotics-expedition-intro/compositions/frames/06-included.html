@@ -2,32 +2,48 @@
   <style>
     @font-face {
       font-family: "Rubik";
-      src: url("assets/fonts/rubik-latin-700-normal.woff2") format("woff2");
-      font-weight: 700;
+      src: url("assets/fonts/rubik-latin-600-normal.woff2") format("woff2");
+      font-weight: 600;
       font-style: normal;
       font-display: block;
       unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+20AC, U+2122;
     }
     @font-face {
       font-family: "Rubik";
-      src: url("assets/fonts/rubik-cyrillic-700-normal.woff2") format("woff2");
-      font-weight: 700;
+      src: url("assets/fonts/rubik-cyrillic-600-normal.woff2") format("woff2");
+      font-weight: 600;
       font-style: normal;
       font-display: block;
       unicode-range: U+0400-04FF, U+0500-052F, U+2DE0-2DFF, U+A640-A69F, U+1C80-1C88;
     }
     @font-face {
-      font-family: "IBM Plex Mono";
-      src: url("assets/fonts/ibm-plex-mono-latin-500-normal.woff2") format("woff2");
+      font-family: "Rubik";
+      src: url("assets/fonts/rubik-latin-500-normal.woff2") format("woff2");
       font-weight: 500;
       font-style: normal;
       font-display: block;
       unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+20AC, U+2122;
     }
     @font-face {
-      font-family: "IBM Plex Mono";
-      src: url("assets/fonts/ibm-plex-mono-cyrillic-500-normal.woff2") format("woff2");
+      font-family: "Rubik";
+      src: url("assets/fonts/rubik-cyrillic-500-normal.woff2") format("woff2");
       font-weight: 500;
+      font-style: normal;
+      font-display: block;
+      unicode-range: U+0400-04FF, U+0500-052F, U+2DE0-2DFF, U+A640-A69F, U+1C80-1C88;
+    }
+    @font-face {
+      font-family: "Inter";
+      src: url("assets/fonts/inter-latin-400-normal.woff2") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+      font-display: block;
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+20AC, U+2122;
+    }
+    @font-face {
+      font-family: "Inter";
+      src: url("assets/fonts/inter-cyrillic-400-normal.woff2") format("woff2");
+      font-weight: 400;
       font-style: normal;
       font-display: block;
       unicode-range: U+0400-04FF, U+0500-052F, U+2DE0-2DFF, U+A640-A69F, U+1C80-1C88;
@@ -39,44 +55,41 @@
       height: 100%;
       position: relative;
       overflow: hidden;
-      background: #111111;
-      font-family: "Rubik", sans-serif;
+      background: #FFFFFF;
+      font-family: "Inter", sans-serif;
+    }
+
+    #root .clip {
+      position: absolute;
     }
 
     #root .fr06-bg {
-      position: absolute;
       inset: 0;
-      background: #111111;
-    }
-
-    #root .fr06-mark {
-      position: absolute;
-      left: 5.5cqw;
-      bottom: 22cqh;
-      font-family: "IBM Plex Mono", monospace;
-      font-size: 0.72cqw;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #f0ece5;
-      opacity: 0.35;
+      background: #FFFFFF;
     }
 
     #root .fr06-num {
-      position: absolute;
-      left: 5.5cqw;
-      top: 5.5cqw;
-      font-family: "IBM Plex Mono", monospace;
-      font-size: 0.72cqw;
-      font-weight: 500;
-      letter-spacing: 0.14em;
+      left: 5cqw;
+      top: 5cqw;
+      font-family: "Rubik", sans-serif;
+      font-weight: 600;
+      font-size: 0.85cqw;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: #f0ece5;
-      opacity: 0.3;
+      color: #2563EB;
+    }
+
+    #root .fr06-mark {
+      left: 5cqw;
+      bottom: 20cqh;
+      font-family: "Inter", sans-serif;
+      font-size: 0.85cqw;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      color: #6B6B76;
     }
 
     #root .fr06-stage {
-      position: absolute;
       inset: 0 0 17cqh 0;
       display: grid;
       place-items: center;
@@ -93,22 +106,22 @@
     }
 
     #root .fr06-beat .fr06-rule {
-      width: 36px;
-      height: 2px;
-      background: #e85d26;
-      margin-bottom: 2.4cqh;
+      width: 60px;
+      height: 4px;
+      border-radius: 2px;
+      background: #2563EB;
+      margin-bottom: 2.6cqh;
       transform-origin: center;
       transform: scaleX(0);
     }
 
     #root .fr06-beat .fr06-text {
       font-family: "Rubik", sans-serif;
-      font-weight: 700;
-      font-size: 4.5cqw;
+      font-weight: 600;
+      font-size: 4.4cqw;
       line-height: 1.1;
       letter-spacing: -0.02em;
-      text-transform: lowercase;
-      color: #f0ece5;
+      color: #17171D;
       text-align: center;
     }
   </style>
@@ -116,7 +129,7 @@
   <div id="root" data-composition-id="06-included" data-width="1080" data-height="1920">
     <div class="clip fr06-bg" data-start="0" data-duration="4" data-track-index="0"></div>
 
-    <div class="clip fr06-num" data-start="0" data-duration="4" data-track-index="1">06</div>
+    <div class="clip fr06-num" data-start="0" data-duration="4" data-track-index="1">06 / included</div>
 
     <div class="clip fr06-mark" data-start="0" data-duration="4" data-track-index="3">
       global tech tour
