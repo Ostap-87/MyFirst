@@ -1,4 +1,4 @@
-import { useI18n } from "../i18n";
+import { TELEGRAM_URL, useI18n } from "../i18n";
 import { useScrollDrift } from "../hooks";
 import { ArrowUpRight } from "./Icons";
 import Reveal, { SectionHead } from "./Reveal";
@@ -31,7 +31,9 @@ export function Career() {
               </Reveal>
               <Reveal delay={300}>
                 <a
-                  href="#contact"
+                  href={TELEGRAM_URL}
+                  target="_blank"
+                  rel="noreferrer"
                   className="group mt-8 inline-flex items-center gap-3 border border-fog/40 px-5 py-3.5 font-mono text-[11px] uppercase tracking-[0.2em] text-bone transition-all hover:border-yellow hover:bg-yellow hover:text-ink"
                 >
                   {t.career.cvBtn}

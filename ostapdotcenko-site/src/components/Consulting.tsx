@@ -1,4 +1,4 @@
-import { PERSON, useI18n } from "../i18n";
+import { TELEGRAM_URL, useI18n } from "../i18n";
 import { ArrowUpRight, Check, Star4 } from "./Icons";
 import Reveal, { SectionHead } from "./Reveal";
 
@@ -73,7 +73,9 @@ export default function Consulting() {
                 </ul>
 
                 <a
-                  href={`mailto:${PERSON.email}?subject=${encodeURIComponent(c.mailSubject + p.name)}`}
+                  href={TELEGRAM_URL}
+                  target="_blank"
+                  rel="noreferrer"
                   className={`group/cta mt-8 flex items-center justify-center gap-2.5 py-4 font-display text-[11.5px] font-bold uppercase tracking-[0.16em] transition-all ${
                     featured
                       ? "bg-ink text-yellow hover:bg-blue hover:text-bone"

@@ -1,4 +1,4 @@
-import { COMPANIES, useI18n } from "../i18n";
+import { COMPANIES, TELEGRAM_URL, useI18n } from "../i18n";
 import { useClock, useCountUp, useInView, useScramble } from "../hooks";
 import { ArrowDown, ArrowUpRight, Star4 } from "./Icons";
 import Reveal from "./Reveal";
@@ -102,7 +102,9 @@ export default function Hero() {
             <Reveal delay={300}>
               <div className="mt-8 flex flex-wrap gap-4">
                 <a
-                  href="#contact"
+                  href={TELEGRAM_URL}
+                  target="_blank"
+                  rel="noreferrer"
                   className="group flex items-center gap-3 bg-ink px-6 py-4 font-display text-[12px] font-bold uppercase tracking-[0.14em] text-bone transition-all hover:bg-blue hover:shadow-[6px_6px_0_var(--color-yellow)]"
                 >
                   {t.hero.ctaPrimary}

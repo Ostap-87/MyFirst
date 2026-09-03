@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { LANGS, useI18n } from "../i18n";
+import { LANGS, TELEGRAM_URL, useI18n } from "../i18n";
 import { useScrollProgress } from "../hooks";
 import { ArrowUpRight } from "./Icons";
 
@@ -54,7 +54,9 @@ export default function Header() {
             </div>
 
             <a
-              href="#contact"
+              href={TELEGRAM_URL}
+              target="_blank"
+              rel="noreferrer"
               className="hidden items-center gap-2 border-2 border-ink bg-yellow px-4 py-2 font-display text-[11px] font-bold uppercase tracking-[0.12em] text-ink transition-all hover:bg-ink hover:text-yellow sm:flex"
             >
               {t.hero.ctaPrimary}
