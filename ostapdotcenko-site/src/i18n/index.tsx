@@ -37,6 +37,8 @@ export const PERSON = {
   email: "norbanking@gmail.com",
   phone: "+7 985 874-49-58",
   phoneHref: "+79858744958",
+  phone2: "+86 137 6171 6355",
+  phone2Href: "+8613761716355",
   socials: [
     { label: "Telegram", href: "https://t.me/ostapdotcenko" },
     { label: "LinkedIn", href: "https://www.linkedin.com/" },

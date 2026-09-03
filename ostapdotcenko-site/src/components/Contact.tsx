@@ -93,6 +93,16 @@ export default function Contact() {
                   <ArrowUpRight size={18} className="ml-auto opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100" />
                 </a>
               </Reveal>
+              <Reveal delay={180}>
+                <a
+                  href={`tel:${PERSON.phone2Href}`}
+                  className="group flex items-center gap-4 border-2 border-ink bg-card px-5 py-4 transition-all hover:-translate-y-0.5 hover:bg-yellow hover:shadow-[7px_7px_0_var(--color-ink)]"
+                >
+                  <Phone size={20} className="shrink-0 text-red" />
+                  <span className="tnum font-display text-lg font-bold sm:text-xl">{PERSON.phone2}</span>
+                  <ArrowUpRight size={18} className="ml-auto opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100" />
+                </a>
+              </Reveal>
             </div>
 
             <Reveal delay={200}>
