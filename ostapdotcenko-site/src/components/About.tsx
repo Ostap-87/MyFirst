@@ -1,7 +1,10 @@
 import { photo, useI18n } from "../i18n";
 import { useInView, useScrambleReveal } from "../hooks";
-import { Star4 } from "./Icons";
+import { Gate, Globe, Landmark, Ornament, Pagoda, Star4 } from "./Icons";
 import Reveal, { LineReveal } from "./Reveal";
+
+const LANG_ICONS = [Landmark, Globe, Pagoda, Gate, Ornament];
+const LANG_COLORS = ["var(--color-ink)", "var(--color-blue)", "var(--color-red)", "var(--color-blue)", "var(--color-red)"];
 
 function BioParagraph({ text, index }: { text: string; index: number }) {
   const { ref, out } = useScrambleReveal<HTMLParagraphElement>(text, {
@@ -62,42 +65,82 @@ export default function About() {
 
             {/* экспертиза */}
             <Reveal delay={280}>
-              <p className="mt-10 font-mono text-[10px] uppercase tracking-[0.26em] text-dim">{t.about.expertiseLabel}</p>
-              <div className="mt-4 flex flex-wrap gap-2.5">
-                {t.about.expertise.map((e) => (
-                  <span
-                    key={e}
-                    className="group flex cursor-default items-center gap-2 border border-ink/30 bg-card px-3.5 py-2 font-mono text-[11.5px] font-medium transition-all duration-200 hover:border-ink hover:bg-ink hover:text-yellow hover:shadow-[4px_4px_0_var(--color-yellow)]"
-                  >
-                    <Star4 size={10} className="text-red transition-colors group-hover:text-yellow" />
-                    {e}
-                  </span>
-                ))}
+              <div className="relative">
+                <span
+                  aria-hidden
+                  className="dotgrid pointer-events-none absolute -right-4 -top-8 hidden h-24 w-24 opacity-70 sm:block"
+                />
+                <p className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.26em] text-dim">
+                  <Star4 size={11} className="text-red" />
+                  {t.about.expertiseLabel}
+                  <span className="h-px max-w-[140px] flex-1 bg-ink/20" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-red" />
+                </p>
+              </div>
+              <div className="mt-4 flex flex-wrap gap-3">
+                {t.about.expertise.map((e, i) => {
+                  const accent = i % 3 === 0 ? "bg-red" : i % 3 === 1 ? "bg-blue" : "bg-yellow";
+                  return (
+                    <span
+                      key={e}
+                      className="group relative flex cursor-default items-center gap-2 rounded-xl border border-ink/25 bg-card px-4 py-2.5 font-mono text-[11.5px] font-medium transition-all duration-200 hover:-translate-y-0.5 hover:border-ink hover:bg-ink hover:text-yellow hover:shadow-[4px_4px_0_var(--color-yellow)]"
+                    >
+                      <span className={`absolute -right-1 -top-1 h-2 w-2 rounded-full ${accent} opacity-70 transition-opacity group-hover:opacity-100`} />
+                      <Star4 size={10} className="text-red transition-colors group-hover:text-yellow" />
+                      {e}
+                    </span>
+                  );
+                })}
               </div>
             </Reveal>
 
             {/* языки */}
             <Reveal delay={330}>
-              <p className="mt-10 font-mono text-[10px] uppercase tracking-[0.26em] text-dim">{t.about.langsLabel}</p>
-              <div ref={langs.ref} className={`mt-4 max-w-xl space-y-4 ${langs.inView ? "inview" : ""}`}>
-                {t.about.langs.map((l, i) => (
-                  <div key={l.name}>
-                    <div className="mb-1.5 flex items-baseline justify-between">
-                      <span className="font-display text-[14px] font-bold">{l.name}</span>
-                      <span className="font-mono text-[10.5px] uppercase tracking-wider text-dim">{l.level}</span>
+              <p className="mt-10 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.26em] text-dim">
+                <Star4 size={11} className="text-blue" />
+                {t.about.langsLabel}
+                <span className="h-px max-w-[140px] flex-1 bg-ink/20" />
+                <span className="h-1.5 w-1.5 rounded-full bg-blue" />
+              </p>
+              <div ref={langs.ref} className={`relative mt-5 max-w-xl space-y-5 ${langs.inView ? "inview" : ""}`}>
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute -bottom-8 -left-6 hidden h-16 w-16 rounded-full border-2 border-dashed border-ink/15 sm:block"
+                />
+                {t.about.langs.map((l, i) => {
+                  const Icon = LANG_ICONS[i % LANG_ICONS.length];
+                  const color = LANG_COLORS[i % LANG_COLORS.length];
+                  return (
+                    <div key={l.name} className="flex items-center gap-4">
+                      <span
+                        className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border-2 border-ink text-bone"
+                        style={{ background: color }}
+                      >
+                        <Icon size={19} />
+                      </span>
+                      <div className="min-w-0 flex-1">
+                        <div className="mb-1.5 flex items-baseline justify-between">
+                          <span className="font-display text-[14px] font-bold">{l.name}</span>
+                          <span className="font-mono text-[10.5px] uppercase tracking-wider text-dim">{l.level}</span>
+                        </div>
+                        <div className="relative h-[6px] w-full rounded-full border border-ink/25 bg-card">
+                          <div
+                            className="h-full rounded-full transition-[width] duration-1000 ease-out"
+                            style={{
+                              width: langs.inView ? `${l.pct}%` : "0%",
+                              transitionDelay: `${i * 130}ms`,
+                              background: color,
+                            }}
+                          />
+                          <span
+                            className="absolute top-1/2 h-3 w-3 -translate-y-1/2 -translate-x-1/2 rounded-full border-2 border-ink bg-bone transition-[left] duration-1000 ease-out"
+                            style={{ left: langs.inView ? `${l.pct}%` : "0%", transitionDelay: `${i * 130}ms` }}
+                          />
+                        </div>
+                      </div>
                     </div>
-                    <div className="h-[6px] w-full border border-ink/25 bg-card">
-                      <div
-                        className="h-full transition-[width] duration-1000 ease-out"
-                        style={{
-                          width: langs.inView ? `${l.pct}%` : "0%",
-                          transitionDelay: `${i * 130}ms`,
-                          background: i === 0 ? "var(--color-ink)" : i % 2 ? "var(--color-blue)" : "var(--color-red)",
-                        }}
-                      />
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </Reveal>
           </div>

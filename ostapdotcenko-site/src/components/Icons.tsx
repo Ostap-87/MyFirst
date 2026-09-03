@@ -122,6 +122,44 @@ export const Play = ({ size, className }: P) => (
   </svg>
 );
 
+/* Иконки-бейджи для карточек языков */
+export const Landmark = ({ size, className }: P) => (
+  <svg {...base(size)} className={className} aria-hidden>
+    <path d="M12 3.5 20 8H4Z" />
+    <path d="M5 8v10.5M9.3 8v10.5M14.7 8v10.5M19 8v10.5" />
+    <path d="M3.5 20.5h17" />
+  </svg>
+);
+
+export const Pagoda = ({ size, className }: P) => (
+  <svg {...base(size)} className={className} aria-hidden>
+    <path d="M12 2.5v2.2" />
+    <path d="M12 4.7 20 9H4Z" />
+    <path d="M5.5 9 3 12.5h18L18.5 9" />
+    <path d="M6.5 12.5 4 16.5h16l-2.5-4" />
+    <path d="M9 16.5v4h6v-4" />
+  </svg>
+);
+
+export const Gate = ({ size, className }: P) => (
+  <svg {...base(size)} className={className} aria-hidden>
+    <path d="M3 7.5c3-1.4 15-1.4 18 0" />
+    <path d="M4.5 6.3v14.2M19.5 6.3v14.2" />
+    <path d="M7 9.5v10M17 9.5v10" />
+    <path d="M2.5 10c3.2-1 16.8-1 19 0" />
+  </svg>
+);
+
+export const Ornament = ({ size, className }: P) => (
+  <svg {...base(size)} className={className} aria-hidden>
+    <path d="M12 3v18M3 12h18" />
+    <path d="M12 3c1.8 2.6 1.8 6.4 0 9-1.8-2.6-1.8-6.4 0-9Z" />
+    <path d="M12 12c1.8 2.6 1.8 6.4 0 9-1.8-2.6-1.8-6.4 0-9Z" />
+    <path d="M3 12c2.6-1.8 6.4-1.8 9 0-2.6 1.8-6.4 1.8-9 0Z" />
+    <path d="M12 12c2.6-1.8 6.4-1.8 9 0-2.6 1.8-6.4 1.8-9 0Z" />
+  </svg>
+);
+
 /* Печать-штамп */
 export const Stamp = ({ size = 96, className, text = "ДС · 2026" }: P & { text?: string }) => (
   <div
