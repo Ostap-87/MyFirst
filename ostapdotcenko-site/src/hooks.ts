@@ -104,6 +104,60 @@ export function useScramble(text: string, speed = 34, startDelay = 150) {
   return out;
 }
 
+/* Эффект «расшифровки» текста, запускается при появлении блока во вьюпорте */
+export function useScrambleReveal<T extends HTMLElement>(
+  text: string,
+  opts?: { duration?: number; startDelay?: number; threshold?: number }
+) {
+  const { duration = 900, startDelay = 0, threshold = 0.35 } = opts ?? {};
+  const ref = useRef<T | null>(null);
+  const [out, setOut] = useState(text);
+  const prm = usePrefersReducedMotion();
+
+  useEffect(() => {
+    setOut(text);
+    const el = ref.current;
+    if (!el || prm || !("IntersectionObserver" in window)) return;
+
+    let raf = 0;
+    let timeout = 0;
+    const obs = new IntersectionObserver(
+      (entries) => {
+        if (!entries[0].isIntersecting) return;
+        obs.disconnect();
+        timeout = window.setTimeout(() => {
+          const chars = text.split("");
+          const start = performance.now();
+          const step = (now: number) => {
+            const ratio = Math.min(1, (now - start) / duration);
+            const fixed = Math.floor(ratio * chars.length);
+            setOut(
+              chars
+                .map((ch, i) => {
+                  if (ch === " " || ch === "\n") return ch;
+                  if (i < fixed) return ch;
+                  return GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
+                })
+                .join("")
+            );
+            if (ratio < 1) raf = window.requestAnimationFrame(step);
+          };
+          raf = window.requestAnimationFrame(step);
+        }, startDelay);
+      },
+      { threshold, rootMargin: "0px 0px -8% 0px" }
+    );
+    obs.observe(el);
+    return () => {
+      obs.disconnect();
+      window.clearTimeout(timeout);
+      window.cancelAnimationFrame(raf);
+    };
+  }, [text, duration, startDelay, threshold, prm]);
+
+  return { ref, out };
+}
+
 /* Живые часы для часового пояса */
 export function useClock(timeZone: string) {
   const [now, setNow] = useState(() => new Date());

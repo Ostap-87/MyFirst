@@ -1,7 +1,19 @@
 import { photo, useI18n } from "../i18n";
-import { useInView } from "../hooks";
+import { useInView, useScrambleReveal } from "../hooks";
 import { Star4 } from "./Icons";
 import Reveal, { LineReveal } from "./Reveal";
+
+function BioParagraph({ text, index }: { text: string; index: number }) {
+  const { ref, out } = useScrambleReveal<HTMLParagraphElement>(text, {
+    duration: Math.min(1400, 500 + text.length * 3),
+    startDelay: index * 150,
+  });
+  return (
+    <p ref={ref} className={`${index === 0 ? "mt-8" : "mt-4"} max-w-xl text-[15px] leading-relaxed text-ink/80`}>
+      {out}
+    </p>
+  );
+}
 
 export default function About() {
   const { t } = useI18n();
@@ -37,13 +49,9 @@ export default function About() {
               className="mt-5 font-display text-[clamp(2rem,4.8vw,3.6rem)] font-black leading-[1.03]"
             />
 
-            <Reveal delay={150}>
-              {t.about.bio.map((p, i) => (
-                <p key={i} className={`${i === 0 ? "mt-8" : "mt-4"} max-w-xl text-[15px] leading-relaxed text-ink/80`}>
-                  {p}
-                </p>
-              ))}
-            </Reveal>
+            {t.about.bio.map((p, i) => (
+              <BioParagraph key={i} text={p} index={i} />
+            ))}
 
             <Reveal delay={230}>
               <div className="mt-6 max-w-xl border-l-2 border-red pl-5">
