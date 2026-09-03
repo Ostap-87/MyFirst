@@ -203,14 +203,14 @@ export const en: Content = {
     packages: [
       {
         name: "Express Review",
-        price: "₽ 15,000",
+        price: "₽ 45,000",
         desc: "60 minutes on your challenge: audit of the current state, hypotheses and a next-steps plan.",
         features: ["60 min 1-on-1", "Funnel or market review", "30-day action plan", "Call recording"],
         cta: "Choose format",
       },
       {
         name: "Strategy Session",
-        price: "₽ 45,000",
+        price: "₽ 100,000",
         featured: true,
         badge: "popular",
         desc: "Half a day with your team: market entry or growth strategy, priorities, metrics and a roadmap.",
@@ -219,7 +219,7 @@ export const en: Content = {
       },
       {
         name: "Quarter-long Support",
-        price: "from ₽ 180,000",
+        price: "by agreement",
         desc: "Three months by your side: weekly sessions, team audit, hiring and execution control.",
         features: ["12 weeks", "Weekly sessions", "Team audit & hiring", "5/7 chat access"],
         cta: "Discuss",
