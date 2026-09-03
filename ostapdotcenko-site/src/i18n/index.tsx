@@ -20,7 +20,6 @@ export type { Content, Lang };
 const GITHUB_RAW_BASE = ""; // ← пример: "https://raw.githubusercontent.com/USER/REPO/main/public/img/"
 
 const FALLBACKS: Record<string, string> = {
-  "portrait.jpg": "https://image.qwenlm.ai/generated-images/34efa6fd-a9e2-4ba9-a353-310e2d8263ed/_result.png",
   "shanghai.jpg": "https://image.qwenlm.ai/generated-images/47f52382-0fed-4e3b-8930-936bc7d9ed5c/_result.png",
   "bali.jpg": "https://image.qwenlm.ai/generated-images/3cc6e507-5270-4a0e-a1e0-cae8d34aae60/_result.png",
   "tashkent.jpg": "https://image.qwenlm.ai/generated-images/950746f8-5c6f-4868-9c93-e8b56a416b2f/_result.png",
