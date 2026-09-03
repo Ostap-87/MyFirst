@@ -363,7 +363,7 @@ export const en: Content = {
     label: "Beyond work",
     lines: ["Travel", "& hobbies"],
     intro:
-      "读万卷书不如行万里路 · 20+ countries. From Shanghai skyscrapers to Delhi's alleys, from Tashkent bazaars to Cape Town's vineyards.",
+      "读万卷书不如行万里路 · 20+ countries. From Shanghai skyscrapers to Delhi's slums, from Tashkent bazaars to Cape Town's vineyards.",
     hobbiesLabel: "What I live for outside work",
     hobbies: [
       "Table tennis",
