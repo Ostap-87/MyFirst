@@ -90,8 +90,11 @@ export const ru = {
       {
         years: "2025 — н. в.",
         role: "Собственник и создатель проектов",
-        company:
-          "Собственник Shanghai Pinnacle Technology Co., Ltd. (上海拼那克了科技有限公司). Создаю и развиваю технологические медиа-проекты: GlobalTechTour — экспедиции и аналитика по рынкам Китая и Юго-Восточной Азии; Aura-Robotics — робототехника и автоматизация на стыке ИИ и физического мира.",
+        company: "Shanghai Pinnacle Technology Co., Ltd. (上海拼那克了科技有限公司).",
+        companyList: [
+          "GlobalTechTour — бенчмарк-туры и технологические экспедиции в Китай и Юго-Восточную Азию.",
+          "Aura-Robotics — робототехника и автоматизация на стыке ИИ и физического мира.",
+        ],
         chips: ["GlobalTechTour", "Aura-Robotics"],
         links: [
           { label: "GlobalTechTour", url: "https://globaltechtour.ru/" },

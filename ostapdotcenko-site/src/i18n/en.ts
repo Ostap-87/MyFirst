@@ -85,8 +85,11 @@ export const en: Content = {
       {
         years: "2025 — now",
         role: "Owner & Founder of Ventures",
-        company:
-          "Owner of Shanghai Pinnacle Technology Co., Ltd. (上海拼那克了科技有限公司). Building and growing tech media ventures: GlobalTechTour — expeditions and analysis of China and Southeast Asia markets; Aura-Robotics — robotics and automation at the intersection of AI and the physical world.",
+        company: "Shanghai Pinnacle Technology Co., Ltd. (上海拼那克了科技有限公司).",
+        companyList: [
+          "GlobalTechTour — benchmark tours and tech expeditions across China and Southeast Asia.",
+          "Aura-Robotics — robotics and automation at the intersection of AI and the physical world.",
+        ],
         chips: ["GlobalTechTour", "Aura-Robotics"],
         links: [
           { label: "GlobalTechTour", url: "https://globaltechtour.ru/" },

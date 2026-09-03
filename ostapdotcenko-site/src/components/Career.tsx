@@ -62,7 +62,20 @@ export function Career() {
                     }`}
                   >
                     <h3 className={`font-display text-lg font-bold sm:text-xl ${empty ? "text-yellow" : "text-bone"}`}>{c.role}</h3>
-                    <p className={`mt-2 text-[13.5px] leading-relaxed ${empty ? "text-fog/70 italic" : "text-fog"}`}>{c.company}</p>
+                    {"companyList" in c && c.companyList ? (
+                      <div className="mt-2">
+                        <p className={`text-[13.5px] font-bold leading-relaxed ${empty ? "text-fog/70 italic" : "text-bone"}`}>{c.company}</p>
+                        <div className="mt-1.5 space-y-1">
+                          {c.companyList.map((line) => (
+                            <p key={line} className={`text-[13.5px] leading-relaxed ${empty ? "text-fog/70 italic" : "text-fog"}`}>
+                              {line}
+                            </p>
+                          ))}
+                        </div>
+                      </div>
+                    ) : (
+                      <p className={`mt-2 text-[13.5px] leading-relaxed ${empty ? "text-fog/70 italic" : "text-fog"}`}>{c.company}</p>
+                    )}
                     <div className="mt-4 flex flex-wrap gap-2">
                       {c.chips.map((ch) => {
                         const link = "links" in c ? c.links?.find((l) => l.label === ch) : undefined;

@@ -85,8 +85,11 @@ export const zh: Content = {
       {
         years: "2025 — 至今",
         role: "所有者与项目创始人",
-        company:
-          "上海拼那克了科技有限公司（Shanghai Pinnacle Technology Co., Ltd.）所有者。创建并发展科技媒体项目：GlobalTechTour——聚焦中国与东南亚市场的考察与分析；Aura-Robotics——专注于人工智能与物理世界交汇处的机器人与自动化。",
+        company: "上海拼那克了科技有限公司（Shanghai Pinnacle Technology Co., Ltd.）。",
+        companyList: [
+          "GlobalTechTour——聚焦中国与东南亚的标杆考察与技术探访之旅。",
+          "Aura-Robotics——专注于人工智能与物理世界交汇处的机器人与自动化。",
+        ],
         chips: ["GlobalTechTour", "Aura-Robotics"],
         links: [
           { label: "GlobalTechTour", url: "https://globaltechtour.ru/" },
