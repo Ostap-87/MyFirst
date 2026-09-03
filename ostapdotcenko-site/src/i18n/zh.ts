@@ -373,6 +373,9 @@ export const zh: Content = {
       "历史文学",
       "波斯诗歌",
       "狩猎",
+      "击剑",
+      "飞碟射击",
+      "高尔夫",
     ],
     galleryLabel: "生活瞬间",
     shots: [

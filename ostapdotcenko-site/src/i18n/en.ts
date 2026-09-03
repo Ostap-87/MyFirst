@@ -374,6 +374,9 @@ export const en: Content = {
       "Historical literature",
       "Persian poetry",
       "Hunting",
+      "Fencing",
+      "Skeet shooting",
+      "Golf",
     ],
     galleryLabel: "Moments from life",
     shots: [
