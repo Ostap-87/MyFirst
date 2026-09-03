@@ -19,7 +19,7 @@ export default function Life() {
             lines={t.life.lines.map((l, i) => (i === 1 ? <span key={i} className="hl">{l}</span> : l))}
           />
           <Reveal delay={150}>
-            <p className="max-w-xs font-mono text-[10.5px] uppercase leading-relaxed tracking-[0.18em] text-dim">{t.life.intro}</p>
+            <p className="max-w-sm font-mono text-[21px] uppercase leading-relaxed tracking-[0.1em] text-ink sm:max-w-md">{t.life.intro}</p>
           </Reveal>
         </div>
 

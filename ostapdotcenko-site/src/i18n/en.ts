@@ -362,7 +362,8 @@ export const en: Content = {
   life: {
     label: "Beyond work",
     lines: ["Travel", "& hobbies"],
-    intro: "20+ countries. From Shanghai skyscrapers to Jakarta markets, from Tashkent to Myanmar.",
+    intro:
+      "读万卷书不如行万里路 · 20+ countries. From Shanghai skyscrapers to Delhi's alleys, from Tashkent bazaars to Cape Town's vineyards.",
     hobbiesLabel: "What I live for outside work",
     hobbies: [
       "Table tennis",
