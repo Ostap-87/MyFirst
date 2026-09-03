@@ -19,7 +19,7 @@ export default function Blog() {
             lines={b.lines.map((l, i) => (i === 0 ? <span key={i} className="hl">{l}</span> : l))}
           />
           <Reveal delay={200}>
-            <p className="max-w-xs font-mono text-[10.5px] uppercase leading-relaxed tracking-[0.18em] text-dim">{b.intro}</p>
+            <p className="max-w-sm font-mono text-[21px] uppercase leading-relaxed tracking-[0.1em] text-ink sm:max-w-md">{b.intro}</p>
           </Reveal>
         </div>
 
