@@ -1,7 +1,7 @@
 import { FormEvent, useState } from "react";
 import { PERSON, useI18n } from "../i18n";
 import { useClock } from "../hooks";
-import { ArrowUpRight, Check, Clock, Mail, Monogram, Phone, Pin, Send } from "./Icons";
+import { ArrowUpRight, Check, Clock, Mail, Phone, Pin, Send } from "./Icons";
 import Reveal, { SectionHead } from "./Reveal";
 
 type Form = { name: string; email: string; company: string; message: string };
@@ -223,14 +223,11 @@ export default function Contact() {
         {/* футер */}
         <footer className="mt-24 border-t-2 border-ink pt-8">
           <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
-            <div className="flex items-center gap-3 text-ink">
-              <Monogram size={30} />
-              <div className="leading-tight">
-                <p className="font-display text-[12px] font-bold">
-                  {t.hero.firstName} {t.hero.lastName} © 2013–2026
-                </p>
-                <p className="font-mono text-[9.5px] uppercase tracking-[0.2em] text-dim">design & code — handmade</p>
-              </div>
+            <div className="leading-tight text-ink">
+              <p className="font-display text-[12px] font-bold">
+                {t.hero.firstName} {t.hero.lastName}
+              </p>
+              <p className="font-mono text-[9.5px] uppercase tracking-[0.2em] text-dim">design & code — handmade</p>
             </div>
             <a
               href="#top"
