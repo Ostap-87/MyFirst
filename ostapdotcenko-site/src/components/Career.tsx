@@ -64,18 +64,29 @@ export function Career() {
                     <h3 className={`font-display text-lg font-bold sm:text-xl ${empty ? "text-yellow" : "text-bone"}`}>{c.role}</h3>
                     <p className={`mt-2 text-[13.5px] leading-relaxed ${empty ? "text-fog/70 italic" : "text-fog"}`}>{c.company}</p>
                     <div className="mt-4 flex flex-wrap gap-2">
-                      {c.chips.map((ch) => (
-                        <span
-                          key={ch}
-                          className={`tnum border px-2.5 py-1 font-mono text-[10.5px] transition-colors ${
-                            empty
-                              ? "border-dashed border-yellow/40 text-yellow/70"
-                              : "border-dline bg-deep text-bone/85 group-hover:border-yellow/40"
-                          }`}
-                        >
-                          {ch}
-                        </span>
-                      ))}
+                      {c.chips.map((ch) => {
+                        const link = "links" in c ? c.links?.find((l) => l.label === ch) : undefined;
+                        const chipClass = `tnum border px-2.5 py-1 font-mono text-[10.5px] transition-colors ${
+                          empty
+                            ? "border-dashed border-yellow/40 text-yellow/70"
+                            : "border-dline bg-deep text-bone/85 group-hover:border-yellow/40"
+                        }`;
+                        return link ? (
+                          <a
+                            key={ch}
+                            href={link.url}
+                            target="_blank"
+                            rel="noreferrer"
+                            className={`${chipClass} hover:border-yellow hover:text-yellow`}
+                          >
+                            {ch} ↗
+                          </a>
+                        ) : (
+                          <span key={ch} className={chipClass}>
+                            {ch}
+                          </span>
+                        );
+                      })}
                     </div>
                   </div>
                 </Reveal>
