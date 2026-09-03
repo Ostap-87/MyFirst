@@ -1,0 +1,243 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bone: #edeae2;
+  --color-card: #f7f4ec;
+  --color-ink: #191922;
+  --color-deep: #12121a;
+  --color-panel: #1c1c27;
+  --color-yellow: #ffd92e;
+  --color-blue: #2b49ff;
+  --color-red: #ff4a1f;
+  --color-dim: #6e6d66;
+  --color-fog: #a3a2b0;
+  --color-line: #d5d1c4;
+  --color-dline: #2a2a38;
+
+  --font-display: "Unbounded", "Golos Text", "Noto Sans SC", sans-serif;
+  --font-body: "Golos Text", "Noto Sans SC", "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-bone);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-yellow);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 2px;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- киноплёночный шум поверх всего ---------- */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0.055;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- фоновые паттерны ---------- */
+.dotgrid {
+  background-image: radial-gradient(rgba(25, 25, 34, 0.13) 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+
+.blueprint {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 52px 52px;
+}
+
+.stroke-text {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(25, 25, 34, 0.12);
+}
+
+.stroke-text-light {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.1);
+}
+
+/* ---------- line-mask reveal ---------- */
+.line-mask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+}
+.line-mask > span {
+  display: block;
+  transform: translateY(118%);
+  transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.inview .line-mask > span {
+  transform: translateY(0);
+}
+
+/* ---------- маркер-выделение ---------- */
+.hl {
+  background-image: linear-gradient(
+    100deg,
+    transparent 0%,
+    var(--color-yellow) 4%,
+    var(--color-yellow) 96%,
+    transparent 100%
+  );
+  background-repeat: no-repeat;
+  background-size: 0% 0.72em;
+  background-position: 0 78%;
+  transition: background-size 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) 0.25s;
+  box-decoration-break: clone;
+}
+.inview .hl,
+.hl.inview {
+  background-size: 100% 0.72em;
+}
+
+/* ---------- бегущая строка ---------- */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee var(--speed, 30s) linear infinite;
+}
+.marquee-track.reverse {
+  animation-direction: reverse;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ---------- вращение бейджа ---------- */
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.spin-slow {
+  animation: spin-slow 22s linear infinite;
+}
+
+/* ---------- дыхание фото (Ken Burns) ---------- */
+@keyframes kenburns {
+  from {
+    transform: scale(1) translate(0, 0);
+  }
+  to {
+    transform: scale(1.16) translate(-2.5%, 2%);
+  }
+}
+.kenburns {
+  animation: kenburns 16s ease-in-out infinite alternate;
+}
+
+/* ---------- пульс точки ---------- */
+@keyframes blip {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.6);
+  }
+}
+.blip {
+  animation: blip 1.8s ease-in-out infinite;
+}
+
+/* ---------- мигание каретки ---------- */
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+.blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* ---------- линия «листайте» ---------- */
+@keyframes drop-line {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  45% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  55% {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}
+.drop-line {
+  animation: drop-line 2.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+/* ---------- скролл-прогресс у якорных ссылок ---------- */
+html {
+  scroll-padding-top: 84px;
+}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .marquee-track,
+  .spin-slow,
+  .kenburns,
+  .blip,
+  .blink,
+  .drop-line {
+    animation: none !important;
+  }
+  .line-mask > span {
+    transform: none !important;
+    transition: none !important;
+  }
+  .hl {
+    background-size: 100% 0.72em !important;
+    transition: none !important;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
