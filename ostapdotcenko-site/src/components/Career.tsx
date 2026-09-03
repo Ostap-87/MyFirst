@@ -16,7 +16,7 @@ export function Career() {
 
       <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:py-32">
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
-          <div className="lg:sticky lg:top-28 lg:self-start">
+          <div>
             <SectionHead
               dark
               index="02"
