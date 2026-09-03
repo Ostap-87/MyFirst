@@ -97,7 +97,7 @@ export default function Hero() {
         <div className="mt-10 grid gap-10 lg:grid-cols-[1.25fr_0.75fr]">
           <div>
             <Reveal delay={200}>
-              <p className="max-w-xl text-[15.5px] leading-relaxed text-ink/80">{t.hero.intro}</p>
+              <p className="max-w-xl text-[19.5px] leading-relaxed text-ink">{t.hero.intro}</p>
             </Reveal>
             <Reveal delay={300}>
               <div className="mt-8 flex flex-wrap gap-4">

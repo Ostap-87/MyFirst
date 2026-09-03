@@ -17,7 +17,7 @@ export const en: Content = {
     lastName: "Dotsenko",
     watermark: "OD",
     intro:
-      "I led marketing at major IT, AdTech and E-commerce companies. For 13 years I've been transforming businesses at the intersection of Russia, China and Southeast Asia.",
+      "I've led marketing and business development at companies of a scale that makes my business card blush a little on introduction. For over 13 years I've been building business at the crossroads of Russia, China and Southeast Asia — and learned that universal strategies don't exist: the Chinese market smiles and nods, the Vietnamese market haggles to the very end, the Russian market asks straight away \"why do we even need this.\" Marketing opens the door, BD sits down at the table — usually I make it to both.",
     ctaPrimary: "Start a project",
     ctaSecondary: "See case studies",
     stats: [
