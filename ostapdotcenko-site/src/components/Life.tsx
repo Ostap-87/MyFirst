@@ -72,7 +72,7 @@ export default function Life() {
                 </div>
                 <figcaption className="tnum mt-2.5 flex items-baseline justify-between gap-2 px-0.5">
                   <span className="truncate font-mono text-[9.5px] uppercase tracking-wider text-dim">{g.caption}</span>
-                  <span className="font-mono text-[9px] text-red">’{24 + (i % 3)}</span>
+                  <span className="font-mono text-[9px] text-red">’{g.year}</span>
                 </figcaption>
               </figure>
             </Reveal>
