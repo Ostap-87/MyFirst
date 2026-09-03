@@ -29,7 +29,7 @@ export default function Header() {
               <a
                 key={n.href}
                 href={n.href}
-                className="group relative font-mono text-[11px] uppercase tracking-[0.16em] text-ink/70 transition-colors hover:text-ink"
+                className="group relative whitespace-nowrap font-mono text-[15px] uppercase tracking-[0.16em] text-ink transition-colors hover:text-ink"
               >
                 {n.label}
                 <span className="absolute -bottom-1 left-0 h-[2px] w-0 bg-red transition-all duration-300 group-hover:w-full" />
