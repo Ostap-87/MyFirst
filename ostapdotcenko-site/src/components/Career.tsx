@@ -1,9 +1,11 @@
 import { useI18n } from "../i18n";
+import { useScrollDrift } from "../hooks";
 import { ArrowUpRight } from "./Icons";
 import Reveal, { SectionHead } from "./Reveal";
 
 export function Career() {
   const { t } = useI18n();
+  const { trackRef, offset } = useScrollDrift<HTMLOListElement>(70);
 
   return (
     <section id="career" className="blueprint relative overflow-hidden bg-deep text-bone">
@@ -16,28 +18,30 @@ export function Career() {
 
       <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:py-32">
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
-          <div>
-            <SectionHead
-              dark
-              index="02"
-              label={t.career.label}
-              lines={t.career.lines.map((l, i) => (i === 1 ? <span key={i} className="hl">{l}</span> : l))}
-            />
-            <Reveal delay={200}>
-              <p className="mt-7 max-w-md text-[14.5px] leading-relaxed text-fog">{t.career.intro}</p>
-            </Reveal>
-            <Reveal delay={300}>
-              <a
-                href="#contact"
-                className="group mt-8 inline-flex items-center gap-3 border border-fog/40 px-5 py-3.5 font-mono text-[11px] uppercase tracking-[0.2em] text-bone transition-all hover:border-yellow hover:bg-yellow hover:text-ink"
-              >
-                {t.career.cvBtn}
-                <ArrowUpRight size={15} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-              </a>
-            </Reveal>
+          <div className="lg:sticky lg:top-28 lg:self-start">
+            <div style={{ transform: `translateY(${offset}px)` }}>
+              <SectionHead
+                dark
+                index="02"
+                label={t.career.label}
+                lines={t.career.lines.map((l, i) => (i === 1 ? <span key={i} className="hl">{l}</span> : l))}
+              />
+              <Reveal delay={200}>
+                <p className="mt-7 max-w-md text-[14.5px] leading-relaxed text-fog">{t.career.intro}</p>
+              </Reveal>
+              <Reveal delay={300}>
+                <a
+                  href="#contact"
+                  className="group mt-8 inline-flex items-center gap-3 border border-fog/40 px-5 py-3.5 font-mono text-[11px] uppercase tracking-[0.2em] text-bone transition-all hover:border-yellow hover:bg-yellow hover:text-ink"
+                >
+                  {t.career.cvBtn}
+                  <ArrowUpRight size={15} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                </a>
+              </Reveal>
+            </div>
           </div>
 
-          <ol className="relative border-l-2 border-dline">
+          <ol ref={trackRef} className="relative border-l-2 border-dline">
             {t.career.entries.map((c, i) => {
               const empty = "empty" in c && c.empty;
               return (

@@ -182,3 +182,35 @@ export function useScrollProgress() {
   }, [onScroll]);
   return p;
 }
+
+/* Параллакс-дрейф: элемент плавно смещается по мере прохождения соседней (длинной)
+   колонки через вьюпорт — используется для sticky-заголовка рядом с таймлайном (только на lg+) */
+export function useScrollDrift<T extends HTMLElement>(range = 70) {
+  const trackRef = useRef<T | null>(null);
+  const [offset, setOffset] = useState(0);
+  const prm = usePrefersReducedMotion();
+
+  useEffect(() => {
+    if (prm) return;
+    let raf = 0;
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const update = () => {
+      const el = trackRef.current;
+      if (el && mq.matches) {
+        const rect = el.getBoundingClientRect();
+        const total = rect.height + window.innerHeight;
+        const scrolled = window.innerHeight - rect.top;
+        const progress = Math.min(1, Math.max(0, scrolled / total));
+        setOffset((progress - 0.5) * range);
+      } else {
+        setOffset((prev) => (prev !== 0 ? 0 : prev));
+      }
+      raf = window.requestAnimationFrame(update);
+    };
+    raf = window.requestAnimationFrame(update);
+    return () => window.cancelAnimationFrame(raf);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [range, prm]);
+
+  return { trackRef, offset };
+}
