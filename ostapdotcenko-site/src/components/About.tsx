@@ -39,7 +39,7 @@ export default function About() {
           </div>
 
           <div>
-            <p className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-dim">
+            <p className="flex items-center gap-3 font-mono text-[22px] uppercase tracking-[0.3em] text-ink">
               <span className="text-red">( 01 )</span>
               <span className="h-px w-10 bg-ink/25" />
               {t.about.label}

@@ -68,8 +68,8 @@ export function SectionHead({
   return (
     <div>
       <p
-        className={`flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] ${
-          dark ? "text-fog" : "text-dim"
+        className={`flex items-center gap-3 font-mono text-[22px] uppercase tracking-[0.3em] ${
+          dark ? "text-fog" : "text-ink"
         }`}
       >
         <span className="text-red">( {index} )</span>
