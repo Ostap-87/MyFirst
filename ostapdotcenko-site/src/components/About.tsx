@@ -14,25 +14,14 @@ export default function About() {
           {/* портрет — фото грузится из public/img (GitHub) */}
           <div className="lg:sticky lg:top-28 lg:self-start">
             <Reveal y={34}>
-              <figure className="relative mx-auto max-w-[420px] -rotate-2 border-2 border-ink bg-card p-4 pb-6 shadow-[14px_14px_0_var(--color-yellow)] transition-transform duration-500 hover:rotate-0">
+              <figure className="relative mx-auto max-w-[420px] -rotate-2 border-2 border-ink bg-card p-4 shadow-[14px_14px_0_var(--color-yellow)] transition-transform duration-500 hover:rotate-0">
                 <div className="relative aspect-[4/5] overflow-hidden border border-ink/20 bg-deep">
                   <img
                     src={photo("portrait.jpg")}
                     alt={`${t.hero.firstName} ${t.hero.lastName}`}
                     className="kenburns h-full w-full object-cover"
                   />
-                  {/* красная печать */}
-                  <div
-                    className="absolute right-4 top-4 flex h-20 w-20 -rotate-12 items-center justify-center rounded-full border-2 border-red text-center font-mono text-[8px] font-bold uppercase leading-tight tracking-wider text-red opacity-90"
-                    style={{ boxShadow: "inset 0 0 0 3px rgba(255,74,31,0.25)" }}
-                  >
-                    est.<br />2013
-                  </div>
                 </div>
-                <figcaption className="mt-4 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.18em] text-dim">
-                  <span>{t.hero.lastName.toLowerCase()}_{t.hero.firstName.toLowerCase()}.raw</span>
-                  <span>{t.about.photoCaption}</span>
-                </figcaption>
               </figure>
             </Reveal>
           </div>
