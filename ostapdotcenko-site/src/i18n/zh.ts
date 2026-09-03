@@ -233,7 +233,7 @@ export const zh: Content = {
   blog: {
     label: "博客",
     lines: ["文章", "与视频"],
-    intro: "撰写亚洲市场进入、B2B 营销与电商相关内容。视频来自演讲与案例拆解。",
+    intro: "我写中国与东南亚市场、B2B 营销、技术考察旅行、机器人和电商——总之，一切让我在三个时区和一个行李箱之间生活的事情 :)))",
     articlesLabel: "文章",
     videosLabel: "视频",
     expandBtn: "阅读要点",

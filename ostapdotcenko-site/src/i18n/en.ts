@@ -233,7 +233,8 @@ export const en: Content = {
   blog: {
     label: "Blog",
     lines: ["Articles", "& videos"],
-    intro: "Writing about Asian market entry, B2B marketing and e-commerce. Videos — from talks and teardowns.",
+    intro:
+      "I write about China and Southeast Asia markets, B2B marketing, tech tourism, robots and e-commerce — basically, everything that keeps me living between three time zones and one suitcase :)))",
     articlesLabel: "Articles",
     videosLabel: "Videos",
     expandBtn: "Read key points",
