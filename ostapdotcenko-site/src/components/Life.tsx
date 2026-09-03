@@ -1,5 +1,5 @@
 import { photo, useI18n } from "../i18n";
-import { Plus, Star4 } from "./Icons";
+import { Star4 } from "./Icons";
 import Reveal, { SectionHead } from "./Reveal";
 
 /* Хобби, путешествия и фотогалерея. Фото добавляются в public/img (GitHub) + строка в src/i18n */
@@ -78,21 +78,7 @@ export default function Life() {
             </Reveal>
           ))}
 
-          {/* карточка «добавить» — сигнал, что галерея расширяется через GitHub */}
-          <Reveal delay={t.life.shots.length * 100} className="w-[46%] max-w-[240px] sm:w-[30%] lg:w-auto" y={36}>
-            <div className="flex aspect-[200/240] w-full flex-col items-center justify-center gap-3 border-2 border-dashed border-ink/40 bg-transparent p-6 text-center transition-all duration-300 hover:border-blue hover:bg-blue/5">
-              <span className="flex h-11 w-11 items-center justify-center border-2 border-dashed border-ink/40 text-ink/50">
-                <Plus size={20} />
-              </span>
-              <p className="font-display text-[12.5px] font-bold text-ink/60">{t.life.addCard}</p>
-              <p className="font-mono text-[9px] uppercase leading-relaxed tracking-wider text-dim">{t.life.addHint}</p>
-            </div>
-          </Reveal>
         </div>
-
-        <Reveal delay={200}>
-          <p className="mt-10 text-center font-mono text-[9.5px] uppercase tracking-[0.2em] text-dim">{t.life.photoNote}</p>
-        </Reveal>
       </div>
     </section>
   );

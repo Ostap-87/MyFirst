@@ -67,12 +67,6 @@ export function Press() {
             label={t.press.label}
             lines={t.press.lines.map((l, i) => (i === 1 ? <span key={i} className="hl">{l}</span> : l))}
           />
-          <Reveal delay={150}>
-            <p className="flex items-center gap-2.5 font-mono text-[10.5px] uppercase tracking-[0.18em] text-dim">
-              <span className="blip inline-block h-2 w-2 bg-[#22a06b]" />
-              {t.press.note}
-            </p>
-          </Reveal>
         </div>
 
         <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">

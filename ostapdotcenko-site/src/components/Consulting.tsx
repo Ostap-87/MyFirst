@@ -94,7 +94,6 @@ export default function Consulting() {
               <Star4 size={14} className="shrink-0 text-red" />
               {c.guarantee}
             </p>
-            <p className="font-mono text-[9.5px] uppercase tracking-[0.2em] text-fog/60">{c.note}</p>
           </div>
         </Reveal>
       </div>

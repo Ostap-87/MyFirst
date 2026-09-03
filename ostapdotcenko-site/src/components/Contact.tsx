@@ -222,7 +222,6 @@ export default function Contact() {
                 <p className="font-mono text-[9.5px] uppercase tracking-[0.2em] text-dim">design & code — handmade</p>
               </div>
             </div>
-            <p className="max-w-md font-mono text-[10px] uppercase leading-relaxed tracking-wider text-dim">{c.disclaimer}</p>
             <a
               href="#top"
               className="group flex items-center gap-2.5 border-2 border-ink px-4 py-2.5 font-mono text-[10.5px] font-bold uppercase tracking-[0.18em] transition-all hover:bg-ink hover:text-yellow"
