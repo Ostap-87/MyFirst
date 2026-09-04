@@ -36,19 +36,19 @@ export default function BlogPost() {
   return (
     <div className="min-h-screen bg-bone font-body text-ink">
       <Header />
-      <main className="dotgrid relative overflow-hidden bg-bone">
+      <main className="dotgrid relative bg-bone">
         <img
           src="/img/blog-side-left.jpg"
           alt=""
           aria-hidden="true"
-          className="pointer-events-none absolute left-[3%] top-40 hidden w-[13%] max-w-[190px] rotate-[-2deg] border-2 border-ink object-cover shadow-[6px_6px_0_0_rgba(20,20,20,0.15)] xl:block"
+          className="pointer-events-none fixed left-[2%] top-[28vh] z-40 hidden w-[26%] max-w-[380px] rotate-[-2deg] border-2 border-ink object-cover shadow-[6px_6px_0_0_rgba(20,20,20,0.15)] xl:block"
           style={{ aspectRatio: "3 / 4" }}
         />
         <img
           src="/img/blog-side-right.jpg"
           alt=""
           aria-hidden="true"
-          className="pointer-events-none absolute right-[3%] top-[34rem] hidden w-[15%] max-w-[220px] rotate-[2deg] border-2 border-ink object-cover shadow-[6px_6px_0_0_rgba(20,20,20,0.15)] xl:block"
+          className="pointer-events-none fixed right-[2%] top-[52vh] z-40 hidden w-[30%] max-w-[440px] rotate-[2deg] border-2 border-ink object-cover shadow-[6px_6px_0_0_rgba(20,20,20,0.15)] xl:block"
           style={{ aspectRatio: "4 / 3" }}
         />
         <article className="relative mx-auto max-w-2xl px-4 pb-24 pt-32 sm:px-6 lg:pt-40">
