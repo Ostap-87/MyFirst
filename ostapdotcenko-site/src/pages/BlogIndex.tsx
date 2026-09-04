@@ -41,7 +41,7 @@ export default function BlogIndex() {
             </div>
 
             <Reveal y={24} className="hidden lg:block">
-              <figure className="relative w-[190px] rotate-2 border-2 border-ink bg-card p-3 shadow-[10px_10px_0_var(--color-yellow)] transition-transform duration-500 hover:rotate-0">
+              <figure className="relative w-[285px] rotate-2 border-2 border-ink bg-card p-3 shadow-[10px_10px_0_var(--color-yellow)] transition-transform duration-500 hover:rotate-0">
                 <div className="relative aspect-[4/5] overflow-hidden border border-ink/20 bg-deep">
                   <img
                     src={photo("blog-portrait.jpg")}
