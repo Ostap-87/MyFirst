@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useI18n } from "../i18n";
+import { photo, useI18n } from "../i18n";
 import Header from "../components/Header";
 import Contact from "../components/Contact";
+import Reveal from "../components/Reveal";
 import { ArrowUpRight } from "../components/Icons";
 
 function formatDate(date: string, lang: string) {
@@ -28,14 +29,30 @@ export default function BlogIndex() {
     <div className="min-h-screen bg-bone font-body text-ink">
       <Header />
       <main className="dotgrid relative bg-bone">
-        <div className="mx-auto max-w-4xl px-4 pb-24 pt-32 sm:px-6 lg:pt-40">
-          <p className="font-mono text-[11px] uppercase tracking-[0.26em] text-dim">
-            <span className="mr-2 inline-block h-2 w-2 bg-red" /> {b.label}
-          </p>
-          <h1 className="mt-4 font-display text-[clamp(1.8rem,4.6vw,3.2rem)] font-bold leading-[1.05]">
-            {b.lines.join(" ")}
-          </h1>
-          <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-ink/70">{b.intro}</p>
+        <div className="mx-auto max-w-5xl px-4 pb-24 pt-32 sm:px-6 lg:pt-40">
+          <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-center">
+            <div>
+              <p className="font-mono text-[11px] uppercase tracking-[0.26em] text-dim">
+                <span className="mr-2 inline-block h-2 w-2 bg-red" /> {b.label}
+              </p>
+              <h1 className="mt-4 font-display text-[clamp(1.8rem,4.6vw,3.2rem)] font-bold leading-[1.05]">
+                {b.lines.join(" ")}
+              </h1>
+              <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-ink/70">{b.intro}</p>
+            </div>
+
+            <Reveal y={24} className="hidden lg:block">
+              <figure className="relative w-[190px] rotate-2 border-2 border-ink bg-card p-3 shadow-[10px_10px_0_var(--color-yellow)] transition-transform duration-500 hover:rotate-0">
+                <div className="relative aspect-[4/5] overflow-hidden border border-ink/20 bg-deep">
+                  <img
+                    src={photo("portrait.jpg")}
+                    alt={`${t.hero.firstName} ${t.hero.lastName}`}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+              </figure>
+            </Reveal>
+          </div>
 
           {/* навигация по разделам */}
           <div className="mt-10 flex flex-wrap gap-3">
