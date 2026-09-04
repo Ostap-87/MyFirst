@@ -232,7 +232,7 @@ export const en: Content = {
 
   blog: {
     label: "Blog",
-    lines: ["Articles", "& videos"],
+    lines: ["Articles", "and sketches from laowai life 老外"],
     intro:
       "I write about China and Southeast Asia markets, B2B marketing, tech tourism, robots and reflections on life — basically, everything that keeps me living between three time zones and one suitcase :)))",
     articlesLabel: "Articles",

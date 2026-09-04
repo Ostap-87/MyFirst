@@ -232,7 +232,7 @@ export const zh: Content = {
 
   blog: {
     label: "博客",
-    lines: ["文章", "与视频"],
+    lines: ["文章", "与老外生活手记"],
     intro: "我写中国与东南亚市场、B2B 营销、技术考察旅行、机器人，也写对生活的思考——总之，一切让我在三个时区和一个行李箱之间生活的事情 :)))",
     articlesLabel: "文章",
     videosLabel: "视频",
