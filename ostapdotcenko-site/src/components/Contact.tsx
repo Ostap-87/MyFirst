@@ -58,7 +58,7 @@ export default function Contact() {
         OK
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:py-32">
+      <div className="relative mx-auto max-w-7xl px-4 pb-24 pt-10 sm:px-6 lg:pb-32 lg:pt-14">
         <SectionHead
           index="10"
           label={c.label}
