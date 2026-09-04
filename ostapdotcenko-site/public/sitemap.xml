@@ -25,4 +25,9 @@
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
+  <url>
+    <loc>https://ostapdotcenko.ru/blog/three-days-shanghai-china-expert</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
 </urlset>
