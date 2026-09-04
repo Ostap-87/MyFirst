@@ -264,28 +264,6 @@ export const en: Content = {
     articles: [
       {
         category: "tech",
-        slug: "b2b-marketplace-sales-enablement",
-        date: "2026-06-12",
-        tag: "B2B Marketing",
-        time: "8 min",
-        title: "Why B2B marketplaces need a Sales Enablement strategy",
-        excerpt: "Leads are only half the journey. How to build a system where marketing and sales run as one machine.",
-        body: "Leads are only half the journey. For years, B2B marketplaces measured success by the number of CRM entries, then wondered why conversion to actual revenue stayed in the low single digits.\n\n## The \"leads in general\" problem\n\nWhen marketing reports on inquiries and sales reports on closed deals, a gap opens between the two teams — nobody can tell whether a lost client was a quality problem or a follow-up problem. The first fix is a shared qualification standard: an SQL (sales-qualified lead) instead of a vague \"lead.\" Until both teams count the same thing, any conversation about efficiency is pointless.\n\n## Three pillars of Sales Enablement\n\nFirst, a content library mapped to deal stages: case studies for cold outreach, comparisons for the middle of the funnel, ROI calculators for the final decision. Second, a single source of truth on the product — pricing, terms, limitations — with no \"the manager said\" version. Third, a weekly marketing–sales sync built around shared metrics, not reports written for each other.\n\n## What changes in practice\n\nOnce sales stops \"pushing\" a lead and starts \"continuing the conversation\" marketing already began, the funnel stops leaking. In one project where we rolled this model out, the deal cycle shrank by a third — not because reps worked faster, but because the client walked into negotiations already understanding the product.\n\nSales Enablement isn't a separate function. It's an agreement: marketing and sales track one number and share the responsibility for it.",
-        link: "",
-      },
-      {
-        category: "tech",
-        slug: "sea-market-entry-lessons",
-        date: "2026-07-20",
-        tag: "Global Business",
-        time: "12 min",
-        title: "Entering SEA: 5 lessons from Indonesia and Myanmar",
-        excerpt: "How to adapt the product, build local partnerships and not lose money on the first step.",
-        body: "Southeast Asia isn't one market — it's at least ten different ones. Indonesia, Vietnam, Thailand, Malaysia, the Philippines and others each play by their own rules, and \"test in one country, then scale\" only works if you test with your eyes open.\n\n## Lesson one: no country stands in for another\n\nA product that took off in Jakarta may flop in Yangon — different purchasing power, different logistics, different brand expectations. Local testing is mandatory for every market on its own, not by analogy with a neighbor.\n\n## Lesson two: a partner beats a perfect product\n\nA flawless product without a local partner who understands regulation, customs and retail networks stalls at the starting line. In Myanmar, for instance, without a local sponsor entire distribution channels are simply closed to a foreign player.\n\n## Lesson three: payments and logistics matter more than marketing\n\nYou can run a brilliant ad campaign and still lose the customer at checkout if cash-on-delivery dominates the market and you've only set up card acquiring.\n\n## Lessons four and five\n\nPrice is judged in absolute units, not discount percentages — local buyers compare the actual amount, not the perceived saving. And last: patience is part of the business model. Southeast Asian markets rarely deliver fast growth in year one, but they build a durable base if you don't pull out halfway through.",
-        link: "",
-      },
-      {
-        category: "tech",
         slug: "megamarket-seller-growth-350",
         date: "2026-08-25",
         tag: "E-commerce",
