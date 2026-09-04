@@ -37,21 +37,20 @@ export default function BlogPost() {
     <div className="min-h-screen bg-bone font-body text-ink">
       <Header />
       <main className="dotgrid relative bg-bone">
-        <img
-          src="/img/blog-side-left.jpg"
-          alt=""
-          aria-hidden="true"
-          className="pointer-events-none fixed left-[2%] top-[28vh] z-40 hidden w-[26%] max-w-[380px] rotate-[-2deg] border-2 border-ink object-cover shadow-[6px_6px_0_0_rgba(20,20,20,0.15)] xl:block"
-          style={{ aspectRatio: "3 / 4" }}
-        />
-        <img
-          src="/img/blog-side-right.jpg"
-          alt=""
-          aria-hidden="true"
-          className="pointer-events-none fixed right-[2%] top-[52vh] z-40 hidden w-[30%] max-w-[440px] rotate-[2deg] border-2 border-ink object-cover shadow-[6px_6px_0_0_rgba(20,20,20,0.15)] xl:block"
-          style={{ aspectRatio: "4 / 3" }}
-        />
-        <article className="relative mx-auto max-w-2xl px-4 pb-24 pt-32 sm:px-6 lg:pt-40">
+        <div className="mx-auto flex max-w-[1280px] justify-center gap-6 px-4 sm:px-6 2xl:gap-10">
+          <aside className="hidden w-[230px] shrink-0 2xl:block">
+            <div className="sticky top-28 mt-40">
+              <img
+                src="/img/blog-side-left.jpg"
+                alt=""
+                aria-hidden="true"
+                className="pointer-events-none w-full rotate-[-2deg] border-2 border-ink object-cover shadow-[6px_6px_0_0_rgba(20,20,20,0.15)]"
+                style={{ aspectRatio: "3 / 4" }}
+              />
+            </div>
+          </aside>
+
+          <article className="relative w-full max-w-2xl shrink-0 px-4 pb-24 pt-32 sm:px-6 lg:pt-40">
           <Link
             to="/blog"
             className="group inline-flex items-center gap-2 font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-dim transition-colors hover:text-red"
@@ -97,7 +96,20 @@ export default function BlogPost() {
               {t.hero.firstName} {t.hero.lastName}
             </p>
           </div>
-        </article>
+          </article>
+
+          <aside className="hidden w-[230px] shrink-0 2xl:block">
+            <div className="sticky top-28 mt-[34rem]">
+              <img
+                src="/img/blog-side-right.jpg"
+                alt=""
+                aria-hidden="true"
+                className="pointer-events-none w-full rotate-[2deg] border-2 border-ink object-cover shadow-[6px_6px_0_0_rgba(20,20,20,0.15)]"
+                style={{ aspectRatio: "4 / 3" }}
+              />
+            </div>
+          </aside>
+        </div>
       </main>
       <Contact />
     </div>
