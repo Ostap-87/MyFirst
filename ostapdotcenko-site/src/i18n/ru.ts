@@ -308,6 +308,12 @@ export const ru = {
         duration: "",
         url: "https://www.youtube.com/watch?v=GBLcMvTFGyg",
       },
+      {
+        title: "A Quiet Night Above Manhattan — Art Deco Jazz Playlist",
+        platform: "YouTube",
+        duration: "",
+        url: "https://www.youtube.com/watch?v=WUvU0fNwiTY",
+      },
     ],
     videoHint: "плейлисты для перелётов, фокуса и вечерних звонков",
   },

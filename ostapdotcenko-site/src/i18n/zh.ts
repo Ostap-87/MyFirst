@@ -280,6 +280,12 @@ export const zh: Content = {
         duration: "",
         url: "https://www.youtube.com/watch?v=GBLcMvTFGyg",
       },
+      {
+        title: "A Quiet Night Above Manhattan — Art Deco Jazz Playlist",
+        platform: "YouTube",
+        duration: "",
+        url: "https://www.youtube.com/watch?v=WUvU0fNwiTY",
+      },
     ],
     videoHint: "适合飞行、专注和夜间通话的歌单",
   },
