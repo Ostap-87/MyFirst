@@ -241,8 +241,26 @@ export const zh: Content = {
     backToBlogBtn: "返回博客",
     watchBtn: "观看",
     soonTag: "即将上线",
+    categories: [
+      {
+        id: "tech",
+        label: "非常专业的意见",
+        desc: "机器人、人工智能，以及高科技前沿正在发生的一切。",
+      },
+      {
+        id: "life",
+        label: "冷眼旁观者",
+        desc: "亚洲与中国生活：那些真实运转方式的日常观察。",
+      },
+      {
+        id: "reflection",
+        label: "都是狗屎，重新再来….",
+        desc: "毫不掩饰的反思——关于正在发生的事情，以及该怎么办。",
+      },
+    ],
     articles: [
       {
+        category: "tech",
         slug: "b2b-marketplace-sales-enablement",
         date: "2026-06-12",
         tag: "B2B 营销",
@@ -253,6 +271,7 @@ export const zh: Content = {
         link: "",
       },
       {
+        category: "tech",
         slug: "sea-market-entry-lessons",
         date: "2026-07-20",
         tag: "国际商务",
@@ -263,6 +282,7 @@ export const zh: Content = {
         link: "",
       },
       {
+        category: "tech",
         slug: "megamarket-seller-growth-350",
         date: "2026-08-25",
         tag: "电子商务",

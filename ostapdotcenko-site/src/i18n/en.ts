@@ -242,8 +242,26 @@ export const en: Content = {
     backToBlogBtn: "Back to blog",
     watchBtn: "Watch",
     soonTag: "soon",
+    categories: [
+      {
+        id: "tech",
+        label: "Very Expert Opinion",
+        desc: "Robots, AI, and everything happening at the edge of high tech.",
+      },
+      {
+        id: "life",
+        label: "The One Watching It All",
+        desc: "Life in Asia and China: everyday notes on how things actually work.",
+      },
+      {
+        id: "reflection",
+        label: "It's All Garbage, Let's Go Again….",
+        desc: "Unfiltered reflection — thinking out loud about what's going on and what to do about it.",
+      },
+    ],
     articles: [
       {
+        category: "tech",
         slug: "b2b-marketplace-sales-enablement",
         date: "2026-06-12",
         tag: "B2B Marketing",
@@ -254,6 +272,7 @@ export const en: Content = {
         link: "",
       },
       {
+        category: "tech",
         slug: "sea-market-entry-lessons",
         date: "2026-07-20",
         tag: "Global Business",
@@ -264,6 +283,7 @@ export const en: Content = {
         link: "",
       },
       {
+        category: "tech",
         slug: "megamarket-seller-growth-350",
         date: "2026-08-25",
         tag: "E-commerce",

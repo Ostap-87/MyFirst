@@ -247,8 +247,26 @@ export const ru = {
     backToBlogBtn: "Назад к блогу",
     watchBtn: "Смотреть",
     soonTag: "скоро",
+    categories: [
+      {
+        id: "tech",
+        label: "Очень экспертное мнение",
+        desc: "Роботы, ИИ и всё, что происходит на переднем крае высоких технологий.",
+      },
+      {
+        id: "life",
+        label: "Смотрящий за происходящим",
+        desc: "Жизнь в Азии и Китае: бытовые заметки о том, как всё устроено на самом деле.",
+      },
+      {
+        id: "reflection",
+        label: "Все хуйня, давай по новой….",
+        desc: "Рефлексия без прикрас — мысли вслух о том, что происходит и что с этим делать.",
+      },
+    ],
     articles: [
       {
+        category: "tech",
         slug: "b2b-marketplace-sales-enablement",
         date: "2026-06-12",
         tag: "B2B Маркетинг",
@@ -259,6 +277,7 @@ export const ru = {
         link: "",
       },
       {
+        category: "tech",
         slug: "sea-market-entry-lessons",
         date: "2026-07-20",
         tag: "Международный бизнес",
@@ -269,6 +288,7 @@ export const ru = {
         link: "",
       },
       {
+        category: "tech",
         slug: "megamarket-seller-growth-350",
         date: "2026-08-25",
         tag: "E-commerce",

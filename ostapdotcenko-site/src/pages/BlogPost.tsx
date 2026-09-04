@@ -21,6 +21,7 @@ export default function BlogPost() {
   const { t, lang } = useI18n();
   const b = t.blog;
   const article = b.articles.find((a) => a.slug === slug);
+  const category = b.categories.find((c) => c.id === article?.category);
 
   useEffect(() => {
     if (!article) return;
@@ -45,6 +46,14 @@ export default function BlogPost() {
           </Link>
 
           <div className="mt-6 flex flex-wrap items-center gap-3">
+            {category && (
+              <Link
+                to={`/blog#${category.id}`}
+                className="border border-ink/40 px-2 py-0.5 font-mono text-[9.5px] font-bold uppercase tracking-[0.14em] text-ink transition-colors hover:border-red hover:text-red"
+              >
+                {category.label}
+              </Link>
+            )}
             <span className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-blue">{article.tag}</span>
             <span className="tnum font-mono text-[10px] text-dim">
               {formatDate(article.date, lang)} · {article.time}
