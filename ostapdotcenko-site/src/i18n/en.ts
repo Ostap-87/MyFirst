@@ -238,7 +238,7 @@ export const en: Content = {
     pageIntro:
       "This blog is about my life and how I feel about what's going on, delivered so lightly and casually that sometimes even I can't tell where observation ends and fiction begins. Self-irony is the load-bearing wall here. Irony just wanders the floors without permission.\n\nSome characters in my posts are made up. Possibly. But it's not certain. One of them, it seems, has already started their own blog and also claims to be fictional — so it's complicated.\n\nYou might also, without warning, end up talking about Jim Jarmusch's work, hear a controversial opinion on Herbert von Karajan, recall Toshiko Akiyoshi and her jazz variations on Japanese folk music — and somehow end up back on the topic of the industrial robotics market without noticing how it happened. Narrative logic here is optional. Mood is not.",
     articlesLabel: "Articles",
-    videosLabel: "Videos",
+    videosLabel: "Music",
     readMoreBtn: "Read the article",
     viewAllBtn: "All articles",
     backToBlogBtn: "Back to blog",
@@ -275,11 +275,14 @@ export const en: Content = {
       },
     ],
     videos: [
-      { title: "SEA market entry: case teardown", platform: "YouTube", duration: "18:24", url: "" },
-      { title: "B2B funnel in 60 days", platform: "YouTube", duration: "12:07", url: "" },
-      { title: "Negotiating with Chinese partners", platform: "VK Video", duration: "41:52", url: "" },
+      {
+        title: "Luxury Hotel Lounge — Smooth Jazz & Elegant Background Music",
+        platform: "YouTube",
+        duration: "",
+        url: "https://www.youtube.com/watch?v=GBLcMvTFGyg",
+      },
     ],
-    videoHint: "agent: paste a video URL — the card becomes clickable",
+    videoHint: "playlists for flights, focus, and evening calls",
   },
 
   testimonials: {

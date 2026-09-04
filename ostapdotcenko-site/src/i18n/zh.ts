@@ -237,7 +237,7 @@ export const zh: Content = {
     pageIntro:
       "这个博客写的是我的生活，以及我对眼前这一切的态度——讲述得如此轻松随意，以至于有时候连我自己都分不清观察到哪里结束、虚构从哪里开始。自嘲是这里的承重墙，讽刺则是未经许可就在各层楼里溜达的那位。\n\n我文章里的有些人物是虚构的。也许吧。但也不一定。其中一个，好像已经开了自己的博客，也声称自己是虚构的——所以这事儿说不清楚。\n\n在这里，你还可能毫无预兆地聊到吉姆·贾木许的作品，听到一个关于赫伯特·冯·卡拉扬的争议观点，想起穐吉敏子用日本民谣改编的爵士变奏——然后不知不觉又绕回工业机器人市场的话题。叙事逻辑在这里不是必需品，但氛围感是。",
     articlesLabel: "文章",
-    videosLabel: "视频",
+    videosLabel: "音乐",
     readMoreBtn: "阅读全文",
     viewAllBtn: "所有文章",
     backToBlogBtn: "返回博客",
@@ -274,11 +274,14 @@ export const zh: Content = {
       },
     ],
     videos: [
-      { title: "东南亚市场进入：案例拆解", platform: "YouTube", duration: "18:24", url: "" },
-      { title: "60 天搭建 B2B 漏斗", platform: "YouTube", duration: "12:07", url: "" },
-      { title: "与中国伙伴谈判", platform: "VK Video", duration: "41:52", url: "" },
+      {
+        title: "Luxury Hotel Lounge — Smooth Jazz & Elegant Background Music",
+        platform: "YouTube",
+        duration: "",
+        url: "https://www.youtube.com/watch?v=GBLcMvTFGyg",
+      },
     ],
-    videoHint: "给代理：粘贴视频链接后，卡片即可点击",
+    videoHint: "适合飞行、专注和夜间通话的歌单",
   },
 
   testimonials: {
