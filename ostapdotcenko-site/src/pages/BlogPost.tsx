@@ -37,8 +37,8 @@ export default function BlogPost() {
     <div className="min-h-screen bg-bone font-body text-ink">
       <Header />
       <main className="dotgrid relative bg-bone">
-        <div className="mx-auto flex max-w-[1280px] justify-center gap-6 px-4 sm:px-6 2xl:gap-10">
-          <aside className="hidden w-[230px] shrink-0 2xl:block">
+        <div className="mx-auto flex max-w-[1280px] justify-center gap-6 px-4 sm:px-6 xl:gap-8">
+          <aside className="hidden w-[230px] shrink-0 xl:block">
             <div className="sticky top-28 mt-40">
               <img
                 src="/img/blog-side-left.jpg"
@@ -98,7 +98,7 @@ export default function BlogPost() {
           </div>
           </article>
 
-          <aside className="hidden w-[230px] shrink-0 2xl:block">
+          <aside className="hidden w-[230px] shrink-0 xl:block">
             <div className="sticky top-28 mt-[34rem]">
               <img
                 src="/img/blog-side-right.jpg"
