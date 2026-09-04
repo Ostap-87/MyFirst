@@ -38,7 +38,6 @@ export default function BlogIndex() {
               <h1 className="mt-4 font-display text-[clamp(1.8rem,4.6vw,3.2rem)] font-bold leading-[1.05]">
                 {b.lines.join(" ")}
               </h1>
-              <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-ink/70">{b.intro}</p>
             </div>
 
             <Reveal y={24} className="hidden lg:block">
@@ -52,6 +51,14 @@ export default function BlogIndex() {
                 </div>
               </figure>
             </Reveal>
+          </div>
+
+          <div className="mt-8 max-w-2xl space-y-4">
+            {b.pageIntro.split("\n\n").map((para, i) => (
+              <p key={i} className="text-[15px] leading-relaxed text-ink/70">
+                {para}
+              </p>
+            ))}
           </div>
 
           {/* навигация по разделам */}

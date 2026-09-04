@@ -235,6 +235,8 @@ export const en: Content = {
     lines: ["Articles", "and sketches from laowai life 老外"],
     intro:
       "I write about China and Southeast Asia markets, B2B marketing, tech tourism, robots and reflections on life — basically, everything that keeps me living between three time zones and one suitcase :)))",
+    pageIntro:
+      "This blog is about my life and how I feel about what's going on, delivered so lightly and casually that sometimes even I can't tell where observation ends and fiction begins. Self-irony is the load-bearing wall here. Irony just wanders the floors without permission.\n\nSome characters in my posts are made up. Possibly. But it's not certain. One of them, it seems, has already started their own blog and also claims to be fictional — so it's complicated.\n\nYou might also, without warning, end up talking about Jim Jarmusch's work, hear a controversial opinion on Herbert von Karajan, recall Toshiko Akiyoshi and her jazz variations on Japanese folk music — and somehow end up back on the topic of the industrial robotics market without noticing how it happened. Narrative logic here is optional. Mood is not.",
     articlesLabel: "Articles",
     videosLabel: "Videos",
     readMoreBtn: "Read the article",
