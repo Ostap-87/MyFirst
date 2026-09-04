@@ -287,6 +287,12 @@ export const en: Content = {
         duration: "",
         url: "https://www.youtube.com/watch?v=WUvU0fNwiTY",
       },
+      {
+        title: "Live With Purpose — Vintage Jazz",
+        platform: "YouTube",
+        duration: "",
+        url: "https://www.youtube.com/watch?v=1mkghExpNDg",
+      },
     ],
     videoHint: "playlists for flights, focus, and evening calls",
   },

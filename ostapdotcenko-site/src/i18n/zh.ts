@@ -286,6 +286,12 @@ export const zh: Content = {
         duration: "",
         url: "https://www.youtube.com/watch?v=WUvU0fNwiTY",
       },
+      {
+        title: "Live With Purpose — Vintage Jazz",
+        platform: "YouTube",
+        duration: "",
+        url: "https://www.youtube.com/watch?v=1mkghExpNDg",
+      },
     ],
     videoHint: "适合飞行、专注和夜间通话的歌单",
   },
