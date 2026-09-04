@@ -234,7 +234,7 @@ export const en: Content = {
     label: "Blog",
     lines: ["Articles", "& videos"],
     intro:
-      "I write about China and Southeast Asia markets, B2B marketing, tech tourism, robots and e-commerce — basically, everything that keeps me living between three time zones and one suitcase :)))",
+      "I write about China and Southeast Asia markets, B2B marketing, tech tourism, robots and reflections on life — basically, everything that keeps me living between three time zones and one suitcase :)))",
     articlesLabel: "Articles",
     videosLabel: "Videos",
     readMoreBtn: "Read the article",
