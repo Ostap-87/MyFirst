@@ -39,15 +39,17 @@ export default function BlogPost() {
       <main className="dotgrid relative bg-bone">
         <div className="mx-auto flex max-w-[1280px] justify-center gap-6 px-4 sm:px-6 xl:gap-8">
           <aside className="hidden w-[230px] shrink-0 xl:block">
-            <div className="sticky top-28 mt-40">
-              <img
-                src="/img/blog-side-left.jpg"
-                alt=""
-                aria-hidden="true"
-                className="pointer-events-none w-full rotate-[-2deg] border-2 border-ink object-cover shadow-[6px_6px_0_0_rgba(20,20,20,0.15)]"
-                style={{ aspectRatio: "3 / 4" }}
-              />
-            </div>
+            {article.sideImages && (
+              <div className="sticky top-28 mt-40">
+                <img
+                  src={article.sideImages.left}
+                  alt=""
+                  aria-hidden="true"
+                  className="pointer-events-none w-full rotate-[-2deg] border-2 border-ink object-cover shadow-[6px_6px_0_0_rgba(20,20,20,0.15)]"
+                  style={{ aspectRatio: "3 / 4" }}
+                />
+              </div>
+            )}
           </aside>
 
           <article className="relative w-full max-w-2xl shrink-0 px-4 pb-24 pt-32 sm:px-6 lg:pt-40">
@@ -99,15 +101,17 @@ export default function BlogPost() {
           </article>
 
           <aside className="hidden w-[230px] shrink-0 xl:block">
-            <div className="sticky top-28 mt-[34rem]">
-              <img
-                src="/img/blog-side-right.jpg"
-                alt=""
-                aria-hidden="true"
-                className="pointer-events-none w-full rotate-[2deg] border-2 border-ink object-cover shadow-[6px_6px_0_0_rgba(20,20,20,0.15)]"
-                style={{ aspectRatio: "4 / 3" }}
-              />
-            </div>
+            {article.sideImages && (
+              <div className="sticky top-28 mt-[34rem]">
+                <img
+                  src={article.sideImages.right}
+                  alt=""
+                  aria-hidden="true"
+                  className="pointer-events-none w-full rotate-[2deg] border-2 border-ink object-cover shadow-[6px_6px_0_0_rgba(20,20,20,0.15)]"
+                  style={{ aspectRatio: "4 / 3" }}
+                />
+              </div>
+            )}
           </aside>
         </div>
       </main>
