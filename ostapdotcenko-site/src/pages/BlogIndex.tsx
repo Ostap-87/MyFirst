@@ -45,7 +45,7 @@ export default function BlogIndex() {
               <figure className="relative w-[190px] rotate-2 border-2 border-ink bg-card p-3 shadow-[10px_10px_0_var(--color-yellow)] transition-transform duration-500 hover:rotate-0">
                 <div className="relative aspect-[4/5] overflow-hidden border border-ink/20 bg-deep">
                   <img
-                    src={photo("portrait.jpg")}
+                    src={photo("blog-portrait.jpg")}
                     alt={`${t.hero.firstName} ${t.hero.lastName}`}
                     className="h-full w-full object-cover"
                   />
