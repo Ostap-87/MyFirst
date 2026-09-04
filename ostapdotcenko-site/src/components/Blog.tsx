@@ -1,13 +1,12 @@
-import { useState } from "react";
+import { Link } from "react-router-dom";
 import { useI18n } from "../i18n";
-import { ArrowUpRight, Play, Plus } from "./Icons";
+import { ArrowUpRight, Play } from "./Icons";
 import Reveal, { SectionHead } from "./Reveal";
 
 /* Блог: статьи + видео. Публикации добавляются в src/i18n/ (массивы articles / videos) */
 export default function Blog() {
   const { t } = useI18n();
   const b = t.blog;
-  const [openIdx, setOpenIdx] = useState<number | null>(null);
 
   return (
     <section id="blog" className="dotgrid relative bg-bone">
@@ -25,66 +24,42 @@ export default function Blog() {
 
         {/* статьи */}
         <Reveal delay={120}>
-          <p className="mt-14 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.26em] text-dim">
-            <span className="h-2 w-2 bg-red" /> {b.articlesLabel}
-          </p>
+          <div className="mt-14 flex items-center justify-between gap-3">
+            <p className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.26em] text-dim">
+              <span className="h-2 w-2 bg-red" /> {b.articlesLabel}
+            </p>
+            <Link
+              to="/blog"
+              className="group flex items-center gap-1.5 font-mono text-[10.5px] font-bold uppercase tracking-[0.18em] text-ink transition-colors hover:text-red"
+            >
+              {b.viewAllBtn}
+              <ArrowUpRight size={13} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            </Link>
+          </div>
         </Reveal>
         <div className="mt-6 grid gap-5 lg:grid-cols-3">
-          {b.articles.map((a, i) => {
-            const isOpen = openIdx === i;
-            return (
-              <Reveal key={a.title} delay={i * 110}>
-                <article
-                  className={`flex h-full flex-col border-2 border-ink bg-card transition-all duration-300 ${
-                    isOpen ? "shadow-[8px_8px_0_var(--color-red)]" : "hover:shadow-[8px_8px_0_var(--color-yellow)]"
-                  }`}
-                >
+          {b.articles.map((a, i) => (
+            <Reveal key={a.slug} delay={i * 110}>
+              <Link to={`/blog/${a.slug}`} className="group block h-full">
+                <article className="flex h-full flex-col border-2 border-ink bg-card transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[8px_8px_0_var(--color-yellow)]">
                   <div className="flex items-center justify-between gap-3 border-b-2 border-ink px-5 py-3">
-                    <span className={`font-mono text-[10px] font-bold uppercase tracking-[0.18em] ${isOpen ? "text-red" : "text-blue"}`}>
-                      {a.tag}
-                    </span>
+                    <span className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-blue">{a.tag}</span>
                     <span className="tnum font-mono text-[10px] text-dim">{a.time}</span>
                   </div>
                   <div className="flex flex-1 flex-col p-5">
                     <h3 className="font-display text-[16.5px] font-bold leading-snug">{a.title}</h3>
                     <p className="mt-3 text-[13.5px] leading-relaxed text-ink/70">{a.excerpt}</p>
-                    <div
-                      className="grid transition-[grid-template-rows] duration-500 ease-out"
-                      style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
-                    >
-                      <div className="overflow-hidden">
-                        <p className="border-l-2 border-red pt-4 text-[13px] leading-relaxed text-ink/75">{a.full}</p>
-                        {a.link && (
-                          <a
-                            href={a.link}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="mt-3 inline-flex items-center gap-1.5 font-mono text-[10.5px] font-bold uppercase tracking-[0.16em] text-blue hover:text-red"
-                          >
-                            {b.watchBtn} <ArrowUpRight size={12} />
-                          </a>
-                        )}
-                      </div>
-                    </div>
-                    <button
-                      onClick={() => setOpenIdx(isOpen ? null : i)}
-                      aria-expanded={isOpen}
-                      className="group mt-auto flex items-center gap-2 pt-6 font-mono text-[10.5px] font-bold uppercase tracking-[0.2em] text-ink transition-colors hover:text-red"
-                    >
-                      <span
-                        className={`flex h-7 w-7 items-center justify-center border border-ink/40 transition-all duration-300 group-hover:border-red group-hover:bg-red group-hover:text-bone ${
-                          isOpen ? "rotate-45 border-red bg-red text-bone" : ""
-                        }`}
-                      >
-                        <Plus size={13} />
+                    <span className="mt-auto flex items-center gap-2 pt-6 font-mono text-[10.5px] font-bold uppercase tracking-[0.2em] text-ink transition-colors group-hover:text-red">
+                      <span className="flex h-7 w-7 items-center justify-center border border-ink/40 transition-all duration-300 group-hover:border-red group-hover:bg-red group-hover:text-bone">
+                        <ArrowUpRight size={13} />
                       </span>
-                      {isOpen ? b.collapseBtn : b.expandBtn}
-                    </button>
+                      {b.readMoreBtn}
+                    </span>
                   </div>
                 </article>
-              </Reveal>
-            );
-          })}
+              </Link>
+            </Reveal>
+          ))}
         </div>
 
         {/* видео */}
