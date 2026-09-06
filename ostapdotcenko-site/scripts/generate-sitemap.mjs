@@ -11,9 +11,12 @@ const slugs = [...ruSource.matchAll(/slug:\s*"([^"]+)"/g)].map((m) => m[1]);
 const categoriesBlock = ruSource.match(/categories:\s*\[([\s\S]*?)\n\s*\],\s*\n\s*articles:/);
 const categoryIds = categoriesBlock ? [...categoriesBlock[1].matchAll(/id:\s*"([^"]+)"/g)].map((m) => m[1]) : [];
 
+const SITE_PAGES = ["about", "career", "projects", "consulting"];
+
 const BASE = "https://ostapdotcenko.ru";
 const urls = [
   { loc: `${BASE}/`, changefreq: "monthly", priority: "1.0" },
+  ...SITE_PAGES.map((path) => ({ loc: `${BASE}/${path}`, changefreq: "monthly", priority: "0.8" })),
   { loc: `${BASE}/blog`, changefreq: "weekly", priority: "0.8" },
   ...categoryIds.map((id) => ({ loc: `${BASE}/blog/category/${id}`, changefreq: "weekly", priority: "0.7" })),
   ...slugs.map((slug) => ({ loc: `${BASE}/blog/${slug}`, changefreq: "yearly", priority: "0.6" })),

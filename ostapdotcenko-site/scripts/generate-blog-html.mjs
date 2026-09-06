@@ -40,6 +40,38 @@ const categories = [...ruSource.matchAll(categoryRegex)].map((m) => ({
   desc: unescapeJs(m[3]),
 }));
 
+// Разделы главной страницы (About, Career, Projects, Consulting), у каждого
+// теперь есть собственный роут (/about, /career, ...) сверх якорной секции
+// на главной — см. src/pages/*Page.tsx. Нужны свои title/description для
+// той же цели, что и у категорий блога: краулер должен видеть уникальный
+// контент на каждом URL, а не один и тот же общий текст с главной.
+function extractSection(source, sectionKey) {
+  const match = source.match(new RegExp(`\\n  ${sectionKey}:\\s*\\{([\\s\\S]*?)\\n  \\},?\\n`));
+  return match ? match[1] : "";
+}
+
+function extractField(section, fieldKey) {
+  const match = section.match(new RegExp(`${fieldKey}:\\s*"((?:[^"\\\\]|\\\\.)*)"`));
+  return match ? unescapeJs(match[1]) : null;
+}
+
+function extractFirstArrayString(section, fieldKey) {
+  const match = section.match(new RegExp(`${fieldKey}:\\s*\\[\\s*"((?:[^"\\\\]|\\\\.)*)"`));
+  return match ? unescapeJs(match[1]) : null;
+}
+
+const aboutSection = extractSection(ruSource, "about");
+const careerSection = extractSection(ruSource, "career");
+const projectsSection = extractSection(ruSource, "projects");
+const consultingSection = extractSection(ruSource, "consulting");
+
+const sitePages = [
+  { path: "about", label: extractField(aboutSection, "label"), desc: extractFirstArrayString(aboutSection, "bio") },
+  { path: "career", label: extractField(careerSection, "label"), desc: extractField(careerSection, "intro") },
+  { path: "projects", label: extractField(projectsSection, "label"), desc: extractField(projectsSection, "intro") },
+  { path: "consulting", label: extractField(consultingSection, "label"), desc: extractField(consultingSection, "intro") },
+];
+
 const BASE = "https://ostapdotcenko.ru";
 const distDir = join(root, "dist");
 const templatePath = join(distDir, "index.html");
@@ -125,4 +157,32 @@ for (const { id, label, desc } of categories) {
   writtenCategories++;
 }
 
-console.log(`generate-blog-html: wrote ${written} per-article HTML files and ${writtenCategories} per-category HTML files with unique title/description/OG tags`);
+let writtenSitePages = 0;
+for (const { path, label, desc } of sitePages) {
+  if (!label || !desc) {
+    console.warn(`generate-blog-html: skipping /${path} — could not extract label/desc from ru.ts`);
+    continue;
+  }
+  const fullTitle = `${label} — Остап Доценко`;
+  const url = `${BASE}/${path}`;
+
+  let html = baseHtml
+    .replace(/<title>[^<]*<\/title>/, `<title>${escapeHtml(fullTitle)}</title>`)
+    .replace(
+      /<meta\s+name="description"\s+content="[^"]*"\s*\/>/s,
+      `<meta name="description" content="${escapeHtml(desc)}" />`
+    )
+    .replace(/<meta property="og:type" content="[^"]*" \/>/, `<meta property="og:type" content="website" />`)
+    .replace(/<meta property="og:title" content="[^"]*" \/>/, `<meta property="og:title" content="${escapeHtml(fullTitle)}" />`)
+    .replace(/<meta property="og:description" content="[^"]*" \/>/, `<meta property="og:description" content="${escapeHtml(desc)}" />`)
+    .replace(/<meta property="og:url" content="[^"]*" \/>/, `<meta property="og:url" content="${url}" />`);
+
+  const outDir = join(distDir, path);
+  mkdirSync(outDir, { recursive: true });
+  writeFileSync(join(outDir, "index.html"), html);
+  writtenSitePages++;
+}
+
+console.log(
+  `generate-blog-html: wrote ${written} per-article, ${writtenCategories} per-category and ${writtenSitePages} site-page HTML files with unique title/description/OG tags`
+);

@@ -13,6 +13,10 @@ import { LangProvider } from "./i18n";
 import BlogIndex from "./pages/BlogIndex";
 import BlogPost from "./pages/BlogPost";
 import BlogCategory from "./pages/BlogCategory";
+import AboutPage from "./pages/AboutPage";
+import CareerPage from "./pages/CareerPage";
+import ProjectsPage from "./pages/ProjectsPage";
+import ConsultingPage from "./pages/ConsultingPage";
 
 function Home() {
   return (
@@ -42,6 +46,10 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/career" element={<CareerPage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/consulting" element={<ConsultingPage />} />
           <Route path="/blog" element={<BlogIndex />} />
           <Route path="/blog/category/:id" element={<BlogCategory />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
