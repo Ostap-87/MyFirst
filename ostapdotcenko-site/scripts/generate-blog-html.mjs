@@ -60,6 +60,20 @@ if (!baseHtml.includes('property="og:title"')) {
   writeFileSync(templatePath, baseHtml);
 }
 
+// dist/blog/ существует как реальная директория (в ней лежат подпапки статей ниже),
+// поэтому nginx (try_files $uri $uri/ /index.html) находит саму директорию раньше,
+// чем успевает откатиться на SPA-фолбэк — и без index.html внутри отдаёт 403
+// (autoindex выключен). Кладём сюда копию базового шаблона, чтобы страница листинга
+// блога продолжала открываться напрямую.
+writeFileSync(
+  (() => {
+    const dir = join(distDir, "blog");
+    mkdirSync(dir, { recursive: true });
+    return join(dir, "index.html");
+  })(),
+  baseHtml.replace(/<meta property="og:url" content="[^"]*" \/>/, `<meta property="og:url" content="${BASE}/blog" />`)
+);
+
 let written = 0;
 for (const { slug, title, excerpt } of articles) {
   const fullTitle = `${title} — Остап Доценко`;
