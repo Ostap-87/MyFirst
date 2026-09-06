@@ -33,6 +33,13 @@ const articles = [...ruSource.matchAll(articleRegex)].map((m) => ({
   excerpt: unescapeJs(m[3]),
 }));
 
+const categoryRegex = /id:\s*"([^"]+)",\s*\n\s*label:\s*"((?:[^"\\]|\\.)*)",\s*\n\s*desc:\s*"((?:[^"\\]|\\.)*)"/g;
+const categories = [...ruSource.matchAll(categoryRegex)].map((m) => ({
+  id: m[1],
+  label: unescapeJs(m[2]),
+  desc: unescapeJs(m[3]),
+}));
+
 const BASE = "https://ostapdotcenko.ru";
 const distDir = join(root, "dist");
 const templatePath = join(distDir, "index.html");
@@ -96,4 +103,26 @@ for (const { slug, title, excerpt } of articles) {
   written++;
 }
 
-console.log(`generate-blog-html: wrote ${written} per-article HTML files with unique title/description/OG tags`);
+let writtenCategories = 0;
+for (const { id, label, desc } of categories) {
+  const fullTitle = `${label} — Статьи — Остап Доценко`;
+  const url = `${BASE}/blog/category/${id}`;
+
+  let html = baseHtml
+    .replace(/<title>[^<]*<\/title>/, `<title>${escapeHtml(fullTitle)}</title>`)
+    .replace(
+      /<meta\s+name="description"\s+content="[^"]*"\s*\/>/s,
+      `<meta name="description" content="${escapeHtml(desc)}" />`
+    )
+    .replace(/<meta property="og:type" content="[^"]*" \/>/, `<meta property="og:type" content="website" />`)
+    .replace(/<meta property="og:title" content="[^"]*" \/>/, `<meta property="og:title" content="${escapeHtml(fullTitle)}" />`)
+    .replace(/<meta property="og:description" content="[^"]*" \/>/, `<meta property="og:description" content="${escapeHtml(desc)}" />`)
+    .replace(/<meta property="og:url" content="[^"]*" \/>/, `<meta property="og:url" content="${url}" />`);
+
+  const outDir = join(distDir, "blog", "category", id);
+  mkdirSync(outDir, { recursive: true });
+  writeFileSync(join(outDir, "index.html"), html);
+  writtenCategories++;
+}
+
+console.log(`generate-blog-html: wrote ${written} per-article HTML files and ${writtenCategories} per-category HTML files with unique title/description/OG tags`);

@@ -64,13 +64,13 @@ export default function BlogIndex() {
           {/* навигация по разделам */}
           <div className="mt-10 flex flex-wrap gap-3">
             {b.categories.map((c) => (
-              <a
+              <Link
                 key={c.id}
-                href={`#${c.id}`}
+                to={`/blog/category/${c.id}`}
                 className="border-2 border-ink px-4 py-2 font-mono text-[11px] font-bold uppercase tracking-[0.14em] text-ink transition-all hover:bg-ink hover:text-yellow"
               >
                 {c.label}
-              </a>
+              </Link>
             ))}
           </div>
 

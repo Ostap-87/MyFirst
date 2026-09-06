@@ -12,6 +12,7 @@ import Contact from "./components/Contact";
 import { LangProvider } from "./i18n";
 import BlogIndex from "./pages/BlogIndex";
 import BlogPost from "./pages/BlogPost";
+import BlogCategory from "./pages/BlogCategory";
 
 function Home() {
   return (
@@ -42,6 +43,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/blog" element={<BlogIndex />} />
+          <Route path="/blog/category/:id" element={<BlogCategory />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
         </Routes>
       </BrowserRouter>

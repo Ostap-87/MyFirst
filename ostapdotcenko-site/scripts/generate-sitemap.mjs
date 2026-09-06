@@ -8,10 +8,14 @@ const root = join(__dirname, "..");
 
 const ruSource = readFileSync(join(root, "src/i18n/ru.ts"), "utf-8");
 const slugs = [...ruSource.matchAll(/slug:\s*"([^"]+)"/g)].map((m) => m[1]);
+const categoriesBlock = ruSource.match(/categories:\s*\[([\s\S]*?)\n\s*\],\s*\n\s*articles:/);
+const categoryIds = categoriesBlock ? [...categoriesBlock[1].matchAll(/id:\s*"([^"]+)"/g)].map((m) => m[1]) : [];
 
 const BASE = "https://ostapdotcenko.ru";
 const urls = [
   { loc: `${BASE}/`, changefreq: "monthly", priority: "1.0" },
+  { loc: `${BASE}/blog`, changefreq: "weekly", priority: "0.8" },
+  ...categoryIds.map((id) => ({ loc: `${BASE}/blog/category/${id}`, changefreq: "weekly", priority: "0.7" })),
   ...slugs.map((slug) => ({ loc: `${BASE}/blog/${slug}`, changefreq: "yearly", priority: "0.6" })),
 ];
 
@@ -24,4 +28,4 @@ ${urls
 `;
 
 writeFileSync(join(root, "public/sitemap.xml"), xml);
-console.log(`sitemap.xml written with ${urls.length} URLs (${slugs.length} blog posts)`);
+console.log(`sitemap.xml written with ${urls.length} URLs (${slugs.length} blog posts, ${categoryIds.length} categories)`);

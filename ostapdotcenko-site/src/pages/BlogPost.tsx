@@ -67,7 +67,7 @@ export default function BlogPost() {
           <div className="mt-6 flex flex-wrap items-center gap-3">
             {category && (
               <Link
-                to={`/blog#${category.id}`}
+                to={`/blog/category/${category.id}`}
                 className="border border-ink/40 px-2 py-0.5 font-mono text-[9.5px] font-bold uppercase tracking-[0.14em] text-ink transition-colors hover:border-red hover:text-red"
               >
                 {category.label}
