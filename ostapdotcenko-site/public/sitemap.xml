@@ -45,4 +45,9 @@
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
+  <url>
+    <loc>https://ostapdotcenko.ru/blog/wrc-2026-beijing-robots-stopped-dancing</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
 </urlset>
