@@ -229,13 +229,14 @@ export default function Contact() {
               </p>
               <p className="font-mono text-[9.5px] uppercase tracking-[0.2em] text-dim">design & code — handmade</p>
             </div>
-            <a
-              href="#top"
+            <button
+              type="button"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
               className="group flex items-center gap-2.5 border-2 border-ink px-4 py-2.5 font-mono text-[10.5px] font-bold uppercase tracking-[0.18em] transition-all hover:bg-ink hover:text-yellow"
             >
               {c.topBtn}
               <ArrowUpRight size={14} className="-rotate-45 transition-transform group-hover:-translate-y-1" />
-            </a>
+            </button>
           </div>
         </footer>
       </div>

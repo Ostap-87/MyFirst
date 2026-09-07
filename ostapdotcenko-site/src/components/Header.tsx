@@ -18,7 +18,7 @@ export default function Header() {
 
       <div className={`transition-colors duration-300 ${open ? "border-b-2 border-ink bg-bone" : "bg-bone/90 backdrop-blur-sm"}`}>
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6">
-          <Link to="/#top" className="group flex items-center text-ink" onClick={() => setOpen(false)}>
+          <Link to="/" className="group flex items-center text-ink" onClick={() => setOpen(false)}>
             <span className="whitespace-nowrap font-display text-[13px] font-black uppercase tracking-[0.02em] sm:text-xl sm:tracking-[0.06em]">
               {t.hero.firstName} {t.hero.lastName}
             </span>
