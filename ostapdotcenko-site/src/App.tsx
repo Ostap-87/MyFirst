@@ -17,6 +17,7 @@ import AboutPage from "./pages/AboutPage";
 import CareerPage from "./pages/CareerPage";
 import ProjectsPage from "./pages/ProjectsPage";
 import ConsultingPage from "./pages/ConsultingPage";
+import MetrikaPageview from "./components/MetrikaPageview";
 
 function Home() {
   return (
@@ -44,6 +45,7 @@ export default function App() {
   return (
     <LangProvider>
       <BrowserRouter>
+        <MetrikaPageview />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<AboutPage />} />
