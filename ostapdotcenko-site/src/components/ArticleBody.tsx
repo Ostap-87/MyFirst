@@ -27,8 +27,13 @@ function renderInline(text: string): ReactNode[] {
   return parts;
 }
 
+/* Блок-картинка на всю ширину текста: "![подпись](путь)" отдельным абзацем.
+   Подпись необязательна ("![](путь)" — картинка без подписи). */
+const IMAGE_BLOCK_RE = /^!\[([^\]]*)\]\(([^)]+)\)$/;
+
 /* Рендер текста статьи: абзацы через пустую строку, "## " — подзаголовок,
-   строки "* ..." подряд — маркированный список, короткая строка на ":" — жирная подпись-лейбл */
+   "![подпись](путь)" — картинка на всю ширину (например график), строки "* ..."
+   подряд — маркированный список, короткая строка на ":" — жирная подпись-лейбл */
 export default function ArticleBody({ text }: { text: string }) {
   const blocks = text.split(/\n\n+/);
 
@@ -40,6 +45,21 @@ export default function ArticleBody({ text }: { text: string }) {
             <h2 key={i} className="pt-2 font-display text-[22px] font-bold leading-snug text-ink sm:text-[26px]">
               {block.slice(3)}
             </h2>
+          );
+        }
+
+        const imageMatch = block.match(IMAGE_BLOCK_RE);
+        if (imageMatch) {
+          const [, caption, src] = imageMatch;
+          return (
+            <figure key={i} className="my-2">
+              <img src={src} alt={caption} className="w-full border-2 border-ink" loading="lazy" />
+              {caption && (
+                <figcaption className="mt-2 text-center font-mono text-[12px] uppercase tracking-[0.1em] text-dim">
+                  {caption}
+                </figcaption>
+              )}
+            </figure>
           );
         }
 
