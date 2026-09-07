@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useI18n } from "../i18n";
-import { Plus } from "./Icons";
+import { ArrowUpRight, Plus } from "./Icons";
 import Reveal, { SectionHead } from "./Reveal";
 
 export default function Projects() {
@@ -74,6 +74,17 @@ export default function Projects() {
                               </span>
                             ))}
                           </div>
+                          {"link" in p && p.link && (
+                            <a
+                              href={p.link}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="mt-5 inline-flex items-center gap-2 font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-blue hover:text-red"
+                            >
+                              {"linkLabel" in p && p.linkLabel ? p.linkLabel : p.link}
+                              <ArrowUpRight size={14} />
+                            </a>
+                          )}
                         </div>
                         <div className="hidden h-full w-28 border-l-2 border-dashed border-ink/20 sm:block" aria-hidden />
                       </div>

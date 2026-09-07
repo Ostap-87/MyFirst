@@ -154,7 +154,7 @@ export const en: Content = {
   projects: {
     label: "Projects",
     lines: ["Case studies", "I'm proud of"],
-    intro: "Six stories of strategy turning into numbers. Click a row — details inside.",
+    intro: "Stories of strategy turning into numbers. Click a row — details inside.",
     items: [
       {
         tag: "Megamarket / Sber · 2023–2025",
@@ -191,6 +191,22 @@ export const en: Content = {
         title: "“Made in Russia”",
         desc: "Popularizing domestic producers on Megamarket: a brand program, onboarding system and marketing support. Participant growth from 0 to 2,000 companies, a video campaign and a new SMB promotion format.",
         chips: ["0 → 2000 companies", "SMB", "video campaign"],
+      },
+      {
+        tag: "Aura Robotics · 2026",
+        title: "Aura Robotics client reviews",
+        desc: "Organizing visits to Chinese robotics factories with direct access to leadership and R&D — not rank-and-file managers. SolarTek toured Leju Robotics, Robotera, AgiBot and Kepler in 5 days; BelMol closed a dairy-automation deal in a 2-hour meeting at the Kepler factory; Prosto Eda met personally with the founder of a food-industry robotics manufacturer.",
+        chips: ["SolarTek", "BelMol", "Prosto Eda"],
+        link: "https://aura-robotics.ru/en/cases",
+        linkLabel: "See cases on aura-robotics.ru",
+      },
+      {
+        tag: "GlobalTechTour · 2026",
+        title: "Delivered tours and cases — GlobalTechTour",
+        desc: "Turnkey tech expeditions and corporate events: factory and R&D visits at BYD, Xiaomi, Baidu, Meituan, Poizon and Leju Robotics, plus a full-cycle corporate forum for Megamarket (Sber) in Shenzhen for 1,200+ attendees — logistics, venue and business program end to end.",
+        chips: ["BYD", "Xiaomi", "Meituan", "Megamarket"],
+        link: "https://globaltechtour.ru/cases",
+        linkLabel: "See cases on globaltechtour.ru",
       },
     ],
   },

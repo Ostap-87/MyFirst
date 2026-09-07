@@ -154,7 +154,7 @@ export const zh: Content = {
   projects: {
     label: "项目",
     lines: ["值得骄傲的", "案例"],
-    intro: "六个战略转化为数字的故事。点击行查看详情。",
+    intro: "战略转化为数字的故事。点击行查看详情。",
     items: [
       {
         tag: "Megamarket / Sber · 2023–2025",
@@ -191,6 +191,22 @@ export const zh: Content = {
         title: "“俄罗斯制造”",
         desc: "在 Megamarket 平台推广本土生产商：品牌计划、入驻体系与营销支持。参与企业从 0 增长到 2000 家，配套视频推广与中小企业推广新形式。",
         chips: ["0 → 2000 家企业", "中小企业", "视频推广"],
+      },
+      {
+        tag: "Aura Robotics · 2026年",
+        title: "Aura Robotics 客户评价",
+        desc: "组织参观中国机器人工厂，直接对接企业管理层与研发团队，而非普通经理。СоларТек 五天内参观了 Leju Robotics、Robotera、AgiBot 和 Kepler；БелМол 在 Kepler 工厂经过 2 小时会谈就解决了乳制品生产自动化方案；Просто Еда 与食品行业机器人设备制造商创始人本人会面。",
+        chips: ["СоларТек", "БелМол", "Просто Еда"],
+        link: "https://aura-robotics.ru/cases",
+        linkLabel: "在 aura-robotics.ru 查看案例",
+      },
+      {
+        tag: "GlobalTechTour · 2026年",
+        title: "GlobalTechTour 已落地的考察与案例",
+        desc: "一站式技术考察团与企业活动：参观 BYD、小米、百度、美团、得物和 Leju Robotics 的工厂与研发中心，并为 Мегамаркет（Сбер）在深圳组织了一场 1200 多人的企业论坛——物流、场地与商务日程全程负责。",
+        chips: ["BYD", "小米", "美团", "Мегамаркет"],
+        link: "https://globaltechtour.ru/cases",
+        linkLabel: "在 globaltechtour.ru 查看案例",
       },
     ],
   },
