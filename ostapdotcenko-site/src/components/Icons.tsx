@@ -74,6 +74,13 @@ export const Clock = ({ size, className }: P) => (
   </svg>
 );
 
+export const Calendar = ({ size, className }: P) => (
+  <svg {...base(size)} className={className} aria-hidden>
+    <rect x="3.5" y="5" width="17" height="15.5" rx="1" />
+    <path d="M3.5 9.5h17M8 3v4M16 3v4" />
+  </svg>
+);
+
 export const Star4 = ({ size, className }: P) => (
   <svg {...base(size)} className={className} aria-hidden>
     <path d="M12 3c.7 4.4 4.6 8.3 9 9-4.4.7-8.3 4.6-9 9-.7-4.4-4.6-8.3-9-9 4.4-.7 8.3-4.6 9-9Z" fill="currentColor" stroke="none" />

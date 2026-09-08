@@ -1,11 +1,63 @@
-import { TELEGRAM_URL, useI18n } from "../i18n";
-import { ArrowUpRight, Check, Star4 } from "./Icons";
+import { useEffect } from "react";
+import { CAL_USERNAME, TELEGRAM_URL, useI18n } from "../i18n";
+import { ArrowUpRight, Calendar, Check, Star4 } from "./Icons";
 import Reveal, { SectionHead } from "./Reveal";
+
+type CalQueue = { q: unknown[] };
+type CalFn = ((...args: unknown[]) => void) & { loaded?: boolean; ns: Record<string, CalQueue>; q: unknown[] };
+
+declare global {
+  interface Window {
+    Cal?: CalFn;
+  }
+}
+
+/* Подключаем embed-скрипт Cal.com один раз — официальный сниппет из настроек
+   аккаунта. После инициализации Cal.com сам навешивает обработчик клика на
+   любые элементы с data-cal-link, поэтому кнопки ниже не требуют доп. кода. */
+function useCalEmbed() {
+  useEffect(() => {
+    if (window.Cal) return;
+    (function (C: Window, A: string, L: string) {
+      const p = (a: CalQueue, ar: unknown) => a.q.push(ar);
+      const d = C.document;
+      const cal: CalFn = ((...ar: unknown[]) => {
+        if (!cal.loaded) {
+          cal.ns = {};
+          cal.q = cal.q || [];
+          d.head.appendChild(d.createElement("script")).setAttribute("src", A);
+          cal.loaded = true;
+        }
+        if (ar[0] === L) {
+          const namespace = ar[1] as string;
+          const api = ((...ar2: unknown[]) => p(api, ar2)) as unknown as CalFn & CalQueue;
+          api.q = [];
+          cal.ns[namespace] = cal.ns[namespace] || api;
+          p(cal.ns[namespace], ar);
+          p(cal, ["initNamespace", namespace]);
+          return;
+        }
+        p(cal, ar);
+      }) as CalFn;
+      cal.ns = {};
+      cal.q = [];
+      C.Cal = cal;
+    })(window, "https://app.cal.com/embed/embed.js", "init");
+
+    window.Cal!("init", { origin: "https://cal.com" });
+    window.Cal!("ui", {
+      styles: { branding: { brandColor: "#2b49ff" } },
+      hideEventTypeDetails: false,
+      layout: "month_view",
+    });
+  }, []);
+}
 
 /* Раздел продажи консультаций: цены и состав пакетов редактируются в src/i18n/ */
 export default function Consulting() {
   const { t } = useI18n();
   const c = t.consulting;
+  useCalEmbed();
 
   return (
     <section id="consulting" className="blueprint relative overflow-hidden bg-deep text-bone">
@@ -85,6 +137,20 @@ export default function Consulting() {
                   {p.cta}
                   <ArrowUpRight size={15} className="transition-transform group-hover/cta:-translate-y-0.5 group-hover/cta:translate-x-0.5" />
                 </a>
+
+                <button
+                  type="button"
+                  data-cal-link={CAL_USERNAME}
+                  data-cal-config={JSON.stringify({ layout: "month_view" })}
+                  className={`group/book mt-3 flex items-center justify-center gap-2.5 py-3.5 font-mono text-[10.5px] font-bold uppercase tracking-[0.16em] transition-all ${
+                    featured
+                      ? "border-2 border-ink/70 text-ink hover:border-blue hover:bg-blue hover:text-bone"
+                      : "border-2 border-dashed border-fog/50 text-fog hover:border-yellow hover:text-yellow"
+                  }`}
+                >
+                  <Calendar size={14} />
+                  {c.bookCta}
+                </button>
               </Reveal>
             );
           })}

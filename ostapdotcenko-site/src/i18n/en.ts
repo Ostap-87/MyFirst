@@ -262,6 +262,7 @@ export const en: Content = {
         cta: "Discuss the format",
       },
     ],
+    bookCta: "Book a date",
     guarantee: "If you realize within the first 20 minutes it isn't helping — I'll refund the payment.",
     note: "Prices and package contents are editable in src/i18n/en.ts",
     mailSubject: "Consulting: ",

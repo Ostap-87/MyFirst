@@ -262,6 +262,7 @@ export const zh: Content = {
         cta: "洽谈合作形式",
       },
     ],
+    bookCta: "预约时间",
     guarantee: "如果前 20 分钟您觉得没有帮助——全额退款。",
     note: "价格与套餐内容可在 src/i18n/zh.ts 中修改",
     mailSubject: "咨询：",

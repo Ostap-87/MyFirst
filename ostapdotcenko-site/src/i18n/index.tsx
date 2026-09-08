@@ -35,6 +35,9 @@ export function photo(name: string): string {
 /* Не переводится: контакты и соцсети (едины для всех языков) */
 export const TELEGRAM_URL = "https://t.me/ostapdotcenko";
 
+/* Cal.com: общий календарь на бронирование консультаций (единый для всех языков) */
+export const CAL_USERNAME = "ostapdotcenko";
+
 export const PERSON = {
   email: "norbanking@gmail.com",
   phone: "+7 985 874-49-58",
