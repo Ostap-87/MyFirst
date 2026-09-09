@@ -57,6 +57,13 @@
 ```
 `link` — внешняя публикация (необязательно; пустая = без ссылки).
 
+### 2.5.1. Автопостинг новой статьи в Facebook (обязательный шаг)
+После публикации новой RU-статьи (добавлена в `blog.articles[]` во всех трёх словарях, изменения задеплоены):
+```
+node scripts/post-to-facebook.mjs <slug>
+```
+Скрипт берёт `title` + `excerpt` из `src/i18n/ru.ts` и постит их со ссылкой на статью на Facebook-страницу ostapdotcenko через общий Make.com вебхук (см. `claude-control/data/fb-config/webhooks.json` — там же webhook URL и `page_id` для ostapdotcenko/Aura/GlobalTechTour). Разово настроено и проверено 09.09.2026 — три страницы, один вебхук, `page_id` передаётся в теле запроса.
+
 ### 2.6. Добавить видео
 Объект в `blog.videos[]`: `{ title, platform: "YouTube" | "VK Video", duration: "12:07", url: "" }`.
 Пока `url: ""` — карточка с тегом «скоро»; вписали ссылку — стала кликабельной.
