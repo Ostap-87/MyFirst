@@ -13,10 +13,20 @@ const root = join(__dirname, "..");
 const ruSource = readFileSync(join(root, "src/i18n/ru.ts"), "utf-8");
 
 const articleRegex =
-  /slug:\s*"([^"]+)",\s*\n\s*date:\s*"[^"]*",\s*\n\s*tag:\s*"[^"]*",\s*\n\s*time:\s*"[^"]*",\s*\n\s*title:\s*"((?:[^"\\]|\\.)*)",\s*\n\s*excerpt:\s*"((?:[^"\\]|\\.)*)"/g;
+  /slug:\s*"([^"]+)",\s*\n\s*date:\s*"[^"]*",\s*\n\s*tag:\s*"[^"]*",\s*\n\s*time:\s*"[^"]*",\s*\n\s*title:\s*"((?:[^"\\]|\\.)*)",\s*\n\s*excerpt:\s*"((?:[^"\\]|\\.)*)",\s*\n\s*body:\s*"((?:[^"\\]|\\.)*)",\s*\n\s*link:\s*"[^"]*",\s*\n\s*sideImages:\s*([\s\S]*?)\n\s*},/g;
 
 function unescapeJs(str) {
   return str.replace(/\\(.)/g, "$1");
+}
+
+// og:image приоритеты: первая инлайн-картинка в теле статьи (![подпись](/img/...)),
+// иначе первая из sideImages (старый формат статей вроде WRC), иначе портрет по умолчанию.
+function firstImage(body, sideImagesRaw) {
+  const bodyMatch = body.match(/!\[[^\]]*\]\((\/img\/[^)]+)\)/);
+  if (bodyMatch) return bodyMatch[1];
+  const sideMatch = sideImagesRaw.match(/"(\/img\/[^"]+)"/);
+  if (sideMatch) return sideMatch[1];
+  return null;
 }
 
 function escapeHtml(str) {
@@ -31,6 +41,7 @@ const articles = [...ruSource.matchAll(articleRegex)].map((m) => ({
   slug: m[1],
   title: unescapeJs(m[2]),
   excerpt: unescapeJs(m[3]),
+  image: firstImage(m[4], m[5]) ?? "/img/blog-portrait.jpg",
 }));
 
 const categoryRegex = /id:\s*"([^"]+)",\s*\n\s*label:\s*"((?:[^"\\]|\\.)*)",\s*\n\s*desc:\s*"((?:[^"\\]|\\.)*)"/g;
@@ -92,8 +103,9 @@ if (!baseHtml.includes('property="og:title"')) {
     <meta property="og:site_name" content="${escapeHtml(homeTitle)}" />
     <meta property="og:title" content="${escapeHtml(homeTitle)}" />
     <meta property="og:description" content="${escapeHtml(homeDesc)}" />
+    <meta property="og:image" content="${BASE}/img/blog-portrait.jpg" />
     <meta property="og:url" content="${BASE}/" />
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary_large_image" />
   </head>`;
   baseHtml = baseHtml.replace(/\s*<\/head>/, `\n${ogBlock}`);
   writeFileSync(templatePath, baseHtml);
@@ -114,7 +126,7 @@ writeFileSync(
 );
 
 let written = 0;
-for (const { slug, title, excerpt } of articles) {
+for (const { slug, title, excerpt, image } of articles) {
   const fullTitle = `${title} — Остап Доценко`;
   const url = `${BASE}/blog/${slug}`;
 
@@ -127,6 +139,7 @@ for (const { slug, title, excerpt } of articles) {
     .replace(/<meta property="og:type" content="[^"]*" \/>/, `<meta property="og:type" content="article" />`)
     .replace(/<meta property="og:title" content="[^"]*" \/>/, `<meta property="og:title" content="${escapeHtml(fullTitle)}" />`)
     .replace(/<meta property="og:description" content="[^"]*" \/>/, `<meta property="og:description" content="${escapeHtml(excerpt)}" />`)
+    .replace(/<meta property="og:image" content="[^"]*" \/>/, `<meta property="og:image" content="${BASE}${image}" />`)
     .replace(/<meta property="og:url" content="[^"]*" \/>/, `<meta property="og:url" content="${url}" />`);
 
   const outDir = join(distDir, "blog", slug);
