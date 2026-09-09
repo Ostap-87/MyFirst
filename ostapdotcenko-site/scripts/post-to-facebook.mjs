@@ -38,12 +38,12 @@ if (!article) {
 }
 
 const url = `${BASE}/blog/${article.slug}`;
-const text = `${article.title}\n\n${article.excerpt}\n\n${url}`;
+const text = `${article.title}\n\n${article.excerpt}`;
 
 const res = await fetch(WEBHOOK_URL, {
   method: "POST",
   headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ page_id: PAGE_ID, text }),
+  body: JSON.stringify({ page_id: PAGE_ID, text, link: url }),
 });
 
 if (!res.ok) {
