@@ -58,6 +58,11 @@ import {
   personalReelDefaults,
   personalReelSchema,
 } from "./ostapdotcenko/compositions/Reel";
+import {
+  TalkingHead,
+  talkingHeadDefaults,
+  talkingHeadSchema,
+} from "./ostapdotcenko/compositions/TalkingHead";
 // new-composition:imports:end
 
 export const RemotionRoot: React.FC = () => {
@@ -130,6 +135,16 @@ export const RemotionRoot: React.FC = () => {
         schema={personalReelSchema}
         defaultProps={personalReelDefaults}
         durationInFrames={180}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="Personal-TalkingHead"
+        component={TalkingHead}
+        schema={talkingHeadSchema}
+        defaultProps={talkingHeadDefaults}
+        durationInFrames={600}
         fps={30}
         width={1080}
         height={1920}

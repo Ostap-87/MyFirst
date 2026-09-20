@@ -57,6 +57,12 @@ export const useFormat = () => {
     fs: (fraction: number) => Math.round(width * fraction),
     /** Отступ долей ширины кадра. */
     sp: (fraction: number) => Math.round(width * fraction),
+    /**
+     * Отступ долей ВЫСОТЫ кадра — для вертикальных позиций.
+     * Считать их от ширины нельзя: в кадре 1080×1920 отступ «12% ширины»
+     * от низа поднимает элемент на 6.75% высоты, и субтитры уезжают в центр.
+     */
+    vh: (fraction: number) => Math.round(height * fraction),
     /** Безопасная зона по умолчанию для текущей ориентации. */
     defaultSafeArea: (orientation === "landscape"
       ? "landscape"

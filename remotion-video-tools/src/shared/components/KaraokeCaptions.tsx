@@ -24,6 +24,14 @@ export type KaraokeCaptionsProps = {
   readonly combineWithinMs?: number;
   /** Как подсвечивать активное слово: цветом или плашкой акцента. */
   readonly highlight?: "color" | "box";
+  /**
+   * Режим подачи:
+   * `page` — строка из нескольких слов с подсветкой текущего;
+   * `word` — в кадре только одно слово, как в разговорных Reels. Второй
+   * вариант читается быстрее и почти не закрывает кадр, но требует точных
+   * пословных таймкодов — на «плавающих» субтитрах слова начнут прыгать.
+   */
+  readonly mode?: "page" | "word";
   /** Кегль долей ширины кадра. */
   readonly fontSizeFraction?: number;
 };
@@ -33,6 +41,7 @@ export const KaraokeCaptions: React.FC<KaraokeCaptionsProps> = ({
   captions,
   combineWithinMs = 1200,
   highlight = "box",
+  mode = "page",
   fontSizeFraction = 0.055,
 }) => {
   const frame = useCurrentFrame();
@@ -53,6 +62,31 @@ export const KaraokeCaptions: React.FC<KaraokeCaptionsProps> = ({
 
   if (!page) {
     return null;
+  }
+
+  if (mode === "word") {
+    const active = page.tokens.find(
+      (token) => timeMs >= token.fromMs && timeMs < token.toMs,
+    );
+    if (!active) return null;
+
+    return (
+      <div
+        style={{
+          textAlign: "center",
+          fontFamily: fontFamily(theme.fonts.heading),
+          fontWeight: theme.fonts.headingWeight,
+          fontSize: fs(fontSizeFraction),
+          color: "#ffffff",
+          // Тень вместо обводки: обводка на кириллице съедает внутренние
+          // просветы у «щ», «ж» и «ю», а слово должно читаться за долю секунды.
+          textShadow: "0 3px 14px rgba(0,0,0,0.75), 0 0 4px rgba(0,0,0,0.5)",
+          whiteSpace: "pre",
+        }}
+      >
+        {active.text.trim()}
+      </div>
+    );
   }
 
   return (

@@ -12,4 +12,7 @@ export * from "./GlitchTransition";
 export * from "./CountUp";
 export * from "./FilmGrain";
 export * from "./MotionTrail";
+export * from "./StepNumber";
+export * from "./PhoneMockup";
+export * from "./ChatOverlay";
 // new-effect:exports:end
