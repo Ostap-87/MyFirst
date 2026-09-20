@@ -9,4 +9,7 @@ export * from "./FadeIn";
 export * from "./SlideInSpring";
 export * from "./ZoomParallax";
 export * from "./GlitchTransition";
+export * from "./CountUp";
+export * from "./FilmGrain";
+export * from "./MotionTrail";
 // new-effect:exports:end

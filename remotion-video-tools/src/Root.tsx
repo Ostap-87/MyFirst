@@ -1,6 +1,11 @@
 import "./index.css";
 import { Composition } from "remotion";
 import {
+  MotionLab,
+  motionLabDefaults,
+  motionLabSchema,
+} from "./shared/MotionLab";
+import {
   EffectsLab,
   effectsLabDefaults,
   effectsLabSchema,
@@ -33,6 +38,11 @@ import {
   personalIntroDefaults,
   personalIntroSchema,
 } from "./ostapdotcenko/compositions/Intro";
+import {
+  GTTStats,
+  gttStatsDefaults,
+  gttStatsSchema,
+} from "./globaltechtour/compositions/Stats";
 // new-composition:imports:end
 
 export const RemotionRoot: React.FC = () => {
@@ -69,10 +79,31 @@ export const RemotionRoot: React.FC = () => {
         width={1080}
         height={1920}
       />
-            {/* new-composition:end */}
+      <Composition
+        id="GTT-Stats"
+        component={GTTStats}
+        schema={gttStatsSchema}
+        defaultProps={gttStatsDefaults}
+        durationInFrames={150}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      {/* new-composition:end */}
 
       {/* Витрина эффектов на нейтральных данных: сюда смотрим, когда
           проверяем новый эффект из src/shared/components/effects. */}
+      <Composition
+        id="Shared-MotionLab"
+        component={MotionLab}
+        schema={motionLabSchema}
+        defaultProps={motionLabDefaults}
+        durationInFrames={202}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+
       <Composition
         id="Shared-EffectsLab"
         component={EffectsLab}
