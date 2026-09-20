@@ -59,6 +59,7 @@ import {
   personalReelSchema,
 } from "./ostapdotcenko/compositions/Reel";
 import {
+  calculateTalkingHeadMetadata,
   TalkingHead,
   talkingHeadDefaults,
   talkingHeadSchema,
@@ -144,6 +145,7 @@ export const RemotionRoot: React.FC = () => {
         component={TalkingHead}
         schema={talkingHeadSchema}
         defaultProps={talkingHeadDefaults}
+        calculateMetadata={calculateTalkingHeadMetadata}
         durationInFrames={600}
         fps={30}
         width={1080}

@@ -16,7 +16,17 @@ import { staticFile } from "remotion";
  * шрифт или показывает пустые квадраты.
  */
 
-type FontName = "Inter" | "Unbounded" | "Golos Text" | "JetBrains Mono";
+type FontName =
+  | "Inter"
+  | "Unbounded"
+  | "Golos Text"
+  | "JetBrains Mono"
+  // Гротески для субтитров: в разговорных Reels слово читают за доли секунды,
+  // и гарнитура заголовка бренда не всегда подходит. Подробнее о выборе —
+  // в docs/reference-breakdown.md.
+  | "Montserrat"
+  | "Onest"
+  | "Manrope";
 
 /** Гарнитура с иероглифами: подставляется в конец каждого стека. */
 const CJK_FALLBACK = "Noto Sans SC";
@@ -26,6 +36,9 @@ const FILES: Record<FontName | typeof CJK_FALLBACK, string> = {
   Unbounded: "fonts/Unbounded.ttf",
   "Golos Text": "fonts/GolosText.ttf",
   "JetBrains Mono": "fonts/JetBrainsMono.ttf",
+  Montserrat: "fonts/Montserrat.ttf",
+  Onest: "fonts/Onest.ttf",
+  Manrope: "fonts/Manrope.ttf",
   [CJK_FALLBACK]: "fonts/NotoSansSC.woff2",
 };
 

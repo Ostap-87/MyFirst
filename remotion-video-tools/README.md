@@ -130,3 +130,27 @@ npm run make-sfx     # click, pop, swoosh, notify, counter -> public/audio/sfx
 
 Звуки синтезируются ffmpeg прямо в проекте: ни лицензий, ни атрибуции,
 и результат воспроизводим. Ставятся компонентом `SoundCue`.
+
+## Материалы и субтитры
+
+Съёмка, звук и субтитры передаются путями в пропсах — код править не нужно:
+
+```bash
+npm run transcribe -- --audio public/local/speech.wav --model small --language ru \
+  --out public/local/captions.json
+
+npx remotion render Personal-TalkingHead out/reel.mp4 --props='{
+  "captionsSrc": "local/captions.json",
+  "footageSrc":  "local/talk.mp4",
+  "audioSrc":    "local/speech.m4a",
+  "captionFont": "Onest",
+  "captionStyle":"outline"
+}'
+```
+
+Длительность ролика считается сама по последнему слову субтитров. Гарнитуры
+субтитров: Onest, Inter, Golos Text, Montserrat, Manrope — сравнение с
+референсом в [docs/reference-breakdown.md](./docs/reference-breakdown.md).
+Оформление: `shadow`, `outline`, `plate`.
+
+`public/local/` в `.gitignore` — туда кладутся тяжёлые и чужие исходники.

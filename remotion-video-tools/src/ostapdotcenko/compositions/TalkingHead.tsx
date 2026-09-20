@@ -1,7 +1,12 @@
-import type { Caption } from "@remotion/captions";
-import { AbsoluteFill, Sequence } from "remotion";
+import type { CalculateMetadataFunction } from "remotion";
+import {
+  AbsoluteFill,
+  Audio,
+  OffthreadVideo,
+  Sequence,
+  staticFile,
+} from "remotion";
 import { z } from "zod";
-import demoCaptions from "../../../data/captions.demo.json";
 import {
   ChatOverlay,
   CountUp,
@@ -16,6 +21,7 @@ import { SafeArea } from "../../shared/components/SafeArea";
 import { SoundCue } from "../../shared/components/SoundCue";
 import { StickyCTA } from "../../shared/components/StickyCTA";
 import { Watermark } from "../../shared/components/Watermark";
+import { useCaptions } from "../../shared/useCaptions";
 import { useFormat } from "../../shared/format";
 import { fontFamily } from "../../shared/fonts";
 import { ostapdotcenkoTheme as theme } from "../theme";
@@ -42,11 +48,64 @@ export const talkingHeadSchema = z.object({
   keyword: z.string().describe("Кодовое слово, которое печатается в поле"),
   metric: z.number().describe("Число для сцены со счётчиком"),
   metricLabel: z.string().describe("Подпись под числом"),
+  captionsSrc: z
+    .string()
+    .describe(
+      'Файл субтитров внутри public, например "local/captions.json". Пусто — без субтитров',
+    ),
+  footageSrc: z
+    .string()
+    .describe(
+      'Видео со съёмкой внутри public, например "local/talk.mp4". Пусто — подложка',
+    ),
+  audioSrc: z
+    .string()
+    .describe(
+      "Отдельная звуковая дорожка внутри public. Пусто — берём звук из видео",
+    ),
+  captionFont: z
+    .string()
+    .describe(
+      "Гарнитура субтитров: Inter, Onest, Montserrat, Manrope, Golos Text",
+    ),
+  captionStyle: z
+    .enum(["shadow", "outline", "plate"])
+    .describe("Оформление слова: тень, обводка или плашка"),
 });
 
 export type TalkingHeadProps = z.infer<typeof talkingHeadSchema>;
 
+/**
+ * Длительность ролика считается по субтитрам, а не задаётся руками: выпуски
+ * разной длины иначе пришлось бы каждый раз править в Root.tsx, а лишние
+ * кадры в конце — это секунды черноты после последней фразы.
+ */
+export const calculateTalkingHeadMetadata: CalculateMetadataFunction<
+  TalkingHeadProps
+> = async ({ props, defaultProps }) => {
+  const fps = 30;
+  const src = props.captionsSrc || defaultProps.captionsSrc;
+  if (!src) return { fps };
+
+  try {
+    const response = await fetch(staticFile(src));
+    const captions = (await response.json()) as { endMs: number }[];
+    const lastMs = captions.length ? captions[captions.length - 1].endMs : 0;
+    // Хвост в 2.5 с: на нём доигрывает финальная карточка.
+    return { fps, durationInFrames: Math.round((lastMs / 1000) * fps) + 75 };
+  } catch {
+    // Файла нет или он битый — пусть работает длительность из Root.tsx,
+    // а настоящую ошибку покажет useCaptions уже при рендере кадра.
+    return { fps };
+  }
+};
+
 export const talkingHeadDefaults: TalkingHeadProps = {
+  captionsSrc: "captions/demo.json",
+  footageSrc: "",
+  audioSrc: "",
+  captionFont: "Inter",
+  captionStyle: "shadow",
   speakerName: "Остап Доценко",
   speakerRole: "B2B-МАРКЕТИНГ · КИТАЙ И ЮВА",
   handle: "@ostapdotcenko",
@@ -68,19 +127,40 @@ export const TalkingHead: React.FC<TalkingHeadProps> = ({
   keyword,
   metric,
   metricLabel,
+  captionsSrc,
+  footageSrc,
+  audioSrc,
+  captionFont,
+  captionStyle,
 }) => {
-  const { fs, sp, vh } = useFormat();
+  const { fs, sp, vh, durationInFrames } = useFormat();
+  const captions = useCaptions(captionsSrc || null);
+
+  // Призыв выходит на середине ролика, финальная карточка — за 2.5 с до конца.
+  const ctaDelay = Math.round(durationInFrames * 0.5);
+  const endCardStart = Math.max(0, durationInFrames - 75);
 
   return (
     <AbsoluteFill style={{ backgroundColor: theme.colors.primary }}>
-      {/* МЕСТО ПОД СЪЁМКУ: сюда ставится
-          <OffthreadVideo src={staticFile("footage/talk.mp4")} /> и <Audio> с речью.
-          Пока — нейтральная подложка, чтобы вёрстка оверлеев читалась. */}
-      <AbsoluteFill
-        style={{
-          background: `radial-gradient(circle at 50% 38%, #2b2b36 0%, ${theme.colors.primary} 68%)`,
-        }}
-      />
+      {/* Съёмка: путь приходит в пропсах, без неё — нейтральная подложка,
+          на которой видно вёрстку оверлеев. */}
+      {footageSrc ? (
+        <AbsoluteFill>
+          <OffthreadVideo
+            src={staticFile(footageSrc)}
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            muted={Boolean(audioSrc)}
+          />
+        </AbsoluteFill>
+      ) : (
+        <AbsoluteFill
+          style={{
+            background: `radial-gradient(circle at 50% 38%, #2b2b36 0%, ${theme.colors.primary} 68%)`,
+          }}
+        />
+      )}
+
+      {audioSrc ? <Audio src={staticFile(audioSrc)} /> : null}
 
       {/* Номер пункта висит над спикером весь фрагмент. */}
       <Sequence from={40} durationInFrames={200}>
@@ -126,7 +206,7 @@ export const TalkingHead: React.FC<TalkingHeadProps> = ({
       </Sequence>
 
       {/* Второй пункт — со счётчиком вместо скриншота. */}
-      <Sequence from={430} durationInFrames={88}>
+      <Sequence from={430} durationInFrames={Math.max(1, endCardStart - 430)}>
         <SafeArea platform="reels">
           <StepNumber
             value={2}
@@ -185,7 +265,7 @@ export const TalkingHead: React.FC<TalkingHeadProps> = ({
           headline={ctaHeadline}
           note={ctaNote}
           keyword={keyword}
-          delayInFrames={300}
+          delayInFrames={ctaDelay}
         />
       </SafeArea>
 
@@ -203,8 +283,10 @@ export const TalkingHead: React.FC<TalkingHeadProps> = ({
       >
         <KaraokeCaptions
           theme={theme}
-          captions={demoCaptions as Caption[]}
+          captions={captions}
           mode="word"
+          captionStyle={captionStyle}
+          font={captionFont}
           fontSizeFraction={0.058}
         />
       </AbsoluteFill>
@@ -229,7 +311,7 @@ export const TalkingHead: React.FC<TalkingHeadProps> = ({
       <SoundCue name="notify" atFrame={256} volume={0.6} />
       <SoundCue name="pop" atFrame={310} volume={0.5} />
       <SoundCue name="swoosh" atFrame={430} volume={0.5} />
-      <SoundCue name="click" atFrame={520} volume={0.6} />
+      <SoundCue name="click" atFrame={endCardStart} volume={0.6} />
     </AbsoluteFill>
   );
 };

@@ -34,6 +34,19 @@ export type KaraokeCaptionsProps = {
   readonly mode?: "page" | "word";
   /** Кегль долей ширины кадра. */
   readonly fontSizeFraction?: number;
+  /**
+   * Оформление слова в режиме `word`.
+   * `shadow` — белый текст с мягкой тенью (как в референсе);
+   * `outline` — с чёрной обводкой, для пёстрого фона;
+   * `plate` — на полупрозрачной плашке, для самого сложного фона.
+   */
+  readonly captionStyle?: "shadow" | "outline" | "plate";
+  /**
+   * Гарнитура субтитров. По умолчанию берётся заголовочная из темы, но для
+   * разговорных роликов обычно нужен отдельный плотный гротеск: Unbounded
+   * с его широкими буквами в субтитрах разваливает строку.
+   */
+  readonly font?: string;
 };
 
 export const KaraokeCaptions: React.FC<KaraokeCaptionsProps> = ({
@@ -43,6 +56,8 @@ export const KaraokeCaptions: React.FC<KaraokeCaptionsProps> = ({
   highlight = "box",
   mode = "page",
   fontSizeFraction = 0.055,
+  captionStyle = "shadow",
+  font,
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -70,18 +85,46 @@ export const KaraokeCaptions: React.FC<KaraokeCaptionsProps> = ({
     );
     if (!active) return null;
 
+    const size = fs(fontSizeFraction);
+
+    // Обводку даём тенями по кругу, а не -webkit-text-stroke: штрих внутрь
+    // съедает просветы у «щ», «ж» и «ю», и слово теряет читаемость.
+    const outline = (width: number) =>
+      [
+        `${width}px 0 0 #000`,
+        `-${width}px 0 0 #000`,
+        `0 ${width}px 0 #000`,
+        `0 -${width}px 0 #000`,
+        `${width}px ${width}px 0 #000`,
+        `-${width}px ${width}px 0 #000`,
+        `${width}px -${width}px 0 #000`,
+        `-${width}px -${width}px 0 #000`,
+      ].join(", ");
+
+    const decoration: React.CSSProperties =
+      captionStyle === "outline"
+        ? { textShadow: outline(Math.max(2, Math.round(size * 0.045))) }
+        : captionStyle === "plate"
+          ? {
+              backgroundColor: "rgba(12, 12, 16, 0.72)",
+              padding: `${Math.round(size * 0.1)}px ${Math.round(size * 0.28)}px`,
+              borderRadius: Math.round(size * 0.22),
+            }
+          : {
+              textShadow:
+                "0 3px 14px rgba(0,0,0,0.75), 0 0 4px rgba(0,0,0,0.5)",
+            };
+
     return (
       <div
         style={{
           textAlign: "center",
-          fontFamily: fontFamily(theme.fonts.heading),
+          fontFamily: fontFamily(font ?? theme.fonts.heading),
           fontWeight: theme.fonts.headingWeight,
-          fontSize: fs(fontSizeFraction),
+          fontSize: size,
           color: "#ffffff",
-          // Тень вместо обводки: обводка на кириллице съедает внутренние
-          // просветы у «щ», «ж» и «ю», а слово должно читаться за долю секунды.
-          textShadow: "0 3px 14px rgba(0,0,0,0.75), 0 0 4px rgba(0,0,0,0.5)",
           whiteSpace: "pre",
+          ...decoration,
         }}
       >
         {active.text.trim()}

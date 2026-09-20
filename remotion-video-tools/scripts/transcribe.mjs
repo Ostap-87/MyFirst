@@ -13,6 +13,7 @@ import {
   toCaptions,
   transcribe,
 } from "@remotion/install-whisper-cpp";
+import { lowConfidenceWords, mergeIntoWords } from "./captions-utils.mjs";
 import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync } from "node:fs";
 import { dirname, resolve } from "node:path";
@@ -50,6 +51,9 @@ const output = resolve(
   typeof args.out === "string" ? args.out : "data/captions.json",
 );
 const whisperPath = resolve(ROOT, "whisper.cpp");
+// Версия whisper.cpp указывается и при установке, и при запуске: transcribe
+// по ней ищет исполняемый файл (в 1.5.x и 1.6+ он лежит по разным путям).
+const whisperVersion = "1.5.5";
 
 const prepared = resolve(ROOT, "out/transcribe-16khz.wav");
 mkdirSync(dirname(prepared), { recursive: true });
@@ -64,7 +68,7 @@ execFileSync(
 );
 
 console.log(`  Проверяю whisper.cpp в ${whisperPath}…`);
-await installWhisperCpp({ to: whisperPath, version: "1.5.5" });
+await installWhisperCpp({ to: whisperPath, version: whisperVersion });
 
 console.log(
   `  Проверяю модель «${model}»… (первый раз может занять несколько минут)`,
@@ -75,12 +79,19 @@ console.log("  Расшифровываю…");
 const { transcription } = await transcribe({
   model,
   whisperPath,
+  whisperCppVersion: whisperVersion,
   inputPath: prepared,
   tokenLevelTimestamps: true,
   language,
 });
 
-const { captions } = toCaptions({ whisperCppOutput: { transcription } });
+const { captions: tokens } = toCaptions({
+  whisperCppOutput: { transcription },
+});
+
+// whisper отдаёт под-словные токены («вы|лож|ил»); в режиме одного слова в
+// кадре это превращается в обрывки, поэтому склеиваем их в слова.
+const captions = args["raw-tokens"] ? tokens : mergeIntoWords(tokens);
 
 mkdirSync(dirname(output), { recursive: true });
 write(output, `${JSON.stringify(captions, null, 2)}\n`);
@@ -88,12 +99,25 @@ write(output, `${JSON.stringify(captions, null, 2)}\n`);
 const seconds = captions.length
   ? (captions[captions.length - 1].endMs / 1000).toFixed(1)
   : "0";
+const doubtful = lowConfidenceWords(captions);
 
 console.log(`
-  ✔ Субтитров: ${captions.length}, длительность ${seconds} с  ->  ${output}
-
+  ✔ ${args["raw-tokens"] ? "Токенов" : "Слов"}: ${captions.length}, длительность ${seconds} с  ->  ${output}
+    сырых токенов whisper: ${tokens.length} (вернуть их — флаг --raw-tokens)
+${
+  doubtful.length
+    ? `
+  ⚠ Проверьте глазами ${doubtful.length} слов с низкой уверенностью:
+      ${doubtful
+        .slice(0, 8)
+        .map((w) => `${(w.startMs / 1000).toFixed(1)}с «${w.text.trim()}»`)
+        .join(", ")}
+    Отдельно проверьте хвост дорожки: на музыке и шуме whisper дописывает
+    выдуманную фразу, и она приезжает в кадр как настоящая реплика.`
+    : ""
+}
   Подключить в композиции:
 
     import captions from "../../../data/captions.json";
-    <KaraokeCaptions theme={theme} captions={captions as Caption[]} />
+    <KaraokeCaptions theme={theme} captions={captions as Caption[]} mode="word" />
 `);
