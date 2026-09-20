@@ -24,18 +24,59 @@ npm run dev          # Remotion Studio на http://localhost:3000
 
 ```
 src/
-  globaltechtour/    theme.ts + compositions/ + assets/
-  aura-robotics/     theme.ts + compositions/ + assets/
-  ostapdotcenko/     theme.ts + compositions/ + assets/
+  globaltechtour/    theme.ts + compositions/ (Intro, Stats, PostReel) + assets/
+  aura-robotics/     theme.ts + compositions/ (Intro, PostReel) + assets/
+  ostapdotcenko/     theme.ts + compositions/ (Intro, Reel) + assets/
   shared/
-    components/effects/   FadeIn, SlideInSpring, ZoomParallax, GlitchTransition
+    components/effects/   FadeIn, SlideInSpring, ZoomParallax, GlitchTransition,
+                          CountUp, FilmGrain, MotionTrail
+    components/           MetricCard, SafeArea, PostReelLayout, KaraokeCaptions
     fonts/                локальная загрузка шрифтов из public/fonts
+    format.ts             useFormat + безопасные зоны площадок
     theme.ts              общий тип BrandTheme
     EffectsLab.tsx        витрина эффектов на нейтральных данных
+    MotionLab.tsx         витрина переходов, смаза и зерна
   Root.tsx           реестр всех композиций
-public/fonts/        Inter, Unbounded, Golos Text, JetBrains Mono (вариативные TTF)
-scripts/             new-effect / new-composition / set-theme
+public/fonts/        Inter, Unbounded, Golos Text, JetBrains Mono, Noto Sans SC
+public/tg-images     симлинк на ../../tg-images — картинки постов
+data/posts.json      контент-план, разобранный для пакетного рендера
+scripts/             new-effect / new-composition / set-theme /
+                     parse-content-plan / render-batch / transcribe
 ```
+
+## Ролики из контент-плана
+
+Сорок постов из `tg-images/20-day-batch.md` и картинки к ним превращаются
+в вертикальные ролики без ручной сборки:
+
+```bash
+npm run parse-plan                                  # -> data/posts.json (40 постов)
+npm run render-batch -- --brand gtt --limit 3       # три ролика GTT
+npm run render-batch -- --brand all --platform reels
+npm run render-batch -- --brand aura --dry-run      # только показать план
+```
+
+Бандл собирается один раз на весь пакет, поэтому сорок роликов занимают
+около двенадцати минут, а не сорок отдельных сборок. `--crf` управляет весом
+файла: 23 по умолчанию (≈3,6 МБ на 8 секунд), 18 — визуально без потерь и вчетверо тяжелее.
+
+## Субтитры
+
+```bash
+npm run transcribe -- --audio public/audio/reel.wav --model small
+```
+
+Локальный whisper.cpp: ни ключей, ни отправки аудио наружу. Результат —
+`data/captions.json` для компонента `KaraokeCaptions` с пословной подсветкой.
+Нужен ffmpeg (приведение к 16 кГц моно). Модели качаются в `whisper.cpp/`,
+эта папка в `.gitignore`.
+
+## Форматы
+
+`useFormat()` даёт `fs()` и `sp()` — размеры долей ширины кадра, поэтому одна
+вёрстка работает в 16:9, 9:16 и 1:1. `<SafeArea platform="telegram" />`
+держит текст вне зоны, которую перекрывает интерфейс площадки
+(`telegram`, `reels`, `shorts`, `landscape`, `feed`).
 
 ## Скрипты
 
@@ -62,6 +103,10 @@ npx remotion render GTT-Intro out/gtt-intro.mp4
 
 ## Шрифты
 
-Лежат локально в `public/fonts` (вариативные TTF с кириллицей, OFL) и грузятся
+Лежат локально в `public/fonts` (вариативные, с кириллицей, OFL) и грузятся
 через `@remotion/fonts`, который держит кадр до готовности шрифта. Сеть при
 рендере не нужна — см. `public/fonts/README.md`.
+
+Noto Sans SC подставляется фоллбэком ко всем гарнитурам: в постах постоянно
+встречаются китайские названия (NIO / 蔚来, XPeng / 小鹏), а в Inter, Unbounded
+и Golos Text иероглифов нет.

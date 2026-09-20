@@ -1,0 +1,12 @@
+[
+  { "text": "Китай ", "startMs": 200, "endMs": 640, "timestampMs": 420, "confidence": 0.98 },
+  { "text": "меняет ", "startMs": 640, "endMs": 1120, "timestampMs": 880, "confidence": 0.97 },
+  { "text": "правила ", "startMs": 1120, "endMs": 1680, "timestampMs": 1400, "confidence": 0.99 },
+  { "text": "игры ", "startMs": 1680, "endMs": 2120, "timestampMs": 1900, "confidence": 0.96 },
+  { "text": "быстрее, ", "startMs": 2300, "endMs": 2900, "timestampMs": 2600, "confidence": 0.95 },
+  { "text": "чем ", "startMs": 2900, "endMs": 3160, "timestampMs": 3030, "confidence": 0.98 },
+  { "text": "рынок ", "startMs": 3160, "endMs": 3680, "timestampMs": 3420, "confidence": 0.97 },
+  { "text": "успевает ", "startMs": 3680, "endMs": 4320, "timestampMs": 4000, "confidence": 0.94 },
+  { "text": "это ", "startMs": 4320, "endMs": 4560, "timestampMs": 4440, "confidence": 0.99 },
+  { "text": "заметить.", "startMs": 4560, "endMs": 5240, "timestampMs": 4900, "confidence": 0.96 }
+]

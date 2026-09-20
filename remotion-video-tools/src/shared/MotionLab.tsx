@@ -165,7 +165,12 @@ export const MotionLab: React.FC<MotionLabProps> = ({
       </TransitionSeries>
 
       {/* Зерно и виньетка — последним слоем, поверх всех сцен и переходов. */}
-      <FilmGrain opacity={0.08} grainSize={2} vignette={0.4} />
+      <FilmGrain
+        opacity={0.14}
+        grainSize={2}
+        vignette={0.4}
+        blendMode="screen"
+      />
     </AbsoluteFill>
   );
 };

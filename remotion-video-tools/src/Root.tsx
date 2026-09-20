@@ -43,6 +43,21 @@ import {
   gttStatsDefaults,
   gttStatsSchema,
 } from "./globaltechtour/compositions/Stats";
+import {
+  GTTPostReel,
+  gttPostReelDefaults,
+  gttPostReelSchema,
+} from "./globaltechtour/compositions/PostReel";
+import {
+  AuraPostReel,
+  auraPostReelDefaults,
+  auraPostReelSchema,
+} from "./aura-robotics/compositions/PostReel";
+import {
+  PersonalReel,
+  personalReelDefaults,
+  personalReelSchema,
+} from "./ostapdotcenko/compositions/Reel";
 // new-composition:imports:end
 
 export const RemotionRoot: React.FC = () => {
@@ -88,6 +103,36 @@ export const RemotionRoot: React.FC = () => {
         fps={30}
         width={1920}
         height={1080}
+      />
+      <Composition
+        id="GTT-PostReel"
+        component={GTTPostReel}
+        schema={gttPostReelSchema}
+        defaultProps={gttPostReelDefaults}
+        durationInFrames={240}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="Aura-PostReel"
+        component={AuraPostReel}
+        schema={auraPostReelSchema}
+        defaultProps={auraPostReelDefaults}
+        durationInFrames={240}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="Personal-Reel"
+        component={PersonalReel}
+        schema={personalReelSchema}
+        defaultProps={personalReelDefaults}
+        durationInFrames={180}
+        fps={30}
+        width={1080}
+        height={1920}
       />
       {/* new-composition:end */}
 

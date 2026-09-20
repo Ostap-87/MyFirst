@@ -24,6 +24,11 @@ export const filmGrainSchema = z.object({
     .max(1)
     .describe("Сила затемнения по краям кадра, 0 — выключить"),
   animate: z.boolean().describe("Шевелить ли зерно от кадра к кадру"),
+  blendMode: z
+    .enum(["overlay", "soft-light", "screen"])
+    .describe(
+      "Режим наложения: overlay — для светлых сцен, screen или soft-light — для тёмных, где overlay почти не виден",
+    ),
 });
 
 export type FilmGrainParams = z.infer<typeof filmGrainSchema>;
@@ -36,19 +41,26 @@ export const filmGrainDefaults: FilmGrainParams = {
   grainSize: 2,
   vignette: 0.35,
   animate: true,
+  blendMode: "overlay",
 };
 
 export const FilmGrain: React.FC<FilmGrainProps> = (params) => {
-  const { opacity, grainSize, vignette, animate } = {
+  const { opacity, grainSize, vignette, animate, blendMode } = {
     ...filmGrainDefaults,
     ...params,
   };
   const frame = useCurrentFrame();
 
-  // Сдвиг паттерна: детерминированный (random с сидом от кадра), иначе
-  // рендер не воспроизводится между прогонами.
-  const shiftX = animate ? random(`grain-x-${frame}`) * 100 : 0;
-  const shiftY = animate ? random(`grain-y-${frame}`) * 100 : 0;
+  // Шум рисуем inline-фильтром feTurbulence, а не background-image: картинку
+  // из background Remotion не дожидается и кадр может уйти без зерна
+  // (правило @remotion/no-background-image), а SVG-фильтр считается синхронно.
+  //
+  // seed меняем каждый кадр — статичное зерно читается как грязь на объективе.
+  // Значение детерминированное: random(seed) от номера кадра, а не Math.random.
+  const seed = animate ? Math.floor(random(`grain-${frame}`) * 1000) : 1;
+
+  // baseFrequency обратна размеру зерна: чем выше частота, тем мельче точки.
+  const baseFrequency = 0.9 / grainSize;
 
   return (
     <AbsoluteFill style={{ pointerEvents: "none" }}>
@@ -60,16 +72,23 @@ export const FilmGrain: React.FC<FilmGrainProps> = (params) => {
         />
       ) : null}
 
-      <AbsoluteFill
-        style={{
-          opacity,
-          mixBlendMode: "overlay",
-          backgroundImage:
-            "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E\")",
-          backgroundSize: `${120 * grainSize}px ${120 * grainSize}px`,
-          backgroundPosition: `${shiftX}px ${shiftY}px`,
-        }}
-      />
+      <AbsoluteFill style={{ opacity, mixBlendMode: blendMode }}>
+        <svg width="100%" height="100%">
+          <filter id={`film-grain-${seed}`}>
+            <feTurbulence
+              type="fractalNoise"
+              baseFrequency={baseFrequency}
+              numOctaves={3}
+              seed={seed}
+            />
+          </filter>
+          <rect
+            width="100%"
+            height="100%"
+            filter={`url(#film-grain-${seed})`}
+          />
+        </svg>
+      </AbsoluteFill>
     </AbsoluteFill>
   );
 };
