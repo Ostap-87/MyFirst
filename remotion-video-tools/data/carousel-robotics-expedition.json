@@ -32,21 +32,21 @@
       "index": 1,
       "title": "Пекин, день 1",
       "text": "Galbot и Robotera — лаборатории в Хайдяне рядом с Пекинским университетом. Гуманоиды, которые ещё не вышли на рынок.",
-      "image": "generated/robotics-expedition-v2/beijing.png"
+      "image": "generated/robotics-expedition-v2/beijing-v2.png"
     },
     {
       "type": "point",
       "index": 2,
       "title": "Шанхай, дни 2–3",
       "text": "AgiBot, Kepler, DroidUp, Fourier и Seer Robotics — весь Zhangjiang Robot Valley за два дня, пять компаний в одном кластере.",
-      "image": "generated/robotics-expedition-v2/shanghai.png"
+      "image": "generated/robotics-expedition-v2/shanghai-v2.png"
     },
     {
       "type": "point",
       "index": 3,
       "title": "Шэньчжэнь, дни 4–5",
       "text": "UBTech, Leju, LimX Dynamics, EngineAI и Pudu Robotics. От гуманоидов до сервисных роботов, которые уже работают в ресторанах.",
-      "image": "generated/robotics-expedition-v2/shenzhen.png"
+      "image": "generated/robotics-expedition-v2/shenzhen-v2.png"
     },
     {
       "type": "point",
@@ -71,7 +71,7 @@
       "text": "Оставьте заявку — и мы вышлем вам детальную программу по дням и условия участия.",
       "keyword": "",
       "handle": "globaltechtour.ru",
-      "image": "generated/robotics-expedition-v2/handshake.png"
+      "image": "generated/robotics-expedition-v2/handshake-v2.png"
     }
   ]
 }
