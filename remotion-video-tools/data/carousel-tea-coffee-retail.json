@@ -6,7 +6,7 @@
     {
       "type": "cover",
       "kicker": "New Tea & Coffee Retail Expedition · Китай",
-      "title": "Chagee, Luckin Coffee, HeyTea — не в отчётах, а вживую",
+      "title": "**Chagee**, Luckin Coffee, HeyTea — не в отчётах, а **вживую**",
       "subtitle": "26–31 октября · 5 дней, 4 города, 9 компаний нового чайно-кофейного ретейла Китая",
       "image": "generated/tea-coffee-retail/cover-v4-crop.png"
     },
@@ -16,8 +16,8 @@
       "prefix": "",
       "suffix": "",
       "compact": false,
-      "label": "компаний чайно-кофейного ретейла в программе",
-      "source": "4 города · 5 дней · 6 ночей",
+      "label": "компаний **чайно-кофейного ретейла** в программе",
+      "source": "**4 города** · **5 дней** · **6 ночей**",
       "image": "generated/tea-coffee-retail/metric-v2-grid.png"
     },
     {
@@ -58,7 +58,7 @@
     {
       "type": "point",
       "index": 6,
-      "title": "Не экскурсия, а переговоры",
+      "title": "Не простая экскурсия, а полноценные переговоры",
       "text": "Переговоры с топ-менеджментом, перевод и сопровождение на каждой встрече, контакты для франчайзинга и дистрибуции.",
       "image": "generated/tea-coffee-retail/negotiations.png"
     },

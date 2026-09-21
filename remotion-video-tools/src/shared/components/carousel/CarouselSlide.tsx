@@ -338,26 +338,29 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
                   {formatRu(slide.value, 0, slide.compact)}
                   {slide.suffix}
                 </div>
-                <div
-                  style={{
-                    fontFamily: fontFamily(theme.fonts.heading),
-                    fontWeight: theme.fonts.headingWeight,
-                    fontSize: fs(0.046),
-                    lineHeight: 1.2,
-                    color: theme.colors.text,
-                  }}
-                >
-                  {slide.label}
+                <div style={{ lineHeight: 1.2 }}>
+                  {renderRich(
+                    slide.label,
+                    {
+                      fontFamily: fontFamily(theme.fonts.heading),
+                      fontWeight: theme.fonts.headingWeight,
+                      fontSize: fs(0.046),
+                      color: theme.colors.text,
+                    },
+                    { color: theme.colors.accent },
+                  )}
                 </div>
                 {slide.source ? (
-                  <div
-                    style={{
-                      fontFamily: fontFamily(theme.fonts.mono),
-                      fontSize: fs(0.024),
-                      color: theme.colors.text,
-                    }}
-                  >
-                    {slide.source}
+                  <div style={{ lineHeight: 1.3 }}>
+                    {renderRich(
+                      slide.source,
+                      {
+                        fontFamily: fontFamily(theme.fonts.mono),
+                        fontSize: fs(0.032),
+                        color: theme.colors.text,
+                      },
+                      { fontWeight: 700, color: theme.colors.accent },
+                    )}
                   </div>
                 ) : null}
               </>
