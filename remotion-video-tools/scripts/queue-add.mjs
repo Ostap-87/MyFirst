@@ -25,7 +25,8 @@ import {
   channelList,
   formatMoscow,
   parseMoscowTime,
-  postsDir,
+  kindDir,
+  mediaKind,
   queueFile,
   readPublished,
   readQueue,
@@ -135,14 +136,15 @@ const addPost = ({ slug, type, files }) => {
     );
   }
 
-  // Тип в имени папки: по списку видно, где карусель, а где видео,
-  // и при этом сохраняется хронологический порядок по дате.
+  // Вид определяет папку (photo/ или video/), тип — имя внутри неё.
+  // Дата первой: архив читается хронологически.
+  const kind = mediaKind(type);
   const folder = `${date}-${type}-${slug}`;
-  const dir = resolve(postsDir(channel, brand), folder);
+  const dir = resolve(kindDir(channel, brand, kind), folder);
 
   if (existsSync(dir) && !args.force) {
     fail(
-      `Папка ${channel}/${brand}/posts/${folder} уже существует. Перезаписать: --force`,
+      `Папка ${channel}/${brand}/${kind}/${folder} уже существует. Перезаписать: --force`,
     );
   }
 
@@ -158,6 +160,7 @@ const addPost = ({ slug, type, files }) => {
   const meta = {
     channel,
     brand,
+    kind,
     slug,
     type,
     folder,
@@ -177,7 +180,7 @@ const addPost = ({ slug, type, files }) => {
 
   console.log(`
   ✔ В очереди ${channelMeta.title} · ${BRANDS[brand].title}
-    ${folder}
+    ${kind}/${folder}
     файлов: ${copied.length}, подпись: ${caption.length} символов
     публикация: ${formatMoscow(publishAt, true)} (МСК)
 ${

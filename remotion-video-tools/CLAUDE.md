@@ -167,9 +167,12 @@ npm run carousel -- --slug ... --square --no-hint        # 1:1, без «лис�
 каналов — **канал → бренд → очередь**:
 
 ```
-instagram/globaltechtour/   queue.json, published.json, posts/
-instagram/aura/
-instagram/personal/
+instagram/globaltechtour/
+  queue.json        очередь аккаунта: что и когда
+  published.json    архив вышедшего
+  photo/2026-09-25-carousel-robotics-expedition/
+  video/2026-09-26-reel-china-hook/
+instagram/aura/ instagram/personal/
 youtube/ threads/ tiktok/   то же устройство, публикация ещё не подключена
 ```
 
@@ -177,6 +180,13 @@ youtube/ threads/ tiktok/   то же устройство, публикация
   `IG_TOKEN_GTT`, `IG_TOKEN_AURA`, `IG_TOKEN_PERSONAL`. Пост лежит в папке
   того аккаунта, куда пойдёт, — перепутать нельзя. По той же причине
   `--post` требует явного `--brand`.
+- **Файлы разведены по виду: `photo/` и `video/`.** Это разные процессы —
+  карусель собирается рендером слайдов, ролик монтируется со звуком и
+  субтитрами. Вид определяется типом автоматически (`MEDIA_KINDS` в
+  `channels.mjs`) и пишется в `meta.json`.
+- **Очередь одна на аккаунт**, а не на вид: она описывает расписание ленты,
+  а лента у аккаунта одна. С двумя очередями легко поставить карусель и
+  ролик на одно время и выдать два поста подряд.
 - **Имя папки: `<дата>-<тип>-<тема>`.** Тип (`carousel`, `reel`, `video`,
   `short`) виден из списка, дата первой — архив читается хронологически.
 - **Папка поста не удаляется после выхода.** По архиву видно, что именно

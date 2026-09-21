@@ -24,7 +24,8 @@ import {
   formatMoscow,
   markPostFailed,
   postPath,
-  postsDir,
+  kindDir,
+  mediaKind,
   readQueue,
   resolveBrandKey,
 } from "./channels.mjs";
@@ -87,15 +88,23 @@ const waitForContainer = async (token, containerId, attempts = 30) => {
   throw new Error("Instagram не обработал медиа за отведённое время.");
 };
 
+/** Вид берём из записи; у постов, созданных до разделения, его нет. */
+const kindOf = (post) => post.kind ?? mediaKind(post.type);
+
+const postDir = (brand, post) =>
+  resolve(kindDir(CHANNEL, brand, kindOf(post)), post.folder);
+
 const captionOf = (brand, post) =>
-  read(resolve(postsDir(CHANNEL, brand), post.folder, "caption.txt")).trim();
+  read(resolve(postDir(brand, post), "caption.txt")).trim();
 
 const publishCarousel = async ({ token, userId }, brand, post) => {
   const children = [];
 
   for (const file of post.files) {
     const container = await api(token, `${userId}/media`, {
-      image_url: rawUrl(postPath(CHANNEL, brand, post.folder, file)),
+      image_url: rawUrl(
+        postPath(CHANNEL, brand, kindOf(post), post.folder, file),
+      ),
       is_carousel_item: "true",
     });
     await waitForContainer(token, container.id);
@@ -119,7 +128,9 @@ const publishCarousel = async ({ token, userId }, brand, post) => {
 const publishReel = async ({ token, userId }, brand, post) => {
   const container = await api(token, `${userId}/media`, {
     media_type: "REELS",
-    video_url: rawUrl(postPath(CHANNEL, brand, post.folder, post.files[0])),
+    video_url: rawUrl(
+      postPath(CHANNEL, brand, kindOf(post), post.folder, post.files[0]),
+    ),
     caption: captionOf(brand, post),
   });
   // Видео обрабатывается дольше картинок — опрашиваем статус вдвое дольше.
@@ -183,17 +194,19 @@ console.log(`\n  ${CHANNELS[CHANNEL].title} — к публикации: ${total
 for (const { brand, posts } of plan) {
   console.log(`\n  ${BRANDS[brand].title}`);
   for (const post of posts) {
-    const dir = resolve(postsDir(CHANNEL, brand), post.folder);
+    const dir = postDir(brand, post);
     if (!existsSync(dir))
-      fail(`Папка поста пропала: ${CHANNEL}/${brand}/posts/${post.folder}`);
+      fail(
+        `Папка поста пропала: ${CHANNEL}/${brand}/${kindOf(post)}/${post.folder}`,
+      );
 
     console.log(
-      `    ${post.type.padEnd(8)} ${post.folder}` +
+      `    ${post.type.padEnd(8)} ${kindOf(post)}/${post.folder}` +
         `\n      ${formatMoscow(post.publishAt)} МСК, файлов: ${post.files.length}` +
         `, подпись: ${captionOf(brand, post).length} символов`,
     );
     console.log(
-      `      ${rawUrl(postPath(CHANNEL, brand, post.folder, post.files[0]))}`,
+      `      ${rawUrl(postPath(CHANNEL, brand, kindOf(post), post.folder, post.files[0]))}`,
     );
   }
 }

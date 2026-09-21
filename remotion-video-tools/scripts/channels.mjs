@@ -35,6 +35,26 @@ export const BRANDS = {
 };
 
 /**
+ * Вид контента по его типу.
+ *
+ * Файлы разведены по видам (`photo/` и `video/`), потому что это разные
+ * производственные процессы: карусель собирается рендером слайдов, ролик —
+ * монтажом со звуком и субтитрами. Очередь при этом ОДНА на аккаунт: она
+ * описывает расписание ленты, а лента у аккаунта одна. С двумя очередями
+ * легко поставить карусель и ролик на одно время и выдать два поста подряд.
+ */
+export const MEDIA_KINDS = {
+  carousel: "photo",
+  image: "photo",
+  text: "photo",
+  reel: "video",
+  video: "video",
+  short: "video",
+};
+
+export const mediaKind = (type) => MEDIA_KINDS[type] ?? "photo";
+
+/**
  * Каналы. `ready: false` означает, что папки и очередь уже есть, а публикация
  * ещё не подключена — контент можно готовить заранее, он дождётся кода.
  */
@@ -106,12 +126,13 @@ export const queueFile = (channel, brand) =>
   resolve(channelDir(channel, brand), "queue.json");
 export const publishedFile = (channel, brand) =>
   resolve(channelDir(channel, brand), "published.json");
-export const postsDir = (channel, brand) =>
-  resolve(channelDir(channel, brand), "posts");
+/** Папка вида контента: photo/ или video/ внутри бренда. */
+export const kindDir = (channel, brand, kind) =>
+  resolve(channelDir(channel, brand), kind);
 
 /** Путь поста относительно корня репозитория — из него строятся публичные ссылки. */
-export const postPath = (channel, brand, folder, file) =>
-  `${channel}/${brand}/posts/${folder}/${file}`;
+export const postPath = (channel, brand, kind, folder, file) =>
+  `${channel}/${brand}/${kind}/${folder}/${file}`;
 
 // ——— Очередь и архив ———
 
@@ -137,7 +158,10 @@ export const writeJson = (file, data) =>
 
 /** Создаёт папки и пустые файлы канала, если их ещё нет. */
 export const ensureChannel = (channel, brand) => {
-  mkdirSync(postsDir(channel, brand), { recursive: true });
+  // Обе папки создаём сразу: пустая video/ рядом с photo/ показывает, что
+  // видео в этот аккаунт тоже планируется, а не забыто.
+  mkdirSync(kindDir(channel, brand, "photo"), { recursive: true });
+  mkdirSync(kindDir(channel, brand, "video"), { recursive: true });
 
   const queue = queueFile(channel, brand);
   if (!existsSync(queue)) writeJson(queue, emptyQueue(channel, brand));
