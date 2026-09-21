@@ -291,17 +291,17 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
                   {slide.index}
                 </div>
                 {slide.title ? (
-                  <h2
-                    style={{
-                      margin: 0,
-                      fontFamily: fontFamily(theme.fonts.heading),
-                      fontWeight: theme.fonts.headingWeight,
-                      fontSize: fs(0.062),
-                      lineHeight: 1.12,
-                      color: theme.colors.text,
-                    }}
-                  >
-                    {slide.title}
+                  <h2 style={{ margin: 0, lineHeight: 1.12 }}>
+                    {renderRich(
+                      slide.title,
+                      {
+                        fontFamily: fontFamily(theme.fonts.heading),
+                        fontWeight: theme.fonts.headingWeight,
+                        fontSize: fs(0.062),
+                        color: theme.colors.text,
+                      },
+                      { color: theme.colors.accent },
+                    )}
                   </h2>
                 ) : null}
                 <p
