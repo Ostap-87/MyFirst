@@ -32,6 +32,9 @@ export const globaltechtourTheme: BrandTheme = {
     lg: 64,
     xl: 120,
   },
+  // Деловой светлый тон сайта: фото карусели живёт в карточке, а не заливает
+  // кадр тёмным градиентом (закреплено 21.09.2026, запрос пользователя).
+  imageStyle: "framed",
 };
 
 export default globaltechtourTheme;

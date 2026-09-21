@@ -33,7 +33,7 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
   showSwipeHint = true,
   footer = "",
 }) => {
-  const { fs, sp } = useFormat();
+  const { fs, sp, vh } = useFormat();
 
   // Кегль заголовка обложки подбирается по длине: «Batteries» и
   // «Borunte: шестиосевые роботы, которые обслуживают термопластавтоматы» —
@@ -54,44 +54,80 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
     return fs(0.105);
   };
 
-  // Слайд с картинкой всегда тёмный: текст ложится поверх фотографии.
+  // Слайд с картинкой обычно тёмный: текст ложится поверх фотографии.
   // Без картинки — светлый, чтобы лента не читалась как сплошная реклама.
+  // Бренды с imageStyle "framed" (GTT) держат фон светлым всегда: фото
+  // живёт в отдельной карточке, а не заливает кадр (см. theme.ts).
   const hasImage = Boolean("image" in slide && slide.image);
-  const isDark = hasImage || theme.colors.primary === "#12121a";
+  const framed = hasImage && theme.imageStyle === "framed";
+  const isDark = !framed && (hasImage || theme.colors.primary === "#12121a");
   const background = isDark ? theme.colors.primary : theme.colors.surface;
   const textColor = isDark ? "#ffffff" : theme.colors.text;
   const mutedColor = isDark ? "rgba(255,255,255,0.7)" : theme.colors.muted;
 
+  // Карточка фото в "framed"-режиме: фикс. отступы сверху/по бокам, высота —
+  // чуть больше половины кадра, дальше текст идёт под ней (не поверх).
+  const framedImageTop = vh(0.06);
+  const framedImageHeight = vh(0.44);
+  const framedContentTop = framedImageTop + framedImageHeight + vh(0.045);
+
   return (
     <AbsoluteFill style={{ backgroundColor: background }}>
       {hasImage && "image" in slide && slide.image ? (
-        <>
-          <AbsoluteFill>
+        framed ? (
+          <div
+            style={{
+              position: "absolute",
+              top: framedImageTop,
+              left: sp(0.08),
+              right: sp(0.08),
+              height: framedImageHeight,
+              borderRadius: sp(0.045),
+              overflow: "hidden",
+              border: `1px solid ${theme.colors.line}`,
+              boxShadow: "0 16px 40px rgba(23,23,29,0.08)",
+            }}
+          >
             <Img
               src={staticFile(slide.image)}
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
             />
-          </AbsoluteFill>
-          {/* Затемнение под текст. На обложке текст внизу — гасим низ;
-              на остальных слайдах он по центру, поэтому гасим кадр ровнее,
-              иначе цифра на светлом участке фотографии пропадает. */}
-          <AbsoluteFill
-            style={{
-              background:
-                slide.type === "cover"
-                  ? "linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.6) 45%, rgba(0,0,0,0.3) 100%)"
-                  : slide.type === "image"
-                    ? "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.1) 45%)"
-                    : "linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.78) 42%, rgba(0,0,0,0.82) 100%)",
-            }}
-          />
-        </>
+          </div>
+        ) : (
+          <>
+            <AbsoluteFill>
+              <Img
+                src={staticFile(slide.image)}
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              />
+            </AbsoluteFill>
+            {/* Затемнение под текст. На обложке текст внизу — гасим низ;
+                на остальных слайдах он по центру, поэтому гасим кадр ровнее,
+                иначе цифра на светлом участке фотографии пропадает. */}
+            <AbsoluteFill
+              style={{
+                background:
+                  slide.type === "cover"
+                    ? "linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.6) 45%, rgba(0,0,0,0.3) 100%)"
+                    : slide.type === "image"
+                      ? "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.1) 45%)"
+                      : "linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.78) 42%, rgba(0,0,0,0.82) 100%)",
+              }}
+            />
+          </>
+        )
       ) : null}
 
       <AbsoluteFill
         style={{
-          padding: `${sp(0.12)}px ${sp(0.08)}px`,
-          justifyContent: slide.type === "cover" ? "flex-end" : "center",
+          padding: framed
+            ? `${framedContentTop}px ${sp(0.08)}px ${sp(0.08)}px`
+            : `${sp(0.12)}px ${sp(0.08)}px`,
+          justifyContent: framed
+            ? "flex-start"
+            : slide.type === "cover"
+              ? "flex-end"
+              : "center",
           gap: sp(0.035),
         }}
       >
@@ -103,9 +139,10 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
                 fontSize: fs(0.032),
                 letterSpacing: fs(0.004),
                 // Поверх фотографии кикер белый: акцентный цвет на светлом
-                // участке кадра пропадает даже с тенью.
-                color: hasImage ? "#ffffff" : theme.colors.accent,
-                textShadow: "0 2px 12px rgba(0,0,0,0.9)",
+                // участке кадра пропадает даже с тенью. В "framed" фото не
+                // заливает кадр — кикер обычный акцентный, без тени.
+                color: hasImage && !framed ? "#ffffff" : theme.colors.accent,
+                textShadow: framed ? "none" : "0 2px 12px rgba(0,0,0,0.9)",
               }}
             >
               {slide.kicker.toUpperCase()}
@@ -118,8 +155,8 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
                 fontSize: coverTitleSize(slide.title),
                 lineHeight: 1.08,
                 letterSpacing: -1,
-                color: "#ffffff",
-                textShadow: "0 4px 24px rgba(0,0,0,0.75)",
+                color: framed ? theme.colors.text : "#ffffff",
+                textShadow: framed ? "none" : "0 4px 24px rgba(0,0,0,0.75)",
               }}
             >
               {slide.title}
@@ -130,8 +167,8 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
                 fontFamily: fontFamily(theme.fonts.body),
                 fontSize: fs(0.042),
                 lineHeight: 1.35,
-                color: "rgba(255,255,255,0.85)",
-                textShadow: "0 2px 14px rgba(0,0,0,0.7)",
+                color: framed ? theme.colors.muted : "rgba(255,255,255,0.85)",
+                textShadow: framed ? "none" : "0 2px 14px rgba(0,0,0,0.7)",
               }}
             >
               {slide.subtitle}
@@ -271,24 +308,38 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
         ) : null}
 
         {slide.type === "image" ? (
-          <AbsoluteFill
-            style={{
-              justifyContent: "flex-end",
-              padding: `${sp(0.12)}px ${sp(0.08)}px`,
-            }}
-          >
+          framed ? (
             <p
               style={{
                 margin: 0,
                 fontFamily: fontFamily(theme.fonts.body),
-                fontSize: fs(0.04),
-                lineHeight: 1.35,
-                color: "#ffffff",
+                fontSize: fs(0.044),
+                lineHeight: 1.4,
+                color: theme.colors.text,
               }}
             >
               {slide.caption}
             </p>
-          </AbsoluteFill>
+          ) : (
+            <AbsoluteFill
+              style={{
+                justifyContent: "flex-end",
+                padding: `${sp(0.12)}px ${sp(0.08)}px`,
+              }}
+            >
+              <p
+                style={{
+                  margin: 0,
+                  fontFamily: fontFamily(theme.fonts.body),
+                  fontSize: fs(0.04),
+                  lineHeight: 1.35,
+                  color: "#ffffff",
+                }}
+              >
+                {slide.caption}
+              </p>
+            </AbsoluteFill>
+          )
         ) : null}
 
         {slide.type === "cta" ? (
@@ -355,11 +406,18 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
         <div
           style={{
             position: "absolute",
-            top: sp(0.06),
-            right: sp(0.08),
+            top: framed ? framedImageTop + sp(0.025) : sp(0.06),
+            right: framed ? sp(0.08) + sp(0.025) : sp(0.08),
+            padding: framed ? `${sp(0.012)}px ${sp(0.022)}px` : 0,
+            borderRadius: 999,
+            backgroundColor: framed ? "rgba(255,255,255,0.92)" : "transparent",
             fontFamily: fontFamily(theme.fonts.mono),
             fontSize: fs(0.028),
-            color: isDark ? "rgba(255,255,255,0.75)" : theme.colors.muted,
+            color: framed
+              ? theme.colors.text
+              : isDark
+                ? "rgba(255,255,255,0.75)"
+                : theme.colors.muted,
             fontVariantNumeric: "tabular-nums",
           }}
         >
@@ -371,12 +429,24 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
         <div
           style={{
             position: "absolute",
-            bottom: sp(0.05),
-            left: sp(0.08),
+            bottom: framed
+              ? undefined
+              : sp(0.05),
+            top: framed
+              ? framedImageTop + framedImageHeight - sp(0.05) - sp(0.025)
+              : undefined,
+            left: sp(0.08) + (framed ? sp(0.025) : 0),
+            padding: framed ? `${sp(0.012)}px ${sp(0.022)}px` : 0,
+            borderRadius: 999,
+            backgroundColor: framed ? "rgba(255,255,255,0.92)" : "transparent",
             fontFamily: fontFamily(theme.fonts.mono),
             fontSize: fs(0.026),
-            color: isDark ? "rgba(255,255,255,0.6)" : theme.colors.muted,
-            textShadow: isDark ? "0 2px 8px rgba(0,0,0,0.6)" : "none",
+            color: framed
+              ? theme.colors.text
+              : isDark
+                ? "rgba(255,255,255,0.6)"
+                : theme.colors.muted,
+            textShadow: !framed && isDark ? "0 2px 8px rgba(0,0,0,0.6)" : "none",
           }}
         >
           {footer}
@@ -389,14 +459,22 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
         <div
           style={{
             position: "absolute",
-            bottom: sp(0.05),
-            right: sp(0.08),
+            bottom: framed
+              ? undefined
+              : sp(0.05),
+            top: framed
+              ? framedImageTop + framedImageHeight - sp(0.05) - sp(0.025)
+              : undefined,
+            right: framed ? sp(0.08) + sp(0.025) : sp(0.08),
             display: "flex",
             alignItems: "center",
             gap: sp(0.014),
+            padding: framed ? `${sp(0.014)}px ${sp(0.028)}px` : 0,
+            borderRadius: 999,
+            backgroundColor: framed ? theme.colors.accent : "transparent",
             fontFamily: fontFamily(theme.fonts.mono),
             fontSize: fs(0.03),
-            color: theme.colors.accent,
+            color: framed ? "#ffffff" : theme.colors.accent,
           }}
         >
           листай <span style={{ fontSize: fs(0.04) }}>→</span>
