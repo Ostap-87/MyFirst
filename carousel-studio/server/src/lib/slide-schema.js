@@ -198,9 +198,9 @@ function normalizeLayer(raw, size, index) {
 }
 
 /** Привести произвольный canvas-JSON к каноническому виду; кидает 400 на мусор. */
-export function normalizeCanvas(raw, { size = null } = {}) {
+export function normalizeCanvas(raw, { size = null, preset = null } = {}) {
   if (raw === undefined || raw === null || (isPlainObject(raw) && Object.keys(raw).length === 0)) {
-    return createDefaultCanvas({ size });
+    return createDefaultCanvas({ size, preset });
   }
   if (!isPlainObject(raw)) throw badRequest('canvas должен быть объектом');
 

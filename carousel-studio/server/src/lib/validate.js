@@ -48,3 +48,14 @@ export function optionalStringArray(value, field) {
   }
   return value;
 }
+
+const KEY_RE = /^[a-z0-9_]{2,40}$/;
+
+/** Машинный ключ пресета/шаблона: латиница, цифры, подчёркивания. */
+export function requireKey(value, field) {
+  const key = requireString(value, field, { max: 40 });
+  if (!KEY_RE.test(key)) {
+    throw badRequest(`Поле "${field}" должно состоять из латиницы, цифр и подчёркиваний (2-40 символов)`);
+  }
+  return key;
+}

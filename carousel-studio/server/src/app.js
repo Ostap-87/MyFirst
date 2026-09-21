@@ -7,9 +7,14 @@ import { createDb } from './db/index.js';
 import { HttpError } from './lib/errors.js';
 import { createProjectsRepo } from './repos/projects.js';
 import { createSlidesRepo } from './repos/slides.js';
+import { createBrandPresetsRepo } from './repos/brand-presets.js';
+import { createCarouselTemplatesRepo } from './repos/carousel-templates.js';
+import { seedBuiltins } from './db/seed.js';
 import healthRoutes from './routes/health.js';
 import projectRoutes from './routes/projects.js';
 import slideRoutes from './routes/slides.js';
+import brandPresetRoutes from './routes/brand-presets.js';
+import carouselTemplateRoutes from './routes/carousel-templates.js';
 
 /**
  * Сборка приложения. Вынесена отдельно от запуска, чтобы тесты поднимали
@@ -23,7 +28,13 @@ export async function buildApp({ dbFile = config.db.file, logger = { level: conf
   app.decorate('repos', {
     projects: createProjectsRepo(db),
     slides: createSlidesRepo(db),
+    brandPresets: createBrandPresetsRepo(db),
+    carouselTemplates: createCarouselTemplatesRepo(db),
   });
+
+  // Встроенные пресеты и шаблоны — добавляются, если их ещё нет,
+  // и никогда не перезаписывают правки пользователя.
+  await seedBuiltins(db, { logger: app.log });
   app.addHook('onClose', async () => db.close());
 
   await app.register(cors, { origin: true });
@@ -50,6 +61,8 @@ export async function buildApp({ dbFile = config.db.file, logger = { level: conf
   });
 
   await app.register(healthRoutes);
+  await app.register(brandPresetRoutes);
+  await app.register(carouselTemplateRoutes);
   await app.register(projectRoutes);
   await app.register(slideRoutes);
 

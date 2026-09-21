@@ -57,7 +57,7 @@ export function createSlidesRepo(db) {
     },
 
     /** Вставить слайд. position = null → в конец; иначе сдвигаем хвост вправо. */
-    async create(projectId, input = {}, { size = null } = {}) {
+    async create(projectId, input = {}, { size = null, preset = null } = {}) {
       return db.transaction(async () => {
         const total = await repo.count(projectId);
         const target =
@@ -81,7 +81,7 @@ export function createSlidesRepo(db) {
             input.role ?? 'value',
             input.hookType ?? null,
             toJson(normalizeTextContent(input.text)),
-            toJson(normalizeCanvas(input.canvas, { size })),
+            toJson(normalizeCanvas(input.canvas, { size, preset })),
             input.image?.source ?? 'none',
             input.image?.url ?? null,
             input.image?.path ?? null,
@@ -150,10 +150,34 @@ export function createSlidesRepo(db) {
     },
 
     async removeByProject(projectId, { keepLocked = false } = {}) {
-      const sql = keepLocked
-        ? 'DELETE FROM slides WHERE project_id = ? AND locked = 0'
-        : 'DELETE FROM slides WHERE project_id = ?';
-      await db.run(sql, [projectId]);
+      return db.transaction(async () => {
+        const sql = keepLocked
+          ? 'DELETE FROM slides WHERE project_id = ? AND locked = 0'
+          : 'DELETE FROM slides WHERE project_id = ?';
+        await db.run(sql, [projectId]);
+        // После выборочного удаления в позициях остаются дыры, а UNIQUE(project_id,
+        // position) не даст вставить новые слайды поверх них — уплотняем.
+        if (keepLocked) await repo.resequence(projectId);
+      });
+    },
+
+    /** Уплотнить позиции до 1..N, сохранив текущий порядок. */
+    async resequence(projectId) {
+      const rows = await db.all(
+        'SELECT id, position FROM slides WHERE project_id = ? ORDER BY position',
+        [projectId],
+      );
+      const needsWork = rows.some((row, i) => row.position !== i + 1);
+      if (!needsWork) return rows.length;
+      return db.transaction(async () => {
+        for (const [i, row] of rows.entries()) {
+          await db.run('UPDATE slides SET position = ? WHERE id = ?', [-(i + 1), row.id]);
+        }
+        for (const [i, row] of rows.entries()) {
+          await db.run('UPDATE slides SET position = ? WHERE id = ?', [i + 1, row.id]);
+        }
+        return rows.length;
+      });
     },
   };
 
