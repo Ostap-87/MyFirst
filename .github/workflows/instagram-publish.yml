@@ -1,0 +1,83 @@
+name: Instagram — публикация по расписанию
+
+# Публикует посты из instagram/queue.json, у которых наступило время.
+# Контент готовится заранее, здесь только отправка.
+#
+# Что нужно один раз добавить в Settings → Secrets and variables → Actions:
+#   IG_ACCESS_TOKEN — долгоживущий токен Meta
+#   IG_USER_ID      — id Instagram Business аккаунта
+# Пока секретов нет, прогон завершается предупреждением и ничего не публикует.
+
+on:
+  schedule:
+    # Два слота в сутки: 10:00 и 19:00 по Москве (МСК = UTC+3).
+    # Cron в GitHub Actions всегда в UTC и может задержаться на 5–15 минут —
+    # поэтому время публикации в очереди задаётся с запасом, а не «секунда в секунду».
+    - cron: "0 7 * * *"
+    - cron: "0 16 * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Только показать, что вышло бы (ничего не публикуя)"
+        type: boolean
+        default: true
+
+permissions:
+  # Нужно, чтобы вернуть в репозиторий обновлённые queue.json и published.json.
+  contents: write
+
+concurrency:
+  # Два одновременных прогона опубликовали бы один пост дважды.
+  group: instagram-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      # Зависимости не ставим: скрипт публикации использует только модули
+      # Node и встроенный fetch. Прогон занимает секунды.
+
+      - name: Проверить доступ
+        id: access
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+        run: |
+          if [ -z "$IG_ACCESS_TOKEN" ] || [ -z "$IG_USER_ID" ]; then
+            echo "has_access=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::Секреты IG_ACCESS_TOKEN и IG_USER_ID не заданы — публикация пропущена, показан только план."
+          else
+            echo "has_access=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Показать план
+        working-directory: remotion-video-tools
+        run: node scripts/publish-instagram.mjs --due --dry-run
+
+      - name: Опубликовать
+        if: steps.access.outputs.has_access == 'true' && inputs.dry_run != true
+        working-directory: remotion-video-tools
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+        run: node scripts/publish-instagram.mjs --due
+
+      - name: Записать результат в репозиторий
+        if: always() && steps.access.outputs.has_access == 'true' && inputs.dry_run != true
+        run: |
+          if git diff --quiet instagram/; then
+            echo "Очередь не изменилась — коммитить нечего."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add instagram/queue.json instagram/published.json
+          git commit -m "Instagram: обновление очереди после публикации"
+          git push
