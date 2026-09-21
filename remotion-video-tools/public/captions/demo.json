@@ -1,0 +1,268 @@
+[
+  {
+    "text": "Полгода ",
+    "startMs": 400,
+    "endMs": 854,
+    "timestampMs": 627,
+    "confidence": 0.97
+  },
+  {
+    "text": "назад ",
+    "startMs": 894,
+    "endMs": 1304,
+    "timestampMs": 1099,
+    "confidence": 0.97
+  },
+  {
+    "text": "я ",
+    "startMs": 1344,
+    "endMs": 1666,
+    "timestampMs": 1505,
+    "confidence": 0.97
+  },
+  {
+    "text": "думал ",
+    "startMs": 1706,
+    "endMs": 2116,
+    "timestampMs": 1911,
+    "confidence": 0.97
+  },
+  {
+    "text": "что ",
+    "startMs": 2156,
+    "endMs": 2522,
+    "timestampMs": 2339,
+    "confidence": 0.97
+  },
+  {
+    "text": "выход ",
+    "startMs": 2562,
+    "endMs": 2972,
+    "timestampMs": 2767,
+    "confidence": 0.97
+  },
+  {
+    "text": "на ",
+    "startMs": 3012,
+    "endMs": 3356,
+    "timestampMs": 3184,
+    "confidence": 0.97
+  },
+  {
+    "text": "Китай ",
+    "startMs": 3396,
+    "endMs": 3806,
+    "timestampMs": 3601,
+    "confidence": 0.97
+  },
+  {
+    "text": "это ",
+    "startMs": 3846,
+    "endMs": 4212,
+    "timestampMs": 4029,
+    "confidence": 0.97
+  },
+  {
+    "text": "вопрос ",
+    "startMs": 4252,
+    "endMs": 4684,
+    "timestampMs": 4468,
+    "confidence": 0.97
+  },
+  {
+    "text": "бюджета ",
+    "startMs": 4724,
+    "endMs": 5178,
+    "timestampMs": 4951,
+    "confidence": 0.97
+  },
+  {
+    "text": "оказалось ",
+    "startMs": 5218,
+    "endMs": 5716,
+    "timestampMs": 5467,
+    "confidence": 0.97
+  },
+  {
+    "text": "вопрос ",
+    "startMs": 5756,
+    "endMs": 6188,
+    "timestampMs": 5972,
+    "confidence": 0.97
+  },
+  {
+    "text": "доступа ",
+    "startMs": 6228,
+    "endMs": 6682,
+    "timestampMs": 6455,
+    "confidence": 0.97
+  },
+  {
+    "text": "к ",
+    "startMs": 6722,
+    "endMs": 7044,
+    "timestampMs": 6883,
+    "confidence": 0.97
+  },
+  {
+    "text": "нужным ",
+    "startMs": 7084,
+    "endMs": 7516,
+    "timestampMs": 7300,
+    "confidence": 0.97
+  },
+  {
+    "text": "людям ",
+    "startMs": 7556,
+    "endMs": 7966,
+    "timestampMs": 7761,
+    "confidence": 0.97
+  },
+  {
+    "text": "первый ",
+    "startMs": 8006,
+    "endMs": 8438,
+    "timestampMs": 8222,
+    "confidence": 0.97
+  },
+  {
+    "text": "же ",
+    "startMs": 8478,
+    "endMs": 8822,
+    "timestampMs": 8650,
+    "confidence": 0.97
+  },
+  {
+    "text": "тур ",
+    "startMs": 8862,
+    "endMs": 9228,
+    "timestampMs": 9045,
+    "confidence": 0.97
+  },
+  {
+    "text": "закрыл ",
+    "startMs": 9268,
+    "endMs": 9700,
+    "timestampMs": 9484,
+    "confidence": 0.97
+  },
+  {
+    "text": "три ",
+    "startMs": 9740,
+    "endMs": 10106,
+    "timestampMs": 9923,
+    "confidence": 0.97
+  },
+  {
+    "text": "контракта ",
+    "startMs": 10146,
+    "endMs": 10644,
+    "timestampMs": 10395,
+    "confidence": 0.97
+  },
+  {
+    "text": "а ",
+    "startMs": 10684,
+    "endMs": 11006,
+    "timestampMs": 10845,
+    "confidence": 0.97
+  },
+  {
+    "text": "второй ",
+    "startMs": 11046,
+    "endMs": 11478,
+    "timestampMs": 11262,
+    "confidence": 0.97
+  },
+  {
+    "text": "принёс ",
+    "startMs": 11518,
+    "endMs": 11950,
+    "timestampMs": 11734,
+    "confidence": 0.97
+  },
+  {
+    "text": "партнёра ",
+    "startMs": 11990,
+    "endMs": 12466,
+    "timestampMs": 12228,
+    "confidence": 0.97
+  },
+  {
+    "text": "на ",
+    "startMs": 12506,
+    "endMs": 12850,
+    "timestampMs": 12678,
+    "confidence": 0.97
+  },
+  {
+    "text": "десять ",
+    "startMs": 12890,
+    "endMs": 13322,
+    "timestampMs": 13106,
+    "confidence": 0.97
+  },
+  {
+    "text": "лет ",
+    "startMs": 13362,
+    "endMs": 13728,
+    "timestampMs": 13545,
+    "confidence": 0.97
+  },
+  {
+    "text": "если ",
+    "startMs": 13768,
+    "endMs": 14156,
+    "timestampMs": 13962,
+    "confidence": 0.97
+  },
+  {
+    "text": "хочешь ",
+    "startMs": 14196,
+    "endMs": 14628,
+    "timestampMs": 14412,
+    "confidence": 0.97
+  },
+  {
+    "text": "так ",
+    "startMs": 14668,
+    "endMs": 15034,
+    "timestampMs": 14851,
+    "confidence": 0.97
+  },
+  {
+    "text": "же ",
+    "startMs": 15074,
+    "endMs": 15418,
+    "timestampMs": 15246,
+    "confidence": 0.97
+  },
+  {
+    "text": "напиши ",
+    "startMs": 15458,
+    "endMs": 15890,
+    "timestampMs": 15674,
+    "confidence": 0.97
+  },
+  {
+    "text": "слово ",
+    "startMs": 15930,
+    "endMs": 16340,
+    "timestampMs": 16135,
+    "confidence": 0.97
+  },
+  {
+    "text": "в ",
+    "startMs": 16380,
+    "endMs": 16702,
+    "timestampMs": 16541,
+    "confidence": 0.97
+  },
+  {
+    "text": "директ ",
+    "startMs": 16742,
+    "endMs": 17174,
+    "timestampMs": 16958,
+    "confidence": 0.97
+  }
+]

@@ -1,0 +1,21 @@
+{
+  "channel": "instagram",
+  "brand": "globaltechtour",
+  "slug": "robotics-expedition",
+  "type": "carousel",
+  "folder": "2026-09-25-carousel-robotics-expedition",
+  "publishAt": "2026-09-25T10:00:00+03:00",
+  "status": "queued",
+  "files": [
+    "01-cover.png",
+    "02-metric.png",
+    "03-point.png",
+    "04-point.png",
+    "05-point.png",
+    "06-point.png",
+    "07-metric.png",
+    "08-cta.png"
+  ],
+  "createdAt": "2026-09-21T05:28:34.565Z",
+  "kind": "photo"
+}

@@ -1,0 +1,78 @@
+name: Instagram — публикация по расписанию
+
+# Публикует посты из очередей content/instagram/<бренд>/queue.json, у которых
+# наступило время. Контент готовится заранее, здесь только отправка.
+#
+# У каждого бренда свой аккаунт и свой токен. Секреты добавляются в
+# Settings → Secrets and variables → Actions:
+#   IG_TOKEN_GTT       IG_USER_GTT        — GlobalTechTour
+#   IG_TOKEN_AURA      IG_USER_AURA       — Aura Robotics
+#   IG_TOKEN_PERSONAL  IG_USER_PERSONAL   — личный аккаунт
+#
+# Аккаунт, для которого секретов нет, пропускается с сообщением в логе —
+# остальные публикуются как обычно.
+
+on:
+  schedule:
+    # Два слота в сутки: 10:00 и 19:00 по Москве (МСК = UTC+3).
+    # Cron в GitHub Actions всегда в UTC и может задержаться на 5–15 минут —
+    # поэтому время в очереди задаётся с запасом, а не «секунда в секунду».
+    - cron: "0 7 * * *"
+    - cron: "0 16 * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Только показать план (ничего не публикуя)"
+        type: boolean
+        default: true
+
+permissions:
+  # Нужно, чтобы вернуть в репозиторий обновлённые очереди и архивы.
+  contents: write
+
+concurrency:
+  # Два одновременных прогона опубликовали бы один пост дважды.
+  group: instagram-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      # Зависимости не ставим: скрипт публикации использует только модули
+      # Node и встроенный fetch. Прогон занимает секунды.
+
+      - name: Показать план
+        working-directory: remotion-video-tools
+        run: node scripts/publish-instagram.mjs --due --dry-run
+
+      - name: Опубликовать
+        if: inputs.dry_run != true
+        working-directory: remotion-video-tools
+        env:
+          IG_TOKEN_GTT: ${{ secrets.IG_TOKEN_GTT }}
+          IG_USER_GTT: ${{ secrets.IG_USER_GTT }}
+          IG_TOKEN_AURA: ${{ secrets.IG_TOKEN_AURA }}
+          IG_USER_AURA: ${{ secrets.IG_USER_AURA }}
+          IG_TOKEN_PERSONAL: ${{ secrets.IG_TOKEN_PERSONAL }}
+          IG_USER_PERSONAL: ${{ secrets.IG_USER_PERSONAL }}
+        run: node scripts/publish-instagram.mjs --due
+
+      - name: Записать результат в репозиторий
+        if: always() && inputs.dry_run != true
+        run: |
+          if git diff --quiet content/instagram/; then
+            echo "Очереди не изменились — коммитить нечего."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/instagram/
+          git commit -m "Instagram: обновление очередей после публикации"
+          git push
