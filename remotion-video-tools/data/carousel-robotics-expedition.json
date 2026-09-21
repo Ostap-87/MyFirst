@@ -67,11 +67,11 @@
     },
     {
       "type": "cta",
-      "title": "Мест в группе немного",
-      "text": "Оставьте заявку на странице Robotics Expedition — пришлём детальную программу по дням и условия участия.",
+      "title": "Количество мест **ограничено**",
+      "text": "Оставьте заявку — и мы вышлем вам детальную программу по дням и условия участия.",
       "keyword": "",
       "handle": "globaltechtour.ru",
-      "image": "generated/robotics-expedition/08.jpg"
+      "image": "generated/robotics-expedition-v2/handshake.png"
     }
   ]
 }

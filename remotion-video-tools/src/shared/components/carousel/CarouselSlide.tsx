@@ -393,14 +393,19 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
                 <h2
                   style={{
                     margin: 0,
-                    fontFamily: fontFamily(theme.fonts.heading),
-                    fontWeight: theme.fonts.headingWeight,
-                    fontSize: fs(0.068),
                     lineHeight: 1.1,
-                    color: theme.colors.text,
                   }}
                 >
-                  {slide.title}
+                  {renderRich(
+                    slide.title,
+                    {
+                      fontFamily: fontFamily(theme.fonts.heading),
+                      fontWeight: theme.fonts.headingWeight,
+                      fontSize: fs(0.068),
+                      color: theme.colors.text,
+                    },
+                    { color: theme.colors.accent },
+                  )}
                 </h2>
                 <p
                   style={{
