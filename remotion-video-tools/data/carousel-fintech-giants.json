@@ -1,0 +1,81 @@
+{
+  "name": "fintech-giants",
+  "brand": "gtt",
+  "footer": "globaltechtour.ru",
+  "slides": [
+    {
+      "type": "cover",
+      "kicker": "China Fintech Giants Expedition · Китай",
+      "title": "**Ant Group**, Tencent, JD Digits — финтех-гиганты Китая не в презентации, а **вживую**",
+      "subtitle": "5 дней, 4 города, 8 компаний финтех-индустрии Китая",
+      "image": "generated/fintech-giants/cover.png"
+    },
+    {
+      "type": "metric",
+      "value": 8,
+      "prefix": "",
+      "suffix": "",
+      "compact": false,
+      "label": "компаний **финтех-индустрии** Китая в программе",
+      "source": "**4 города** · **5 дней** · **6 ночей**",
+      "image": "generated/fintech-giants/metric.png"
+    },
+    {
+      "type": "point",
+      "index": 1,
+      "title": "Пекин, день 1",
+      "text": "JD Digits (JD Technology) и Du Xiaoman Financial — цифровой банкинг и кредитование экосистемы JD.",
+      "image": "generated/fintech-giants/beijing.png"
+    },
+    {
+      "type": "point",
+      "index": 2,
+      "title": "Шэньчжэнь, день 2",
+      "text": "Tencent — штаб-квартира в районе Наньшань, платежи WeChat Pay и финтех-экосистема.",
+      "image": "generated/fintech-giants/shenzhen1.png"
+    },
+    {
+      "type": "point",
+      "index": 3,
+      "title": "Шэньчжэнь, день 3",
+      "text": "OneConnect и LexinFintech — финтех-платформы для банков и потребительское кредитование.",
+      "image": "generated/fintech-giants/shenzhen2.png"
+    },
+    {
+      "type": "point",
+      "index": 4,
+      "title": "Ханчжоу, день 4",
+      "text": "Ant Group — крупнейшая финтех-компания мира, платформа Alipay в «Муравьином Z-пространстве».",
+      "image": "generated/fintech-giants/hangzhou.png"
+    },
+    {
+      "type": "point",
+      "index": 5,
+      "title": "Шанхай, день 5",
+      "text": "Lufax и East Money Information — цифровое управление активами и финансовые данные.",
+      "image": "generated/fintech-giants/shanghai.png"
+    },
+    {
+      "type": "point",
+      "index": 6,
+      "title": "Не простая экскурсия, а **полноценные переговоры**",
+      "text": "Визиты и переговоры с компаниями программы, перевод и сопровождение на китайском/английском.",
+      "image": "generated/fintech-giants/negotiations.png"
+    },
+    {
+      "type": "point",
+      "index": 7,
+      "title": "Что входит",
+      "text": "2 внутренних перелёта и скоростной поезд между городами, проживание 6 ночей, сопровождение и перевод.",
+      "image": "generated/tea-coffee-retail/hotel.png"
+    },
+    {
+      "type": "cta",
+      "title": "Стоимость — по запросу",
+      "text": "Оставьте заявку — пришлём точную программу по дням и стоимость участия.",
+      "keyword": "",
+      "handle": "globaltechtour.ru",
+      "image": "generated/fintech-giants/cta.png"
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "name": "global-brands",
+  "brand": "gtt",
+  "footer": "globaltechtour.ru",
+  "slides": [
+    {
+      "type": "cover",
+      "kicker": "China Global Brands Expedition · Китай",
+      "title": "**Anta Sports**, Li-Ning, Bosideng — бренды Китая не в презентации, а **вживую**",
+      "subtitle": "5 дней, 6 городов, 6 брендов fashion-индустрии Китая, покоривших мир",
+      "image": "generated/global-brands/cover.png"
+    },
+    {
+      "type": "metric",
+      "value": 6,
+      "prefix": "",
+      "suffix": "",
+      "compact": false,
+      "label": "брендов **fashion-индустрии** Китая в программе",
+      "source": "**6 городов** · **5 дней** · **6 ночей**",
+      "image": "generated/global-brands/metric.png"
+    },
+    {
+      "type": "point",
+      "index": 1,
+      "title": "Пекин, день 1",
+      "text": "Li-Ning — спортивный бренд №1 Китая, олимпийский партнёр национальной сборной.",
+      "image": "generated/global-brands/beijing.png"
+    },
+    {
+      "type": "point",
+      "index": 2,
+      "title": "Шанхай, день 2",
+      "text": "Anta Sports — №3 в мире после Nike и Adidas, владелец Salomon и Wilson.",
+      "image": "generated/global-brands/shanghai.png"
+    },
+    {
+      "type": "point",
+      "index": 3,
+      "title": "Чаншу, день 3",
+      "text": "Bosideng — технологичные пуховики, вышедшие на подиумы Милана и Нью-Йорка.",
+      "image": "generated/global-brands/changshu.png"
+    },
+    {
+      "type": "point",
+      "index": 4,
+      "title": "Ханчжоу — Нинбо, день 4",
+      "text": "JNBY и Peacebird — дизайнерский масс-маркет нового поколения китайской моды.",
+      "image": "generated/global-brands/hangzhou-ningbo.png"
+    },
+    {
+      "type": "point",
+      "index": 5,
+      "title": "Гуанчжоу, день 5",
+      "text": "Urban Revivo — «азиатский ответ Zara» с глобальной розничной сетью.",
+      "image": "generated/global-brands/guangzhou.png"
+    },
+    {
+      "type": "point",
+      "index": 6,
+      "title": "Не простая экскурсия, а **полноценные переговоры**",
+      "text": "Визиты и переговоры с компаниями программы, перевод и сопровождение на китайском/английском.",
+      "image": "generated/global-brands/negotiations.png"
+    },
+    {
+      "type": "point",
+      "index": 7,
+      "title": "Что входит",
+      "text": "Проживание 6 ночей, трансферы между городами программы, сопровождение и перевод.",
+      "image": "generated/tea-coffee-retail/hotel.png"
+    },
+    {
+      "type": "cta",
+      "title": "Стоимость — по запросу",
+      "text": "Оставьте заявку — пришлём точную программу по дням и стоимость участия.",
+      "keyword": "",
+      "handle": "globaltechtour.ru",
+      "image": "generated/global-brands/cta.png"
+    }
+  ]
+}
