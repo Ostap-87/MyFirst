@@ -185,7 +185,12 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
               display: "flex",
               flexDirection: "column",
               justifyContent: "flex-end",
-              padding: `0 ${sp(0.07)}px ${sp(0.06)}px`,
+              // На первом слайде плашка «листай» лежит в правом нижнем углу
+              // карточки — резервируем под неё запас снизу, иначе последняя
+              // строка текста уезжает под неё.
+              padding: `0 ${sp(0.07)}px ${
+                showSwipeHint && position.index === 0 ? sp(0.1) : sp(0.06)
+              }px`,
               gap: sp(0.02),
             }}
           >
@@ -409,14 +414,15 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
             </div>
           ) : null}
 
-          {/* Подпись сайта и подсказка «листай» — одной строкой над панелью
-              подписи, тоже плашками. */}
+          {/* Подпись сайта — левый верхний угол (пара к счётчику справа
+              сверху); «листай» — правый нижний угол карточки (запрос
+              пользователя 21.09.2026). */}
           {footer && slide.type !== "cta" ? (
             <div
               style={{
                 position: "absolute",
+                top: sp(0.028),
                 left: sp(0.028),
-                bottom: framedPanelHeight + sp(0.028),
                 padding: `${sp(0.01)}px ${sp(0.02)}px`,
                 borderRadius: 999,
                 backgroundColor: "rgba(255,255,255,0.85)",
@@ -434,7 +440,7 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
               style={{
                 position: "absolute",
                 right: sp(0.028),
-                bottom: framedPanelHeight + sp(0.028),
+                bottom: sp(0.028),
                 display: "flex",
                 alignItems: "center",
                 gap: sp(0.012),
