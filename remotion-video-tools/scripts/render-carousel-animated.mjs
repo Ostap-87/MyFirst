@@ -78,7 +78,7 @@ for (let index = 0; index < carousel.slides.length; index++) {
     composition,
     serveUrl,
     codec: "h264",
-    output,
+    outputLocation: output,
     inputProps,
   });
 
