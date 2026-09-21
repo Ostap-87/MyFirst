@@ -18,8 +18,11 @@ export const globaltechtourTheme: BrandTheme = {
     surface: "#ffffff",
     line: "#d5d5dd",
   },
+  // Заголовок Unbounded + текст Inter — вариант Ф2 из 5 показанных сочетаний
+  // (закреплено 21.09.2026, выбор пользователя): крупнее и выразительнее
+  // обычного гротеска, но без потери деловой строгости в основном тексте.
   fonts: {
-    heading: "Inter",
+    heading: "Unbounded",
     body: "Inter",
     mono: "JetBrains Mono",
     headingWeight: 700,
