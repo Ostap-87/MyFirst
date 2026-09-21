@@ -73,8 +73,11 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
   };
 
   const coverTitleSize = (text: string) => {
-    if (text.length > 64) return fs(0.068);
-    if (text.length > 44) return fs(0.082);
+    // Длинное слово ("прикоснуться") ломает строку раньше, чем длина всей
+    // фразы — считаем не только общую длину, но и самое длинное слово.
+    const longestWord = Math.max(...text.split(/\s+/).map((w) => w.length));
+    if (text.length > 64 || longestWord > 11) return fs(0.068);
+    if (text.length > 44 || longestWord > 8) return fs(0.082);
     return fs(0.105);
   };
 
@@ -218,7 +221,14 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
                 >
                   {slide.kicker.toUpperCase()}
                 </div>
-                <h1 style={{ margin: 0, lineHeight: 1.08, letterSpacing: -1 }}>
+                <h1
+                  style={{
+                    margin: 0,
+                    lineHeight: 1.08,
+                    letterSpacing: -1,
+                    overflowWrap: "break-word",
+                  }}
+                >
                   {renderRich(
                     slide.title,
                     {
