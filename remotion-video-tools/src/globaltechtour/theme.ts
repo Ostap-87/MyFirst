@@ -7,6 +7,9 @@ import type { BrandTheme } from "../shared/theme";
  * --color-electric-iris, --color-bone-white, --color-surface, --color-ash-gray),
  * чтобы видео совпадало с сайтом по цвету один в один.
  * Правьте через `npm run set-theme -- --brand gtt --key colors.accent --value "#..."`.
+ *
+ * Карусельный стиль этого бренда закреплён под именем **GTT Horizon**
+ * (утверждён 21.09.2026) — полное описание в `docs/gtt-horizon-style.md`.
  */
 export const globaltechtourTheme: BrandTheme = {
   name: "GlobalTechTour",
