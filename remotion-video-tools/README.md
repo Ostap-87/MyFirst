@@ -154,3 +154,20 @@ npx remotion render Personal-TalkingHead out/reel.mp4 --props='{
 Оформление: `shadow`, `outline`, `plate`.
 
 `public/local/` в `.gitignore` — туда кладутся тяжёлые и чужие исходники.
+
+## Карусели Instagram
+
+```bash
+npm run carousel -- --input data/carousel.example.json      # по сценарию
+npm run carousel -- --slug nio-battery-swap --points 3      # из поста плана
+npm run carousel -- --slug ... --square --footer "сайт.ру"  # 1:1 с подписью
+npm run carousel -- --input ... --dry-run                   # только план слайдов
+```
+
+Каждый слайд сохраняется отдельным PNG 1080×1350 с нумерацией — загружать
+в Instagram в том же порядке. Типы слайдов: `cover`, `point`, `metric`,
+`quote`, `image`, `cta`. Композиции `GTT-Carousel`, `Aura-Carousel`,
+`Personal-Carousel` доступны и в Studio — слайды листаются полем `index`.
+
+Главное на слайде держится в центральном квадрате: в сетке профиля кадр 4:5
+обрезается до 1:1, и верх с низом там не видно.

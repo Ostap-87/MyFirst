@@ -1,4 +1,5 @@
 import "./index.css";
+import carouselExample from "../data/carousel.example.json";
 import { Composition } from "remotion";
 import {
   MotionLab,
@@ -64,6 +65,18 @@ import {
   talkingHeadDefaults,
   talkingHeadSchema,
 } from "./ostapdotcenko/compositions/TalkingHead";
+import {
+  GTTCarousel,
+  gttCarouselSchema,
+} from "./globaltechtour/compositions/Carousel";
+import {
+  AuraCarousel,
+  auraCarouselSchema,
+} from "./aura-robotics/compositions/Carousel";
+import {
+  PersonalCarousel,
+  personalCarouselSchema,
+} from "./ostapdotcenko/compositions/Carousel";
 // new-composition:imports:end
 
 export const RemotionRoot: React.FC = () => {
@@ -150,6 +163,54 @@ export const RemotionRoot: React.FC = () => {
         fps={30}
         width={1080}
         height={1920}
+      />
+      <Composition
+        id="GTT-Carousel"
+        component={GTTCarousel}
+        schema={gttCarouselSchema}
+        defaultProps={{
+          slides: carouselExample.slides as never,
+          index: 0,
+          showCounter: true,
+          showSwipeHint: true,
+          footer: "",
+        }}
+        durationInFrames={1}
+        fps={30}
+        width={1080}
+        height={1350}
+      />
+      <Composition
+        id="Aura-Carousel"
+        component={AuraCarousel}
+        schema={auraCarouselSchema}
+        defaultProps={{
+          slides: carouselExample.slides as never,
+          index: 0,
+          showCounter: true,
+          showSwipeHint: true,
+          footer: "",
+        }}
+        durationInFrames={1}
+        fps={30}
+        width={1080}
+        height={1350}
+      />
+      <Composition
+        id="Personal-Carousel"
+        component={PersonalCarousel}
+        schema={personalCarouselSchema}
+        defaultProps={{
+          slides: carouselExample.slides as never,
+          index: 0,
+          showCounter: true,
+          showSwipeHint: true,
+          footer: "",
+        }}
+        durationInFrames={1}
+        fps={30}
+        width={1080}
+        height={1350}
       />
       {/* new-composition:end */}
 

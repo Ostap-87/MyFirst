@@ -43,7 +43,8 @@
     "parse-plan": "node scripts/parse-content-plan.mjs",
     "render-batch": "node scripts/render-batch.mjs",
     "transcribe": "node scripts/transcribe.mjs",
-    "make-sfx": "node scripts/make-sfx.mjs"
+    "make-sfx": "node scripts/make-sfx.mjs",
+    "carousel": "node scripts/render-carousel.mjs"
   },
   "sideEffects": [
     "*.css"
