@@ -20,6 +20,16 @@ const cornerTheme = z
   )
   .optional();
 
+// Точечная поправка положения текстового блока для одного конкретного
+// слайда (не меняет общий шаблон) — доля высоты кадра, на которую текст
+// опускается ниже стандартной позиции.
+const textLower = z
+  .number()
+  .min(0)
+  .max(0.1)
+  .describe("На сколько (доля высоты кадра) опустить текст ниже обычного — точечно для этого слайда")
+  .optional();
+
 export const slideSchema = z.discriminatedUnion("type", [
   z.object({
     type: z.literal("cover"),
@@ -69,6 +79,7 @@ export const slideSchema = z.discriminatedUnion("type", [
     handle: z.string().describe("Ник автора"),
     image: z.string().describe("Фон-картинка из public; пусто — фирменный фон").optional(),
     cornerTheme,
+    textLower,
   }),
 ]);
 

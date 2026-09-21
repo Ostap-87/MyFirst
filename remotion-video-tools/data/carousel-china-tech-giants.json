@@ -6,9 +6,9 @@
     {
       "type": "cover",
       "kicker": "China Tech Giants Expedition · Китай",
-      "title": "Baidu, Alibaba, Tencent, Huawei — не в презентации, а вживую",
+      "title": "**Baidu**, Alibaba, Tencent, **Huawei** — не в презентации, а вживую",
       "subtitle": "7–12 декабря · 5 дней, 4 города, 9 компаний-гигантов технологического Китая",
-      "image": "generated/china-tech-giants/cover-v2.png"
+      "image": "generated/china-tech-giants/cover-v3.png"
     },
     {
       "type": "metric",
@@ -25,7 +25,7 @@
       "index": 1,
       "title": "Пекин, день 1",
       "text": "Baidu и Xiaomi — лидеры искусственного интеллекта и потребительской электроники Китая.",
-      "image": "generated/china-tech-giants/beijing-v4.png"
+      "image": "generated/china-tech-giants/beijing-v5.png"
     },
     {
       "type": "point",
@@ -61,7 +61,7 @@
       "index": 6,
       "title": "Что входит",
       "text": "Отели 5*, питание, внутренние перелёты и трансферы между городами, встреча и проводы в аэропорту.",
-      "image": "generated/china-tech-giants/hotel-v2.png"
+      "image": "generated/china-tech-giants/hotel-radisson.png"
     },
     {
       "type": "cta",
@@ -69,7 +69,8 @@
       "text": "Даты подтверждены: 7–12 декабря. Оставьте заявку — пришлём точную программу по дням и стоимость участия.",
       "keyword": "",
       "handle": "globaltechtour.ru",
-      "image": "generated/china-tech-giants/cta-woman-v2.png"
+      "image": "generated/china-tech-giants/cta-woman-v3-crop.png",
+      "textLower": 0.03
     }
   ]
 }

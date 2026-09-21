@@ -204,7 +204,8 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
               // ~1.8 см (вариант П3, выбор пользователя 21.09.2026).
               padding: `0 ${sp(0.07)}px ${
                 (showSwipeHint && position.index === 0 ? sp(0.1) : sp(0.06)) +
-                vh(0.06)
+                vh(0.06) -
+                vh(("textLower" in slide && slide.textLower) || 0)
               }px`,
               gap: sp(0.02),
             }}
