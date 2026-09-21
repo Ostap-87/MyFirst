@@ -1,0 +1,74 @@
+{
+  "name": "china-tech-giants",
+  "brand": "gtt",
+  "footer": "globaltechtour.ru",
+  "slides": [
+    {
+      "type": "cover",
+      "kicker": "China Tech Giants Expedition · Китай",
+      "title": "Baidu, Alibaba, Tencent, Huawei — не в презентации, а вживую",
+      "subtitle": "7–12 декабря · 5 дней, 4 города, 9 компаний-гигантов технологического Китая",
+      "image": "generated/china-tech-giants/cover.png"
+    },
+    {
+      "type": "metric",
+      "value": 9,
+      "prefix": "",
+      "suffix": "",
+      "compact": false,
+      "label": "компаний-гигантов в программе",
+      "source": "4 города · 5 дней · 6 ночей",
+      "image": "generated/china-tech-giants/cover.png"
+    },
+    {
+      "type": "point",
+      "index": 1,
+      "title": "Пекин, день 1",
+      "text": "Baidu и Xiaomi — лидеры искусственного интеллекта и потребительской электроники Китая.",
+      "image": "generated/china-tech-giants/beijing.png"
+    },
+    {
+      "type": "point",
+      "index": 2,
+      "title": "Ханчжоу, день 2",
+      "text": "Alibaba и Unitree — от крупнейшей e-commerce платформы до гуманоидной робототехники.",
+      "image": "generated/china-tech-giants/hangzhou.png"
+    },
+    {
+      "type": "point",
+      "index": 3,
+      "title": "Шанхай, день 3",
+      "text": "Meituan и Xiaohongshu (RED) — сервисы и соцплатформа с сотнями миллионов пользователей.",
+      "image": "generated/china-tech-giants/shanghai.png"
+    },
+    {
+      "type": "point",
+      "index": 4,
+      "title": "Шэньчжэнь, дни 4–5",
+      "text": "Tencent, Huawei и UBTech — три технологических гиганта в одном городе.",
+      "image": "generated/china-tech-giants/shenzhen.png"
+    },
+    {
+      "type": "point",
+      "index": 5,
+      "title": "Не экскурсия, а переговоры",
+      "text": "Встречи с руководством компаний, перевод и сопровождение, контакты для деловых партнёрств.",
+      "image": "generated/china-tech-giants/negotiations.png"
+    },
+    {
+      "type": "point",
+      "index": 6,
+      "title": "Что входит",
+      "text": "Отели 5*, питание, внутренние перелёты и трансферы между городами, встреча и проводы в аэропорту.",
+      "image": "generated/china-tech-giants/hotel.png"
+    },
+    {
+      "type": "cta",
+      "title": "Стоимость — по запросу",
+      "text": "Даты подтверждены: 7–12 декабря. Оставьте заявку — пришлём точную программу по дням и стоимость участия.",
+      "keyword": "",
+      "handle": "globaltechtour.ru",
+      "image": "generated/robotics-expedition-v2/handshake-v2.png"
+    }
+  ]
+}
