@@ -109,7 +109,9 @@ const date = publishAt.slice(0, 10);
 
 /** Собирает папку поста и запись в очереди. */
 const addPost = ({ slug, type, files }) => {
-  const folder = `${date}-${slug}`;
+  // Тип в имени папки: по списку сразу видно, где карусель, а где ролик,
+  // и при этом сохраняется хронологический порядок по дате.
+  const folder = `${date}-${type}-${slug}`;
   const dir = resolve(IG_DIR, "posts", folder);
 
   if (existsSync(dir) && !args.force) {

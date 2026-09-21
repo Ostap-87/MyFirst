@@ -170,8 +170,13 @@ Telegram-постов в `tg-images`:
 instagram/
   queue.json      очередь: что и когда публиковать
   published.json  архив: что вышло, когда и под каким id
-  posts/2026-09-25-robotics-expedition/   слайды + caption.txt + meta.json
+  posts/2026-09-25-carousel-robotics-expedition/   слайды + caption.txt + meta.json
+  posts/2026-09-26-reel-china-hook/               ролик + caption.txt + meta.json
 ```
+
+- **Имя папки: `<дата>-<тип>-<тема>`.** Тип (`carousel` или `reel`) стоит в
+  названии, чтобы из списка было видно, где фото-карусель, а где видео, не
+  открывая папку. Дата первой — архив читается хронологически.
 
 - **Папка поста не удаляется после выхода.** По архиву видно, что именно
   было опубликовано.
