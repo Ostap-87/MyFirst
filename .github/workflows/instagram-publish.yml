@@ -39,11 +39,17 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
-          node-version: "22"
+          node-version: "24"
+          # С пятой версии setup-node включает кэш пакетов сам. Здесь он не
+          # нужен и вреден: зависимости мы не ставим, а lockfile лежит не в
+          # корне — автоопределение уронило бы прогон. Плюс в этом workflow
+          # есть токены и право записи, а для таких прогонов документация
+          # самого действия советует кэш отключать.
+          package-manager-cache: false
 
       # Зависимости не ставим: скрипт публикации использует только модули
       # Node и встроенный fetch. Прогон занимает секунды.
