@@ -5,9 +5,9 @@
   "slides": [
     {
       "type": "cover",
-      "kicker": "Robotics Expedition · Китай",
-      "title": "16–21 ноября",
-      "subtitle": "Ближайший заезд Robotics Expedition — места уже бронируют",
+      "kicker": "Экспедиция · Робототехника Китая",
+      "title": "**16–21 ноября** — ваши конкуренты уже видели это **своими глазами**",
+      "subtitle": "Пока вы читаете отчёты аналитиков — они стоят у сборочной линии гуманоидов",
       "image": "tg-images/globaltechtour/2026-09-21-style-test-hook.png"
     },
     {
@@ -15,7 +15,7 @@
       "kicker": "Robotics Expedition · Китай",
       "title": "12 заводов роботов за 5 дней",
       "subtitle": "Закрытые визиты на производства, куда не попасть самостоятельно",
-      "image": "generated/robotics-expedition/01.jpg"
+      "image": "generated/robotics-expedition/01-zoom.jpg"
     },
     {
       "type": "metric",
