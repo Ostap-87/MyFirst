@@ -1,0 +1,74 @@
+{
+  "name": "petrochemicals",
+  "brand": "gtt",
+  "footer": "globaltechtour.ru",
+  "slides": [
+    {
+      "type": "cover",
+      "kicker": "China Petrochemicals Guangdong Expedition · Китай",
+      "title": "**Sinopec**, BASF, ExxonMobil — нефтехимия Гуандуна не в презентации, а **вживую**",
+      "subtitle": "5 дней, 4 города, 6 крупнейших нефтехимических комплексов Гуандуна",
+      "image": "generated/petrochemicals/cover.png"
+    },
+    {
+      "type": "metric",
+      "value": 6,
+      "prefix": "",
+      "suffix": "",
+      "compact": false,
+      "label": "нефтехимических комплексов **Гуандуна** в программе",
+      "source": "**4 города** · **5 дней** · **6 ночей**",
+      "image": "generated/petrochemicals/metric.png"
+    },
+    {
+      "type": "point",
+      "index": 1,
+      "title": "Чжаньцзян, день 1",
+      "text": "Sinopec Zhongke (Guangdong) Refining — интегрированный НПЗ нового поколения.",
+      "image": "generated/petrochemicals/zhanjiang.png"
+    },
+    {
+      "type": "point",
+      "index": 2,
+      "title": "Чжаньцзян — Маомин, день 2",
+      "text": "BASF Zhanjiang Verbund и Sinopec Maoming — новейший западный Steam Cracker (пуск январь 2026).",
+      "image": "generated/petrochemicals/basf.png"
+    },
+    {
+      "type": "point",
+      "index": 3,
+      "title": "Гуанчжоу, день 3",
+      "text": "Guangzhou Petrochemical (Sinopec) — нефтехимический комплекс в районе Хуанпу.",
+      "image": "generated/petrochemicals/guangzhou.png"
+    },
+    {
+      "type": "point",
+      "index": 4,
+      "title": "Хуэйчжоу, день 4",
+      "text": "CSPC (CNOOC-Shell) и ExxonMobil Huizhou — стомиллиардный проект в промзоне Даявань.",
+      "image": "generated/petrochemicals/huizhou.png"
+    },
+    {
+      "type": "point",
+      "index": 5,
+      "title": "Не простая экскурсия, а **полноценные переговоры**",
+      "text": "Все визиты и переговоры с компаниями программы, перевод и сопровождение на китайском/английском.",
+      "image": "generated/petrochemicals/negotiations.png"
+    },
+    {
+      "type": "point",
+      "index": 6,
+      "title": "Что входит",
+      "text": "Проживание 6 ночей, трансферы между городами программы — маршрут без внутренних перелётов.",
+      "image": "generated/tea-coffee-retail/hotel.png"
+    },
+    {
+      "type": "cta",
+      "title": "Стоимость — по запросу",
+      "text": "Оставьте заявку — пришлём точную программу по дням и стоимость участия.",
+      "keyword": "",
+      "handle": "globaltechtour.ru",
+      "image": "generated/petrochemicals/cta.png"
+    }
+  ]
+}

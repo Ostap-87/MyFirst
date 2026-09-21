@@ -1,0 +1,74 @@
+{
+  "name": "hongkong-luxury",
+  "brand": "gtt",
+  "footer": "globaltechtour.ru",
+  "slides": [
+    {
+      "type": "cover",
+      "kicker": "Hong Kong Luxury Legacy Expedition · Гонконг",
+      "title": "**Peninsula**, Mandarin Oriental, Rosewood — гонконгская школа отельного люкса не в презентации, а **вживую**",
+      "subtitle": "5 дней, Гонконг, 6 семейных гостиничных конгломератов люкс-сегмента",
+      "image": "generated/hongkong-luxury/cover.png"
+    },
+    {
+      "type": "metric",
+      "value": 6,
+      "prefix": "",
+      "suffix": "",
+      "compact": false,
+      "label": "гостиничных **конгломератов люкса** Гонконга в программе",
+      "source": "**Гонконг** · **5 дней** · **6 ночей**",
+      "image": "generated/hongkong-luxury/metric.png"
+    },
+    {
+      "type": "point",
+      "index": 1,
+      "title": "Гонконг, день 1",
+      "text": "The Peninsula (Hongkong and Shanghai Hotels) и Mandarin Oriental Hotel Group.",
+      "image": "generated/hongkong-luxury/day1.png"
+    },
+    {
+      "type": "point",
+      "index": 2,
+      "title": "Гонконг, день 2",
+      "text": "Rosewood Hotel Group и Shangri-La Asia — штаб-квартира Rosewood в Куорри-Бей.",
+      "image": "generated/hongkong-luxury/day2.png"
+    },
+    {
+      "type": "point",
+      "index": 3,
+      "title": "Гонконг, день 3",
+      "text": "Langham Hospitality Group (Great Eagle Holdings) и Wharf Hotels.",
+      "image": "generated/hongkong-luxury/day3.png"
+    },
+    {
+      "type": "point",
+      "index": 4,
+      "title": "Гонконг, день 4",
+      "text": "Архитектурный тур: Rosewood Hong Kong (Victoria Dockside) и The Murray — историческое здание в люкс-отель.",
+      "image": "generated/hongkong-luxury/day4.png"
+    },
+    {
+      "type": "point",
+      "index": 5,
+      "title": "Не простая экскурсия, а **закрытая сессия**",
+      "text": "Встреча с представителями семейных гостиничных конгломератов Гонконга — наследие и частный капитал вместо франчайзинга.",
+      "image": "generated/hongkong-luxury/negotiations.png"
+    },
+    {
+      "type": "point",
+      "index": 6,
+      "title": "Что входит",
+      "text": "Отели 5*, обед и ужин ежедневно, трансферы между площадками, встреча и проводы в аэропорту.",
+      "image": "generated/tea-coffee-retail/hotel.png"
+    },
+    {
+      "type": "cta",
+      "title": "Стоимость уточняется",
+      "text": "Оставьте заявку — пришлём точную программу по дням и стоимость участия.",
+      "keyword": "",
+      "handle": "globaltechtour.ru",
+      "image": "generated/hongkong-luxury/cta.png"
+    }
+  ]
+}
