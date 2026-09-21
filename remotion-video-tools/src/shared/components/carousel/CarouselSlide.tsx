@@ -85,6 +85,11 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
   const hasImage = Boolean("image" in slide && slide.image);
   const framed = hasImage && theme.imageStyle === "framed";
   const isDark = !framed && (hasImage || theme.colors.primary === "#12121a");
+  // Что под плашкой сайта в левом верхнем углу конкретного фото — задаётся
+  // на слайде (см. types.ts), т.к. фото у каждого слайда своё, единого
+  // цвета текста для всех не бывает. По умолчанию — светлый участок.
+  const cornerTheme: "light" | "dark" =
+    ("cornerTheme" in slide && slide.cornerTheme) || "light";
   const background = isDark ? theme.colors.primary : theme.colors.surface;
   const textColor = isDark ? "#ffffff" : theme.colors.text;
   const mutedColor = isDark ? "rgba(255,255,255,0.7)" : theme.colors.muted;
@@ -165,9 +170,12 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
               right: 0,
               bottom: 0,
               height: framedPanelHeight,
-              backdropFilter: "blur(40px)",
-              WebkitBackdropFilter: "blur(40px)",
-              backgroundColor: "rgba(255,255,255,0.78)",
+              // Дымка, а не сплошной туман (запрос 21.09.2026): меньше
+              // непрозрачности и размытия — силуэт фото должен слегка
+              // проглядывать сквозь панель, а не пропадать под ней целиком.
+              backdropFilter: "blur(24px)",
+              WebkitBackdropFilter: "blur(24px)",
+              backgroundColor: "rgba(255,255,255,0.5)",
               maskImage:
                 "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 30%)",
               WebkitMaskImage:
@@ -416,7 +424,9 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
 
           {/* Подпись сайта — левый верхний угол (пара к счётчику справа
               сверху); «листай» — правый нижний угол карточки (запрос
-              пользователя 21.09.2026). */}
+              пользователя 21.09.2026). Цвет плашки зависит от того, что на
+              фото под ней конкретно на этом слайде (cornerTheme) — единого
+              цвета на все фото не бывает. */}
           {footer && slide.type !== "cta" ? (
             <div
               style={{
@@ -425,10 +435,13 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
                 left: sp(0.028),
                 padding: `${sp(0.01)}px ${sp(0.02)}px`,
                 borderRadius: 999,
-                backgroundColor: "rgba(255,255,255,0.85)",
+                backgroundColor:
+                  cornerTheme === "dark"
+                    ? "rgba(17,17,23,0.4)"
+                    : "rgba(255,255,255,0.85)",
                 fontFamily: fontFamily(theme.fonts.mono),
                 fontSize: fs(0.024),
-                color: theme.colors.muted,
+                color: cornerTheme === "dark" ? "rgba(255,255,255,0.85)" : theme.colors.muted,
               }}
             >
               {footer}

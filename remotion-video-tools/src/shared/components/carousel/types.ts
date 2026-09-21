@@ -8,6 +8,18 @@ import { z } from "zod";
  * Поэтому у слайда есть тип, который определяет вёрстку, а не свободный
  * набор блоков.
  */
+// В "framed"-режиме (GTT) в левом верхнем углу лежит плашка с сайтом поверх
+// резкой (не размытой) части фото — единого цвета текста на все фото не
+// бывает: под ним то светлый интерьер, то насыщенное небо. cornerTheme
+// говорит, что там на конкретном фото: "light" — тёмный текст на светлой
+// подложке (по умолчанию), "dark" — светло-серый текст на тёмной подложке.
+const cornerTheme = z
+  .enum(["light", "dark"])
+  .describe(
+    "Что под плашкой сайта в левом верхнем углу фото: 'light' — светлый участок (тёмный текст), 'dark' — тёмный/насыщенный участок (светлый текст). По умолчанию 'light'",
+  )
+  .optional();
+
 export const slideSchema = z.discriminatedUnion("type", [
   z.object({
     type: z.literal("cover"),
@@ -15,6 +27,7 @@ export const slideSchema = z.discriminatedUnion("type", [
     title: z.string().describe("Крупный хук — ради него открывают карусель"),
     subtitle: z.string().describe("Подзаголовок под хуком"),
     image: z.string().describe("Фон-картинка из public; пусто — фирменный фон"),
+    cornerTheme,
   }),
   z.object({
     type: z.literal("point"),
@@ -22,6 +35,7 @@ export const slideSchema = z.discriminatedUnion("type", [
     title: z.string().describe("Заголовок пункта"),
     text: z.string().describe("Раскрытие в 1–3 предложения"),
     image: z.string().describe("Фон-картинка из public; пусто — фирменный фон").optional(),
+    cornerTheme,
   }),
   z.object({
     type: z.literal("metric"),
@@ -32,17 +46,20 @@ export const slideSchema = z.discriminatedUnion("type", [
     label: z.string().describe("Что означает цифра"),
     source: z.string().describe("Источник данных — подпись мелким"),
     image: z.string().describe("Фон-картинка из public; пусто — фирменный фон").optional(),
+    cornerTheme,
   }),
   z.object({
     type: z.literal("quote"),
     text: z.string().describe("Цитата"),
     author: z.string().describe("Кто сказал"),
     image: z.string().describe("Фон-картинка из public; пусто — фирменный фон").optional(),
+    cornerTheme,
   }),
   z.object({
     type: z.literal("image"),
     image: z.string().describe("Картинка из public"),
     caption: z.string().describe("Подпись под картинкой"),
+    cornerTheme,
   }),
   z.object({
     type: z.literal("cta"),
@@ -51,6 +68,7 @@ export const slideSchema = z.discriminatedUnion("type", [
     keyword: z.string().describe("Кодовое слово для директа; пусто — без поля"),
     handle: z.string().describe("Ник автора"),
     image: z.string().describe("Фон-картинка из public; пусто — фирменный фон").optional(),
+    cornerTheme,
   }),
 ]);
 
