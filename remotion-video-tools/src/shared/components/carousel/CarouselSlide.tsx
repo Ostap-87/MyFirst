@@ -109,8 +109,10 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
   // Панель считается щедро — текст не должен вылезать за размытую зону на
   // резкую часть фото (было именно так до правки 21.09.2026: заголовок
   // в 3 строки перекрывал верх снимка нечитаемым чёрным-по-светлому).
+  // Увеличена под финальный выбор пользователя П3+Р3 (текст выше и крупнее
+  // — без роста панели вылезал бы за пределы дымки).
   const framedPanelHeight = Math.round(
-    framedCardHeight * (slide.type === "cover" ? 0.62 : 0.46),
+    framedCardHeight * (slide.type === "cover" ? 0.66 : 0.6),
   );
 
   return (
@@ -195,9 +197,11 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
               justifyContent: "flex-end",
               // На первом слайде плашка «листай» лежит в правом нижнем углу
               // карточки — резервируем под неё запас снизу, иначе последняя
-              // строка текста уезжает под неё.
+              // строка текста уезжает под неё. Плюс общий подъём текста
+              // ~1.8 см (вариант П3, выбор пользователя 21.09.2026).
               padding: `0 ${sp(0.07)}px ${
-                showSwipeHint && position.index === 0 ? sp(0.1) : sp(0.06)
+                (showSwipeHint && position.index === 0 ? sp(0.1) : sp(0.06)) +
+                vh(0.06)
               }px`,
               gap: sp(0.02),
             }}
@@ -246,7 +250,9 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
                   slide.caption,
                   {
                     fontFamily: fontFamily(theme.fonts.body),
-                    fontSize: fs(0.038),
+                    // Вариант Р3 (выбор пользователя 21.09.2026) — заметно
+                    // крупнее прежнего 0.038. Не трогает обложку.
+                    fontSize: fs(0.05),
                     color: theme.colors.text,
                   },
                   { fontWeight: 700, color: theme.colors.accent },
