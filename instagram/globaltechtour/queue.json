@@ -1,7 +1,11 @@
 {
-  "comment": "Очередь публикаций Instagram. Посты берутся по полю publishAt (московское время). Редактируется скриптами ig:add и publish, но править руками тоже можно.",
+  "channel": "instagram",
+  "brand": "globaltechtour",
+  "comment": "Очередь публикаций. Посты берутся по publishAt (московское время). Пополняется скриптом ig:add, разбирается публикацией.",
   "posts": [
     {
+      "channel": "instagram",
+      "brand": "globaltechtour",
       "slug": "robotics-expedition",
       "type": "carousel",
       "folder": "2026-09-25-carousel-robotics-expedition",

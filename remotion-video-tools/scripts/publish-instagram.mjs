@@ -1,63 +1,56 @@
 #!/usr/bin/env node
 // Публикация в Instagram через официальный Graph API.
 //
-//   npm run publish -- --due --dry-run          что вышло бы сейчас по расписанию
-//   npm run publish -- --due                    опубликовать всё, чему наступило время
-//   npm run publish -- --post 2026-09-25-robotics-expedition
+//   npm run publish -- --due --dry-run              план по всем трём аккаунтам
+//   npm run publish -- --due                        опубликовать всё, чему наступило время
+//   npm run publish -- --brand aura --due           только аккаунт Aura
+//   npm run publish -- --brand gtt --post 2026-09-25-carousel-robotics-expedition
 //
-// Контент берётся из очереди instagram/queue.json, файлы — из
-// instagram/posts/<папка>/. Что настроить один раз (аккаунт, приложение Meta,
-// токен) — docs/publishing.md.
+// У каждого бренда свой аккаунт и свой токен: IG_TOKEN_GTT, IG_TOKEN_AURA,
+// IG_TOKEN_PERSONAL (и IG_USER_* с id аккаунта). Перепутанный токен означает
+// пост не в том аккаунте, поэтому бренд берётся из папки очереди, а не из
+// аргумента «по умолчанию».
 //
 // Instagram НЕ принимает файлы напрямую: он забирает медиа сам по публичной
 // HTTPS-ссылке. Файлы уже лежат в репозитории, поэтому в API уходят их
 // raw-ссылки — тот же механизм, что работает для картинок Telegram-постов.
-import { existsSync, writeFileSync } from "node:fs";
+import { existsSync } from "node:fs";
 import { resolve } from "node:path";
-import { fail, parseArgs, read, ROOT } from "./lib.mjs";
+import {
+  archivePost,
+  BRANDS,
+  brandList,
+  CHANNELS,
+  formatMoscow,
+  markPostFailed,
+  postPath,
+  postsDir,
+  readQueue,
+  resolveBrandKey,
+} from "./channels.mjs";
+import { fail, parseArgs, read } from "./lib.mjs";
 
+const CHANNEL = "instagram";
 const args = parseArgs(process.argv.slice(2));
 const dryRun = Boolean(args["dry-run"]);
 
-// Секреты только из окружения: токен даёт право публиковать от имени
-// аккаунта, в репозитории ему не место.
-const token = process.env.IG_ACCESS_TOKEN;
-const igUserId = process.env.IG_USER_ID;
-
-if (!dryRun && (!token || !igUserId)) {
-  fail(
-    "Нет доступа к Instagram. Задайте переменные окружения:\n" +
-      "      IG_ACCESS_TOKEN — долгоживущий токен Meta\n" +
-      "      IG_USER_ID      — id Instagram Business аккаунта\n" +
-      "    Как их получить — docs/publishing.md\n" +
-      "    Проверить план без публикации: --dry-run",
-  );
-}
-
 const REPO = process.env.IG_PUBLIC_REPO ?? "Ostap-87/MyFirst";
 const BRANCH = process.env.IG_PUBLIC_BRANCH ?? "master";
-const REPO_ROOT = resolve(ROOT, "..");
-const IG_DIR = resolve(REPO_ROOT, "instagram");
-const QUEUE_FILE = resolve(IG_DIR, "queue.json");
-const PUBLISHED_FILE = resolve(IG_DIR, "published.json");
-
-const readJson = (file) => JSON.parse(read(file));
-const writeJson = (file, data) =>
-  writeFileSync(file, `${JSON.stringify(data, null, 2)}\n`, "utf8");
 
 const rawUrl = (path) =>
   `https://raw.githubusercontent.com/${REPO}/${BRANCH}/${path}`;
 
-const formatMoscow = (iso) =>
-  new Date(iso).toLocaleString("ru-RU", {
-    timeZone: "Europe/Moscow",
-    day: "2-digit",
-    month: "2-digit",
-    hour: "2-digit",
-    minute: "2-digit",
-  });
+/** Токен и id аккаунта конкретного бренда. Секреты только из окружения. */
+const credentials = (brand) => {
+  const suffix = BRANDS[brand].envSuffix;
+  return {
+    token: process.env[`IG_TOKEN_${suffix}`],
+    userId: process.env[`IG_USER_${suffix}`],
+    names: [`IG_TOKEN_${suffix}`, `IG_USER_${suffix}`],
+  };
+};
 
-const api = async (path, params) => {
+const api = async (token, path, params) => {
   const response = await fetch(`https://graph.facebook.com/v21.0/${path}`, {
     method: "POST",
     body: new URLSearchParams({ ...params, access_token: token }),
@@ -76,7 +69,7 @@ const api = async (path, params) => {
  * Ждём, пока Instagram скачает и обработает медиа.
  * Публиковать контейнер раньше нельзя — вернётся ошибка, а пост не появится.
  */
-const waitForContainer = async (containerId, attempts = 30) => {
+const waitForContainer = async (token, containerId, attempts = 30) => {
   for (let attempt = 0; attempt < attempts; attempt++) {
     const url = new URL(`https://graph.facebook.com/v21.0/${containerId}`);
     url.searchParams.set("fields", "status_code,status");
@@ -94,134 +87,115 @@ const waitForContainer = async (containerId, attempts = 30) => {
   throw new Error("Instagram не обработал медиа за отведённое время.");
 };
 
-/** Переносит пост из очереди в архив: по нему видно, что и когда вышло. */
-const archive = (post, mediaId) => {
-  const queue = readJson(QUEUE_FILE);
-  queue.posts = queue.posts.filter((item) => item.folder !== post.folder);
-  writeJson(QUEUE_FILE, queue);
+const captionOf = (brand, post) =>
+  read(resolve(postsDir(CHANNEL, brand), post.folder, "caption.txt")).trim();
 
-  const published = readJson(PUBLISHED_FILE);
-  published.posts.push({
-    ...post,
-    status: "published",
-    mediaId,
-    publishedAt: new Date().toISOString(),
-  });
-  writeJson(PUBLISHED_FILE, published);
-};
-
-/** Отмечает неудачу в очереди, чтобы следующий запуск не бился о тот же пост молча. */
-const markFailed = (post, message) => {
-  const queue = readJson(QUEUE_FILE);
-  const item = queue.posts.find((entry) => entry.folder === post.folder);
-  if (item) {
-    item.status = "failed";
-    item.error = message;
-    item.failedAt = new Date().toISOString();
-  }
-  writeJson(QUEUE_FILE, queue);
-};
-
-const publishCarousel = async (post) => {
-  const paths = post.files.map(
-    (file) => `instagram/posts/${post.folder}/${file}`,
-  );
-  const caption = read(
-    resolve(IG_DIR, "posts", post.folder, "caption.txt"),
-  ).trim();
-
+const publishCarousel = async ({ token, userId }, brand, post) => {
   const children = [];
-  for (const path of paths) {
-    const container = await api(`${igUserId}/media`, {
-      image_url: rawUrl(path),
+
+  for (const file of post.files) {
+    const container = await api(token, `${userId}/media`, {
+      image_url: rawUrl(postPath(CHANNEL, brand, post.folder, file)),
       is_carousel_item: "true",
     });
-    await waitForContainer(container.id);
+    await waitForContainer(token, container.id);
     children.push(container.id);
-    console.log(`      ✔ ${path.split("/").pop()}`);
+    console.log(`        ✔ ${file}`);
   }
 
-  const carousel = await api(`${igUserId}/media`, {
+  const carousel = await api(token, `${userId}/media`, {
     media_type: "CAROUSEL",
     children: children.join(","),
-    caption,
+    caption: captionOf(brand, post),
   });
-  await waitForContainer(carousel.id);
+  await waitForContainer(token, carousel.id);
 
-  const published = await api(`${igUserId}/media_publish`, {
+  const published = await api(token, `${userId}/media_publish`, {
     creation_id: carousel.id,
   });
   return published.id;
 };
 
-const publishReel = async (post) => {
-  const path = `instagram/posts/${post.folder}/${post.files[0]}`;
-  const caption = read(
-    resolve(IG_DIR, "posts", post.folder, "caption.txt"),
-  ).trim();
-
-  const container = await api(`${igUserId}/media`, {
+const publishReel = async ({ token, userId }, brand, post) => {
+  const container = await api(token, `${userId}/media`, {
     media_type: "REELS",
-    video_url: rawUrl(path),
-    caption,
+    video_url: rawUrl(postPath(CHANNEL, brand, post.folder, post.files[0])),
+    caption: captionOf(brand, post),
   });
   // Видео обрабатывается дольше картинок — опрашиваем статус вдвое дольше.
-  await waitForContainer(container.id, 60);
+  await waitForContainer(token, container.id, 60);
 
-  const published = await api(`${igUserId}/media_publish`, {
+  const published = await api(token, `${userId}/media_publish`, {
     creation_id: container.id,
   });
   return published.id;
 };
 
-// ——— Какие посты публикуем ———
+// ——— Что публикуем ———
 
-const queue = readJson(QUEUE_FILE).posts;
-const now = Date.now();
-
-const selected = args.post
-  ? queue.filter((post) => post.folder === String(args.post))
-  : args.due
-    ? queue.filter(
-        (post) =>
-          post.status === "queued" && new Date(post.publishAt).getTime() <= now,
-      )
-    : null;
-
-if (!selected) {
+if (!args.due && !args.post) {
   fail(
     "Укажите, что публикуем:\n" +
       "      --due                     всё, чему наступило время\n" +
-      "      --post <папка>            конкретный пост\n" +
+      "      --post <папка>            конкретный пост (нужен и --brand)\n" +
+      `    Бренд (необязателен для --due): --brand <${brandList()}>\n` +
       "    Проверка без публикации: --dry-run\n" +
-      "    Посмотреть очередь: npm run ig:queue",
+      "    Посмотреть план: npm run q",
   );
 }
 
-if (selected.length === 0) {
+const onlyBrand = args.brand ? resolveBrandKey(args.brand) : null;
+if (args.brand && !onlyBrand)
+  fail(`Неизвестный бренд. Доступны: ${brandList()}`);
+if (args.post && !onlyBrand)
+  fail("Для --post нужен и --brand: у каждого бренда свой аккаунт.");
+
+const brands = onlyBrand ? [onlyBrand] : Object.keys(BRANDS);
+const now = Date.now();
+
+/** Посты к публикации, сгруппированные по бренду. */
+const plan = brands
+  .map((brand) => {
+    const queue = readQueue(CHANNEL, brand).posts;
+    const posts = args.post
+      ? queue.filter((post) => post.folder === String(args.post))
+      : queue.filter(
+          (post) =>
+            post.status === "queued" &&
+            new Date(post.publishAt).getTime() <= now,
+        );
+    return { brand, posts };
+  })
+  .filter((entry) => entry.posts.length > 0);
+
+const total = plan.reduce((sum, entry) => sum + entry.posts.length, 0);
+
+if (total === 0) {
   console.log(
     args.post
-      ? `\n  Пост «${args.post}» в очереди не найден. Посмотреть очередь: npm run ig:queue\n`
+      ? `\n  Пост «${args.post}» в очереди не найден. Посмотреть план: npm run q\n`
       : "\n  Публиковать нечего: постов с наступившим временем в очереди нет.\n",
   );
   process.exit(0);
 }
 
-console.log(`\n  К публикации: ${selected.length}`);
-for (const post of selected) {
-  const folder = resolve(IG_DIR, "posts", post.folder);
-  if (!existsSync(folder))
-    fail(`Папка поста пропала: instagram/posts/${post.folder}`);
+console.log(`\n  ${CHANNELS[CHANNEL].title} — к публикации: ${total}`);
+for (const { brand, posts } of plan) {
+  console.log(`\n  ${BRANDS[brand].title}`);
+  for (const post of posts) {
+    const dir = resolve(postsDir(CHANNEL, brand), post.folder);
+    if (!existsSync(dir))
+      fail(`Папка поста пропала: ${CHANNEL}/${brand}/posts/${post.folder}`);
 
-  const caption = read(resolve(folder, "caption.txt")).trim();
-  console.log(
-    `    ${post.type.padEnd(8)} ${post.folder}` +
-      `\n      время: ${formatMoscow(post.publishAt)} МСК, файлов: ${post.files.length}` +
-      `, подпись: ${caption.length} символов`,
-  );
-  console.log(
-    `      первая ссылка: ${rawUrl(`instagram/posts/${post.folder}/${post.files[0]}`)}`,
-  );
+    console.log(
+      `    ${post.type.padEnd(8)} ${post.folder}` +
+        `\n      ${formatMoscow(post.publishAt)} МСК, файлов: ${post.files.length}` +
+        `, подпись: ${captionOf(brand, post).length} символов`,
+    );
+    console.log(
+      `      ${rawUrl(postPath(CHANNEL, brand, post.folder, post.files[0]))}`,
+    );
+  }
 }
 
 if (dryRun) {
@@ -232,25 +206,35 @@ if (dryRun) {
 // ——— Публикация ———
 
 let ok = 0;
-for (const post of selected) {
-  console.log(`\n  Публикую ${post.folder}…`);
-  try {
-    const mediaId =
-      post.type === "carousel"
-        ? await publishCarousel(post)
-        : await publishReel(post);
-    archive(post, mediaId);
-    ok++;
-    console.log(`  ✔ Опубликовано. id: ${mediaId}`);
-  } catch (error) {
-    const message = error instanceof Error ? error.message : String(error);
-    markFailed(post, message);
-    console.error(`  ✖ ${post.folder}: ${message}`);
+for (const { brand, posts } of plan) {
+  const auth = credentials(brand);
+
+  if (!auth.token || !auth.userId) {
+    console.error(
+      `\n  ✖ ${BRANDS[brand].title}: нет доступа — не заданы ${auth.names.join(" и ")}.` +
+        "\n    Как их получить — docs/publishing.md",
+    );
+    continue;
+  }
+
+  for (const post of posts) {
+    console.log(`\n  Публикую ${BRANDS[brand].title} · ${post.folder}…`);
+    try {
+      const mediaId =
+        post.type === "carousel"
+          ? await publishCarousel(auth, brand, post)
+          : await publishReel(auth, brand, post);
+      archivePost(CHANNEL, brand, post, mediaId);
+      ok++;
+      console.log(`  ✔ Опубликовано. id: ${mediaId}`);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      markPostFailed(CHANNEL, brand, post, message);
+      console.error(`  ✖ ${post.folder}: ${message}`);
+    }
   }
 }
 
-console.log(
-  `\n  Готово: ${ok} из ${selected.length}. Архив: instagram/published.json\n`,
-);
+console.log(`\n  Готово: ${ok} из ${total}.\n`);
 // Ненулевой код, если что-то не прошло: в расписании это видно как красный прогон.
-process.exit(ok === selected.length ? 0 : 1);
+process.exit(ok === total ? 0 : 1);

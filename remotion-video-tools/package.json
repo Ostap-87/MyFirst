@@ -46,8 +46,8 @@
     "make-sfx": "node scripts/make-sfx.mjs",
     "carousel": "node scripts/render-carousel.mjs",
     "publish": "node scripts/publish-instagram.mjs",
-    "ig:add": "node scripts/ig-queue.mjs",
-    "ig:queue": "node scripts/ig-queue.mjs --list"
+    "q:add": "node scripts/queue-add.mjs",
+    "q": "node scripts/queue-add.mjs --list"
   },
   "sideEffects": [
     "*.css"

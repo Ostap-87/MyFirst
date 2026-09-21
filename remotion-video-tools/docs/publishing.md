@@ -19,13 +19,19 @@ API** от Meta. Готового коннектора в этой среде н
 5. **ID вашего Instagram-аккаунта** (`IG_USER_ID`) — получается запросом
    `GET /me/accounts?fields=instagram_business_account`.
 
-Токен и ID передаются скрипту переменными окружения — в репозиторий они не
-коммитятся:
+**Это нужно повторить для каждого из трёх аккаунтов** — GTT, Aura и личного:
+у каждого свой токен и свой id. Передаются переменными окружения, в
+репозиторий не коммитятся:
 
 ```bash
-export IG_ACCESS_TOKEN="EAAG..."
-export IG_USER_ID="17841400000000000"
+export IG_TOKEN_GTT="EAAG..."       IG_USER_GTT="17841400000000000"
+export IG_TOKEN_AURA="EAAG..."      IG_USER_AURA="17841400000000001"
+export IG_TOKEN_PERSONAL="EAAG..."  IG_USER_PERSONAL="17841400000000002"
 ```
+
+В GitHub Actions те же имена добавляются в Settings → Secrets and variables.
+Аккаунт, для которого секретов нет, пропускается с сообщением в логе —
+остальные публикуются как обычно.
 
 ## Как устроена публикация
 
@@ -64,14 +70,14 @@ HTTPS-ссылке. Поэтому порядок такой:
 npm run carousel -- --input data/carousel-robotics-expedition.json
 
 # 2. Поставить в очередь на дату (московское время)
-npm run ig:add -- --carousel robotics-expedition \
+npm run q:add -- --channel instagram --brand gtt --carousel robotics-expedition \
   --at "2026-09-25 10:00" --caption-file data/captions/robotics-expedition.txt
 
 # 3. Посмотреть план и архив
-npm run ig:queue
+npm run q
 
 # 4. Опубликовать вручную, не дожидаясь расписания
-npm run publish -- --post 2026-09-25-robotics-expedition
+npm run publish -- --brand gtt --post 2026-09-25-carousel-robotics-expedition
 ```
 
 Дальше работает `.github/workflows/instagram-publish.yml`: два раза в сутки

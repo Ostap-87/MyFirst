@@ -17,19 +17,53 @@ MyFirst/
 │   ├── docs/                 разбор референсов, настройка публикации
 │   └── out/                  результаты рендера (в git НЕ хранятся)
 │
-├── instagram/                КОНТЕНТ Instagram — готовый и вышедший
-│   ├── queue.json            очередь: что и когда публикуется
-│   ├── published.json        архив: что уже вышло, когда, под каким id
-│   └── posts/
-│       ├── 2026-09-25-carousel-robotics-expedition/
-│       └── 2026-09-26-reel-china-hook/
+├── instagram/                КОНТЕНТ — по аккаунту на бренд
+│   ├── globaltechtour/       queue.json, published.json, posts/
+│   ├── aura/
+│   └── personal/
 │
-├── tg-images/                КОНТЕНТ Telegram — картинки к постам
+├── youtube/                  то же устройство, публикация не подключена
+├── threads/
+├── tiktok/
+│
+├── tg-images/                КОНТЕНТ Telegram — работает отдельно
 │   ├── globaltechtour/
 │   └── aura/
 │
 └── .github/workflows/        РАСПИСАНИЕ — публикация по времени
 ```
+
+## Канал → бренд → очередь
+
+У каждого бренда **свой аккаунт в каждой сети**, поэтому у него своя папка,
+своя очередь и свой токен:
+
+```
+instagram/globaltechtour/    → аккаунт GTT,   токен IG_TOKEN_GTT
+instagram/aura/              → аккаунт Aura,  токен IG_TOKEN_AURA
+instagram/personal/          → личный,        токен IG_TOKEN_PERSONAL
+```
+
+Пост физически лежит в папке того аккаунта, куда он пойдёт, — перепутать
+нельзя. Весь план по всем каналам и брендам показывает одна команда:
+
+```bash
+npm run q
+```
+
+```
+━━ Instagram
+   GlobalTechTour: в очереди 1, вышло 0
+     · 25.09.2026, 10:00  carousel robotics-expedition
+   Aura Robotics: пусто
+   ostapdotcenko: пусто
+
+━━ YouTube  (публикация ещё не подключена)
+   …
+```
+
+Что нужно для подключения YouTube, Threads и TikTok —
+в [docs/channels.md](./remotion-video-tools/docs/channels.md).
 
 ## Как отличить видео от карусели
 
@@ -52,16 +86,17 @@ MyFirst/
 
 ## Где что делается
 
-| Задача              | Где                    | Команда                                          |
-| ------------------- | ---------------------- | ------------------------------------------------ |
-| Собрать карусель    | `remotion-video-tools` | `npm run carousel -- --input data/<файл>.json`   |
-| Собрать ролик       | `remotion-video-tools` | `npx remotion render <композиция> out/<имя>.mp4` |
-| Поставить в очередь | `remotion-video-tools` | `npm run ig:add -- --carousel <имя> --at "..."`  |
-| Посмотреть план     | `remotion-video-tools` | `npm run ig:queue`                               |
-| Опубликовать        | расписание или вручную | `npm run publish -- --due`                       |
+| Задача              | Где                    | Команда                                                                         |
+| ------------------- | ---------------------- | ------------------------------------------------------------------------------- |
+| Собрать карусель    | `remotion-video-tools` | `npm run carousel -- --input data/<файл>.json`                                  |
+| Собрать ролик       | `remotion-video-tools` | `npx remotion render <композиция> out/<имя>.mp4`                                |
+| Поставить в очередь | `remotion-video-tools` | `npm run q:add -- --channel instagram --brand aura --carousel <имя> --at "..."` |
+| Посмотреть план     | `remotion-video-tools` | `npm run q`                                                                     |
+| Опубликовать        | расписание или вручную | `npm run publish -- --due`                                                      |
 
 Правила работы с проектом — в [remotion-video-tools/CLAUDE.md](./remotion-video-tools/CLAUDE.md).
-Устройство хранилища Instagram — в [instagram/README.md](./instagram/README.md).
+Каналы, лимиты и что нужно для подключения — в [docs/channels.md](./remotion-video-tools/docs/channels.md).
+Настройка публикации в Instagram — в [docs/publishing.md](./remotion-video-tools/docs/publishing.md).
 Хранилище картинок Telegram — в [tg-images/README.md](./tg-images/README.md).
 
 ## Что где хранится, а что нет
