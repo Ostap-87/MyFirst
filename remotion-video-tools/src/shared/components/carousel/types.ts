@@ -21,6 +21,7 @@ export const slideSchema = z.discriminatedUnion("type", [
     index: z.number().int().min(1).describe("Номер пункта"),
     title: z.string().describe("Заголовок пункта"),
     text: z.string().describe("Раскрытие в 1–3 предложения"),
+    image: z.string().describe("Фон-картинка из public; пусто — фирменный фон").optional(),
   }),
   z.object({
     type: z.literal("metric"),
@@ -30,11 +31,13 @@ export const slideSchema = z.discriminatedUnion("type", [
     compact: z.boolean().describe("Сокращать до «млн» / «млрд»"),
     label: z.string().describe("Что означает цифра"),
     source: z.string().describe("Источник данных — подпись мелким"),
+    image: z.string().describe("Фон-картинка из public; пусто — фирменный фон").optional(),
   }),
   z.object({
     type: z.literal("quote"),
     text: z.string().describe("Цитата"),
     author: z.string().describe("Кто сказал"),
+    image: z.string().describe("Фон-картинка из public; пусто — фирменный фон").optional(),
   }),
   z.object({
     type: z.literal("image"),
@@ -47,6 +50,7 @@ export const slideSchema = z.discriminatedUnion("type", [
     text: z.string().describe("Что получит подписчик"),
     keyword: z.string().describe("Кодовое слово для директа; пусто — без поля"),
     handle: z.string().describe("Ник автора"),
+    image: z.string().describe("Фон-картинка из public; пусто — фирменный фон").optional(),
   }),
 ]);
 

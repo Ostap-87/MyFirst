@@ -38,25 +38,33 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
   // Кегль заголовка обложки подбирается по длине: «Batteries» и
   // «Borunte: шестиосевые роботы, которые обслуживают термопластавтоматы» —
   // это 9 и 68 знаков, одним размером они не живут.
+  // Кегль цифры — по длине готовой строки. «12» и «500 000 ₽» одним
+  // размером не живут: второе вылезает за поля кадра.
+  const metricSize = (text: string) => {
+    if (text.length <= 3) return fs(0.2);
+    if (text.length <= 5) return fs(0.17);
+    if (text.length <= 7) return fs(0.14);
+    if (text.length <= 10) return fs(0.115);
+    return fs(0.095);
+  };
+
   const coverTitleSize = (text: string) => {
     if (text.length > 64) return fs(0.068);
     if (text.length > 44) return fs(0.082);
     return fs(0.105);
   };
 
-  // Тёмные слайды делаем поверх картинки и на обложке, светлые — в теле
-  // карусели: сплошная лента тёмных кадров в ленте читается как реклама.
-  const isDark =
-    slide.type === "cover" ||
-    slide.type === "image" ||
-    theme.colors.primary === "#12121a";
+  // Слайд с картинкой всегда тёмный: текст ложится поверх фотографии.
+  // Без картинки — светлый, чтобы лента не читалась как сплошная реклама.
+  const hasImage = Boolean("image" in slide && slide.image);
+  const isDark = hasImage || theme.colors.primary === "#12121a";
   const background = isDark ? theme.colors.primary : theme.colors.surface;
   const textColor = isDark ? "#ffffff" : theme.colors.text;
   const mutedColor = isDark ? "rgba(255,255,255,0.7)" : theme.colors.muted;
 
   return (
     <AbsoluteFill style={{ backgroundColor: background }}>
-      {(slide.type === "cover" || slide.type === "image") && slide.image ? (
+      {hasImage && "image" in slide && slide.image ? (
         <>
           <AbsoluteFill>
             <Img
@@ -64,12 +72,17 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
             />
           </AbsoluteFill>
+          {/* Затемнение под текст. На обложке текст внизу — гасим низ;
+              на остальных слайдах он по центру, поэтому гасим кадр ровнее,
+              иначе цифра на светлом участке фотографии пропадает. */}
           <AbsoluteFill
             style={{
               background:
                 slide.type === "cover"
-                  ? "linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.55) 45%, rgba(0,0,0,0.25) 100%)"
-                  : "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.1) 45%)",
+                  ? "linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.6) 45%, rgba(0,0,0,0.3) 100%)"
+                  : slide.type === "image"
+                    ? "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.1) 45%)"
+                    : "linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.78) 42%, rgba(0,0,0,0.82) 100%)",
             }}
           />
         </>
@@ -89,10 +102,10 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
                 fontFamily: fontFamily(theme.fonts.mono),
                 fontSize: fs(0.032),
                 letterSpacing: fs(0.004),
-                color: theme.colors.accent,
-                // Акцент поверх фотографии живёт только с тенью: на светлом
-                // участке кадра синий по синему исчезает.
-                textShadow: "0 2px 10px rgba(0,0,0,0.85)",
+                // Поверх фотографии кикер белый: акцентный цвет на светлом
+                // участке кадра пропадает даже с тенью.
+                color: hasImage ? "#ffffff" : theme.colors.accent,
+                textShadow: "0 2px 12px rgba(0,0,0,0.9)",
               }}
             >
               {slide.kicker.toUpperCase()}
@@ -106,6 +119,7 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
                 lineHeight: 1.08,
                 letterSpacing: -1,
                 color: "#ffffff",
+                textShadow: "0 4px 24px rgba(0,0,0,0.75)",
               }}
             >
               {slide.title}
@@ -116,7 +130,8 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
                 fontFamily: fontFamily(theme.fonts.body),
                 fontSize: fs(0.042),
                 lineHeight: 1.35,
-                color: "rgba(255,255,255,0.8)",
+                color: "rgba(255,255,255,0.85)",
+                textShadow: "0 2px 14px rgba(0,0,0,0.7)",
               }}
             >
               {slide.subtitle}
@@ -177,11 +192,16 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
               style={{
                 fontFamily: fontFamily(theme.fonts.heading),
                 fontWeight: theme.fonts.headingWeight,
-                fontSize: fs(0.2),
-                lineHeight: 0.95,
-                letterSpacing: -4,
+                fontSize: metricSize(
+                  `${slide.prefix}${formatRu(slide.value, 0, slide.compact)}${slide.suffix}`,
+                ),
+                lineHeight: 1,
+                letterSpacing: -3,
                 color: theme.colors.accent,
                 fontVariantNumeric: "tabular-nums",
+                // Без nowrap «500 000 ₽» рвётся, и знак валюты уезжает
+                // на отдельную строку под числом.
+                whiteSpace: "nowrap",
               }}
             >
               {slide.prefix}
@@ -317,7 +337,11 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
               style={{
                 marginTop: sp(0.03),
                 fontFamily: fontFamily(theme.fonts.mono),
-                fontSize: fs(0.032),
+                // Длинный адрес рвём по символам, иначе он вылезает за поля;
+                // кегль мельче обычного — это подпись, а не заголовок.
+                fontSize: slide.handle.length > 28 ? fs(0.026) : fs(0.032),
+                lineHeight: 1.3,
+                wordBreak: "break-all",
                 color: theme.colors.accent,
               }}
             >
