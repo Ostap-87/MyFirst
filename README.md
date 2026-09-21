@@ -3,8 +3,7 @@
 Репозиторий контента и инструментов для трёх брендов: **GlobalTechTour**,
 **Aura Robotics** и личного бренда **ostapdotcenko**.
 
-Внутри три независимых блока — инструмент отдельно, контент отдельно,
-по одной папке на канал.
+В корне два блока: **чем делаем** и **что публикуем**.
 
 ```
 MyFirst/
@@ -17,25 +16,31 @@ MyFirst/
 │   ├── docs/                 разбор референсов, настройка публикации
 │   └── out/                  результаты рендера (в git НЕ хранятся)
 │
-├── instagram/                КОНТЕНТ — по аккаунту на бренд
-│   ├── globaltechtour/
-│   │   ├── queue.json        очередь аккаунта: что и когда
-│   │   ├── published.json    архив вышедшего
-│   │   ├── photo/            карусели и фото
-│   │   └── video/            ролики
-│   ├── aura/
-│   └── personal/
+├── content/                  КОНТЕНТ — все каналы в одном месте
+│   ├── instagram/
+│   │   ├── globaltechtour/
+│   │   │   ├── queue.json    очередь аккаунта: что и когда
+│   │   │   ├── published.json  архив вышедшего
+│   │   │   ├── photo/        карусели и фото
+│   │   │   └── video/        ролики
+│   │   ├── aura/
+│   │   └── personal/
+│   ├── youtube/              то же устройство, публикация не подключена
+│   ├── threads/
+│   └── tiktok/
 │
-├── youtube/                  то же устройство, публикация не подключена
-├── threads/
-├── tiktok/
-│
-├── tg-images/                КОНТЕНТ Telegram — работает отдельно
+├── tg-images/                Telegram — вне content/, см. ниже
 │   ├── globaltechtour/
 │   └── aura/
 │
 └── .github/workflows/        РАСПИСАНИЕ — публикация по времени
 ```
+
+**Почему Telegram не в `content/`.** Он работает с августа 2026, посты уже
+вышли, а Telegram забирает фото по вшитой ссылке
+`raw.githubusercontent.com/.../tg-images/...`. Переезд папки сломает картинки
+в опубликованных постах задним числом. Подробности и план подключения —
+в [docs/channels.md](./remotion-video-tools/docs/channels.md).
 
 ## Канал → бренд → очередь
 
@@ -43,9 +48,9 @@ MyFirst/
 своя очередь и свой токен:
 
 ```
-instagram/globaltechtour/    → аккаунт GTT,   токен IG_TOKEN_GTT
-instagram/aura/              → аккаунт Aura,  токен IG_TOKEN_AURA
-instagram/personal/          → личный,        токен IG_TOKEN_PERSONAL
+content/instagram/globaltechtour/  → аккаунт GTT,  токен IG_TOKEN_GTT
+content/instagram/aura/            → аккаунт Aura, токен IG_TOKEN_AURA
+content/instagram/personal/        → личный,       токен IG_TOKEN_PERSONAL
 ```
 
 Внутри аккаунта контент разведён по виду — это разные производственные
@@ -53,8 +58,8 @@ instagram/personal/          → личный,        токен IG_TOKEN_PERSON
 и субтитрами.
 
 ```
-instagram/globaltechtour/photo/2026-09-25-carousel-robotics-expedition/
-instagram/globaltechtour/video/2026-09-26-reel-china-hook/
+content/instagram/globaltechtour/photo/2026-09-25-carousel-robotics-expedition/
+content/instagram/globaltechtour/video/2026-09-26-reel-china-hook/
 ```
 
 **Очередь при этом одна на аккаунт.** Она описывает расписание ленты, а лента
@@ -93,7 +98,7 @@ npm run q
 
 Сначала папка вида, дальше дата — список внутри вида сортируется
 хронологически, а тип виден без открытия папки. То же самое дублируется внутри — в `meta.json` поле
-`type`, и в выводе `npm run ig:queue` отдельной колонкой:
+`type`, и в выводе `npm run q` отдельной колонкой:
 
 ```
   В очереди: 2

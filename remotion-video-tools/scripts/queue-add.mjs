@@ -144,7 +144,7 @@ const addPost = ({ slug, type, files }) => {
 
   if (existsSync(dir) && !args.force) {
     fail(
-      `Папка ${channel}/${brand}/${kind}/${folder} уже существует. Перезаписать: --force`,
+      `Папка content/${channel}/${brand}/${kind}/${folder} уже существует. Перезаписать: --force`,
     );
   }
 

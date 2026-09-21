@@ -1,6 +1,6 @@
 name: Instagram — публикация по расписанию
 
-# Публикует посты из очередей instagram/<бренд>/queue.json, у которых
+# Публикует посты из очередей content/instagram/<бренд>/queue.json, у которых
 # наступило время. Контент готовится заранее, здесь только отправка.
 #
 # У каждого бренда свой аккаунт и свой токен. Секреты добавляются в
@@ -67,12 +67,12 @@ jobs:
       - name: Записать результат в репозиторий
         if: always() && inputs.dry_run != true
         run: |
-          if git diff --quiet instagram/; then
+          if git diff --quiet content/instagram/; then
             echo "Очереди не изменились — коммитить нечего."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add instagram/
+          git add content/instagram/
           git commit -m "Instagram: обновление очередей после публикации"
           git push

@@ -197,7 +197,7 @@ for (const { brand, posts } of plan) {
     const dir = postDir(brand, post);
     if (!existsSync(dir))
       fail(
-        `Папка поста пропала: ${CHANNEL}/${brand}/${kindOf(post)}/${post.folder}`,
+        `Папка поста пропала: content/${CHANNEL}/${brand}/${kindOf(post)}/${post.folder}`,
       );
 
     console.log(

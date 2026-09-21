@@ -1,9 +1,12 @@
 // Реестр каналов и брендов + общая работа с очередью публикаций.
 //
-// Каждый канал устроен одинаково: папка канала, внутри папка бренда, внутри
-// queue.json, published.json и posts/. Один аккаунт = одна папка = одна
-// очередь = один токен. Благодаря этому новый канал подключается описанием
-// в CHANNELS, а не копией всей логики.
+// Весь контент живёт в content/: content/<канал>/<бренд>/, внутри queue.json,
+// published.json и папки видов photo/ и video/. Один аккаунт = одна папка =
+// одна очередь = один токен. Благодаря этому новый канал подключается
+// описанием в CHANNELS, а не копией всей логики.
+//
+// Исключение — Telegram: он лежит в tg-images/ отдельно, потому что его
+// картинки уже разосланы и на них ссылаются по вшитым raw-ссылкам.
 import { existsSync, mkdirSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { read, ROOT } from "./lib.mjs";
@@ -120,8 +123,11 @@ export const channelList = () =>
 
 // ——— Пути ———
 
+/** Весь контент лежит в content/ — рядом с ним только инструмент и Telegram. */
+export const CONTENT_ROOT = resolve(REPO_ROOT, "content");
+
 export const channelDir = (channel, brand) =>
-  resolve(REPO_ROOT, channel, brand);
+  resolve(CONTENT_ROOT, channel, brand);
 export const queueFile = (channel, brand) =>
   resolve(channelDir(channel, brand), "queue.json");
 export const publishedFile = (channel, brand) =>
@@ -132,7 +138,7 @@ export const kindDir = (channel, brand, kind) =>
 
 /** Путь поста относительно корня репозитория — из него строятся публичные ссылки. */
 export const postPath = (channel, brand, kind, folder, file) =>
-  `${channel}/${brand}/${kind}/${folder}/${file}`;
+  `content/${channel}/${brand}/${kind}/${folder}/${file}`;
 
 // ——— Очередь и архив ———
 
@@ -141,7 +147,7 @@ const emptyQueue = (channel, brand) => ({
   brand,
   comment:
     "Очередь публикаций. Посты берутся по publishAt (московское время). " +
-    "Пополняется скриптом ig:add, разбирается публикацией.",
+    "Пополняется скриптом q:add, разбирается публикацией.",
   posts: [],
 });
 

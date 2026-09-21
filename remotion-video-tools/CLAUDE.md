@@ -163,18 +163,26 @@ npm run carousel -- --slug ... --square --no-hint        # 1:1, без «лис�
 
 ## Каналы: хранилище, очередь, расписание
 
-Контент готовится заранее и лежит в репозитории. Структура одинакова для всех
-каналов — **канал → бренд → очередь**:
+Весь контент лежит в **`content/`** — одно место на все каналы. Структура
+одинакова для всех: **канал → бренд → вид**:
 
 ```
-instagram/globaltechtour/
+content/instagram/globaltechtour/
   queue.json        очередь аккаунта: что и когда
   published.json    архив вышедшего
   photo/2026-09-25-carousel-robotics-expedition/
   video/2026-09-26-reel-china-hook/
-instagram/aura/ instagram/personal/
-youtube/ threads/ tiktok/   то же устройство, публикация ещё не подключена
+content/instagram/aura/ content/instagram/personal/
+content/youtube/ content/threads/ content/tiktok/   публикация ещё не подключена
 ```
+
+Telegram — исключение: он лежит в `tg-images/` вне `content/`, потому что его
+картинки уже разосланы и на них ссылаются по вшитым raw-ссылкам. Переносить
+его нельзя, пока не перевешены ссылки.
+
+**Путь поста строится только через `postPath()` и `channelDir()` в
+`scripts/channels.mjs`.** Не собирайте его из строк в других местах: по нему
+Instagram скачивает медиа, и расхождение означает пост без картинок.
 
 - **У каждого бренда свой аккаунт**, поэтому своя папка и свой токен:
   `IG_TOKEN_GTT`, `IG_TOKEN_AURA`, `IG_TOKEN_PERSONAL`. Пост лежит в папке
