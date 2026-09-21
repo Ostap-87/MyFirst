@@ -33,7 +33,31 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
   showSwipeHint = true,
   footer = "",
 }) => {
-  const { fs, sp, vh } = useFormat();
+  const { fs, sp, vh, height } = useFormat();
+
+  // Разбивает строку по `**акцент**` на обычные и крупные акцентные куски —
+  // так в одной подписи можно выделить цифру/фразу без отдельного слайда.
+  // Работает и без разметки: тогда просто возвращает исходный текст одним
+  // куском обычного размера.
+  const renderRich = (
+    text: string,
+    base: React.CSSProperties,
+    emphasis: React.CSSProperties,
+  ) =>
+    text
+      .split(/(\*\*[^*]+\*\*)/g)
+      .filter(Boolean)
+      .map((part, i) =>
+        part.startsWith("**") && part.endsWith("**") ? (
+          <span key={i} style={{ ...base, ...emphasis }}>
+            {part.slice(2, -2)}
+          </span>
+        ) : (
+          <span key={i} style={base}>
+            {part}
+          </span>
+        ),
+      );
 
   // Кегль заголовка обложки подбирается по длине: «Batteries» и
   // «Borunte: шестиосевые роботы, которые обслуживают термопластавтоматы» —
@@ -65,118 +89,422 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
   const textColor = isDark ? "#ffffff" : theme.colors.text;
   const mutedColor = isDark ? "rgba(255,255,255,0.7)" : theme.colors.muted;
 
-  // Карточка фото в "framed"-режиме: фикс. отступы сверху/по бокам, высота —
-  // чуть больше половины кадра, дальше текст идёт под ней (не поверх).
-  const framedImageTop = vh(0.06);
-  const framedImageHeight = vh(0.44);
-  const framedContentTop = framedImageTop + framedImageHeight + vh(0.045);
+  // Карточка фото в "framed"-режиме теперь занимает почти весь слайд —
+  // текст ложится прямо на фото, а не в отдельный блок под ним (запрос
+  // пользователя 21.09.2026: "картинка и поверх неё идёт скомпанованная
+  // надпись", а не картинка + отдельная подпись снизу). Верх фото остаётся
+  // чётким, низ — под плавно нарастающим размытием (frosted-панель), на
+  // которой и живёт текст: светлое, не тёмным градиентом, как раньше.
+  const framedMarginSide = sp(0.06);
+  const framedMarginTop = vh(0.045);
+  const framedMarginBottom = vh(0.045);
+  const framedCardHeight = height - framedMarginTop - framedMarginBottom;
+  // Обложке нужно больше места (кикер+заголовок+подзаголовок), остальным
+  // типам с фото — меньше (обычно одна подпись).
+  // Панель считается щедро — текст не должен вылезать за размытую зону на
+  // резкую часть фото (было именно так до правки 21.09.2026: заголовок
+  // в 3 строки перекрывал верх снимка нечитаемым чёрным-по-светлому).
+  const framedPanelHeight = Math.round(
+    framedCardHeight * (slide.type === "cover" ? 0.62 : 0.46),
+  );
 
   return (
     <AbsoluteFill style={{ backgroundColor: background }}>
-      {hasImage && "image" in slide && slide.image ? (
-        framed ? (
-          <div
-            style={{
-              position: "absolute",
-              top: framedImageTop,
-              left: sp(0.08),
-              right: sp(0.08),
-              height: framedImageHeight,
-              borderRadius: sp(0.045),
-              overflow: "hidden",
-              border: `1px solid ${theme.colors.line}`,
-              boxShadow: "0 16px 40px rgba(23,23,29,0.08)",
-            }}
-          >
+      {hasImage && "image" in slide && slide.image && !framed ? (
+        <>
+          <AbsoluteFill>
             <Img
               src={staticFile(slide.image)}
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
             />
-          </div>
-        ) : (
-          <>
-            <AbsoluteFill>
-              <Img
-                src={staticFile(slide.image)}
-                style={{ width: "100%", height: "100%", objectFit: "cover" }}
-              />
-            </AbsoluteFill>
-            {/* Затемнение под текст. На обложке текст внизу — гасим низ;
-                на остальных слайдах он по центру, поэтому гасим кадр ровнее,
-                иначе цифра на светлом участке фотографии пропадает. */}
-            <AbsoluteFill
-              style={{
-                background:
-                  slide.type === "cover"
-                    ? "linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.6) 45%, rgba(0,0,0,0.3) 100%)"
-                    : slide.type === "image"
-                      ? "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.1) 45%)"
-                      : "linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.78) 42%, rgba(0,0,0,0.82) 100%)",
-              }}
-            />
-          </>
-        )
+          </AbsoluteFill>
+          {/* Затемнение под текст. На обложке текст внизу — гасим низ;
+              на остальных слайдах он по центру, поэтому гасим кадр ровнее,
+              иначе цифра на светлом участке фотографии пропадает. */}
+          <AbsoluteFill
+            style={{
+              background:
+                slide.type === "cover"
+                  ? "linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.6) 45%, rgba(0,0,0,0.3) 100%)"
+                  : slide.type === "image"
+                    ? "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.1) 45%)"
+                    : "linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.78) 42%, rgba(0,0,0,0.82) 100%)",
+            }}
+          />
+        </>
       ) : null}
 
-      <AbsoluteFill
-        style={{
-          padding: framed
-            ? `${framedContentTop}px ${sp(0.08)}px ${sp(0.08)}px`
-            : `${sp(0.12)}px ${sp(0.08)}px`,
-          justifyContent: framed
-            ? "flex-start"
-            : slide.type === "cover"
-              ? "flex-end"
-              : "center",
-          gap: sp(0.035),
-        }}
-      >
-        {slide.type === "cover" ? (
-          <>
+      {hasImage && "image" in slide && slide.image && framed ? (
+        <div
+          style={{
+            position: "absolute",
+            top: framedMarginTop,
+            left: framedMarginSide,
+            right: framedMarginSide,
+            height: framedCardHeight,
+            borderRadius: sp(0.045),
+            overflow: "hidden",
+            border: `1px solid ${theme.colors.line}`,
+            boxShadow: "0 16px 40px rgba(23,23,29,0.08)",
+          }}
+        >
+          {/* Фото на всю карточку, верх — чёткий, без затемнения. */}
+          <Img
+            src={staticFile(slide.image)}
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          />
+
+          {/* Frosted-панель: размытие и белый оттенок нарастают плавно
+              (маска-градиент), а не жёсткой линией — верх карточки при
+              этом остаётся резким. Светлая, не тёмная (запрос
+              пользователя 21.09.2026), текст поверх — тёмный. */}
+          <div
+            style={{
+              position: "absolute",
+              left: 0,
+              right: 0,
+              bottom: 0,
+              height: framedPanelHeight,
+              backdropFilter: "blur(40px)",
+              WebkitBackdropFilter: "blur(40px)",
+              backgroundColor: "rgba(255,255,255,0.78)",
+              maskImage:
+                "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 30%)",
+              WebkitMaskImage:
+                "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 30%)",
+            }}
+          />
+
+          <div
+            style={{
+              position: "absolute",
+              left: 0,
+              right: 0,
+              bottom: 0,
+              height: framedPanelHeight,
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-end",
+              padding: `0 ${sp(0.07)}px ${sp(0.06)}px`,
+              gap: sp(0.02),
+            }}
+          >
+            {slide.type === "cover" ? (
+              <>
+                <div
+                  style={{
+                    fontFamily: fontFamily(theme.fonts.mono),
+                    fontSize: fs(0.03),
+                    letterSpacing: fs(0.004),
+                    color: theme.colors.accent,
+                  }}
+                >
+                  {slide.kicker.toUpperCase()}
+                </div>
+                <h1 style={{ margin: 0, lineHeight: 1.08, letterSpacing: -1 }}>
+                  {renderRich(
+                    slide.title,
+                    {
+                      fontFamily: fontFamily(theme.fonts.heading),
+                      fontWeight: theme.fonts.headingWeight,
+                      fontSize: coverTitleSize(slide.title),
+                      color: theme.colors.text,
+                    },
+                    { color: theme.colors.accent },
+                  )}
+                </h1>
+                <p style={{ margin: 0, lineHeight: 1.35 }}>
+                  {renderRich(
+                    slide.subtitle,
+                    {
+                      fontFamily: fontFamily(theme.fonts.body),
+                      fontSize: fs(0.036),
+                      color: theme.colors.muted,
+                    },
+                    { fontWeight: 700, color: theme.colors.text },
+                  )}
+                </p>
+              </>
+            ) : null}
+
+            {slide.type === "image" ? (
+              <p style={{ margin: 0, lineHeight: 1.4 }}>
+                {renderRich(
+                  slide.caption,
+                  {
+                    fontFamily: fontFamily(theme.fonts.body),
+                    fontSize: fs(0.038),
+                    color: theme.colors.text,
+                  },
+                  { fontWeight: 700, color: theme.colors.accent },
+                )}
+              </p>
+            ) : null}
+
+            {slide.type === "point" ? (
+              <>
+                <div
+                  style={{
+                    width: fs(0.11),
+                    height: fs(0.11),
+                    borderRadius: "50%",
+                    backgroundColor: theme.colors.accent,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontFamily: fontFamily(theme.fonts.heading),
+                    fontWeight: theme.fonts.headingWeight,
+                    fontSize: fs(0.052),
+                    color: "#ffffff",
+                  }}
+                >
+                  {slide.index}
+                </div>
+                {slide.title ? (
+                  <h2
+                    style={{
+                      margin: 0,
+                      fontFamily: fontFamily(theme.fonts.heading),
+                      fontWeight: theme.fonts.headingWeight,
+                      fontSize: fs(0.062),
+                      lineHeight: 1.12,
+                      color: theme.colors.text,
+                    }}
+                  >
+                    {slide.title}
+                  </h2>
+                ) : null}
+                <p
+                  style={{
+                    margin: 0,
+                    fontFamily: fontFamily(theme.fonts.body),
+                    fontSize: slide.title ? fs(0.036) : fs(0.044),
+                    lineHeight: 1.4,
+                    color: slide.title ? theme.colors.muted : theme.colors.text,
+                  }}
+                >
+                  {slide.text}
+                </p>
+              </>
+            ) : null}
+
+            {slide.type === "metric" ? (
+              <>
+                <div
+                  style={{
+                    fontFamily: fontFamily(theme.fonts.heading),
+                    fontWeight: theme.fonts.headingWeight,
+                    fontSize: metricSize(
+                      `${slide.prefix}${formatRu(slide.value, 0, slide.compact)}${slide.suffix}`,
+                    ),
+                    lineHeight: 1,
+                    letterSpacing: -3,
+                    color: theme.colors.accent,
+                    fontVariantNumeric: "tabular-nums",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {slide.prefix}
+                  {formatRu(slide.value, 0, slide.compact)}
+                  {slide.suffix}
+                </div>
+                <div
+                  style={{
+                    fontFamily: fontFamily(theme.fonts.heading),
+                    fontWeight: theme.fonts.headingWeight,
+                    fontSize: fs(0.046),
+                    lineHeight: 1.2,
+                    color: theme.colors.text,
+                  }}
+                >
+                  {slide.label}
+                </div>
+                {slide.source ? (
+                  <div
+                    style={{
+                      fontFamily: fontFamily(theme.fonts.mono),
+                      fontSize: fs(0.024),
+                      color: theme.colors.muted,
+                    }}
+                  >
+                    {slide.source}
+                  </div>
+                ) : null}
+              </>
+            ) : null}
+
+            {slide.type === "quote" ? (
+              <>
+                <p
+                  style={{
+                    margin: 0,
+                    fontFamily: fontFamily(theme.fonts.heading),
+                    fontWeight: theme.fonts.headingWeight,
+                    fontSize: fs(0.052),
+                    lineHeight: 1.25,
+                    color: theme.colors.text,
+                  }}
+                >
+                  «{slide.text}»
+                </p>
+                <div
+                  style={{
+                    fontFamily: fontFamily(theme.fonts.mono),
+                    fontSize: fs(0.026),
+                    color: theme.colors.muted,
+                  }}
+                >
+                  {slide.author}
+                </div>
+              </>
+            ) : null}
+
+            {slide.type === "cta" ? (
+              <>
+                <h2
+                  style={{
+                    margin: 0,
+                    fontFamily: fontFamily(theme.fonts.heading),
+                    fontWeight: theme.fonts.headingWeight,
+                    fontSize: fs(0.068),
+                    lineHeight: 1.1,
+                    color: theme.colors.text,
+                  }}
+                >
+                  {slide.title}
+                </h2>
+                <p
+                  style={{
+                    margin: 0,
+                    fontFamily: fontFamily(theme.fonts.body),
+                    fontSize: fs(0.038),
+                    lineHeight: 1.4,
+                    color: theme.colors.muted,
+                  }}
+                >
+                  {slide.text}
+                </p>
+              </>
+            ) : null}
+          </div>
+
+          {/* Счётчик — плашкой поверх резкой (не размытой) верхней части
+              фото, чтобы читался на любом снимке. */}
+          {showCounter ? (
             <div
               style={{
+                position: "absolute",
+                top: sp(0.028),
+                right: sp(0.028),
+                padding: `${sp(0.012)}px ${sp(0.022)}px`,
+                borderRadius: 999,
+                backgroundColor: "rgba(255,255,255,0.92)",
                 fontFamily: fontFamily(theme.fonts.mono),
-                fontSize: fs(0.032),
-                letterSpacing: fs(0.004),
-                // Поверх фотографии кикер белый: акцентный цвет на светлом
-                // участке кадра пропадает даже с тенью. В "framed" фото не
-                // заливает кадр — кикер обычный акцентный, без тени.
-                color: hasImage && !framed ? "#ffffff" : theme.colors.accent,
-                textShadow: framed ? "none" : "0 2px 12px rgba(0,0,0,0.9)",
+                fontSize: fs(0.026),
+                color: theme.colors.text,
+                fontVariantNumeric: "tabular-nums",
               }}
             >
-              {slide.kicker.toUpperCase()}
+              {position.index + 1} / {position.total}
             </div>
-            <h1
-              style={{
-                margin: 0,
-                fontFamily: fontFamily(theme.fonts.heading),
-                fontWeight: theme.fonts.headingWeight,
-                fontSize: coverTitleSize(slide.title),
-                lineHeight: 1.08,
-                letterSpacing: -1,
-                color: framed ? theme.colors.text : "#ffffff",
-                textShadow: framed ? "none" : "0 4px 24px rgba(0,0,0,0.75)",
-              }}
-            >
-              {slide.title}
-            </h1>
-            <p
-              style={{
-                margin: 0,
-                fontFamily: fontFamily(theme.fonts.body),
-                fontSize: fs(0.042),
-                lineHeight: 1.35,
-                color: framed ? theme.colors.muted : "rgba(255,255,255,0.85)",
-                textShadow: framed ? "none" : "0 2px 14px rgba(0,0,0,0.7)",
-              }}
-            >
-              {slide.subtitle}
-            </p>
-          </>
-        ) : null}
+          ) : null}
 
-        {slide.type === "point" ? (
+          {/* Подпись сайта и подсказка «листай» — одной строкой над панелью
+              подписи, тоже плашками. */}
+          {footer && slide.type !== "cta" ? (
+            <div
+              style={{
+                position: "absolute",
+                left: sp(0.028),
+                bottom: framedPanelHeight + sp(0.028),
+                padding: `${sp(0.01)}px ${sp(0.02)}px`,
+                borderRadius: 999,
+                backgroundColor: "rgba(255,255,255,0.85)",
+                fontFamily: fontFamily(theme.fonts.mono),
+                fontSize: fs(0.024),
+                color: theme.colors.muted,
+              }}
+            >
+              {footer}
+            </div>
+          ) : null}
+
+          {showSwipeHint && position.index === 0 ? (
+            <div
+              style={{
+                position: "absolute",
+                right: sp(0.028),
+                bottom: framedPanelHeight + sp(0.028),
+                display: "flex",
+                alignItems: "center",
+                gap: sp(0.012),
+                padding: `${sp(0.012)}px ${sp(0.026)}px`,
+                borderRadius: 999,
+                backgroundColor: theme.colors.accent,
+                fontFamily: fontFamily(theme.fonts.mono),
+                fontSize: fs(0.026),
+                color: "#ffffff",
+              }}
+            >
+              листай <span style={{ fontSize: fs(0.036) }}>→</span>
+            </div>
+          ) : null}
+        </div>
+      ) : null}
+
+      {!framed ? (
+        <AbsoluteFill
+          style={{
+            padding: `${sp(0.12)}px ${sp(0.08)}px`,
+            justifyContent: slide.type === "cover" ? "flex-end" : "center",
+            gap: sp(0.035),
+          }}
+        >
+          {slide.type === "cover" ? (
+            <>
+              <div
+                style={{
+                  fontFamily: fontFamily(theme.fonts.mono),
+                  fontSize: fs(0.032),
+                  letterSpacing: fs(0.004),
+                  // Поверх фотографии кикер белый: акцентный цвет на светлом
+                  // участке кадра пропадает даже с тенью.
+                  color: hasImage ? "#ffffff" : theme.colors.accent,
+                  textShadow: "0 2px 12px rgba(0,0,0,0.9)",
+                }}
+              >
+                {slide.kicker.toUpperCase()}
+              </div>
+              <h1
+                style={{
+                  margin: 0,
+                  fontFamily: fontFamily(theme.fonts.heading),
+                  fontWeight: theme.fonts.headingWeight,
+                  fontSize: coverTitleSize(slide.title),
+                  lineHeight: 1.08,
+                  letterSpacing: -1,
+                  color: "#ffffff",
+                  textShadow: "0 4px 24px rgba(0,0,0,0.75)",
+                }}
+              >
+                {slide.title}
+              </h1>
+              <p
+                style={{
+                  margin: 0,
+                  fontFamily: fontFamily(theme.fonts.body),
+                  fontSize: fs(0.042),
+                  lineHeight: 1.35,
+                  color: "rgba(255,255,255,0.85)",
+                  textShadow: "0 2px 14px rgba(0,0,0,0.7)",
+                }}
+              >
+                {slide.subtitle}
+              </p>
+            </>
+          ) : null}
+
+          {slide.type === "point" ? (
           <>
             <div
               style={{
@@ -308,38 +636,24 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
         ) : null}
 
         {slide.type === "image" ? (
-          framed ? (
+          <AbsoluteFill
+            style={{
+              justifyContent: "flex-end",
+              padding: `${sp(0.12)}px ${sp(0.08)}px`,
+            }}
+          >
             <p
               style={{
                 margin: 0,
                 fontFamily: fontFamily(theme.fonts.body),
-                fontSize: fs(0.044),
-                lineHeight: 1.4,
-                color: theme.colors.text,
+                fontSize: fs(0.04),
+                lineHeight: 1.35,
+                color: "#ffffff",
               }}
             >
               {slide.caption}
             </p>
-          ) : (
-            <AbsoluteFill
-              style={{
-                justifyContent: "flex-end",
-                padding: `${sp(0.12)}px ${sp(0.08)}px`,
-              }}
-            >
-              <p
-                style={{
-                  margin: 0,
-                  fontFamily: fontFamily(theme.fonts.body),
-                  fontSize: fs(0.04),
-                  lineHeight: 1.35,
-                  color: "#ffffff",
-                }}
-              >
-                {slide.caption}
-              </p>
-            </AbsoluteFill>
-          )
+          </AbsoluteFill>
         ) : null}
 
         {slide.type === "cta" ? (
@@ -401,23 +715,21 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
           </>
         ) : null}
       </AbsoluteFill>
+      ) : null}
 
-      {showCounter ? (
+      {/* Счётчик, подпись сайта и подсказка «листай» для НЕ-framed стиля
+          (тёмная заливка под фото или полностью светлый слайд без фото) —
+          для framed-фото те же элементы уже отрисованы внутри карточки
+          фото выше, плашками поверх резкой части снимка. */}
+      {!framed && showCounter ? (
         <div
           style={{
             position: "absolute",
-            top: framed ? framedImageTop + sp(0.025) : sp(0.06),
-            right: framed ? sp(0.08) + sp(0.025) : sp(0.08),
-            padding: framed ? `${sp(0.012)}px ${sp(0.022)}px` : 0,
-            borderRadius: 999,
-            backgroundColor: framed ? "rgba(255,255,255,0.92)" : "transparent",
+            top: sp(0.06),
+            right: sp(0.08),
             fontFamily: fontFamily(theme.fonts.mono),
             fontSize: fs(0.028),
-            color: framed
-              ? theme.colors.text
-              : isDark
-                ? "rgba(255,255,255,0.75)"
-                : theme.colors.muted,
+            color: isDark ? "rgba(255,255,255,0.75)" : theme.colors.muted,
             fontVariantNumeric: "tabular-nums",
           }}
         >
@@ -425,28 +737,16 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
         </div>
       ) : null}
 
-      {footer && slide.type !== "cta" ? (
+      {!framed && footer && slide.type !== "cta" ? (
         <div
           style={{
             position: "absolute",
-            bottom: framed
-              ? undefined
-              : sp(0.05),
-            top: framed
-              ? framedImageTop + framedImageHeight - sp(0.05) - sp(0.025)
-              : undefined,
-            left: sp(0.08) + (framed ? sp(0.025) : 0),
-            padding: framed ? `${sp(0.012)}px ${sp(0.022)}px` : 0,
-            borderRadius: 999,
-            backgroundColor: framed ? "rgba(255,255,255,0.92)" : "transparent",
+            bottom: sp(0.05),
+            left: sp(0.08),
             fontFamily: fontFamily(theme.fonts.mono),
             fontSize: fs(0.026),
-            color: framed
-              ? theme.colors.text
-              : isDark
-                ? "rgba(255,255,255,0.6)"
-                : theme.colors.muted,
-            textShadow: !framed && isDark ? "0 2px 8px rgba(0,0,0,0.6)" : "none",
+            color: isDark ? "rgba(255,255,255,0.6)" : theme.colors.muted,
+            textShadow: isDark ? "0 2px 8px rgba(0,0,0,0.6)" : "none",
           }}
         >
           {footer}
@@ -455,26 +755,18 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
 
       {/* Подсказка листать — только на первом слайде: дальше она бессмысленна,
           а место занимает. */}
-      {showSwipeHint && position.index === 0 ? (
+      {!framed && showSwipeHint && position.index === 0 ? (
         <div
           style={{
             position: "absolute",
-            bottom: framed
-              ? undefined
-              : sp(0.05),
-            top: framed
-              ? framedImageTop + framedImageHeight - sp(0.05) - sp(0.025)
-              : undefined,
-            right: framed ? sp(0.08) + sp(0.025) : sp(0.08),
+            bottom: sp(0.05),
+            right: sp(0.08),
             display: "flex",
             alignItems: "center",
             gap: sp(0.014),
-            padding: framed ? `${sp(0.014)}px ${sp(0.028)}px` : 0,
-            borderRadius: 999,
-            backgroundColor: framed ? theme.colors.accent : "transparent",
             fontFamily: fontFamily(theme.fonts.mono),
             fontSize: fs(0.03),
-            color: framed ? "#ffffff" : theme.colors.accent,
+            color: theme.colors.accent,
           }}
         >
           листай <span style={{ fontSize: fs(0.04) }}>→</span>
