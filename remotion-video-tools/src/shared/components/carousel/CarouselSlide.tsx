@@ -236,7 +236,7 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
                     {
                       fontFamily: fontFamily(theme.fonts.body),
                       fontSize: fs(0.036),
-                      color: theme.colors.muted,
+                      color: theme.colors.text,
                     },
                     { fontWeight: 700, color: theme.colors.text },
                   )}
@@ -299,7 +299,7 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
                     fontFamily: fontFamily(theme.fonts.body),
                     fontSize: slide.title ? fs(0.036) : fs(0.044),
                     lineHeight: 1.4,
-                    color: slide.title ? theme.colors.muted : theme.colors.text,
+                    color: theme.colors.text,
                   }}
                 >
                   {slide.text}
@@ -343,7 +343,7 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
                     style={{
                       fontFamily: fontFamily(theme.fonts.mono),
                       fontSize: fs(0.024),
-                      color: theme.colors.muted,
+                      color: theme.colors.text,
                     }}
                   >
                     {slide.source}
@@ -370,7 +370,7 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
                   style={{
                     fontFamily: fontFamily(theme.fonts.mono),
                     fontSize: fs(0.026),
-                    color: theme.colors.muted,
+                    color: theme.colors.text,
                   }}
                 >
                   {slide.author}
@@ -398,7 +398,7 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
                     fontFamily: fontFamily(theme.fonts.body),
                     fontSize: fs(0.038),
                     lineHeight: 1.4,
-                    color: theme.colors.muted,
+                    color: theme.colors.text,
                   }}
                 >
                   {slide.text}
