@@ -1,0 +1,70 @@
+{
+  "name": "robotics-expedition",
+  "brand": "gtt",
+  "footer": "globaltechtour.ru",
+  "slides": [
+    {
+      "type": "cover",
+      "kicker": "Robotics Expedition · Китай",
+      "title": "12 заводов роботов за 5 дней",
+      "subtitle": "Закрытые визиты на производства, куда не попасть самостоятельно",
+      "image": "generated/robotics-expedition/01.jpg"
+    },
+    {
+      "type": "metric",
+      "value": 12,
+      "prefix": "",
+      "suffix": "",
+      "compact": false,
+      "label": "компаний-лидеров робототехники в программе",
+      "source": "3 города · 5 дней · 2 перелёта",
+      "image": "generated/robotics-expedition/02.jpg"
+    },
+    {
+      "type": "point",
+      "index": 1,
+      "title": "Пекин, день 1",
+      "text": "Galbot и Robotera — лаборатории в Хайдяне рядом с Пекинским университетом. Гуманоиды, которые ещё не вышли на рынок.",
+      "image": "generated/robotics-expedition/03.jpg"
+    },
+    {
+      "type": "point",
+      "index": 2,
+      "title": "Шанхай, дни 2–3",
+      "text": "AgiBot, Kepler, DroidUp, Fourier и Seer Robotics — весь Zhangjiang Robot Valley за два дня, пять компаний в одном кластере.",
+      "image": "generated/robotics-expedition/04.jpg"
+    },
+    {
+      "type": "point",
+      "index": 3,
+      "title": "Шэньчжэнь, дни 4–5",
+      "text": "UBTech, Leju, LimX Dynamics, EngineAI и Pudu Robotics. От гуманоидов до сервисных роботов, которые уже работают в ресторанах.",
+      "image": "generated/robotics-expedition/05.jpg"
+    },
+    {
+      "type": "point",
+      "index": 4,
+      "title": "Не экскурсия, а переговоры",
+      "text": "Живые демо, встречи с основателями, наши инженеры рядом — помогают оценить продукт. И прямые контакты на закупки и дистрибуцию.",
+      "image": "generated/robotics-expedition/06.jpg"
+    },
+    {
+      "type": "metric",
+      "value": 500000,
+      "prefix": "",
+      "suffix": " ₽",
+      "compact": false,
+      "label": "участие без авиаперелёта: проживание, питание, транспорт и сопровождение",
+      "source": "авиабилеты ориентировочно 80 000 ₽",
+      "image": "generated/robotics-expedition/07.jpg"
+    },
+    {
+      "type": "cta",
+      "title": "Мест в группе немного",
+      "text": "Оставьте заявку на странице Robotics Expedition — пришлём детальную программу по дням и условия участия.",
+      "keyword": "",
+      "handle": "globaltechtour.ru",
+      "image": "generated/robotics-expedition/08.jpg"
+    }
+  ]
+}
