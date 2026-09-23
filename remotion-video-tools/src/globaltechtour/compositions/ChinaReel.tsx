@@ -30,18 +30,14 @@ import captionsData from "../../../data/captions-china-expo.json";
  *
  * ——— Компоновка кадра ———
  *
- * Съёмка НЕ растянута на весь кадр, и это решает сразу три задачи.
+ * Съёмка идёт во весь кадр, край в край, без рамки и полей — масштаб 1:1.
  *
- * 1. Низ исходника обрезан по y=1500. Там на y 1560—1640 вшиты чужие титры
- *    Kapwing — замерено по шести кадрам во всех частях ролика. Обрезка
- *    убирает их совсем, поэтому не нужна маскирующая полоса размытия:
- *    закрывать нечего.
- * 2. Съёмка уменьшена до 76% ширины — лицо перестаёт упираться в края кадра.
- * 3. Освободившиеся поля получают своё содержание: сверху логотип, снизу
- *    субтитры. Субтитры больше не лежат на лице, а стоят под кадром.
- *
- * Фон — та же съёмка, размытая и затемнённая: чёрные поля читались бы как
- * ошибка экспорта, а размытая подложка — как приём.
+ * Чужие титры Kapwing вшиты в пиксели исходника на y 1560—1640 (замерено по
+ * шести кадрам в разных частях ролика). Убрать их обрезкой низа можно только
+ * увеличив кадр в 1,28 раза, а это приближает говорящего вплотную. Поэтому
+ * они закрываются полосой: размытие стирает их в кашу, затемнение добавляет
+ * контраста нашему тексту, края растушёваны маской, чтобы полоса не читалась
+ * заплаткой. Наши субтитры встают ровно туда же — на плечи, не на лицо.
  */
 
 export const chinaReelSchema = z.object({
@@ -50,6 +46,16 @@ export const chinaReelSchema = z.object({
   hookBottom: z.string().describe("Вторая строка крючка, акцентом"),
   place: z.string().describe("Геометка: город и страна"),
   brandMark: z.string().describe("Подпись рядом с логотипом сверху"),
+  logoScale: z
+    .number()
+    .min(0.5)
+    .max(3)
+    .describe("Размер логотипа сверху: 1 — базовый"),
+  hasBurnedCaptions: z
+    .boolean()
+    .describe(
+      "У исходника есть вшитые чужие титры — включить маскирующую полосу",
+    ),
   ctaTitle: z.string().describe("Заголовок концевой карточки"),
   ctaUrl: z.string().describe("Адрес сайта на концевой карточке"),
 });
@@ -71,17 +77,8 @@ const FOOTAGE_SECONDS = 25.5;
 const GEO_FROM = 3.56;
 const GEO_TO = 6.2;
 
-/**
- * Доля исходного кадра, которая остаётся после обрезки низа.
- * 1500 из 1920: ниже начинаются чужие титры.
- */
-const KEEP = 1500 / 1920;
-
-/** Ширина съёмки в кадре, долей ширины композиции. */
-const FOOTAGE_WIDTH = 0.82;
-
-/** Верх блока со съёмкой, долей высоты композиции. */
-const FOOTAGE_TOP = 0.115;
+/** Съёмка показывается как есть: 1:1, край в край. */
+const ZOOM = 1;
 
 /**
  * Плашка компании: плавное проявление со сдвигом вверх.
@@ -137,21 +134,22 @@ const CompanyPlate: React.FC<{
 const BrandMark: React.FC<{
   readonly label: string;
   readonly fs: (fraction: number) => number;
-}> = ({ label, fs }) => (
+  readonly scale: number;
+}> = ({ label, fs, scale }) => (
   <div
     style={{
       display: "flex",
       alignItems: "center",
-      gap: fs(0.02),
+      gap: fs(0.02 * scale),
       justifyContent: "center",
     }}
   >
-    <SpinningTetra size={fs(0.105)} degreesPerSecond={26} />
+    <SpinningTetra size={fs(0.105 * scale)} degreesPerSecond={26} />
     <span
       style={{
         fontFamily: fontFamily(theme.fonts.heading),
         fontWeight: 700,
-        fontSize: fs(0.036),
+        fontSize: fs(0.036 * scale),
         letterSpacing: fs(0.004),
         color: "#fff",
         textShadow: "0 2px 14px rgba(0,0,0,0.75)",
@@ -169,6 +167,8 @@ export const ChinaReel: React.FC<ChinaReelProps> = ({
   hookBottom,
   place,
   brandMark,
+  logoScale,
+  hasBurnedCaptions,
   ctaTitle,
   ctaUrl,
 }) => {
@@ -180,13 +180,11 @@ export const ChinaReel: React.FC<ChinaReelProps> = ({
   const endCardFrom = footageFrames;
   const onFootage = frame < endCardFrom;
 
-  // Геометрия блока со съёмкой. Считаем в пикселях: это компоновка кадра,
-  // а не размер шрифта, и доля тут нужна один раз — на входе.
-  const boxWidth = Math.round(width * FOOTAGE_WIDTH);
-  const naturalHeight = Math.round((boxWidth * height) / width);
-  const boxHeight = Math.round(naturalHeight * KEEP);
-  const boxTop = Math.round(height * FOOTAGE_TOP);
-  const boxLeft = Math.round((width - boxWidth) / 2);
+  // Съёмка во весь кадр, увеличенная и прижатая к верху: так строка 1500
+  // исходника попадает ровно на нижнюю кромку, а чужие титры под ней — нет.
+  const videoWidth = Math.round(width * ZOOM);
+  const videoHeight = Math.round((videoWidth * height) / width);
+  const videoLeft = Math.round((width - videoWidth) / 2);
 
   const hookIn = interpolate(frame, [0, AT(0.5, fps)], [0, 1], {
     extrapolateLeft: "clamp",
@@ -199,43 +197,26 @@ export const ChinaReel: React.FC<ChinaReelProps> = ({
 
   return (
     <AbsoluteFill style={{ backgroundColor: "#070A11" }}>
-      {/* Фон: та же съёмка, размытая и затемнённая. */}
-      {onFootage ? (
-        <AbsoluteFill>
-          <OffthreadVideo
-            src={staticFile(footage)}
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              filter: "blur(48px) brightness(0.42) saturate(0.8)",
-              transform: "scale(1.2)",
-            }}
-            muted
-          />
-        </AbsoluteFill>
-      ) : null}
-
-      {/* Съёмка: низ обрезан вместе с чужими титрами. */}
+      {/* Съёмка во весь кадр. Увеличена и прижата к верху — чужие титры
+          Kapwing остаются ниже нижней кромки и в кадр не попадают. */}
       <Sequence durationInFrames={footageFrames}>
-        <AbsoluteFill>
+        <AbsoluteFill style={{ overflow: "hidden" }}>
+          {/* Позиционируем обёртку, а не сам OffthreadVideo: собственные
+              стили position он до элемента не доносит, и кадр уезжает. */}
           <div
             style={{
               position: "absolute",
-              left: boxLeft,
-              top: boxTop,
-              width: boxWidth,
-              height: boxHeight,
-              overflow: "hidden",
-              borderRadius: fs(0.022),
-              boxShadow: "0 18px 60px rgba(0,0,0,0.5)",
+              left: videoLeft,
+              top: 0,
+              width: videoWidth,
+              height: videoHeight,
             }}
           >
             <OffthreadVideo
               src={staticFile(footage)}
               style={{
-                width: boxWidth,
-                height: naturalHeight,
+                width: "100%",
+                height: "100%",
                 objectFit: "cover",
                 display: "block",
               }}
@@ -243,6 +224,46 @@ export const ChinaReel: React.FC<ChinaReelProps> = ({
           </div>
         </AbsoluteFill>
       </Sequence>
+
+      {/* Затемнение сверху под логотип и снизу под субтитры: без него
+          белый текст теряется на небе и на светлой рубашке. */}
+      {onFootage ? (
+        <>
+          <AbsoluteFill
+            style={{
+              background:
+                "linear-gradient(to bottom, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.2) 12%, rgba(0,0,0,0) 24%)",
+            }}
+          />
+          {/*
+            Маскирующая полоса. Нужна ТОЛЬКО пока в исходнике вшиты чужие
+            титры Kapwing (y 1560—1640). На чистом исходнике она выключается
+            пропом: тогда лицо ничем не перекрыто, а субтитрам хватает
+            мягкой тени.
+          */}
+          {hasBurnedCaptions ? (
+            <AbsoluteFill
+              style={{
+                // 28px не хватало: чужие титры просвечивали сквозь полосу.
+                backdropFilter: "blur(44px)",
+                WebkitBackdropFilter: "blur(44px)",
+                maskImage:
+                  "linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 26%, rgba(0,0,0,0) 38%)",
+                WebkitMaskImage:
+                  "linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 26%, rgba(0,0,0,0) 38%)",
+              }}
+            />
+          ) : null}
+          <AbsoluteFill
+            style={{
+              background: hasBurnedCaptions
+                ? "linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.78) 18%, rgba(0,0,0,0.3) 28%, rgba(0,0,0,0) 38%)"
+                : // Чистый исходник: только лёгкая тень под текст, лицо открыто.
+                  "linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.22) 10%, rgba(0,0,0,0) 22%)",
+            }}
+          />
+        </>
+      ) : null}
 
       {/* ——— Шапка: логотип ——— */}
       {onFootage ? (
@@ -252,7 +273,7 @@ export const ChinaReel: React.FC<ChinaReelProps> = ({
             paddingTop: Math.round(height * 0.052),
           }}
         >
-          <BrandMark label={brandMark} fs={fs} />
+          <BrandMark label={brandMark} fs={fs} scale={logoScale} />
         </AbsoluteFill>
       ) : null}
 
@@ -262,9 +283,9 @@ export const ChinaReel: React.FC<ChinaReelProps> = ({
           style={{
             opacity: hookIn * hookOut,
             justifyContent: "flex-start",
-            paddingTop: boxTop + Math.round(height * 0.03),
-            paddingLeft: fs(0.14),
-            paddingRight: fs(0.14),
+            paddingTop: Math.round(height * 0.17),
+            paddingLeft: fs(0.09),
+            paddingRight: fs(0.09),
           }}
         >
           {/* Подложка обязательна: в первых кадрах за текстом светлый
@@ -297,15 +318,20 @@ export const ChinaReel: React.FC<ChinaReelProps> = ({
         from={AT(GEO_FROM, fps)}
         durationInFrames={AT(GEO_TO - GEO_FROM, fps)}
       >
-        <GeoPlate place={place} fs={fs} top={boxTop + Math.round(height * 0.035)} left={boxLeft + fs(0.04)} />
+        <GeoPlate
+          place={place}
+          fs={fs}
+          top={Math.round(height * 0.155)}
+          left={fs(0.07)}
+        />
       </Sequence>
 
       {/* ——— Плашки компаний: верх справа внутри съёмки ——— */}
       {onFootage ? (
         <AbsoluteFill
           style={{
-            paddingTop: boxTop + Math.round(height * 0.035),
-            paddingRight: width - boxLeft - boxWidth + fs(0.035),
+            paddingTop: Math.round(height * 0.155),
+            paddingRight: fs(0.07),
             display: "flex",
             flexDirection: "column",
             alignItems: "flex-end",
@@ -327,10 +353,11 @@ export const ChinaReel: React.FC<ChinaReelProps> = ({
 
       {/* ——— Субтитры: под съёмкой, на лицо не налезают ——— */}
       <Sequence durationInFrames={footageFrames}>
+        {/* Прижаты к низу: там теперь плечи, а не подбородок. */}
         <AbsoluteFill
           style={{
-            justifyContent: "flex-start",
-            paddingTop: boxTop + boxHeight + Math.round(height * 0.018),
+            justifyContent: "flex-end",
+            paddingBottom: Math.round(height * 0.115),
             paddingLeft: fs(0.08),
             paddingRight: fs(0.08),
           }}

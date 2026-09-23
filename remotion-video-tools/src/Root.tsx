@@ -139,6 +139,8 @@ export const RemotionRoot: React.FC = () => {
           hookBottom: "Alibaba, Tencent и Baidu?",
           place: "Циндао, Китай",
           brandMark: "GLOBAL TECH TOUR",
+          logoScale: 1,
+          hasBurnedCaptions: true,
           ctaTitle: "Возим делегации в технологический Китай",
           ctaUrl: "globaltechtour.ru",
         }}
