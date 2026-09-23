@@ -202,7 +202,11 @@ export const RemotionRoot: React.FC = () => {
       />
       {/* Сторис про нишевое мероприятие под Циндао. Речь перечислительная:
           приглашение -> закрытый формат -> имена холдингов -> зачем он там.
-          Плашки идут этой же лестницей. 32,8 с = 983 кадра. */}
+          Плашки идут этой же лестницей. 31,7 с = 949 кадров.
+
+          Из речи вырезано «и иже с ними»: рез 21,94 -> 23,10 прошёл по
+          серединам тишины с обеих сторон, иначе на склейке слышен щелчок.
+          Тайминги после реза сдвинуты на те же 34 кадра. */}
       <Composition
         id="GTT-Invite"
         component={ChinaStories}
@@ -210,7 +214,7 @@ export const RemotionRoot: React.FC = () => {
         defaultProps={{
           footage: "local/st4-graded.mp4",
           captionsSrc: "captions/st4.json",
-          durationSeconds: 32.8,
+          durationSeconds: 31.7,
           hookTop: "Мероприятие, куда зовут",
           hookBottom: "только по приглашению",
           brandMark: "GLOBAL TECH TOUR",
@@ -219,11 +223,11 @@ export const RemotionRoot: React.FC = () => {
           plates: [
             { text: "Нишевое мероприятие", at: 9.9, until: 20.0, kind: "term" as const },
             { text: "Только крупные холдинги", at: 15.7, until: 20.0, kind: "term" as const },
-            { text: "Alibaba · Haier · Tencent", at: 20.1, until: 25.1, kind: "accent" as const },
-            { text: "Корпоративное обучение", at: 25.9, kind: "accent" as const },
+            { text: "Alibaba · Haier · Tencent", at: 20.1, until: 23.9, kind: "accent" as const },
+            { text: "Корпоративное обучение", at: 24.8, kind: "accent" as const },
           ],
         }}
-        durationInFrames={983}
+        durationInFrames={949}
         fps={30}
         width={1080}
         height={1920}
