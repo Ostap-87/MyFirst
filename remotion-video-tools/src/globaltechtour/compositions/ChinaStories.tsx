@@ -1,4 +1,3 @@
-import type { Caption } from "@remotion/captions";
 import {
   AbsoluteFill,
   interpolate,
@@ -12,35 +11,54 @@ import {
 import { z } from "zod";
 import { KaraokeCaptions } from "../../shared/components/KaraokeCaptions";
 import { SpinningTetra } from "../../shared/components/effects";
+import { useCaptions } from "../../shared/useCaptions";
 import { useFormat } from "../../shared/format";
 import { fontFamily } from "../../shared/fonts";
 import theme from "../theme";
-import captionsData from "../../../data/captions-stories.json";
 
 /**
- * ChinaStories — формат Head под сторис.
+ * ChinaStories — шаблон формата Head под сторис.
  *
- * Отличия от Reels, из-за которых это отдельная композиция:
+ * Композиция одна на все выпуски: съёмка, субтитры и плашки приходят
+ * пропами, поэтому новый ролик — это запись в Root.tsx, а не новый файл.
  *
- * 1. Другие безопасные зоны. У сторис снизу строка ответа — она выше, чем
- *    подпись в Reels, поэтому субтитры поднимаются. Справа кнопок нет.
- * 2. Сторис смотрят залпом и пролистывают быстрее ленты, поэтому крючок
- *    должен быть утверждением, а не вопросом: на раздумье времени нет.
+ * Чем сторис отличаются от Reels и почему это отдельный шаблон:
  *
- * ——— Содержание ———
+ * 1. Другие безопасные зоны. Снизу строка ответа — она выше, чем подпись
+ *    в Reels, поэтому субтитры поднимаются. Справа кнопок нет.
+ * 2. Сторис пролистывают быстрее ленты, поэтому крючок формулируется
+ *    утверждением, а не вопросом: на раздумье времени нет.
  *
- * Речь построена на противопоставлении: «бизнес-туры на рынок в Гуанчжоу —
- * не ко мне, у меня встречи с крупными корпорациями». Поэтому плашка здесь
- * не перечисляет, а спорит: первая (зачёркнутая) — то, чем он НЕ занимается,
- * вторая — то, чем занимается. Перечисление, как в ChinaReel, тут дало бы
- * ровно противоположный смысл.
+ * ——— Плашки ———
  *
- * Секунды из data/captions-stories.json:
- *   «Гуанчжоу» 6.45, «крупными корпорациями» 15.66.
+ * Три вида, и выбор между ними — смысловой, а не декоративный:
+ *
+ *   term   — термин или факт. Копится: следующая встаёт под предыдущей,
+ *            и к концу перечисления список виден целиком.
+ *   struck — то, что отрицается. Приглушённая, перечёркивание
+ *            прочерчивается на глазах — видно, что это действие.
+ *   accent — то, что утверждается взамен. Белая, с фирменной чертой.
+ *
+ * Секунды берутся из расшифровки, никогда на глаз: сдвиг на полсекунды
+ * читается как брак.
  */
+
+const plateSchema = z.object({
+  text: z.string().describe("Текст плашки"),
+  at: z.number().describe("Секунда появления — из расшифровки"),
+  until: z
+    .number()
+    .optional()
+    .describe("Секунда исчезновения; без неё держится до конца"),
+  kind: z
+    .enum(["term", "struck", "accent"])
+    .describe("term — копится, struck — зачёркнутая, accent — утверждение"),
+});
 
 export const chinaStoriesSchema = z.object({
   footage: z.string().describe("Путь к видео внутри public"),
+  captionsSrc: z.string().describe("Путь к расшифровке внутри public"),
+  durationSeconds: z.number().describe("Длительность съёмки в секундах"),
   hookTop: z.string().describe("Первая строка крючка"),
   hookBottom: z.string().describe("Вторая строка крючка, акцентом"),
   brandMark: z.string().describe("Подпись рядом с логотипом сверху"),
@@ -50,47 +68,35 @@ export const chinaStoriesSchema = z.object({
     .min(0)
     .max(360)
     .describe("Скорость вращения тетраэдра, градусов в секунду"),
-  notThis: z.string().describe("Плашка «чем НЕ занимаемся», зачёркнутая"),
-  butThis: z.string().describe("Плашка «чем занимаемся», акцентом"),
+  plates: z.array(plateSchema).describe("Плашки по ходу речи"),
 });
 
 export type ChinaStoriesProps = z.infer<typeof chinaStoriesSchema>;
+type Plate = z.infer<typeof plateSchema>;
 
 const AT = (seconds: number, fps: number) => Math.round(seconds * fps);
 
-const FOOTAGE_SECONDS = 19.2;
-/** Секунды произнесения — из расшифровки, не на глаз. */
-const NOT_THIS_AT = 6.45;
-const BUT_THIS_AT = 15.66;
-
-/**
- * Плашка противопоставления.
- *
- * `struck` — то, что отрицается: приглушённая, с перечёркиванием.
- * Обычная — то, что утверждается: белая, с фирменной чертой слева.
- */
-const ContrastPlate: React.FC<{
-  readonly text: string;
-  readonly struck: boolean;
+const PlateView: React.FC<{
+  readonly plate: Plate;
+  readonly appearAt: number;
   readonly fs: (fraction: number) => number;
-}> = ({ text, struck, fs }) => {
+}> = ({ plate, appearAt, fs }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const since = frame - appearAt;
+  const struck = plate.kind === "struck";
 
   const enter = spring({
-    frame,
+    frame: since,
     fps,
     config: { damping: 200, mass: 0.6 },
     durationInFrames: 18,
   });
-  const opacity = interpolate(frame, [0, 12], [0, 1], {
+  const opacity = interpolate(since, [0, 12], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
-
-  // Перечёркивание прочерчивается само — так видно, что это действие,
-  // а не просто стиль текста.
-  const strikeWidth = interpolate(frame, [14, 30], [0, 100], {
+  const strikeWidth = interpolate(since, [14, 32], [0, 100], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
@@ -99,39 +105,35 @@ const ContrastPlate: React.FC<{
     <div
       style={{
         opacity,
-        transform: `translateY(${(1 - enter) * fs(0.03)}px)`,
+        transform: `translateY(${(1 - enter) * fs(0.028)}px)`,
         alignSelf: "flex-start",
         position: "relative",
         backgroundColor: struck
           ? "rgba(12,16,24,0.62)"
           : "rgba(255,255,255,0.96)",
-        borderLeft: struck
-          ? "none"
-          : `${fs(0.008)}px solid ${theme.colors.accent}`,
+        borderLeft:
+          plate.kind === "accent"
+            ? `${fs(0.008)}px solid ${theme.colors.accent}`
+            : "none",
         borderRadius: fs(0.014),
-        padding: `${fs(0.018)}px ${fs(0.03)}px`,
+        padding: `${fs(0.016)}px ${fs(0.028)}px`,
         boxShadow: "0 8px 30px rgba(0,0,0,0.38)",
         backdropFilter: struck ? "blur(10px)" : "none",
         WebkitBackdropFilter: struck ? "blur(10px)" : "none",
+        fontFamily: fontFamily(theme.fonts.heading),
+        fontWeight: 700,
+        fontSize: fs(0.044),
+        letterSpacing: fs(-0.0008),
+        color: struck ? "rgba(255,255,255,0.74)" : theme.colors.text,
+        whiteSpace: "nowrap",
       }}
     >
-      <span
-        style={{
-          fontFamily: fontFamily(theme.fonts.heading),
-          fontWeight: 700,
-          fontSize: fs(0.046),
-          letterSpacing: fs(-0.0008),
-          color: struck ? "rgba(255,255,255,0.72)" : theme.colors.text,
-          whiteSpace: "nowrap",
-        }}
-      >
-        {text}
-      </span>
+      {plate.text}
       {struck ? (
         <span
           style={{
             position: "absolute",
-            left: fs(0.03),
+            left: fs(0.028),
             right: `${100 - strikeWidth}%`,
             top: "52%",
             height: fs(0.005),
@@ -146,38 +148,43 @@ const ContrastPlate: React.FC<{
 
 export const ChinaStories: React.FC<ChinaStoriesProps> = ({
   footage,
+  captionsSrc,
+  durationSeconds,
   hookTop,
   hookBottom,
   brandMark,
   logoScale,
   logoSpin,
-  notThis,
-  butThis,
+  plates,
 }) => {
   const frame = useCurrentFrame();
   const { fps, height } = useVideoConfig();
   const { fs } = useFormat();
+  const captions = useCaptions(captionsSrc || null);
 
-  const footageFrames = Math.round(FOOTAGE_SECONDS * fps);
+  const footageFrames = Math.round(durationSeconds * fps);
+  const second = frame / fps;
 
   const hookIn = interpolate(frame, [0, AT(0.4, fps)], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
-  const hookOut = interpolate(frame, [AT(2.0, fps), AT(2.5, fps)], [1, 0], {
+  const hookOut = interpolate(frame, [AT(2.2, fps), AT(2.7, fps)], [1, 0], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
+
+  const visible = plates.filter(
+    (p) => second >= p.at && (p.until === undefined || second < p.until),
+  );
 
   return (
     <AbsoluteFill style={{ backgroundColor: "#070A11" }}>
       <Sequence durationInFrames={footageFrames}>
         <AbsoluteFill style={{ overflow: "hidden" }}>
-          {/* Позиционируем обёртку, а не сам OffthreadVideo: свои стили
-              position он до элемента не доносит. */}
-          <div
-            style={{ position: "absolute", inset: 0 }}
-          >
+          {/* Позиционируем обёртку: свои стили position OffthreadVideo
+              до элемента не доносит. */}
+          <div style={{ position: "absolute", inset: 0 }}>
             <OffthreadVideo
               src={staticFile(footage)}
               style={{
@@ -191,7 +198,6 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
         </AbsoluteFill>
       </Sequence>
 
-      {/* Затемнения: сверху под логотип и плашки, снизу под субтитры. */}
       <AbsoluteFill
         style={{
           background:
@@ -240,8 +246,8 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
         </div>
       </AbsoluteFill>
 
-      {/* ——— Крючок: утверждение, а не вопрос ——— */}
-      <Sequence durationInFrames={AT(2.6, fps)}>
+      {/* ——— Крючок ——— */}
+      <Sequence durationInFrames={AT(2.8, fps)}>
         <AbsoluteFill
           style={{
             opacity: hookIn * hookOut,
@@ -260,7 +266,7 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
               padding: `${fs(0.034)}px ${fs(0.038)}px`,
               fontFamily: fontFamily(theme.fonts.heading),
               fontWeight: 700,
-              fontSize: fs(0.064),
+              fontSize: fs(0.062),
               lineHeight: 1.16,
               letterSpacing: fs(-0.0016),
               color: "#fff",
@@ -274,35 +280,28 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
         </AbsoluteFill>
       </Sequence>
 
-      {/* ——— Плашки противопоставления ——— */}
-      <Sequence
-        from={AT(NOT_THIS_AT, fps)}
-        durationInFrames={AT(BUT_THIS_AT - NOT_THIS_AT, fps)}
+      {/* ——— Плашки: term копятся, struck и accent сменяют ——— */}
+      <AbsoluteFill
+        style={{
+          justifyContent: "flex-start",
+          paddingTop: Math.round(height * 0.155),
+          paddingLeft: fs(0.08),
+          paddingRight: fs(0.08),
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-start",
+          gap: fs(0.016),
+        }}
       >
-        <AbsoluteFill
-          style={{
-            justifyContent: "flex-start",
-            paddingTop: Math.round(height * 0.155),
-            paddingLeft: fs(0.08),
-            paddingRight: fs(0.08),
-          }}
-        >
-          <ContrastPlate text={notThis} struck fs={fs} />
-        </AbsoluteFill>
-      </Sequence>
-
-      <Sequence from={AT(BUT_THIS_AT, fps)}>
-        <AbsoluteFill
-          style={{
-            justifyContent: "flex-start",
-            paddingTop: Math.round(height * 0.155),
-            paddingLeft: fs(0.08),
-            paddingRight: fs(0.08),
-          }}
-        >
-          <ContrastPlate text={butThis} struck={false} fs={fs} />
-        </AbsoluteFill>
-      </Sequence>
+        {visible.map((plate) => (
+          <PlateView
+            key={`${plate.text}-${plate.at}`}
+            plate={plate}
+            appearAt={AT(plate.at, fps)}
+            fs={fs}
+          />
+        ))}
+      </AbsoluteFill>
 
       {/* ——— Субтитры: выше, чем в Reels — снизу строка ответа ——— */}
       <Sequence durationInFrames={footageFrames}>
@@ -316,7 +315,7 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
         >
           <KaraokeCaptions
             theme={theme}
-            captions={captionsData as Caption[]}
+            captions={captions}
             mode="page"
             highlight="color"
             captionStyle="shadow"

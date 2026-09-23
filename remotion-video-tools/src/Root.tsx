@@ -155,15 +155,47 @@ export const RemotionRoot: React.FC = () => {
         schema={chinaStoriesSchema}
         defaultProps={{
           footage: "local/stories-graded.mp4",
+          captionsSrc: "captions/stories.json",
+          durationSeconds: 19.2,
           hookTop: "Бизнес-тур — это",
           hookBottom: "не поездка на рынок",
           brandMark: "GLOBAL TECH TOUR",
           logoScale: 1.5,
           logoSpin: 72,
-          notThis: "Рынки в Гуанчжоу",
-          butThis: "Встречи с корпорациями",
+          plates: [
+            { text: "Рынки в Гуанчжоу", at: 6.45, until: 15.66, kind: "struck" as const },
+            { text: "Встречи с корпорациями", at: 15.66, kind: "accent" as const },
+          ],
         }}
         durationInFrames={576}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      {/* Сторис про бенчмаркинг. Плашки: сперва два термина копятся,
+          затем «только для корпораций» перечёркивается и сменяется
+          на «делаем доступным» — это разворот всей речи. */}
+      <Composition
+        id="GTT-Benchmark"
+        component={ChinaStories}
+        schema={chinaStoriesSchema}
+        defaultProps={{
+          footage: "local/st2-graded.mp4",
+          captionsSrc: "captions/st2.json",
+          durationSeconds: 34.3,
+          hookTop: "Формат, куда пускают",
+          hookBottom: "только корпорации",
+          brandMark: "GLOBAL TECH TOUR",
+          logoScale: 1.5,
+          logoSpin: 72,
+          plates: [
+            { text: "Бенчмарк-обучение", at: 8.48, until: 21.16, kind: "term" as const },
+            { text: "Бенчмарк-туризм", at: 10.88, until: 21.16, kind: "term" as const },
+            { text: "Только для корпораций", at: 21.16, until: 29.5, kind: "struck" as const },
+            { text: "Делаем доступным", at: 29.5, kind: "accent" as const },
+          ],
+        }}
+        durationInFrames={1029}
         fps={30}
         width={1080}
         height={1920}
