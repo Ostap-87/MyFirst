@@ -2,9 +2,10 @@
 // не грузятся (см. CLAUDE.md, «Технические соглашения»).
 import { fontFamily as localFontFamily } from '../../../../fonts';
 
-const fontFamily = localFontFamily('Inter');
 import React from 'react';
 import {Easing, Interactive, interpolate, useCurrentFrame} from 'remotion';
+
+const fontFamily = localFontFamily('Inter');
 
 
 export const NumberCounter: React.FC = () => {
@@ -27,7 +28,7 @@ export const NumberCounter: React.FC = () => {
 				height: '100%',
 				alignItems: 'center',
 				justifyContent: 'center',
-				fontFamily: 'Inter',
+				fontFamily,
 				fontSize: 150,
 				fontWeight: 800,
 				color: '#171717',

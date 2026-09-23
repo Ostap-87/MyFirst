@@ -2,17 +2,19 @@
 // не грузятся (см. CLAUDE.md, «Технические соглашения»).
 import { fontFamily as localFontFamily } from '../../../../fonts';
 
-const fontFamily = localFontFamily('Inter');
 import {Audio} from '@remotion/media';
 import {ding, mouseClick} from '@remotion/sfx';
 import React from 'react';
 import {
+
 	CanvasImage,
 	Easing,
 	Interactive,
 	interpolate,
 	useCurrentFrame,
 } from 'remotion';
+
+const fontFamily = localFontFamily('Inter');
 
 
 export const YouTubeSubscribeNudge: React.FC = () => {
@@ -131,7 +133,7 @@ export const YouTubeSubscribeNudge: React.FC = () => {
 							name="Channel name"
 							style={{
 								color: '#ffffff',
-								fontFamily: 'Inter',
+								fontFamily,
 								fontSize: 34,
 								fontWeight: 800,
 								lineHeight: 1.1,
@@ -146,7 +148,7 @@ export const YouTubeSubscribeNudge: React.FC = () => {
 							name="Channel handle"
 							style={{
 								color: '#a9abb3',
-								fontFamily: 'Inter',
+								fontFamily,
 								fontSize: 21,
 								fontWeight: 600,
 								lineHeight: 1.15,
@@ -191,7 +193,7 @@ export const YouTubeSubscribeNudge: React.FC = () => {
 								borderRadius: 14,
 								color: '#ffffff',
 								display: 'flex',
-								fontFamily: 'Inter',
+								fontFamily,
 								fontSize: 26,
 								fontWeight: 700,
 								height: 62,
@@ -220,7 +222,7 @@ export const YouTubeSubscribeNudge: React.FC = () => {
 								boxSizing: 'border-box',
 								color: '#ffffff',
 								display: 'flex',
-								fontFamily: 'Inter',
+								fontFamily,
 								fontSize: 26,
 								fontWeight: 700,
 								gap: 10,

@@ -2,15 +2,17 @@
 // не грузятся (см. CLAUDE.md, «Технические соглашения»).
 import { fontFamily as localFontFamily } from '../../../../fonts';
 
-const fontFamily = localFontFamily('Inter');
 import React from 'react';
 import {
+
 	CanvasImage,
 	Easing,
 	Interactive,
 	interpolate,
 	useCurrentFrame,
 } from 'remotion';
+
+const fontFamily = localFontFamily('Inter');
 
 
 export const YouTubeCommentHighlight: React.FC = () => {
@@ -131,7 +133,7 @@ export const YouTubeCommentHighlight: React.FC = () => {
 									name="Author handle"
 									style={{
 										color: '#ffffff',
-										fontFamily: 'Inter',
+										fontFamily,
 										fontSize: 26,
 										fontWeight: 700,
 										lineHeight: 1.1,
@@ -145,7 +147,7 @@ export const YouTubeCommentHighlight: React.FC = () => {
 								name="Comment"
 								style={{
 									color: '#f4f4f5',
-									fontFamily: 'Inter',
+									fontFamily,
 									fontSize: 32,
 									fontWeight: 500,
 									letterSpacing: -0.35,
@@ -163,7 +165,7 @@ export const YouTubeCommentHighlight: React.FC = () => {
 									alignItems: 'center',
 									color: '#a9abb3',
 									display: 'flex',
-									fontFamily: 'Inter',
+									fontFamily,
 									fontSize: 22,
 									fontWeight: 600,
 									gap: 22,

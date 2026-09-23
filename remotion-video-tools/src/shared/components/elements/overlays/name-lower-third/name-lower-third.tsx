@@ -2,9 +2,10 @@
 // не грузятся (см. CLAUDE.md, «Технические соглашения»).
 import { fontFamily as localFontFamily } from '../../../../fonts';
 
-const fontFamily = localFontFamily('Inter');
 import React from 'react';
 import {Easing, Interactive, interpolate, useCurrentFrame} from 'remotion';
+
+const fontFamily = localFontFamily('Inter');
 
 
 export const NameLowerThird: React.FC = () => {
@@ -20,7 +21,7 @@ export const NameLowerThird: React.FC = () => {
 				width: 534,
 				height: 132,
 				boxSizing: 'border-box',
-				fontFamily: 'Inter',
+				fontFamily,
 			}}
 		>
 			<Interactive.Div

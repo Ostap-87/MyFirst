@@ -2,10 +2,11 @@
 // не грузятся (см. CLAUDE.md, «Технические соглашения»).
 import { fontFamily as localFontFamily } from '../../../../fonts';
 
-const fontFamily = localFontFamily('Inter');
 import {makeCallout} from '@remotion/shapes';
 import React from 'react';
 import {Easing, Interactive, interpolate, useCurrentFrame} from 'remotion';
+
+const fontFamily = localFontFamily('Inter');
 
 
 export const ProductDiscountCallout = () => {
@@ -25,7 +26,7 @@ export const ProductDiscountCallout = () => {
 			name="Container"
 			style={{
 				WebkitFontSmoothing: 'antialiased',
-				fontFamily: 'Inter',
+				fontFamily,
 				height: '100%',
 				isolation: 'isolate',
 				overflow: 'hidden',

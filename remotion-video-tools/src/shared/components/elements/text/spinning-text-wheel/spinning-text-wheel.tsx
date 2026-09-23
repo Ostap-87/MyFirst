@@ -2,9 +2,9 @@
 // не грузятся (см. CLAUDE.md, «Технические соглашения»).
 import { fontFamily as localFontFamily } from '../../../../fonts';
 
-const fontFamily = localFontFamily('Inter');
 import React, {forwardRef, useImperativeHandle, useRef} from 'react';
 import {
+
 	Interactive,
 	Sequence,
 	interpolate,
@@ -16,6 +16,8 @@ import {
 	type InteractivitySchema,
 	type SequenceControls,
 } from 'remotion';
+
+const fontFamily = localFontFamily('Inter');
 
 
 type SpinningTextWheelProps = InteractiveBaseProps &
@@ -191,7 +193,7 @@ export const SpinningTextWheel: React.FC<SpinningTextWheelProps> = ({
 			callerStyle={style ?? null}
 			style={{
 				color: '#182033',
-				fontFamily: 'Mona Sans',
+				fontFamily,
 				fontSize: 65,
 				fontWeight: 700,
 				lineHeight: 1,

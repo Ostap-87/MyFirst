@@ -2,9 +2,9 @@
 // не грузятся (см. CLAUDE.md, «Технические соглашения»).
 import { fontFamily as localFontFamily } from '../../../../fonts';
 
-const fontFamily = localFontFamily('Inter');
 import React, {forwardRef, useImperativeHandle, useRef} from 'react';
 import {
+
 	Easing,
 	Img,
 	Interactive,
@@ -16,6 +16,8 @@ import {
 	type InteractivitySchema,
 	type SequenceControls,
 } from 'remotion';
+
+const fontFamily = localFontFamily('Inter');
 
 
 export const productCollectionDurationInFrames = 150;
@@ -149,7 +151,7 @@ const ProductCardInner = forwardRef<
 							alignItems: 'center',
 							color: '#ffffff',
 							display: 'flex',
-							fontFamily: 'sans-serif',
+							fontFamily,
 							fontSize: 160,
 							fontWeight: 900,
 							height: '100%',
@@ -202,7 +204,7 @@ export const ProductCollection = () => {
 				WebkitFontSmoothing: 'antialiased',
 				boxSizing: 'border-box',
 				color: '#1d1d19',
-				fontFamily: 'Inter',
+				fontFamily,
 				height: 660,
 				isolation: 'isolate',
 				left: 60,
