@@ -498,6 +498,138 @@ export const RemotionRoot: React.FC = () => {
         width={1080}
         height={1920}
       />
+      {/* Сторис про обучение внутри кампусов. Имена компаний — как они сами
+          себя пишут: whisper дал «Hire» и «Bydance». 32,3 с = 968 кадров. */}
+      <Composition
+        id="GTT-Campus"
+        component={ChinaStories}
+        schema={chinaStoriesSchema}
+        defaultProps={{
+          footage: "local/st15-graded.mp4",
+          captionsSrc: "captions/st15.json",
+          durationSeconds: 32.27,
+          hookTop: "Обучение внутри",
+          hookBottom: "их кампусов",
+          brandMark: "GLOBAL TECH TOUR",
+          logoScale: 1.5,
+          logoSpin: 72,
+          plates: [
+            { text: "Кампусы корпораций", at: 7.1, until: 10.2, kind: "term" as const },
+            { text: "Alibaba · Huawei · ByteDance", at: 10.4, until: 17.0, kind: "accent" as const },
+            { text: "Три дня внутри", at: 17.6, until: 27.2, kind: "term" as const },
+            { text: "Как они этого достигли", at: 27.5, kind: "accent" as const },
+          ],
+        }}
+        durationInFrames={968}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      {/* Сторис про методологию. Довод строится лесенкой: не просто визит ->
+          сколько визитов -> что из них складывается. 23,4 с = 701 кадр. */}
+      <Composition
+        id="GTT-Method"
+        component={ChinaStories}
+        schema={chinaStoriesSchema}
+        defaultProps={{
+          footage: "local/st16-graded.mp4",
+          captionsSrc: "captions/st16.json",
+          durationSeconds: 23.37,
+          hookTop: "Не просто посещение",
+          hookBottom: "а методология",
+          brandMark: "GLOBAL TECH TOUR",
+          logoScale: 1.5,
+          logoSpin: 72,
+          plates: [
+            { text: "Своя методология", at: 3.9, until: 9.4, kind: "term" as const },
+            { text: "2–3 посещения", at: 9.5, until: 14.5, kind: "accent" as const },
+            { text: "От рецептуры до упаковки", at: 15.5, kind: "accent" as const },
+          ],
+        }}
+        durationInFrames={701}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      {/* Сторис про сопровождение после поездки. Короткая и об одном:
+          экспедиция кончилась, работа — нет. 15,4 с = 461 кадр. */}
+      <Composition
+        id="GTT-AfterCare"
+        component={ChinaStories}
+        schema={chinaStoriesSchema}
+        defaultProps={{
+          footage: "local/st17-graded.mp4",
+          captionsSrc: "captions/st17.json",
+          durationSeconds: 15.37,
+          hookTop: "Экспедиция кончилась —",
+          hookBottom: "сопровождение нет",
+          brandMark: "GLOBAL TECH TOUR",
+          logoScale: 1.5,
+          logoSpin: 72,
+          plates: [
+            { text: "Пост-тур поддержка", at: 3.4, until: 9.2, kind: "accent" as const },
+            { text: "Помогаем выстроить связи", at: 9.5, kind: "term" as const },
+          ],
+        }}
+        durationInFrames={461}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      {/* Сторис про кейсы и блог. Самая длинная съёмка из девятнадцати —
+          40,4 с, у сторис это верхняя граница. 1213 кадров. */}
+      <Composition
+        id="GTT-Cases"
+        component={ChinaStories}
+        schema={chinaStoriesSchema}
+        defaultProps={{
+          footage: "local/st18-graded.mp4",
+          captionsSrc: "captions/st18.json",
+          durationSeconds: 40.43,
+          hookTop: "Часть кейсов",
+          hookBottom: "под NDA",
+          brandMark: "GLOBAL TECH TOUR",
+          logoScale: 1.5,
+          logoSpin: 72,
+          plates: [
+            { text: "Кейсы — на сайте", at: 2.2, until: 4.1, kind: "term" as const },
+            { text: "Часть под NDA", at: 4.3, until: 9.6, kind: "struck" as const },
+            { text: "Блог по индустриям", at: 13.3, until: 21.0, kind: "accent" as const },
+            { text: "Не только Китай", at: 21.2, until: 25.5, kind: "term" as const },
+            { text: "Central Kitchen · напитки", at: 25.7, kind: "accent" as const },
+          ],
+        }}
+        durationInFrames={1213}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      {/* Сторис про LinkedIn. Единственная, где призыв не к покупке,
+          а к чтению. 20,9 с = 626 кадров. */}
+      <Composition
+        id="GTT-LinkedIn"
+        component={ChinaStories}
+        schema={chinaStoriesSchema}
+        defaultProps={{
+          footage: "local/st19-graded.mp4",
+          captionsSrc: "captions/st19.json",
+          durationSeconds: 20.87,
+          hookTop: "Статьи на английском",
+          hookBottom: "почти каждый день",
+          brandMark: "GLOBAL TECH TOUR",
+          logoScale: 1.5,
+          logoSpin: 72,
+          plates: [
+            { text: "Статьи в LinkedIn", at: 7.5, until: 12.0, kind: "accent" as const },
+            { text: "Разбор индустрий", at: 12.1, until: 18.4, kind: "term" as const },
+            { text: "И немного рефлексии", at: 18.5, kind: "term" as const },
+          ],
+        }}
+        durationInFrames={626}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
       {/* Reels из съёмки в Циндао: 25,5 с видео + 2,5 с концевой карточки.
           Тайминги плашек берутся из data/captions-china-expo.json. */}
       <Composition

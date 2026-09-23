@@ -1,0 +1,226 @@
+[
+  {
+    "text": "После",
+    "startMs": 410,
+    "endMs": 500,
+    "timestampMs": 680,
+    "confidence": 0.908446
+  },
+  {
+    "text": " окончания",
+    "startMs": 500,
+    "endMs": 1140,
+    "timestampMs": 820,
+    "confidence": 0.957078
+  },
+  {
+    "text": " экспедиции",
+    "startMs": 1140,
+    "endMs": 2170,
+    "timestampMs": 1655,
+    "confidence": 0.950349
+  },
+  {
+    "text": " мы",
+    "startMs": 2170,
+    "endMs": 2170,
+    "timestampMs": 2240,
+    "confidence": 0.870311
+  },
+  {
+    "text": " предоставляем",
+    "startMs": 2170,
+    "endMs": 3330,
+    "timestampMs": 2750,
+    "confidence": 0.963336
+  },
+  {
+    "text": " и",
+    "startMs": 3330,
+    "endMs": 3370,
+    "timestampMs": 3400,
+    "confidence": 0.832425
+  },
+  {
+    "text": " пост-тур",
+    "startMs": 3370,
+    "endMs": 3920,
+    "timestampMs": 3645,
+    "confidence": 0.690669
+  },
+  {
+    "text": " поддержку",
+    "startMs": 3920,
+    "endMs": 4890,
+    "timestampMs": 4405,
+    "confidence": 0.467266
+  },
+  {
+    "text": " для",
+    "startMs": 4890,
+    "endMs": 4930,
+    "timestampMs": 4980,
+    "confidence": 0.22479
+  },
+  {
+    "text": " того,",
+    "startMs": 4930,
+    "endMs": 5200,
+    "timestampMs": 5065,
+    "confidence": 0.798851
+  },
+  {
+    "text": " чтобы",
+    "startMs": 5200,
+    "endMs": 5440,
+    "timestampMs": 5380,
+    "confidence": 0.531638
+  },
+  {
+    "text": " вы",
+    "startMs": 5440,
+    "endMs": 5540,
+    "timestampMs": 5660,
+    "confidence": 0.980256
+  },
+  {
+    "text": " могли",
+    "startMs": 5540,
+    "endMs": 6000,
+    "timestampMs": 5960,
+    "confidence": 0.933254
+  },
+  {
+    "text": " правильно",
+    "startMs": 6000,
+    "endMs": 6870,
+    "timestampMs": 6600,
+    "confidence": 0.887647
+  },
+  {
+    "text": " гармонично",
+    "startMs": 6870,
+    "endMs": 7600,
+    "timestampMs": 7235,
+    "confidence": 0.358302
+  },
+  {
+    "text": " выстроить",
+    "startMs": 7600,
+    "endMs": 8080,
+    "timestampMs": 7840,
+    "confidence": 0.630309
+  },
+  {
+    "text": " отношения",
+    "startMs": 8080,
+    "endMs": 8980,
+    "timestampMs": 8530,
+    "confidence": 0.781527
+  },
+  {
+    "text": " с",
+    "startMs": 8980,
+    "endMs": 9250,
+    "timestampMs": 9240,
+    "confidence": 0.946691
+  },
+  {
+    "text": " крупными",
+    "startMs": 9250,
+    "endMs": 9720,
+    "timestampMs": 9485,
+    "confidence": 0.989702
+  },
+  {
+    "text": " компаниями.",
+    "startMs": 9720,
+    "endMs": 10500,
+    "timestampMs": 10110,
+    "confidence": 0.694364
+  },
+  {
+    "text": " А",
+    "startMs": 10500,
+    "endMs": 10730,
+    "timestampMs": 10800,
+    "confidence": 0.923719
+  },
+  {
+    "text": " это",
+    "startMs": 10730,
+    "endMs": 10860,
+    "timestampMs": 10980,
+    "confidence": 0.997299
+  },
+  {
+    "text": " не",
+    "startMs": 10860,
+    "endMs": 11040,
+    "timestampMs": 11160,
+    "confidence": 0.986717
+  },
+  {
+    "text": " всегда",
+    "startMs": 11040,
+    "endMs": 11640,
+    "timestampMs": 11500,
+    "confidence": 0.998125
+  },
+  {
+    "text": " очень",
+    "startMs": 11640,
+    "endMs": 12050,
+    "timestampMs": 11880,
+    "confidence": 0.994469
+  },
+  {
+    "text": " просто,",
+    "startMs": 12050,
+    "endMs": 12690,
+    "timestampMs": 12370,
+    "confidence": 0.586045
+  },
+  {
+    "text": " но",
+    "startMs": 12690,
+    "endMs": 12870,
+    "timestampMs": 12820,
+    "confidence": 0.983911
+  },
+  {
+    "text": " мы",
+    "startMs": 12870,
+    "endMs": 13050,
+    "timestampMs": 13020,
+    "confidence": 0.998342
+  },
+  {
+    "text": " в",
+    "startMs": 13050,
+    "endMs": 13140,
+    "timestampMs": 13180,
+    "confidence": 0.981319
+  },
+  {
+    "text": " этом",
+    "startMs": 13140,
+    "endMs": 13770,
+    "timestampMs": 13380,
+    "confidence": 0.968332
+  },
+  {
+    "text": " всегда",
+    "startMs": 13770,
+    "endMs": 14060,
+    "timestampMs": 14060,
+    "confidence": 0.995533
+  },
+  {
+    "text": " помогаем.",
+    "startMs": 14060,
+    "endMs": 15000,
+    "timestampMs": 14530,
+    "confidence": 0.805942
+  }
+]

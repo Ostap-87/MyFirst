@@ -1,15 +1,25 @@
 {
   "out": "out/series-gtt-china.mp4",
   "fade": 0.35,
-  "why": "Порядок смысловой: представление -> что за формат -> чем он не является -> кто ведёт -> что готово -> где ещё -> как быстро -> призыв. Первый ролик про Циндао в сборку не входит: это второй дубль четвёртого, та же речь теми же словами.",
+  "why": "Порядок смысловой, по стыкам речи: знакомство -> что за формат -> кто ведёт -> что готово -> почему это возможно -> что внутри -> доказательства -> сроки -> призыв. Первый ролик про Циндао не входит: это второй дубль четвёртого, та же речь теми же словами.",
   "clips": [
     "out/stories-4-invite.mp4",
     "out/stories-3-benchmark.mp4",
     "out/stories-2-china.mp4",
+    "out/stories-16-method.mp4",
     "out/stories-5-experience.mp4",
     "out/stories-6-programs.mp4",
+    "out/stories-10-directions.mp4",
+    "out/stories-11-industries.mp4",
+    "out/stories-12-closeddoors.mp4",
     "out/stories-8-geography.mp4",
+    "out/stories-15-campus.mp4",
+    "out/stories-13-fivedays.mp4",
+    "out/stories-17-aftercare.mp4",
+    "out/stories-18-cases.mp4",
+    "out/stories-19-linkedin.mp4",
     "out/stories-7-speed.mp4",
+    "out/stories-14-custom.mp4",
     "out/stories-9-cta.mp4"
   ]
 }
