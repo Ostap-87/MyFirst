@@ -47,7 +47,8 @@
     "carousel": "node scripts/render-carousel.mjs",
     "publish": "node scripts/publish-instagram.mjs",
     "q:add": "node scripts/queue-add.mjs",
-    "q": "node scripts/queue-add.mjs --list"
+    "q": "node scripts/queue-add.mjs --list",
+    "tighten": "node scripts/tighten.mjs"
   },
   "sideEffects": [
     "*.css"
