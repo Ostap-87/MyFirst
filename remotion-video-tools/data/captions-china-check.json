@@ -1,0 +1,226 @@
+[
+  {
+    "text": "Всем",
+    "startMs": 770,
+    "endMs": 930,
+    "timestampMs": 1060,
+    "confidence": 0.828004
+  },
+  {
+    "text": " Нехао!",
+    "startMs": 930,
+    "endMs": 2600,
+    "timestampMs": 1765,
+    "confidence": 0.187137
+  },
+  {
+    "text": " Сегодня",
+    "startMs": 2600,
+    "endMs": 2940,
+    "timestampMs": 2840,
+    "confidence": 0.840075
+  },
+  {
+    "text": " недалеко",
+    "startMs": 2940,
+    "endMs": 3820,
+    "timestampMs": 3380,
+    "confidence": 0.678005
+  },
+  {
+    "text": " от",
+    "startMs": 3820,
+    "endMs": 4060,
+    "timestampMs": 3920,
+    "confidence": 0.933729
+  },
+  {
+    "text": " Циндао,",
+    "startMs": 4060,
+    "endMs": 5310,
+    "timestampMs": 4685,
+    "confidence": 0.427516
+  },
+  {
+    "text": " прямо",
+    "startMs": 5310,
+    "endMs": 5520,
+    "timestampMs": 5460,
+    "confidence": 0.699708
+  },
+  {
+    "text": " в",
+    "startMs": 5520,
+    "endMs": 5580,
+    "timestampMs": 5580,
+    "confidence": 0.876768
+  },
+  {
+    "text": " МРИФМУ",
+    "startMs": 5580,
+    "endMs": 6000,
+    "timestampMs": 5790,
+    "confidence": 0.486848
+  },
+  {
+    "text": " заговорил.",
+    "startMs": 6000,
+    "endMs": 7040,
+    "timestampMs": 6520,
+    "confidence": 0.65605
+  },
+  {
+    "text": " Посещаю",
+    "startMs": 7040,
+    "endMs": 7990,
+    "timestampMs": 7515,
+    "confidence": 0.635727
+  },
+  {
+    "text": " сегодня",
+    "startMs": 7990,
+    "endMs": 8720,
+    "timestampMs": 8720,
+    "confidence": 0.992845
+  },
+  {
+    "text": " мероприятие",
+    "startMs": 8720,
+    "endMs": 10040,
+    "timestampMs": 9380,
+    "confidence": 0.68514
+  },
+  {
+    "text": " нишевое,",
+    "startMs": 10040,
+    "endMs": 11000,
+    "timestampMs": 10520,
+    "confidence": 0.327263
+  },
+  {
+    "text": " как",
+    "startMs": 11000,
+    "endMs": 11350,
+    "timestampMs": 11740,
+    "confidence": 0.984023
+  },
+  {
+    "text": " сейчас",
+    "startMs": 11350,
+    "endMs": 12080,
+    "timestampMs": 12100,
+    "confidence": 0.981465
+  },
+  {
+    "text": " модно",
+    "startMs": 12080,
+    "endMs": 12680,
+    "timestampMs": 12380,
+    "confidence": 0.763202
+  },
+  {
+    "text": " говорить,",
+    "startMs": 12680,
+    "endMs": 13900,
+    "timestampMs": 13290,
+    "confidence": 0.386921
+  },
+  {
+    "text": " и",
+    "startMs": 13900,
+    "endMs": 14240,
+    "timestampMs": 14480,
+    "confidence": 0.4858
+  },
+  {
+    "text": " такое",
+    "startMs": 14240,
+    "endMs": 15240,
+    "timestampMs": 15020,
+    "confidence": 0.95169
+  },
+  {
+    "text": " оно",
+    "startMs": 15240,
+    "endMs": 15340,
+    "timestampMs": 15340,
+    "confidence": 0.768349
+  },
+  {
+    "text": " закрытое",
+    "startMs": 15340,
+    "endMs": 16400,
+    "timestampMs": 15870,
+    "confidence": 0.751597
+  },
+  {
+    "text": " для",
+    "startMs": 16400,
+    "endMs": 17220,
+    "timestampMs": 17440,
+    "confidence": 0.985746
+  },
+  {
+    "text": " представителей",
+    "startMs": 17220,
+    "endMs": 19500,
+    "timestampMs": 18360,
+    "confidence": 0.997238
+  },
+  {
+    "text": " компании,",
+    "startMs": 19500,
+    "endMs": 20000,
+    "timestampMs": 19750,
+    "confidence": 0.897739
+  },
+  {
+    "text": " которые",
+    "startMs": 20000,
+    "endMs": 20440,
+    "timestampMs": 20360,
+    "confidence": 0.864635
+  },
+  {
+    "text": " занимаются",
+    "startMs": 20440,
+    "endMs": 21120,
+    "timestampMs": 20780,
+    "confidence": 0.992745
+  },
+  {
+    "text": " корпоративным",
+    "startMs": 21120,
+    "endMs": 22000,
+    "timestampMs": 21560,
+    "confidence": 0.907782
+  },
+  {
+    "text": " обучением",
+    "startMs": 22000,
+    "endMs": 22800,
+    "timestampMs": 22400,
+    "confidence": 0.979393
+  },
+  {
+    "text": " топ-менеджеров",
+    "startMs": 22800,
+    "endMs": 24020,
+    "timestampMs": 23410,
+    "confidence": 0.697753
+  },
+  {
+    "text": " крупных",
+    "startMs": 24020,
+    "endMs": 24650,
+    "timestampMs": 24335,
+    "confidence": 0.44657
+  },
+  {
+    "text": " компаний.",
+    "startMs": 24650,
+    "endMs": 27840,
+    "timestampMs": 26245,
+    "confidence": 0.413065
+  }
+]

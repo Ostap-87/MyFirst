@@ -134,17 +134,17 @@ export const RemotionRoot: React.FC = () => {
         component={ChinaReel}
         schema={chinaReelSchema}
         defaultProps={{
-          footage: "local/china-expo.mp4",
+          footage: "local/china-clean.mp4",
           hookTop: "Кто учит топ-менеджеров",
           hookBottom: "Alibaba, Tencent и Baidu?",
           place: "Циндао, Китай",
           brandMark: "GLOBAL TECH TOUR",
           logoScale: 1,
-          hasBurnedCaptions: true,
+          hasBurnedCaptions: false,
           ctaTitle: "Возим делегации в технологический Китай",
           ctaUrl: "globaltechtour.ru",
         }}
-        durationInFrames={840}
+        durationInFrames={843}
         fps={30}
         width={1080}
         height={1920}
