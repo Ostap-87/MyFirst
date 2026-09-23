@@ -25,6 +25,10 @@ import {
 
 // new-composition:imports:start
 import {
+  ChinaStories,
+  chinaStoriesSchema,
+} from "./globaltechtour/compositions/ChinaStories";
+import {
   ChinaReel,
   chinaReelSchema,
 } from "./globaltechtour/compositions/ChinaReel";
@@ -126,6 +130,27 @@ export const RemotionRoot: React.FC = () => {
         fps={30}
         width={1920}
         height={1080}
+      />
+      {/* Сторис из второй съёмки того же дня. Речь на противопоставлении,
+          поэтому плашки спорят, а не перечисляют. 19,2 с = 576 кадров. */}
+      <Composition
+        id="GTT-ChinaStories"
+        component={ChinaStories}
+        schema={chinaStoriesSchema}
+        defaultProps={{
+          footage: "local/stories-graded.mp4",
+          hookTop: "Бизнес-тур — это",
+          hookBottom: "не поездка на рынок",
+          brandMark: "GLOBAL TECH TOUR",
+          logoScale: 1.5,
+          logoSpin: 72,
+          notThis: "Рынки в Гуанчжоу",
+          butThis: "Встречи с корпорациями",
+        }}
+        durationInFrames={576}
+        fps={30}
+        width={1080}
+        height={1920}
       />
       {/* Reels из съёмки в Циндао: 25,5 с видео + 2,5 с концевой карточки.
           Тайминги плашек берутся из data/captions-china-expo.json. */}

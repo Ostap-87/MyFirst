@@ -16,6 +16,7 @@
     "resolveJsonModule": true
   },
   "exclude": [
-    "remotion.config.ts"
+    "remotion.config.ts",
+    "src/shared/components/elements"
   ]
 }
