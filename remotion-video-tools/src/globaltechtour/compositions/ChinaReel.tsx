@@ -54,6 +54,11 @@ export const chinaReelSchema = z.object({
     .min(0.5)
     .max(3)
     .describe("Размер логотипа сверху: 1 — базовый"),
+  logoSpin: z
+    .number()
+    .min(0)
+    .max(360)
+    .describe("Скорость вращения тетраэдра, градусов в секунду"),
   hasBurnedCaptions: z
     .boolean()
     .describe(
@@ -138,7 +143,8 @@ const BrandMark: React.FC<{
   readonly label: string;
   readonly fs: (fraction: number) => number;
   readonly scale: number;
-}> = ({ label, fs, scale }) => (
+  readonly spin: number;
+}> = ({ label, fs, scale, spin }) => (
   <div
     style={{
       display: "flex",
@@ -147,7 +153,7 @@ const BrandMark: React.FC<{
       justifyContent: "center",
     }}
   >
-    <SpinningTetra size={fs(0.105 * scale)} degreesPerSecond={26} />
+    <SpinningTetra size={fs(0.105 * scale)} degreesPerSecond={spin} />
     <span
       style={{
         fontFamily: fontFamily(theme.fonts.heading),
@@ -171,6 +177,7 @@ export const ChinaReel: React.FC<ChinaReelProps> = ({
   place,
   brandMark,
   logoScale,
+  logoSpin,
   hasBurnedCaptions,
   ctaTitle,
   ctaUrl,
@@ -276,7 +283,12 @@ export const ChinaReel: React.FC<ChinaReelProps> = ({
             paddingTop: Math.round(height * 0.052),
           }}
         >
-          <BrandMark label={brandMark} fs={fs} scale={logoScale} />
+          <BrandMark
+            label={brandMark}
+            fs={fs}
+            scale={logoScale}
+            spin={logoSpin}
+          />
         </AbsoluteFill>
       ) : null}
 
