@@ -134,7 +134,7 @@ export const RemotionRoot: React.FC = () => {
         component={ChinaReel}
         schema={chinaReelSchema}
         defaultProps={{
-          footage: "local/china-clean.mp4",
+          footage: "local/china-graded.mp4",
           hookTop: "Кто учит топ-менеджеров",
           hookBottom: "Alibaba, Tencent и Baidu?",
           place: "Циндао, Китай",
