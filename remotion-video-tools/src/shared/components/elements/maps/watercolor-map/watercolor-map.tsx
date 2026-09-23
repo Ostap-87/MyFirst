@@ -1,4 +1,8 @@
-import {fontFamily, loadFont} from '@remotion/google-fonts/Lora';
+// Шрифт заменён на локальный: сетевые шрифты в нашем рендере
+// не грузятся (см. CLAUDE.md, «Технические соглашения»).
+import { fontFamily as localFontFamily } from '../../../../fonts';
+
+const fontFamily = localFontFamily('Cormorant Garamond');
 import React, {forwardRef, useImperativeHandle, useRef} from 'react';
 import {
 	Easing,
@@ -15,10 +19,6 @@ import {
 	type SequenceControls,
 } from 'remotion';
 
-loadFont('normal', {
-	weights: ['700'],
-	subsets: ['latin'],
-});
 
 const TILE_SIZE = 256;
 const TILE_BASE_URL =

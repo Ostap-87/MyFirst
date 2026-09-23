@@ -1,6 +1,8 @@
+// Шрифт заменён на локальный: сетевые шрифты в нашем рендере
+// не грузятся (см. CLAUDE.md, «Технические соглашения»).
+import { fontFamily as localFontFamily } from '../../../../fonts';
 import type {Caption, TikTokPage, TikTokToken} from '@remotion/captions';
 import {createTikTokStyleCaptions} from '@remotion/captions';
-import {loadFont} from '@remotion/google-fonts/Montserrat';
 import {fitText} from '@remotion/layout-utils';
 import React, {
 	forwardRef,
@@ -72,10 +74,9 @@ const poppingWordCaptionsSchema = {
 	...Interactive.transformSchema,
 } as const satisfies InteractivitySchema;
 
-const {fontFamily, waitUntilDone} = loadFont('normal', {
-	weights: [fontWeight],
-	subsets: ['latin'],
-});
+const fontFamily = localFontFamily('Inter');
+// Локальный шрифт готов сразу — ждать нечего.
+const waitUntilDone = () => Promise.resolve();
 
 const isTimeWithinHalfOpenInterval = (
 	timeMs: number,

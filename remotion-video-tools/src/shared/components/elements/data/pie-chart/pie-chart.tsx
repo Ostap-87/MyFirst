@@ -1,11 +1,10 @@
-import {loadFont} from '@remotion/google-fonts/Inter';
+// Шрифт заменён на локальный: сетевые шрифты в нашем рендере
+// не грузятся (см. CLAUDE.md, «Технические соглашения»).
+import { fontFamily as localFontFamily } from '../../../../fonts';
 import React from 'react';
 import {Easing, Interactive, interpolate, useCurrentFrame} from 'remotion';
 
-const {fontFamily} = loadFont('normal', {
-	subsets: ['latin'],
-	weights: ['700', '800'],
-});
+const fontFamily = localFontFamily('Inter');
 
 const data = [
 	{

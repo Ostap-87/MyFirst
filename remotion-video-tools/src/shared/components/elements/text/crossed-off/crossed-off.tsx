@@ -1,12 +1,11 @@
-import {loadFont} from '@remotion/google-fonts/CormorantGaramond';
+// Шрифт заменён на локальный: сетевые шрифты в нашем рендере
+// не грузятся (см. CLAUDE.md, «Технические соглашения»).
+import { fontFamily as localFontFamily } from '../../../../fonts';
 import {CrossedOff} from '@remotion/rough-notation';
 import React from 'react';
 import {Interactive, interpolate, useCurrentFrame} from 'remotion';
 
-const {fontFamily} = loadFont('normal', {
-	weights: ['700'],
-	subsets: ['latin'],
-});
+const fontFamily = localFontFamily('Cormorant Garamond');
 
 export const CrossedOffText: React.FC = () => {
 	const frame = useCurrentFrame();

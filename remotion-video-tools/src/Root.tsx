@@ -11,6 +11,11 @@ import {
   effectsLabDefaults,
   effectsLabSchema,
 } from "./shared/EffectsLab";
+import {
+  ElementsLab,
+  elementsLabDefaults,
+  elementsLabSchema,
+} from "./shared/ElementsLab";
 
 // Реестр всех композиций проекта.
 //
@@ -126,6 +131,17 @@ export const RemotionRoot: React.FC = () => {
         component={GTTStats}
         schema={gttStatsSchema}
         defaultProps={gttStatsDefaults}
+        durationInFrames={150}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      {/* Стенд для элементов Remotion: показывает их как есть, до адаптации. */}
+      <Composition
+        id="Shared-ElementsLab"
+        component={ElementsLab}
+        schema={elementsLabSchema}
+        defaultProps={elementsLabDefaults}
         durationInFrames={150}
         fps={30}
         width={1920}

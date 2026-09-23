@@ -1,4 +1,8 @@
-import {fontFamily, loadFont} from '@remotion/google-fonts/Caveat';
+// Шрифт заменён на локальный: сетевые шрифты в нашем рендере
+// не грузятся (см. CLAUDE.md, «Технические соглашения»).
+import { fontFamily as localFontFamily } from '../../../../fonts';
+
+const fontFamily = localFontFamily('Golos Text');
 import {
 	Easing,
 	Img,
@@ -8,10 +12,6 @@ import {
 	useVideoConfig,
 } from 'remotion';
 
-loadFont('normal', {
-	weights: ['600'],
-	subsets: ['latin'],
-});
 
 export const PolaroidPictures = () => {
 	const frame = useCurrentFrame();

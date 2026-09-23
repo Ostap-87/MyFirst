@@ -1,10 +1,10 @@
-import {fontFamily, loadFont} from '@remotion/google-fonts/Inter';
+// Шрифт заменён на локальный: сетевые шрифты в нашем рендере
+// не грузятся (см. CLAUDE.md, «Технические соглашения»).
+import { fontFamily as localFontFamily } from '../../../../fonts';
+
+const fontFamily = localFontFamily('Inter');
 import {Easing, Interactive, interpolate, useCurrentFrame} from 'remotion';
 
-loadFont('normal', {
-	subsets: ['latin'],
-	weights: ['400'],
-});
 
 export const OnScreenMessages = () => {
 	const frame = useCurrentFrame();
