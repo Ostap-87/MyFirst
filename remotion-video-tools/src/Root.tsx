@@ -25,6 +25,10 @@ import {
 
 // new-composition:imports:start
 import {
+  ChinaReel,
+  chinaReelSchema,
+} from "./globaltechtour/compositions/ChinaReel";
+import {
   GTTIntro,
   gttIntroDefaults,
   gttIntroSchema,
@@ -122,6 +126,25 @@ export const RemotionRoot: React.FC = () => {
         fps={30}
         width={1920}
         height={1080}
+      />
+      {/* Reels из съёмки в Циндао: 25,5 с видео + 2,5 с концевой карточки.
+          Тайминги плашек берутся из data/captions-china-expo.json. */}
+      <Composition
+        id="GTT-ChinaReel"
+        component={ChinaReel}
+        schema={chinaReelSchema}
+        defaultProps={{
+          footage: "local/china-expo.mp4",
+          hookTop: "Кто учит топ-менеджеров",
+          hookBottom: "Alibaba, Tencent и Baidu?",
+          place: "Циндао, Китай",
+          ctaTitle: "Возим делегации в технологический Китай",
+          ctaUrl: "globaltechtour.ru",
+        }}
+        durationInFrames={840}
+        fps={30}
+        width={1080}
+        height={1920}
       />
       <Composition
         id="GTT-PostReel"

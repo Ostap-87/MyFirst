@@ -7,7 +7,7 @@
     "confidence": 0.818964
   },
   {
-    "text": " не",
+    "text": " ни",
     "startMs": 1020,
     "endMs": 1370,
     "timestampMs": 1300,
@@ -63,7 +63,7 @@
     "confidence": 0.880548
   },
   {
-    "text": " Мривму",
+    "text": " рифму",
     "startMs": 4730,
     "endMs": 5080,
     "timestampMs": 4905,
@@ -154,7 +154,7 @@
     "confidence": 0.790273
   },
   {
-    "text": " закрыто",
+    "text": " закрытое",
     "startMs": 12600,
     "endMs": 13310,
     "timestampMs": 12955,
@@ -175,7 +175,7 @@
     "confidence": 0.996352
   },
   {
-    "text": " компании,",
+    "text": " компаний,",
     "startMs": 15030,
     "endMs": 15940,
     "timestampMs": 15485,
@@ -266,7 +266,7 @@
     "confidence": 0.596943
   },
   {
-    "text": " Хай!",
+    "text": " Haier",
     "startMs": 23980,
     "endMs": 25980,
     "timestampMs": 24980,

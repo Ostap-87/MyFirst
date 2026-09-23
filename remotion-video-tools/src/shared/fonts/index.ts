@@ -26,7 +26,10 @@ type FontName =
   // в docs/reference-breakdown.md.
   | "Montserrat"
   | "Onest"
-  | "Manrope";
+  | "Manrope"
+  // Гарамон с засечками: для надписей, где нужен спокойный и «дорогой» тон —
+  // геометки, названия мест. Рубленый Inter рядом с ним звучит как интерфейс.
+  | "Cormorant Garamond";
 
 /** Гарнитура с иероглифами: подставляется в конец каждого стека. */
 const CJK_FALLBACK = "Noto Sans SC";
@@ -39,7 +42,18 @@ const FILES: Record<FontName | typeof CJK_FALLBACK, string> = {
   Montserrat: "fonts/Montserrat.ttf",
   Onest: "fonts/Onest.ttf",
   Manrope: "fonts/Manrope.ttf",
+  "Cormorant Garamond": "fonts/CormorantGaramond.ttf",
   [CJK_FALLBACK]: "fonts/NotoSansSC.woff2",
+};
+
+/**
+ * Вес файла. Почти все гарнитуры вариативные — один файл на весь диапазон.
+ * Cormorant Garamond отдаётся Google статическими начертаниями, и заявить ему
+ * «100 900» нельзя: браузер начнёт синтезировать жирность, вместо того чтобы
+ * честно сказать, что другого веса нет.
+ */
+const WEIGHTS: Partial<Record<FontName | typeof CJK_FALLBACK, string>> = {
+  "Cormorant Garamond": "500",
 };
 
 const FAMILIES = Object.keys(FILES) as (FontName | typeof CJK_FALLBACK)[];
@@ -49,7 +63,7 @@ for (const family of FAMILIES) {
   loadFont({
     family,
     url: staticFile(file),
-    weight: "100 900",
+    weight: WEIGHTS[family] ?? "100 900",
     format: file.endsWith(".woff2") ? "woff2" : "truetype",
   }).catch((err) => {
     // Кадр не должен молча уехать системным шрифтом — пусть видно в логе рендера.
