@@ -287,6 +287,60 @@ export const RemotionRoot: React.FC = () => {
         width={1080}
         height={1920}
       />
+      {/* Сторис про скорость выезда. Речь короткая и вся про одно —
+          что ждать не нужно, — поэтому плашки не перечисляют, а
+          подпирают довод: программы есть -> срок -> согласований нет.
+          16,9 с = 506 кадров. */}
+      <Composition
+        id="GTT-Speed"
+        component={ChinaStories}
+        schema={chinaStoriesSchema}
+        defaultProps={{
+          footage: "local/st7-graded.mp4",
+          captionsSrc: "captions/st7.json",
+          durationSeconds: 16.9,
+          hookTop: "Выехать можно",
+          hookBottom: "за две недели",
+          brandMark: "GLOBAL TECH TOUR",
+          logoScale: 1.5,
+          logoSpin: 72,
+          plates: [
+            { text: "Программы уже собраны", at: 3.3, until: 7.6, kind: "term" as const },
+            { text: "Выезд за 2 недели", at: 8.3, until: 12.5, kind: "accent" as const },
+            { text: "Согласовывать нечего", at: 13.0, kind: "accent" as const },
+          ],
+        }}
+        durationInFrames={506}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      {/* Сторис про географию за пределами Китая. Обе цифры — из речи,
+          на глаз ничего не поставлено. 18,8 с = 563 кадра. */}
+      <Composition
+        id="GTT-Geography"
+        component={ChinaStories}
+        schema={chinaStoriesSchema}
+        defaultProps={{
+          footage: "local/st8-graded.mp4",
+          captionsSrc: "captions/st8.json",
+          durationSeconds: 18.8,
+          hookTop: "Дело не только",
+          hookBottom: "в Китае",
+          brandMark: "GLOBAL TECH TOUR",
+          logoScale: 1.5,
+          logoSpin: 72,
+          plates: [
+            { text: "1000+ компаний в базе", at: 5.5, until: 10.3, kind: "accent" as const },
+            { text: "17 готовых программ", at: 11.0, until: 15.4, kind: "accent" as const },
+            { text: "Вся Юго-Восточная Азия", at: 15.9, kind: "term" as const },
+          ],
+        }}
+        durationInFrames={563}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
       {/* Reels из съёмки в Циндао: 25,5 с видео + 2,5 с концевой карточки.
           Тайминги плашек берутся из data/captions-china-expo.json. */}
       <Composition

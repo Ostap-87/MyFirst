@@ -1,0 +1,247 @@
+[
+  {
+    "text": "Не",
+    "startMs": 0,
+    "endMs": 180,
+    "timestampMs": 640,
+    "confidence": 0.449095
+  },
+  {
+    "text": " стоит",
+    "startMs": 180,
+    "endMs": 630,
+    "timestampMs": 900,
+    "confidence": 0.993883
+  },
+  {
+    "text": " зацикливаться",
+    "startMs": 630,
+    "endMs": 1800,
+    "timestampMs": 1215,
+    "confidence": 0.954081
+  },
+  {
+    "text": " только",
+    "startMs": 1800,
+    "endMs": 2340,
+    "timestampMs": 1920,
+    "confidence": 0.987048
+  },
+  {
+    "text": " на",
+    "startMs": 2340,
+    "endMs": 2550,
+    "timestampMs": 2340,
+    "confidence": 0.986839
+  },
+  {
+    "text": " Китае.",
+    "startMs": 2550,
+    "endMs": 3120,
+    "timestampMs": 2835,
+    "confidence": 0.68742
+  },
+  {
+    "text": " У",
+    "startMs": 3120,
+    "endMs": 3380,
+    "timestampMs": 3820,
+    "confidence": 0.983539
+  },
+  {
+    "text": " меня",
+    "startMs": 3380,
+    "endMs": 4020,
+    "timestampMs": 4060,
+    "confidence": 0.999382
+  },
+  {
+    "text": " в",
+    "startMs": 4020,
+    "endMs": 4200,
+    "timestampMs": 4360,
+    "confidence": 0.939823
+  },
+  {
+    "text": " базе",
+    "startMs": 4200,
+    "endMs": 5100,
+    "timestampMs": 4650,
+    "confidence": 0.981897
+  },
+  {
+    "text": " более",
+    "startMs": 5100,
+    "endMs": 5440,
+    "timestampMs": 5300,
+    "confidence": 0.860279
+  },
+  {
+    "text": " тысячи",
+    "startMs": 5440,
+    "endMs": 6040,
+    "timestampMs": 5740,
+    "confidence": 0.67394
+  },
+  {
+    "text": " компаний",
+    "startMs": 6040,
+    "endMs": 6950,
+    "timestampMs": 6495,
+    "confidence": 0.870276
+  },
+  {
+    "text": " из",
+    "startMs": 6950,
+    "endMs": 7060,
+    "timestampMs": 7100,
+    "confidence": 0.547752
+  },
+  {
+    "text": " различных",
+    "startMs": 7060,
+    "endMs": 8710,
+    "timestampMs": 7885,
+    "confidence": 0.985502
+  },
+  {
+    "text": " стран",
+    "startMs": 8710,
+    "endMs": 9000,
+    "timestampMs": 8840,
+    "confidence": 0.856264
+  },
+  {
+    "text": " Юго-Восточной",
+    "startMs": 9000,
+    "endMs": 9940,
+    "timestampMs": 9470,
+    "confidence": 0.636727
+  },
+  {
+    "text": " Азии.",
+    "startMs": 9940,
+    "endMs": 10400,
+    "timestampMs": 10170,
+    "confidence": 0.543731
+  },
+  {
+    "text": " Более",
+    "startMs": 10400,
+    "endMs": 11270,
+    "timestampMs": 10835,
+    "confidence": 0.915571
+  },
+  {
+    "text": " 17",
+    "startMs": 11270,
+    "endMs": 11370,
+    "timestampMs": 11880,
+    "confidence": 0.926125
+  },
+  {
+    "text": " готовых",
+    "startMs": 11370,
+    "endMs": 12300,
+    "timestampMs": 11835,
+    "confidence": 0.96363
+  },
+  {
+    "text": " программ",
+    "startMs": 12300,
+    "endMs": 13240,
+    "timestampMs": 12770,
+    "confidence": 0.989453
+  },
+  {
+    "text": " под",
+    "startMs": 13240,
+    "endMs": 13640,
+    "timestampMs": 13540,
+    "confidence": 0.943833
+  },
+  {
+    "text": " каждую",
+    "startMs": 13640,
+    "endMs": 14200,
+    "timestampMs": 13920,
+    "confidence": 0.997383
+  },
+  {
+    "text": " страну,",
+    "startMs": 14200,
+    "endMs": 14820,
+    "timestampMs": 14510,
+    "confidence": 0.87815
+  },
+  {
+    "text": " под",
+    "startMs": 14820,
+    "endMs": 15120,
+    "timestampMs": 15040,
+    "confidence": 0.86492
+  },
+  {
+    "text": " каждую",
+    "startMs": 15120,
+    "endMs": 15550,
+    "timestampMs": 15335,
+    "confidence": 0.99613
+  },
+  {
+    "text": " индустрию.",
+    "startMs": 15550,
+    "endMs": 16400,
+    "timestampMs": 15975,
+    "confidence": 0.901476
+  },
+  {
+    "text": " Вы",
+    "startMs": 16400,
+    "endMs": 16560,
+    "timestampMs": 16560,
+    "confidence": 0.988467
+  },
+  {
+    "text": " все",
+    "startMs": 16560,
+    "endMs": 16800,
+    "timestampMs": 16780,
+    "confidence": 0.632371
+  },
+  {
+    "text": " это",
+    "startMs": 16800,
+    "endMs": 17040,
+    "timestampMs": 16940,
+    "confidence": 0.995953
+  },
+  {
+    "text": " можете",
+    "startMs": 17040,
+    "endMs": 17520,
+    "timestampMs": 17200,
+    "confidence": 0.988681
+  },
+  {
+    "text": " увидеть",
+    "startMs": 17520,
+    "endMs": 18080,
+    "timestampMs": 17820,
+    "confidence": 0.997754
+  },
+  {
+    "text": " на",
+    "startMs": 18080,
+    "endMs": 18240,
+    "timestampMs": 18080,
+    "confidence": 0.998026
+  },
+  {
+    "text": " сайте.",
+    "startMs": 18240,
+    "endMs": 18720,
+    "timestampMs": 18480,
+    "confidence": 0.90277
+  }
+]

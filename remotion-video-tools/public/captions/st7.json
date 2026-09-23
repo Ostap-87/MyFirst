@@ -1,0 +1,240 @@
+[
+  {
+    "text": "Но",
+    "startMs": 190,
+    "endMs": 230,
+    "timestampMs": 360,
+    "confidence": 0.794245
+  },
+  {
+    "text": " и",
+    "startMs": 230,
+    "endMs": 340,
+    "timestampMs": 560,
+    "confidence": 0.365908
+  },
+  {
+    "text": " это",
+    "startMs": 340,
+    "endMs": 690,
+    "timestampMs": 780,
+    "confidence": 0.994649
+  },
+  {
+    "text": " еще",
+    "startMs": 690,
+    "endMs": 1010,
+    "timestampMs": 1120,
+    "confidence": 0.732726
+  },
+  {
+    "text": " не",
+    "startMs": 1010,
+    "endMs": 1270,
+    "timestampMs": 1260,
+    "confidence": 0.989376
+  },
+  {
+    "text": " все.",
+    "startMs": 1270,
+    "endMs": 1760,
+    "timestampMs": 1515,
+    "confidence": 0.636697
+  },
+  {
+    "text": " У",
+    "startMs": 1760,
+    "endMs": 1780,
+    "timestampMs": 1860,
+    "confidence": 0.550116
+  },
+  {
+    "text": " меня",
+    "startMs": 1780,
+    "endMs": 1970,
+    "timestampMs": 2020,
+    "confidence": 0.999668
+  },
+  {
+    "text": " есть",
+    "startMs": 1970,
+    "endMs": 2200,
+    "timestampMs": 2240,
+    "confidence": 0.995268
+  },
+  {
+    "text": " заготовленные",
+    "startMs": 2200,
+    "endMs": 3210,
+    "timestampMs": 2705,
+    "confidence": 0.895287
+  },
+  {
+    "text": " программы,",
+    "startMs": 3210,
+    "endMs": 3990,
+    "timestampMs": 3600,
+    "confidence": 0.929198
+  },
+  {
+    "text": " которые",
+    "startMs": 3990,
+    "endMs": 4710,
+    "timestampMs": 4240,
+    "confidence": 0.810571
+  },
+  {
+    "text": " можно",
+    "startMs": 4710,
+    "endMs": 5160,
+    "timestampMs": 5080,
+    "confidence": 0.793811
+  },
+  {
+    "text": " очень",
+    "startMs": 5160,
+    "endMs": 5600,
+    "timestampMs": 5560,
+    "confidence": 0.966186
+  },
+  {
+    "text": " быстро",
+    "startMs": 5600,
+    "endMs": 6020,
+    "timestampMs": 6040,
+    "confidence": 0.969132
+  },
+  {
+    "text": " забукировать",
+    "startMs": 6020,
+    "endMs": 7050,
+    "timestampMs": 6535,
+    "confidence": 0.8919
+  },
+  {
+    "text": " и",
+    "startMs": 7050,
+    "endMs": 7160,
+    "timestampMs": 7240,
+    "confidence": 0.76749
+  },
+  {
+    "text": " поехать",
+    "startMs": 7160,
+    "endMs": 7720,
+    "timestampMs": 7440,
+    "confidence": 0.98124
+  },
+  {
+    "text": " в",
+    "startMs": 7720,
+    "endMs": 7900,
+    "timestampMs": 8020,
+    "confidence": 0.83181
+  },
+  {
+    "text": " течение",
+    "startMs": 7900,
+    "endMs": 8400,
+    "timestampMs": 8150,
+    "confidence": 0.982463
+  },
+  {
+    "text": " двух",
+    "startMs": 8400,
+    "endMs": 8740,
+    "timestampMs": 8660,
+    "confidence": 0.854471
+  },
+  {
+    "text": " недель",
+    "startMs": 8740,
+    "endMs": 9380,
+    "timestampMs": 9060,
+    "confidence": 0.995139
+  },
+  {
+    "text": " максимум.",
+    "startMs": 9380,
+    "endMs": 10160,
+    "timestampMs": 9770,
+    "confidence": 0.461595
+  },
+  {
+    "text": " Не",
+    "startMs": 10160,
+    "endMs": 10360,
+    "timestampMs": 10680,
+    "confidence": 0.970645
+  },
+  {
+    "text": " надо",
+    "startMs": 10360,
+    "endMs": 10710,
+    "timestampMs": 11040,
+    "confidence": 0.997529
+  },
+  {
+    "text": " бесконечного",
+    "startMs": 10710,
+    "endMs": 11920,
+    "timestampMs": 11315,
+    "confidence": 0.973686
+  },
+  {
+    "text": " ожидания",
+    "startMs": 11920,
+    "endMs": 12560,
+    "timestampMs": 12240,
+    "confidence": 0.980976
+  },
+  {
+    "text": " и",
+    "startMs": 12560,
+    "endMs": 12650,
+    "timestampMs": 13160,
+    "confidence": 0.98549
+  },
+  {
+    "text": " согласования.",
+    "startMs": 12650,
+    "endMs": 14060,
+    "timestampMs": 13355,
+    "confidence": 0.664628
+  },
+  {
+    "text": " Все",
+    "startMs": 14060,
+    "endMs": 14200,
+    "timestampMs": 14120,
+    "confidence": 0.823683
+  },
+  {
+    "text": " уже",
+    "startMs": 14200,
+    "endMs": 14500,
+    "timestampMs": 14380,
+    "confidence": 0.96562
+  },
+  {
+    "text": " согласовано,",
+    "startMs": 14500,
+    "endMs": 15400,
+    "timestampMs": 14950,
+    "confidence": 0.647282
+  },
+  {
+    "text": " все",
+    "startMs": 15400,
+    "endMs": 15780,
+    "timestampMs": 15820,
+    "confidence": 0.897119
+  },
+  {
+    "text": " подготовлено.",
+    "startMs": 15780,
+    "endMs": 16760,
+    "timestampMs": 16270,
+    "confidence": 0.946664
+  }
+]
