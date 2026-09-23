@@ -200,6 +200,34 @@ export const RemotionRoot: React.FC = () => {
         width={1080}
         height={1920}
       />
+      {/* Сторис про нишевое мероприятие под Циндао. Речь перечислительная:
+          приглашение -> закрытый формат -> имена холдингов -> зачем он там.
+          Плашки идут этой же лестницей. 32,8 с = 983 кадра. */}
+      <Composition
+        id="GTT-Invite"
+        component={ChinaStories}
+        schema={chinaStoriesSchema}
+        defaultProps={{
+          footage: "local/st4-graded.mp4",
+          captionsSrc: "captions/st4.json",
+          durationSeconds: 32.8,
+          hookTop: "Мероприятие, куда зовут",
+          hookBottom: "только по приглашению",
+          brandMark: "GLOBAL TECH TOUR",
+          logoScale: 1.5,
+          logoSpin: 72,
+          plates: [
+            { text: "Нишевое мероприятие", at: 9.9, until: 20.0, kind: "term" as const },
+            { text: "Только крупные холдинги", at: 15.7, until: 20.0, kind: "term" as const },
+            { text: "Alibaba · Haier · Tencent", at: 20.1, until: 25.1, kind: "accent" as const },
+            { text: "Корпоративное обучение", at: 25.9, kind: "accent" as const },
+          ],
+        }}
+        durationInFrames={983}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
       {/* Reels из съёмки в Циндао: 25,5 с видео + 2,5 с концевой карточки.
           Тайминги плашек берутся из data/captions-china-expo.json. */}
       <Composition
