@@ -142,10 +142,11 @@ export const RemotionRoot: React.FC = () => {
           logoScale: 1.5,
           logoSpin: 72,
           hasBurnedCaptions: false,
+          showEndCard: false,
           ctaTitle: "Возим делегации в технологический Китай",
           ctaUrl: "globaltechtour.ru",
         }}
-        durationInFrames={843}
+        durationInFrames={768}
         fps={30}
         width={1080}
         height={1920}

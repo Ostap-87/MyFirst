@@ -64,6 +64,9 @@ export const chinaReelSchema = z.object({
     .describe(
       "У исходника есть вшитые чужие титры — включить маскирующую полосу",
     ),
+  showEndCard: z
+    .boolean()
+    .describe("Показывать концевую карточку с призывом"),
   ctaTitle: z.string().describe("Заголовок концевой карточки"),
   ctaUrl: z.string().describe("Адрес сайта на концевой карточке"),
 });
@@ -179,6 +182,7 @@ export const ChinaReel: React.FC<ChinaReelProps> = ({
   logoScale,
   logoSpin,
   hasBurnedCaptions,
+  showEndCard,
   ctaTitle,
   ctaUrl,
 }) => {
@@ -187,7 +191,9 @@ export const ChinaReel: React.FC<ChinaReelProps> = ({
   const { fs } = useFormat();
 
   const footageFrames = Math.round(FOOTAGE_SECONDS * fps);
-  const endCardFrom = footageFrames;
+  // Без концевой карточки ролик заканчивается на съёмке, и оверлеи должны
+  // держаться до последнего кадра — иначе последние секунды идут голыми.
+  const endCardFrom = showEndCard ? footageFrames : durationInFrames;
   const onFootage = frame < endCardFrom;
 
   // Съёмка во весь кадр, увеличенная и прижатая к верху: так строка 1500
@@ -390,12 +396,14 @@ export const ChinaReel: React.FC<ChinaReelProps> = ({
       </Sequence>
 
       {/* ——— Концевая карточка ——— */}
-      <Sequence
-        from={endCardFrom}
-        durationInFrames={durationInFrames - endCardFrom}
-      >
-        <EndCard title={ctaTitle} url={ctaUrl} fs={fs} />
-      </Sequence>
+      {showEndCard ? (
+        <Sequence
+          from={footageFrames}
+          durationInFrames={Math.max(0, durationInFrames - footageFrames)}
+        >
+          <EndCard title={ctaTitle} url={ctaUrl} fs={fs} />
+        </Sequence>
+      ) : null}
     </AbsoluteFill>
   );
 };
