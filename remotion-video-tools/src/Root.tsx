@@ -262,7 +262,7 @@ export const RemotionRoot: React.FC = () => {
       />
       {/* Сторис про готовые программы и базу. Самый тесный кадр из всех:
           лицо крупное, макушка почти у верха, поэтому плашки строго по
-          одной. 24,3 с = 729 кадров. */}
+          одной. 24,33 с = 730 кадров. */}
       <Composition
         id="GTT-Programs"
         component={ChinaStories}
@@ -270,7 +270,7 @@ export const RemotionRoot: React.FC = () => {
         defaultProps={{
           footage: "local/st6-graded.mp4",
           captionsSrc: "captions/st6.json",
-          durationSeconds: 24.3,
+          durationSeconds: 24.33,
           hookTop: "Программу не пишут",
           hookBottom: "под каждый запрос",
           brandMark: "GLOBAL TECH TOUR",
@@ -282,7 +282,7 @@ export const RemotionRoot: React.FC = () => {
             { text: "Топ-менеджмент напрямую", at: 22.3, kind: "accent" as const },
           ],
         }}
-        durationInFrames={729}
+        durationInFrames={730}
         fps={30}
         width={1080}
         height={1920}
