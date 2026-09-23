@@ -1,0 +1,261 @@
+[
+  {
+    "text": "Говоря",
+    "startMs": 0,
+    "endMs": 510,
+    "timestampMs": 255,
+    "confidence": 0.147394
+  },
+  {
+    "text": " про",
+    "startMs": 510,
+    "endMs": 630,
+    "timestampMs": 580,
+    "confidence": 0.924771
+  },
+  {
+    "text": " готовые",
+    "startMs": 630,
+    "endMs": 1150,
+    "timestampMs": 890,
+    "confidence": 0.982572
+  },
+  {
+    "text": " программы,",
+    "startMs": 1150,
+    "endMs": 1840,
+    "timestampMs": 1495,
+    "confidence": 0.732241
+  },
+  {
+    "text": " их",
+    "startMs": 1840,
+    "endMs": 1900,
+    "timestampMs": 1940,
+    "confidence": 0.704529
+  },
+  {
+    "text": " действительно",
+    "startMs": 1900,
+    "endMs": 2630,
+    "timestampMs": 2460,
+    "confidence": 0.975975
+  },
+  {
+    "text": " очень",
+    "startMs": 2630,
+    "endMs": 3000,
+    "timestampMs": 2860,
+    "confidence": 0.938483
+  },
+  {
+    "text": " много,",
+    "startMs": 3000,
+    "endMs": 3600,
+    "timestampMs": 3300,
+    "confidence": 0.369114
+  },
+  {
+    "text": " начиная",
+    "startMs": 3600,
+    "endMs": 4170,
+    "timestampMs": 3885,
+    "confidence": 0.542404
+  },
+  {
+    "text": " от",
+    "startMs": 4170,
+    "endMs": 4370,
+    "timestampMs": 4360,
+    "confidence": 0.969106
+  },
+  {
+    "text": " роботов",
+    "startMs": 4370,
+    "endMs": 4840,
+    "timestampMs": 4605,
+    "confidence": 0.981074
+  },
+  {
+    "text": " и",
+    "startMs": 4840,
+    "endMs": 4880,
+    "timestampMs": 4940,
+    "confidence": 0.942953
+  },
+  {
+    "text": " робототехники",
+    "startMs": 4880,
+    "endMs": 6000,
+    "timestampMs": 5440,
+    "confidence": 0.756848
+  },
+  {
+    "text": " и",
+    "startMs": 6000,
+    "endMs": 6240,
+    "timestampMs": 6340,
+    "confidence": 0.598365
+  },
+  {
+    "text": " заканчивая",
+    "startMs": 6240,
+    "endMs": 7450,
+    "timestampMs": 6845,
+    "confidence": 0.909913
+  },
+  {
+    "text": " полимерами",
+    "startMs": 7450,
+    "endMs": 8640,
+    "timestampMs": 8045,
+    "confidence": 0.740334
+  },
+  {
+    "text": " и",
+    "startMs": 8640,
+    "endMs": 8900,
+    "timestampMs": 8940,
+    "confidence": 0.918667
+  },
+  {
+    "text": " нефтехимией.",
+    "startMs": 8900,
+    "endMs": 9840,
+    "timestampMs": 9370,
+    "confidence": 0.649406
+  },
+  {
+    "text": " Все",
+    "startMs": 9840,
+    "endMs": 10190,
+    "timestampMs": 10200,
+    "confidence": 0.709853
+  },
+  {
+    "text": " это",
+    "startMs": 10190,
+    "endMs": 10590,
+    "timestampMs": 10640,
+    "confidence": 0.998331
+  },
+  {
+    "text": " возможно",
+    "startMs": 10590,
+    "endMs": 11470,
+    "timestampMs": 11480,
+    "confidence": 0.807691
+  },
+  {
+    "text": " для",
+    "startMs": 11470,
+    "endMs": 11850,
+    "timestampMs": 12000,
+    "confidence": 0.996436
+  },
+  {
+    "text": " посещения.",
+    "startMs": 11850,
+    "endMs": 13060,
+    "timestampMs": 12455,
+    "confidence": 0.91639
+  },
+  {
+    "text": " Многие",
+    "startMs": 13060,
+    "endMs": 13620,
+    "timestampMs": 13340,
+    "confidence": 0.986273
+  },
+  {
+    "text": " компании",
+    "startMs": 13620,
+    "endMs": 14660,
+    "timestampMs": 14020,
+    "confidence": 0.917309
+  },
+  {
+    "text": " закрыты",
+    "startMs": 14660,
+    "endMs": 15100,
+    "timestampMs": 14880,
+    "confidence": 0.835853
+  },
+  {
+    "text": " для",
+    "startMs": 15100,
+    "endMs": 15390,
+    "timestampMs": 15580,
+    "confidence": 0.995327
+  },
+  {
+    "text": " посещения,",
+    "startMs": 15390,
+    "endMs": 16580,
+    "timestampMs": 15985,
+    "confidence": 0.889776
+  },
+  {
+    "text": " но",
+    "startMs": 16580,
+    "endMs": 16670,
+    "timestampMs": 16900,
+    "confidence": 0.890362
+  },
+  {
+    "text": " я",
+    "startMs": 16670,
+    "endMs": 16780,
+    "timestampMs": 17520,
+    "confidence": 0.970728
+  },
+  {
+    "text": " открываю",
+    "startMs": 16780,
+    "endMs": 17890,
+    "timestampMs": 17335,
+    "confidence": 0.981991
+  },
+  {
+    "text": " дверь",
+    "startMs": 17890,
+    "endMs": 18270,
+    "timestampMs": 18080,
+    "confidence": 0.622592
+  },
+  {
+    "text": " в",
+    "startMs": 18270,
+    "endMs": 18380,
+    "timestampMs": 19040,
+    "confidence": 0.768967
+  },
+  {
+    "text": " эти",
+    "startMs": 18380,
+    "endMs": 18720,
+    "timestampMs": 19200,
+    "confidence": 0.966425
+  },
+  {
+    "text": " компании,",
+    "startMs": 18720,
+    "endMs": 19750,
+    "timestampMs": 19235,
+    "confidence": 0.290192
+  },
+  {
+    "text": " имеется",
+    "startMs": 19750,
+    "endMs": 20610,
+    "timestampMs": 20180,
+    "confidence": 0.962885
+  },
+  {
+    "text": " опыт.",
+    "startMs": 20610,
+    "endMs": 21220,
+    "timestampMs": 20915,
+    "confidence": 0.954929
+  }
+]

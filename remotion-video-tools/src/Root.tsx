@@ -368,6 +368,136 @@ export const RemotionRoot: React.FC = () => {
         width={1080}
         height={1920}
       />
+      {/* Сторис про количество направлений. Ролик короткий, поэтому плашки
+          две: цифра и куда идти за подробностями. 12,6 с = 376 кадров. */}
+      <Composition
+        id="GTT-Directions"
+        component={ChinaStories}
+        schema={chinaStoriesSchema}
+        defaultProps={{
+          footage: "local/st10-graded.mp4",
+          captionsSrc: "captions/st10.json",
+          durationSeconds: 12.6,
+          hookTop: "Уже готовых",
+          hookBottom: "17 направлений",
+          brandMark: "GLOBAL TECH TOUR",
+          logoScale: 1.5,
+          logoSpin: 72,
+          plates: [
+            { text: "17 направлений", at: 5.2, until: 9.0, kind: "accent" as const },
+            { text: "Маршрут — на сайте", at: 9.4, kind: "term" as const },
+          ],
+        }}
+        durationInFrames={376}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      {/* Сторис-перечисление индустрий. Плашки не копятся, а сменяют друг
+          друга: список длинный, и стопкой он не помещается над головой.
+          19,8 с = 591 кадр. */}
+      <Composition
+        id="GTT-Industries"
+        component={ChinaStories}
+        schema={chinaStoriesSchema}
+        defaultProps={{
+          footage: "local/st11-graded.mp4",
+          captionsSrc: "captions/st11.json",
+          durationSeconds: 19.8,
+          hookTop: "Программы есть",
+          hookBottom: "под вашу индустрию",
+          brandMark: "GLOBAL TECH TOUR",
+          logoScale: 1.5,
+          logoSpin: 72,
+          plates: [
+            { text: "Продукты питания", at: 2.9, until: 7.7, kind: "term" as const },
+            { text: "Робототехника · Авто", at: 7.8, until: 12.9, kind: "term" as const },
+            { text: "Стройка и девелопмент", at: 13.0, until: 16.4, kind: "term" as const },
+            { text: "Лёгкая промышленность", at: 16.6, kind: "accent" as const },
+          ],
+        }}
+        durationInFrames={591}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      {/* Сторис про доступ. Довод один и сильный — «многие компании закрыты,
+          но я открываю дверь», — поэтому вторая плашка держится до конца.
+          21,3 с = 638 кадров. */}
+      <Composition
+        id="GTT-ClosedDoors"
+        component={ChinaStories}
+        schema={chinaStoriesSchema}
+        defaultProps={{
+          footage: "local/st12-graded.mp4",
+          captionsSrc: "captions/st12.json",
+          durationSeconds: 21.3,
+          hookTop: "Многие компании",
+          hookBottom: "закрыты для визитов",
+          brandMark: "GLOBAL TECH TOUR",
+          logoScale: 1.5,
+          logoSpin: 72,
+          plates: [
+            { text: "От роботов до нефтехимии", at: 7.5, until: 15.2, kind: "term" as const },
+            { text: "Открываю закрытые двери", at: 16.4, kind: "accent" as const },
+          ],
+        }}
+        durationInFrames={638}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      {/* Сторис про плотность программы. Цифры — из речи: пять дней, две
+          компании в день. 23,3 с = 698 кадров. */}
+      <Composition
+        id="GTT-FiveDays"
+        component={ChinaStories}
+        schema={chinaStoriesSchema}
+        defaultProps={{
+          footage: "local/st13-graded.mp4",
+          captionsSrc: "captions/st13.json",
+          durationSeconds: 23.3,
+          hookTop: "Пять дней —",
+          hookBottom: "весь Китай",
+          brandMark: "GLOBAL TECH TOUR",
+          logoScale: 1.5,
+          logoSpin: 72,
+          plates: [
+            { text: "2 компании в день", at: 5.5, until: 13.8, kind: "term" as const },
+            { text: "Управленцы, не менеджеры", at: 16.8, kind: "accent" as const },
+          ],
+        }}
+        durationInFrames={698}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      {/* Сторис про сроки кастомного тура. Последняя плашка перекладывает
+          решение на зрителя — этим ролик и заканчивается.
+          12,4 с = 369 кадров. */}
+      <Composition
+        id="GTT-Custom"
+        component={ChinaStories}
+        schema={chinaStoriesSchema}
+        defaultProps={{
+          footage: "local/st14-graded.mp4",
+          captionsSrc: "captions/st14.json",
+          durationSeconds: 12.4,
+          hookTop: "Тур под вашу",
+          hookBottom: "индустрию",
+          brandMark: "GLOBAL TECH TOUR",
+          logoScale: 1.5,
+          logoSpin: 72,
+          plates: [
+            { text: "Согласование — неделя", at: 4.9, until: 10.4, kind: "accent" as const },
+            { text: "Дальше — за вами", at: 10.6, kind: "term" as const },
+          ],
+        }}
+        durationInFrames={369}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
       {/* Reels из съёмки в Циндао: 25,5 с видео + 2,5 с концевой карточки.
           Тайминги плашек берутся из data/captions-china-expo.json. */}
       <Composition

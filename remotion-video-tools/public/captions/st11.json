@@ -1,0 +1,163 @@
+[
+  {
+    "text": "индустрии",
+    "startMs": 190,
+    "endMs": 1020,
+    "timestampMs": 605,
+    "confidence": 0.491713
+  },
+  {
+    "text": " такие",
+    "startMs": 1020,
+    "endMs": 1610,
+    "timestampMs": 1080,
+    "confidence": 0.691885
+  },
+  {
+    "text": " как",
+    "startMs": 1610,
+    "endMs": 2320,
+    "timestampMs": 1560,
+    "confidence": 0.557799
+  },
+  {
+    "text": " продукты",
+    "startMs": 2320,
+    "endMs": 2860,
+    "timestampMs": 2590,
+    "confidence": 0.809009
+  },
+  {
+    "text": " питания,",
+    "startMs": 2860,
+    "endMs": 3760,
+    "timestampMs": 3310,
+    "confidence": 0.923104
+  },
+  {
+    "text": " производство",
+    "startMs": 3760,
+    "endMs": 4320,
+    "timestampMs": 4040,
+    "confidence": 0.572324
+  },
+  {
+    "text": " продуктов",
+    "startMs": 4320,
+    "endMs": 4980,
+    "timestampMs": 4650,
+    "confidence": 0.969427
+  },
+  {
+    "text": " питания,",
+    "startMs": 4980,
+    "endMs": 5360,
+    "timestampMs": 5170,
+    "confidence": 0.920502
+  },
+  {
+    "text": " роботы,",
+    "startMs": 5360,
+    "endMs": 6090,
+    "timestampMs": 5725,
+    "confidence": 0.87491
+  },
+  {
+    "text": " робототехника,",
+    "startMs": 6090,
+    "endMs": 6750,
+    "timestampMs": 6420,
+    "confidence": 0.806312
+  },
+  {
+    "text": "",
+    "startMs": 6750,
+    "endMs": 7780,
+    "timestampMs": 7265,
+    "confidence": 0.769186
+  },
+  {
+    "text": " автомобилестроение,",
+    "startMs": 7780,
+    "endMs": 8430,
+    "timestampMs": 8105,
+    "confidence": 0.788125
+  },
+  {
+    "text": "",
+    "startMs": 8430,
+    "endMs": 9200,
+    "timestampMs": 8815,
+    "confidence": 0.951109
+  },
+  {
+    "text": " строительные",
+    "startMs": 9200,
+    "endMs": 10280,
+    "timestampMs": 9740,
+    "confidence": 0.900871
+  },
+  {
+    "text": " материалы,",
+    "startMs": 10280,
+    "endMs": 11200,
+    "timestampMs": 10740,
+    "confidence": 0.957476
+  },
+  {
+    "text": " строительные",
+    "startMs": 11200,
+    "endMs": 12230,
+    "timestampMs": 11715,
+    "confidence": 0.995241
+  },
+  {
+    "text": " компании",
+    "startMs": 12230,
+    "endMs": 12890,
+    "timestampMs": 12620,
+    "confidence": 0.952715
+  },
+  {
+    "text": " и",
+    "startMs": 12890,
+    "endMs": 12970,
+    "timestampMs": 12920,
+    "confidence": 0.720549
+  },
+  {
+    "text": " девелоперы,",
+    "startMs": 12970,
+    "endMs": 14130,
+    "timestampMs": 13550,
+    "confidence": 0.305623
+  },
+  {
+    "text": " гостиничное",
+    "startMs": 14130,
+    "endMs": 15090,
+    "timestampMs": 14610,
+    "confidence": 0.646735
+  },
+  {
+    "text": " направление,",
+    "startMs": 15090,
+    "endMs": 16550,
+    "timestampMs": 15820,
+    "confidence": 0.846817
+  },
+  {
+    "text": " легкая",
+    "startMs": 16550,
+    "endMs": 17350,
+    "timestampMs": 16950,
+    "confidence": 0.506733
+  },
+  {
+    "text": " промышленность.",
+    "startMs": 17350,
+    "endMs": 19640,
+    "timestampMs": 18495,
+    "confidence": 0.710629
+  }
+]
