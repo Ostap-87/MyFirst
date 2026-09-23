@@ -341,6 +341,33 @@ export const RemotionRoot: React.FC = () => {
         width={1080}
         height={1920}
       />
+      {/* Сторис-призыв, самая короткая из всех: 10 с. Речь — два довода
+          и просьба написать, поэтому плашек всего две и вторая держится
+          до конца: последнее, что остаётся в кадре, и есть призыв.
+          10,0 с = 300 кадров. */}
+      <Composition
+        id="GTT-CallToAction"
+        component={ChinaStories}
+        schema={chinaStoriesSchema}
+        defaultProps={{
+          footage: "local/st9-graded.mp4",
+          captionsSrc: "captions/st9.json",
+          durationSeconds: 10.0,
+          hookTop: "Программы расписаны",
+          hookBottom: "до маршрута",
+          brandMark: "GLOBAL TECH TOUR",
+          logoScale: 1.5,
+          logoSpin: 72,
+          plates: [
+            { text: "Тайминг и маршрут", at: 3.2, until: 5.7, kind: "term" as const },
+            { text: "Осталось решиться", at: 6.3, kind: "accent" as const },
+          ],
+        }}
+        durationInFrames={300}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
       {/* Reels из съёмки в Циндао: 25,5 с видео + 2,5 с концевой карточки.
           Тайминги плашек берутся из data/captions-china-expo.json. */}
       <Composition
