@@ -232,6 +232,61 @@ export const RemotionRoot: React.FC = () => {
         width={1080}
         height={1920}
       />
+      {/* Сторис про опыт. Речь идёт от общего к конкретному: стаж ->
+          какие это были встречи -> где остались связи. Плашки держатся
+          по одной: кадр тесный, стек из двух к макушке не влезает.
+          33,1 с = 992 кадра. */}
+      <Composition
+        id="GTT-Experience"
+        component={ChinaStories}
+        schema={chinaStoriesSchema}
+        defaultProps={{
+          footage: "local/st5-graded.mp4",
+          captionsSrc: "captions/st5.json",
+          durationSeconds: 33.07,
+          hookTop: "Десять лет встреч",
+          hookBottom: "с первыми лицами",
+          brandMark: "GLOBAL TECH TOUR",
+          logoScale: 1.5,
+          logoSpin: 72,
+          plates: [
+            { text: "10 лет в этом формате", at: 4.1, until: 12.6, kind: "term" as const },
+            { text: "Протокольные встречи", at: 13.1, until: 20.5, kind: "term" as const },
+            { text: "Китай · Юго-Восточная Азия", at: 24.3, kind: "accent" as const },
+          ],
+        }}
+        durationInFrames={992}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      {/* Сторис про готовые программы и базу. Самый тесный кадр из всех:
+          лицо крупное, макушка почти у верха, поэтому плашки строго по
+          одной. 24,3 с = 729 кадров. */}
+      <Composition
+        id="GTT-Programs"
+        component={ChinaStories}
+        schema={chinaStoriesSchema}
+        defaultProps={{
+          footage: "local/st6-graded.mp4",
+          captionsSrc: "captions/st6.json",
+          durationSeconds: 24.3,
+          hookTop: "Программу не пишут",
+          hookBottom: "под каждый запрос",
+          brandMark: "GLOBAL TECH TOUR",
+          logoScale: 1.5,
+          logoSpin: 72,
+          plates: [
+            { text: "Программы уже отработаны", at: 3.3, until: 12.8, kind: "term" as const },
+            { text: "≈1000 компаний в базе", at: 13.5, until: 22.1, kind: "accent" as const },
+            { text: "Топ-менеджмент напрямую", at: 22.3, kind: "accent" as const },
+          ],
+        }}
+        durationInFrames={729}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
       {/* Reels из съёмки в Циндао: 25,5 с видео + 2,5 с концевой карточки.
           Тайминги плашек берутся из data/captions-china-expo.json. */}
       <Composition
