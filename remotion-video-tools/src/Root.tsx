@@ -138,6 +138,7 @@ export const RemotionRoot: React.FC = () => {
           hookTop: "Кто учит топ-менеджеров",
           hookBottom: "Alibaba, Tencent и Baidu?",
           place: "Циндао, Китай",
+          brandMark: "GLOBAL TECH TOUR",
           ctaTitle: "Возим делегации в технологический Китай",
           ctaUrl: "globaltechtour.ru",
         }}

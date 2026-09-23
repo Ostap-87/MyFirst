@@ -15,4 +15,5 @@ export * from "./MotionTrail";
 export * from "./StepNumber";
 export * from "./PhoneMockup";
 export * from "./ChatOverlay";
+export * from "./SpinningTetra";
 // new-effect:exports:end

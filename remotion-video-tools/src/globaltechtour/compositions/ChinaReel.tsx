@@ -11,6 +11,7 @@ import {
 } from "remotion";
 import { z } from "zod";
 import { KaraokeCaptions } from "../../shared/components/KaraokeCaptions";
+import { SpinningTetra } from "../../shared/components/effects";
 import { useFormat } from "../../shared/format";
 import { fontFamily } from "../../shared/fonts";
 import theme from "../theme";
@@ -27,13 +28,20 @@ import captionsData from "../../../data/captions-china-expo.json";
  * Секунды взяты из data/captions-china-expo.json (whisper, модель small),
  * а не подобраны на глаз: сдвиг плашки на полсекунды сразу читается как брак.
  *
- * Раскладка кадра:
- *   верх справа — плашки компаний. Лицо занимает левую и центральную часть,
- *                 правый верхний угол свободен во всех четырёх моментах.
- *   верх слева  — геометка, гарамоном: рубленый шрифт рядом с ней звучит
- *                 как интерфейс, а не как подпись к месту.
- *   низ         — субтитры. Полоса на y 1440—1620 выбрана не случайно: там
- *                 вшиты чужие титры Kapwing, и подложка их закрывает.
+ * ——— Компоновка кадра ———
+ *
+ * Съёмка НЕ растянута на весь кадр, и это решает сразу три задачи.
+ *
+ * 1. Низ исходника обрезан по y=1500. Там на y 1560—1640 вшиты чужие титры
+ *    Kapwing — замерено по шести кадрам во всех частях ролика. Обрезка
+ *    убирает их совсем, поэтому не нужна маскирующая полоса размытия:
+ *    закрывать нечего.
+ * 2. Съёмка уменьшена до 76% ширины — лицо перестаёт упираться в края кадра.
+ * 3. Освободившиеся поля получают своё содержание: сверху логотип, снизу
+ *    субтитры. Субтитры больше не лежат на лице, а стоят под кадром.
+ *
+ * Фон — та же съёмка, размытая и затемнённая: чёрные поля читались бы как
+ * ошибка экспорта, а размытая подложка — как приём.
  */
 
 export const chinaReelSchema = z.object({
@@ -41,6 +49,7 @@ export const chinaReelSchema = z.object({
   hookTop: z.string().describe("Первая строка крючка"),
   hookBottom: z.string().describe("Вторая строка крючка, акцентом"),
   place: z.string().describe("Геометка: город и страна"),
+  brandMark: z.string().describe("Подпись рядом с логотипом сверху"),
   ctaTitle: z.string().describe("Заголовок концевой карточки"),
   ctaUrl: z.string().describe("Адрес сайта на концевой карточке"),
 });
@@ -63,6 +72,18 @@ const GEO_FROM = 3.56;
 const GEO_TO = 6.2;
 
 /**
+ * Доля исходного кадра, которая остаётся после обрезки низа.
+ * 1500 из 1920: ниже начинаются чужие титры.
+ */
+const KEEP = 1500 / 1920;
+
+/** Ширина съёмки в кадре, долей ширины композиции. */
+const FOOTAGE_WIDTH = 0.82;
+
+/** Верх блока со съёмкой, долей высоты композиции. */
+const FOOTAGE_TOP = 0.115;
+
+/**
  * Плашка компании: плавное проявление со сдвигом вверх.
  *
  * Плашки не сменяют друг друга, а копятся: к концу фразы весь список стоит
@@ -77,7 +98,6 @@ const CompanyPlate: React.FC<{
   const { fps } = useVideoConfig();
   const since = frame - appearAt;
 
-  // Появление плавное: 14 кадров на проявление плюс мягкий подъём.
   const enter = spring({
     frame: since,
     fps,
@@ -95,126 +115,177 @@ const CompanyPlate: React.FC<{
       style={{
         opacity,
         transform: `translateY(${(1 - enter) * fs(0.03)}px)`,
-        display: "flex",
-        alignItems: "center",
-        gap: fs(0.018),
         alignSelf: "flex-end",
         backgroundColor: "rgba(255,255,255,0.95)",
         borderLeft: `${fs(0.007)}px solid ${theme.colors.accent}`,
         borderRadius: fs(0.012),
-        padding: `${fs(0.016)}px ${fs(0.026)}px`,
+        padding: `${fs(0.015)}px ${fs(0.025)}px`,
         boxShadow: "0 6px 26px rgba(0,0,0,0.34)",
+        fontFamily: fontFamily(theme.fonts.heading),
+        fontWeight: 700,
+        fontSize: fs(0.04),
+        color: theme.colors.text,
+        whiteSpace: "nowrap",
       }}
     >
-      <span
-        style={{
-          fontFamily: fontFamily(theme.fonts.heading),
-          fontWeight: 700,
-          fontSize: fs(0.042),
-          letterSpacing: fs(-0.0006),
-          color: theme.colors.text,
-          whiteSpace: "nowrap",
-        }}
-      >
-        {name}
-      </span>
+      {name}
     </div>
   );
 };
+
+/** Логотип с подписью: шапка ролика, держится весь хронометраж. */
+const BrandMark: React.FC<{
+  readonly label: string;
+  readonly fs: (fraction: number) => number;
+}> = ({ label, fs }) => (
+  <div
+    style={{
+      display: "flex",
+      alignItems: "center",
+      gap: fs(0.02),
+      justifyContent: "center",
+    }}
+  >
+    <SpinningTetra size={fs(0.105)} degreesPerSecond={26} />
+    <span
+      style={{
+        fontFamily: fontFamily(theme.fonts.heading),
+        fontWeight: 700,
+        fontSize: fs(0.036),
+        letterSpacing: fs(0.004),
+        color: "#fff",
+        textShadow: "0 2px 14px rgba(0,0,0,0.75)",
+        whiteSpace: "nowrap",
+      }}
+    >
+      {label}
+    </span>
+  </div>
+);
 
 export const ChinaReel: React.FC<ChinaReelProps> = ({
   footage,
   hookTop,
   hookBottom,
   place,
+  brandMark,
   ctaTitle,
   ctaUrl,
 }) => {
   const frame = useCurrentFrame();
-  const { fps, durationInFrames } = useVideoConfig();
-  const { fs, vh } = useFormat();
+  const { fps, durationInFrames, width, height } = useVideoConfig();
+  const { fs } = useFormat();
 
   const footageFrames = Math.round(FOOTAGE_SECONDS * fps);
   const endCardFrom = footageFrames;
+  const onFootage = frame < endCardFrom;
 
-  // Крючок: держится две секунды и уходит, чтобы не мешать речи.
-  const hookOut = interpolate(frame, [AT(1.7, fps), AT(2.2, fps)], [1, 0], {
+  // Геометрия блока со съёмкой. Считаем в пикселях: это компоновка кадра,
+  // а не размер шрифта, и доля тут нужна один раз — на входе.
+  const boxWidth = Math.round(width * FOOTAGE_WIDTH);
+  const naturalHeight = Math.round((boxWidth * height) / width);
+  const boxHeight = Math.round(naturalHeight * KEEP);
+  const boxTop = Math.round(height * FOOTAGE_TOP);
+  const boxLeft = Math.round((width - boxWidth) / 2);
+
+  const hookIn = interpolate(frame, [0, AT(0.5, fps)], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
-  const hookIn = interpolate(frame, [0, AT(0.5, fps)], [0, 1], {
+  const hookOut = interpolate(frame, [AT(1.7, fps), AT(2.2, fps)], [1, 0], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
 
   return (
-    <AbsoluteFill style={{ backgroundColor: "#000" }}>
+    <AbsoluteFill style={{ backgroundColor: "#070A11" }}>
+      {/* Фон: та же съёмка, размытая и затемнённая. */}
+      {onFootage ? (
+        <AbsoluteFill>
+          <OffthreadVideo
+            src={staticFile(footage)}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              filter: "blur(48px) brightness(0.42) saturate(0.8)",
+              transform: "scale(1.2)",
+            }}
+            muted
+          />
+        </AbsoluteFill>
+      ) : null}
+
+      {/* Съёмка: низ обрезан вместе с чужими титрами. */}
       <Sequence durationInFrames={footageFrames}>
-        <OffthreadVideo
-          src={staticFile(footage)}
-          style={{ width: "100%", height: "100%", objectFit: "cover" }}
-        />
+        <AbsoluteFill>
+          <div
+            style={{
+              position: "absolute",
+              left: boxLeft,
+              top: boxTop,
+              width: boxWidth,
+              height: boxHeight,
+              overflow: "hidden",
+              borderRadius: fs(0.022),
+              boxShadow: "0 18px 60px rgba(0,0,0,0.5)",
+            }}
+          >
+            <OffthreadVideo
+              src={staticFile(footage)}
+              style={{
+                width: boxWidth,
+                height: naturalHeight,
+                objectFit: "cover",
+                display: "block",
+              }}
+            />
+          </div>
+        </AbsoluteFill>
       </Sequence>
 
-      {/* Затемнение сверху: белый текст на небе иначе не читается. */}
-      <AbsoluteFill
-        style={{
-          background:
-            "linear-gradient(to bottom, rgba(0,0,0,0.58) 0%, rgba(0,0,0,0.18) 22%, rgba(0,0,0,0) 38%)",
-          opacity: frame < endCardFrom ? 1 : 0,
-        }}
-      />
-
-      {/*
-        Низ кадра. Две накладки, и вторая — не украшение.
-
-        Титры Kapwing вшиты в пиксели исходника на y 1540—1600 (замерено по
-        кадру), перекрасить их нельзя. Размытие стирает их в кашу, затемнение
-        сверху добавляет контраста нашему тексту. Края растушёваны маской,
-        иначе полоса читается как заплатка.
-      */}
-      <AbsoluteFill
-        style={{
-          backdropFilter: "blur(26px)",
-          WebkitBackdropFilter: "blur(26px)",
-          maskImage:
-            "linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 17%, rgba(0,0,0,0) 30%)",
-          WebkitMaskImage:
-            "linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 17%, rgba(0,0,0,0) 30%)",
-          opacity: frame < endCardFrom ? 1 : 0,
-        }}
-      />
-      <AbsoluteFill
-        style={{
-          background:
-            "linear-gradient(to top, rgba(0,0,0,0.90) 0%, rgba(0,0,0,0.66) 16%, rgba(0,0,0,0) 34%)",
-          opacity: frame < endCardFrom ? 1 : 0,
-        }}
-      />
+      {/* ——— Шапка: логотип ——— */}
+      {onFootage ? (
+        <AbsoluteFill
+          style={{
+            justifyContent: "flex-start",
+            paddingTop: Math.round(height * 0.052),
+          }}
+        >
+          <BrandMark label={brandMark} fs={fs} />
+        </AbsoluteFill>
+      ) : null}
 
       {/* ——— Крючок ——— */}
       <Sequence durationInFrames={AT(2.3, fps)}>
         <AbsoluteFill
           style={{
             opacity: hookIn * hookOut,
-            paddingTop: vh(0.13),
-            paddingLeft: fs(0.07),
-            paddingRight: fs(0.07),
+            justifyContent: "flex-start",
+            paddingTop: boxTop + Math.round(height * 0.03),
+            paddingLeft: fs(0.14),
+            paddingRight: fs(0.14),
           }}
         >
+          {/* Подложка обязательна: в первых кадрах за текстом светлый
+              дорожный знак, и белое по белому не читается вовсе. */}
           <div
             style={{
+              backgroundColor: "rgba(7,10,17,0.72)",
+              borderRadius: fs(0.022),
+              padding: `${fs(0.035)}px ${fs(0.04)}px`,
+              backdropFilter: "blur(14px)",
+              WebkitBackdropFilter: "blur(14px)",
               fontFamily: fontFamily(theme.fonts.heading),
               fontWeight: 700,
-              fontSize: fs(0.072),
-              lineHeight: 1.14,
-              letterSpacing: fs(-0.0018),
+              fontSize: fs(0.062),
+              lineHeight: 1.16,
+              letterSpacing: fs(-0.0016),
               color: "#fff",
-              textShadow: "0 2px 22px rgba(0,0,0,0.62)",
             }}
           >
             {hookTop}
-            <span style={{ display: "block", color: "#8FB6FF" }}>
+            <span style={{ display: "block", color: "#8FD4FF" }}>
               {hookBottom}
             </span>
           </div>
@@ -226,44 +297,42 @@ export const ChinaReel: React.FC<ChinaReelProps> = ({
         from={AT(GEO_FROM, fps)}
         durationInFrames={AT(GEO_TO - GEO_FROM, fps)}
       >
-        <GeoPlate place={place} fs={fs} vh={vh} />
+        <GeoPlate place={place} fs={fs} top={boxTop + Math.round(height * 0.035)} left={boxLeft + fs(0.04)} />
       </Sequence>
 
-      {/* ——— Плашки компаний: верх справа, копятся ——— */}
-      <AbsoluteFill
-        style={{
-          paddingTop: vh(0.13),
-          paddingRight: fs(0.07),
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "flex-end",
-          gap: fs(0.016),
-          opacity: frame < endCardFrom ? 1 : 0,
-        }}
-      >
-        {COMPANIES.map((company) =>
-          frame >= AT(company.at, fps) ? (
-            <CompanyPlate
-              key={company.name}
-              name={company.name}
-              appearAt={AT(company.at, fps)}
-              fs={fs}
-            />
-          ) : null,
-        )}
-      </AbsoluteFill>
-
-      {/* ——— Субтитры ——— */}
-      <Sequence durationInFrames={footageFrames}>
-        {/* KaraokeCaptions не позиционирует себя сам — иначе строка уезжает
-            к верхней кромке. Прижимаем к низу так, чтобы текст встал ровно
-            на полосу чужих титров и закрыл её собой. */}
+      {/* ——— Плашки компаний: верх справа внутри съёмки ——— */}
+      {onFootage ? (
         <AbsoluteFill
           style={{
-            justifyContent: "flex-end",
-            paddingBottom: vh(0.15),
-            paddingLeft: fs(0.07),
-            paddingRight: fs(0.07),
+            paddingTop: boxTop + Math.round(height * 0.035),
+            paddingRight: width - boxLeft - boxWidth + fs(0.035),
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-end",
+            gap: fs(0.015),
+          }}
+        >
+          {COMPANIES.map((company) =>
+            frame >= AT(company.at, fps) ? (
+              <CompanyPlate
+                key={company.name}
+                name={company.name}
+                appearAt={AT(company.at, fps)}
+                fs={fs}
+              />
+            ) : null,
+          )}
+        </AbsoluteFill>
+      ) : null}
+
+      {/* ——— Субтитры: под съёмкой, на лицо не налезают ——— */}
+      <Sequence durationInFrames={footageFrames}>
+        <AbsoluteFill
+          style={{
+            justifyContent: "flex-start",
+            paddingTop: boxTop + boxHeight + Math.round(height * 0.018),
+            paddingLeft: fs(0.08),
+            paddingRight: fs(0.08),
           }}
         >
           <KaraokeCaptions
@@ -273,13 +342,16 @@ export const ChinaReel: React.FC<ChinaReelProps> = ({
             highlight="color"
             captionStyle="shadow"
             font="Onest"
-            fontSizeFraction={0.052}
+            fontSizeFraction={0.05}
           />
         </AbsoluteFill>
       </Sequence>
 
       {/* ——— Концевая карточка ——— */}
-      <Sequence from={endCardFrom} durationInFrames={durationInFrames - endCardFrom}>
+      <Sequence
+        from={endCardFrom}
+        durationInFrames={durationInFrames - endCardFrom}
+      >
         <EndCard title={ctaTitle} url={ctaUrl} fs={fs} />
       </Sequence>
     </AbsoluteFill>
@@ -290,8 +362,9 @@ export const ChinaReel: React.FC<ChinaReelProps> = ({
 const GeoPlate: React.FC<{
   readonly place: string;
   readonly fs: (fraction: number) => number;
-  readonly vh: (fraction: number) => number;
-}> = ({ place, fs, vh }) => {
+  readonly top: number;
+  readonly left: number;
+}> = ({ place, fs, top, left }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
@@ -307,7 +380,7 @@ const GeoPlate: React.FC<{
   });
 
   return (
-    <AbsoluteFill style={{ paddingTop: vh(0.135), paddingLeft: fs(0.07) }}>
+    <AbsoluteFill style={{ paddingTop: top, paddingLeft: left }}>
       <div
         style={{
           opacity,
@@ -318,33 +391,50 @@ const GeoPlate: React.FC<{
           gap: fs(0.01),
         }}
       >
-        <span
+        {/* Гарамон тонкий по рисунку: на пересвеченном небе он пропадал
+            даже с двойной тенью. Плашка решает это честнее. */}
+        <div
           style={{
-            fontFamily: fontFamily("Cormorant Garamond"),
-            fontWeight: 500,
-            fontSize: fs(0.068),
-            letterSpacing: fs(0.007),
-            color: "#fff",
-            // Небо в кадре пересвечено: одной мягкой тени тонким засечкам мало.
-            textShadow:
-              "0 2px 10px rgba(0,0,0,0.85), 0 0 34px rgba(0,0,0,0.65)",
-            whiteSpace: "nowrap",
+            backgroundColor: "rgba(7,10,17,0.6)",
+            backdropFilter: "blur(10px)",
+            WebkitBackdropFilter: "blur(10px)",
+            borderRadius: fs(0.012),
+            padding: `${fs(0.014)}px ${fs(0.026)}px ${fs(0.018)}px`,
+            display: "flex",
+            flexDirection: "column",
+            gap: fs(0.012),
+            alignItems: "flex-start",
           }}
         >
-          {place}
-        </span>
-        <span
-          style={{
-            width: fs(0.13),
-            height: fs(0.003),
-            backgroundColor: theme.colors.accent,
-          }}
-        />
+          <span
+            style={{
+              fontFamily: fontFamily("Cormorant Garamond"),
+              fontWeight: 500,
+              fontSize: fs(0.06),
+              letterSpacing: fs(0.007),
+              color: "#fff",
+              whiteSpace: "nowrap",
+            }}
+          >
+            {place}
+          </span>
+          <span
+            style={{
+              width: "100%",
+              height: fs(0.0035),
+              backgroundColor: "#61CBFA",
+            }}
+          />
+        </div>
       </div>
     </AbsoluteFill>
   );
 };
 
+/**
+ * Концевая карточка: белый фон, фирменный синий текст, вращающийся логотип.
+ * Светлый финал после тёмного ролика работает как точка, а не как обрыв.
+ */
 const EndCard: React.FC<{
   readonly title: string;
   readonly url: string;
@@ -363,10 +453,10 @@ const EndCard: React.FC<{
   return (
     <AbsoluteFill
       style={{
-        backgroundColor: "#0A0E16",
+        backgroundColor: "#FFFFFF",
         alignItems: "center",
         justifyContent: "center",
-        gap: fs(0.05),
+        gap: fs(0.045),
         paddingLeft: fs(0.1),
         paddingRight: fs(0.1),
         opacity: interpolate(frame, [0, 10], [0, 1], {
@@ -375,27 +465,33 @@ const EndCard: React.FC<{
         }),
       }}
     >
+      <div style={{ transform: `scale(${0.85 + enter * 0.15})` }}>
+        <SpinningTetra size={fs(0.3)} degreesPerSecond={34} />
+      </div>
+
       <div
         style={{
           transform: `translateY(${(1 - enter) * fs(0.035)}px)`,
           fontFamily: fontFamily(theme.fonts.heading),
           fontWeight: 700,
-          fontSize: fs(0.078),
+          fontSize: fs(0.076),
           lineHeight: 1.16,
           letterSpacing: fs(-0.002),
-          color: "#fff",
+          color: theme.colors.accent,
           textAlign: "center",
         }}
       >
         {title}
       </div>
+
       <div
         style={{
           fontFamily: fontFamily("Cormorant Garamond"),
           fontWeight: 500,
-          fontSize: fs(0.046),
+          fontSize: fs(0.048),
           letterSpacing: fs(0.005),
-          color: "#8FB6FF",
+          color: theme.colors.accent,
+          opacity: 0.82,
         }}
       >
         {url}
