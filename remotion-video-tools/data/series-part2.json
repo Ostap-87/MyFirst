@@ -1,0 +1,14 @@
+{
+  "out": "out/series-part2-what.mp4",
+  "fade": 0.35,
+  "why": "Часть 2 — что готово и что внутри программы. Самая длинная: здесь все ответы на «а конкретно что».",
+  "clips": [
+    "out/stories-6-programs.mp4",
+    "out/stories-10-directions.mp4",
+    "out/stories-11-industries.mp4",
+    "out/stories-12-closeddoors.mp4",
+    "out/stories-8-geography.mp4",
+    "out/stories-15-campus.mp4",
+    "out/stories-13-fivedays.mp4"
+  ]
+}
