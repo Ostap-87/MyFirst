@@ -1,0 +1,15 @@
+{
+  "out": "out/series-gtt-china.mp4",
+  "fade": 0.35,
+  "why": "Порядок смысловой: представление -> что за формат -> чем он не является -> кто ведёт -> что готово -> где ещё -> как быстро -> призыв. Первый ролик про Циндао в сборку не входит: это второй дубль четвёртого, та же речь теми же словами.",
+  "clips": [
+    "out/stories-4-invite.mp4",
+    "out/stories-3-benchmark.mp4",
+    "out/stories-2-china.mp4",
+    "out/stories-5-experience.mp4",
+    "out/stories-6-programs.mp4",
+    "out/stories-8-geography.mp4",
+    "out/stories-7-speed.mp4",
+    "out/stories-9-cta.mp4"
+  ]
+}

@@ -75,6 +75,7 @@ Remotion-проект (React + TypeScript) для трёх независимы�
 | `npm run render-batch -- --brand gtt --limit 3`                                 | Пакетный рендер вертикальных роликов по постам (`--dry-run` — только план)     |
 | `npm run transcribe -- --audio <файл>`                                          | Пословные субтитры из аудио локальным whisper.cpp                              |
 | `npm run tighten -- --video <файл>`                                             | Режет паузы и мычание (`--dry-run` — только план)                              |
+| `npm run join -- --plan data/series.json`                                       | Склеивает готовые ролики в один с переходами (`--dry-run` — только план)       |
 | `npm run make-sfx`                                                              | Генерирует UI-звуки в `public/audio/sfx` (ffmpeg, без лицензий)                |
 | `npm run carousel -- --slug <slug>`                                             | Карусель Instagram в PNG: из поста контент-плана или из файла слайдов          |
 | `npm run q:add -- --channel instagram --brand aura --carousel <имя> --at "..."` | Кладёт готовый контент в очередь канала                                        |

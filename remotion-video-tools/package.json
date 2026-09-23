@@ -52,7 +52,8 @@
     "publish": "node scripts/publish-instagram.mjs",
     "q:add": "node scripts/queue-add.mjs",
     "q": "node scripts/queue-add.mjs --list",
-    "tighten": "node scripts/tighten.mjs"
+    "tighten": "node scripts/tighten.mjs",
+    "join": "node scripts/join.mjs"
   },
   "sideEffects": [
     "*.css"
