@@ -215,6 +215,7 @@ export const RemotionRoot: React.FC = () => {
           logoScale: 1.5,
           logoSpin: 72,
           hasBurnedCaptions: false,
+          platform: "stories" as const,
           showEndCard: false,
           ctaTitle: "Возим делегации в технологический Китай",
           ctaUrl: "globaltechtour.ru",

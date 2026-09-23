@@ -64,6 +64,12 @@ export const chinaReelSchema = z.object({
     .describe(
       "У исходника есть вшитые чужие титры — включить маскирующую полосу",
     ),
+  platform: z
+    .enum(["reels", "stories"])
+    .describe(
+      "Куда идёт ролик: от этого зависит, где стоят элементы. " +
+        "В сторис снизу строка ответа выше подписи Reels, а справа нет кнопок.",
+    ),
   showEndCard: z
     .boolean()
     .describe("Показывать концевую карточку с призывом"),
@@ -182,6 +188,7 @@ export const ChinaReel: React.FC<ChinaReelProps> = ({
   logoScale,
   logoSpin,
   hasBurnedCaptions,
+  platform,
   showEndCard,
   ctaTitle,
   ctaUrl,
@@ -201,6 +208,21 @@ export const ChinaReel: React.FC<ChinaReelProps> = ({
   const videoWidth = Math.round(width * ZOOM);
   const videoHeight = Math.round((videoWidth * height) / width);
   const videoLeft = Math.round((width - videoWidth) / 2);
+
+  /**
+   * Раскладка зависит от площадки.
+   *
+   * Сторис: сверху полоска прогресса и профиль (до ~140 px), снизу строка
+   * ответа с ~1670 px. Reels: сверху почти чисто, зато снизу подпись с
+   * ~1600 px и справа колонка кнопок.
+   *
+   * Отсюда и разница: в сторис всё сдвигается вниз от верха и поднимается
+   * от низа, а в Reels наоборот — верх свободнее, низ теснее.
+   */
+  const layout =
+    platform === "stories"
+      ? { logoTop: 0.135, marksTop: 0.225, captionsBottom: 0.16 }
+      : { logoTop: 0.052, marksTop: 0.155, captionsBottom: 0.115 };
 
   const hookIn = interpolate(frame, [0, AT(0.5, fps)], [0, 1], {
     extrapolateLeft: "clamp",
@@ -286,7 +308,7 @@ export const ChinaReel: React.FC<ChinaReelProps> = ({
         <AbsoluteFill
           style={{
             justifyContent: "flex-start",
-            paddingTop: Math.round(height * 0.052),
+            paddingTop: Math.round(height * layout.logoTop),
           }}
         >
           <BrandMark
@@ -304,7 +326,7 @@ export const ChinaReel: React.FC<ChinaReelProps> = ({
           style={{
             opacity: hookIn * hookOut,
             justifyContent: "flex-start",
-            paddingTop: Math.round(height * 0.17),
+            paddingTop: Math.round(height * layout.marksTop),
             paddingLeft: fs(0.09),
             paddingRight: fs(0.09),
           }}
@@ -342,7 +364,7 @@ export const ChinaReel: React.FC<ChinaReelProps> = ({
         <GeoPlate
           place={place}
           fs={fs}
-          top={Math.round(height * 0.155)}
+          top={Math.round(height * layout.marksTop)}
           left={fs(0.07)}
         />
       </Sequence>
@@ -351,7 +373,7 @@ export const ChinaReel: React.FC<ChinaReelProps> = ({
       {onFootage ? (
         <AbsoluteFill
           style={{
-            paddingTop: Math.round(height * 0.155),
+            paddingTop: Math.round(height * layout.marksTop),
             paddingRight: fs(0.07),
             display: "flex",
             flexDirection: "column",
@@ -378,7 +400,7 @@ export const ChinaReel: React.FC<ChinaReelProps> = ({
         <AbsoluteFill
           style={{
             justifyContent: "flex-end",
-            paddingBottom: Math.round(height * 0.115),
+            paddingBottom: Math.round(height * layout.captionsBottom),
             paddingLeft: fs(0.08),
             paddingRight: fs(0.08),
           }}

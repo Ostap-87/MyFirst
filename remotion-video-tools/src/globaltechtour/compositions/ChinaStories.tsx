@@ -74,6 +74,21 @@ export const chinaStoriesSchema = z.object({
 export type ChinaStoriesProps = z.infer<typeof chinaStoriesSchema>;
 type Plate = z.infer<typeof plateSchema>;
 
+/**
+ * Геометрия сторис. Числа — доли высоты кадра, и держать их в одном месте
+ * обязательно: раньше логотип и плашки правились порознь, логотип уехал
+ * вниз, а плашки остались на своей высоте и наложились на подпись бренда.
+ *
+ * LOGO_TOP        — ниже строки профиля сторис (аватар + ник + время).
+ * MARKS_TOP       — ниже логотипа со всей его высотой; крючок и плашки
+ *                   стоят на одном уровне, одновременно их не бывает.
+ * CAPTIONS_BOTTOM — выше строки ответа; она в сторис выше, чем подпись
+ *                   в Reels, поэтому субтитры поднимаются.
+ */
+const LOGO_TOP = 0.135;
+const MARKS_TOP = 0.225;
+const CAPTIONS_BOTTOM = 0.16;
+
 const AT = (seconds: number, fps: number) => Math.round(seconds * fps);
 
 const PlateView: React.FC<{
@@ -215,7 +230,7 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
       <AbsoluteFill
         style={{
           justifyContent: "flex-start",
-          paddingTop: Math.round(height * 0.06),
+          paddingTop: Math.round(height * LOGO_TOP),
         }}
       >
         <div
@@ -252,7 +267,7 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
           style={{
             opacity: hookIn * hookOut,
             justifyContent: "flex-start",
-            paddingTop: Math.round(height * 0.155),
+            paddingTop: Math.round(height * MARKS_TOP),
             paddingLeft: fs(0.08),
             paddingRight: fs(0.08),
           }}
@@ -284,7 +299,9 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
       <AbsoluteFill
         style={{
           justifyContent: "flex-start",
-          paddingTop: Math.round(height * 0.155),
+          // Тот же уровень, что и у крючка: они никогда не видны
+          // одновременно, зато оба гарантированно ниже логотипа.
+          paddingTop: Math.round(height * MARKS_TOP),
           paddingLeft: fs(0.08),
           paddingRight: fs(0.08),
           display: "flex",
@@ -308,7 +325,7 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
         <AbsoluteFill
           style={{
             justifyContent: "flex-end",
-            paddingBottom: Math.round(height * 0.16),
+            paddingBottom: Math.round(height * CAPTIONS_BOTTOM),
             paddingLeft: fs(0.08),
             paddingRight: fs(0.08),
           }}
