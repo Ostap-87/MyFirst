@@ -29,7 +29,10 @@ export const elementsLabDefaults: ElementsLabProps = { which: "bars" };
 export const ElementsLab: React.FC<ElementsLabProps> = ({ which }) => (
   <AbsoluteFill
     style={{
-      backgroundColor: "#0E1117",
+      // Светлый: элементы data рассчитаны на светлый фон, и не все рисуют
+      // свою подложку. У счётчика её нет вовсе, а текст у него #171717 —
+      // на тёмном стенде он просто исчезал.
+      backgroundColor: "#F4F5F7",
       alignItems: "center",
       justifyContent: "center",
     }}
