@@ -9,7 +9,9 @@ import { sampleCaptions } from "./sample";
 import { REEL } from "./styles";
 
 // Длительность: поменяй DURATION или рендери с флагом --frames=0-N.
-const DURATION = 30 * REEL.fps;
+// = длительность take.mp4: 27,646 с. Композиция длиннее дубля дала бы
+// хвост со студией без спикера.
+const DURATION = Math.ceil(27.646 * REEL.fps);
 
 export const RemotionRoot: React.FC = () => (
   <>
@@ -36,12 +38,26 @@ export const RemotionRoot: React.FC = () => (
       defaultProps={{
         stillSrc: "studio/night.png",
         loopSrc: "studio/night.mp4",
-        loopClipSec: 8,
+        // Реальная длина лупа по ffprobe — 8,04 с, а не 8: при восьми на стыке
+        // каждого круга проскакивает лишний кадр.
+        loopClipSec: 8.04,
         windowMaskSrc: "studio/night-mask.png",
         speakerSrc: "speaker-keyed.webm",
+        // Звук отдельной дорожкой: после npm run voice, −16 LUFS вместо −29,6
+        // в исходнике. Видео с альфой при этом глушится.
+        audioSrc: "speaker-keyed-audio.m4a",
         speakerGrade: "contrast(1.05) saturate(1.02) sepia(0.12) brightness(0.95)",
         rimLight: "rgba(255, 180, 110, 0.35)",
-        deskTopPct: 0.88,
+        // Посадка под дубль 2026-09-24 (селфи, замер по сетке: макушка 41%,
+        // глаза 54%, подбородок 72%). Масштаб считается от нижнего края кадра:
+        // при 1,0 и сдвиге −0,20 глаза встают на 34%, макушка на 21%, а низ
+        // тела — ровно на край стола. Вправо на 0,08 — чтобы голова ушла от
+        // надписи на стене и встала на фоне окна.
+        speakerScale: 1.0,
+        speakerOffsetX: 0.08,
+        speakerOffsetY: -0.2,
+        // Край стола на картинке — 80%, а не 88%: ниже начинается столешница.
+        deskTopPct: 0.8,
         debug: "none" as const,
       }}
     />
