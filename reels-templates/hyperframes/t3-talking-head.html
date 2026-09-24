@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<title>T3 — Говорящая голова + реквизит</title>
+<style>
+@font-face{font-family:"CaptionFont";src:url("assets/fonts/Nunito-Black.ttf") format("truetype");font-weight:900}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;background:#000;overflow:hidden}
+#root{position:relative;width:1080px;height:1920px;overflow:hidden;background:#000}
+.cap{position:absolute;left:50%;top:53%;width:86%;text-align:center;opacity:0;z-index:50;
+  font:900 68px/1.12 "CaptionFont","Nunito",sans-serif;letter-spacing:-.5px;color:#fff;
+  text-shadow:5px 0 0 #15110E,4.3px 2.5px 0 #15110E,2.5px 4.3px 0 #15110E,0 5px 0 #15110E,-2.5px 4.3px 0 #15110E,-4.3px 2.5px 0 #15110E,-5px 0 0 #15110E,-4.3px -2.5px 0 #15110E,-2.5px -4.3px 0 #15110E,0 -5px 0 #15110E,2.5px -4.3px 0 #15110E,4.3px -2.5px 0 #15110E,0 6px 18px rgba(0,0,0,.45)}
+#stage{position:absolute;inset:0;transform-origin:50% 35%}
+#speaker{width:1080px;height:1920px;object-fit:cover;filter:contrast(1.06) saturate(1.08) sepia(.06)}
+#vignette{position:absolute;inset:0;z-index:5;background:radial-gradient(ellipse at 50% 40%,rgba(0,0,0,0) 55%,rgba(0,0,0,.45) 100%)}
+.insert{position:absolute;inset:0;z-index:6;width:1080px;height:1920px;object-fit:cover}
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="t3-head" data-start="0" data-duration="12" data-width="1080" data-height="1920">
+  <div id="stage">
+    <video id="speaker" class="clip" data-start="0" data-duration="12" data-track-index="0" src="assets/speaker.mp4" muted playsinline></video>
+  </div>
+  <audio id="voice" class="clip" data-start="0" data-duration="12" data-track-index="1" src="assets/speaker.mp4"></audio>
+  <div id="vignette"></div>
+  <video id="ins1" class="clip insert" data-start="5" data-duration="1.5" data-track-index="2" src="assets/paper-closeup.mp4" muted playsinline></video>
+</div>
+<script>
+// ===== СУБТИТРЫ =====
+// WORDS: [слово, начало(с), конец(с)] — вставь из captions.json (скрипт words-from-captions ниже в README)
+function paginate(words, maxWords = 4, maxGap = 0.35, maxDur = 1.4) {
+  const pages = []; let cur = null;
+  for (const [w, s, e] of words) {
+    if (!cur || cur.words.length >= maxWords || s - cur.end > maxGap || e - cur.start > maxDur) {
+      cur = { words: [], start: s, end: e }; pages.push(cur);
+    }
+    cur.words.push(w.replace(/[.,!?…:;«»"]/g, "")); cur.end = e;
+  }
+  return pages;
+}
+function addCaptions(tl, words) {
+  const root = document.getElementById("root");
+  paginate(words).forEach((p, i, arr) => {
+    const el = document.createElement("div");
+    el.className = "cap"; el.textContent = p.words.join(" "); root.appendChild(el);
+    gsap.set(el, { xPercent: -50, yPercent: -50 });
+    const end = arr[i + 1] ? Math.min(arr[i + 1].start, p.end + 0.25) : p.end + 0.25;
+    tl.set(el, { opacity: 1 }, p.start)
+      .fromTo(el, { scale: 0.88 }, { scale: 1, duration: 0.18, ease: "back.out(2.5)" }, p.start)
+      .set(el, { opacity: 0 }, end);
+  });
+}
+const DEMO_WORDS = "как только появился этот вид спорта китайцы буквально с ума сходят"
+  .split(" ").map((w, i) => [w, 0.3 + i * 0.38, 0.3 + (i + 1) * 0.38]);
+const COMP = "t3-head", DURATION = 12;
+// панч-ины: жёсткий «скачок» масштаба на ключевой фразе; originY 0.75 = наезд на лист на столе
+const PUNCH_INS = [ { from: 2.4, to: 4.2, scale: 1.18, originY: 0.30 }, { from: 7.0, to: 8.2, scale: 1.25, originY: 0.75 } ];
+const tl = gsap.timeline({ paused: true });
+tl.fromTo("#speaker", { scale: 1 }, { scale: 1.05, duration: DURATION, ease: "none", transformOrigin: "50% 35%" }, 0); // дрейф
+PUNCH_INS.forEach(p => {
+  tl.set("#stage", { scale: p.scale, transformOrigin: "50% " + p.originY * 100 + "%" }, p.from)
+    .set("#stage", { scale: 1 }, p.to);
+});
+tl.fromTo("#ins1", { scale: 1 }, { scale: 1.08, duration: 1.5, ease: "none" }, 5);
+addCaptions(tl, DEMO_WORDS);
+tl.set({}, {}, DURATION);
+window.__timelines = window.__timelines || {};
+window.__timelines[COMP] = tl;
+</script>
+</body>
+</html>

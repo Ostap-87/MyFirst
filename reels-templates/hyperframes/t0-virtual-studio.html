@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<title>T0 — Виртуальная студия</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;background:#000;overflow:hidden}
+#root{position:relative;width:1080px;height:1920px;overflow:hidden;background:#000}
+.full{position:absolute;left:0;top:0;width:1080px;height:1920px;object-fit:cover}
+#bg{filter:blur(1.5px);transform:scale(1.02)}
+/* окно: луп виден только через маску (PNG из window-mask-from-loop.py) */
+#loopA,#loopB{-webkit-mask-image:url("assets/studio/night-mask.png");mask-image:url("assets/studio/night-mask.png");
+  -webkit-mask-size:100% 100%;mask-size:100% 100%;filter:blur(1.5px);transform:scale(1.02)}
+#speaker{transform-origin:50% 100%;transform:translateY(4%);
+  filter:contrast(1.05) saturate(1.02) sepia(.12) brightness(.95) drop-shadow(0 0 10px rgba(255,180,110,.35)) drop-shadow(0 20px 40px rgba(0,0,0,.45))}
+/* стол поверх спикера: нижние 12% кадра из того же PNG */
+#desk{-webkit-mask-image:linear-gradient(to bottom,transparent 0,transparent 87.6%,#000 88.4%);
+  mask-image:linear-gradient(to bottom,transparent 0,transparent 87.6%,#000 88.4%);filter:blur(1.5px);transform:scale(1.02)}
+#vignette{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 42%,rgba(0,0,0,0) 58%,rgba(0,0,0,.38) 100%)}
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="t0-studio" data-start="0" data-duration="16" data-width="1080" data-height="1920">
+  <img id="bg" class="full" src="assets/studio/night.png" />
+  <!-- два экземпляра лупа по 8 с внахлёст на 0,6 с — стык закрыт кроссфейдом -->
+  <video id="loopA" class="clip full" data-start="0" data-duration="8" data-track-index="1" src="assets/studio/night.mp4" muted playsinline></video>
+  <video id="loopB" class="clip full" data-start="7.4" data-duration="8" data-track-index="2" src="assets/studio/night.mp4" muted playsinline></video>
+  <video id="speaker" class="clip full" data-start="0" data-duration="16" data-track-index="3" src="assets/speaker-keyed.webm" muted playsinline></video>
+  <audio id="voice" class="clip" data-start="0" data-duration="16" data-track-index="4" src="assets/speaker-audio.m4a"></audio>
+  <img id="desk" class="full" src="assets/studio/night.png" />
+  <div id="vignette"></div>
+</div>
+<script>
+const COMP = "t0-studio", DURATION = 16;
+const tl = gsap.timeline({ paused: true });
+tl.fromTo("#loopB", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "none" }, 7.4);
+// для роликов длиннее 16 с добавь loopC (data-start 14.8) и т.д. — шаг 7.4 с
+tl.set({}, {}, DURATION);
+window.__timelines = window.__timelines || {};
+window.__timelines[COMP] = tl;
+</script>
+</body>
+</html>

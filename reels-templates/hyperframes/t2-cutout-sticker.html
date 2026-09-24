@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<title>T2 — Спикер-стикер поверх B-roll</title>
+<style>
+@font-face{font-family:"CaptionFont";src:url("assets/fonts/Nunito-Black.ttf") format("truetype");font-weight:900}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;background:#000;overflow:hidden}
+#root{position:relative;width:1080px;height:1920px;overflow:hidden;background:#000}
+.cap{position:absolute;left:50%;top:53%;width:86%;text-align:center;opacity:0;z-index:50;
+  font:900 68px/1.12 "CaptionFont","Nunito",sans-serif;letter-spacing:-.5px;color:#fff;
+  text-shadow:5px 0 0 #15110E,4.3px 2.5px 0 #15110E,2.5px 4.3px 0 #15110E,0 5px 0 #15110E,-2.5px 4.3px 0 #15110E,-4.3px 2.5px 0 #15110E,-5px 0 0 #15110E,-4.3px -2.5px 0 #15110E,-2.5px -4.3px 0 #15110E,0 -5px 0 #15110E,2.5px -4.3px 0 #15110E,4.3px -2.5px 0 #15110E,0 6px 18px rgba(0,0,0,.45)}
+.bg{position:absolute;inset:0;width:1080px;height:1920px;object-fit:cover}
+#shade{position:absolute;inset:0;z-index:5;
+  background:linear-gradient(to bottom,rgba(0,0,0,.15) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,0) 55%,rgba(0,0,0,.4) 100%)}
+/* ширина 90%, уходит на 17% за правый край и на 29% за нижний */
+#cutout{position:absolute;z-index:10;width:972px;right:-184px;bottom:-557px;transform-origin:50% 100%;
+  filter:url(#sticker) drop-shadow(0 18px 30px rgba(0,0,0,.5))}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+  <filter id="sticker" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
+    <feComponentTransfer in="SourceAlpha" result="hard"><feFuncA type="discrete" tableValues="0 1"/></feComponentTransfer>
+    <feMorphology in="hard" operator="dilate" radius="12" result="dilated"/>
+    <feFlood flood-color="#fff" result="flood"/>
+    <feComposite in="flood" in2="dilated" operator="in" result="outline"/>
+    <feMerge><feMergeNode in="outline"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+</defs></svg>
+<div id="root" data-composition-id="t2-cutout" data-start="0" data-duration="10" data-width="1080" data-height="1920">
+  <video id="bg1" class="clip bg" data-start="0" data-duration="5" data-track-index="0" src="assets/broll-02.mp4" muted playsinline></video>
+  <video id="bg2" class="clip bg" data-start="5" data-duration="5" data-track-index="1" src="assets/broll-03.mp4" muted playsinline></video>
+  <div id="shade"></div>
+  <video id="cutout" class="clip" data-start="0" data-duration="10" data-track-index="2" src="assets/cutout.webm" muted playsinline></video>
+  <audio id="voice" class="clip" data-start="0" data-duration="10" data-track-index="3" src="assets/cutout-audio.m4a"></audio>
+</div>
+<script>
+// ===== СУБТИТРЫ =====
+// WORDS: [слово, начало(с), конец(с)] — вставь из captions.json (скрипт words-from-captions ниже в README)
+function paginate(words, maxWords = 4, maxGap = 0.35, maxDur = 1.4) {
+  const pages = []; let cur = null;
+  for (const [w, s, e] of words) {
+    if (!cur || cur.words.length >= maxWords || s - cur.end > maxGap || e - cur.start > maxDur) {
+      cur = { words: [], start: s, end: e }; pages.push(cur);
+    }
+    cur.words.push(w.replace(/[.,!?…:;«»"]/g, "")); cur.end = e;
+  }
+  return pages;
+}
+function addCaptions(tl, words) {
+  const root = document.getElementById("root");
+  paginate(words).forEach((p, i, arr) => {
+    const el = document.createElement("div");
+    el.className = "cap"; el.textContent = p.words.join(" "); root.appendChild(el);
+    gsap.set(el, { xPercent: -50, yPercent: -50 });
+    const end = arr[i + 1] ? Math.min(arr[i + 1].start, p.end + 0.25) : p.end + 0.25;
+    tl.set(el, { opacity: 1 }, p.start)
+      .fromTo(el, { scale: 0.88 }, { scale: 1, duration: 0.18, ease: "back.out(2.5)" }, p.start)
+      .set(el, { opacity: 0 }, end);
+  });
+}
+const DEMO_WORDS = "как только появился этот вид спорта китайцы буквально с ума сходят"
+  .split(" ").map((w, i) => [w, 0.3 + i * 0.38, 0.3 + (i + 1) * 0.38]);
+const COMP = "t2-cutout", DURATION = 10;
+const tl = gsap.timeline({ paused: true });
+// «наклейка» выезжает снизу с лёгким поворотом
+tl.fromTo("#cutout", { yPercent: 110, rotation: 6 }, { yPercent: 0, rotation: 0, duration: 0.6, ease: "back.out(1.4)" }, 0);
+tl.fromTo("#bg1", { scale: 1 }, { scale: 1.08, duration: 5, ease: "none" }, 0)
+  .fromTo("#bg2", { scale: 1 }, { scale: 1.08, duration: 5, ease: "none" }, 5);
+addCaptions(tl, DEMO_WORDS);
+tl.set({}, {}, DURATION);
+window.__timelines = window.__timelines || {};
+window.__timelines[COMP] = tl;
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+# Зависимости и сборка
+remotion/node_modules/
+remotion/out/
+
+# Ассеты студии: 37 МБ, скачиваются по ссылкам из CLAUDE.md, шаг 2.
+# Маски строятся из лупов скриптом, шаг 6.
+remotion/public/studio/
+
+# Материал пользователя: дубль, B-roll, скрины и всё, что из них сделано.
+# Тяжёлое и чужое в репозиторий не кладём — как public/local в соседнем проекте.
+remotion/public/take.mp4
+remotion/public/broll/
+remotion/public/screens/
+remotion/public/speaker-keyed*
+remotion/public/studio-*.mp4
+remotion/public/captions.json
+remotion/public/edit.json

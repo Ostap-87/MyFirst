@@ -1,0 +1,31 @@
+{
+  "durationMs": 32000,
+  "speakerSrc": "studio-night.mp4",
+  "gradeSpeaker": false,
+  "cutoutSrc": "speaker-keyed.webm",
+  "captionsFile": "captions.json",
+  "drift": 0.04,
+  "speakerFocusY": 0.33,
+  "punchIns": [
+    { "fromMs": 0, "toMs": 1600, "scale": 1.18, "originY": 0.3 },
+    { "fromMs": 13200, "toMs": 14800, "scale": 1.2, "originY": 0.3 }
+  ],
+  "splits": [
+    { "src": "broll/01-factory.mp4", "fromMs": 3200, "toMs": 6400 },
+    { "src": "broll/02-robot.jpg", "fromMs": 9000, "toMs": 12000, "kenBurns": true },
+    {
+      "type": "screen",
+      "src": "screens/taobao-prices.png",
+      "fromMs": 18000,
+      "toMs": 23000,
+      "scrollToPx": 500,
+      "highlights": [
+        { "x": 60, "y": 520, "w": 300, "h": 90, "atMs": 1400 },
+        { "x": 420, "y": 520, "w": 300, "h": 90, "atMs": 2400 }
+      ]
+    }
+  ],
+  "stickers": [
+    { "bgSrc": "broll/03-expo-crowd.mp4", "fromMs": 25000, "toMs": 29000 }
+  ]
+}
