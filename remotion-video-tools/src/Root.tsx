@@ -34,6 +34,10 @@ import {
   chinaStoriesSchema,
 } from "./globaltechtour/compositions/ChinaStories";
 import {
+  SitePromo,
+  sitePromoSchema,
+} from "./globaltechtour/compositions/SitePromo";
+import {
   ChinaReel,
   chinaReelSchema,
 } from "./globaltechtour/compositions/ChinaReel";
@@ -396,7 +400,7 @@ export const RemotionRoot: React.FC = () => {
             { text: "Маршрут — на сайте", at: 9.4, kind: "term" as const },
           ],
           cutaways: [
-            { src: "site/expeditions.png", at: 7.4, seconds: 5.0, from: 0.02, to: 0.22 },
+            { src: "site/expeditions.jpg", at: 7.4, seconds: 5.0, from: 0.02, to: 0.22 },
           ],
         }}
         durationInFrames={376}
@@ -648,6 +652,46 @@ export const RemotionRoot: React.FC = () => {
           cutaways: [],
         }}
         durationInFrames={626}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      {/* Промо сайта: ни говорящей головы, ни звука — только страницы и
+          цифры. 45 с ровно = 1350 кадров.
+
+          Цифры посчитаны по каталогу, а не взяты с его же страницы: там
+          написано «более 900 компаний и 17 отраслей», а на деле 998 и 18. */}
+      <Composition
+        id="GTT-SitePromo"
+        component={SitePromo}
+        schema={sitePromoSchema}
+        defaultProps={{
+          title: "Бизнес-экспедиции",
+          subtitle: "в Китай и Юго-Восточную Азию",
+          site: "globaltechtour.ru",
+          scenes: [
+            { kind: "page" as const, src: "site/home.png", seconds: 4.4,
+              from: 0.02, to: 0.26, label: "Не туризм, а исследование", value: 0, unit: "" },
+            { kind: "page" as const, src: "site/industries.png", seconds: 5.2,
+              from: 0.03, to: 0.20, label: "отраслей в каталоге", value: 18, unit: "выбираете свою" },
+            { kind: "page" as const, src: "site/industries.png", seconds: 4.6,
+              from: 0.22, to: 0.44, label: "компаний в базе", value: 998, unit: "с прямым выходом" },
+            { kind: "page" as const, src: "site/expeditions.jpg", seconds: 5.4,
+              from: 0.02, to: 0.16, label: "готовых экспедиций", value: 20, unit: "маршрут уже собран" },
+            { kind: "clip" as const, src: "site/route-tea.mp4", seconds: 7.5,
+              from: 0, to: 0, label: "Маршрут по дням", value: 0, unit: "города, перелёты, компании" },
+            { kind: "page" as const, src: "site/tea-expedition.png", seconds: 5.0,
+              from: 0.28, to: 0.52, label: "Программа расписана по часам", value: 0, unit: "" },
+            { kind: "page" as const, src: "site/cases.jpg", seconds: 4.2,
+              from: 0.02, to: 0.11, label: "Кейсы и отзывы участников", value: 0, unit: "" },
+            // Блог сюда не пошёл: его превью статей грузятся с внешнего
+            // адреса и в локальную копию не попали — в кадре были бы значки
+            // битых картинок. Обучение содержательнее и выглядит целым.
+            { kind: "page" as const, src: "site/training.png", seconds: 2.9,
+              from: 0.02, to: 0.09, label: "Обучение в кампусах", value: 0, unit: "" },
+          ],
+        }}
+        durationInFrames={1350}
         fps={30}
         width={1080}
         height={1920}
