@@ -673,6 +673,56 @@ export const RemotionRoot: React.FC = () => {
           // и сцены после этого подгоняются под неё, а не она под них.
           voiceover: "audio/promo-voice-final.m4a",
           captionsSrc: "captions/promo-final.json",
+          platform: "stories" as const,
+          music: "",
+          musicVolume: 0.16,
+          scenes: [
+            { kind: "page" as const, src: "site/home.png", seconds: 3.68,
+              from: 0.02, to: 0.26, label: "Не туризм, а исследование", value: 0, prefix: "", unit: "" },
+            { kind: "page" as const, src: "site/industries.png", seconds: 1.45,
+              from: 0.03, to: 0.20, label: "отраслей в каталоге", value: 18, prefix: "", unit: "выбираете свою" },
+            // В каталоге сейчас 998 компаний. Округление вверх — решение
+            // владельца: каталог растёт, и «более 1000» он считает
+            // правильной формулировкой для промо.
+            { kind: "page" as const, src: "site/industries.png", seconds: 4.55,
+              from: 0.22, to: 0.44, label: "компаний в базе", value: 1000, prefix: "более", unit: "с прямым выходом" },
+            { kind: "page" as const, src: "site/expeditions.jpg", seconds: 5.04,
+              from: 0.02, to: 0.16, label: "готовых программ", value: 20, prefix: "",
+              unit: "по каждой из стран: от Китая до ОАЭ" },
+            { kind: "clip" as const, src: "site/route-tea.mp4", seconds: 6.46,
+              from: 0, to: 0, label: "Маршрут по дням", value: 0, prefix: "", unit: "города, перелёты, компании" },
+            { kind: "page" as const, src: "site/tea-expedition.png", seconds: 4.84,
+              from: 0.28, to: 0.52, label: "Программа расписана по часам", value: 0, prefix: "", unit: "" },
+            { kind: "page" as const, src: "site/cases.jpg", seconds: 2.84,
+              from: 0.02, to: 0.11, label: "Кейсы и отзывы участников", value: 0, prefix: "", unit: "" },
+            // Блог сюда не пошёл: его превью статей грузятся с внешнего
+            // адреса и в локальную копию не попали — в кадре были бы значки
+            // битых картинок. Обучение содержательнее и выглядит целым.
+            { kind: "page" as const, src: "site/training.png", seconds: 9.08,
+              from: 0.02, to: 0.26, label: "Обучение в кампусах", value: 0, prefix: "", unit: "" },
+          ],
+        }}
+        durationInFrames={1339}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      {/* Тот же промо под Reels: отличается только отступами под интерфейс.
+          В Reels верх свободнее, а снизу подпись ниже, чем поле ответа в
+          сторис, поэтому субтитры и адрес опускаются. */}
+      <Composition
+        id="GTT-SitePromoReels"
+        component={SitePromo}
+        schema={sitePromoSchema}
+        defaultProps={{
+          title: "Бизнес-экспедиции",
+          subtitle: "в Китай и Юго-Восточную Азию",
+          site: "globaltechtour.ru",
+          // Пути пустые до записи. Озвучка кладётся в public/audio,
+          // и сцены после этого подгоняются под неё, а не она под них.
+          voiceover: "audio/promo-voice-final.m4a",
+          captionsSrc: "captions/promo-final.json",
+          platform: "reels" as const,
           music: "",
           musicVolume: 0.16,
           scenes: [

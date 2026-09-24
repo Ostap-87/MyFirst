@@ -61,6 +61,12 @@ export const sitePromoSchema = z.object({
   captionsSrc: z
     .string()
     .describe("Расшифровка озвучки внутри public; пусто — без субтитров"),
+  platform: z
+    .enum(["reels", "stories"])
+    .describe(
+      "Куда идёт ролик. В сторис сверху строка профиля, снизу строка " +
+        "ответа — она выше подписи Reels, поэтому текст поджимается с двух сторон.",
+    ),
   music: z
     .string()
     .describe("Музыкальная подложка внутри public; пусто — без неё"),
@@ -110,7 +116,10 @@ const Page: React.FC<{ readonly scene: Scene }> = ({ scene }) => {
 };
 
 /** Надпись и число поверх сцены. */
-const Caption: React.FC<{ readonly scene: Scene }> = ({ scene }) => {
+const Caption: React.FC<{ readonly scene: Scene; readonly top: number }> = ({
+  scene,
+  top,
+}) => {
   const frame = useCurrentFrame();
   const { fps, height } = useVideoConfig();
   const { fs } = useFormat();
@@ -129,7 +138,7 @@ const Caption: React.FC<{ readonly scene: Scene }> = ({ scene }) => {
       style={{
         justifyContent: "flex-start",
         alignItems: "center",
-        paddingTop: Math.round(height * 0.11),
+        paddingTop: Math.round(height * top),
         opacity: enter,
         transform: `translateY(${(1 - enter) * fs(0.03)}px)`,
       }}
@@ -205,6 +214,7 @@ export const SitePromo: React.FC<SitePromoProps> = ({
   site,
   voiceover,
   captionsSrc,
+  platform,
   music,
   musicVolume,
   scenes,
@@ -213,6 +223,22 @@ export const SitePromo: React.FC<SitePromoProps> = ({
   const { fps, durationInFrames, height } = useVideoConfig();
   const { fs } = useFormat();
   const captions = useCaptions(captionsSrc || null);
+
+  /**
+   * Отступы под интерфейс площадки.
+   *
+   * Низ у Reels теснее, чем у сторис, а не наоборот: там подпись, имя
+   * аккаунта и строка музыки занимают около 320 px, тогда как поле ответа
+   * в сторис — примерно 250. Зато верх у Reels почти чист, а в сторис его
+   * занимает строка профиля с полосками прогресса.
+   *
+   * Числа отмерены от нижней границы безопасной области: 1600 px для Reels
+   * и 1670 для сторис при кадре 1920.
+   */
+  const zone =
+    platform === "stories"
+      ? { labelTop: 0.11, captionBottom: 0.2, siteBottom: 0.145 }
+      : { labelTop: 0.07, captionBottom: 0.24, siteBottom: 0.18 };
 
   // Длительности выставлены по готовой озвучке, а не по средней скорости
   // речи: расшифровка дала время каждой фразы, и сцены нарезаны по ним.
@@ -310,7 +336,7 @@ export const SitePromo: React.FC<SitePromoProps> = ({
                 "linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.22) 18%, rgba(0,0,0,0) 34%)",
             }}
           />
-          <Caption scene={scene} />
+          <Caption scene={scene} top={zone.labelTop} />
         </Sequence>
       ))}
 
@@ -326,7 +352,10 @@ export const SitePromo: React.FC<SitePromoProps> = ({
             alignItems: "center",
             justifyContent: "center",
             opacity: openOut,
-            gap: fs(0.03),
+            gap: 0,
+            // Вся группа поднята: по центру кадра она смотрелась низко,
+            // потому что снизу её ничто не уравновешивает.
+            paddingBottom: Math.round(height * 0.14),
           }}
         >
           <div
@@ -342,7 +371,11 @@ export const SitePromo: React.FC<SitePromoProps> = ({
               opacity: fogIn,
               filter: `blur(${(1 - fogIn) * 22}px)`,
               transform: `scale(${1.06 - fogIn * 0.06})`,
-              marginTop: fs(0.04),
+              // Отрицательный отступ: SpinningTetra вписывает фигуру в
+              // квадратный холст с большим запасом, и снизу у неё остаётся
+              // пустое поле примерно в четверть размера. Без подтяжки текст
+              // висел заметно далеко от знака.
+              marginTop: fs(-0.19),
               paddingLeft: fs(0.08),
               paddingRight: fs(0.08),
             }}
@@ -383,7 +416,8 @@ export const SitePromo: React.FC<SitePromoProps> = ({
             backgroundColor: theme.colors.surface,
             alignItems: "center",
             justifyContent: "center",
-            gap: fs(0.028),
+            gap: 0,
+            paddingBottom: Math.round(height * 0.08),
           }}
         >
           <SpinningTetra size={fs(0.58)} degreesPerSecond={72} />
@@ -393,7 +427,9 @@ export const SitePromo: React.FC<SitePromoProps> = ({
               fontWeight: 700,
               fontSize: fs(0.066),
               color: theme.colors.text,
-              marginTop: fs(0.03),
+              // Та же подтяжка, что и на открытии: под фигурой в её холсте
+              // остаётся пустое поле, и подпись без этого висит далеко.
+              marginTop: fs(-0.13),
               letterSpacing: fs(0.002),
             }}
           >
@@ -423,7 +459,7 @@ export const SitePromo: React.FC<SitePromoProps> = ({
           style={{
             justifyContent: "flex-end",
             alignItems: "center",
-            paddingBottom: Math.round(height * 0.115),
+            paddingBottom: Math.round(height * zone.captionBottom),
             paddingLeft: fs(0.06),
             paddingRight: fs(0.06),
           }}
@@ -459,7 +495,7 @@ export const SitePromo: React.FC<SitePromoProps> = ({
           style={{
             justifyContent: "flex-end",
             alignItems: "center",
-            paddingBottom: Math.round(height * 0.055),
+            paddingBottom: Math.round(height * zone.siteBottom),
           }}
         >
           <div
