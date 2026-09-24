@@ -356,20 +356,19 @@ export const SitePromo: React.FC<SitePromoProps> = ({
             position: "relative",
             // Вся группа поднята: по центру кадра она смотрелась низко,
             // потому что снизу её ничто не уравновешивает.
-            paddingBottom: Math.round(height * 0.02),
+            paddingBottom: Math.round(height * 0.06),
           }}
         >
           {/* Поле элементов позади знака: белый фон сам по себе пустой, а
-              так открытие повторяет приём с главной страницы сайта, где из
-              разлетевшихся тетраэдров собираются очертания страны. */}
+              так открытие повторяет фон главной страницы сайта. */}
           <AbsoluteFill>
             <TetraField
-              count={190}
-              gatherFrom={0.9}
-              gatherTo={3.4}
-              scale={0.96}
-              centerY={0.29}
-              color="#2563eb"
+              count={120}
+              minSize={0.03}
+              maxSize={0.115}
+              speed={1}
+              spin={1}
+              opacity={1}
               seed={7}
             />
           </AbsoluteFill>
@@ -381,7 +380,7 @@ export const SitePromo: React.FC<SitePromoProps> = ({
               zIndex: 2,
             }}
           >
-            <SpinningTetra size={fs(0.74)} degreesPerSecond={72} />
+            <SpinningTetra size={fs(0.86)} degreesPerSecond={72} />
           </div>
           <div
             style={{
@@ -435,21 +434,20 @@ export const SitePromo: React.FC<SitePromoProps> = ({
             alignItems: "center",
             justifyContent: "center",
             gap: 0,
-            paddingBottom: Math.round(height * 0.02),
+            paddingBottom: Math.round(height * 0.06),
           }}
         >
-          {/* На финале фигура уже собрана и только дрейфует: две секунды —
-              мало, чтобы собирать её заново, а повтор сборки читался бы как
-              недосмотренное начало. */}
+          {/* То же поле, что и на открытии, но с другим зерном: одинаковая
+              раскладка в начале и в конце читалась бы как склейка. */}
           <AbsoluteFill>
             <TetraField
-              count={190}
-              gatherFrom={-2}
-              gatherTo={-1}
-              scale={0.96}
-              centerY={0.3}
-              color="#2563eb"
-              seed={7}
+              count={105}
+              minSize={0.03}
+              maxSize={0.105}
+              speed={1}
+              spin={1}
+              opacity={0.9}
+              seed={19}
             />
           </AbsoluteFill>
 

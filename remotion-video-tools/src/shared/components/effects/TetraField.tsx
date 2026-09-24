@@ -6,162 +6,201 @@ import {
   useVideoConfig,
 } from "remotion";
 import { z } from "zod";
-import { chinaOutline } from "../../data/china-outline";
 
 /**
- * TetraField — поле летающих тетраэдров, собирающееся в контур страны.
+ * TetraField — поле мелких каркасных тетраэдров, дрейфующих в пространстве.
  *
- * Повторяет приём с главной страницы сайта: сначала элементы разбросаны по
- * пространству и дрейфуют, затем сходятся в очертания Китая.
+ * Повторяет фон главной страницы сайта. Разбор по кадрам показал три вещи,
+ * которые и определяют вид:
+ *
+ * 1. Фигуры каркасные — одни рёбра, без заливки, линии тонкие. Залитые
+ *    треугольники выглядят плотнее и тяжелее, чем на сайте.
+ * 2. Цвета разные: голубой, синий, серый, чёрный. Одноцветное поле читается
+ *    как узор, разноцветное — как объём.
+ * 3. Ничего никуда не собирается. Элементы просто висят в пространстве,
+ *    вращаются каждый по-своему и медленно плывут.
  *
  * ——— Почему не WebGL ———
  *
- * На сайте это three.js. В рендере Remotion живой WebGL пришлось бы ждать
- * покадрово и надеяться, что драйвер в контейнере отдаст тот же результат.
- * Плоские треугольники в SVG дают ту же картину, считаются предсказуемо и
- * не зависят от видеокарты.
- *
- * Глубина изображается размером и прозрачностью: дальние элементы мельче и
- * бледнее. Этого хватает, чтобы поле читалось объёмным.
+ * На сайте это three.js. В рендере Remotion аппаратного ускорения нет, и
+ * живой WebGL стоил бы втрое дороже за кадр при непредсказуемом результате.
+ * У тетраэдра четыре вершины — проекцию дешевле посчитать самому.
  *
  * ——— Почему random из Remotion ———
  *
  * Math.random дал бы новую раскладку на каждом кадре, и поле бы мерцало.
  * random(seed) возвращает одно и то же для одного зерна, поэтому каждая
- * частица всю сцену держится своей траектории.
+ * фигура всю сцену держится своей траектории и своего вращения.
  */
 export const tetraFieldSchema = z.object({
-  count: z
-    .number()
-    .int()
-    .min(20)
-    .max(400)
-    .describe("Сколько тетраэдров в кадре"),
-  gatherFrom: z
-    .number()
-    .describe("Секунда, когда элементы начинают сходиться в фигуру"),
-  gatherTo: z.number().describe("Секунда, когда фигура собрана"),
-  scale: z
-    .number()
-    .min(0.2)
-    .max(1.5)
-    .describe("Размер собранной фигуры в долях ширины кадра"),
-  centerY: z
-    .number()
-    .min(0)
-    .max(1)
-    .describe("Где по высоте стоит центр фигуры"),
-  color: z.string().describe("Цвет элементов"),
+  count: z.number().int().min(10).max(400).describe("Сколько фигур в кадре"),
+  minSize: z.number().describe("Наименьший размер фигуры, доля ширины кадра"),
+  maxSize: z.number().describe("Наибольший размер фигуры, доля ширины кадра"),
+  speed: z.number().describe("Скорость дрейфа: 1 — спокойно, 2 — заметно"),
+  spin: z.number().describe("Скорость вращения, оборотов в минуту примерно"),
+  opacity: z.number().min(0).max(1).describe("Общая плотность поля"),
   seed: z.number().describe("Зерно раскладки: меняет расстановку целиком"),
 });
 
 export type TetraFieldProps = z.infer<typeof tetraFieldSchema>;
 
 export const tetraFieldDefaults: TetraFieldProps = {
-  count: 200,
-  gatherFrom: 1.2,
-  gatherTo: 3.6,
-  scale: 0.78,
-  centerY: 0.42,
-  color: "#2563eb",
+  count: 90,
+  minSize: 0.03,
+  maxSize: 0.115,
+  speed: 1,
+  spin: 1,
+  opacity: 1,
   seed: 7,
 };
 
-/** Треугольник, изображающий тетраэдр: грань плюс два ребра внутрь. */
-const Tetra: React.FC<{
+/**
+ * Палитра снята с кадров сайта: голубой и синий преобладают, серый и
+ * чёрный идут реже и дают полю глубину.
+ */
+const PALETTE = [
+  "#61CBFA",
+  "#2563eb",
+  "#1E5FD0",
+  "#8FD4FF",
+  "#9AA3AF",
+  "#6B7280",
+  "#1F2937",
+  "#111827",
+] as const;
+
+type Vec3 = readonly [number, number, number];
+
+/** Правильный тетраэдр вершиной вверх, вписанный в сферу радиуса 1. */
+const BASE_RADIUS = Math.sqrt(8) / 3;
+const BASE_Y = -1 / 3;
+
+const VERTICES: readonly Vec3[] = [
+  [0, 1, 0],
+  ...([0, 1, 2].map((i) => {
+    const a = Math.PI / 2 + (i * 2 * Math.PI) / 3;
+    return [BASE_RADIUS * Math.cos(a), BASE_Y, BASE_RADIUS * Math.sin(a)] as Vec3;
+  }) as Vec3[]),
+];
+
+const EDGES: readonly (readonly [number, number])[] = [
+  [0, 1], [0, 2], [0, 3], [1, 2], [2, 3], [3, 1],
+];
+
+/** Поворот вокруг трёх осей: у каждой фигуры своя ось, как на сайте. */
+const rotate = (v: Vec3, yaw: number, pitch: number, roll: number): Vec3 => {
+  const [x, y, z] = v;
+  const x1 = x * Math.cos(yaw) + z * Math.sin(yaw);
+  const z1 = -x * Math.sin(yaw) + z * Math.cos(yaw);
+  const y2 = y * Math.cos(pitch) - z1 * Math.sin(pitch);
+  const z2 = y * Math.sin(pitch) + z1 * Math.cos(pitch);
+  const x3 = x1 * Math.cos(roll) - y2 * Math.sin(roll);
+  const y3 = x1 * Math.sin(roll) + y2 * Math.cos(roll);
+  return [x3, y3, z2];
+};
+
+const PERSPECTIVE = 4.5;
+
+/** Один каркасный тетраэдр: только рёбра, тонкой линией. */
+const WireTetra: React.FC<{
   readonly size: number;
-  readonly turn: number;
+  readonly yaw: number;
+  readonly pitch: number;
+  readonly roll: number;
   readonly color: string;
   readonly opacity: number;
-}> = ({ size, turn, color, opacity }) => (
-  <svg
-    width={size}
-    height={size}
-    viewBox="0 0 100 100"
-    style={{ transform: `rotate(${turn}deg)`, overflow: "visible" }}
-  >
-    <polygon
-      points="50,8 92,80 8,80"
-      fill={color}
-      fillOpacity={opacity * 0.45}
-      stroke={color}
-      strokeOpacity={opacity}
-      strokeWidth={5}
-      strokeLinejoin="round"
-    />
-    <line x1="50" y1="8" x2="50" y2="80" stroke={color} strokeOpacity={opacity * 0.5} strokeWidth={3} />
-  </svg>
-);
+  readonly stroke: number;
+}> = ({ size, yaw, pitch, roll, color, opacity, stroke }) => {
+  const half = size / 2;
+  const projected = VERTICES.map((v) => {
+    const [x, y, z] = rotate(v, yaw, pitch, roll);
+    const k = PERSPECTIVE / (PERSPECTIVE - z);
+    return [half + x * half * 0.62 * k, half - y * half * 0.62 * k];
+  });
+
+  return (
+    <svg width={size} height={size} style={{ overflow: "visible" }}>
+      {EDGES.map(([a, b], i) => (
+        <line
+          key={i}
+          x1={projected[a][0]}
+          y1={projected[a][1]}
+          x2={projected[b][0]}
+          y2={projected[b][1]}
+          stroke={color}
+          strokeOpacity={opacity}
+          strokeWidth={stroke}
+          strokeLinecap="round"
+        />
+      ))}
+    </svg>
+  );
+};
 
 export const TetraField: React.FC<TetraFieldProps> = ({
   count,
-  gatherFrom,
-  gatherTo,
-  scale,
-  centerY,
-  color,
+  minSize,
+  maxSize,
+  speed,
+  spin,
+  opacity,
   seed,
 }) => {
   const frame = useCurrentFrame();
   const { fps, width, height } = useVideoConfig();
   const second = frame / fps;
 
-  const span = width * scale;
-  const cx = width / 2;
-  const cy = height * centerY;
-
-  // Насколько поле собралось: 0 — разбросано, 1 — фигура готова.
-  const gather = interpolate(second, [gatherFrom, gatherTo], [0, 1], {
+  const fade = interpolate(second, [0, 1.2], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
-  const eased = gather * gather * (3 - 2 * gather); // плавный вход и выход
 
   const items = [];
   for (let i = 0; i < count; i += 1) {
-    const target = chinaOutline[i % chinaOutline.length];
-    const s = seed * 1000 + i;
+    const s = seed * 977 + i;
 
-    // Стартовая точка — за пределами кадра по кругу: элементы влетают
-    // снаружи, а не проявляются на месте.
-    const angle = random(`a${s}`) * Math.PI * 2;
-    const far = 0.75 + random(`r${s}`) * 0.7;
-    const startX = cx + Math.cos(angle) * width * far;
-    const startY = cy + Math.sin(angle) * height * far * 0.7;
+    // Глубина решает всё: и размер, и яркость, и насколько быстро фигура
+    // плывёт. Дальние мельче, бледнее и почти не двигаются — так поле
+    // читается объёмным без настоящей перспективы.
+    const depth = random(`d${s}`);
+    const size = width * (minSize + (maxSize - minSize) * depth);
 
-    // Глубина: дальние мельче, бледнее и дрейфуют медленнее.
-    const depth = 0.35 + random(`d${s}`) * 0.65;
+    // Каждая фигура плывёт по своей замкнутой траектории. Синус и косинус
+    // с разными периодами дают движение, которое не повторяется на глаз,
+    // но никуда не уходит за кадр.
+    const px = random(`x${s}`);
+    const py = random(`y${s}`);
+    const wx = 0.12 + random(`wx${s}`) * 0.22;
+    const wy = 0.1 + random(`wy${s}`) * 0.2;
+    const ax = (0.04 + random(`ax${s}`) * 0.09) * (0.4 + depth);
+    const ay = (0.03 + random(`ay${s}`) * 0.08) * (0.4 + depth);
 
-    // Дрейф не прекращается и после сборки — иначе кадр замирает.
-    const drift = Math.sin(second * (0.5 + random(`w${s}`) * 0.7) + random(`p${s}`) * 6.28);
-    const driftAmp = (1 - eased * 0.82) * 26 + 5;
+    const x =
+      width * (px + Math.sin(second * wx * speed + random(`ph${s}`) * 6.28) * ax);
+    const y =
+      height * (py + Math.cos(second * wy * speed + random(`pv${s}`) * 6.28) * ay);
 
-    const tx = cx + target[0] * span + drift * driftAmp * depth;
-    const ty = cy + target[1] * span + Math.cos(second * 0.6 + i) * driftAmp * 0.6 * depth;
+    // Вращение: у каждой фигуры свой набор скоростей по трём осям.
+    const turn = (k: string, base: number) =>
+      (random(k) - 0.5) * 2 * base * spin * second + random(`${k}o`) * 6.28;
 
-    const x = startX + (tx - startX) * eased;
-    const y = startY + (ty - startY) * eased;
-
-    // Размер и плотность отмерены по кадру, а не абсолютом: при 7-20 px
-    // на кадре 1080 элементы читались как пыль, а не как фигуры.
-    const unit = width / 1080;
-    const size = (14 + depth * 26) * unit * (0.7 + eased * 0.3);
-    const opacity = (0.3 + depth * 0.55) * interpolate(second, [0, 0.8], [0, 1], {
-      extrapolateLeft: "clamp",
-      extrapolateRight: "clamp",
-    });
-    const turn = random(`t${s}`) * 360 + second * (12 + random(`v${s}`) * 26);
+    const color = PALETTE[Math.floor(random(`c${s}`) * PALETTE.length)];
+    const alpha = (0.4 + depth * 0.5) * opacity * fade;
 
     items.push(
       <div
         key={i}
-        style={{
-          position: "absolute",
-          left: x - size / 2,
-          top: y - size / 2,
-        }}
+        style={{ position: "absolute", left: x - size / 2, top: y - size / 2 }}
       >
-        <Tetra size={size} turn={turn} color={color} opacity={opacity} />
+        <WireTetra
+          size={size}
+          yaw={turn(`ry${s}`, 0.9)}
+          pitch={turn(`rp${s}`, 0.6)}
+          roll={turn(`rr${s}`, 0.5)}
+          color={color}
+          opacity={alpha}
+          stroke={Math.max(1.4, size * 0.022)}
+        />
       </div>,
     );
   }
