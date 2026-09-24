@@ -33,6 +33,11 @@ export type ReelProps = {
   stickers?: StickerSeg[];
   drift?: number;
   speakerFocusY?: number;
+  // Высота субтитров для этого ролика. Не задана — берётся THEME.captionTopPct
+  // (53%), рассчитанная на посадку в студии, где глаза на 33%. У селфи без
+  // студии лицо ниже, и 53% приходится на глаза — тогда задаётся здесь, а
+  // THEME остаётся нетронутой для остальных рилсов.
+  captionTopPct?: number;
 };
 
 export const calculateReelMetadata: CalculateMetadataFunction<ReelProps> = async ({ props }) => {
@@ -57,6 +62,7 @@ export const Reel: React.FC<ReelProps> = ({
   stickers = [],
   drift = 0.04,
   speakerFocusY = 0.33,
+  captionTopPct,
 }) => {
   const frame = useCurrentFrame();
   const { fps, height, durationInFrames } = useVideoConfig();
@@ -158,7 +164,7 @@ export const Reel: React.FC<ReelProps> = ({
         </>
       )}
 
-      <Captions captions={caps} />
+      <Captions captions={caps} topPct={captionTopPct} />
     </AbsoluteFill>
   );
 };

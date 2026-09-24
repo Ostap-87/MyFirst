@@ -13,6 +13,7 @@ remotion/public/studio/
 # Тяжёлое и чужое в репозиторий не кладём — как public/local в соседнем проекте.
 remotion/public/take.mp4
 remotion/public/take-raw.*
+remotion/public/take-voice.*
 remotion/public/broll/
 remotion/public/screens/
 remotion/public/speaker-keyed*
