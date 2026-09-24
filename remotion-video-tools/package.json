@@ -53,7 +53,8 @@
     "q:add": "node scripts/queue-add.mjs",
     "q": "node scripts/queue-add.mjs --list",
     "tighten": "node scripts/tighten.mjs",
-    "join": "node scripts/join.mjs"
+    "join": "node scripts/join.mjs",
+    "voice": "node scripts/voice.mjs"
   },
   "sideEffects": [
     "*.css"

@@ -207,10 +207,10 @@ export const SitePromo: React.FC<SitePromoProps> = ({
   const { fps, durationInFrames, height } = useVideoConfig();
   const { fs } = useFormat();
 
-  // Открытие длиннее прочих сцен: надпись выходит из тумана 1,3 с, и ей
-  // нужно время просто повисеть после этого.
-  const OPEN = AT(4.2, fps);
-  const CLOSE = AT(2.6, fps);
+  // Длительности выставлены по готовой озвучке, а не по средней скорости
+  // речи: расшифровка дала время каждой фразы, и сцены нарезаны по ним.
+  const OPEN = AT(4.68, fps);
+  const CLOSE = AT(2.0, fps);
 
   // Сцены идут встык, каждая знает только свою длину.
   let cursor = OPEN;
