@@ -17,5 +17,5 @@ remotion/public/broll/
 remotion/public/screens/
 remotion/public/speaker-keyed*
 remotion/public/studio-*.mp4
-remotion/public/captions.json
+remotion/public/captions*.json
 remotion/public/edit.json
