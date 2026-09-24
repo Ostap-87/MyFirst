@@ -675,29 +675,29 @@ export const RemotionRoot: React.FC = () => {
           music: "",
           musicVolume: 0.16,
           scenes: [
-            { kind: "page" as const, src: "site/home.png", seconds: 3.9,
+            { kind: "page" as const, src: "site/home.png", seconds: 4.0,
               from: 0.02, to: 0.26, label: "Не туризм, а исследование", value: 0, prefix: "", unit: "" },
-            { kind: "page" as const, src: "site/industries.png", seconds: 5.2,
+            { kind: "page" as const, src: "site/industries.png", seconds: 2.4,
               from: 0.03, to: 0.20, label: "отраслей в каталоге", value: 18, prefix: "", unit: "выбираете свою" },
             // В каталоге сейчас 998 компаний. Округление вверх — решение
             // владельца: каталог растёт, и «более 1000» он считает
             // правильной формулировкой для промо.
-            { kind: "page" as const, src: "site/industries.png", seconds: 4.6,
+            { kind: "page" as const, src: "site/industries.png", seconds: 4.4,
               from: 0.22, to: 0.44, label: "компаний в базе", value: 1000, prefix: "более", unit: "с прямым выходом" },
             { kind: "page" as const, src: "site/expeditions.jpg", seconds: 5.4,
               from: 0.02, to: 0.16, label: "готовых программ", value: 20, prefix: "",
               unit: "по каждой из стран: от Китая до ОАЭ" },
-            { kind: "clip" as const, src: "site/route-tea.mp4", seconds: 7.5,
+            { kind: "clip" as const, src: "site/route-tea.mp4", seconds: 5.0,
               from: 0, to: 0, label: "Маршрут по дням", value: 0, prefix: "", unit: "города, перелёты, компании" },
-            { kind: "page" as const, src: "site/tea-expedition.png", seconds: 5.0,
+            { kind: "page" as const, src: "site/tea-expedition.png", seconds: 5.5,
               from: 0.28, to: 0.52, label: "Программа расписана по часам", value: 0, prefix: "", unit: "" },
-            { kind: "page" as const, src: "site/cases.jpg", seconds: 3.7,
+            { kind: "page" as const, src: "site/cases.jpg", seconds: 3.1,
               from: 0.02, to: 0.11, label: "Кейсы и отзывы участников", value: 0, prefix: "", unit: "" },
             // Блог сюда не пошёл: его превью статей грузятся с внешнего
             // адреса и в локальную копию не попали — в кадре были бы значки
             // битых картинок. Обучение содержательнее и выглядит целым.
-            { kind: "page" as const, src: "site/training.png", seconds: 2.9,
-              from: 0.02, to: 0.09, label: "Обучение в кампусах", value: 0, prefix: "", unit: "" },
+            { kind: "page" as const, src: "site/training.png", seconds: 8.4,
+              from: 0.02, to: 0.26, label: "Обучение в кампусах", value: 0, prefix: "", unit: "" },
           ],
         }}
         durationInFrames={1350}
