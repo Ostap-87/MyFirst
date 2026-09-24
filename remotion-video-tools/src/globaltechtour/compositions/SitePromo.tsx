@@ -75,6 +75,13 @@ export const sitePromoSchema = z.object({
     .min(0)
     .max(1)
     .describe("Громкость подложки: под голосом хватает 0.12-0.18"),
+  openSeconds: z
+    .number()
+    .describe(
+      "Длина открывающего кадра. Отмеряется по озвучке: до первого слова " +
+        "второй фразы. У другого языка речь идёт своим темпом, и число другое.",
+    ),
+  closeSeconds: z.number().describe("Длина финального кадра, тоже по озвучке"),
   scenes: z.array(sceneSchema).describe("Сцены по порядку"),
 });
 
@@ -217,6 +224,8 @@ export const SitePromo: React.FC<SitePromoProps> = ({
   platform,
   music,
   musicVolume,
+  openSeconds,
+  closeSeconds,
   scenes,
 }) => {
   const frame = useCurrentFrame();
@@ -242,8 +251,11 @@ export const SitePromo: React.FC<SitePromoProps> = ({
 
   // Длительности выставлены по готовой озвучке, а не по средней скорости
   // речи: расшифровка дала время каждой фразы, и сцены нарезаны по ним.
-  const OPEN = AT(4.68, fps);
-  const CLOSE = AT(2.0, fps);
+  //
+  // Открытие и финал тоже приходят пропсами: русское вступление читается
+  // 4,68 с, английское — 5,18, и зашитая константа увела бы субтитры.
+  const OPEN = AT(openSeconds, fps);
+  const CLOSE = AT(closeSeconds, fps);
 
   // Сцены идут встык, каждая знает только свою длину.
   let cursor = OPEN;

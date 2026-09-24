@@ -676,6 +676,8 @@ export const RemotionRoot: React.FC = () => {
           platform: "stories" as const,
           music: "",
           musicVolume: 0.16,
+          openSeconds: 4.68,
+          closeSeconds: 2.0,
           scenes: [
             { kind: "page" as const, src: "site/home.png", seconds: 3.68,
               from: 0.02, to: 0.26, label: "Не туризм, а исследование", value: 0, prefix: "", unit: "" },
@@ -725,6 +727,8 @@ export const RemotionRoot: React.FC = () => {
           platform: "reels" as const,
           music: "",
           musicVolume: 0.16,
+          openSeconds: 4.68,
+          closeSeconds: 2.0,
           scenes: [
             { kind: "page" as const, src: "site/home.png", seconds: 3.68,
               from: 0.02, to: 0.26, label: "Не туризм, а исследование", value: 0, prefix: "", unit: "" },
@@ -752,6 +756,94 @@ export const RemotionRoot: React.FC = () => {
           ],
         }}
         durationInFrames={1339}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      {/* Английская версия. Сцены нарезаны заново по расшифровке английской
+          озвучки, а не переведены вместе с текстом: речь идёт своим темпом,
+          и русские длительности разъехались бы с картинкой. Вступление тут
+          5,18 с против русских 4,68, зато сцена с маршрутом короче на
+          полторы секунды.
+
+          Числа в плашках те же — они про каталог, а не про язык. */}
+      <Composition
+        id="GTT-SitePromoEn"
+        component={SitePromo}
+        schema={sitePromoSchema}
+        defaultProps={{
+          title: "Business expeditions",
+          subtitle: "to China and Southeast Asia",
+          site: "globaltechtour.ru",
+          voiceover: "audio/promo-voice-en.m4a",
+          captionsSrc: "captions/promo-en.json",
+          platform: "stories" as const,
+          music: "",
+          musicVolume: 0.16,
+          openSeconds: 5.18,
+          closeSeconds: 2.57,
+          scenes: [
+            { kind: "page" as const, src: "site/home.png", seconds: 3.52,
+              from: 0.02, to: 0.26, label: "Not tourism, but research", value: 0, prefix: "", unit: "" },
+            { kind: "page" as const, src: "site/industries.png", seconds: 2.14,
+              from: 0.03, to: 0.20, label: "industries in the catalogue", value: 18, prefix: "", unit: "pick yours" },
+            { kind: "page" as const, src: "site/industries.png", seconds: 4.1,
+              from: 0.22, to: 0.44, label: "companies in the database", value: 1000, prefix: "over", unit: "direct line to leadership" },
+            { kind: "page" as const, src: "site/expeditions.jpg", seconds: 6.2,
+              from: 0.02, to: 0.16, label: "ready-made programmes", value: 20, prefix: "",
+              unit: "one per country: from China to the UAE" },
+            { kind: "clip" as const, src: "site/route-tea.mp4", seconds: 4.88,
+              from: 0, to: 0, label: "Day-by-day route", value: 0, prefix: "", unit: "cities, flights, companies" },
+            { kind: "page" as const, src: "site/tea-expedition.png", seconds: 4.8,
+              from: 0.28, to: 0.52, label: "Every day scheduled by the hour", value: 0, prefix: "", unit: "" },
+            { kind: "page" as const, src: "site/cases.jpg", seconds: 3.56,
+              from: 0.02, to: 0.11, label: "Cases and participant reviews", value: 0, prefix: "", unit: "" },
+            { kind: "page" as const, src: "site/training.png", seconds: 7.28,
+              from: 0.02, to: 0.26, label: "Training inside the campuses", value: 0, prefix: "", unit: "" },
+          ],
+        }}
+        durationInFrames={1327}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      {/* Английская версия под Reels: отличается только отступами. */}
+      <Composition
+        id="GTT-SitePromoEnReels"
+        component={SitePromo}
+        schema={sitePromoSchema}
+        defaultProps={{
+          title: "Business expeditions",
+          subtitle: "to China and Southeast Asia",
+          site: "globaltechtour.ru",
+          voiceover: "audio/promo-voice-en.m4a",
+          captionsSrc: "captions/promo-en.json",
+          platform: "reels" as const,
+          music: "",
+          musicVolume: 0.16,
+          openSeconds: 5.18,
+          closeSeconds: 2.57,
+          scenes: [
+            { kind: "page" as const, src: "site/home.png", seconds: 3.52,
+              from: 0.02, to: 0.26, label: "Not tourism, but research", value: 0, prefix: "", unit: "" },
+            { kind: "page" as const, src: "site/industries.png", seconds: 2.14,
+              from: 0.03, to: 0.20, label: "industries in the catalogue", value: 18, prefix: "", unit: "pick yours" },
+            { kind: "page" as const, src: "site/industries.png", seconds: 4.1,
+              from: 0.22, to: 0.44, label: "companies in the database", value: 1000, prefix: "over", unit: "direct line to leadership" },
+            { kind: "page" as const, src: "site/expeditions.jpg", seconds: 6.2,
+              from: 0.02, to: 0.16, label: "ready-made programmes", value: 20, prefix: "",
+              unit: "one per country: from China to the UAE" },
+            { kind: "clip" as const, src: "site/route-tea.mp4", seconds: 4.88,
+              from: 0, to: 0, label: "Day-by-day route", value: 0, prefix: "", unit: "cities, flights, companies" },
+            { kind: "page" as const, src: "site/tea-expedition.png", seconds: 4.8,
+              from: 0.28, to: 0.52, label: "Every day scheduled by the hour", value: 0, prefix: "", unit: "" },
+            { kind: "page" as const, src: "site/cases.jpg", seconds: 3.56,
+              from: 0.02, to: 0.11, label: "Cases and participant reviews", value: 0, prefix: "", unit: "" },
+            { kind: "page" as const, src: "site/training.png", seconds: 7.28,
+              from: 0.02, to: 0.26, label: "Training inside the campuses", value: 0, prefix: "", unit: "" },
+          ],
+        }}
+        durationInFrames={1327}
         fps={30}
         width={1080}
         height={1920}
