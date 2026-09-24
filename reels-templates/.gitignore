@@ -2,6 +2,9 @@
 remotion/node_modules/
 remotion/out/
 
+# whisper.cpp ставит transcribe.mjs сам, вместе с моделью medium на 1,5 ГБ.
+remotion/whisper.cpp/
+
 # Ассеты студии: 37 МБ, скачиваются по ссылкам из CLAUDE.md, шаг 2.
 # Маски строятся из лупов скриптом, шаг 6.
 remotion/public/studio/
@@ -9,6 +12,7 @@ remotion/public/studio/
 # Материал пользователя: дубль, B-roll, скрины и всё, что из них сделано.
 # Тяжёлое и чужое в репозиторий не кладём — как public/local в соседнем проекте.
 remotion/public/take.mp4
+remotion/public/take-raw.*
 remotion/public/broll/
 remotion/public/screens/
 remotion/public/speaker-keyed*
