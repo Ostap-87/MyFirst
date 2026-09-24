@@ -1,5 +1,6 @@
 import {
   AbsoluteFill,
+  Audio,
   Img,
   interpolate,
   OffthreadVideo,
@@ -52,6 +53,17 @@ export const sitePromoSchema = z.object({
   title: z.string().describe("Заголовок на открывающем кадре"),
   subtitle: z.string().describe("Вторая строка открывающего кадра"),
   site: z.string().describe("Адрес сайта, он же финальный кадр"),
+  voiceover: z
+    .string()
+    .describe("Озвучка внутри public, например audio/promo-voice.wav; пусто — без неё"),
+  music: z
+    .string()
+    .describe("Музыкальная подложка внутри public; пусто — без неё"),
+  musicVolume: z
+    .number()
+    .min(0)
+    .max(1)
+    .describe("Громкость подложки: под голосом хватает 0.12-0.18"),
   scenes: z.array(sceneSchema).describe("Сцены по порядку"),
 });
 
@@ -186,6 +198,9 @@ export const SitePromo: React.FC<SitePromoProps> = ({
   title,
   subtitle,
   site,
+  voiceover,
+  music,
+  musicVolume,
   scenes,
 }) => {
   const frame = useCurrentFrame();
@@ -225,6 +240,35 @@ export const SitePromo: React.FC<SitePromoProps> = ({
 
   return (
     <AbsoluteFill style={{ backgroundColor: "#070A11" }}>
+      {/* ——— Звук ———
+
+          Голос идёт ровно, без затуханий: подрезать речь по краям нельзя,
+          первое и последнее слово должны прозвучать целиком.
+
+          Подложка, наоборот, входит и уходит плавно и стоит тихо. Когда
+          голос есть, её громкость режется вдвое: даже на 0.2 музыка
+          соперничает с речью, и слушать становится трудно. */}
+      {voiceover ? <Audio src={staticFile(voiceover)} /> : null}
+      {music ? (
+        <Audio
+          src={staticFile(music)}
+          volume={(f) => {
+            const base = voiceover ? musicVolume * 0.5 : musicVolume;
+            const inCurve = interpolate(f, [0, AT(1.2, fps)], [0, 1], {
+              extrapolateLeft: "clamp",
+              extrapolateRight: "clamp",
+            });
+            const outCurve = interpolate(
+              f,
+              [durationInFrames - AT(1.6, fps), durationInFrames - 1],
+              [1, 0],
+              { extrapolateLeft: "clamp", extrapolateRight: "clamp" },
+            );
+            return base * Math.min(inCurve, outCurve);
+          }}
+        />
+      ) : null}
+
       {placed.map(({ scene, at }) => (
         <Sequence
           key={`${scene.src}-${at}`}

@@ -669,6 +669,11 @@ export const RemotionRoot: React.FC = () => {
           title: "Бизнес-экспедиции",
           subtitle: "в Китай и Юго-Восточную Азию",
           site: "globaltechtour.ru",
+          // Пути пустые до записи. Озвучка кладётся в public/audio,
+          // и сцены после этого подгоняются под неё, а не она под них.
+          voiceover: "",
+          music: "",
+          musicVolume: 0.16,
           scenes: [
             { kind: "page" as const, src: "site/home.png", seconds: 3.9,
               from: 0.02, to: 0.26, label: "Не туризм, а исследование", value: 0, prefix: "", unit: "" },
