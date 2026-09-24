@@ -3,7 +3,7 @@ remotion/node_modules/
 remotion/out/
 
 # whisper.cpp ставит transcribe.mjs сам, вместе с моделью medium на 1,5 ГБ.
-remotion/whisper.cpp/
+remotion/whisper.cpp
 
 # Ассеты студии: 37 МБ, скачиваются по ссылкам из CLAUDE.md, шаг 2.
 # Маски строятся из лупов скриптом, шаг 6.
