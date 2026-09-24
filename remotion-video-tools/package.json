@@ -54,7 +54,8 @@
     "q": "node scripts/queue-add.mjs --list",
     "tighten": "node scripts/tighten.mjs",
     "join": "node scripts/join.mjs",
-    "voice": "node scripts/voice.mjs"
+    "voice": "node scripts/voice.mjs",
+    "make-outline": "node scripts/make-outline.mjs"
   },
   "sideEffects": [
     "*.css"
