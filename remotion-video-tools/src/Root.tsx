@@ -670,25 +670,29 @@ export const RemotionRoot: React.FC = () => {
           subtitle: "в Китай и Юго-Восточную Азию",
           site: "globaltechtour.ru",
           scenes: [
-            { kind: "page" as const, src: "site/home.png", seconds: 4.4,
-              from: 0.02, to: 0.26, label: "Не туризм, а исследование", value: 0, unit: "" },
+            { kind: "page" as const, src: "site/home.png", seconds: 3.9,
+              from: 0.02, to: 0.26, label: "Не туризм, а исследование", value: 0, prefix: "", unit: "" },
             { kind: "page" as const, src: "site/industries.png", seconds: 5.2,
-              from: 0.03, to: 0.20, label: "отраслей в каталоге", value: 18, unit: "выбираете свою" },
+              from: 0.03, to: 0.20, label: "отраслей в каталоге", value: 18, prefix: "", unit: "выбираете свою" },
+            // В каталоге сейчас 998 компаний. Округление вверх — решение
+            // владельца: каталог растёт, и «более 1000» он считает
+            // правильной формулировкой для промо.
             { kind: "page" as const, src: "site/industries.png", seconds: 4.6,
-              from: 0.22, to: 0.44, label: "компаний в базе", value: 998, unit: "с прямым выходом" },
+              from: 0.22, to: 0.44, label: "компаний в базе", value: 1000, prefix: "более", unit: "с прямым выходом" },
             { kind: "page" as const, src: "site/expeditions.jpg", seconds: 5.4,
-              from: 0.02, to: 0.16, label: "готовых экспедиций", value: 20, unit: "маршрут уже собран" },
+              from: 0.02, to: 0.16, label: "готовых программ", value: 20, prefix: "",
+              unit: "по каждой из стран: от Китая до ОАЭ" },
             { kind: "clip" as const, src: "site/route-tea.mp4", seconds: 7.5,
-              from: 0, to: 0, label: "Маршрут по дням", value: 0, unit: "города, перелёты, компании" },
+              from: 0, to: 0, label: "Маршрут по дням", value: 0, prefix: "", unit: "города, перелёты, компании" },
             { kind: "page" as const, src: "site/tea-expedition.png", seconds: 5.0,
-              from: 0.28, to: 0.52, label: "Программа расписана по часам", value: 0, unit: "" },
-            { kind: "page" as const, src: "site/cases.jpg", seconds: 4.2,
-              from: 0.02, to: 0.11, label: "Кейсы и отзывы участников", value: 0, unit: "" },
+              from: 0.28, to: 0.52, label: "Программа расписана по часам", value: 0, prefix: "", unit: "" },
+            { kind: "page" as const, src: "site/cases.jpg", seconds: 3.7,
+              from: 0.02, to: 0.11, label: "Кейсы и отзывы участников", value: 0, prefix: "", unit: "" },
             // Блог сюда не пошёл: его превью статей грузятся с внешнего
             // адреса и в локальную копию не попали — в кадре были бы значки
             // битых картинок. Обучение содержательнее и выглядит целым.
             { kind: "page" as const, src: "site/training.png", seconds: 2.9,
-              from: 0.02, to: 0.09, label: "Обучение в кампусах", value: 0, unit: "" },
+              from: 0.02, to: 0.09, label: "Обучение в кампусах", value: 0, prefix: "", unit: "" },
           ],
         }}
         durationInFrames={1350}

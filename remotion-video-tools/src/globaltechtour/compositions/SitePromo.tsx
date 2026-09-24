@@ -44,6 +44,7 @@ const sceneSchema = z.object({
   to: z.number().describe("До какой доли (для page)"),
   label: z.string().describe("Надпись сверху; пустая — без надписи"),
   value: z.number().describe("Число для счётчика; 0 — без счётчика"),
+  prefix: z.string().describe("Слово перед числом, например «более»"),
   unit: z.string().describe("Подпись под числом"),
 });
 
@@ -140,6 +141,11 @@ const Caption: React.FC<{ readonly scene: Scene }> = ({ scene }) => {
           >
             {/* Счётчик, а не готовое число: цифра, которая доезжает на
                 глазах, держит внимание всю сцену. */}
+            {scene.prefix ? (
+              <span style={{ fontSize: fs(0.062), marginRight: fs(0.014) }}>
+                {scene.prefix}
+              </span>
+            ) : null}
             <CountUp from={0} to={scene.value} delayInFrames={4} durationInFrames={AT(1.4, fps)} />
           </div>
         ) : null}
@@ -186,7 +192,9 @@ export const SitePromo: React.FC<SitePromoProps> = ({
   const { fps, durationInFrames, height } = useVideoConfig();
   const { fs } = useFormat();
 
-  const OPEN = AT(3.2, fps);
+  // Открытие длиннее прочих сцен: надпись выходит из тумана 1,3 с, и ей
+  // нужно время просто повисеть после этого.
+  const OPEN = AT(4.2, fps);
   const CLOSE = AT(2.6, fps);
 
   // Сцены идут встык, каждая знает только свою длину.
@@ -201,6 +209,19 @@ export const SitePromo: React.FC<SitePromoProps> = ({
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
+
+  // Тетраэдр приходит первым и один, надпись — следом: так взгляд успевает
+  // остановиться на знаке, прежде чем появляется текст.
+  const tetraIn = interpolate(frame, [0, AT(0.7, fps)], [0, 1], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
+  const fogIn = interpolate(
+    frame,
+    [AT(0.8, fps), AT(2.1, fps)],
+    [0, 1],
+    { extrapolateLeft: "clamp", extrapolateRight: "clamp" },
+  );
 
   return (
     <AbsoluteFill style={{ backgroundColor: "#070A11" }}>
@@ -242,62 +263,87 @@ export const SitePromo: React.FC<SitePromoProps> = ({
         </Sequence>
       ))}
 
-      {/* ——— Открывающий кадр ——— */}
+      {/* ——— Открывающий кадр: белый, тетраэдр, надпись из тумана ———
+
+          Надпись не просто проявляется, а выходит из расфокуса: размытие
+          уходит с 22 px до нуля вместе с прозрачностью. Один только fade на
+          белом читается как включённый свет, а не как появление. */}
       <Sequence durationInFrames={OPEN}>
         <AbsoluteFill
           style={{
-            backgroundColor: "#070A11",
+            backgroundColor: theme.colors.surface,
             alignItems: "center",
             justifyContent: "center",
             opacity: openOut,
             gap: fs(0.03),
           }}
         >
-          <SpinningTetra size={fs(0.34)} degreesPerSecond={72} />
           <div
             style={{
-              fontFamily: fontFamily(theme.fonts.heading),
-              fontWeight: 700,
-              fontSize: fs(0.082),
-              color: "#fff",
-              textAlign: "center",
-              letterSpacing: fs(-0.002),
-              marginTop: fs(0.02),
+              opacity: tetraIn,
+              transform: `scale(${0.82 + tetraIn * 0.18})`,
             }}
           >
-            {title}
+            <SpinningTetra size={fs(0.92)} degreesPerSecond={72} />
           </div>
           <div
             style={{
-              fontFamily: fontFamily(theme.fonts.body),
-              fontSize: fs(0.042),
-              color: "#8FD4FF",
-              textAlign: "center",
+              opacity: fogIn,
+              filter: `blur(${(1 - fogIn) * 22}px)`,
+              transform: `scale(${1.06 - fogIn * 0.06})`,
+              marginTop: fs(0.04),
+              paddingLeft: fs(0.08),
+              paddingRight: fs(0.08),
             }}
           >
-            {subtitle}
+            <div
+              style={{
+                fontFamily: fontFamily(theme.fonts.heading),
+                fontWeight: 700,
+                fontSize: fs(0.078),
+                color: theme.colors.text,
+                textAlign: "center",
+                lineHeight: 1.15,
+                letterSpacing: fs(-0.002),
+              }}
+            >
+              {title}
+            </div>
+            <div
+              style={{
+                fontFamily: fontFamily(theme.fonts.body),
+                fontSize: fs(0.044),
+                color: theme.colors.accent,
+                textAlign: "center",
+                marginTop: fs(0.018),
+                lineHeight: 1.25,
+              }}
+            >
+              {subtitle}
+            </div>
           </div>
         </AbsoluteFill>
       </Sequence>
 
-      {/* ——— Финальный кадр ——— */}
+      {/* ——— Финальный кадр: тот же белый, что и на открытии ——— */}
       <Sequence from={durationInFrames - CLOSE} durationInFrames={CLOSE}>
         <AbsoluteFill
           style={{
-            backgroundColor: "#070A11",
+            backgroundColor: theme.colors.surface,
             alignItems: "center",
             justifyContent: "center",
             gap: fs(0.028),
           }}
         >
-          <SpinningTetra size={fs(0.26)} degreesPerSecond={72} />
+          <SpinningTetra size={fs(0.58)} degreesPerSecond={72} />
           <div
             style={{
               fontFamily: fontFamily(theme.fonts.heading),
               fontWeight: 700,
-              fontSize: fs(0.062),
-              color: "#fff",
-              marginTop: fs(0.02),
+              fontSize: fs(0.066),
+              color: theme.colors.text,
+              marginTop: fs(0.03),
+              letterSpacing: fs(0.002),
             }}
           >
             {site}
