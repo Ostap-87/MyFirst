@@ -12,6 +12,8 @@ import {
 } from "remotion";
 import { z } from "zod";
 import { CountUp, SpinningTetra } from "../../shared/components/effects";
+import { KaraokeCaptions } from "../../shared/components/KaraokeCaptions";
+import { useCaptions } from "../../shared/useCaptions";
 import { useFormat } from "../../shared/format";
 import { fontFamily } from "../../shared/fonts";
 import theme from "../theme";
@@ -56,6 +58,9 @@ export const sitePromoSchema = z.object({
   voiceover: z
     .string()
     .describe("Озвучка внутри public, например audio/promo-voice.wav; пусто — без неё"),
+  captionsSrc: z
+    .string()
+    .describe("Расшифровка озвучки внутри public; пусто — без субтитров"),
   music: z
     .string()
     .describe("Музыкальная подложка внутри public; пусто — без неё"),
@@ -199,6 +204,7 @@ export const SitePromo: React.FC<SitePromoProps> = ({
   subtitle,
   site,
   voiceover,
+  captionsSrc,
   music,
   musicVolume,
   scenes,
@@ -206,6 +212,7 @@ export const SitePromo: React.FC<SitePromoProps> = ({
   const frame = useCurrentFrame();
   const { fps, durationInFrames, height } = useVideoConfig();
   const { fs } = useFormat();
+  const captions = useCaptions(captionsSrc || null);
 
   // Длительности выставлены по готовой озвучке, а не по средней скорости
   // речи: расшифровка дала время каждой фразы, и сцены нарезаны по ним.
@@ -394,6 +401,56 @@ export const SitePromo: React.FC<SitePromoProps> = ({
           </div>
         </AbsoluteFill>
       </Sequence>
+
+      {/* ——— Субтитры ———
+
+          Идут только между открытием и финалом: на тех кадрах текст и так
+          написан крупно, и строка внизу дублировала бы его.
+
+          Подложка нарисована здесь, а не взята из captionStyle: тот работает
+          только в режиме одного слова, а тут строка. Без подложки белый
+          текст на светлых страницах сайта не читается вовсе — на первых
+          кадрах его было почти не видно.
+
+          Выше адреса сайта, ниже плашек с цифрами: три слоя текста в кадре
+          не должны перекрываться.
+
+          Показываются условием по кадру, а не Sequence. Sequence сдвигает
+          отсчёт времени внутри себя на своё начало, и субтитры отставали
+          от речи ровно на длину открывающего кадра — почти пять секунд. */}
+      {captionsSrc && frame >= OPEN && frame < durationInFrames - CLOSE ? (
+        <AbsoluteFill
+          style={{
+            justifyContent: "flex-end",
+            alignItems: "center",
+            paddingBottom: Math.round(height * 0.115),
+            paddingLeft: fs(0.06),
+            paddingRight: fs(0.06),
+          }}
+        >
+          <div
+            style={{
+              backgroundColor: "rgba(7,10,17,0.84)",
+              backdropFilter: "blur(14px)",
+              WebkitBackdropFilter: "blur(14px)",
+              borderRadius: fs(0.022),
+              padding: `${fs(0.018)}px ${fs(0.03)}px`,
+              boxShadow: "0 12px 40px rgba(0,0,0,0.35)",
+              maxWidth: "100%",
+            }}
+          >
+            <KaraokeCaptions
+              theme={theme}
+              captions={captions}
+              mode="page"
+              highlight="color"
+              captionStyle="shadow"
+              font="Onest"
+              fontSizeFraction={0.042}
+            />
+          </div>
+        </AbsoluteFill>
+      ) : null}
 
       {/* Подпись сайта держится весь ролик, кроме крайних кадров: промо
           смотрят без звука, и адрес должен быть виден в любой момент. */}

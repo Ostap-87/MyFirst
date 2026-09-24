@@ -672,6 +672,7 @@ export const RemotionRoot: React.FC = () => {
           // Пути пустые до записи. Озвучка кладётся в public/audio,
           // и сцены после этого подгоняются под неё, а не она под них.
           voiceover: "audio/promo-voice-final.m4a",
+          captionsSrc: "captions/promo-final.json",
           music: "",
           musicVolume: 0.16,
           scenes: [
