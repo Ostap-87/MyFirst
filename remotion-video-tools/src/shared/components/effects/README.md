@@ -71,3 +71,4 @@ Shared-MotionLab). Для тёмных сцен берите `screen` или `so
 рендера с кадрами оригинала) описан в `CLAUDE.md`, раздел «Разбор моушн-дизайна
 из референсных видео».
 | `SpinningTetra` | вращающийся тетраэдр логотипа: 3D-проекция без WebGL | `delayInFrames`, `durationInFrames` |
+| `SiteCutaway` | перебивка со скриншотом сайта: плавная прокрутка длинной страницы в кадре | `delayInFrames`, `durationInFrames` |

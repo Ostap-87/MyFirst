@@ -166,6 +166,7 @@ export const RemotionRoot: React.FC = () => {
             { text: "Рынки в Гуанчжоу", at: 6.45, until: 15.66, kind: "struck" as const },
             { text: "Встречи с корпорациями", at: 15.66, kind: "accent" as const },
           ],
+          cutaways: [],
         }}
         durationInFrames={576}
         fps={30}
@@ -194,6 +195,7 @@ export const RemotionRoot: React.FC = () => {
             { text: "Только для корпораций", at: 21.16, until: 29.5, kind: "struck" as const },
             { text: "Делаем доступным", at: 29.5, kind: "accent" as const },
           ],
+          cutaways: [],
         }}
         durationInFrames={1029}
         fps={30}
@@ -226,6 +228,7 @@ export const RemotionRoot: React.FC = () => {
             { text: "Alibaba · Haier · Tencent", at: 20.1, until: 23.9, kind: "accent" as const },
             { text: "Корпоративное обучение", at: 24.8, kind: "accent" as const },
           ],
+          cutaways: [],
         }}
         durationInFrames={949}
         fps={30}
@@ -254,6 +257,7 @@ export const RemotionRoot: React.FC = () => {
             { text: "Протокольные встречи", at: 13.1, until: 20.5, kind: "term" as const },
             { text: "Китай · Юго-Восточная Азия", at: 24.3, kind: "accent" as const },
           ],
+          cutaways: [],
         }}
         durationInFrames={992}
         fps={30}
@@ -281,6 +285,7 @@ export const RemotionRoot: React.FC = () => {
             { text: "≈1000 компаний в базе", at: 13.5, until: 22.1, kind: "accent" as const },
             { text: "Топ-менеджмент напрямую", at: 22.3, kind: "accent" as const },
           ],
+          cutaways: [],
         }}
         durationInFrames={730}
         fps={30}
@@ -309,6 +314,7 @@ export const RemotionRoot: React.FC = () => {
             { text: "Выезд за 2 недели", at: 8.3, until: 12.5, kind: "accent" as const },
             { text: "Согласовывать нечего", at: 13.0, kind: "accent" as const },
           ],
+          cutaways: [],
         }}
         durationInFrames={506}
         fps={30}
@@ -335,6 +341,7 @@ export const RemotionRoot: React.FC = () => {
             { text: "17 готовых программ", at: 11.0, until: 15.4, kind: "accent" as const },
             { text: "Вся Юго-Восточная Азия", at: 15.9, kind: "term" as const },
           ],
+          cutaways: [],
         }}
         durationInFrames={563}
         fps={30}
@@ -362,6 +369,7 @@ export const RemotionRoot: React.FC = () => {
             { text: "Тайминг и маршрут", at: 3.2, until: 5.7, kind: "term" as const },
             { text: "Осталось решиться", at: 6.3, kind: "accent" as const },
           ],
+          cutaways: [],
         }}
         durationInFrames={300}
         fps={30}
@@ -386,6 +394,9 @@ export const RemotionRoot: React.FC = () => {
           plates: [
             { text: "17 направлений", at: 5.2, until: 9.0, kind: "accent" as const },
             { text: "Маршрут — на сайте", at: 9.4, kind: "term" as const },
+          ],
+          cutaways: [
+            { src: "site/expeditions.png", at: 7.4, seconds: 5.0, from: 0.02, to: 0.22 },
           ],
         }}
         durationInFrames={376}
@@ -415,6 +426,9 @@ export const RemotionRoot: React.FC = () => {
             { text: "Стройка и девелопмент", at: 13.0, until: 16.4, kind: "term" as const },
             { text: "Лёгкая промышленность", at: 16.6, kind: "accent" as const },
           ],
+          cutaways: [
+            { src: "site/industries.png", at: 6.2, seconds: 6.2, from: 0.03, to: 0.30 },
+          ],
         }}
         durationInFrames={591}
         fps={30}
@@ -441,6 +455,7 @@ export const RemotionRoot: React.FC = () => {
             { text: "От роботов до нефтехимии", at: 7.5, until: 15.2, kind: "term" as const },
             { text: "Открываю закрытые двери", at: 16.4, kind: "accent" as const },
           ],
+          cutaways: [],
         }}
         durationInFrames={638}
         fps={30}
@@ -466,6 +481,7 @@ export const RemotionRoot: React.FC = () => {
             { text: "2 компании в день", at: 5.5, until: 13.8, kind: "term" as const },
             { text: "Управленцы, не менеджеры", at: 16.8, kind: "accent" as const },
           ],
+          cutaways: [],
         }}
         durationInFrames={698}
         fps={30}
@@ -492,6 +508,7 @@ export const RemotionRoot: React.FC = () => {
             { text: "Согласование — неделя", at: 4.9, until: 10.4, kind: "accent" as const },
             { text: "Дальше — за вами", at: 10.6, kind: "term" as const },
           ],
+          cutaways: [],
         }}
         durationInFrames={369}
         fps={30}
@@ -519,6 +536,7 @@ export const RemotionRoot: React.FC = () => {
             { text: "Три дня внутри", at: 17.6, until: 27.2, kind: "term" as const },
             { text: "Как они этого достигли", at: 27.5, kind: "accent" as const },
           ],
+          cutaways: [],
         }}
         durationInFrames={968}
         fps={30}
@@ -545,6 +563,7 @@ export const RemotionRoot: React.FC = () => {
             { text: "2–3 посещения", at: 9.5, until: 14.5, kind: "accent" as const },
             { text: "От рецептуры до упаковки", at: 15.5, kind: "accent" as const },
           ],
+          cutaways: [],
         }}
         durationInFrames={701}
         fps={30}
@@ -570,6 +589,7 @@ export const RemotionRoot: React.FC = () => {
             { text: "Пост-тур поддержка", at: 3.4, until: 9.2, kind: "accent" as const },
             { text: "Помогаем выстроить связи", at: 9.5, kind: "term" as const },
           ],
+          cutaways: [],
         }}
         durationInFrames={461}
         fps={30}
@@ -598,6 +618,7 @@ export const RemotionRoot: React.FC = () => {
             { text: "Не только Китай", at: 21.2, until: 25.5, kind: "term" as const },
             { text: "Central Kitchen · напитки", at: 25.7, kind: "accent" as const },
           ],
+          cutaways: [],
         }}
         durationInFrames={1213}
         fps={30}
@@ -624,6 +645,7 @@ export const RemotionRoot: React.FC = () => {
             { text: "Разбор индустрий", at: 12.1, until: 18.4, kind: "term" as const },
             { text: "И немного рефлексии", at: 18.5, kind: "term" as const },
           ],
+          cutaways: [],
         }}
         durationInFrames={626}
         fps={30}

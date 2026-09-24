@@ -10,7 +10,7 @@ import {
 } from "remotion";
 import { z } from "zod";
 import { KaraokeCaptions } from "../../shared/components/KaraokeCaptions";
-import { SpinningTetra } from "../../shared/components/effects";
+import { SiteCutaway, SpinningTetra } from "../../shared/components/effects";
 import { useCaptions } from "../../shared/useCaptions";
 import { useFormat } from "../../shared/format";
 import { fontFamily } from "../../shared/fonts";
@@ -55,6 +55,14 @@ const plateSchema = z.object({
     .describe("term — копится, struck — зачёркнутая, accent — утверждение"),
 });
 
+const cutawaySchema = z.object({
+  src: z.string().describe("Скриншот страницы внутри public, например site/industries.png"),
+  at: z.number().describe("Секунда появления — привязывается к словам про сайт"),
+  seconds: z.number().describe("Сколько держится"),
+  from: z.number().min(0).max(1).describe("С какой доли высоты страницы начать"),
+  to: z.number().min(0).max(1).describe("До какой доли дойти: разница задаёт скорость"),
+});
+
 export const chinaStoriesSchema = z.object({
   footage: z.string().describe("Путь к видео внутри public"),
   captionsSrc: z.string().describe("Путь к расшифровке внутри public"),
@@ -69,6 +77,9 @@ export const chinaStoriesSchema = z.object({
     .max(360)
     .describe("Скорость вращения тетраэдра, градусов в секунду"),
   plates: z.array(plateSchema).describe("Плашки по ходу речи"),
+  cutaways: z
+    .array(cutawaySchema)
+    .describe("Перебивки со страницей сайта; пустой массив — без них"),
 });
 
 export type ChinaStoriesProps = z.infer<typeof chinaStoriesSchema>;
@@ -171,6 +182,7 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
   logoScale,
   logoSpin,
   plates,
+  cutaways,
 }) => {
   const frame = useCurrentFrame();
   const { fps, height } = useVideoConfig();
@@ -189,9 +201,19 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
     extrapolateRight: "clamp",
   });
 
-  const visible = plates.filter(
-    (p) => second >= p.at && (p.until === undefined || second < p.until),
+  // Во время перебивки плашки прячутся. Причина не в вёрстке, а в смысле:
+  // на экране сайта те же отрасли и программы уже перечислены списком, и
+  // плашка поверх них повторяет сказанное дважды. Заодно освобождается
+  // место под окно перебивки.
+  const cutawayNow = cutaways.some(
+    (c) => second >= c.at && second < c.at + c.seconds,
   );
+
+  const visible = cutawayNow
+    ? []
+    : plates.filter(
+        (p) => second >= p.at && (p.until === undefined || second < p.until),
+      );
 
   return (
     <AbsoluteFill style={{ backgroundColor: "#070A11" }}>
@@ -225,6 +247,27 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
             "linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.28) 12%, rgba(0,0,0,0) 26%)",
         }}
       />
+
+      {/* ——— Перебивки: страница сайта поверх съёмки ———
+
+          Ставятся под шапкой и субтитрами намеренно. Речь во время
+          перебивки не прерывается, значит логотип и подсветка слов должны
+          оставаться видны — иначе на три секунды пропадает и бренд, и текст. */}
+      {cutaways.map((c) => (
+        <Sequence
+          key={`${c.src}-${c.at}`}
+          from={AT(c.at, fps)}
+          durationInFrames={AT(c.seconds, fps)}
+        >
+          <SiteCutaway
+            src={c.src}
+            from={c.from}
+            to={c.to}
+            zoom={1.05}
+            fadeFrames={8}
+          />
+        </Sequence>
+      ))}
 
       {/* ——— Шапка ——— */}
       <AbsoluteFill
