@@ -270,6 +270,42 @@ export const RemotionRoot: React.FC = () => {
         width={1080}
         height={1920}
       />
+      {/* Деление экрана: спикер сверху, показ снизу. Витрина приёма на
+          сторис про обучение в кампусах. */}
+      <Composition
+        id="GTT-SplitDemo"
+        component={ChinaStories}
+        schema={chinaStoriesSchema}
+        calculateMetadata={calculateStoriesMetadata}
+        defaultProps={{
+          footage: "local/st15-graded.mp4",
+          captionsSrc: "captions/st15.json",
+          durationSeconds: 16,
+          hookTop: "Обучение",
+          hookBottom: "в кампусах гигантов",
+          brandMark: "GLOBAL TECH TOUR",
+          logoScale: 1.5,
+          logoSpin: 72,
+          plates: [],
+          cutaways: [],
+          focusY: 0.48,
+          splits: [
+            { at: 3.4, until: 8.6, items: [{ src: "site/training.png" }] },
+            {
+              at: 10.0,
+              until: 15.2,
+              items: [
+                { src: "tg-images/globaltechtour/2026-08-22-tencent-wechat-os.png" },
+                { src: "tg-images/globaltechtour/2026-08-23-bytedance-tiktok-vs-douyin.png" },
+              ],
+            },
+          ],
+        }}
+        durationInFrames={480}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
       {/* Монтажный стол: ролик ChinaStories и его лента в одном кадре.
           Пропсы любой сторис подставляет `npm run editor -- --id <id>`;
           здесь по умолчанию GTT-Invite — в ней есть стопка из трёх плашек. */}

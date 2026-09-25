@@ -9,6 +9,7 @@ export * from "./PhotoCards";
 export * from "./PopWindows";
 export * from "./FramedInsert";
 export * from "./WipeBroll";
+export * from "./SplitScreen";
 // new-effect:exports:end
 export * from "./ChatOverlay";
 export * from "./CountUp";
