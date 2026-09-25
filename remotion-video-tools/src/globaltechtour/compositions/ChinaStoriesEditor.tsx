@@ -30,12 +30,45 @@ import { ChinaStories, chinaStoriesSchema } from "./ChinaStories";
  * Собирается командой `npm run editor -- --id <композиция>`.
  */
 
+/**
+ * Предложение монтажёра: что сделать, где во времени и где в кадре.
+ *
+ * applied — уже стоит в пропсах ролика и видно в превью; false — только
+ * идея (например, перебивке нужен скрин, которого нет), рисуется пунктиром.
+ */
+const proposalSchema = z.object({
+  n: z.number().int().describe("Номер — по нему владелец отвечает «убери 3»"),
+  at: z.number(),
+  until: z.number(),
+  kind: z.enum(["punch", "push", "cut", "plate", "cutaway", "clean"]),
+  what: z.string().describe("Коротко: «быстрый зум ×1,2»"),
+  why: z.string().describe("На каких словах и зачем"),
+  applied: z.boolean(),
+  scale: z.number().optional(),
+  zone: z.enum(["face", "top", "bottom", "full"]).describe("Где в кадре"),
+});
+
 export const chinaStoriesEditorSchema = chinaStoriesSchema.extend({
   title: z.string().describe("Какой ролик на столе — id композиции"),
   peaksSrc: z
     .string()
     .describe("Громкость по кадрам, JSON внутри public; пусто — без волны"),
+  proposals: z
+    .array(proposalSchema)
+    .optional()
+    .describe("Предложения монтажёра: пронумерованы, видны на ленте и в кадре"),
 });
+
+type Proposal = z.infer<typeof proposalSchema>;
+
+const KIND_COLOR: Record<Proposal["kind"], string> = {
+  punch: "#F43F5E",
+  push: "#14B8A6",
+  cut: "#EAB308",
+  plate: "#E8ECF3",
+  cutaway: "#F59E0B",
+  clean: "#64748B",
+};
 
 type EditorProps = z.infer<typeof chinaStoriesEditorSchema>;
 type Plate = EditorProps["plates"][number];
@@ -55,8 +88,8 @@ const PREVIEW_SCALE = PREVIEW_H / 1920;
 const PREVIEW_W = Math.round(1080 * PREVIEW_SCALE);
 const PREVIEW_LEFT = 36;
 const SIDE_LEFT = PREVIEW_LEFT + PREVIEW_W + 28;
-const OVERVIEW_TOP = 1204;
-const TIMELINE_TOP = 1276;
+const OVERVIEW_TOP = 1196;
+const TIMELINE_TOP = 1256;
 const LABEL_W = 150;
 const LANE_W = W - LABEL_W;
 /** Сколько пикселей ленты на секунду: в окне ~8,5 с — видно фразу целиком. */
@@ -230,8 +263,111 @@ const TrackLabel: React.FC<{
   </div>
 );
 
+const MOVE_RU = { punch: "быстрый зум", push: "лёгкий наезд", cut: "смена кадра" };
+
+/**
+ * Рамка «где в кадре» поверх превью, в координатах кадра 1080×1920.
+ *
+ * Для зумов это ровно та часть кадра, что останется видна после
+ * увеличения вокруг глаз, — видно, не срежет ли подбородок или макушку.
+ * Для плашек — зона стопки или нижней строки, для перебивки — весь кадр.
+ */
+const ZoneFrame: React.FC<{ readonly p: Proposal; readonly focusY: number }> = ({
+  p,
+  focusY,
+}) => {
+  let rect: { x: number; y: number; w: number; h: number };
+  if (p.kind === "punch" || p.kind === "push" || p.kind === "cut") {
+    const k = p.scale ?? 1.15;
+    const w = 1080 / k;
+    const h = 1920 / k;
+    rect = { x: (1080 - w) * 0.5, y: focusY * 1920 * (1 - 1 / k), w, h };
+  } else if (p.zone === "top") {
+    rect = { x: 70, y: 400, w: 940, h: 280 };
+  } else if (p.zone === "bottom") {
+    rect = { x: 70, y: 1450, w: 940, h: 200 };
+  } else {
+    rect = { x: 16, y: 16, w: 1048, h: 1888 };
+  }
+  const color = KIND_COLOR[p.kind];
+  return (
+    <div
+      style={{
+        position: "absolute",
+        left: rect.x,
+        top: rect.y,
+        width: rect.w,
+        height: rect.h,
+        border: `8px dashed ${color}`,
+        borderRadius: 24,
+        boxSizing: "border-box",
+      }}
+    >
+      <div
+        style={{
+          position: "absolute",
+          left: 16,
+          // У плашки подпись под рамкой: сверху она закрыла бы саму плашку.
+          ...(p.kind === "plate" ? { top: "100%", marginTop: 16 } : { top: 16 }),
+          backgroundColor: color,
+          color: p.kind === "plate" || p.kind === "cut" ? "#0B0E14" : "#fff",
+          fontFamily: UI,
+          fontWeight: 800,
+          fontSize: 52,
+          padding: "6px 22px",
+          borderRadius: 14,
+        }}
+      >
+        №{p.n} · {p.what}
+      </div>
+    </div>
+  );
+};
+
+/** Клип предложения: пунктир — идея без материала, заливка — уже в кадре. */
+const IdeaClip: React.FC<{
+  readonly p: Proposal;
+  readonly now: number;
+  readonly top: number;
+  readonly height: number;
+}> = ({ p, now, top, height }) => {
+  const x = PLAYHEAD_X + (p.at - now) * PPS;
+  const w = Math.max(40, (p.until - p.at) * PPS - 3);
+  if (x + w < LABEL_W - 20 || x > W + 20) return null;
+  const live = now >= p.at && now < p.until;
+  const color = KIND_COLOR[p.kind];
+  const hidden = Math.max(0, LABEL_W - x);
+  return (
+    <div
+      style={{
+        position: "absolute",
+        left: x,
+        top,
+        width: w,
+        height,
+        borderRadius: 8,
+        border: `3px ${p.applied ? "solid" : "dashed"} ${color}`,
+        backgroundColor: p.applied ? `${color}33` : "transparent",
+        boxShadow: live ? `0 0 18px ${color}` : "none",
+        boxSizing: "border-box",
+        color: C.text,
+        fontFamily: UI,
+        fontWeight: 800,
+        fontSize: 20,
+        lineHeight: `${height - 6}px`,
+        padding: `0 8px 0 ${8 + hidden}px`,
+        overflow: "hidden",
+        whiteSpace: "nowrap",
+        textOverflow: "ellipsis",
+      }}
+    >
+      №{p.n} {p.what}
+    </div>
+  );
+};
+
 export const ChinaStoriesEditor: React.FC<EditorProps> = (props) => {
-  const { title, peaksSrc, ...story } = props;
+  const { title, peaksSrc, proposals = [], ...story } = props;
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const now = frame / fps;
@@ -256,15 +392,19 @@ export const ChinaStoriesEditor: React.FC<EditorProps> = (props) => {
     (w) => now * 1000 >= w.startMs && now * 1000 < w.endMs,
   );
   const shownPlates = story.plates.filter((p) => p.at <= now).length;
+  const ideasNow = proposals.filter((p) => now >= p.at && now < p.until);
+  const moves = story.moves ?? [];
 
   // ——— Дорожки сверху вниз ———
   const RULER_H = 40;
-  const TRACK_GAP = 12;
-  const VIDEO_H = 124;
-  const HOOK_H = 58;
-  const PLATE_LANE_H = 54;
-  const CUT_H = 58;
-  const WORDS_H = 66;
+  const TRACK_GAP = 8;
+  const VIDEO_H = 100;
+  const HOOK_H = 50;
+  const PLATE_LANE_H = 48;
+  const CUT_H = 50;
+  const WORDS_H = 56;
+  const CAM_H = 50;
+  const IDEA_H = 58;
 
   let y = TIMELINE_TOP + RULER_H + TRACK_GAP;
   const videoY = y;
@@ -276,7 +416,11 @@ export const ChinaStoriesEditor: React.FC<EditorProps> = (props) => {
   y += platesH + TRACK_GAP;
   const cutY = y;
   y += CUT_H + TRACK_GAP;
+  const camY = y;
+  y += CAM_H + TRACK_GAP;
   const wordsY = y;
+  y += WORDS_H + TRACK_GAP;
+  const ideaY = y;
 
   // Шкала: метка каждую секунду, подпись каждые две.
   const firstTick = Math.max(0, Math.floor(now - PLAYHEAD_X / PPS));
@@ -427,6 +571,9 @@ export const ChinaStoriesEditor: React.FC<EditorProps> = (props) => {
           <Sequence width={1080} height={1920} name="Превью">
             <ChinaStories {...story} />
           </Sequence>
+          {ideasNow.map((p) => (
+            <ZoneFrame key={`z-${p.n}`} p={p} focusY={story.focusY ?? 0.4} />
+          ))}
         </div>
       </div>
 
@@ -470,6 +617,13 @@ export const ChinaStoriesEditor: React.FC<EditorProps> = (props) => {
           ? sideRow(C.cutaway, "Перебивка · сайт", cutawayNow.src.replace(/^.*\//, ""))
           : null}
         {sideRow(C.words, "Субтитр", word ? word.text.trim() : "—")}
+        {ideasNow.map((p) =>
+          sideRow(
+            KIND_COLOR[p.kind],
+            `Идея №${p.n}${p.applied ? " · в кадре" : " · нужен материал"}`,
+            `${p.what} — ${p.why}`,
+          ),
+        )}
 
         <div style={{ flex: 1 }} />
 
@@ -617,7 +771,9 @@ export const ChinaStoriesEditor: React.FC<EditorProps> = (props) => {
         [hookY, HOOK_H],
         [platesY, platesH],
         [cutY, CUT_H],
+        [camY, CAM_H],
         [wordsY, WORDS_H],
+        ...(proposals.length ? [[ideaY, IDEA_H]] : []),
       ].map(([top, h]) => (
         <div
           key={`lane-${top}`}
@@ -749,6 +905,24 @@ export const ChinaStoriesEditor: React.FC<EditorProps> = (props) => {
         />
       ))}
 
+      {moves.map((m) => (
+        <Clip
+          key={`m-${m.at}`}
+          from={m.at}
+          to={m.until}
+          now={now}
+          top={camY}
+          height={CAM_H}
+          color={KIND_COLOR[m.kind]}
+          dark={m.kind === "cut"}
+          label={`${MOVE_RU[m.kind]} ×${m.scale}`}
+        />
+      ))}
+
+      {proposals.map((p) => (
+        <IdeaClip key={`i-${p.n}`} p={p} now={now} top={ideaY} height={IDEA_H} />
+      ))}
+
       {/* Подписи дорожек поверх уезжающих клипов. Колонка сплошная на всю
           высоту ленты: иначе обводка активного клипа светится в щелях
           между подписями. */}
@@ -767,7 +941,11 @@ export const ChinaStoriesEditor: React.FC<EditorProps> = (props) => {
       <TrackLabel top={hookY} height={HOOK_H} name="КРЮЧОК" color={C.hook} />
       <TrackLabel top={platesY} height={platesH} name="ПЛАШКИ" color={C.term} />
       <TrackLabel top={cutY} height={CUT_H} name="САЙТ" color={C.cutaway} />
+      <TrackLabel top={camY} height={CAM_H} name="КАМЕРА" color={KIND_COLOR.punch} />
       <TrackLabel top={wordsY} height={WORDS_H} name="СЛОВА" color={C.words} />
+      {proposals.length ? (
+        <TrackLabel top={ideaY} height={IDEA_H} name="ИДЕИ" color="#FACC15" />
+      ) : null}
 
       {/* Курсор воспроизведения: стоит на месте, лента едет */}
       <div
@@ -776,7 +954,8 @@ export const ChinaStoriesEditor: React.FC<EditorProps> = (props) => {
           left: PLAYHEAD_X - 2,
           top: TIMELINE_TOP,
           width: 4,
-          height: wordsY + WORDS_H + 12 - TIMELINE_TOP,
+          height:
+            (proposals.length ? ideaY + IDEA_H : wordsY + WORDS_H) + 10 - TIMELINE_TOP,
           backgroundColor: C.playhead,
           boxShadow: `0 0 16px ${C.playhead}`,
         }}

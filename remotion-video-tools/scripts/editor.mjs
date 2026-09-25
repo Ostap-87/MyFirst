@@ -4,6 +4,7 @@
 //
 //   npm run editor -- --id GTT-Invite            скриншоты + видео стола
 //   npm run editor -- --id GTT-Invite --stills   только скриншоты, быстро
+//   npm run editor -- --props data/head/<ролик>.json   черновик из пула с идеями
 //
 // Результат — out/editor/<id>/:
 //   01-krjuchok.jpg, 02-plashka-….jpg …   стол в момент каждого события
@@ -13,14 +14,19 @@
 // Каждый готовый файл печатается строкой «СКРИН <путь>» / «ВИДЕО <путь>» —
 // по ним ассистент отправляет кадры в чат, не дожидаясь конца рендера.
 import { execFileSync } from "node:child_process";
-import { mkdirSync, readdirSync, rmSync, writeFileSync } from "node:fs";
+import { mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { bundle } from "@remotion/bundler";
 import { renderMedia, renderStill, selectComposition } from "@remotion/renderer";
 import { fail, parseArgs, ROOT } from "./lib.mjs";
 
 const args = parseArgs(process.argv.slice(2));
-const id = args.id && args.id !== true ? String(args.id) : null;
+// Черновик из пула лежит файлом, а не записью в Root.tsx: пропсы и идеи
+// монтажёра берутся оттуда.
+const draft = args.props && args.props !== true
+  ? JSON.parse(readFileSync(resolve(ROOT, String(args.props)), "utf8"))
+  : null;
+const id = draft ? draft.name : args.id && args.id !== true ? String(args.id) : null;
 if (!id) {
   fail(
     "Какой ролик на стол? npm run editor -- --id GTT-Invite\n" +
@@ -44,8 +50,10 @@ process.on("exit", () => rmSync(serveUrl, { recursive: true, force: true }));
 
 // Пропсы берём у самой композиции: стол показывает ровно тот ролик,
 // что зарегистрирован в Root.tsx, а не копию, которая разойдётся с ним.
-const story = await selectComposition({ serveUrl, id });
-const props = story.props;
+const props = draft
+  ? draft.props
+  : (await selectComposition({ serveUrl, id })).props;
+const proposals = draft?.proposals ?? [];
 if (!props.footage || !Array.isArray(props.plates)) {
   fail(`${id} — не ChinaStories: нет footage или plates в пропсах.`);
 }
@@ -84,7 +92,7 @@ const peaksRel = `local/editor/${id}.peaks.json`;
   }
 }
 
-const inputProps = { ...props, title: id, peaksSrc: peaksRel };
+const inputProps = { ...props, title: id, peaksSrc: peaksRel, proposals };
 const editor = await selectComposition({ serveUrl, id: "GTT-Editor", inputProps });
 
 // ——— События: где делать скриншоты ———
@@ -105,6 +113,12 @@ const slug = (s) =>
 const events = [{ at: 1.0, label: "Крючок" }];
 for (const p of props.plates) events.push({ at: p.at + 0.6, label: `Плашка ${p.text}` });
 for (const c of props.cutaways) events.push({ at: c.at + 0.8, label: `Сайт ${c.src.split("/").pop()}` });
+for (const p of proposals) {
+  if (p.kind === "plate" || (p.kind === "cutaway" && p.applied)) continue; // уже есть выше
+  // Середина отрезка, но не позже чем через 1,2 с: зум уже доехал,
+  // а рамка «где в кадре» ещё на экране.
+  events.push({ at: p.at + Math.min(1.2, (p.until - p.at) / 2), label: `Идея ${p.n} ${p.what}` });
+}
 events.push({ at: props.durationSeconds - 0.8, label: "Финал" });
 events.sort((a, b) => a.at - b.at);
 

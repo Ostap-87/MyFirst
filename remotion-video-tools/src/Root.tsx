@@ -30,6 +30,7 @@ import {
 
 // new-composition:imports:start
 import {
+  calculateStoriesMetadata,
   ChinaStories,
   chinaStoriesSchema,
 } from "./globaltechtour/compositions/ChinaStories";
@@ -178,6 +179,31 @@ export const RemotionRoot: React.FC = () => {
           cutaways: [],
         }}
         durationInFrames={576}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      {/* Head из пула: пропсы приходят файлом data/head/<ролик>.json через
+          `npm run head -- --render <ролик>`, длительность — по съёмке.
+          Здесь по умолчанию GTT-Invite, чтобы композиция открывалась. */}
+      <Composition
+        id="GTT-Head"
+        component={ChinaStories}
+        schema={chinaStoriesSchema}
+        calculateMetadata={calculateStoriesMetadata}
+        defaultProps={{
+          footage: "local/st4-graded.mp4",
+          captionsSrc: "captions/st4.json",
+          durationSeconds: 31.7,
+          hookTop: "Мероприятие, куда зовут",
+          hookBottom: "только по приглашению",
+          brandMark: "GLOBAL TECH TOUR",
+          logoScale: 1.5,
+          logoSpin: 72,
+          plates: [],
+          cutaways: [],
+        }}
+        durationInFrames={951}
         fps={30}
         width={1080}
         height={1920}

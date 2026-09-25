@@ -1,5 +1,6 @@
 import {
   AbsoluteFill,
+  type CalculateMetadataFunction,
   interpolate,
   OffthreadVideo,
   Sequence,
@@ -10,7 +11,11 @@ import {
 } from "remotion";
 import { z } from "zod";
 import { KaraokeCaptions } from "../../shared/components/KaraokeCaptions";
-import { SiteCutaway, SpinningTetra } from "../../shared/components/effects";
+import {
+  CameraMoves,
+  SiteCutaway,
+  SpinningTetra,
+} from "../../shared/components/effects";
 import { useCaptions } from "../../shared/useCaptions";
 import { useFormat } from "../../shared/format";
 import { fontFamily } from "../../shared/fonts";
@@ -63,6 +68,15 @@ const cutawaySchema = z.object({
   to: z.number().min(0).max(1).describe("До какой доли дойти: разница задаёт скорость"),
 });
 
+const moveSchema = z.object({
+  at: z.number().describe("Секунда начала — на начале слова"),
+  until: z.number().describe("Секунда конца — на конце фразы"),
+  kind: z
+    .enum(["punch", "push", "cut"])
+    .describe("punch — быстрый зум, push — лёгкий наезд, cut — смена кадра"),
+  scale: z.number().min(1).max(1.6).describe("Во сколько раз крупнее"),
+});
+
 export const chinaStoriesSchema = z.object({
   footage: z.string().describe("Путь к видео внутри public"),
   captionsSrc: z.string().describe("Путь к расшифровке внутри public"),
@@ -80,9 +94,27 @@ export const chinaStoriesSchema = z.object({
   cutaways: z
     .array(cutawaySchema)
     .describe("Перебивки со страницей сайта; пустой массив — без них"),
+  // Необязательные: выпуски, собранные до их появления, рендерятся как раньше.
+  moves: z
+    .array(moveSchema)
+    .optional()
+    .describe("Движения камеры: быстрый зум, лёгкий наезд, смена кадра"),
+  focusY: z
+    .number()
+    .min(0)
+    .max(1)
+    .optional()
+    .describe("Где глаза по высоте кадра — центр зумов; по умолчанию 0,4"),
 });
 
 export type ChinaStoriesProps = z.infer<typeof chinaStoriesSchema>;
+
+/** Длительность по съёмке: для GTT-Head, куда пропсы приходят файлом. */
+export const calculateStoriesMetadata: CalculateMetadataFunction<
+  ChinaStoriesProps
+> = ({ props }) => ({
+  durationInFrames: Math.ceil(props.durationSeconds * 30),
+});
 type Plate = z.infer<typeof plateSchema>;
 
 /**
@@ -183,6 +215,8 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
   logoSpin,
   plates,
   cutaways,
+  moves = [],
+  focusY = 0.4,
 }) => {
   const frame = useCurrentFrame();
   const { fps, height } = useVideoConfig();
@@ -221,7 +255,15 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
         <AbsoluteFill style={{ overflow: "hidden" }}>
           {/* Позиционируем обёртку: свои стили position OffthreadVideo
               до элемента не доносит. */}
-          <div style={{ position: "absolute", inset: 0 }}>
+          <CameraMoves
+            originY={focusY}
+            moves={moves.map((m) => ({
+              fromFrame: AT(m.at, fps),
+              toFrame: AT(m.until, fps),
+              kind: m.kind,
+              scale: m.scale,
+            }))}
+          >
             <OffthreadVideo
               src={staticFile(footage)}
               style={{
@@ -231,7 +273,7 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
                 display: "block",
               }}
             />
-          </div>
+          </CameraMoves>
         </AbsoluteFill>
       </Sequence>
 

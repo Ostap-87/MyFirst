@@ -4,6 +4,7 @@
 //
 // Строки между маркерами дописывает `npm run new-effect`.
 // new-effect:exports:start
+export * from "./CameraMoves";
 // new-effect:exports:end
 export * from "./ChatOverlay";
 export * from "./CountUp";
