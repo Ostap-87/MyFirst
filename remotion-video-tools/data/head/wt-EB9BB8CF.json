@@ -75,12 +75,6 @@
         "scale": 1.18
       },
       {
-        "at": 21.48,
-        "until": 24.03,
-        "kind": "push",
-        "scale": 1.06
-      },
-      {
         "at": 27.1,
         "until": 28.4,
         "kind": "punch",
@@ -93,10 +87,10 @@
         "until": 6.4,
         "items": [
           {
-            "src": "tg-images/globaltechtour/2026-08-21-foxconn-ai-servers.png"
+            "src": "tg-images/globaltechtour/2026-08-19-lenovo-worlds-largest-pc.png"
           },
           {
-            "src": "tg-images/globaltechtour/2026-09-01-longi-envision-solar-wind.png"
+            "src": "tg-images/globaltechtour/2026-09-04-yili-mengniu-global-dairy.png"
           }
         ]
       }
@@ -124,38 +118,44 @@
     "splits": [
       {
         "at": 17.08,
-        "until": 21.48,
+        "until": 24.45,
         "items": [
           {
-            "src": "tg-images/globaltechtour/2026-08-17-xpeng-robotaxi-evtol.png"
+            "src": "tg-images/globaltechtour/2026-08-27-ping-an-insurer-fintech.png",
+            "seconds": 1.85
           },
           {
-            "src": "tg-images/globaltechtour/2026-09-01-longi-envision-solar-wind.png"
+            "src": "tg-images/globaltechtour/2026-09-01-longi-envision-solar-wind.png",
+            "seconds": 1.4
+          },
+          {
+            "src": "tg-images/globaltechtour/2026-08-17-xpeng-robotaxi-evtol.png",
+            "seconds": 1.15
+          },
+          {
+            "src": "site/home.png",
+            "present": "site",
+            "title": "Global Tech Tour",
+            "url": "globaltechtour.ru",
+            "scrollTo": 0.3
           }
         ]
       }
     ],
-    "inserts": [
-      {
-        "at": 22.29,
-        "until": 24.6,
-        "src": "site/home.png",
-        "caption": "globaltechtour.ru"
-      }
-    ],
+    "inserts": [],
     "photoCards": [
       {
         "at": 26.46,
         "until": 29,
         "items": [
           {
-            "src": "tg-images/globaltechtour/2026-08-22-tencent-wechat-os.png"
+            "src": "tg-images/globaltechtour/2026-08-27-ping-an-insurer-fintech.png"
           },
           {
-            "src": "tg-images/globaltechtour/2026-08-23-bytedance-tiktok-vs-douyin.png"
+            "src": "tg-images/globaltechtour/2026-08-20-hisense-tcl-tv-export.png"
           },
           {
-            "src": "tg-images/globaltechtour/2026-08-26-ant-group-alipay-infra.png"
+            "src": "tg-images/globaltechtour/2026-08-21-foxconn-ai-servers.png"
           }
         ],
         "stepSeconds": 0.45
@@ -180,8 +180,8 @@
       "kind": "cutaway",
       "zone": "full",
       "applied": true,
-      "what": "кадры на весь экран: цеха",
-      "why": "«я вижу его из цехов» — показать, а не назвать",
+      "what": "на весь экран: производственные линии",
+      "why": "«я вижу его из цехов» — сборочная линия и завод, а не офис",
       "n": 2
     },
     {
@@ -211,7 +211,7 @@
       "kind": "plate",
       "zone": "top",
       "applied": true,
-      "what": "плашки «Остап Доценко» + «Эксперт по Китаю · Шанхай»",
+      "what": "«Остап Доценко» + «Эксперт по Китаю · Шанхай»",
       "why": "«Я Остап Доценко, эксперт по Китаю, живу в Шанхае»",
       "n": 5
     },
@@ -221,7 +221,7 @@
       "kind": "cutaway",
       "zone": "full",
       "applied": true,
-      "what": "всплывающие окна: ваши поездки",
+      "what": "окна: ваши поездки",
       "why": "«лучшая работа в мире» — коллаж из ваших сторис",
       "n": 6
     },
@@ -248,34 +248,13 @@
     },
     {
       "at": 17.08,
-      "until": 21.48,
-      "kind": "cutaway",
-      "zone": "full",
-      "applied": true,
-      "what": "деление экрана: роботы",
-      "why": "«я на переговорах с корпорацией, которая делает роботов» — лицо остаётся, снизу роботы",
-      "n": 9
-    },
-    {
-      "at": 21.48,
-      "until": 24.03,
-      "kind": "push",
-      "scale": 1.06,
-      "zone": "face",
-      "applied": true,
-      "what": "лёгкий наезд ×1,06",
-      "why": "«Мой проект называется Global Tech Tour»",
-      "n": 10
-    },
-    {
-      "at": 22.29,
-      "until": 24.6,
+      "until": 24.45,
       "kind": "cutaway",
       "zone": "bottom",
       "applied": true,
-      "what": "врезка в рамке: сайт",
-      "why": "название проекта — показать сайт",
-      "n": 11
+      "what": "деление экрана: переговоры → роботы → технологии → сайт",
+      "why": "картинка под каждым словом: штаб корпорации, роботы, аэротакси; на «Global Tech Tour» — витрина сайта",
+      "n": 9
     },
     {
       "at": 24.53,
@@ -285,7 +264,7 @@
       "applied": true,
       "what": "зачёркнуто «Рынки» и «Селфи у пагод»",
       "why": "«никаких рынков и селфи на фоне пагод»",
-      "n": 12
+      "n": 10
     },
     {
       "at": 26.46,
@@ -293,9 +272,9 @@
       "kind": "cutaway",
       "zone": "bottom",
       "applied": true,
-      "what": "карточки внахлёст: корпорации",
-      "why": "«мы заходим внутрь корпорации»",
-      "n": 13
+      "what": "карточки: внутри корпораций",
+      "why": "«мы заходим внутрь корпорации» — интерьеры: штаб, шоурум, серверная",
+      "n": 11
     },
     {
       "at": 26.63,
@@ -305,7 +284,7 @@
       "applied": true,
       "what": "акцент «Внутрь корпораций»",
       "why": "вывод ролика — держится до конца",
-      "n": 14
+      "n": 12
     },
     {
       "at": 27.1,
@@ -316,7 +295,7 @@
       "applied": true,
       "what": "быстрый зум ×1,15",
       "why": "удар на «внутрь корпорации»",
-      "n": 15
+      "n": 13
     }
   ]
 }

@@ -10,6 +10,7 @@ export * from "./PopWindows";
 export * from "./FramedInsert";
 export * from "./WipeBroll";
 export * from "./SplitScreen";
+export * from "./SiteShowcase";
 // new-effect:exports:end
 export * from "./ChatOverlay";
 export * from "./CountUp";

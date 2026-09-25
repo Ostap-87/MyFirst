@@ -1,5 +1,6 @@
 import { Img, OffthreadVideo, staticFile } from "remotion";
 import { z } from "zod";
+import { SiteShowcase } from "./SiteShowcase";
 
 /**
  * Фото или видео по пути внутри public — общая часть врезок.
@@ -11,6 +12,17 @@ import { z } from "zod";
 export const mediaItemSchema = z.object({
   src: z.string().describe("Фото или видео внутри public"),
   caption: z.string().optional().describe("Подпись под врезкой или геометка"),
+  present: z
+    .enum(["site"])
+    .optional()
+    .describe("site — скриншот сайта подаётся витриной: телефон с прокруткой"),
+  title: z.string().optional().describe("Для витрины сайта: название"),
+  url: z.string().optional().describe("Для витрины сайта: адрес на кнопке"),
+  scrollTo: z.number().optional().describe("Для витрины сайта: до какой доли долистать"),
+  seconds: z
+    .number()
+    .optional()
+    .describe("Сколько держится этот кадр; без — делят остаток поровну"),
 });
 
 export type MediaItem = z.infer<typeof mediaItemSchema>;
@@ -20,7 +32,20 @@ const isVideo = (src: string) => /\.(mp4|mov|webm|m4v)$/i.test(src);
 export const Media: React.FC<{
   readonly src: string;
   readonly style?: React.CSSProperties;
-}> = ({ src, style }) => {
+  readonly item?: Partial<MediaItem>;
+}> = ({ src, style, item }) => {
+  // Скриншот сайта голым не показываем: это выглядит как картинка из
+  // чата. Витрина подаёт его как продукт — в телефоне, с прокруткой.
+  if (item?.present === "site") {
+    return (
+      <SiteShowcase
+        src={src}
+        title={item.title}
+        url={item.url}
+        scrollTo={item.scrollTo}
+      />
+    );
+  }
   const common: React.CSSProperties = {
     width: "100%",
     height: "100%",

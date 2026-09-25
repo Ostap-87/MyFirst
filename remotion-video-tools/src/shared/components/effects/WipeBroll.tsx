@@ -8,7 +8,7 @@ import {
 } from "remotion";
 import { z } from "zod";
 import { fontFamily } from "../../fonts";
-import { Media, mediaItemSchema, withDefaults } from "./media";
+import { Media, type MediaItem, mediaItemSchema, withDefaults } from "./media";
 
 /**
  * WipeBroll — B-roll на весь кадр со сменой шторкой.
@@ -46,12 +46,13 @@ export const wipeBrollDefaults: WipeBrollParams = {
 
 const Shot: React.FC<{
   readonly src: string;
+  readonly item: MediaItem;
   readonly caption?: string;
   readonly wipeFrames: number;
   readonly zoom: number;
   readonly labelBottom: number;
   readonly wipeOut: boolean;
-}> = ({ src, caption, wipeFrames, zoom, labelBottom, wipeOut }) => {
+}> = ({ src, item, caption, wipeFrames, zoom, labelBottom, wipeOut }) => {
   const frame = useCurrentFrame();
   const { durationInFrames, width } = useVideoConfig();
   const ease = { easing: Easing.inOut(Easing.cubic), extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
@@ -75,7 +76,7 @@ const Shot: React.FC<{
       }}
     >
       <AbsoluteFill style={{ transform: `scale(${scale})` }}>
-        <Media src={src} />
+        <Media src={src} item={item} />
       </AbsoluteFill>
       {/* Кромка шторки: тонкая светлая полоса, чтобы смена кадра читалась. */}
       {inset > 0 && inset < 100 ? (
@@ -130,6 +131,7 @@ export const WipeBroll: React.FC<WipeBrollProps> = (params) => {
           <Sequence key={`${item.src}-${i}`} from={from} durationInFrames={len} layout="none">
             <Shot
               src={item.src}
+              item={item}
               caption={item.caption}
               wipeFrames={wipeFrames}
               zoom={zoom}

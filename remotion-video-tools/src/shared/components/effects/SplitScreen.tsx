@@ -7,7 +7,7 @@ import {
   useVideoConfig,
 } from "remotion";
 import { z } from "zod";
-import { Media, mediaItemSchema, withDefaults } from "./media";
+import { Media, type MediaItem, mediaItemSchema, withDefaults } from "./media";
 
 /**
  * SplitScreen — плавное деление экрана: спикер сверху, показ снизу.
@@ -72,18 +72,25 @@ export const splitScreenDefaults: SplitScreenParams = {
 
 /** Нижняя половина: показы сменяются наплывом, внутри — медленный наезд. */
 const Showcase: React.FC<{
-  readonly items: { src: string; caption?: string }[];
+  readonly items: MediaItem[];
   readonly top: number;
 }> = ({ items, top }) => {
   const frame = useCurrentFrame();
-  const { durationInFrames } = useVideoConfig();
-  const per = Math.max(1, Math.floor(durationInFrames / items.length));
+  const { durationInFrames, fps } = useVideoConfig();
   const fade = 10;
+  // Кадры встают под слова: у кого задано seconds — держится столько,
+  // остальные делят остаток поровну. Иначе робот появлялся раньше слова
+  // «роботов», а сайт — на полфразы позже названия проекта.
+  const fixed = items.reduce((a, i) => a + (i.seconds ? Math.round(i.seconds * fps) : 0), 0);
+  const free = items.filter((i) => !i.seconds).length;
+  const share = free ? Math.max(1, Math.floor((durationInFrames - fixed) / free)) : 0;
+  const lengths = items.map((i) => (i.seconds ? Math.round(i.seconds * fps) : share));
+  const starts = lengths.map((_, i) => lengths.slice(0, i).reduce((a, b) => a + b, 0));
   return (
     <AbsoluteFill style={{ top, height: "auto", overflow: "hidden", backgroundColor: "#000" }}>
       {items.map((item, i) => {
-        const from = i * per;
-        const len = i === items.length - 1 ? durationInFrames - from : per + fade;
+        const from = starts[i];
+        const len = i === items.length - 1 ? durationInFrames - from : lengths[i] + fade;
         const local = frame - from;
         const opacity = i === 0 ? 1 : interpolate(local, [0, fade], [0, 1], {
           extrapolateLeft: "clamp",
@@ -96,7 +103,7 @@ const Showcase: React.FC<{
         return (
           <Sequence key={`${item.src}-${i}`} from={from} durationInFrames={len} layout="none">
             <AbsoluteFill style={{ opacity, transform: `scale(${scale})` }}>
-              <Media src={item.src} />
+              <Media src={item.src} item={item} />
             </AbsoluteFill>
           </Sequence>
         );
