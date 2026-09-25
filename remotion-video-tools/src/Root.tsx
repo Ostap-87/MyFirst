@@ -34,6 +34,11 @@ import {
   chinaStoriesSchema,
 } from "./globaltechtour/compositions/ChinaStories";
 import {
+  calculateEditorMetadata,
+  ChinaStoriesEditor,
+  chinaStoriesEditorSchema,
+} from "./globaltechtour/compositions/ChinaStoriesEditor";
+import {
   SitePromo,
   sitePromoSchema,
 } from "./globaltechtour/compositions/SitePromo";
@@ -173,6 +178,38 @@ export const RemotionRoot: React.FC = () => {
           cutaways: [],
         }}
         durationInFrames={576}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      {/* Монтажный стол: ролик ChinaStories и его лента в одном кадре.
+          Пропсы любой сторис подставляет `npm run editor -- --id <id>`;
+          здесь по умолчанию GTT-Invite — в ней есть стопка из трёх плашек. */}
+      <Composition
+        id="GTT-Editor"
+        component={ChinaStoriesEditor}
+        schema={chinaStoriesEditorSchema}
+        calculateMetadata={calculateEditorMetadata}
+        defaultProps={{
+          title: "GTT-Invite",
+          peaksSrc: "",
+          footage: "local/st4-graded.mp4",
+          captionsSrc: "captions/st4.json",
+          durationSeconds: 31.7,
+          hookTop: "Мероприятие, куда зовут",
+          hookBottom: "только по приглашению",
+          brandMark: "GLOBAL TECH TOUR",
+          logoScale: 1.5,
+          logoSpin: 72,
+          plates: [
+            { text: "Нишевое мероприятие", at: 9.9, until: 20.0, kind: "term" as const },
+            { text: "Только крупные холдинги", at: 15.7, until: 20.0, kind: "term" as const },
+            { text: "Alibaba · Haier · Tencent", at: 20.1, until: 23.9, kind: "accent" as const },
+            { text: "Корпоративное обучение", at: 24.8, kind: "accent" as const },
+          ],
+          cutaways: [],
+        }}
+        durationInFrames={951}
         fps={30}
         width={1080}
         height={1920}

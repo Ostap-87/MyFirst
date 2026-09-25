@@ -57,6 +57,7 @@
     "voice": "node scripts/voice.mjs",
     "speak": "node scripts/speak.mjs",
     "recut": "node hyperframes/build.mjs",
+    "editor": "node scripts/editor.mjs",
     "make-outline": "node scripts/make-outline.mjs"
   },
   "sideEffects": [
