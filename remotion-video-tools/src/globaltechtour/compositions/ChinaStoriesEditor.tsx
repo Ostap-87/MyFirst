@@ -404,7 +404,22 @@ export const ChinaStoriesEditor: React.FC<EditorProps> = (props) => {
   const CUT_H = 50;
   const WORDS_H = 56;
   const CAM_H = 50;
-  const IDEA_H = 58;
+  const IDEA_H = 42;
+  // Идеи, как и плашки, бывают одновременно (зум на слове, где встаёт
+  // плашка), — раскладываем по полосам, иначе подписи слипаются.
+  const ideaEnds: number[] = [];
+  const ideaLane = new Map<number, number>();
+  for (const p of proposals.slice().sort((a, b) => a.at - b.at)) {
+    let lane = ideaEnds.findIndex((e) => e <= p.at + 0.01);
+    if (lane < 0) {
+      lane = ideaEnds.length;
+      ideaEnds.push(p.until);
+    } else {
+      ideaEnds[lane] = p.until;
+    }
+    ideaLane.set(p.n, lane);
+  }
+  const ideaH = Math.max(1, ideaEnds.length) * (IDEA_H + 6) - 6;
 
   let y = TIMELINE_TOP + RULER_H + TRACK_GAP;
   const videoY = y;
@@ -773,7 +788,7 @@ export const ChinaStoriesEditor: React.FC<EditorProps> = (props) => {
         [cutY, CUT_H],
         [camY, CAM_H],
         [wordsY, WORDS_H],
-        ...(proposals.length ? [[ideaY, IDEA_H]] : []),
+        ...(proposals.length ? [[ideaY, ideaH]] : []),
       ].map(([top, h]) => (
         <div
           key={`lane-${top}`}
@@ -920,7 +935,13 @@ export const ChinaStoriesEditor: React.FC<EditorProps> = (props) => {
       ))}
 
       {proposals.map((p) => (
-        <IdeaClip key={`i-${p.n}`} p={p} now={now} top={ideaY} height={IDEA_H} />
+        <IdeaClip
+          key={`i-${p.n}`}
+          p={p}
+          now={now}
+          top={ideaY + (ideaLane.get(p.n) ?? 0) * (IDEA_H + 6)}
+          height={IDEA_H}
+        />
       ))}
 
       {/* Подписи дорожек поверх уезжающих клипов. Колонка сплошная на всю
@@ -944,7 +965,7 @@ export const ChinaStoriesEditor: React.FC<EditorProps> = (props) => {
       <TrackLabel top={camY} height={CAM_H} name="КАМЕРА" color={KIND_COLOR.punch} />
       <TrackLabel top={wordsY} height={WORDS_H} name="СЛОВА" color={C.words} />
       {proposals.length ? (
-        <TrackLabel top={ideaY} height={IDEA_H} name="ИДЕИ" color="#FACC15" />
+        <TrackLabel top={ideaY} height={ideaH} name="ИДЕИ" color="#FACC15" />
       ) : null}
 
       {/* Курсор воспроизведения: стоит на месте, лента едет */}
@@ -955,7 +976,7 @@ export const ChinaStoriesEditor: React.FC<EditorProps> = (props) => {
           top: TIMELINE_TOP,
           width: 4,
           height:
-            (proposals.length ? ideaY + IDEA_H : wordsY + WORDS_H) + 10 - TIMELINE_TOP,
+            (proposals.length ? ideaY + ideaH : wordsY + WORDS_H) + 10 - TIMELINE_TOP,
           backgroundColor: C.playhead,
           boxShadow: `0 0 16px ${C.playhead}`,
         }}
