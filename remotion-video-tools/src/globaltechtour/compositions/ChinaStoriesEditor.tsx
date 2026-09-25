@@ -281,6 +281,8 @@ const INSERT_RU = {
   insert: "Врезка",
   broll: "На весь кадр",
   split: "Деление",
+  pip: "В углу",
+  stage: "Без фона",
 };
 const INSERT_COLOR: Record<keyof typeof INSERT_RU, string> = {
   cards: "#FBBF24",
@@ -288,6 +290,8 @@ const INSERT_COLOR: Record<keyof typeof INSERT_RU, string> = {
   insert: "#F472B6",
   broll: "#A78BFA",
   split: "#22D3EE",
+  pip: "#34D399",
+  stage: "#E879F9",
 };
 
 const MOVE_RU = {
@@ -464,6 +468,18 @@ export const ChinaStoriesEditor: React.FC<EditorProps> = (props) => {
     })),
     ...(story.brolls ?? []).map((b) => ({
       kind: "broll" as const,
+      at: b.at,
+      until: b.until,
+      label: media(b.items),
+    })),
+    ...(story.pips ?? []).map((b) => ({
+      kind: "pip" as const,
+      at: b.at,
+      until: b.until,
+      label: media(b.items),
+    })),
+    ...(story.stages ?? []).map((b) => ({
+      kind: "stage" as const,
       at: b.at,
       until: b.until,
       label: media(b.items),

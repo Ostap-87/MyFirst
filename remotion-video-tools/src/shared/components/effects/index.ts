@@ -12,6 +12,7 @@ export * from "./WipeBroll";
 export * from "./SplitScreen";
 export * from "./SiteShowcase";
 export * from "./PipScreen";
+export * from "./CutoutStage";
 // new-effect:exports:end
 export * from "./ChatOverlay";
 export * from "./CountUp";

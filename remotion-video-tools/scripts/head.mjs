@@ -5,6 +5,7 @@
 //   npm run head -- --prepare <ролик>     поворот, паузы, звук, расшифровка
 //   npm run head -- --draft <ролик> --focus 0.38 --hook "Строка 1|Строка 2"
 //                                         идеи монтажа + стол со скриншотами
+//   npm run head -- --cutout <ролик>      вырезать спикера из фона (для stages)
 //   npm run head -- --render <ролик>      финал по одобренному черновику
 //
 // Сырые ролики кладутся в public/local/pool/ (в .gitignore). Имя ролика —
@@ -63,7 +64,7 @@ const shot = (file, label) => say(`СКРИН ${rel(file)}  ${label}`);
 
 // ——— Список пула ———
 
-if (!args.prepare && !args.draft && !args.render) {
+if (!args.prepare && !args.draft && !args.render && !args.cutout) {
   const files = rawFiles();
   if (!files.length) {
     say(`\n  Пул пуст. Сырые ролики кладутся в ${rel(POOL)}/\n`);
@@ -336,6 +337,25 @@ if (args.draft) {
     say(`   №${String(x.n).padEnd(3)}${x.at.toFixed(1).padStart(5)}–${x.until.toFixed(1).padEnd(5)} ${x.applied ? " " : "?"} ${x.what} — ${x.why}`);
   }
   say(`\n  Черновик: ${rel(draftPath(name))}. Стол: npm run editor -- --props ${rel(draftPath(name))}\n`);
+  process.exit(0);
+}
+
+// ——— Вырезка спикера ———
+//
+// Нейросеть вырезает человека из каждого кадра локально, около 0,7 с на
+// кадр на процессоре: полминуты видео — десять минут. Результат —
+// прозрачный WebM той же длины, кадр в кадр с подготовленной съёмкой;
+// в черновике он подключается полем cutoutSrc, а отрезки — stages.
+
+if (args.cutout) {
+  const name = String(args.cutout);
+  const d = readDraft(name);
+  if (!d) fail(`Сначала подготовка: npm run head -- --prepare ${name}`);
+  const src = resolve(ROOT, "public", d.props.footage);
+  const out = src.replace(/\.mp4$/, "-cutout.webm");
+  run("npx", ["--yes", "hyperframes", "remove-background", src, "-o", out, "--quality", "balanced"]);
+  writeDraft({ ...d, props: { ...d.props, cutoutSrc: rel(out).replace(/^public\//, "") } });
+  say(`\n  ✔ Вырезка: ${rel(out)} — подключена в черновик как cutoutSrc\n`);
   process.exit(0);
 }
 

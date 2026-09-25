@@ -19,6 +19,7 @@ import {
   PopWindows,
   SiteCutaway,
   SpinningTetra,
+  CutoutStage,
   PipScreen,
   SplitScreen,
   WipeBroll,
@@ -130,6 +131,10 @@ const splitBlock = z.object({
     .optional()
     .describe("Откуда открывается показ; по умолчанию снизу"),
 });
+const stageBlock = z.object({
+  ...span,
+  items: z.array(mediaItemSchema).describe("Что показывать за спикером"),
+});
 const pipBlock = z.object({
   ...span,
   items: z.array(mediaItemSchema).describe("Что показывать на весь экран"),
@@ -208,6 +213,14 @@ export const chinaStoriesSchema = z.object({
     .max(1)
     .optional()
     .describe("Где лицо по ширине кадра; по умолчанию 0,5"),
+  cutoutSrc: z
+    .string()
+    .optional()
+    .describe("Съёмка без фона, прозрачный WebM (npm run head -- --cutout)"),
+  stages: z
+    .array(stageBlock)
+    .optional()
+    .describe("Спикер без фона перед показом, уменьшен к низу кадра"),
 });
 
 export type ChinaStoriesProps = z.infer<typeof chinaStoriesSchema>;
@@ -328,6 +341,8 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
   splitSeam,
   pips = [],
   focusX = 0.5,
+  cutoutSrc,
+  stages = [],
 }) => {
   const frame = useCurrentFrame();
   const { fps, height } = useVideoConfig();
@@ -367,48 +382,57 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
         <AbsoluteFill style={{ overflow: "hidden" }}>
           {/* Позиционируем обёртку: свои стили position OffthreadVideo
               до элемента не доносит. */}
-          <SplitScreen
-            focusY={focusY}
-            focusX={focusX}
-            seam={splitSeam}
-            splits={splits.map((sp) => ({
-              fromFrame: AT(sp.at, fps),
-              toFrame: AT(sp.until, fps),
-              items: sp.items,
-              side: sp.side,
+          <CutoutStage
+            cutoutSrc={cutoutSrc}
+            stages={stages.map((st) => ({
+              fromFrame: AT(st.at, fps),
+              toFrame: AT(st.until, fps),
+              items: st.items,
             }))}
           >
-            <PipScreen
+            <SplitScreen
               focusY={focusY}
               focusX={focusX}
-              pips={pips.map((pp) => ({
-                fromFrame: AT(pp.at, fps),
-                toFrame: AT(pp.until, fps),
-                items: pp.items,
-                corner: pp.corner,
+              seam={splitSeam}
+              splits={splits.map((sp) => ({
+                fromFrame: AT(sp.at, fps),
+                toFrame: AT(sp.until, fps),
+                items: sp.items,
+                side: sp.side,
               }))}
             >
-              <CameraMoves
-                originY={focusY}
-                moves={moves.map((m) => ({
-                  fromFrame: AT(m.at, fps),
-                  toFrame: AT(m.until, fps),
-                  kind: m.kind,
-                  scale: m.scale,
+              <PipScreen
+                focusY={focusY}
+                focusX={focusX}
+                pips={pips.map((pp) => ({
+                  fromFrame: AT(pp.at, fps),
+                  toFrame: AT(pp.until, fps),
+                  items: pp.items,
+                  corner: pp.corner,
                 }))}
               >
-                <OffthreadVideo
-                  src={staticFile(footage)}
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                    display: "block",
-                  }}
-                />
-              </CameraMoves>
-            </PipScreen>
-          </SplitScreen>
+                <CameraMoves
+                  originY={focusY}
+                  moves={moves.map((m) => ({
+                    fromFrame: AT(m.at, fps),
+                    toFrame: AT(m.until, fps),
+                    kind: m.kind,
+                    scale: m.scale,
+                  }))}
+                >
+                  <OffthreadVideo
+                    src={staticFile(footage)}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      display: "block",
+                    }}
+                  />
+                </CameraMoves>
+              </PipScreen>
+            </SplitScreen>
+          </CutoutStage>
         </AbsoluteFill>
       </Sequence>
 

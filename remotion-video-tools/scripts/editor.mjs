@@ -126,6 +126,8 @@ for (const b of props.popWindows ?? []) events.push({ at: mid(b), label: "Окн
 for (const b of props.photoCards ?? []) events.push({ at: b.at + Math.min(1.6, (b.until - b.at) * 0.6), label: "Карточки" });
 for (const b of props.inserts ?? []) events.push({ at: mid(b), label: `Врезка ${b.caption ?? ""}` });
 for (const b of props.brolls ?? []) events.push({ at: mid(b), label: "На весь кадр" });
+for (const b of props.pips ?? []) events.push({ at: mid(b), label: "В углу" });
+for (const b of props.stages ?? []) events.push({ at: mid(b), label: "Без фона" });
 for (const b of props.splits ?? []) {
   let t = b.at;
   const fixed = b.items.reduce((a, i) => a + (i.seconds ?? 0), 0);
