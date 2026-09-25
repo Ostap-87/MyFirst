@@ -70,6 +70,13 @@ export const cutoutStageDefaults: CutoutStageParams = {
   transitionFrames: 16,
 };
 
+// Затухание по бокам нарастает вместе с уменьшением: в полном кадре края
+// совпадают с краями экрана и гасить нечего.
+const edgeFade = (t: number) => {
+  const w = 14 * t;
+  return `linear-gradient(to right, transparent 0%, #000 ${w}%, #000 ${100 - w}%, transparent 100%)`;
+};
+
 export const CutoutStage: React.FC<CutoutStageProps> = ({
   children,
   ...params
@@ -132,6 +139,10 @@ export const CutoutStage: React.FC<CutoutStageProps> = ({
                   transformOrigin: "50% 100%",
                   // Мягкая тень отделяет фигуру от показа.
                   filter: `drop-shadow(0 20px 40px rgba(0,0,0,${0.5 * t}))`,
+                  // Руки и плечи упираются в края съёмки: у уменьшенной
+                  // фигуры они обрывались ровной вертикалью. Края гасим.
+                  WebkitMaskImage: edgeFade(t),
+                  maskImage: edgeFade(t),
                 }}
               >
                 <OffthreadVideo
