@@ -7,6 +7,7 @@
 //                                         идеи монтажа + стол со скриншотами
 //   npm run head -- --cutout <ролик>      вырезать спикера из фона (для stages)
 //   npm run head -- --render <ролик>      финал по одобренному черновику
+//   npm run head -- --render <ролик> --reels   тот же ролик под интерфейс Reels
 //
 // Сырые ролики кладутся в public/local/pool/ (в .gitignore). Имя ролика —
 // имя файла без расширения.
@@ -366,10 +367,14 @@ if (args.render) {
   const d = readDraft(name);
   if (!d || d.stage === "подготовлен") fail(`Сначала черновик: npm run head -- --draft ${name}`);
   const out = outDirOf(name);
-  const propsFile = resolve(out, "props.json");
-  writeFileSync(propsFile, JSON.stringify(d.props));
-  const file = resolve(out, `${name}.mp4`);
+  // Reels — не отдельный черновик, а та же раскладка под другой
+  // интерфейс: правки в черновике сразу попадают в обе версии.
+  const reels = Boolean(args.reels);
+  const suffix = reels ? "-reels" : "";
+  const propsFile = resolve(out, `props${suffix}.json`);
+  writeFileSync(propsFile, JSON.stringify(reels ? { ...d.props, safeZone: "reels" } : d.props));
+  const file = resolve(out, `${name}${suffix}.mp4`);
   run("npx", ["remotion", "render", "src/index.ts", "GTT-Head", file, `--props=${propsFile}`]);
-  writeDraft({ ...d, stage: "готов" });
+  if (!reels) writeDraft({ ...d, stage: "готов" });
   say(`ВИДЕО ${rel(file)}`);
 }

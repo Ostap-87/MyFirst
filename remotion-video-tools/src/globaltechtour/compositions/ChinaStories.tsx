@@ -18,6 +18,7 @@ import {
   PhotoCards,
   PopWindows,
   SiteCutaway,
+  SitePhoneHeight,
   SpinningTetra,
   CutoutStage,
   PipScreen,
@@ -218,6 +219,10 @@ export const chinaStoriesSchema = z.object({
     .max(1)
     .optional()
     .describe("Где лицо по ширине кадра; по умолчанию 0,5"),
+  safeZone: z
+    .enum(["stories", "reels"])
+    .optional()
+    .describe("Под чей интерфейс раскладка; по умолчанию сторис"),
   cutoutSrc: z
     .string()
     .optional()
@@ -257,6 +262,27 @@ type Plate = z.infer<typeof plateSchema>;
 const LOGO_TOP = 0.09;
 const MARKS_TOP = 0.18;
 const CAPTIONS_BOTTOM = 0.16;
+
+/**
+ * Reels перекрывает кадр иначе, чем сторис (зоны — SAFE_AREAS.reels):
+ * снизу 22% под подписью, ником и треком; справа колонка кнопок от
+ * середины кадра вниз; сверху заголовок «Reels». Поэтому субтитры и окно
+ * спикера выше, всё правое внизу отодвинуто от края, шапка чуть ниже.
+ */
+const REELS = {
+  logoTop: 0.1,
+  marksTop: 0.19,
+  captionsBottom: 0.24,
+  buttons: 0.13,
+  pipBottom: 0.33,
+  pipWidth: 0.3,
+  // Всё сверху должно кончиться выше строки субтитров (~0,69).
+  overlaysBottom: 0.67,
+  cardsTop: 0.545,
+  // Фигура «без фона» без опускания: лицо на 0,58, над субтитрами.
+  stageDrop: 0,
+  phoneCqh: 56,
+} as const;
 
 const AT = (seconds: number, fps: number) => Math.round(seconds * fps);
 
@@ -353,7 +379,12 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
   focusX = 0.5,
   cutoutSrc,
   stages = [],
+  safeZone = "stories",
 }) => {
+  const reels = safeZone === "reels";
+  const logoTop = reels ? REELS.logoTop : LOGO_TOP;
+  const marksTop = reels ? REELS.marksTop : MARKS_TOP;
+  const captionsBottom = reels ? REELS.captionsBottom : CAPTIONS_BOTTOM;
   const frame = useCurrentFrame();
   const { fps, height } = useVideoConfig();
   const { fs } = useFormat();
@@ -391,147 +422,164 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
       );
 
   return (
-    <AbsoluteFill style={{ backgroundColor: "#070A11" }}>
-      <Sequence durationInFrames={footageFrames}>
-        <AbsoluteFill style={{ overflow: "hidden" }}>
-          {/* Позиционируем обёртку: свои стили position OffthreadVideo
+    <SitePhoneHeight.Provider value={reels ? REELS.phoneCqh : 70}>
+      <AbsoluteFill style={{ backgroundColor: "#070A11" }}>
+        <Sequence durationInFrames={footageFrames}>
+          <AbsoluteFill style={{ overflow: "hidden" }}>
+            {/* Позиционируем обёртку: свои стили position OffthreadVideo
               до элемента не доносит. */}
-          <CutoutStage
-            cutoutSrc={cutoutSrc}
-            stages={stages.map((st) => ({
-              fromFrame: AT(st.at, fps),
-              toFrame: AT(st.until, fps),
-              items: st.items,
-            }))}
-          >
-            <SplitScreen
-              focusY={focusY}
-              focusX={focusX}
-              seam={splitSeam}
-              splits={splits.map((sp) => ({
-                fromFrame: AT(sp.at, fps),
-                toFrame: AT(sp.until, fps),
-                items: sp.items,
-                side: sp.side,
+            <CutoutStage
+              cutoutSrc={cutoutSrc}
+              drop={reels ? REELS.stageDrop : undefined}
+              stages={stages.map((st) => ({
+                fromFrame: AT(st.at, fps),
+                toFrame: AT(st.until, fps),
+                items: st.items,
               }))}
             >
-              <PipScreen
+              <SplitScreen
                 focusY={focusY}
                 focusX={focusX}
-                pips={pips.map((pp) => ({
-                  fromFrame: AT(pp.at, fps),
-                  toFrame: AT(pp.until, fps),
-                  items: pp.items,
-                  corner: pp.corner,
+                seam={splitSeam}
+                splits={splits.map((sp) => ({
+                  fromFrame: AT(sp.at, fps),
+                  toFrame: AT(sp.until, fps),
+                  items: sp.items,
+                  side: sp.side,
                 }))}
               >
-                <CameraMoves
-                  originY={focusY}
-                  moves={moves.map((m) => ({
-                    fromFrame: AT(m.at, fps),
-                    toFrame: AT(m.until, fps),
-                    kind: m.kind,
-                    scale: m.scale,
+                <PipScreen
+                  focusY={focusY}
+                  focusX={focusX}
+                  {...(reels
+                    ? {
+                        bottomFraction: REELS.pipBottom,
+                        windowWidth: REELS.pipWidth,
+                        sideMargin: REELS.buttons,
+                      }
+                    : {})}
+                  pips={pips.map((pp) => ({
+                    fromFrame: AT(pp.at, fps),
+                    toFrame: AT(pp.until, fps),
+                    items: pp.items,
+                    corner: pp.corner,
                   }))}
                 >
-                  <OffthreadVideo
-                    src={staticFile(footage)}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                      display: "block",
-                    }}
-                  />
-                </CameraMoves>
-              </PipScreen>
-            </SplitScreen>
-          </CutoutStage>
-        </AbsoluteFill>
-      </Sequence>
-
-      {/* B-roll — под затемнениями: знак и субтитры поверх него читаются
-          так же, как поверх съёмки. */}
-      {brolls.map((b) => (
-        <Sequence
-          key={`b-${b.at}`}
-          from={AT(b.at, fps)}
-          durationInFrames={AT(b.until - b.at, fps)}
-        >
-          <WipeBroll items={b.items} />
+                  <CameraMoves
+                    originY={focusY}
+                    moves={moves.map((m) => ({
+                      fromFrame: AT(m.at, fps),
+                      toFrame: AT(m.until, fps),
+                      kind: m.kind,
+                      scale: m.scale,
+                    }))}
+                  >
+                    <OffthreadVideo
+                      src={staticFile(footage)}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                        display: "block",
+                      }}
+                    />
+                  </CameraMoves>
+                </PipScreen>
+              </SplitScreen>
+            </CutoutStage>
+          </AbsoluteFill>
         </Sequence>
-      ))}
 
-      <AbsoluteFill
-        style={{
-          background:
-            "linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.22) 16%, rgba(0,0,0,0) 32%)",
-        }}
-      />
-      <AbsoluteFill
-        style={{
-          background:
-            "linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.28) 12%, rgba(0,0,0,0) 26%)",
-        }}
-      />
+        {/* B-roll — под затемнениями: знак и субтитры поверх него читаются
+          так же, как поверх съёмки. */}
+        {brolls.map((b) => (
+          <Sequence
+            key={`b-${b.at}`}
+            from={AT(b.at, fps)}
+            durationInFrames={AT(b.until - b.at, fps)}
+          >
+            <WipeBroll items={b.items} />
+          </Sequence>
+        ))}
 
-      {/* ——— Перебивки: страница сайта поверх съёмки ———
+        <AbsoluteFill
+          style={{
+            background:
+              "linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.22) 16%, rgba(0,0,0,0) 32%)",
+          }}
+        />
+        <AbsoluteFill
+          style={{
+            background:
+              "linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.28) 12%, rgba(0,0,0,0) 26%)",
+          }}
+        />
+
+        {/* ——— Перебивки: страница сайта поверх съёмки ———
 
           Ставятся под шапкой и субтитрами намеренно. Речь во время
           перебивки не прерывается, значит логотип и подсветка слов должны
           оставаться видны — иначе на три секунды пропадает и бренд, и текст. */}
-      {cutaways.map((c) => (
-        <Sequence
-          key={`${c.src}-${c.at}`}
-          from={AT(c.at, fps)}
-          durationInFrames={AT(c.seconds, fps)}
-        >
-          <SiteCutaway
-            src={c.src}
-            from={c.from}
-            to={c.to}
-            zoom={1.05}
-            fadeFrames={8}
-          />
-        </Sequence>
-      ))}
+        {cutaways.map((c) => (
+          <Sequence
+            key={`${c.src}-${c.at}`}
+            from={AT(c.at, fps)}
+            durationInFrames={AT(c.seconds, fps)}
+          >
+            <SiteCutaway
+              src={c.src}
+              from={c.from}
+              to={c.to}
+              zoom={1.05}
+              fadeFrames={8}
+            />
+          </Sequence>
+        ))}
 
-      {/* ——— Врезки поверх спикера: окна, карточки, видео в рамке ——— */}
-      {popWindows.map((b) => (
-        <Sequence
-          key={`w-${b.at}`}
-          from={AT(b.at, fps)}
-          durationInFrames={AT(b.until - b.at, fps)}
-        >
-          <PopWindows items={b.items} />
-        </Sequence>
-      ))}
-      {photoCards.map((b) => (
-        <Sequence
-          key={`pc-${b.at}`}
-          from={AT(b.at, fps)}
-          durationInFrames={AT(b.until - b.at, fps)}
-        >
-          <PhotoCards
-            items={b.items}
-            side={b.side}
-            spread={b.spread}
-            widthFraction={b.widthFraction}
-            stepFrames={AT(b.stepSeconds ?? 0.35, fps)}
-          />
-        </Sequence>
-      ))}
-      {inserts.map((b) => (
-        <Sequence
-          key={`i-${b.at}`}
-          from={AT(b.at, fps)}
-          durationInFrames={AT(b.until - b.at, fps)}
-        >
-          <FramedInsert src={b.src} caption={b.caption} side={b.side} />
-        </Sequence>
-      ))}
+        {/* ——— Врезки поверх спикера: окна, карточки, видео в рамке ——— */}
+        {popWindows.map((b) => (
+          <Sequence
+            key={`w-${b.at}`}
+            from={AT(b.at, fps)}
+            durationInFrames={AT(b.until - b.at, fps)}
+          >
+            <PopWindows
+              items={b.items}
+              rightInset={reels ? REELS.buttons : 0}
+              bottomLimit={reels ? REELS.overlaysBottom : 1}
+            />
+          </Sequence>
+        ))}
+        {photoCards.map((b) => (
+          <Sequence
+            key={`pc-${b.at}`}
+            from={AT(b.at, fps)}
+            durationInFrames={AT(b.until - b.at, fps)}
+          >
+            <PhotoCards
+              items={b.items}
+              // В Reels стопка — от левого края и уже: справа кнопки.
+              side={b.side ?? (reels ? "left" : undefined)}
+              spread={b.spread}
+              widthFraction={
+                reels ? (b.widthFraction ?? 0.34) * 0.87 : b.widthFraction
+              }
+              topFraction={reels ? REELS.cardsTop : undefined}
+              stepFrames={AT(b.stepSeconds ?? 0.35, fps)}
+            />
+          </Sequence>
+        ))}
+        {inserts.map((b) => (
+          <Sequence
+            key={`i-${b.at}`}
+            from={AT(b.at, fps)}
+            durationInFrames={AT(b.until - b.at, fps)}
+          >
+            <FramedInsert src={b.src} caption={b.caption} side={b.side} />
+          </Sequence>
+        ))}
 
-      {/* ——— Вуаль под шапкой ———
+        {/* ——— Вуаль под шапкой ———
 
           Знак белым по светлому небу даёт контраст 1,57:1 при норме 3:1 —
           это замер, а не впечатление: аудит контраста в HyperFrames поймал
@@ -541,137 +589,138 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
           где фон уже тёмный, добавленные 60% почти не меняют картинку, а на
           небе вытягивают знак до нормы. Высота 0,29 — до низа зоны плашек,
           чтобы не появлялось видимой границы посреди кадра. */}
-      <AbsoluteFill
-        style={{
-          height: Math.round(height * 0.29),
-          background:
-            "linear-gradient(to bottom," +
-            "rgba(4,8,16,0.62) 0%," +
-            "rgba(4,8,16,0.38) 52%," +
-            "rgba(4,8,16,0) 100%)",
-        }}
-      />
-
-      {/* ——— Шапка ——— */}
-      <AbsoluteFill
-        style={{
-          justifyContent: "flex-start",
-          paddingTop: Math.round(height * LOGO_TOP),
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: fs(0.02 * logoScale),
-            justifyContent: "center",
-          }}
-        >
-          <SpinningTetra
-            size={fs(0.105 * logoScale)}
-            degreesPerSecond={logoSpin}
-          />
-          <span
-            style={{
-              fontFamily: fontFamily(theme.fonts.heading),
-              fontWeight: 700,
-              fontSize: fs(0.036 * logoScale),
-              letterSpacing: fs(0.004),
-              color: "#fff",
-              textShadow: "0 2px 14px rgba(0,0,0,0.75)",
-              whiteSpace: "nowrap",
-            }}
-          >
-            {brandMark}
-          </span>
-        </div>
-      </AbsoluteFill>
-
-      {/* ——— Крючок ——— */}
-      <Sequence durationInFrames={AT(2.8, fps)}>
         <AbsoluteFill
           style={{
-            opacity: hookIn * hookOut,
+            height: Math.round(height * 0.29),
+            background:
+              "linear-gradient(to bottom," +
+              "rgba(4,8,16,0.62) 0%," +
+              "rgba(4,8,16,0.38) 52%," +
+              "rgba(4,8,16,0) 100%)",
+          }}
+        />
+
+        {/* ——— Шапка ——— */}
+        <AbsoluteFill
+          style={{
             justifyContent: "flex-start",
-            paddingTop: Math.round(height * MARKS_TOP),
-            paddingLeft: fs(0.08),
-            paddingRight: fs(0.08),
+            paddingTop: Math.round(height * logoTop),
           }}
         >
           <div
             style={{
-              backgroundColor: "rgba(7,10,17,0.74)",
-              backdropFilter: "blur(14px)",
-              WebkitBackdropFilter: "blur(14px)",
-              borderRadius: fs(0.022),
-              padding: `${fs(0.026)}px ${fs(0.034)}px`,
-              fontFamily: fontFamily(theme.fonts.heading),
-              fontWeight: 700,
-              fontSize: fs(0.055),
-              lineHeight: 1.16,
-              letterSpacing: fs(-0.0016),
-              color: "#fff",
+              display: "flex",
+              alignItems: "center",
+              gap: fs(0.02 * logoScale),
+              justifyContent: "center",
             }}
           >
-            {/* Ровный перенос: без него мельче кегль ломал строку как
-                «Большинство видит / Китай» — висячее слово. */}
-            <span style={{ display: "block", textWrap: "balance" }}>
-              {hookTop}
-            </span>
-            <span style={{ display: "block", color: "#8FD4FF" }}>
-              {hookBottom}
+            <SpinningTetra
+              size={fs(0.105 * logoScale)}
+              degreesPerSecond={logoSpin}
+            />
+            <span
+              style={{
+                fontFamily: fontFamily(theme.fonts.heading),
+                fontWeight: 700,
+                fontSize: fs(0.036 * logoScale),
+                letterSpacing: fs(0.004),
+                color: "#fff",
+                textShadow: "0 2px 14px rgba(0,0,0,0.75)",
+                whiteSpace: "nowrap",
+              }}
+            >
+              {brandMark}
             </span>
           </div>
         </AbsoluteFill>
-      </Sequence>
 
-      {/* ——— Плашки: term копятся, struck и accent сменяют ——— */}
-      <AbsoluteFill
-        style={{
-          justifyContent: "flex-start",
-          // Тот же уровень, что и у крючка: они никогда не видны
-          // одновременно, зато оба гарантированно ниже логотипа.
-          paddingTop: Math.round(height * MARKS_TOP),
-          paddingLeft: fs(0.08),
-          paddingRight: fs(0.08),
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "flex-start",
-          gap: fs(0.016),
-        }}
-      >
-        {visible.map((plate) => (
-          <PlateView
-            key={`${plate.text}-${plate.at}`}
-            plate={plate}
-            appearAt={AT(plate.at, fps)}
-            fs={fs}
-          />
-        ))}
-      </AbsoluteFill>
+        {/* ——— Крючок ——— */}
+        <Sequence durationInFrames={AT(2.8, fps)}>
+          <AbsoluteFill
+            style={{
+              opacity: hookIn * hookOut,
+              justifyContent: "flex-start",
+              paddingTop: Math.round(height * marksTop),
+              paddingLeft: fs(0.08),
+              paddingRight: fs(0.08),
+            }}
+          >
+            <div
+              style={{
+                backgroundColor: "rgba(7,10,17,0.74)",
+                backdropFilter: "blur(14px)",
+                WebkitBackdropFilter: "blur(14px)",
+                borderRadius: fs(0.022),
+                padding: `${fs(0.026)}px ${fs(0.034)}px`,
+                fontFamily: fontFamily(theme.fonts.heading),
+                fontWeight: 700,
+                fontSize: fs(0.055),
+                lineHeight: 1.16,
+                letterSpacing: fs(-0.0016),
+                color: "#fff",
+              }}
+            >
+              {/* Ровный перенос: без него мельче кегль ломал строку как
+                «Большинство видит / Китай» — висячее слово. */}
+              <span style={{ display: "block", textWrap: "balance" }}>
+                {hookTop}
+              </span>
+              <span style={{ display: "block", color: "#8FD4FF" }}>
+                {hookBottom}
+              </span>
+            </div>
+          </AbsoluteFill>
+        </Sequence>
 
-      {/* ——— Субтитры: выше, чем в Reels — снизу строка ответа ——— */}
-      <Sequence durationInFrames={footageFrames}>
+        {/* ——— Плашки: term копятся, struck и accent сменяют ——— */}
         <AbsoluteFill
           style={{
-            justifyContent: "flex-end",
-            paddingBottom: Math.round(height * CAPTIONS_BOTTOM),
+            justifyContent: "flex-start",
+            // Тот же уровень, что и у крючка: они никогда не видны
+            // одновременно, зато оба гарантированно ниже логотипа.
+            paddingTop: Math.round(height * marksTop),
             paddingLeft: fs(0.08),
             paddingRight: fs(0.08),
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-start",
+            gap: fs(0.016),
           }}
         >
-          <KaraokeCaptions
-            theme={theme}
-            captions={captions}
-            mode="page"
-            highlight="color"
-            captionStyle="shadow"
-            font="Onest"
-            fontSizeFraction={0.05}
-          />
+          {visible.map((plate) => (
+            <PlateView
+              key={`${plate.text}-${plate.at}`}
+              plate={plate}
+              appearAt={AT(plate.at, fps)}
+              fs={fs}
+            />
+          ))}
         </AbsoluteFill>
-      </Sequence>
-    </AbsoluteFill>
+
+        {/* ——— Субтитры: выше, чем в Reels — снизу строка ответа ——— */}
+        <Sequence durationInFrames={footageFrames}>
+          <AbsoluteFill
+            style={{
+              justifyContent: "flex-end",
+              paddingBottom: Math.round(height * captionsBottom),
+              paddingLeft: fs(0.08),
+              paddingRight: reels ? fs(REELS.buttons + 0.02) : fs(0.08),
+            }}
+          >
+            <KaraokeCaptions
+              theme={theme}
+              captions={captions}
+              mode="page"
+              highlight="color"
+              captionStyle="shadow"
+              font="Onest"
+              fontSizeFraction={0.05}
+            />
+          </AbsoluteFill>
+        </Sequence>
+      </AbsoluteFill>
+    </SitePhoneHeight.Provider>
   );
 };
 

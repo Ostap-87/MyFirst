@@ -7,6 +7,7 @@ import {
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
+import { createContext, useContext } from "react";
 import { z } from "zod";
 import { fontFamily } from "../../fonts";
 import { withDefaults } from "./media";
@@ -36,6 +37,14 @@ export const siteShowcaseSchema = z.object({
     .enum(["part", "full"])
     .describe("part — в части кадра (деление), full — на весь кадр под окном спикера"),
 });
+
+/**
+ * Высота телефона на весь кадр, в cqh. Задаётся сверху контекстом, а не
+ * пропом: витрина вложена в показ через Media, и пробрасывать размер через
+ * все слои ради одного числа — лишняя связность. В Reels телефон ниже:
+ * субтитры там выше, и телефон в 70cqh уходил под них.
+ */
+export const SitePhoneHeight = createContext(70);
 
 export type SiteShowcaseParams = z.infer<typeof siteShowcaseSchema>;
 export type SiteShowcaseProps = Partial<SiteShowcaseParams>;
@@ -104,112 +113,115 @@ const Layout: React.FC<{
   readonly url: string;
   readonly accent: string;
   readonly full: boolean;
-}> = ({ enter, float, src, scroll, title, url, accent, full }) => (
-  <div
-    style={{
-      position: "absolute",
-      inset: 0,
-      containerType: "size",
-      display: "flex",
-      // Всё прижато к верху области: снизу по ней идут субтитры, и
-      // по центру они ложились на адрес и низ телефона.
-      alignItems: "flex-start",
-      // На весь кадр: телефон слева ниже логотипа, текст справа сверху —
-      // правый нижний угол занят окном спикера, низ — субтитрами.
-      justifyContent: full ? "flex-start" : "center",
-      gap: full ? "5cqw" : "6cqw",
-      padding: full ? "21cqh 7cqw 0" : "6cqh 6cqw 0",
-      boxSizing: "border-box",
-      flexDirection: "row",
-      flexWrap: "wrap",
-      alignContent: "flex-start",
-    }}
-  >
-    {/* Телефон: высота от меньшей стороны контейнера, чтобы в половине
-        кадра он не упирался в края, а на весь кадр не был мелким. На весь
-        кадр — от логотипа до субтитров: при 46% высоты владелец сказал,
-        что телефон мелкий и сайт почти не видно. */}
+}> = ({ enter, float, src, scroll, title, url, accent, full }) => {
+  const phone = useContext(SitePhoneHeight);
+  return (
     <div
       style={{
-        // cqh здесь — от высоты без верхнего отступа (1517 px из 1920).
-        height: full ? "min(70cqh, 120cqw)" : "min(60cqh, 120cqw)",
-        aspectRatio: "0.49",
-        borderRadius: "min(6cqh, 11cqw)",
-        padding: "min(1.2cqh, 2.2cqw)",
-        backgroundColor: "#0b0d12",
-        boxShadow: "0 40px 90px rgba(0,0,0,0.6), inset 0 0 0 2px rgba(255,255,255,0.12)",
-        transform: `perspective(1600px) rotateY(${-10 * enter}deg) translateY(${(1 - enter) * 60 + float}px) scale(${0.94 + 0.06 * enter})`,
-        opacity: enter,
-        flexShrink: 0,
+        position: "absolute",
+        inset: 0,
+        containerType: "size",
+        display: "flex",
+        // Всё прижато к верху области: снизу по ней идут субтитры, и
+        // по центру они ложились на адрес и низ телефона.
+        alignItems: "flex-start",
+        // На весь кадр: телефон слева ниже логотипа, текст справа сверху —
+        // правый нижний угол занят окном спикера, низ — субтитрами.
+        justifyContent: full ? "flex-start" : "center",
+        gap: full ? "5cqw" : "6cqw",
+        padding: full ? "21cqh 7cqw 0" : "6cqh 6cqw 0",
+        boxSizing: "border-box",
+        flexDirection: "row",
+        flexWrap: "wrap",
+        alignContent: "flex-start",
       }}
     >
+      {/* Телефон: высота от меньшей стороны контейнера, чтобы в половине
+          кадра он не упирался в края, а на весь кадр не был мелким. На весь
+          кадр — от логотипа до субтитров: при 46% высоты владелец сказал,
+          что телефон мелкий и сайт почти не видно. */}
       <div
         style={{
-          width: "100%",
-          height: "100%",
-          borderRadius: "min(5cqh, 9cqw)",
-          overflow: "hidden",
-          backgroundColor: "#fff",
-          position: "relative",
-        }}
-      >
-        {src ? (
-          <Img
-            src={staticFile(src)}
-            style={{
-              width: "100%",
-              display: "block",
-              transform: `translateY(${-scroll * 100}%)`,
-            }}
-          />
-        ) : null}
-      </div>
-    </div>
-
-    {title || url ? (
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "flex-start",
-          gap: "3cqh",
+          // cqh здесь — от высоты без верхнего отступа (1517 px из 1920).
+          height: full ? `min(${phone}cqh, 120cqw)` : "min(60cqh, 120cqw)",
+          aspectRatio: "0.49",
+          borderRadius: "min(6cqh, 11cqw)",
+          padding: "min(1.2cqh, 2.2cqw)",
+          backgroundColor: "#0b0d12",
+          boxShadow: "0 40px 90px rgba(0,0,0,0.6), inset 0 0 0 2px rgba(255,255,255,0.12)",
+          transform: `perspective(1600px) rotateY(${-10 * enter}deg) translateY(${(1 - enter) * 60 + float}px) scale(${0.94 + 0.06 * enter})`,
           opacity: enter,
-          transform: `translateX(${(1 - enter) * 40}px)`,
-          maxWidth: full ? "36cqw" : "46cqw",
-          paddingTop: full ? "3cqh" : "8cqh",
+          flexShrink: 0,
         }}
       >
-        {title ? (
-          <div
-            style={{
-              fontFamily: fontFamily("Inter"),
-              fontWeight: 800,
-              fontSize: full ? "6.4cqw" : "min(8cqh, 7.5cqw)",
-              lineHeight: 1.05,
-              color: "#fff",
-              letterSpacing: "-0.02em",
-            }}
-          >
-            {title}
-          </div>
-        ) : null}
-        {url ? (
-          <div
-            style={{
-              fontFamily: fontFamily("Inter"),
-              fontWeight: 700,
-              fontSize: "min(4.6cqh, 4.4cqw)",
-              color: "#fff",
-              backgroundColor: accent,
-              borderRadius: 999,
-              padding: "1.4cqh 3.6cqw",
-              boxShadow: `0 12px 36px ${accent}88`,
-            }}
-          >
-            {url}
-          </div>
-        ) : null}
+        <div
+          style={{
+            width: "100%",
+            height: "100%",
+            borderRadius: "min(5cqh, 9cqw)",
+            overflow: "hidden",
+            backgroundColor: "#fff",
+            position: "relative",
+          }}
+        >
+          {src ? (
+            <Img
+              src={staticFile(src)}
+              style={{
+                width: "100%",
+                display: "block",
+                transform: `translateY(${-scroll * 100}%)`,
+              }}
+            />
+          ) : null}
+        </div>
       </div>
-    ) : null}
-  </div>
-);
+
+      {title || url ? (
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-start",
+            gap: "3cqh",
+            opacity: enter,
+            transform: `translateX(${(1 - enter) * 40}px)`,
+            maxWidth: full ? "36cqw" : "46cqw",
+            paddingTop: full ? "3cqh" : "8cqh",
+          }}
+        >
+          {title ? (
+            <div
+              style={{
+                fontFamily: fontFamily("Inter"),
+                fontWeight: 800,
+                fontSize: full ? "6.4cqw" : "min(8cqh, 7.5cqw)",
+                lineHeight: 1.05,
+                color: "#fff",
+                letterSpacing: "-0.02em",
+              }}
+            >
+              {title}
+            </div>
+          ) : null}
+          {url ? (
+            <div
+              style={{
+                fontFamily: fontFamily("Inter"),
+                fontWeight: 700,
+                fontSize: "min(4.6cqh, 4.4cqw)",
+                color: "#fff",
+                backgroundColor: accent,
+                borderRadius: 999,
+                padding: "1.4cqh 3.6cqw",
+                boxShadow: `0 12px 36px ${accent}88`,
+              }}
+            >
+              {url}
+            </div>
+          ) : null}
+        </div>
+      ) : null}
+    </div>
+  );
+};

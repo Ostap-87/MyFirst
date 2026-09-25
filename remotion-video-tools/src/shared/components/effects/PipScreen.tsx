@@ -64,6 +64,13 @@ export const pipScreenSchema = z.object({
     .int()
     .min(1)
     .describe("Кадры на сжатие и возврат"),
+  sideMargin: z
+    .number()
+    .min(0)
+    .max(0.3)
+    .describe(
+      "Отступ окна от бокового края, доля ширины; в Reels справа кнопки",
+    ),
 });
 
 export type PipScreenParams = z.infer<typeof pipScreenSchema>;
@@ -81,6 +88,7 @@ export const pipScreenDefaults: PipScreenParams = {
   // Над субтитрами сторис: они стоят на 0,16 от низа и занимают строку.
   bottomFraction: 0.23,
   transitionFrames: 16,
+  sideMargin: 0.05,
 };
 
 const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
@@ -98,6 +106,7 @@ export const PipScreen: React.FC<PipScreenProps> = ({
     focusY,
     bottomFraction,
     transitionFrames,
+    sideMargin,
   } = withDefaults(pipScreenDefaults, params);
   const frame = useCurrentFrame();
   const { width, height } = useVideoConfig();
@@ -128,7 +137,7 @@ export const PipScreen: React.FC<PipScreenProps> = ({
   // ——— Окно в углу ———
   const winW = width * windowWidth;
   const winH = winW * windowAspect;
-  const margin = width * 0.05;
+  const margin = width * sideMargin;
   const corner = active?.corner ?? "bottom-right";
   const winX = corner.endsWith("right") ? width - margin - winW : margin;
   const winY = corner.startsWith("bottom")

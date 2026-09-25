@@ -19,6 +19,16 @@ export const popWindowsSchema = z.object({
   items: z.array(mediaItemSchema).describe("Окна по порядку появления, до шести"),
   stepFrames: z.number().int().min(1).describe("Шаг между окнами в кадрах"),
   sizeFraction: z.number().min(0.1).max(0.5).describe("Ширина окна, доля ширины кадра"),
+  rightInset: z
+    .number()
+    .min(0)
+    .max(0.3)
+    .describe("Свободная полоса справа в нижней половине, доля ширины (кнопки Reels)"),
+  bottomLimit: z
+    .number()
+    .min(0.5)
+    .max(1)
+    .describe("Ниже этой доли высоты окна не опускаются (над субтитрами)"),
   exitFrames: z.number().int().min(1).describe("За сколько кадров окна схлопываются"),
 });
 
@@ -29,6 +39,8 @@ export const popWindowsDefaults: PopWindowsParams = {
   items: [],
   stepFrames: 6,
   sizeFraction: 0.3,
+  rightInset: 0,
+  bottomLimit: 1,
   exitFrames: 8,
 };
 
@@ -54,7 +66,7 @@ const SLOTS_LANDSCAPE = [
 ];
 
 export const PopWindows: React.FC<PopWindowsProps> = (params) => {
-  const { items, stepFrames, sizeFraction, exitFrames } = withDefaults(popWindowsDefaults, params);
+  const { items, stepFrames, sizeFraction, rightInset, bottomLimit, exitFrames } = withDefaults(popWindowsDefaults, params);
   const frame = useCurrentFrame();
   const { fps, width, height, durationInFrames } = useVideoConfig();
   const slots = height > width ? SLOTS_VERTICAL : SLOTS_LANDSCAPE;
@@ -78,7 +90,14 @@ export const PopWindows: React.FC<PopWindowsProps> = (params) => {
           fps,
           config: { damping: 11, mass: 0.6, stiffness: 170 },
         });
-        const [cx, cy] = slots[i];
+        const [sx, sy] = slots[i];
+        const cy = Math.min(sy, bottomLimit - h / 2 / height);
+        // В Reels справа от середины кадра вниз идёт колонка кнопок:
+        // нижние правые окна сдвигаются левее неё.
+        const cx =
+          rightInset > 0 && cy >= 0.45
+            ? Math.min(sx, 1 - rightInset - w / 2 / width)
+            : sx;
         const rot = (i % 2 === 0 ? -1 : 1) * 3;
         return (
           <div
