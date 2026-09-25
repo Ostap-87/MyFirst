@@ -366,9 +366,13 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
   // плашка поверх них повторяет сказанное дважды. Заодно освобождается
   // место под окно перебивки.
   // B-roll на весь кадр закрывает спикера — плашки прячутся так же.
+  // В «картинке в картинке» и «без фона» весь кадр отдан показу: плашка
+  // сверху ложилась на телефон с сайтом.
   const cutawayNow =
     cutaways.some((c) => second >= c.at && second < c.at + c.seconds) ||
-    brolls.some((b) => second >= b.at && second < b.until);
+    [...brolls, ...pips, ...(cutoutSrc ? stages : [])].some(
+      (b) => second >= b.at && second < b.until,
+    );
 
   const visible = cutawayNow
     ? []

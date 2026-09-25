@@ -16,12 +16,18 @@ import { Media, type MediaItem } from "./media";
  * а сайт — на полфразы позже названия проекта.
  *
  * Снизу — затемнение под субтитры: на светлом фото и скриншоте сайта
- * белые субтитры пропадали.
+ * белые субтитры пропадали. `shade="low"` — только полоса под
+ * субтитрами: в боковом делении показ идёт во всю высоту, и обычное
+ * затемнение гасило нижнюю половину картинки.
+ *
+ * Наплыв — не дольше четверти кадра: в быстром перечислении («роботы,
+ * автопром, напитки…») кадр держится полсекунды, и полный наплыв в
+ * треть секунды показывал вместо картинки смесь двух.
  */
 export const ShowcaseLayer: React.FC<{
   readonly items: MediaItem[];
   readonly style?: React.CSSProperties;
-  readonly shade?: boolean;
+  readonly shade?: boolean | "low";
   readonly variant?: "part" | "full";
 }> = ({ items, style, shade = true, variant = "part" }) => {
   const frame = useCurrentFrame();
@@ -37,12 +43,13 @@ export const ShowcaseLayer: React.FC<{
     <AbsoluteFill style={{ overflow: "hidden", backgroundColor: "#000", ...style }}>
       {items.map((item, i) => {
         const from = starts[i];
+        const fadeIn = Math.max(3, Math.min(fade, Math.round(lengths[i] / 4)));
         const len = i === items.length - 1 ? durationInFrames - from : lengths[i] + fade;
         const local = frame - from;
         const opacity =
           i === 0
             ? 1
-            : interpolate(local, [0, fade], [0, 1], {
+            : interpolate(local, [0, fadeIn], [0, 1], {
                 extrapolateLeft: "clamp",
                 extrapolateRight: "clamp",
               });
@@ -66,7 +73,9 @@ export const ShowcaseLayer: React.FC<{
         <AbsoluteFill
           style={{
             background:
-              "linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.66) 45%, rgba(0,0,0,0) 78%)",
+              shade === "low"
+                ? "linear-gradient(to top, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.45) 16%, rgba(0,0,0,0) 30%)"
+                : "linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.66) 45%, rgba(0,0,0,0) 78%)",
           }}
         />
       ) : null}

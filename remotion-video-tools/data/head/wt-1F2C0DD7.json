@@ -39,18 +39,6 @@
         "kind": "struck"
       },
       {
-        "text": "Рынки",
-        "at": 24.84,
-        "until": 26.5,
-        "kind": "struck"
-      },
-      {
-        "text": "Селфи у пагод",
-        "at": 25.3,
-        "until": 26.5,
-        "kind": "struck"
-      },
-      {
         "text": "Внутрь корпораций",
         "at": 26.6,
         "until": 28.3,
@@ -199,33 +187,6 @@
     ],
     "brolls": [
       {
-        "at": 4.3,
-        "until": 6.8,
-        "items": [
-          {
-            "src": "tg-images/globaltechtour/2026-08-19-lenovo-worlds-largest-pc.png"
-          },
-          {
-            "src": "tg-images/globaltechtour/2026-09-04-yili-mengniu-global-dairy.png"
-          }
-        ]
-      },
-      {
-        "at": 28.4,
-        "until": 33.2,
-        "items": [
-          {
-            "src": "tg-images/globaltechtour/2026-08-21-foxconn-ai-servers.png"
-          },
-          {
-            "src": "tg-images/globaltechtour/2026-09-01-longi-envision-solar-wind.png"
-          },
-          {
-            "src": "tg-images/globaltechtour/2026-08-31-iflytek-speech-tech.png"
-          }
-        ]
-      },
-      {
         "at": 66.29,
         "until": 68.42,
         "items": [
@@ -285,7 +246,7 @@
     "splits": [
       {
         "at": 17.74,
-        "until": 24.3,
+        "until": 22.1,
         "items": [
           {
             "src": "tg-images/globaltechtour/2026-08-27-ping-an-insurer-fintech.png",
@@ -296,41 +257,38 @@
             "seconds": 1.17
           },
           {
-            "src": "tg-images/globaltechtour/2026-08-17-xpeng-robotaxi-evtol.png",
-            "seconds": 1.51
+            "src": "tg-images/globaltechtour/2026-08-17-xpeng-robotaxi-evtol.png"
+          }
+        ]
+      },
+      {
+        "at": 57.1,
+        "until": 60.68,
+        "side": "left",
+        "items": [
+          {
+            "src": "tg-images/globaltechtour/2026-09-01-longi-envision-solar-wind.png",
+            "seconds": 0.52,
+            "caption": "Роботы"
           },
           {
-            "src": "site/home.png",
-            "present": "site",
-            "title": "Global Tech Tour",
-            "url": "globaltechtour.ru",
-            "scrollTo": 0.3
-          }
-        ]
-      },
-      {
-        "at": 53.76,
-        "until": 60.68,
-        "items": [
+            "src": "tg-images/globaltechtour/2026-08-16-nio-battery-swap.png",
+            "seconds": 0.57,
+            "caption": "Автопром"
+          },
           {
-            "src": "site/industries.png",
-            "present": "site",
-            "title": "1000+ компаний · 17 индустрий",
-            "url": "globaltechtour.ru",
-            "scrollTo": 0.55
-          }
-        ]
-      },
-      {
-        "at": 85.66,
-        "until": 90.16,
-        "items": [
+            "src": "tg-images/globaltechtour/2026-09-04-yili-mengniu-global-dairy.png",
+            "seconds": 0.6,
+            "caption": "Напитки"
+          },
           {
-            "src": "site/home.png",
-            "present": "site",
-            "title": "Global Tech Tour",
-            "url": "globaltechtour.ru",
-            "scrollTo": 0.25
+            "src": "tg-images/globaltechtour/2026-09-02-miniso-franchise-global.png",
+            "seconds": 0.54,
+            "caption": "Косметика"
+          },
+          {
+            "src": "tg-images/globaltechtour/2026-08-24-shein-ultrafast-fashion.png",
+            "caption": "Переработка"
           }
         ]
       }
@@ -352,6 +310,80 @@
         ],
         "stepSeconds": 0.35
       }
+    ],
+    "cutoutSrc": "local/head/wt-1F2C0DD7-cutout.webm",
+    "pips": [
+      {
+        "at": 22.0,
+        "until": 26.55,
+        "items": [
+          {
+            "src": "site/home.png",
+            "present": "site",
+            "title": "Global Tech Tour",
+            "url": "globaltechtour.ru",
+            "scrollTo": 0.35
+          }
+        ]
+      },
+      {
+        "at": 53.76,
+        "until": 57.1,
+        "items": [
+          {
+            "src": "site/industries.png",
+            "present": "site",
+            "title": "1000+ компаний · 17 индустрий",
+            "url": "globaltechtour.ru",
+            "scrollTo": 0.55
+          }
+        ]
+      },
+      {
+        "at": 85.5,
+        "until": 90.7,
+        "items": [
+          {
+            "src": "site/home.png",
+            "present": "site",
+            "title": "Global Tech Tour",
+            "url": "globaltechtour.ru",
+            "scrollTo": 0.25
+          }
+        ]
+      }
+    ],
+    "stages": [
+      {
+        "at": 3.86,
+        "until": 6.85,
+        "items": [
+          {
+            "src": "tg-images/globaltechtour/2026-08-19-lenovo-worlds-largest-pc.png",
+            "seconds": 1.4
+          },
+          {
+            "src": "tg-images/globaltechtour/2026-09-04-yili-mengniu-global-dairy.png"
+          }
+        ]
+      },
+      {
+        "at": 28.3,
+        "until": 33.2,
+        "items": [
+          {
+            "src": "tg-images/globaltechtour/2026-08-27-ping-an-insurer-fintech.png",
+            "seconds": 1.66
+          },
+          {
+            "src": "tg-images/globaltechtour/2026-08-19-lenovo-worlds-largest-pc.png",
+            "seconds": 1.5
+          },
+          {
+            "src": "tg-images/globaltechtour/2026-08-22-tencent-wechat-os.png"
+          }
+        ]
+      }
     ]
   },
   "proposals": [
@@ -367,14 +399,14 @@
       "applied": true
     },
     {
-      "at": 4.3,
-      "until": 6.8,
+      "at": 3.86,
+      "until": 6.85,
       "kind": "cutaway",
       "zone": "full",
-      "what": "на весь экран: производственные линии",
-      "why": "«я вижу его из цехов»",
-      "n": 2,
-      "applied": true
+      "what": "без фона: я перед цехами",
+      "why": "«я вижу его из цехов» — фон уходит, за спиной завод",
+      "applied": true,
+      "n": 2
     },
     {
       "at": 7,
@@ -440,22 +472,32 @@
     },
     {
       "at": 17.74,
-      "until": 24.3,
+      "until": 22.1,
       "kind": "cutaway",
       "zone": "bottom",
-      "what": "деление: переговоры → роботы → технологии → сайт",
-      "why": "картинка под каждым словом, на названии проекта — витрина сайта",
-      "n": 9,
-      "applied": true
+      "what": "деление снизу: переговоры → роботы → технологии",
+      "why": "картинка под каждым словом",
+      "applied": true,
+      "n": 9
     },
     {
-      "at": 24.84,
-      "until": 26.5,
+      "at": 22.0,
+      "until": 26.55,
+      "kind": "cutaway",
+      "zone": "full",
+      "what": "в углу: сайт на весь экран, 4,5 с",
+      "why": "«Мой проект называется Global Tech Tour» — сайт крупнее и дольше",
+      "applied": true,
+      "n": 10
+    },
+    {
+      "at": 26.6,
+      "until": 28.3,
       "kind": "plate",
       "zone": "top",
-      "what": "зачёркнуто «Рынки», «Селфи у пагод»",
-      "why": "«никаких рынков и селфи»",
-      "n": 10,
+      "what": "акцент «Внутрь корпораций»",
+      "why": "главная мысль",
+      "n": 11,
       "applied": true
     },
     {
@@ -465,28 +507,18 @@
       "zone": "bottom",
       "what": "карточки: интерьеры корпораций",
       "why": "«мы заходим внутрь корпораций»",
-      "n": 11,
-      "applied": true
-    },
-    {
-      "at": 26.6,
-      "until": 28.3,
-      "kind": "plate",
-      "zone": "top",
-      "what": "акцент «Внутрь корпораций»",
-      "why": "главная мысль",
       "n": 12,
       "applied": true
     },
     {
-      "at": 28.4,
+      "at": 28.3,
       "until": 33.2,
       "kind": "cutaway",
       "zone": "full",
-      "what": "на весь экран: разработка → сборка → устройство",
+      "what": "без фона: разработка → сборка → телефон",
       "why": "«где придумывают и собирают то, чем вы начнёте пользоваться»",
-      "n": 13,
-      "applied": true
+      "applied": true,
+      "n": 13
     },
     {
       "at": 33.26,
@@ -574,13 +606,23 @@
     },
     {
       "at": 53.76,
+      "until": 57.1,
+      "kind": "cutaway",
+      "zone": "full",
+      "what": "в углу: сайт со списком индустрий",
+      "why": "«В базе больше 1000 компаний из 17 индустрий»",
+      "applied": true,
+      "n": 22
+    },
+    {
+      "at": 57.1,
       "until": 60.68,
       "kind": "cutaway",
-      "zone": "bottom",
-      "what": "деление: витрина сайта со списком индустрий",
-      "why": "«1000 компаний из 17 индустрий: роботы, автопром…» — настоящий список с сайта",
-      "n": 22,
-      "applied": true
+      "zone": "full",
+      "what": "деление сбоку: роботы, автопром, напитки, косметика, переработка",
+      "why": "картинка на каждое слово перечисления",
+      "applied": true,
+      "n": 23
     },
     {
       "at": 60.68,
@@ -590,7 +632,7 @@
       "zone": "face",
       "what": "смена кадра ×1,1",
       "why": "«список растёт каждый месяц»",
-      "n": 23,
+      "n": 24,
       "applied": true
     },
     {
@@ -601,7 +643,7 @@
       "zone": "face",
       "what": "быстрый зум ×1,15",
       "why": "улыбка на «не умею»",
-      "n": 24,
+      "n": 25,
       "applied": true
     },
     {
@@ -611,7 +653,7 @@
       "zone": "full",
       "what": "на весь экран: живая работа",
       "why": "«где работают по-настоящему» — склад и погрузка",
-      "n": 25,
+      "n": 26,
       "applied": true
     },
     {
@@ -621,7 +663,7 @@
       "zone": "top",
       "what": "зачёркнуто «Показуха к приезду автобуса»",
       "why": "«где всё красиво расставили за час до приезда автобуса»",
-      "n": 26,
+      "n": 27,
       "applied": true
     },
     {
@@ -632,7 +674,7 @@
       "zone": "face",
       "what": "лёгкий наезд ×1,06",
       "why": "личная часть — ближе к лицу",
-      "n": 27,
+      "n": 28,
       "applied": true
     },
     {
@@ -642,7 +684,7 @@
       "zone": "top",
       "what": "акцент «Личная отдушина»",
       "why": "«не просто проект, а личная отдушина»",
-      "n": 28,
+      "n": 29,
       "applied": true
     },
     {
@@ -652,7 +694,7 @@
       "zone": "full",
       "what": "окна: карта из тысячи компаний",
       "why": "«собираю из тысячи компаний карту»",
-      "n": 29,
+      "n": 30,
       "applied": true
     },
     {
@@ -662,7 +704,7 @@
       "zone": "top",
       "what": "акцент «Мир через 5 лет»",
       "why": "«как будет выглядеть мир через пять лет»",
-      "n": 30,
+      "n": 31,
       "applied": true
     },
     {
@@ -673,7 +715,7 @@
       "zone": "face",
       "what": "быстрый зум ×1,15",
       "why": "удар на «пять лет»",
-      "n": 31,
+      "n": 32,
       "applied": true
     },
     {
@@ -683,18 +725,18 @@
       "zone": "top",
       "what": "зачёркнуто «Трибуна конференции»",
       "why": "«а не с трибуны конференции»",
-      "n": 32,
+      "n": 33,
       "applied": true
     },
     {
-      "at": 85.66,
-      "until": 90.16,
+      "at": 85.5,
+      "until": 90.15,
       "kind": "cutaway",
-      "zone": "bottom",
-      "what": "деление: витрина сайта — призыв",
+      "zone": "full",
+      "what": "в углу: сайт — призыв",
       "why": "«заходите на Global Tech Tour или пишите мне»",
-      "n": 33,
-      "applied": true
+      "applied": true,
+      "n": 34
     }
   ]
 }

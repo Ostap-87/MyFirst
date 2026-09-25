@@ -192,6 +192,7 @@ export const SplitScreen: React.FC<SplitScreenProps> = ({
         >
           <ShowcaseLayer
             items={s.items}
+            shade={(s.side ?? "bottom") === "bottom" ? true : "low"}
             style={
               (s.side ?? "bottom") === "bottom"
                 ? { top: height * seam, height: "auto" }
