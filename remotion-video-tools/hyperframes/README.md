@@ -11,7 +11,7 @@ HyperFrames — HTML вместо React.
 
     cd hyperframes/batch/st15-campus
     npx hyperframes check     линт, разметка, вёрстка, контраст
-    npx hyperframes render    рендер в MP4
+    npx hyperframes render --sdr    рендер в MP4
 
 ## Когда брать этот конвейер, а когда Remotion
 
@@ -101,6 +101,12 @@ npm run transcribe -- --audio public/local/src15-tight.mp4 --out data/captions-s
   даёт квадраты. Берём `public/fonts/Inter.ttf`.
 - **`data-no-timeline`** нужен композиции без GSAP, иначе продюсер ждёт
   регистрации таймлайна 45 секунд на каждом рендере.
+
+- **Рендер только с `--sdr`.** Айфон снимает в HLG, и без флага HyperFrames
+  сам переключается на HDR: HEVC 10 бит и около 12 ГБ промежуточных кадров
+  на полминуты видео. При нехватке диска рендер падает на старте — так
+  упали два самых длинных ролика пакета. Для сторис HDR не нужен, цвет в
+  SDR тот же.
 
 ## Установка навыков
 

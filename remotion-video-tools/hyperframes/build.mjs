@@ -7,7 +7,7 @@
 //
 // Дальше в папке ролика:
 //   npx hyperframes check     проверка: линт, разметка, контраст
-//   npx hyperframes render    рендер в MP4
+//   npx hyperframes render --sdr    рендер в MP4 (без --sdr уходит в HDR)
 //
 // ——— Почему генератор, а не шестнадцать файлов ———
 //
@@ -134,7 +134,9 @@ const PKG = (name) => JSON.stringify({
   scripts: {
     dev: "npx --yes hyperframes preview",
     check: "npx --yes hyperframes check",
-    render: "npx --yes hyperframes render",
+    // --sdr обязателен: айфон пишет HLG, и без флага рендер уходит в HDR —
+    // 12 ГБ промежуточных кадров на 30 с ролика и отказ при нехватке диска.
+    render: "npx --yes hyperframes render --sdr",
   },
 }, null, 2) + "\n";
 
