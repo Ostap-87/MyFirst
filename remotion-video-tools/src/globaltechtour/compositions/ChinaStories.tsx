@@ -248,9 +248,14 @@ type Plate = z.infer<typeof plateSchema>;
  *                   стоят на одном уровне, одновременно их не бывает.
  * CAPTIONS_BOTTOM — выше строки ответа; она в сторис выше, чем подпись
  *                   в Reels, поэтому субтитры поднимаются.
+ *
+ * Логотип поднят вплотную под строку профиля (было 0,135, плашки — 0,225):
+ * крючок в три строки при быстром зуме на первых секундах ложился на
+ * лицо. Лицо в кадре начинается около трети высоты — всё сверху обязано
+ * закончиться выше.
  */
-const LOGO_TOP = 0.135;
-const MARKS_TOP = 0.225;
+const LOGO_TOP = 0.09;
+const MARKS_TOP = 0.18;
 const CAPTIONS_BOTTOM = 0.16;
 
 const AT = (seconds: number, fps: number) => Math.round(seconds * fps);
@@ -599,16 +604,20 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
               backdropFilter: "blur(14px)",
               WebkitBackdropFilter: "blur(14px)",
               borderRadius: fs(0.022),
-              padding: `${fs(0.034)}px ${fs(0.038)}px`,
+              padding: `${fs(0.026)}px ${fs(0.034)}px`,
               fontFamily: fontFamily(theme.fonts.heading),
               fontWeight: 700,
-              fontSize: fs(0.062),
+              fontSize: fs(0.055),
               lineHeight: 1.16,
               letterSpacing: fs(-0.0016),
               color: "#fff",
             }}
           >
-            {hookTop}
+            {/* Ровный перенос: без него мельче кегль ломал строку как
+                «Большинство видит / Китай» — висячее слово. */}
+            <span style={{ display: "block", textWrap: "balance" }}>
+              {hookTop}
+            </span>
             <span style={{ display: "block", color: "#8FD4FF" }}>
               {hookBottom}
             </span>
