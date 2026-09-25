@@ -117,8 +117,8 @@ const Layout: React.FC<{
       // На весь кадр: телефон слева ниже логотипа, текст справа сверху —
       // правый нижний угол занят окном спикера, низ — субтитрами.
       justifyContent: full ? "flex-start" : "center",
-      gap: "6cqw",
-      padding: full ? "22cqh 8cqw 0" : "6cqh 6cqw 0",
+      gap: full ? "5cqw" : "6cqw",
+      padding: full ? "21cqh 7cqw 0" : "6cqh 6cqw 0",
       boxSizing: "border-box",
       flexDirection: "row",
       flexWrap: "wrap",
@@ -126,10 +126,13 @@ const Layout: React.FC<{
     }}
   >
     {/* Телефон: высота от меньшей стороны контейнера, чтобы в половине
-        кадра он не упирался в края, а на весь кадр не был мелким. */}
+        кадра он не упирался в края, а на весь кадр не был мелким. На весь
+        кадр — от логотипа до субтитров: при 46% высоты владелец сказал,
+        что телефон мелкий и сайт почти не видно. */}
     <div
       style={{
-        height: full ? "min(46cqh, 90cqw)" : "min(60cqh, 120cqw)",
+        // cqh здесь — от высоты без верхнего отступа (1517 px из 1920).
+        height: full ? "min(70cqh, 120cqw)" : "min(60cqh, 120cqw)",
         aspectRatio: "0.49",
         borderRadius: "min(6cqh, 11cqw)",
         padding: "min(1.2cqh, 2.2cqw)",
@@ -172,7 +175,7 @@ const Layout: React.FC<{
           gap: "3cqh",
           opacity: enter,
           transform: `translateX(${(1 - enter) * 40}px)`,
-          maxWidth: full ? "38cqw" : "46cqw",
+          maxWidth: full ? "36cqw" : "46cqw",
           paddingTop: full ? "3cqh" : "8cqh",
         }}
       >
@@ -181,7 +184,7 @@ const Layout: React.FC<{
             style={{
               fontFamily: fontFamily("Inter"),
               fontWeight: 800,
-              fontSize: "min(8cqh, 7.5cqw)",
+              fontSize: full ? "6.4cqw" : "min(8cqh, 7.5cqw)",
               lineHeight: 1.05,
               color: "#fff",
               letterSpacing: "-0.02em",

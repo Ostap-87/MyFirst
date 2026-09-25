@@ -17,6 +17,10 @@ import { Media, mediaItemSchema, withDefaults } from "./media";
  * Место по умолчанию зависит от кадра. В горизонтали — сбоку от спикера,
  * как в референсе. В вертикали сбоку места нет: карточки садятся на грудь,
  * между подбородком и субтитрами, чтобы не закрывать лицо.
+ *
+ * `spread` — шаг сдвига карточек, доля их ширины. По умолчанию они
+ * ложатся внахлёст (0,42). Для логотипов ставят около единицы: знак
+ * стоит по центру карточки, и под соседней его не видно.
  */
 export const photoCardsSchema = z.object({
   items: z.array(mediaItemSchema).describe("Карточки по порядку появления"),
@@ -25,6 +29,7 @@ export const photoCardsSchema = z.object({
   widthFraction: z.number().min(0.1).max(0.6).describe("Ширина карточки, доля ширины кадра"),
   topFraction: z.number().min(0).max(1).optional().describe("Верх стопки, доля высоты; по умолчанию по формату"),
   tilt: z.number().min(0).max(15).describe("Наибольший поворот карточки, градусы"),
+  spread: z.number().min(0.1).max(1.2).describe("Шаг сдвига карточек, доля их ширины"),
   exitFrames: z.number().int().min(1).describe("За сколько кадров стопка уходит"),
 });
 
@@ -37,11 +42,12 @@ export const photoCardsDefaults: PhotoCardsParams = {
   side: "right",
   widthFraction: 0.34,
   tilt: 4,
+  spread: 0.42,
   exitFrames: 8,
 };
 
 export const PhotoCards: React.FC<PhotoCardsProps> = (params) => {
-  const { items, stepFrames, side, widthFraction, topFraction, tilt, exitFrames } = withDefaults(photoCardsDefaults, params);
+  const { items, stepFrames, side, widthFraction, topFraction, tilt, spread, exitFrames } = withDefaults(photoCardsDefaults, params);
   const frame = useCurrentFrame();
   const { fps, width, height, durationInFrames } = useVideoConfig();
   const vertical = height > width;
@@ -52,8 +58,9 @@ export const PhotoCards: React.FC<PhotoCardsProps> = (params) => {
   const top = height * (topFraction ?? (vertical ? 0.57 : 0.22));
   const dir = side === "right" ? 1 : -1;
   // Край стопки: карточки ложатся от края к центру со сдвигом.
-  const edge = width * 0.06;
-  const offsetX = cardW * 0.42;
+  // Разложенная лесенка должна влезть в кадр: край — остаток ширины.
+  const edge = Math.max(width * 0.03, Math.min(width * 0.06, (width - cardW * (1 + spread * (items.length - 1))) / 2));
+  const offsetX = cardW * spread;
   const offsetY = cardH * 0.18;
 
   const exit = interpolate(

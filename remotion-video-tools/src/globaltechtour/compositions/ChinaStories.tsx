@@ -110,6 +110,11 @@ const photoCardsBlock = z.object({
     .optional()
     .describe("Шаг между карточками; по умолчанию 0,35 с"),
   side: z.enum(["left", "right"]).optional(),
+  spread: z
+    .number()
+    .optional()
+    .describe("Шаг сдвига, доля ширины карточки; для логотипов около 1"),
+  widthFraction: z.number().optional().describe("Ширина карточки, доля кадра"),
 });
 const popWindowsBlock = z.object({
   ...span,
@@ -505,6 +510,8 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
           <PhotoCards
             items={b.items}
             side={b.side}
+            spread={b.spread}
+            widthFraction={b.widthFraction}
             stepFrames={AT(b.stepSeconds ?? 0.35, fps)}
           />
         </Sequence>

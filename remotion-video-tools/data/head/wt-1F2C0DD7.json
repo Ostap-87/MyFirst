@@ -205,16 +205,20 @@
         "until": 14.9,
         "items": [
           {
-            "src": "local/st4-graded.mp4"
+            "src": "local/logos/huawei.png",
+            "caption": "Huawei"
           },
           {
-            "src": "local/stories-graded.mp4"
+            "src": "local/logos/alibaba.png",
+            "caption": "Alibaba"
           },
           {
-            "src": "local/st2-graded.mp4"
+            "src": "local/logos/baidu.png",
+            "caption": "Baidu"
           },
           {
-            "src": "local/st16-graded.mp4"
+            "src": "local/logos/tencent.png",
+            "caption": "Tencent"
           }
         ]
       },
@@ -264,7 +268,6 @@
       {
         "at": 57.1,
         "until": 60.68,
-        "side": "left",
         "items": [
           {
             "src": "tg-images/globaltechtour/2026-09-01-longi-envision-solar-wind.png",
@@ -299,16 +302,21 @@
         "until": 28.4,
         "items": [
           {
-            "src": "tg-images/globaltechtour/2026-08-27-ping-an-insurer-fintech.png"
+            "src": "local/logos/byd.png",
+            "caption": "BYD"
           },
           {
-            "src": "tg-images/globaltechtour/2026-08-20-hisense-tcl-tv-export.png"
+            "src": "local/logos/nio.png",
+            "caption": "NIO"
           },
           {
-            "src": "tg-images/globaltechtour/2026-08-21-foxconn-ai-servers.png"
+            "src": "local/logos/bytedance.png",
+            "caption": "ByteDance"
           }
         ],
-        "stepSeconds": 0.35
+        "stepSeconds": 0.35,
+        "spread": 1.02,
+        "widthFraction": 0.3
       }
     ],
     "cutoutSrc": "local/head/wt-1F2C0DD7-cutout.webm",
@@ -444,8 +452,8 @@
       "until": 14.9,
       "kind": "cutaway",
       "zone": "full",
-      "what": "окна: ваши поездки",
-      "why": "«лучшая работа в мире»",
+      "what": "окна: логотипы Huawei, Alibaba, Baidu, Tencent",
+      "why": "«у меня лучшая работа в мире» — с кем работаю",
       "n": 6,
       "applied": true
     },
@@ -485,7 +493,7 @@
       "until": 26.55,
       "kind": "cutaway",
       "zone": "full",
-      "what": "в углу: сайт на весь экран, 4,5 с",
+      "what": "в углу: сайт на весь экран, 4,5 с — телефон крупно",
       "why": "«Мой проект называется Global Tech Tour» — сайт крупнее и дольше",
       "applied": true,
       "n": 10
@@ -505,7 +513,7 @@
       "until": 28.4,
       "kind": "cutaway",
       "zone": "bottom",
-      "what": "карточки: интерьеры корпораций",
+      "what": "карточки: логотипы BYD, NIO, ByteDance",
       "why": "«мы заходим внутрь корпораций»",
       "n": 12,
       "applied": true
@@ -609,7 +617,7 @@
       "until": 57.1,
       "kind": "cutaway",
       "zone": "full",
-      "what": "в углу: сайт со списком индустрий",
+      "what": "в углу: сайт со списком индустрий — телефон крупно",
       "why": "«В базе больше 1000 компаний из 17 индустрий»",
       "applied": true,
       "n": 22
@@ -618,8 +626,8 @@
       "at": 57.1,
       "until": 60.68,
       "kind": "cutaway",
-      "zone": "full",
-      "what": "деление сбоку: роботы, автопром, напитки, косметика, переработка",
+      "zone": "bottom",
+      "what": "деление снизу: роботы, автопром, напитки, косметика, переработка",
       "why": "картинка на каждое слово перечисления",
       "applied": true,
       "n": 23
@@ -733,7 +741,7 @@
       "until": 90.15,
       "kind": "cutaway",
       "zone": "full",
-      "what": "в углу: сайт — призыв",
+      "what": "в углу: сайт — призыв — телефон крупно",
       "why": "«заходите на Global Tech Tour или пишите мне»",
       "applied": true,
       "n": 34
