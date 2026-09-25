@@ -121,7 +121,10 @@ if (args.prepare) {
 
   // 4. Расшифровка — после подтяжки: вырезание сдвинуло тайминги.
   const captions = `captions/head-${name}.json`;
+  // medium по умолчанию: small путал имена («Стаб Доценко») и города,
+  // а вычитка после него занимала дольше, чем разница во времени.
   run("node", [resolve(ROOT, "scripts/transcribe.mjs"), "--audio", rel(final),
+    "--model", String(args.model ?? "medium"), "--language", "ru",
     "--out", `public/${captions}`]);
 
   // 5. Сетка: по ней видно, на какой доле высоты глаза — центр зумов —

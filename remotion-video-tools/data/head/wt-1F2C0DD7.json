@@ -1,0 +1,700 @@
+{
+  "name": "wt-1F2C0DD7",
+  "stage": "черновик",
+  "props": {
+    "footage": "local/head/wt-1F2C0DD7.mp4",
+    "captionsSrc": "captions/head-wt-1F2C0DD7.json",
+    "durationSeconds": 90.15,
+    "hookTop": "Большинство видит Китай",
+    "hookBottom": "из окна автобуса",
+    "brandMark": "GLOBAL TECH TOUR",
+    "logoScale": 1.5,
+    "logoSpin": 72,
+    "focusY": 0.46,
+    "cutaways": [],
+    "inserts": [],
+    "plates": [
+      {
+        "text": "Вход только своим",
+        "at": 7,
+        "until": 9.6,
+        "kind": "term"
+      },
+      {
+        "text": "Остап Доценко",
+        "at": 9.7,
+        "until": 12.86,
+        "kind": "term"
+      },
+      {
+        "text": "Эксперт по Китаю · Шанхай",
+        "at": 10.63,
+        "until": 12.86,
+        "kind": "accent"
+      },
+      {
+        "text": "Планёрка",
+        "at": 16.5,
+        "until": 17.74,
+        "kind": "struck"
+      },
+      {
+        "text": "Рынки",
+        "at": 24.84,
+        "until": 26.5,
+        "kind": "struck"
+      },
+      {
+        "text": "Селфи у пагод",
+        "at": 25.3,
+        "until": 26.5,
+        "kind": "struck"
+      },
+      {
+        "text": "Внутрь корпораций",
+        "at": 26.6,
+        "until": 28.3,
+        "kind": "accent"
+      },
+      {
+        "text": "Почему меня пускают?",
+        "at": 33.3,
+        "until": 37.5,
+        "kind": "accent"
+      },
+      {
+        "text": "Работал в Alibaba",
+        "at": 38.02,
+        "until": 43.32,
+        "kind": "term"
+      },
+      {
+        "text": "Согласования в 5 инстанциях",
+        "at": 41.3,
+        "until": 43.32,
+        "kind": "struck"
+      },
+      {
+        "text": "10+ лет в Китае",
+        "at": 44.24,
+        "until": 46.93,
+        "kind": "term"
+      },
+      {
+        "text": "Свободный китайский",
+        "at": 45.49,
+        "until": 46.93,
+        "kind": "term"
+      },
+      {
+        "text": "Контакты в Китае и ЮВА",
+        "at": 46.93,
+        "until": 49.72,
+        "kind": "accent"
+      },
+      {
+        "text": "Экзотика",
+        "at": 50.4,
+        "until": 52.94,
+        "kind": "struck"
+      },
+      {
+        "text": "Профессия",
+        "at": 52.94,
+        "until": 53.76,
+        "kind": "accent"
+      },
+      {
+        "text": "Показуха к приезду автобуса",
+        "at": 69.23,
+        "until": 71.86,
+        "kind": "struck"
+      },
+      {
+        "text": "Личная отдушина",
+        "at": 73.61,
+        "until": 77.4,
+        "kind": "accent"
+      },
+      {
+        "text": "Мир через 5 лет",
+        "at": 79.9,
+        "until": 82.2,
+        "kind": "accent"
+      },
+      {
+        "text": "Трибуна конференции",
+        "at": 84.3,
+        "until": 85.66,
+        "kind": "struck"
+      }
+    ],
+    "moves": [
+      {
+        "at": 0,
+        "until": 2.2,
+        "kind": "punch",
+        "scale": 1.15
+      },
+      {
+        "at": 9.64,
+        "until": 12.86,
+        "kind": "cut",
+        "scale": 1.1
+      },
+      {
+        "at": 15.12,
+        "until": 16.06,
+        "kind": "punch",
+        "scale": 1.18
+      },
+      {
+        "at": 33.26,
+        "until": 34.8,
+        "kind": "punch",
+        "scale": 1.2
+      },
+      {
+        "at": 34.8,
+        "until": 37.5,
+        "kind": "cut",
+        "scale": 1.1
+      },
+      {
+        "at": 43.32,
+        "until": 49.72,
+        "kind": "push",
+        "scale": 1.06
+      },
+      {
+        "at": 52.94,
+        "until": 53.76,
+        "kind": "punch",
+        "scale": 1.18
+      },
+      {
+        "at": 60.68,
+        "until": 62.58,
+        "kind": "cut",
+        "scale": 1.1
+      },
+      {
+        "at": 64.05,
+        "until": 64.66,
+        "kind": "punch",
+        "scale": 1.15
+      },
+      {
+        "at": 71.86,
+        "until": 74.8,
+        "kind": "push",
+        "scale": 1.06
+      },
+      {
+        "at": 81.59,
+        "until": 82.2,
+        "kind": "punch",
+        "scale": 1.15
+      }
+    ],
+    "brolls": [
+      {
+        "at": 4.3,
+        "until": 6.8,
+        "items": [
+          {
+            "src": "tg-images/globaltechtour/2026-08-19-lenovo-worlds-largest-pc.png"
+          },
+          {
+            "src": "tg-images/globaltechtour/2026-09-04-yili-mengniu-global-dairy.png"
+          }
+        ]
+      },
+      {
+        "at": 28.4,
+        "until": 33.2,
+        "items": [
+          {
+            "src": "tg-images/globaltechtour/2026-08-21-foxconn-ai-servers.png"
+          },
+          {
+            "src": "tg-images/globaltechtour/2026-09-01-longi-envision-solar-wind.png"
+          },
+          {
+            "src": "tg-images/globaltechtour/2026-08-31-iflytek-speech-tech.png"
+          }
+        ]
+      },
+      {
+        "at": 66.29,
+        "until": 68.42,
+        "items": [
+          {
+            "src": "tg-images/globaltechtour/2026-08-24-shein-ultrafast-fashion.png"
+          },
+          {
+            "src": "tg-images/globaltechtour/2026-08-28-sf-express-air-cargo.png"
+          }
+        ]
+      }
+    ],
+    "popWindows": [
+      {
+        "at": 12.9,
+        "until": 14.9,
+        "items": [
+          {
+            "src": "local/st4-graded.mp4"
+          },
+          {
+            "src": "local/stories-graded.mp4"
+          },
+          {
+            "src": "local/st2-graded.mp4"
+          },
+          {
+            "src": "local/st16-graded.mp4"
+          }
+        ]
+      },
+      {
+        "at": 77.53,
+        "until": 79.84,
+        "items": [
+          {
+            "src": "tg-images/globaltechtour/2026-08-16-nio-battery-swap.png"
+          },
+          {
+            "src": "tg-images/globaltechtour/2026-08-17-xpeng-robotaxi-evtol.png"
+          },
+          {
+            "src": "tg-images/globaltechtour/2026-08-20-hisense-tcl-tv-export.png"
+          },
+          {
+            "src": "tg-images/globaltechtour/2026-08-23-bytedance-tiktok-vs-douyin.png"
+          },
+          {
+            "src": "tg-images/globaltechtour/2026-08-28-sf-express-air-cargo.png"
+          },
+          {
+            "src": "tg-images/globaltechtour/2026-08-29-cosco-shipping-fleet.png"
+          }
+        ]
+      }
+    ],
+    "splits": [
+      {
+        "at": 17.74,
+        "until": 24.3,
+        "items": [
+          {
+            "src": "tg-images/globaltechtour/2026-08-27-ping-an-insurer-fintech.png",
+            "seconds": 1.74
+          },
+          {
+            "src": "tg-images/globaltechtour/2026-09-01-longi-envision-solar-wind.png",
+            "seconds": 1.17
+          },
+          {
+            "src": "tg-images/globaltechtour/2026-08-17-xpeng-robotaxi-evtol.png",
+            "seconds": 1.51
+          },
+          {
+            "src": "site/home.png",
+            "present": "site",
+            "title": "Global Tech Tour",
+            "url": "globaltechtour.ru",
+            "scrollTo": 0.3
+          }
+        ]
+      },
+      {
+        "at": 53.76,
+        "until": 60.68,
+        "items": [
+          {
+            "src": "site/industries.png",
+            "present": "site",
+            "title": "1000+ компаний · 17 индустрий",
+            "url": "globaltechtour.ru",
+            "scrollTo": 0.55
+          }
+        ]
+      },
+      {
+        "at": 85.66,
+        "until": 90.16,
+        "items": [
+          {
+            "src": "site/home.png",
+            "present": "site",
+            "title": "Global Tech Tour",
+            "url": "globaltechtour.ru",
+            "scrollTo": 0.25
+          }
+        ]
+      }
+    ],
+    "photoCards": [
+      {
+        "at": 26.6,
+        "until": 28.4,
+        "items": [
+          {
+            "src": "tg-images/globaltechtour/2026-08-27-ping-an-insurer-fintech.png"
+          },
+          {
+            "src": "tg-images/globaltechtour/2026-08-20-hisense-tcl-tv-export.png"
+          },
+          {
+            "src": "tg-images/globaltechtour/2026-08-21-foxconn-ai-servers.png"
+          }
+        ],
+        "stepSeconds": 0.35
+      }
+    ]
+  },
+  "proposals": [
+    {
+      "at": 0,
+      "until": 2.2,
+      "kind": "punch",
+      "scale": 1.15,
+      "zone": "face",
+      "what": "быстрый зум ×1,15",
+      "why": "хук",
+      "n": 1,
+      "applied": true
+    },
+    {
+      "at": 4.3,
+      "until": 6.8,
+      "kind": "cutaway",
+      "zone": "full",
+      "what": "на весь экран: производственные линии",
+      "why": "«я вижу его из цехов»",
+      "n": 2,
+      "applied": true
+    },
+    {
+      "at": 7,
+      "until": 9.6,
+      "kind": "plate",
+      "zone": "top",
+      "what": "плашка «Вход только своим»",
+      "why": "«пускают только своих»",
+      "n": 3,
+      "applied": true
+    },
+    {
+      "at": 9.64,
+      "until": 12.86,
+      "kind": "cut",
+      "scale": 1.1,
+      "zone": "face",
+      "what": "смена кадра ×1,1",
+      "why": "представление",
+      "n": 4,
+      "applied": true
+    },
+    {
+      "at": 9.7,
+      "until": 12.86,
+      "kind": "plate",
+      "zone": "top",
+      "what": "«Остап Доценко» + «Эксперт по Китаю · Шанхай»",
+      "why": "«Я Остап Доценко, эксперт по Китаю, живу в Шанхае»",
+      "n": 5,
+      "applied": true
+    },
+    {
+      "at": 12.9,
+      "until": 14.9,
+      "kind": "cutaway",
+      "zone": "full",
+      "what": "окна: ваши поездки",
+      "why": "«лучшая работа в мире»",
+      "n": 6,
+      "applied": true
+    },
+    {
+      "at": 15.12,
+      "until": 16.06,
+      "kind": "punch",
+      "scale": 1.18,
+      "zone": "face",
+      "what": "быстрый зум ×1,18",
+      "why": "«бесполезно»",
+      "n": 7,
+      "applied": true
+    },
+    {
+      "at": 16.5,
+      "until": 17.74,
+      "kind": "plate",
+      "zone": "top",
+      "what": "зачёркнуто «Планёрка»",
+      "why": "«пока вы сидите на планёрке»",
+      "n": 8,
+      "applied": true
+    },
+    {
+      "at": 17.74,
+      "until": 24.3,
+      "kind": "cutaway",
+      "zone": "bottom",
+      "what": "деление: переговоры → роботы → технологии → сайт",
+      "why": "картинка под каждым словом, на названии проекта — витрина сайта",
+      "n": 9,
+      "applied": true
+    },
+    {
+      "at": 24.84,
+      "until": 26.5,
+      "kind": "plate",
+      "zone": "top",
+      "what": "зачёркнуто «Рынки», «Селфи у пагод»",
+      "why": "«никаких рынков и селфи»",
+      "n": 10,
+      "applied": true
+    },
+    {
+      "at": 26.6,
+      "until": 28.4,
+      "kind": "cutaway",
+      "zone": "bottom",
+      "what": "карточки: интерьеры корпораций",
+      "why": "«мы заходим внутрь корпораций»",
+      "n": 11,
+      "applied": true
+    },
+    {
+      "at": 26.6,
+      "until": 28.3,
+      "kind": "plate",
+      "zone": "top",
+      "what": "акцент «Внутрь корпораций»",
+      "why": "главная мысль",
+      "n": 12,
+      "applied": true
+    },
+    {
+      "at": 28.4,
+      "until": 33.2,
+      "kind": "cutaway",
+      "zone": "full",
+      "what": "на весь экран: разработка → сборка → устройство",
+      "why": "«где придумывают и собирают то, чем вы начнёте пользоваться»",
+      "n": 13,
+      "applied": true
+    },
+    {
+      "at": 33.26,
+      "until": 34.8,
+      "kind": "punch",
+      "scale": 1.2,
+      "zone": "face",
+      "what": "быстрый зум ×1,2",
+      "why": "вопрос-перехват «Почему меня туда пускают?»",
+      "n": 14,
+      "applied": true
+    },
+    {
+      "at": 33.3,
+      "until": 37.5,
+      "kind": "plate",
+      "zone": "top",
+      "what": "плашка «Почему меня пускают?»",
+      "why": "вопрос держит до ответа",
+      "n": 15,
+      "applied": true
+    },
+    {
+      "at": 34.8,
+      "until": 37.5,
+      "kind": "cut",
+      "scale": 1.1,
+      "zone": "face",
+      "what": "смена кадра ×1,1",
+      "why": "ответ — «по ту сторону проходных»",
+      "n": 16,
+      "applied": true
+    },
+    {
+      "at": 38.02,
+      "until": 43.32,
+      "kind": "plate",
+      "zone": "top",
+      "what": "«Работал в Alibaba» + «Согласования в 5 инстанциях»",
+      "why": "опыт изнутри корпораций",
+      "n": 17,
+      "applied": true
+    },
+    {
+      "at": 43.32,
+      "until": 49.72,
+      "kind": "push",
+      "scale": 1.06,
+      "zone": "face",
+      "what": "лёгкий наезд ×1,06",
+      "why": "перечисление регалий",
+      "n": 18,
+      "applied": true
+    },
+    {
+      "at": 44.24,
+      "until": 49.72,
+      "kind": "plate",
+      "zone": "top",
+      "what": "плашки: 10+ лет · свободный китайский · контакты",
+      "why": "три аргумента по очереди, не больше двух сразу",
+      "n": 19,
+      "applied": true
+    },
+    {
+      "at": 52.29,
+      "until": 53.76,
+      "kind": "plate",
+      "zone": "top",
+      "what": "«Экзотика» зачёркнута → «Профессия»",
+      "why": "«не экзотика, а профессия»",
+      "n": 20,
+      "applied": true
+    },
+    {
+      "at": 52.94,
+      "until": 53.76,
+      "kind": "punch",
+      "scale": 1.18,
+      "zone": "face",
+      "what": "быстрый зум ×1,18",
+      "why": "удар на «профессия»",
+      "n": 21,
+      "applied": true
+    },
+    {
+      "at": 53.76,
+      "until": 60.68,
+      "kind": "cutaway",
+      "zone": "bottom",
+      "what": "деление: витрина сайта со списком индустрий",
+      "why": "«1000 компаний из 17 индустрий: роботы, автопром…» — настоящий список с сайта",
+      "n": 22,
+      "applied": true
+    },
+    {
+      "at": 60.68,
+      "until": 62.58,
+      "kind": "cut",
+      "scale": 1.1,
+      "zone": "face",
+      "what": "смена кадра ×1,1",
+      "why": "«список растёт каждый месяц»",
+      "n": 23,
+      "applied": true
+    },
+    {
+      "at": 64.05,
+      "until": 64.66,
+      "kind": "punch",
+      "scale": 1.15,
+      "zone": "face",
+      "what": "быстрый зум ×1,15",
+      "why": "улыбка на «не умею»",
+      "n": 24,
+      "applied": true
+    },
+    {
+      "at": 66.29,
+      "until": 68.42,
+      "kind": "cutaway",
+      "zone": "full",
+      "what": "на весь экран: живая работа",
+      "why": "«где работают по-настоящему» — склад и погрузка",
+      "n": 25,
+      "applied": true
+    },
+    {
+      "at": 68.85,
+      "until": 71.86,
+      "kind": "plate",
+      "zone": "top",
+      "what": "зачёркнуто «Показуха к приезду автобуса»",
+      "why": "«где всё красиво расставили за час до приезда автобуса»",
+      "n": 26,
+      "applied": true
+    },
+    {
+      "at": 71.86,
+      "until": 74.8,
+      "kind": "push",
+      "scale": 1.06,
+      "zone": "face",
+      "what": "лёгкий наезд ×1,06",
+      "why": "личная часть — ближе к лицу",
+      "n": 27,
+      "applied": true
+    },
+    {
+      "at": 73.61,
+      "until": 77.4,
+      "kind": "plate",
+      "zone": "top",
+      "what": "акцент «Личная отдушина»",
+      "why": "«не просто проект, а личная отдушина»",
+      "n": 28,
+      "applied": true
+    },
+    {
+      "at": 77.53,
+      "until": 79.84,
+      "kind": "cutaway",
+      "zone": "full",
+      "what": "окна: карта из тысячи компаний",
+      "why": "«собираю из тысячи компаний карту»",
+      "n": 29,
+      "applied": true
+    },
+    {
+      "at": 79.9,
+      "until": 82.2,
+      "kind": "plate",
+      "zone": "top",
+      "what": "акцент «Мир через 5 лет»",
+      "why": "«как будет выглядеть мир через пять лет»",
+      "n": 30,
+      "applied": true
+    },
+    {
+      "at": 81.59,
+      "until": 82.2,
+      "kind": "punch",
+      "scale": 1.15,
+      "zone": "face",
+      "what": "быстрый зум ×1,15",
+      "why": "удар на «пять лет»",
+      "n": 31,
+      "applied": true
+    },
+    {
+      "at": 84.05,
+      "until": 85.66,
+      "kind": "plate",
+      "zone": "top",
+      "what": "зачёркнуто «Трибуна конференции»",
+      "why": "«а не с трибуны конференции»",
+      "n": 32,
+      "applied": true
+    },
+    {
+      "at": 85.66,
+      "until": 90.16,
+      "kind": "cutaway",
+      "zone": "bottom",
+      "what": "деление: витрина сайта — призыв",
+      "why": "«заходите на Global Tech Tour или пишите мне»",
+      "n": 33,
+      "applied": true
+    }
+  ]
+}
