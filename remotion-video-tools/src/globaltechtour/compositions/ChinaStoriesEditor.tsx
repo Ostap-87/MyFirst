@@ -191,7 +191,19 @@ const Clip: React.FC<{
   readonly strike?: boolean;
   readonly size?: number;
   readonly glow?: boolean;
-}> = ({ from, to, now, top, height, color, label, dark, strike, size = 22, glow = true }) => {
+}> = ({
+  from,
+  to,
+  now,
+  top,
+  height,
+  color,
+  label,
+  dark,
+  strike,
+  size = 22,
+  glow = true,
+}) => {
   const x = PLAYHEAD_X + (from - now) * PPS;
   const w = Math.max(4, (to - from) * PPS - 3);
   if (x + w < LABEL_W - 20 || x > W + 20) return null;
@@ -263,7 +275,26 @@ const TrackLabel: React.FC<{
   </div>
 );
 
-const MOVE_RU = { punch: "быстрый зум", push: "лёгкий наезд", cut: "смена кадра" };
+const INSERT_RU = {
+  cards: "Карточки",
+  windows: "Окна",
+  insert: "Врезка",
+  broll: "На весь кадр",
+  split: "Деление",
+};
+const INSERT_COLOR: Record<keyof typeof INSERT_RU, string> = {
+  cards: "#FBBF24",
+  windows: "#FB923C",
+  insert: "#F472B6",
+  broll: "#A78BFA",
+  split: "#22D3EE",
+};
+
+const MOVE_RU = {
+  punch: "быстрый зум",
+  push: "лёгкий наезд",
+  cut: "смена кадра",
+};
 
 /**
  * Рамка «где в кадре» поверх превью, в координатах кадра 1080×1920.
@@ -272,10 +303,10 @@ const MOVE_RU = { punch: "быстрый зум", push: "лёгкий наезд
  * увеличения вокруг глаз, — видно, не срежет ли подбородок или макушку.
  * Для плашек — зона стопки или нижней строки, для перебивки — весь кадр.
  */
-const ZoneFrame: React.FC<{ readonly p: Proposal; readonly focusY: number }> = ({
-  p,
-  focusY,
-}) => {
+const ZoneFrame: React.FC<{
+  readonly p: Proposal;
+  readonly focusY: number;
+}> = ({ p, focusY }) => {
   let rect: { x: number; y: number; w: number; h: number };
   if (p.kind === "punch" || p.kind === "push" || p.kind === "cut") {
     const k = p.scale ?? 1.15;
@@ -308,7 +339,9 @@ const ZoneFrame: React.FC<{ readonly p: Proposal; readonly focusY: number }> = (
           position: "absolute",
           left: 16,
           // У плашки подпись под рамкой: сверху она закрыла бы саму плашку.
-          ...(p.kind === "plate" ? { top: "100%", marginTop: 16 } : { top: 16 }),
+          ...(p.kind === "plate"
+            ? { top: "100%", marginTop: 16 }
+            : { top: 16 }),
           backgroundColor: color,
           color: p.kind === "plate" || p.kind === "cut" ? "#0B0E14" : "#fff",
           fontFamily: UI,
@@ -394,6 +427,50 @@ export const ChinaStoriesEditor: React.FC<EditorProps> = (props) => {
   const shownPlates = story.plates.filter((p) => p.at <= now).length;
   const ideasNow = proposals.filter((p) => now >= p.at && now < p.until);
   const moves = story.moves ?? [];
+  const media = (items: { src: string; caption?: string }[]) =>
+    items
+      .map(
+        (i) => i.caption ?? i.src.replace(/^.*\//, "").replace(/\.[^.]+$/, ""),
+      )
+      .join(", ");
+  const inserts: {
+    kind: keyof typeof INSERT_RU;
+    at: number;
+    until: number;
+    label: string;
+  }[] = [
+    ...(story.photoCards ?? []).map((b) => ({
+      kind: "cards" as const,
+      at: b.at,
+      until: b.until,
+      label: `${b.items.length} шт.`,
+    })),
+    ...(story.popWindows ?? []).map((b) => ({
+      kind: "windows" as const,
+      at: b.at,
+      until: b.until,
+      label: `${b.items.length} шт.`,
+    })),
+    ...(story.inserts ?? []).map((b) => ({
+      kind: "insert" as const,
+      at: b.at,
+      until: b.until,
+      label: b.caption ?? "",
+    })),
+    ...(story.brolls ?? []).map((b) => ({
+      kind: "broll" as const,
+      at: b.at,
+      until: b.until,
+      label: media(b.items),
+    })),
+    ...(story.splits ?? []).map((b) => ({
+      kind: "split" as const,
+      at: b.at,
+      until: b.until,
+      label: media(b.items),
+    })),
+  ];
+  const insertNow = inserts.find((b) => now >= b.at && now < b.until);
 
   // ——— Дорожки сверху вниз ———
   const RULER_H = 40;
@@ -469,7 +546,12 @@ export const ChinaStoriesEditor: React.FC<EditorProps> = (props) => {
     }
   }
 
-  const sideRow = (color: string, head: string, body: string, strike = false) => (
+  const sideRow = (
+    color: string,
+    head: string,
+    body: string,
+    strike = false,
+  ) => (
     <div
       key={`${head}-${body}`}
       style={{
@@ -618,19 +700,37 @@ export const ChinaStoriesEditor: React.FC<EditorProps> = (props) => {
         </div>
         {sideRow(C.video, "Съёмка", story.footage.replace(/^local\//, ""))}
         {hookNow
-          ? sideRow(C.hook, "Крючок · 0–2,8 с", `${story.hookTop} ${story.hookBottom}`)
+          ? sideRow(
+              C.hook,
+              "Крючок · 0–2,8 с",
+              `${story.hookTop} ${story.hookBottom}`,
+            )
           : null}
         {platesNow.map((p) =>
           sideRow(
-            p.kind === "struck" ? C.struck : p.kind === "accent" ? C.accent : "#C9D1DD",
+            p.kind === "struck"
+              ? C.struck
+              : p.kind === "accent"
+                ? C.accent
+                : "#C9D1DD",
             `Плашка · ${KIND_RU[p.kind]}`,
             p.text,
             p.kind === "struck",
           ),
         )}
         {cutawayNow
-          ? sideRow(C.cutaway, "Перебивка · сайт", cutawayNow.src.replace(/^.*\//, ""))
-          : null}
+          ? sideRow(
+              C.cutaway,
+              "Перебивка · сайт",
+              cutawayNow.src.replace(/^.*\//, ""),
+            )
+          : insertNow
+            ? sideRow(
+                INSERT_COLOR[insertNow.kind],
+                `Врезка · ${INSERT_RU[insertNow.kind]}`,
+                insertNow.label || "—",
+              )
+            : null}
         {sideRow(C.words, "Субтитр", word ? word.text.trim() : "—")}
         {ideasNow.map((p) =>
           sideRow(
@@ -905,6 +1005,22 @@ export const ChinaStoriesEditor: React.FC<EditorProps> = (props) => {
         />
       ))}
 
+      {/* Врезки из арсенала на той же дорожке: они не пересекаются по
+          смыслу — в один момент в кадре одна врезка. */}
+      {inserts.map((b) => (
+        <Clip
+          key={`ins-${b.kind}-${b.at}`}
+          from={b.at}
+          to={b.until}
+          now={now}
+          top={cutY}
+          height={CUT_H}
+          color={INSERT_COLOR[b.kind]}
+          dark={b.kind !== "split"}
+          label={`${INSERT_RU[b.kind]}${b.label ? ` · ${b.label}` : ""}`}
+        />
+      ))}
+
       {captions.map((w) => (
         <Clip
           key={`w-${w.startMs}`}
@@ -961,8 +1077,13 @@ export const ChinaStoriesEditor: React.FC<EditorProps> = (props) => {
       <TrackLabel top={videoY} height={VIDEO_H} name="ВИДЕО" color={C.video} />
       <TrackLabel top={hookY} height={HOOK_H} name="КРЮЧОК" color={C.hook} />
       <TrackLabel top={platesY} height={platesH} name="ПЛАШКИ" color={C.term} />
-      <TrackLabel top={cutY} height={CUT_H} name="САЙТ" color={C.cutaway} />
-      <TrackLabel top={camY} height={CAM_H} name="КАМЕРА" color={KIND_COLOR.punch} />
+      <TrackLabel top={cutY} height={CUT_H} name="ВРЕЗКИ" color={C.cutaway} />
+      <TrackLabel
+        top={camY}
+        height={CAM_H}
+        name="КАМЕРА"
+        color={KIND_COLOR.punch}
+      />
       <TrackLabel top={wordsY} height={WORDS_H} name="СЛОВА" color={C.words} />
       {proposals.length ? (
         <TrackLabel top={ideaY} height={ideaH} name="ИДЕИ" color="#FACC15" />
@@ -976,7 +1097,9 @@ export const ChinaStoriesEditor: React.FC<EditorProps> = (props) => {
           top: TIMELINE_TOP,
           width: 4,
           height:
-            (proposals.length ? ideaY + ideaH : wordsY + WORDS_H) + 10 - TIMELINE_TOP,
+            (proposals.length ? ideaY + ideaH : wordsY + WORDS_H) +
+            10 -
+            TIMELINE_TOP,
           backgroundColor: C.playhead,
           boxShadow: `0 0 16px ${C.playhead}`,
         }}
