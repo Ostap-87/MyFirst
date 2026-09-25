@@ -1,0 +1,164 @@
+{
+  "name": "test-src13",
+  "stage": "черновик",
+  "props": {
+    "footage": "local/head/test-src13.mp4",
+    "captionsSrc": "captions/head-test-src13.json",
+    "durationSeconds": 23.27,
+    "hookTop": "Весь Китай",
+    "hookBottom": "за пять дней",
+    "brandMark": "GLOBAL TECH TOUR",
+    "logoScale": 1.5,
+    "logoSpin": 72,
+    "focusY": 0.53,
+    "plates": [
+      {
+        "text": "2 компании в день",
+        "at": 7.38,
+        "until": 10.93,
+        "kind": "term"
+      },
+      {
+        "text": "Рядовой менеджмент",
+        "at": 15.02,
+        "until": 16.9,
+        "kind": "struck"
+      },
+      {
+        "text": "Управленцы",
+        "at": 16.9,
+        "kind": "accent"
+      }
+    ],
+    "cutaways": [],
+    "moves": [
+      {
+        "at": 0,
+        "until": 2.2,
+        "kind": "punch",
+        "scale": 1.15
+      },
+      {
+        "at": 4.57,
+        "until": 7.38,
+        "kind": "push",
+        "scale": 1.07
+      },
+      {
+        "at": 10.93,
+        "until": 14.7,
+        "kind": "cut",
+        "scale": 1.12
+      },
+      {
+        "at": 16.9,
+        "until": 18.17,
+        "kind": "punch",
+        "scale": 1.2
+      },
+      {
+        "at": 19.04,
+        "until": 21.21,
+        "kind": "push",
+        "scale": 1.06
+      }
+    ]
+  },
+  "proposals": [
+    {
+      "at": 0,
+      "until": 2.2,
+      "kind": "punch",
+      "scale": 1.15,
+      "zone": "face",
+      "applied": true,
+      "what": "быстрый зум ×1,15",
+      "why": "хук «За пять дней…»: первые слова решают, досмотрят ли",
+      "n": 1
+    },
+    {
+      "at": 2.87,
+      "until": 4.57,
+      "kind": "cutaway",
+      "zone": "full",
+      "applied": false,
+      "what": "перебивка: карта маршрута",
+      "why": "на «проедете весь Китай» — нужен скрин карты или кадры городов",
+      "n": 2
+    },
+    {
+      "at": 4.57,
+      "until": 7.38,
+      "kind": "push",
+      "scale": 1.07,
+      "zone": "face",
+      "applied": true,
+      "what": "лёгкий наезд ×1,07",
+      "why": "длинная фраза «каждый день будете посещать» — держит внимание",
+      "n": 3
+    },
+    {
+      "at": 7.38,
+      "until": 10.93,
+      "kind": "plate",
+      "zone": "top",
+      "applied": true,
+      "what": "плашка «2 компании в день»",
+      "why": "цифра из речи: «как минимум две компании»",
+      "n": 4
+    },
+    {
+      "at": 10.93,
+      "until": 14.7,
+      "kind": "cut",
+      "scale": 1.12,
+      "zone": "face",
+      "applied": true,
+      "what": "смена кадра ×1,12",
+      "why": "новая мысль «чтобы пообщаться…» — склейка как со второй камеры",
+      "n": 5
+    },
+    {
+      "at": 15.02,
+      "until": 16.9,
+      "kind": "plate",
+      "zone": "top",
+      "applied": true,
+      "what": "зачёркнуто «Рядовой менеджмент»",
+      "why": "противопоставление: «не рядовой менеджмент»",
+      "n": 6
+    },
+    {
+      "at": 16.9,
+      "until": 18.17,
+      "kind": "punch",
+      "scale": 1.2,
+      "zone": "face",
+      "applied": true,
+      "what": "быстрый зум ×1,2",
+      "why": "удар на «именно управленцы» — главная мысль ролика",
+      "n": 7
+    },
+    {
+      "at": 16.9,
+      "until": 23.3,
+      "kind": "plate",
+      "zone": "top",
+      "applied": true,
+      "what": "акцент «Управленцы»",
+      "why": "ответ на противопоставление, держится до конца",
+      "n": 8
+    },
+    {
+      "at": 19.04,
+      "until": 21.21,
+      "kind": "push",
+      "scale": 1.06,
+      "zone": "face",
+      "applied": true,
+      "what": "лёгкий наезд ×1,06",
+      "why": "«задавать вопросы, общаться» — перечисление без событий",
+      "n": 9
+    }
+  ]
+}
