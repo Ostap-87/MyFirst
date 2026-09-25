@@ -1,6 +1,6 @@
 {
   "name": "wt-1F2C0DD7",
-  "stage": "черновик",
+  "stage": "готов",
   "props": {
     "footage": "local/head/wt-1F2C0DD7.mp4",
     "captionsSrc": "captions/head-wt-1F2C0DD7.json",
@@ -314,7 +314,7 @@
     "cutoutSrc": "local/head/wt-1F2C0DD7-cutout.webm",
     "pips": [
       {
-        "at": 22.0,
+        "at": 22,
         "until": 26.55,
         "items": [
           {
@@ -481,7 +481,7 @@
       "n": 9
     },
     {
-      "at": 22.0,
+      "at": 22,
       "until": 26.55,
       "kind": "cutaway",
       "zone": "full",
