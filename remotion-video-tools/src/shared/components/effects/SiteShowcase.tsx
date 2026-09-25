@@ -32,6 +32,9 @@ export const siteShowcaseSchema = z.object({
   url: z.string().describe("Адрес на кнопке; пусто — без кнопки"),
   scrollTo: z.number().min(0).max(0.9).describe("До какой доли страницы долистать"),
   accent: z.string().describe("Цвет кнопки и свечения"),
+  variant: z
+    .enum(["part", "full"])
+    .describe("part — в части кадра (деление), full — на весь кадр под окном спикера"),
 });
 
 export type SiteShowcaseParams = z.infer<typeof siteShowcaseSchema>;
@@ -43,10 +46,11 @@ export const siteShowcaseDefaults: SiteShowcaseParams = {
   url: "",
   scrollTo: 0.35,
   accent: "#2563eb",
+  variant: "part",
 };
 
 export const SiteShowcase: React.FC<SiteShowcaseProps> = (params) => {
-  const { src, title, url, scrollTo, accent } = withDefaults(siteShowcaseDefaults, params);
+  const { src, title, url, scrollTo, accent, variant } = withDefaults(siteShowcaseDefaults, params);
   const frame = useCurrentFrame();
   const { durationInFrames, fps } = useVideoConfig();
 
@@ -80,6 +84,7 @@ export const SiteShowcase: React.FC<SiteShowcaseProps> = (params) => {
         title={title}
         url={url}
         accent={accent}
+        full={variant === "full"}
       />
     </AbsoluteFill>
   );
@@ -98,7 +103,8 @@ const Layout: React.FC<{
   readonly title: string;
   readonly url: string;
   readonly accent: string;
-}> = ({ enter, float, src, scroll, title, url, accent }) => (
+  readonly full: boolean;
+}> = ({ enter, float, src, scroll, title, url, accent, full }) => (
   <div
     style={{
       position: "absolute",
@@ -108,9 +114,11 @@ const Layout: React.FC<{
       // Всё прижато к верху области: снизу по ней идут субтитры, и
       // по центру они ложились на адрес и низ телефона.
       alignItems: "flex-start",
-      justifyContent: "center",
+      // На весь кадр: телефон слева ниже логотипа, текст справа сверху —
+      // правый нижний угол занят окном спикера, низ — субтитрами.
+      justifyContent: full ? "flex-start" : "center",
       gap: "6cqw",
-      padding: "6cqh 6cqw 0",
+      padding: full ? "22cqh 8cqw 0" : "6cqh 6cqw 0",
       boxSizing: "border-box",
       flexDirection: "row",
       flexWrap: "wrap",
@@ -121,7 +129,7 @@ const Layout: React.FC<{
         кадра он не упирался в края, а на весь кадр не был мелким. */}
     <div
       style={{
-        height: "min(60cqh, 120cqw)",
+        height: full ? "min(46cqh, 90cqw)" : "min(60cqh, 120cqw)",
         aspectRatio: "0.49",
         borderRadius: "min(6cqh, 11cqw)",
         padding: "min(1.2cqh, 2.2cqw)",
@@ -164,8 +172,8 @@ const Layout: React.FC<{
           gap: "3cqh",
           opacity: enter,
           transform: `translateX(${(1 - enter) * 40}px)`,
-          maxWidth: "46cqw",
-          paddingTop: "8cqh",
+          maxWidth: full ? "38cqw" : "46cqw",
+          paddingTop: full ? "3cqh" : "8cqh",
         }}
       >
         {title ? (

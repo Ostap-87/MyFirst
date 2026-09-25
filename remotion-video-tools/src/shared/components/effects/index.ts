@@ -11,6 +11,7 @@ export * from "./FramedInsert";
 export * from "./WipeBroll";
 export * from "./SplitScreen";
 export * from "./SiteShowcase";
+export * from "./PipScreen";
 // new-effect:exports:end
 export * from "./ChatOverlay";
 export * from "./CountUp";

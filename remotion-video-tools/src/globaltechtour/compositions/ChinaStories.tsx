@@ -19,6 +19,7 @@ import {
   PopWindows,
   SiteCutaway,
   SpinningTetra,
+  PipScreen,
   SplitScreen,
   WipeBroll,
 } from "../../shared/components/effects";
@@ -123,7 +124,18 @@ const splitBlock = z.object({
   ...span,
   items: z
     .array(mediaItemSchema)
-    .describe("Что показывать снизу; несколько — сменяются"),
+    .describe("Что показывать; несколько — сменяются"),
+  side: z
+    .enum(["bottom", "left", "right"])
+    .optional()
+    .describe("Откуда открывается показ; по умолчанию снизу"),
+});
+const pipBlock = z.object({
+  ...span,
+  items: z.array(mediaItemSchema).describe("Что показывать на весь экран"),
+  corner: z
+    .enum(["bottom-right", "bottom-left", "top-right", "top-left"])
+    .optional(),
 });
 const brollBlock = z.object({
   ...span,
@@ -186,6 +198,16 @@ export const chinaStoriesSchema = z.object({
     .max(0.7)
     .optional()
     .describe("Где шов деления; по умолчанию 0,5"),
+  pips: z
+    .array(pipBlock)
+    .optional()
+    .describe("Картинка в картинке: показ на весь экран, спикер в окне в углу"),
+  focusX: z
+    .number()
+    .min(0)
+    .max(1)
+    .optional()
+    .describe("Где лицо по ширине кадра; по умолчанию 0,5"),
 });
 
 export type ChinaStoriesProps = z.infer<typeof chinaStoriesSchema>;
@@ -304,6 +326,8 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
   brolls = [],
   splits = [],
   splitSeam,
+  pips = [],
+  focusX = 0.5,
 }) => {
   const frame = useCurrentFrame();
   const { fps, height } = useVideoConfig();
@@ -345,32 +369,45 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
               до элемента не доносит. */}
           <SplitScreen
             focusY={focusY}
+            focusX={focusX}
             seam={splitSeam}
             splits={splits.map((sp) => ({
               fromFrame: AT(sp.at, fps),
               toFrame: AT(sp.until, fps),
               items: sp.items,
+              side: sp.side,
             }))}
           >
-            <CameraMoves
-              originY={focusY}
-              moves={moves.map((m) => ({
-                fromFrame: AT(m.at, fps),
-                toFrame: AT(m.until, fps),
-                kind: m.kind,
-                scale: m.scale,
+            <PipScreen
+              focusY={focusY}
+              focusX={focusX}
+              pips={pips.map((pp) => ({
+                fromFrame: AT(pp.at, fps),
+                toFrame: AT(pp.until, fps),
+                items: pp.items,
+                corner: pp.corner,
               }))}
             >
-              <OffthreadVideo
-                src={staticFile(footage)}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                  display: "block",
-                }}
-              />
-            </CameraMoves>
+              <CameraMoves
+                originY={focusY}
+                moves={moves.map((m) => ({
+                  fromFrame: AT(m.at, fps),
+                  toFrame: AT(m.until, fps),
+                  kind: m.kind,
+                  scale: m.scale,
+                }))}
+              >
+                <OffthreadVideo
+                  src={staticFile(footage)}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    display: "block",
+                  }}
+                />
+              </CameraMoves>
+            </PipScreen>
           </SplitScreen>
         </AbsoluteFill>
       </Sequence>

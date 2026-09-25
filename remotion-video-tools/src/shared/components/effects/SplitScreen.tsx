@@ -7,10 +7,17 @@ import {
   useVideoConfig,
 } from "remotion";
 import { z } from "zod";
-import { Media, type MediaItem, mediaItemSchema, withDefaults } from "./media";
+import { mediaItemSchema, withDefaults } from "./media";
+import { ShowcaseLayer } from "./showcase";
 
 /**
- * SplitScreen — плавное деление экрана: спикер сверху, показ снизу.
+ * SplitScreen — плавное деление экрана: спикер в одной части, показ в другой.
+ *
+ * Показ открывается снизу (`side: "bottom"`, по умолчанию) или сбоку
+ * (`"left"` / `"right"`). Сбоку спикер остаётся в своей половине по всей
+ * высоте, лицо встаёт по центру этой половины — в вертикали это узкая
+ * колонка, в которую как раз помещается телефон с сайтом или вертикальное
+ * видео.
  *
  * Спикер продолжает говорить, но уезжает в верхнюю часть кадра, а снизу
  * открывается фото или видео того, о чём он говорит. В отличие от B-roll
@@ -37,15 +44,36 @@ import { Media, type MediaItem, mediaItemSchema, withDefaults } from "./media";
 export const splitSegmentSchema = z.object({
   fromFrame: z.number().int().min(0),
   toFrame: z.number().int().min(1),
-  items: z.array(mediaItemSchema).describe("Что показывать снизу; несколько — сменяются"),
+  items: z
+    .array(mediaItemSchema)
+    .describe("Что показывать; несколько — сменяются"),
+  side: z
+    .enum(["bottom", "left", "right"])
+    .optional()
+    .describe("Откуда открывается показ; по умолчанию снизу"),
 });
 
 export const splitScreenSchema = z.object({
-  splits: z.array(splitSegmentSchema).describe("Отрезки деления, не пересекаются"),
+  splits: z
+    .array(splitSegmentSchema)
+    .describe("Отрезки деления, не пересекаются"),
   seam: z.number().min(0.3).max(0.7).describe("Где шов, доля высоты кадра"),
-  focusY: z.number().min(0).max(1).describe("Где глаза спикера — центр кадрирования"),
+  focusY: z
+    .number()
+    .min(0)
+    .max(1)
+    .describe("Где глаза спикера — центр кадрирования"),
+  focusX: z
+    .number()
+    .min(0)
+    .max(1)
+    .describe("Где лицо по ширине — для бокового деления"),
   transitionFrames: z.number().int().min(1).describe("Сколько кадров едет шов"),
-  featherPx: z.number().min(0).max(300).describe("Мягкость шва в пикселях; 0 — жёсткий"),
+  featherPx: z
+    .number()
+    .min(0)
+    .max(300)
+    .describe("Мягкость шва в пикселях; 0 — жёсткий"),
   line: z.boolean().describe("Светлая линия по шву"),
   eyesAt: z
     .number()
@@ -63,6 +91,7 @@ export const splitScreenDefaults: SplitScreenParams = {
   splits: [],
   seam: 0.52,
   focusY: 0.42,
+  focusX: 0.5,
   transitionFrames: 14,
   featherPx: 110,
   line: false,
@@ -70,65 +99,25 @@ export const splitScreenDefaults: SplitScreenParams = {
   eyesAt: 0.31,
 };
 
-/** Нижняя половина: показы сменяются наплывом, внутри — медленный наезд. */
-const Showcase: React.FC<{
-  readonly items: MediaItem[];
-  readonly top: number;
-}> = ({ items, top }) => {
+export const SplitScreen: React.FC<SplitScreenProps> = ({
+  children,
+  ...params
+}) => {
+  const {
+    splits,
+    seam,
+    focusY,
+    focusX,
+    transitionFrames,
+    featherPx,
+    line,
+    eyesAt,
+  } = withDefaults(splitScreenDefaults, params);
   const frame = useCurrentFrame();
-  const { durationInFrames, fps } = useVideoConfig();
-  const fade = 10;
-  // Кадры встают под слова: у кого задано seconds — держится столько,
-  // остальные делят остаток поровну. Иначе робот появлялся раньше слова
-  // «роботов», а сайт — на полфразы позже названия проекта.
-  const fixed = items.reduce((a, i) => a + (i.seconds ? Math.round(i.seconds * fps) : 0), 0);
-  const free = items.filter((i) => !i.seconds).length;
-  const share = free ? Math.max(1, Math.floor((durationInFrames - fixed) / free)) : 0;
-  const lengths = items.map((i) => (i.seconds ? Math.round(i.seconds * fps) : share));
-  const starts = lengths.map((_, i) => lengths.slice(0, i).reduce((a, b) => a + b, 0));
-  return (
-    <AbsoluteFill style={{ top, height: "auto", overflow: "hidden", backgroundColor: "#000" }}>
-      {items.map((item, i) => {
-        const from = starts[i];
-        const len = i === items.length - 1 ? durationInFrames - from : lengths[i] + fade;
-        const local = frame - from;
-        const opacity = i === 0 ? 1 : interpolate(local, [0, fade], [0, 1], {
-          extrapolateLeft: "clamp",
-          extrapolateRight: "clamp",
-        });
-        const scale = interpolate(local, [0, len], [1.02, 1.1], {
-          extrapolateLeft: "clamp",
-          extrapolateRight: "clamp",
-        });
-        return (
-          <Sequence key={`${item.src}-${i}`} from={from} durationInFrames={len} layout="none">
-            <AbsoluteFill style={{ opacity, transform: `scale(${scale})` }}>
-              <Media src={item.src} item={item} />
-            </AbsoluteFill>
-          </Sequence>
-        );
-      })}
-      {/* Затемнение снизу: субтитры белые, и на светлом фото — скриншоте
-          сайта — они пропадали. */}
-      <AbsoluteFill
-        style={{
-          background:
-            "linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.66) 45%, rgba(0,0,0,0) 78%)",
-        }}
-      />
-    </AbsoluteFill>
-  );
-};
-
-export const SplitScreen: React.FC<SplitScreenProps> = ({ children, ...params }) => {
-  const { splits, seam, focusY, transitionFrames, featherPx, line, eyesAt } = withDefaults(
-    splitScreenDefaults,
-    params,
-  );
-  const frame = useCurrentFrame();
-  const { height } = useVideoConfig();
+  const { width, height } = useVideoConfig();
 
   const active = splits.find((s) => frame >= s.fromFrame && frame < s.toFrame);
+  const side = active?.side ?? "bottom";
   const ease = {
     easing: Easing.inOut(Easing.cubic),
     extrapolateLeft: "clamp",
@@ -138,24 +127,59 @@ export const SplitScreen: React.FC<SplitScreenProps> = ({ children, ...params })
   // Насколько экран «раскрыт»: 0 — спикер во весь кадр, 1 — шов на месте.
   const open = active
     ? Math.min(
-        interpolate(frame, [active.fromFrame, active.fromFrame + transitionFrames], [0, 1], ease),
-        interpolate(frame, [active.toFrame - transitionFrames, active.toFrame], [1, 0], ease),
+        interpolate(
+          frame,
+          [active.fromFrame, active.fromFrame + transitionFrames],
+          [0, 1],
+          ease,
+        ),
+        interpolate(
+          frame,
+          [active.toFrame - transitionFrames, active.toFrame],
+          [1, 0],
+          ease,
+        ),
       )
     : 0;
-  // Доля кадра над швом: 1 — спикер во весь кадр.
+  // Доля кадра за спикером: 1 — спикер во весь кадр.
   const ratio = 1 - (1 - seam) * open;
-  const seamPx = height * ratio;
   const feather = featherPx * open;
+  const vertical = side === "bottom";
 
-  // Кадрирование: видео уезжает вверх, пока глаза не встанут на eyesAt.
-  // Масштаб не меняется — иначе по бокам открылись бы пустые поля.
-  // Первая версия ставила глаза на ту же долю окна, что и кадра, и лоб
-  // уходил под логотип.
-  const box = Math.min(height, seamPx + feather);
+  // ——— Окно спикера ———
+  //
+  // Снизу: видео уезжает вверх, пока глаза не встанут на eyesAt. Масштаб
+  // не меняется — иначе по бокам открылись бы пустые поля. Первая версия
+  // ставила глаза на ту же долю окна, что и кадра, и лоб уходил под логотип.
+  //
+  // Сбоку: окно — колонка во всю высоту, видео сдвигается так, чтобы лицо
+  // встало по центру колонки.
+  const extent = vertical ? height : width;
+  const box = Math.min(extent, extent * ratio + feather);
   const shift = Math.max(
     0,
     Math.min((focusY - eyesAt) * height * open, height - box),
   );
+  // Сбоку: сдвиг видео внутри колонки, чтобы лицо встало в её центр, но
+  // края видео не заходили внутрь колонки. Формула одна для обеих сторон:
+  // сдвиг считается от левого края самой колонки.
+  const shiftX = Math.min(0, Math.max(box - width, box / 2 - focusX * width));
+
+  const maskDir =
+    side === "bottom" ? "to bottom" : side === "right" ? "to right" : "to left";
+  const mask =
+    feather > 0
+      ? `linear-gradient(${maskDir}, #000 ${box - feather}px, transparent ${box}px)`
+      : undefined;
+
+  const boxStyle: React.CSSProperties = vertical
+    ? { left: 0, top: 0, width: "100%", height: box }
+    : side === "right"
+      ? { left: 0, top: 0, height: "100%", width: box }
+      : { right: 0, top: 0, height: "100%", width: box };
+  const innerStyle: React.CSSProperties = vertical
+    ? { left: 0, right: 0, top: -shift, height }
+    : { top: 0, bottom: 0, left: shiftX, width };
 
   return (
     <AbsoluteFill>
@@ -166,41 +190,40 @@ export const SplitScreen: React.FC<SplitScreenProps> = ({ children, ...params })
           durationInFrames={s.toFrame - s.fromFrame}
           layout="none"
         >
-          <Showcase items={s.items} top={height * seam} />
+          <ShowcaseLayer
+            items={s.items}
+            style={
+              (s.side ?? "bottom") === "bottom"
+                ? { top: height * seam, height: "auto" }
+                : (s.side ?? "bottom") === "right"
+                  ? { left: width * seam, width: "auto" }
+                  : { right: width * seam, width: "auto" }
+            }
+          />
         </Sequence>
       ))}
       <div
         style={{
           position: "absolute",
-          left: 0,
-          top: 0,
-          width: "100%",
-          height: box,
           overflow: "hidden",
-          WebkitMaskImage:
-            feather > 0
-              ? `linear-gradient(to bottom, #000 ${box - feather}px, transparent ${box}px)`
-              : undefined,
-          maskImage:
-            feather > 0
-              ? `linear-gradient(to bottom, #000 ${box - feather}px, transparent ${box}px)`
-              : undefined,
+          WebkitMaskImage: mask,
+          maskImage: mask,
+          ...boxStyle,
         }}
       >
-        <div style={{ position: "absolute", left: 0, right: 0, top: -shift, height }}>
-          {children}
-        </div>
+        <div style={{ position: "absolute", ...innerStyle }}>{children}</div>
       </div>
       {line && active ? (
         <div
           style={{
             position: "absolute",
-            left: 0,
-            right: 0,
-            top: seamPx - 3,
-            height: 6,
             backgroundColor: "rgba(255,255,255,0.92)",
             boxShadow: "0 0 18px rgba(0,0,0,0.5)",
+            ...(vertical
+              ? { left: 0, right: 0, top: height * ratio - 3, height: 6 }
+              : side === "right"
+                ? { top: 0, bottom: 0, left: width * ratio - 3, width: 6 }
+                : { top: 0, bottom: 0, right: width * ratio - 3, width: 6 }),
           }}
         />
       ) : null}

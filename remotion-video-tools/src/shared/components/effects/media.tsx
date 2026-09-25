@@ -33,7 +33,9 @@ export const Media: React.FC<{
   readonly src: string;
   readonly style?: React.CSSProperties;
   readonly item?: Partial<MediaItem>;
-}> = ({ src, style, item }) => {
+  /** Где показ: в части кадра или на весь кадр — от этого раскладка витрины. */
+  readonly variant?: "part" | "full";
+}> = ({ src, style, item, variant }) => {
   // Скриншот сайта голым не показываем: это выглядит как картинка из
   // чата. Витрина подаёт его как продукт — в телефоне, с прокруткой.
   if (item?.present === "site") {
@@ -43,6 +45,7 @@ export const Media: React.FC<{
         title={item.title}
         url={item.url}
         scrollTo={item.scrollTo}
+        variant={variant}
       />
     );
   }
