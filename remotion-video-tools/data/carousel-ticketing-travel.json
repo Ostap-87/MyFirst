@@ -1,0 +1,81 @@
+{
+  "name": "ticketing-travel",
+  "brand": "gtt",
+  "footer": "globaltechtour.ru",
+  "slides": [
+    {
+      "type": "cover",
+      "kicker": "China Ticketing & Live Events & Travel Expedition · Китай",
+      "title": "**Trip.com**, Meituan, TME — билетинг и тревел Китая не в презентации, а **вживую**",
+      "subtitle": "5 дней, 4 города, 7 компаний билетинга, лайв-ивентов и онлайн-тревела Китая",
+      "image": "generated/ticketing-travel/cover.png"
+    },
+    {
+      "type": "metric",
+      "value": 7,
+      "prefix": "",
+      "suffix": "",
+      "compact": false,
+      "label": "компаний билетинга и **онлайн-тревела** в программе",
+      "source": "**4 города** · **5 дней** · **5 ночей**",
+      "image": "generated/ticketing-travel/metric.png"
+    },
+    {
+      "type": "point",
+      "index": 1,
+      "title": "Пекин, день 1",
+      "text": "Damai и Maoyan — real-time продажа билетов и data-инструменты «из кино в лайв».",
+      "image": "generated/ticketing-travel/beijing1.png"
+    },
+    {
+      "type": "point",
+      "index": 2,
+      "title": "Пекин, день 2",
+      "text": "Meituan и Tongcheng — внутренний туризм, локальные развлечения и билетинг через WeChat.",
+      "image": "generated/ticketing-travel/beijing2.png"
+    },
+    {
+      "type": "point",
+      "index": 3,
+      "title": "Шанхай, день 3",
+      "text": "Trip.com (Ctrip) — №1 OTA Китая, пакеты «концерт + отель + перелёт».",
+      "image": "generated/ticketing-travel/shanghai.png"
+    },
+    {
+      "type": "point",
+      "index": 4,
+      "title": "Ханчжоу, день 4",
+      "text": "Fliggy (Alibaba) — молодёжный OTA, интеграция с Taobao и Alipay.",
+      "image": "generated/ticketing-travel/hangzhou.png"
+    },
+    {
+      "type": "point",
+      "index": 5,
+      "title": "Шэньчжэнь, день 5",
+      "text": "TME (Tencent Music) — монетизация лайв-музыки онлайн через TME Live.",
+      "image": "generated/ticketing-travel/shenzhen.png"
+    },
+    {
+      "type": "point",
+      "index": 6,
+      "title": "Не простая экскурсия, а **полноценные переговоры**",
+      "text": "Визиты + профильная сессия + Q&A на каждой площадке, синхронный перевод RU↔中文.",
+      "image": "generated/ticketing-travel/negotiations.png"
+    },
+    {
+      "type": "point",
+      "index": 7,
+      "title": "Что входит",
+      "text": "Отели 4–5*, завтраки и рабочие обеды, 2 внутренних перелёта и скоростной поезд, трансферы, страхование участников.",
+      "image": "generated/tea-coffee-retail/hotel.png"
+    },
+    {
+      "type": "cta",
+      "title": "Стоимость уточняется",
+      "text": "Оставьте заявку — пришлём точную программу по дням и стоимость участия.",
+      "keyword": "",
+      "handle": "globaltechtour.ru",
+      "image": "generated/ticketing-travel/cta.png"
+    }
+  ]
+}

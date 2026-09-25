@@ -13,6 +13,8 @@ export * from "./SplitScreen";
 export * from "./SiteShowcase";
 export * from "./PipScreen";
 export * from "./CutoutStage";
+export * from "./Shimmer";
+export * from "./SlowZoom";
 // new-effect:exports:end
 export * from "./ChatOverlay";
 export * from "./CountUp";

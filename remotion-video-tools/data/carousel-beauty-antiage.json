@@ -1,0 +1,81 @@
+{
+  "name": "beauty-antiage",
+  "brand": "gtt",
+  "footer": "globaltechtour.ru",
+  "slides": [
+    {
+      "type": "cover",
+      "kicker": "China Beauty & Anti-Age Expedition · Китай",
+      "title": "**Pechoin**, Florasis, Mao Geping — не в блогерских обзорах, а вживую",
+      "subtitle": "5 дней, 3 города, 10 брендов индустрии красоты и anti-age Китая",
+      "image": "generated/beauty-antiage/cover.png"
+    },
+    {
+      "type": "metric",
+      "value": 10,
+      "prefix": "",
+      "suffix": "",
+      "compact": false,
+      "label": "брендов **индустрии красоты и anti-age** в программе",
+      "source": "**3 города** · **5 дней** · **6 ночей**",
+      "image": "generated/beauty-antiage/metric.png"
+    },
+    {
+      "type": "point",
+      "index": 1,
+      "title": "Шанхай, день 1",
+      "text": "Pechoin и CHANDO (Jala) — масс-маркет и дерматологическая косметика с миллиардными оборотами.",
+      "image": "generated/beauty-antiage/shanghai1.png"
+    },
+    {
+      "type": "point",
+      "index": 2,
+      "title": "Шанхай, день 2",
+      "text": "Linqingxuan и KANS (Shangmei) — бренды нового поколения, обогнавшие западных конкурентов в Китае.",
+      "image": "generated/beauty-antiage/shanghai2.png"
+    },
+    {
+      "type": "point",
+      "index": 3,
+      "title": "Ханчжоу, день 3",
+      "text": "PROYA и Florasis — от масс-маркета до люкса, оба в топе по капитализации на бирже.",
+      "image": "generated/beauty-antiage/hangzhou1.png"
+    },
+    {
+      "type": "point",
+      "index": 4,
+      "title": "Ханчжоу, день 4",
+      "text": "Mao Geping и Kylin Way — премиальный сегмент и переработка традиционных рецептур.",
+      "image": "generated/beauty-antiage/hangzhou2.png"
+    },
+    {
+      "type": "point",
+      "index": 5,
+      "title": "Гуанчжоу, день 5",
+      "text": "Yatsen (Perfect Diary) и Carslan — бренды, вышедшие за пределы Китая на глобальный рынок.",
+      "image": "generated/beauty-antiage/guangzhou.png"
+    },
+    {
+      "type": "point",
+      "index": 6,
+      "title": "Не простая экскурсия, а **полноценные переговоры**",
+      "text": "Переговоры с топ-менеджментом, перевод и сопровождение на каждой встрече, контакты для партнёрства и дистрибуции.",
+      "image": "generated/beauty-antiage/negotiations.png"
+    },
+    {
+      "type": "point",
+      "index": 7,
+      "title": "Что входит",
+      "text": "Отели 5*, питание, внутренний перелёт и скоростной поезд, трансферы, встреча и проводы в аэропорту.",
+      "image": "generated/tea-coffee-retail/hotel.png"
+    },
+    {
+      "type": "cta",
+      "title": "Стоимость — по запросу",
+      "text": "Оставьте заявку — пришлём точную программу по дням и стоимость участия.",
+      "keyword": "",
+      "handle": "globaltechtour.ru",
+      "image": "generated/beauty-antiage/cta.png"
+    }
+  ]
+}

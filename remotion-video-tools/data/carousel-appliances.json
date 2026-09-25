@@ -1,0 +1,81 @@
+{
+  "name": "appliances",
+  "brand": "gtt",
+  "footer": "globaltechtour.ru",
+  "slides": [
+    {
+      "type": "cover",
+      "kicker": "China Appliances & Smart Home Expedition · Китай",
+      "title": "**Xiaomi**, Haier, Midea — техника для дома не в рекламе, а **вживую**",
+      "subtitle": "5 дней, 5 городов, 9 компаний бытовой техники и умного дома Китая",
+      "image": "generated/appliances/cover.png"
+    },
+    {
+      "type": "metric",
+      "value": 9,
+      "prefix": "",
+      "suffix": "",
+      "compact": false,
+      "label": "компаний **бытовой техники и умного дома** в программе",
+      "source": "**5 городов** · **5 дней** · **6 ночей**",
+      "image": "generated/appliances/metric.png"
+    },
+    {
+      "type": "point",
+      "index": 1,
+      "title": "Пекин, день 1",
+      "text": "Xiaomi — умный дом и IoT-экосистема с сотнями подключаемых устройств.",
+      "image": "generated/appliances/beijing.png"
+    },
+    {
+      "type": "point",
+      "index": 2,
+      "title": "Циндао, день 2",
+      "text": "Haier и Hisense — два гиганта бытовой техники родом из одного города.",
+      "image": "generated/appliances/qingdao.png"
+    },
+    {
+      "type": "point",
+      "index": 3,
+      "title": "Ханчжоу, день 3",
+      "text": "Robam и Supor — лидеры кухонной техники и посуды на внутреннем рынке.",
+      "image": "generated/appliances/hangzhou.png"
+    },
+    {
+      "type": "point",
+      "index": 4,
+      "title": "Фошань, день 4",
+      "text": "Midea и Galanz — крупнейшие производители климатической и СВЧ-техники.",
+      "image": "generated/appliances/foshan.png"
+    },
+    {
+      "type": "point",
+      "index": 5,
+      "title": "Чжухай — Шэньчжэнь, день 5",
+      "text": "Gree и Skyworth — кондиционеры и телевизоры, известные далеко за пределами Китая.",
+      "image": "generated/appliances/zhuhai-shenzhen.png"
+    },
+    {
+      "type": "point",
+      "index": 6,
+      "title": "Не простая экскурсия, а **полноценные переговоры**",
+      "text": "Переговоры с топ-менеджментом, перевод и сопровождение на каждой встрече, контакты для партнёрства и дистрибуции.",
+      "image": "generated/appliances/negotiations.png"
+    },
+    {
+      "type": "point",
+      "index": 7,
+      "title": "Что входит",
+      "text": "Отели 5*, питание, внутренние перелёты, трансферы, встреча и проводы в аэропорту.",
+      "image": "generated/tea-coffee-retail/hotel.png"
+    },
+    {
+      "type": "cta",
+      "title": "Стоимость — по запросу",
+      "text": "Оставьте заявку — пришлём точную программу по дням и стоимость участия.",
+      "keyword": "",
+      "handle": "globaltechtour.ru",
+      "image": "generated/appliances/cta.png"
+    }
+  ]
+}

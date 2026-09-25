@@ -1,0 +1,81 @@
+{
+  "name": "hotel-giants",
+  "brand": "gtt",
+  "footer": "globaltechtour.ru",
+  "slides": [
+    {
+      "type": "cover",
+      "kicker": "China Hotel Giants Expedition · Китай",
+      "title": "**Jin Jiang**, H World, BTG — гостиничные гиганты Китая не в презентации, а **вживую**",
+      "subtitle": "5 дней, 4 города, 7 крупнейших гостиничных операторов Китая",
+      "image": "generated/hotel-giants/cover.png"
+    },
+    {
+      "type": "metric",
+      "value": 7,
+      "prefix": "",
+      "suffix": "",
+      "compact": false,
+      "label": "гостиничных операторов **Китая** в программе",
+      "source": "**4 города** · **5 дней** · **6 ночей**",
+      "image": "generated/hotel-giants/metric.png"
+    },
+    {
+      "type": "point",
+      "index": 1,
+      "title": "Шанхай, день 1",
+      "text": "Jin Jiang International и H World Group — государственный и биржевой гостиничные гиганты Шанхая.",
+      "image": "generated/hotel-giants/shanghai1.png"
+    },
+    {
+      "type": "point",
+      "index": 2,
+      "title": "Шанхай, день 2",
+      "text": "GreenTree Hospitality и Atour (Yaduo Group) — сети нового формата на бирже Nasdaq и NYSE.",
+      "image": "generated/hotel-giants/shanghai2.png"
+    },
+    {
+      "type": "point",
+      "index": 3,
+      "title": "Ханчжоу, день 3",
+      "text": "Kaiyuan Hotel Group — один из крупнейших частных гостиничных операторов Китая.",
+      "image": "generated/hotel-giants/hangzhou.png"
+    },
+    {
+      "type": "point",
+      "index": 4,
+      "title": "Гуанчжоу, день 4",
+      "text": "Dossen Group — оператор среднего сегмента с активной франчайзинговой сетью.",
+      "image": "generated/hotel-giants/guangzhou.png"
+    },
+    {
+      "type": "point",
+      "index": 5,
+      "title": "Пекин, день 5",
+      "text": "BTG Hotels Group — гостиничное подразделение туристического холдинга BTG.",
+      "image": "generated/hotel-giants/beijing.png"
+    },
+    {
+      "type": "point",
+      "index": 6,
+      "title": "Не простая экскурсия, а **полноценные переговоры**",
+      "text": "Переговоры с топ-менеджментом семи гостиничных групп, прямые выходы на франчайзинг и инвестиции.",
+      "image": "generated/hotel-giants/negotiations.png"
+    },
+    {
+      "type": "point",
+      "index": 7,
+      "title": "Что входит",
+      "text": "Отели 5*, обед и ужин ежедневно, внутренние перелёты, поезда, трансферы, встреча и проводы в аэропорту.",
+      "image": "generated/tea-coffee-retail/hotel.png"
+    },
+    {
+      "type": "cta",
+      "title": "Стоимость уточняется",
+      "text": "Оставьте заявку — пришлём точную программу по дням и стоимость участия.",
+      "keyword": "",
+      "handle": "globaltechtour.ru",
+      "image": "generated/hotel-giants/cta.png"
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "name": "logistics-top10",
+  "brand": "gtt",
+  "footer": "globaltechtour.ru",
+  "slides": [
+    {
+      "type": "cover",
+      "kicker": "China Logistics Top-10 Expedition · Китай",
+      "title": "**SF Express**, JD Logistics, Cainiao — логистика Китая не в кейсе, а **вживую**",
+      "subtitle": "5 дней, 4 города, топ-10 логистических компаний Китая",
+      "image": "generated/logistics-top10/cover.png"
+    },
+    {
+      "type": "metric",
+      "value": 10,
+      "prefix": "",
+      "suffix": "",
+      "compact": false,
+      "label": "логистических компаний **в топ-10 Китая**",
+      "source": "**4 города** · **5 дней** · **5 ночей**",
+      "image": "generated/logistics-top10/metric.png"
+    },
+    {
+      "type": "point",
+      "index": 1,
+      "title": "Пекин, день 1",
+      "text": "Sinotrans и China Railway Express — государственный экспедитор и железнодорожный оператор Китай-Европа.",
+      "image": "generated/logistics-top10/beijing.png"
+    },
+    {
+      "type": "point",
+      "index": 2,
+      "title": "Шанхай, день 2",
+      "text": "JD Logistics и COSCO Shipping — складская логистика e-commerce и крупнейший морской перевозчик.",
+      "image": "generated/logistics-top10/shanghai1.png"
+    },
+    {
+      "type": "point",
+      "index": 3,
+      "title": "Шанхай, день 3",
+      "text": "ZTO Express и YTO Express — крупнейшие курьерские сети страны по объёму посылок.",
+      "image": "generated/logistics-top10/shanghai2.png"
+    },
+    {
+      "type": "point",
+      "index": 4,
+      "title": "Ханчжоу, день 4",
+      "text": "Cainiao и STO Express — логистическая платформа Alibaba и её курьерский партнёр.",
+      "image": "generated/logistics-top10/hangzhou.png"
+    },
+    {
+      "type": "point",
+      "index": 5,
+      "title": "Шэньчжэнь, день 5",
+      "text": "SF Express (S.F. Holding) и Deppon Logistics — премиальная экспресс-доставка и B2B-логистика.",
+      "image": "generated/logistics-top10/shenzhen.png"
+    },
+    {
+      "type": "point",
+      "index": 6,
+      "title": "Не простая экскурсия, а **полноценные переговоры**",
+      "text": "Визиты и переговоры с топ-менеджментом компаний, перевод и сопровождение на каждой встрече.",
+      "image": "generated/logistics-top10/negotiations.png"
+    },
+    {
+      "type": "point",
+      "index": 7,
+      "title": "Что входит",
+      "text": "Отели 5*, внутренние перелёты и скоростной поезд, трансферы, встреча и проводы в аэропорту.",
+      "image": "generated/tea-coffee-retail/hotel.png"
+    },
+    {
+      "type": "cta",
+      "title": "Стоимость — по запросу",
+      "text": "Оставьте заявку — пришлём точную программу по дням и стоимость участия.",
+      "keyword": "",
+      "handle": "globaltechtour.ru",
+      "image": "generated/logistics-top10/cta.png"
+    }
+  ]
+}

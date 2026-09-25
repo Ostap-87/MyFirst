@@ -1,0 +1,81 @@
+{
+  "name": "tea-coffee-retail",
+  "brand": "gtt",
+  "footer": "globaltechtour.ru",
+  "slides": [
+    {
+      "type": "cover",
+      "kicker": "New Tea & Coffee Retail Expedition · Китай",
+      "title": "**Chagee**, Luckin Coffee, HeyTea — не в отчётах, а **вживую**",
+      "subtitle": "26–31 октября · 5 дней, 4 города, 9 компаний нового чайно-кофейного ретейла Китая",
+      "image": "generated/tea-coffee-retail/cover-v4-crop.png"
+    },
+    {
+      "type": "metric",
+      "value": 9,
+      "prefix": "",
+      "suffix": "",
+      "compact": false,
+      "label": "компаний **чайно-кофейного ретейла** в программе",
+      "source": "**4 города** · **5 дней** · **6 ночей**",
+      "image": "generated/tea-coffee-retail/metric-v2-grid.png"
+    },
+    {
+      "type": "point",
+      "index": 1,
+      "title": "Шанхай, день 1",
+      "text": "Chagee, Manner Coffee, M Stand — сети, из-за которых в Шанхае выстраиваются очереди.",
+      "image": "generated/tea-coffee-retail/shanghai1-v1-storefronts.png"
+    },
+    {
+      "type": "point",
+      "index": 2,
+      "title": "Шанхай, день 2",
+      "text": "CoCo и ALittle Tea — привычные бренды с оборотом, который заметен даже туристу.",
+      "image": "generated/tea-coffee-retail/shanghai2-v3-facade.png"
+    },
+    {
+      "type": "point",
+      "index": 3,
+      "title": "Сямынь, день 3",
+      "text": "Luckin Coffee — сеть, обогнавшая Starbucks по числу точек в Китае.",
+      "image": "generated/tea-coffee-retail/xiamen-v1-roasting.png"
+    },
+    {
+      "type": "point",
+      "index": 4,
+      "title": "Шэньчжэнь, день 4",
+      "text": "HeyTea и Nayuki — лидеры премиального чайного ретейла новой волны.",
+      "image": "generated/tea-coffee-retail/shenzhen-v1-storefronts.png"
+    },
+    {
+      "type": "point",
+      "index": 5,
+      "title": "Гуанчжоу, день 5",
+      "text": "Wang Lao Ji — травяной чай с историей в сотни лет, теперь в современном ретейле.",
+      "image": "generated/tea-coffee-retail/guangzhou-v1-shelf.png"
+    },
+    {
+      "type": "point",
+      "index": 6,
+      "title": "Не простая экскурсия, а **полноценные переговоры**",
+      "text": "Переговоры с топ-менеджментом, перевод и сопровождение на каждой встрече, контакты для франчайзинга и дистрибуции.",
+      "image": "generated/tea-coffee-retail/negotiations.png"
+    },
+    {
+      "type": "point",
+      "index": 7,
+      "title": "Что входит",
+      "text": "Отели 5*, питание, внутренние перелёты, поезда и трансферы, встреча и проводы в аэропорту.",
+      "image": "generated/tea-coffee-retail/hotel.png"
+    },
+    {
+      "type": "cta",
+      "title": "Стоимость — по запросу",
+      "text": "Оставьте заявку — пришлём точную программу по дням и стоимость участия.",
+      "keyword": "",
+      "handle": "globaltechtour.ru",
+      "image": "generated/tea-coffee-retail/cta-woman-v2-crop.png"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "channel": "instagram",
+  "brand": "globaltechtour",
+  "slug": "china-global-hospitality",
+  "type": "carousel",
+  "folder": "China Global Hospitality",
+  "publishAt": null,
+  "status": "saved",
+  "files": [
+    "01-cover.png",
+    "02-metric.png",
+    "03-point.png",
+    "04-point.png",
+    "05-point.png",
+    "06-point.png",
+    "07-point.png",
+    "08-point.png",
+    "09-cta.png"
+  ],
+  "createdAt": "2026-09-21T19:12:00.000Z",
+  "kind": "photo",
+  "note": "Готовая карусель, дата публикации ещё не назначена — не добавлена в queue.json. Источник текста: data/carousel-global-hospitality.json в remotion-video-tools (данные получены через Firecrawl). Стоимость на сайте не указана (уточняется)."
+}

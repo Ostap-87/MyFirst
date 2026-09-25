@@ -1,0 +1,81 @@
+{
+  "name": "film-industry",
+  "brand": "gtt",
+  "footer": "globaltechtour.ru",
+  "slides": [
+    {
+      "type": "cover",
+      "kicker": "China Film Industry Expedition · Китай",
+      "title": "**iQiyi**, Youku, Tencent Video — киноиндустрия Китая не в презентации, а **вживую**",
+      "subtitle": "5 дней, 3 города, 8 компаний киноиндустрии Китая",
+      "image": "generated/film-industry/cover.png"
+    },
+    {
+      "type": "metric",
+      "value": 8,
+      "prefix": "",
+      "suffix": "",
+      "compact": false,
+      "label": "компаний **киноиндустрии** Китая в программе",
+      "source": "**3 города** · **5 дней** · **6 ночей**",
+      "image": "generated/film-industry/metric.png"
+    },
+    {
+      "type": "point",
+      "index": 1,
+      "title": "Пекин, день 1",
+      "text": "China Film Group Corporation и Youku — главная госкиностудия страны и контент-платформа Alibaba.",
+      "image": "generated/film-industry/beijing1.png"
+    },
+    {
+      "type": "point",
+      "index": 2,
+      "title": "Пекин, день 2",
+      "text": "Bona Film Group и Huayi Brothers — ведущие частные кинокомпании Китая.",
+      "image": "generated/film-industry/beijing2.png"
+    },
+    {
+      "type": "point",
+      "index": 3,
+      "title": "Пекин — Шанхай, день 3",
+      "text": "iQiyi — стриминговый сервис Baidu, крупный производитель оригинального контента.",
+      "image": "generated/film-industry/iqiyi.png"
+    },
+    {
+      "type": "point",
+      "index": 4,
+      "title": "Шанхай, день 4",
+      "text": "Shanghai Film Group и Tencent Penguin Pictures — киностудия и контент-подразделение Tencent.",
+      "image": "generated/film-industry/shanghai.png"
+    },
+    {
+      "type": "point",
+      "index": 5,
+      "title": "Шанхай — Ханчжоу, день 5",
+      "text": "Zhejiang Huace Film & TV — крупнейший частный производитель сериалов Китая.",
+      "image": "generated/film-industry/hangzhou.png"
+    },
+    {
+      "type": "point",
+      "index": 6,
+      "title": "Не простая экскурсия, а **полноценные переговоры**",
+      "text": "Все визиты и переговоры с компаниями программы, перевод и сопровождение на китайском/английском.",
+      "image": "generated/film-industry/negotiations.png"
+    },
+    {
+      "type": "point",
+      "index": 7,
+      "title": "Что входит",
+      "text": "Проживание 6 ночей, трансферы между городами программы, сопровождение и перевод.",
+      "image": "generated/tea-coffee-retail/hotel.png"
+    },
+    {
+      "type": "cta",
+      "title": "Стоимость — по запросу",
+      "text": "Оставьте заявку — пришлём точную программу по дням и стоимость участия.",
+      "keyword": "",
+      "handle": "globaltechtour.ru",
+      "image": "generated/film-industry/cta.png"
+    }
+  ]
+}
