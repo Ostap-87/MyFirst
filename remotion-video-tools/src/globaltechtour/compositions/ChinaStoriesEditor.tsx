@@ -427,12 +427,17 @@ export const ChinaStoriesEditor: React.FC<EditorProps> = (props) => {
   const shownPlates = story.plates.filter((p) => p.at <= now).length;
   const ideasNow = proposals.filter((p) => now >= p.at && now < p.until);
   const moves = story.moves ?? [];
-  const media = (items: { src: string; caption?: string }[]) =>
+  // Подпись врезки на ленте: название или подпись, иначе вид — имена
+  // файлов вроде «2026-08-27-ping-an…» на столе ничего не говорят.
+  const media = (items: { src: string; caption?: string; title?: string }[]) =>
     items
       .map(
-        (i) => i.caption ?? i.src.replace(/^.*\//, "").replace(/\.[^.]+$/, ""),
+        (i) =>
+          i.title ??
+          i.caption ??
+          (/\.(mp4|mov|webm)$/i.test(i.src) ? "видео" : "фото"),
       )
-      .join(", ");
+      .join(" → ");
   const inserts: {
     kind: keyof typeof INSERT_RU;
     at: number;

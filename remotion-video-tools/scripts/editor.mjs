@@ -119,6 +119,24 @@ for (const p of proposals) {
   // а рамка «где в кадре» ещё на экране.
   events.push({ at: p.at + Math.min(1.2, (p.until - p.at) / 2), label: `Идея ${p.n} ${p.what}` });
 }
+// Врезки из арсенала — по кадру на каждую, у деления экрана — на каждую
+// смену картинки: иначе на листе нет самых заметных моментов ролика.
+const mid = (b) => b.at + Math.min(1.0, (b.until - b.at) / 2);
+for (const b of props.popWindows ?? []) events.push({ at: mid(b), label: "Окна" });
+for (const b of props.photoCards ?? []) events.push({ at: b.at + Math.min(1.6, (b.until - b.at) * 0.6), label: "Карточки" });
+for (const b of props.inserts ?? []) events.push({ at: mid(b), label: `Врезка ${b.caption ?? ""}` });
+for (const b of props.brolls ?? []) events.push({ at: mid(b), label: "На весь кадр" });
+for (const b of props.splits ?? []) {
+  let t = b.at;
+  const fixed = b.items.reduce((a, i) => a + (i.seconds ?? 0), 0);
+  const free = b.items.filter((i) => !i.seconds).length;
+  const share = free ? (b.until - b.at - fixed) / free : 0;
+  for (const i of b.items) {
+    const len = i.seconds ?? share;
+    events.push({ at: t + Math.min(0.9, len / 2), label: `Деление ${i.title ?? ""}` });
+    t += len;
+  }
+}
 events.push({ at: props.durationSeconds - 0.8, label: "Финал" });
 events.sort((a, b) => a.at - b.at);
 
