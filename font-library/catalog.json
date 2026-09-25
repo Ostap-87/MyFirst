@@ -1,0 +1,219 @@
+{
+  "version": 1,
+  "updated": "2026-09-23",
+  "note": "Библиотека бесплатных креативных шрифтов. Файлы лежат локально в fonts/<slug>/, картинки-образцы — в previews/<slug>.png (генерируются scripts/render-previews.mjs). Все шрифты — с открытой лицензией (SIL OFL 1.1 или Apache 2.0), можно свободно использовать в коммерческих креативах и хранить в репозитории.",
+  "fonts": [
+    {
+      "slug": "yeseva-one",
+      "family": "Yeseva One",
+      "category": "display-serif",
+      "mood": ["роскошь", "премиум", "нарядный"],
+      "cyrillic": true,
+      "weights": [{ "weight": 400, "file": "fonts/yeseva-one/YesevaOne-Regular.ttf" }],
+      "source": "google-fonts",
+      "source_url": "https://fonts.google.com/specimen/Yeseva+One",
+      "license": "OFL-1.1",
+      "use_for": ["обложки", "заголовки премиум-брендов", "приглашения"]
+    },
+    {
+      "slug": "playfair-display",
+      "family": "Playfair Display",
+      "category": "editorial-serif",
+      "mood": ["редакционный", "элегантный", "журнальный"],
+      "cyrillic": true,
+      "weights": [
+        { "weight": 400, "file": "fonts/playfair-display/PlayfairDisplay-Regular.ttf" },
+        { "weight": 700, "file": "fonts/playfair-display/PlayfairDisplay-Bold.ttf" }
+      ],
+      "source": "google-fonts",
+      "source_url": "https://fonts.google.com/specimen/Playfair+Display",
+      "license": "OFL-1.1",
+      "use_for": ["лонгриды", "цитаты", "гламурные обложки"]
+    },
+    {
+      "slug": "spectral",
+      "family": "Spectral",
+      "category": "editorial-serif",
+      "mood": ["книжный", "спокойный", "деловой"],
+      "cyrillic": true,
+      "weights": [
+        { "weight": 400, "file": "fonts/spectral/Spectral-Regular.ttf" },
+        { "weight": 700, "file": "fonts/spectral/Spectral-Bold.ttf" }
+      ],
+      "source": "google-fonts",
+      "source_url": "https://fonts.google.com/specimen/Spectral",
+      "license": "OFL-1.1",
+      "notes": "Рекомендован в статье type.today как редкий пример действительно свободного европейского serif с полноценной кириллицей.",
+      "use_for": ["блог-статьи", "цитаты экспертов", "деловой контент"]
+    },
+    {
+      "slug": "alegreya",
+      "family": "Alegreya",
+      "category": "editorial-serif",
+      "mood": ["литературный", "тёплый", "гуманистический"],
+      "cyrillic": true,
+      "weights": [
+        { "weight": 400, "file": "fonts/alegreya/Alegreya-Regular.ttf" },
+        { "weight": 700, "file": "fonts/alegreya/Alegreya-Bold.ttf" }
+      ],
+      "source": "google-fonts",
+      "source_url": "https://fonts.google.com/specimen/Alegreya",
+      "license": "OFL-1.1",
+      "use_for": ["сторителлинг", "интервью", "лонгриды"]
+    },
+    {
+      "slug": "pt-serif",
+      "family": "PT Serif",
+      "category": "text-serif",
+      "mood": ["классический", "надёжный", "читаемый"],
+      "cyrillic": true,
+      "weights": [
+        { "weight": 400, "file": "fonts/pt-serif/PTSerif-Regular.ttf" },
+        { "weight": 700, "file": "fonts/pt-serif/PTSerif-Bold.ttf" }
+      ],
+      "source": "google-fonts",
+      "source_url": "https://fonts.google.com/specimen/PT+Serif",
+      "license": "OFL-1.1",
+      "notes": "ParaType — эталонная кириллица, спроектирован для длинных текстов на русском.",
+      "use_for": ["основной текст", "длинные подписи", "документы"]
+    },
+    {
+      "slug": "rubik",
+      "family": "Rubik",
+      "category": "geometric-sans",
+      "mood": ["дружелюбный", "современный", "универсальный"],
+      "cyrillic": true,
+      "weights": [
+        { "weight": 400, "file": "fonts/rubik/Rubik-Regular.ttf" },
+        { "weight": 700, "file": "fonts/rubik/Rubik-Bold.ttf" }
+      ],
+      "source": "google-fonts",
+      "source_url": "https://fonts.google.com/specimen/Rubik",
+      "license": "OFL-1.1",
+      "use_for": ["UI-подобные карточки", "соцсети", "стартап-стиль"]
+    },
+    {
+      "slug": "comfortaa",
+      "family": "Comfortaa",
+      "category": "rounded-display",
+      "mood": ["мягкий", "игривый", "лёгкий"],
+      "cyrillic": true,
+      "weights": [{ "weight": 700, "file": "fonts/comfortaa/Comfortaa-Bold.ttf" }],
+      "source": "google-fonts",
+      "source_url": "https://fonts.google.com/specimen/Comfortaa",
+      "license": "OFL-1.1",
+      "use_for": ["детские/лайфстайл темы", "закруглённые бейджи", "дружелюбные бренды"]
+    },
+    {
+      "slug": "montserrat-alternates",
+      "family": "Montserrat Alternates",
+      "category": "geometric-display",
+      "mood": ["арт-деко", "стильный", "заметный"],
+      "cyrillic": true,
+      "weights": [{ "weight": 700, "file": "fonts/montserrat-alternates/MontserratAlternates-Bold.ttf" }],
+      "source": "google-fonts",
+      "source_url": "https://fonts.google.com/specimen/Montserrat+Alternates",
+      "license": "OFL-1.1",
+      "use_for": ["крупные заголовки обложек", "выставочный/архитектурный стиль"]
+    },
+    {
+      "slug": "wix-madefor-display",
+      "family": "Wix Madefor Display",
+      "category": "modern-sans",
+      "mood": ["чистый", "техно", "минимал"],
+      "cyrillic": true,
+      "weights": [{ "weight": 700, "file": "fonts/wix-madefor-display/WixMadeforDisplay-Bold.ttf" }],
+      "source": "google-fonts",
+      "source_url": "https://fonts.google.com/specimen/Wix+Madefor+Display",
+      "license": "OFL-1.1",
+      "use_for": ["презентационные обложки", "заголовки в стиле SaaS"]
+    },
+    {
+      "slug": "amatic-sc",
+      "family": "Amatic SC",
+      "category": "handwritten-condensed",
+      "mood": ["набросок", "неформальный", "плакатный"],
+      "cyrillic": true,
+      "weights": [{ "weight": 700, "file": "fonts/amatic-sc/AmaticSC-Bold.ttf" }],
+      "source": "google-fonts",
+      "source_url": "https://fonts.google.com/specimen/Amatic+SC",
+      "license": "OFL-1.1",
+      "use_for": ["акцентные подписи", "маркерные плашки", "меловые/постерные темы"]
+    },
+    {
+      "slug": "bad-script",
+      "family": "Bad Script",
+      "category": "handwritten-script",
+      "mood": ["личный", "рукописный", "тёплый"],
+      "cyrillic": true,
+      "weights": [{ "weight": 400, "file": "fonts/bad-script/BadScript-Regular.ttf" }],
+      "source": "google-fonts",
+      "source_url": "https://fonts.google.com/specimen/Bad+Script",
+      "license": "OFL-1.1",
+      "notes": "Спроектирован под кириллицу с нуля, а не адаптирован из латиницы — почерк не разваливается.",
+      "use_for": ["цитаты от лица человека", "подписи", "личный/лайфстайл контент"]
+    },
+    {
+      "slug": "neucha",
+      "family": "Neucha",
+      "category": "handwritten-casual",
+      "mood": ["простой", "рукописный", "дружелюбный"],
+      "cyrillic": true,
+      "weights": [{ "weight": 400, "file": "fonts/neucha/Neucha-Regular.ttf" }],
+      "source": "google-fonts",
+      "source_url": "https://fonts.google.com/specimen/Neucha",
+      "license": "OFL-1.1",
+      "use_for": ["заметки от руки", "чек-листы", "неформальные сторис"]
+    },
+    {
+      "slug": "ibm-plex-mono",
+      "family": "IBM Plex Mono",
+      "category": "monospace",
+      "mood": ["технологичный", "инженерный", "точный"],
+      "cyrillic": true,
+      "weights": [{ "weight": 500, "file": "fonts/ibm-plex-mono/IBMPlexMono-Medium.ttf" }],
+      "source": "google-fonts",
+      "source_url": "https://fonts.google.com/specimen/IBM+Plex+Mono",
+      "license": "OFL-1.1",
+      "notes": "Из статьи type.today как пример свободного семейства с полноценной кириллицей.",
+      "use_for": ["цифры/метрики", "тех-контент", "код и данные"]
+    },
+    {
+      "slug": "fira-code",
+      "family": "Fira Code",
+      "category": "monospace-code",
+      "mood": ["dev", "техно", "код"],
+      "cyrillic": false,
+      "weights": [{ "weight": 500, "file": "fonts/fira-code/FiraCode-Medium.ttf" }],
+      "source": "google-fonts",
+      "source_url": "https://github.com/tonsky/FiraCode",
+      "license": "OFL-1.1",
+      "notes": "Только латиница — использовать для англ. кода/данных, лигатуры (->, ==) не для кириллического текста.",
+      "use_for": ["скриншоты кода", "IT/dev-контент"]
+    },
+    {
+      "slug": "philosopher",
+      "family": "Philosopher",
+      "category": "elegant-display-serif",
+      "mood": ["интеллектуальный", "элегантный", "контрастный"],
+      "cyrillic": true,
+      "weights": [{ "weight": 700, "file": "fonts/philosopher/Philosopher-Bold.ttf" }],
+      "source": "google-fonts",
+      "source_url": "https://fonts.google.com/specimen/Philosopher",
+      "license": "OFL-1.1",
+      "use_for": ["цитаты", "образовательный контент", "премиум-заголовки"]
+    },
+    {
+      "slug": "ruda",
+      "family": "Ruda",
+      "category": "bold-geometric-display",
+      "mood": ["жирный", "уверенный", "спортивный"],
+      "cyrillic": true,
+      "weights": [{ "weight": 800, "file": "fonts/ruda/Ruda-ExtraBold.ttf" }],
+      "source": "google-fonts",
+      "source_url": "https://fonts.google.com/specimen/Ruda",
+      "license": "OFL-1.1",
+      "use_for": ["крупные цифры/метрики", "спортивные и промышленные темы", "плакатные заголовки"]
+    }
+  ]
+}

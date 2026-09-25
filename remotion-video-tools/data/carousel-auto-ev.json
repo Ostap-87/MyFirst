@@ -1,0 +1,74 @@
+{
+  "name": "auto-ev",
+  "brand": "gtt",
+  "footer": "globaltechtour.ru",
+  "slides": [
+    {
+      "type": "cover",
+      "kicker": "China Auto & EV Plants Expedition · Китай",
+      "title": "**Xiaomi**, NIO, Xpeng — электромобили Китая не в презентации, а **вживую**",
+      "subtitle": "5 дней, 4 города, 6 компаний автопрома и электромобилей Китая",
+      "image": "generated/auto-ev/cover.png"
+    },
+    {
+      "type": "metric",
+      "value": 6,
+      "prefix": "",
+      "suffix": "",
+      "compact": false,
+      "label": "компаний **автопрома и электромобилей** в программе",
+      "source": "**4 города** · **5 дней** · **6 ночей**",
+      "image": "generated/auto-ev/metric.png"
+    },
+    {
+      "type": "point",
+      "index": 1,
+      "title": "Пекин, день 1",
+      "text": "Xiaomi — от смартфонов до серийных электромобилей за три года.",
+      "image": "generated/auto-ev/beijing.png"
+    },
+    {
+      "type": "point",
+      "index": 2,
+      "title": "Хэфэй, дни 2–3",
+      "text": "NIO и Maextro — премиальные электромобили и совместный бренд с Huawei.",
+      "image": "generated/auto-ev/hefei.png"
+    },
+    {
+      "type": "point",
+      "index": 3,
+      "title": "Шанхай, день 4",
+      "text": "SAIC Motor — крупнейший автопроизводитель Китая по объёму продаж.",
+      "image": "generated/auto-ev/shanghai.png"
+    },
+    {
+      "type": "point",
+      "index": 4,
+      "title": "Гуанчжоу, день 5",
+      "text": "GAC Aion и Xpeng — серийные электромобили и беспилотные технологии нового поколения.",
+      "image": "generated/auto-ev/guangzhou.png"
+    },
+    {
+      "type": "point",
+      "index": 5,
+      "title": "Не простая экскурсия, а **полноценные переговоры**",
+      "text": "Переговоры с топ-менеджментом, перевод и сопровождение на каждой встрече, контакты для партнёрства и дистрибуции.",
+      "image": "generated/auto-ev/negotiations.png"
+    },
+    {
+      "type": "point",
+      "index": 6,
+      "title": "Что входит",
+      "text": "Отели 5*, питание, внутренние перелёты и скоростной поезд, трансферы, встреча и проводы в аэропорту.",
+      "image": "generated/tea-coffee-retail/hotel.png"
+    },
+    {
+      "type": "cta",
+      "title": "Стоимость — по запросу",
+      "text": "Оставьте заявку — пришлём точную программу по дням и стоимость участия.",
+      "keyword": "",
+      "handle": "globaltechtour.ru",
+      "image": "generated/auto-ev/cta.png"
+    }
+  ]
+}

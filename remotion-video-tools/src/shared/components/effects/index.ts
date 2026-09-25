@@ -15,4 +15,6 @@ export * from "./MotionTrail";
 export * from "./StepNumber";
 export * from "./PhoneMockup";
 export * from "./ChatOverlay";
+export * from "./Shimmer";
+export * from "./SlowZoom";
 // new-effect:exports:end

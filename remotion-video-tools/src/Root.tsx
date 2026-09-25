@@ -77,6 +77,8 @@ import {
   PersonalCarousel,
   personalCarouselSchema,
 } from "./ostapdotcenko/compositions/Carousel";
+import { GTTCarouselAnimated, gttCarouselAnimatedDefaults, gttCarouselAnimatedSchema } from "./globaltechtour/compositions/CarouselAnimated";
+import { GTTCarouselZoomTest, gttCarouselZoomTestDefaults, gttCarouselZoomTestSchema } from "./globaltechtour/compositions/CarouselZoomTest";
 // new-composition:imports:end
 
 export const RemotionRoot: React.FC = () => {
@@ -212,7 +214,27 @@ export const RemotionRoot: React.FC = () => {
         width={1080}
         height={1350}
       />
-      {/* new-composition:end */}
+      <Composition
+        id="GTT-CarouselAnimated"
+        component={GTTCarouselAnimated}
+        schema={gttCarouselAnimatedSchema}
+        defaultProps={gttCarouselAnimatedDefaults}
+        durationInFrames={90}
+        fps={30}
+        width={1080}
+        height={1350}
+      />
+            <Composition
+        id="GTT-CarouselZoomTest"
+        component={GTTCarouselZoomTest}
+        schema={gttCarouselZoomTestSchema}
+        defaultProps={gttCarouselZoomTestDefaults}
+        durationInFrames={90}
+        fps={30}
+        width={1080}
+        height={1350}
+      />
+                  {/* new-composition:end */}
 
       {/* Витрина эффектов на нейтральных данных: сюда смотрим, когда
           проверяем новый эффект из src/shared/components/effects. */}

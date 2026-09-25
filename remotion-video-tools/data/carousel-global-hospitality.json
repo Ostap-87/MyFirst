@@ -1,0 +1,74 @@
+{
+  "name": "global-hospitality",
+  "brand": "gtt",
+  "footer": "globaltechtour.ru",
+  "slides": [
+    {
+      "type": "cover",
+      "kicker": "Global Hospitality in China Expedition · Шанхай",
+      "title": "**Marriott**, Hilton, IHG — глобальные гостиничные сети Китая не в презентации, а **вживую**",
+      "subtitle": "5 дней, Шанхай, 6 мировых гостиничных сетей плюс 2 знаковых отеля",
+      "image": "generated/global-hospitality/cover.png"
+    },
+    {
+      "type": "metric",
+      "value": 6,
+      "prefix": "",
+      "suffix": "",
+      "compact": false,
+      "label": "мировых гостиничных **сетей** в программе",
+      "source": "**1 город** · **5 дней** · **6 ночей**",
+      "image": "generated/global-hospitality/metric.png"
+    },
+    {
+      "type": "point",
+      "index": 1,
+      "title": "Шанхай, день 1",
+      "text": "Marriott International (China) и Hilton (China) — региональные офисы двух гостиничных лидеров мира.",
+      "image": "generated/global-hospitality/day1.png"
+    },
+    {
+      "type": "point",
+      "index": 2,
+      "title": "Шанхай, день 2",
+      "text": "IHG Hotels & Resorts (Greater China) и Accor (China) — офис IHG в Пудуне.",
+      "image": "generated/global-hospitality/day2.png"
+    },
+    {
+      "type": "point",
+      "index": 3,
+      "title": "Шанхай, день 3",
+      "text": "Hyatt (Greater China) и Wyndham Hotels & Resorts (China).",
+      "image": "generated/global-hospitality/day3.png"
+    },
+    {
+      "type": "point",
+      "index": 4,
+      "title": "Шанхай, день 4",
+      "text": "Кейс-визиты: Waldorf Astoria Shanghai on the Bund и комплекс Tomorrow Square (JW Marriott / Ritz-Carlton).",
+      "image": "generated/global-hospitality/day4.png"
+    },
+    {
+      "type": "point",
+      "index": 5,
+      "title": "Не простая экскурсия, а **полноценный круглый стол**",
+      "text": "«Локализация глобального стандарта в Китае» — переговоры с топ-менеджментом шести сетей.",
+      "image": "generated/global-hospitality/negotiations.png"
+    },
+    {
+      "type": "point",
+      "index": 6,
+      "title": "Что входит",
+      "text": "Отели 5*, обед и ужин ежедневно, трансферы между площадками, встреча и проводы в аэропорту.",
+      "image": "generated/tea-coffee-retail/hotel.png"
+    },
+    {
+      "type": "cta",
+      "title": "Стоимость уточняется",
+      "text": "Оставьте заявку — пришлём точную программу по дням и стоимость участия.",
+      "keyword": "",
+      "handle": "globaltechtour.ru",
+      "image": "generated/global-hospitality/cta.png"
+    }
+  ]
+}

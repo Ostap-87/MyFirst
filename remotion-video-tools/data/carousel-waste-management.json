@@ -1,0 +1,81 @@
+{
+  "name": "waste-management",
+  "brand": "gtt",
+  "footer": "globaltechtour.ru",
+  "slides": [
+    {
+      "type": "cover",
+      "kicker": "China Waste Management Expedition · Китай",
+      "title": "**GEM**, China Everbright, Shanghai Environment — обращение с отходами Китая не в презентации, а **вживую**",
+      "subtitle": "5 дней, 5 городов, 6 компаний отрасли обращения с отходами Китая",
+      "image": "generated/waste-management/cover.png"
+    },
+    {
+      "type": "metric",
+      "value": 6,
+      "prefix": "",
+      "suffix": "",
+      "compact": false,
+      "label": "компаний **переработки отходов** Китая в программе",
+      "source": "**5 городов** · **5 дней** · **6 ночей**",
+      "image": "generated/waste-management/metric.png"
+    },
+    {
+      "type": "point",
+      "index": 1,
+      "title": "Шэньчжэнь, день 1",
+      "text": "GEM Co., Ltd. — переработка батарей электромобилей нового поколения.",
+      "image": "generated/waste-management/shenzhen.png"
+    },
+    {
+      "type": "point",
+      "index": 2,
+      "title": "Шэньчжэнь — Фошань, день 2",
+      "text": "Shenzhen Energy Environmental и Grandblue Environment — архитектурная витрина отрасли в парке «Яньтянь».",
+      "image": "generated/waste-management/foshan.png"
+    },
+    {
+      "type": "point",
+      "index": 3,
+      "title": "Гуандун — Шанхай, день 3",
+      "text": "China Everbright Environment — представительный проект в дельте Жемчужной реки.",
+      "image": "generated/waste-management/everbright.png"
+    },
+    {
+      "type": "point",
+      "index": 4,
+      "title": "Шанхай, день 4",
+      "text": "Shanghai Environment Group — комплекс «Лаоган», крупнейший в мире моно-завод энергоутилизации.",
+      "image": "generated/waste-management/shanghai.png"
+    },
+    {
+      "type": "point",
+      "index": 5,
+      "title": "Хайань — Наньтун, день 5",
+      "text": "China Tianying — международная сеть в 30+ странах (совместно с Urbaser).",
+      "image": "generated/waste-management/nantong.png"
+    },
+    {
+      "type": "point",
+      "index": 6,
+      "title": "Не простая экскурсия, а **полноценные переговоры**",
+      "text": "Все визиты и переговоры с компаниями программы, перевод и сопровождение на китайском/английском.",
+      "image": "generated/waste-management/negotiations.png"
+    },
+    {
+      "type": "point",
+      "index": 7,
+      "title": "Что входит",
+      "text": "Проживание 6 ночей, трансферы между городами программы, сопровождение и перевод.",
+      "image": "generated/tea-coffee-retail/hotel.png"
+    },
+    {
+      "type": "cta",
+      "title": "Стоимость — по запросу",
+      "text": "Оставьте заявку — пришлём точную программу по дням и стоимость участия.",
+      "keyword": "",
+      "handle": "globaltechtour.ru",
+      "image": "generated/waste-management/cta.png"
+    }
+  ]
+}

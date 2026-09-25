@@ -1,0 +1,74 @@
+{
+  "name": "thailand-retail",
+  "brand": "gtt",
+  "footer": "globaltechtour.ru",
+  "slides": [
+    {
+      "type": "cover",
+      "kicker": "Thailand Retail Expedition · Бангкок",
+      "title": "**CP All**, Central Retail, Siam Piwat — ритейл Таиланда не в презентации, а **вживую**",
+      "subtitle": "6 дней, Бангкок, 9 компаний — конвиниенс, phygital и B2B-опт",
+      "image": "generated/thailand-retail/cover.png"
+    },
+    {
+      "type": "metric",
+      "value": 9,
+      "prefix": "",
+      "suffix": "",
+      "compact": false,
+      "label": "компаний тайского **ритейла** в программе",
+      "source": "**1 город** · **6 дней** · **6 ночей**",
+      "image": "generated/thailand-retail/metric.png"
+    },
+    {
+      "type": "point",
+      "index": 1,
+      "title": "Бангкок, день 1",
+      "text": "CP All и Central Retail — крупнейшая сеть 7-Eleven после Японии и один из главных ритейл-холдингов страны.",
+      "image": "generated/thailand-retail/day1.png"
+    },
+    {
+      "type": "point",
+      "index": 2,
+      "title": "Бангкок, день 2",
+      "text": "Siam Piwat (ICONSIAM) и The Mall Group (Siam Paragon) — phygital-ритейл и премиальные моллы Бангкока.",
+      "image": "generated/thailand-retail/day2.png"
+    },
+    {
+      "type": "point",
+      "index": 3,
+      "title": "Бангкок, день 3",
+      "text": "Makro и Lotus's (CP Axtra) — B2B-опт мелким бизнесом и гипермаркеты для конечного покупателя.",
+      "image": "generated/thailand-retail/day3.png"
+    },
+    {
+      "type": "point",
+      "index": 4,
+      "title": "Бангкок, день 4",
+      "text": "Big C (BJC) и HomePro — цифровизация гипермаркетов и лидер рынка товаров для дома.",
+      "image": "generated/thailand-retail/day4.png"
+    },
+    {
+      "type": "point",
+      "index": 5,
+      "title": "Не простая экскурсия, а **полноценные переговоры**",
+      "text": "День 5 — CP Axtra Technology Center и итоговая встреча с networking. Визиты и переговоры с компаниями программы, перевод на тайском/английском.",
+      "image": "generated/thailand-retail/negotiations.png"
+    },
+    {
+      "type": "point",
+      "index": 6,
+      "title": "Что входит",
+      "text": "Проживание 6 ночей, трансферы в пределах Бангкока и региона, сопровождение и перевод.",
+      "image": "generated/tea-coffee-retail/hotel.png"
+    },
+    {
+      "type": "cta",
+      "title": "Стоимость — по запросу",
+      "text": "Оставьте заявку — пришлём точную программу по дням и стоимость участия.",
+      "keyword": "",
+      "handle": "globaltechtour.ru",
+      "image": "generated/thailand-retail/cta.png"
+    }
+  ]
+}

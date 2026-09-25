@@ -33,7 +33,31 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
   showSwipeHint = true,
   footer = "",
 }) => {
-  const { fs, sp } = useFormat();
+  const { fs, sp, vh, height } = useFormat();
+
+  // Разбивает строку по `**акцент**` на обычные и крупные акцентные куски —
+  // так в одной подписи можно выделить цифру/фразу без отдельного слайда.
+  // Работает и без разметки: тогда просто возвращает исходный текст одним
+  // куском обычного размера.
+  const renderRich = (
+    text: string,
+    base: React.CSSProperties,
+    emphasis: React.CSSProperties,
+  ) =>
+    text
+      .split(/(\*\*[^*]+\*\*)/g)
+      .filter(Boolean)
+      .map((part, i) =>
+        part.startsWith("**") && part.endsWith("**") ? (
+          <span key={i} style={{ ...base, ...emphasis }}>
+            {part.slice(2, -2)}
+          </span>
+        ) : (
+          <span key={i} style={base}>
+            {part}
+          </span>
+        ),
+      );
 
   // Кегль заголовка обложки подбирается по длине: «Batteries» и
   // «Borunte: шестиосевые роботы, которые обслуживают термопластавтоматы» —
@@ -49,22 +73,54 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
   };
 
   const coverTitleSize = (text: string) => {
-    if (text.length > 64) return fs(0.068);
-    if (text.length > 44) return fs(0.082);
+    // Длинное слово ("прикоснуться") ломает строку раньше, чем длина всей
+    // фразы — считаем не только общую длину, но и самое длинное слово.
+    const longestWord = Math.max(...text.split(/\s+/).map((w) => w.length));
+    if (text.length > 64 || longestWord > 11) return fs(0.068);
+    if (text.length > 44 || longestWord > 8) return fs(0.082);
     return fs(0.105);
   };
 
-  // Слайд с картинкой всегда тёмный: текст ложится поверх фотографии.
+  // Слайд с картинкой обычно тёмный: текст ложится поверх фотографии.
   // Без картинки — светлый, чтобы лента не читалась как сплошная реклама.
+  // Бренды с imageStyle "framed" (GTT) держат фон светлым всегда: фото
+  // живёт в отдельной карточке, а не заливает кадр (см. theme.ts).
   const hasImage = Boolean("image" in slide && slide.image);
-  const isDark = hasImage || theme.colors.primary === "#12121a";
+  const framed = hasImage && theme.imageStyle === "framed";
+  const isDark = !framed && (hasImage || theme.colors.primary === "#12121a");
+  // Что под плашкой сайта в левом верхнем углу конкретного фото — задаётся
+  // на слайде (см. types.ts), т.к. фото у каждого слайда своё, единого
+  // цвета текста для всех не бывает. По умолчанию — светлый участок.
+  const cornerTheme: "light" | "dark" =
+    ("cornerTheme" in slide && slide.cornerTheme) || "light";
   const background = isDark ? theme.colors.primary : theme.colors.surface;
   const textColor = isDark ? "#ffffff" : theme.colors.text;
   const mutedColor = isDark ? "rgba(255,255,255,0.7)" : theme.colors.muted;
 
+  // Карточка фото в "framed"-режиме теперь занимает почти весь слайд —
+  // текст ложится прямо на фото, а не в отдельный блок под ним (запрос
+  // пользователя 21.09.2026: "картинка и поверх неё идёт скомпанованная
+  // надпись", а не картинка + отдельная подпись снизу). Верх фото остаётся
+  // чётким, низ — под плавно нарастающим размытием (frosted-панель), на
+  // которой и живёт текст: светлое, не тёмным градиентом, как раньше.
+  const framedMarginSide = sp(0.06);
+  const framedMarginTop = vh(0.045);
+  const framedMarginBottom = vh(0.045);
+  const framedCardHeight = height - framedMarginTop - framedMarginBottom;
+  // Обложке нужно больше места (кикер+заголовок+подзаголовок), остальным
+  // типам с фото — меньше (обычно одна подпись).
+  // Панель считается щедро — текст не должен вылезать за размытую зону на
+  // резкую часть фото (было именно так до правки 21.09.2026: заголовок
+  // в 3 строки перекрывал верх снимка нечитаемым чёрным-по-светлому).
+  // Увеличена под финальный выбор пользователя П3+Р3 (текст выше и крупнее
+  // — без роста панели вылезал бы за пределы дымки).
+  const framedPanelHeight = Math.round(
+    framedCardHeight * (slide.type === "cover" ? 0.66 : 0.6),
+  );
+
   return (
     <AbsoluteFill style={{ backgroundColor: background }}>
-      {hasImage && "image" in slide && slide.image ? (
+      {hasImage && "image" in slide && slide.image && !framed ? (
         <>
           <AbsoluteFill>
             <Img
@@ -88,58 +144,411 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
         </>
       ) : null}
 
-      <AbsoluteFill
-        style={{
-          padding: `${sp(0.12)}px ${sp(0.08)}px`,
-          justifyContent: slide.type === "cover" ? "flex-end" : "center",
-          gap: sp(0.035),
-        }}
-      >
-        {slide.type === "cover" ? (
-          <>
+      {hasImage && "image" in slide && slide.image && framed ? (
+        <div
+          style={{
+            position: "absolute",
+            top: framedMarginTop,
+            left: framedMarginSide,
+            right: framedMarginSide,
+            height: framedCardHeight,
+            borderRadius: sp(0.045),
+            overflow: "hidden",
+            border: `1px solid ${theme.colors.line}`,
+            boxShadow: "0 16px 40px rgba(23,23,29,0.08)",
+          }}
+        >
+          {/* Фото на всю карточку, верх — чёткий, без затемнения. */}
+          <Img
+            src={staticFile(slide.image)}
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          />
+
+          {/* Frosted-панель: размытие и белый оттенок нарастают плавно
+              (маска-градиент), а не жёсткой линией — верх карточки при
+              этом остаётся резким. Светлая, не тёмная (запрос
+              пользователя 21.09.2026), текст поверх — тёмный. */}
+          <div
+            style={{
+              position: "absolute",
+              left: 0,
+              right: 0,
+              bottom: 0,
+              height: framedPanelHeight,
+              // Дымка, а не сплошной туман (запрос 21.09.2026): меньше
+              // непрозрачности и размытия — силуэт фото должен слегка
+              // проглядывать сквозь панель, а не пропадать под ней целиком.
+              backdropFilter: "blur(24px)",
+              WebkitBackdropFilter: "blur(24px)",
+              backgroundColor: "rgba(255,255,255,0.5)",
+              maskImage:
+                "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 30%)",
+              WebkitMaskImage:
+                "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 30%)",
+            }}
+          />
+
+          <div
+            style={{
+              position: "absolute",
+              left: 0,
+              right: 0,
+              bottom: 0,
+              height: framedPanelHeight,
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-end",
+              // На первом слайде плашка «листай» лежит в правом нижнем углу
+              // карточки — резервируем под неё запас снизу, иначе последняя
+              // строка текста уезжает под неё. Плюс общий подъём текста
+              // ~1.8 см (вариант П3, выбор пользователя 21.09.2026).
+              padding: `0 ${sp(0.07)}px ${
+                (showSwipeHint && position.index === 0 ? sp(0.1) : sp(0.06)) +
+                vh(0.06) -
+                vh(("textLower" in slide && slide.textLower) || 0)
+              }px`,
+              gap: sp(0.02),
+            }}
+          >
+            {slide.type === "cover" ? (
+              <>
+                <div
+                  style={{
+                    fontFamily: fontFamily(theme.fonts.mono),
+                    fontSize: fs(0.03),
+                    letterSpacing: fs(0.004),
+                    color: theme.colors.accent,
+                  }}
+                >
+                  {slide.kicker.toUpperCase()}
+                </div>
+                <h1
+                  style={{
+                    margin: 0,
+                    lineHeight: 1.08,
+                    letterSpacing: -1,
+                    overflowWrap: "break-word",
+                  }}
+                >
+                  {renderRich(
+                    slide.title,
+                    {
+                      fontFamily: fontFamily(theme.fonts.heading),
+                      fontWeight: theme.fonts.headingWeight,
+                      fontSize: coverTitleSize(slide.title),
+                      color: theme.colors.text,
+                    },
+                    { color: theme.colors.accent },
+                  )}
+                </h1>
+                <p style={{ margin: 0, lineHeight: 1.35 }}>
+                  {renderRich(
+                    slide.subtitle,
+                    {
+                      fontFamily: fontFamily(theme.fonts.body),
+                      fontSize: fs(0.036),
+                      color: theme.colors.text,
+                    },
+                    { fontWeight: 700, color: theme.colors.text },
+                  )}
+                </p>
+              </>
+            ) : null}
+
+            {slide.type === "image" ? (
+              <p style={{ margin: 0, lineHeight: 1.4 }}>
+                {renderRich(
+                  slide.caption,
+                  {
+                    fontFamily: fontFamily(theme.fonts.body),
+                    // Вариант Р3 (выбор пользователя 21.09.2026) — заметно
+                    // крупнее прежнего 0.038. Не трогает обложку.
+                    fontSize: fs(0.05),
+                    color: theme.colors.text,
+                  },
+                  { fontWeight: 700, color: theme.colors.accent },
+                )}
+              </p>
+            ) : null}
+
+            {slide.type === "point" ? (
+              <>
+                <div
+                  style={{
+                    width: fs(0.11),
+                    height: fs(0.11),
+                    borderRadius: "50%",
+                    backgroundColor: theme.colors.accent,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontFamily: fontFamily(theme.fonts.heading),
+                    fontWeight: theme.fonts.headingWeight,
+                    fontSize: fs(0.052),
+                    color: "#ffffff",
+                  }}
+                >
+                  {slide.index}
+                </div>
+                {slide.title ? (
+                  <h2 style={{ margin: 0, lineHeight: 1.12 }}>
+                    {renderRich(
+                      slide.title,
+                      {
+                        fontFamily: fontFamily(theme.fonts.heading),
+                        fontWeight: theme.fonts.headingWeight,
+                        fontSize: fs(0.062),
+                        color: theme.colors.text,
+                      },
+                      { color: theme.colors.accent },
+                    )}
+                  </h2>
+                ) : null}
+                <p
+                  style={{
+                    margin: 0,
+                    fontFamily: fontFamily(theme.fonts.body),
+                    fontSize: slide.title ? fs(0.036) : fs(0.044),
+                    lineHeight: 1.4,
+                    color: theme.colors.text,
+                  }}
+                >
+                  {slide.text}
+                </p>
+              </>
+            ) : null}
+
+            {slide.type === "metric" ? (
+              <>
+                <div
+                  style={{
+                    fontFamily: fontFamily(theme.fonts.heading),
+                    fontWeight: theme.fonts.headingWeight,
+                    fontSize: metricSize(
+                      `${slide.prefix}${formatRu(slide.value, 0, slide.compact)}${slide.suffix}`,
+                    ),
+                    lineHeight: 1,
+                    letterSpacing: -3,
+                    color: theme.colors.accent,
+                    fontVariantNumeric: "tabular-nums",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {slide.prefix}
+                  {formatRu(slide.value, 0, slide.compact)}
+                  {slide.suffix}
+                </div>
+                <div style={{ lineHeight: 1.2 }}>
+                  {renderRich(
+                    slide.label,
+                    {
+                      fontFamily: fontFamily(theme.fonts.heading),
+                      fontWeight: theme.fonts.headingWeight,
+                      fontSize: fs(0.046),
+                      color: theme.colors.text,
+                    },
+                    { color: theme.colors.accent },
+                  )}
+                </div>
+                {slide.source ? (
+                  <div style={{ lineHeight: 1.3 }}>
+                    {renderRich(
+                      slide.source,
+                      {
+                        fontFamily: fontFamily(theme.fonts.mono),
+                        fontSize: fs(0.032),
+                        color: theme.colors.text,
+                      },
+                      { fontWeight: 700, color: theme.colors.accent },
+                    )}
+                  </div>
+                ) : null}
+              </>
+            ) : null}
+
+            {slide.type === "quote" ? (
+              <>
+                <p
+                  style={{
+                    margin: 0,
+                    fontFamily: fontFamily(theme.fonts.heading),
+                    fontWeight: theme.fonts.headingWeight,
+                    fontSize: fs(0.052),
+                    lineHeight: 1.25,
+                    color: theme.colors.text,
+                  }}
+                >
+                  «{slide.text}»
+                </p>
+                <div
+                  style={{
+                    fontFamily: fontFamily(theme.fonts.mono),
+                    fontSize: fs(0.026),
+                    color: theme.colors.text,
+                  }}
+                >
+                  {slide.author}
+                </div>
+              </>
+            ) : null}
+
+            {slide.type === "cta" ? (
+              <>
+                <h2
+                  style={{
+                    margin: 0,
+                    lineHeight: 1.1,
+                  }}
+                >
+                  {renderRich(
+                    slide.title,
+                    {
+                      fontFamily: fontFamily(theme.fonts.heading),
+                      fontWeight: theme.fonts.headingWeight,
+                      fontSize: fs(0.068),
+                      color: theme.colors.text,
+                    },
+                    { color: theme.colors.accent },
+                  )}
+                </h2>
+                <p
+                  style={{
+                    margin: 0,
+                    fontFamily: fontFamily(theme.fonts.body),
+                    fontSize: fs(0.038),
+                    lineHeight: 1.4,
+                    color: theme.colors.text,
+                  }}
+                >
+                  {slide.text}
+                </p>
+              </>
+            ) : null}
+          </div>
+
+          {/* Счётчик — плашкой поверх резкой (не размытой) верхней части
+              фото, чтобы читался на любом снимке. */}
+          {showCounter ? (
             <div
               style={{
+                position: "absolute",
+                top: sp(0.028),
+                right: sp(0.028),
+                padding: `${sp(0.012)}px ${sp(0.022)}px`,
+                borderRadius: 999,
+                backgroundColor: "rgba(255,255,255,0.92)",
                 fontFamily: fontFamily(theme.fonts.mono),
-                fontSize: fs(0.032),
-                letterSpacing: fs(0.004),
-                // Поверх фотографии кикер белый: акцентный цвет на светлом
-                // участке кадра пропадает даже с тенью.
-                color: hasImage ? "#ffffff" : theme.colors.accent,
-                textShadow: "0 2px 12px rgba(0,0,0,0.9)",
+                fontSize: fs(0.026),
+                color: theme.colors.text,
+                fontVariantNumeric: "tabular-nums",
               }}
             >
-              {slide.kicker.toUpperCase()}
+              {position.index + 1} / {position.total}
             </div>
-            <h1
-              style={{
-                margin: 0,
-                fontFamily: fontFamily(theme.fonts.heading),
-                fontWeight: theme.fonts.headingWeight,
-                fontSize: coverTitleSize(slide.title),
-                lineHeight: 1.08,
-                letterSpacing: -1,
-                color: "#ffffff",
-                textShadow: "0 4px 24px rgba(0,0,0,0.75)",
-              }}
-            >
-              {slide.title}
-            </h1>
-            <p
-              style={{
-                margin: 0,
-                fontFamily: fontFamily(theme.fonts.body),
-                fontSize: fs(0.042),
-                lineHeight: 1.35,
-                color: "rgba(255,255,255,0.85)",
-                textShadow: "0 2px 14px rgba(0,0,0,0.7)",
-              }}
-            >
-              {slide.subtitle}
-            </p>
-          </>
-        ) : null}
+          ) : null}
 
-        {slide.type === "point" ? (
+          {/* Подпись сайта — левый верхний угол (пара к счётчику справа
+              сверху); «листай» — правый нижний угол карточки (запрос
+              пользователя 21.09.2026). Цвет плашки зависит от того, что на
+              фото под ней конкретно на этом слайде (cornerTheme) — единого
+              цвета на все фото не бывает. */}
+          {footer && slide.type !== "cta" ? (
+            <div
+              style={{
+                position: "absolute",
+                top: sp(0.028),
+                left: sp(0.028),
+                padding: `${sp(0.01)}px ${sp(0.02)}px`,
+                borderRadius: 999,
+                backgroundColor:
+                  cornerTheme === "dark"
+                    ? "rgba(17,17,23,0.4)"
+                    : "rgba(255,255,255,0.85)",
+                fontFamily: fontFamily(theme.fonts.mono),
+                fontSize: fs(0.024),
+                color: cornerTheme === "dark" ? "rgba(255,255,255,0.85)" : theme.colors.muted,
+              }}
+            >
+              {footer}
+            </div>
+          ) : null}
+
+          {showSwipeHint && position.index === 0 ? (
+            <div
+              style={{
+                position: "absolute",
+                right: sp(0.028),
+                bottom: sp(0.028),
+                display: "flex",
+                alignItems: "center",
+                gap: sp(0.012),
+                padding: `${sp(0.012)}px ${sp(0.026)}px`,
+                borderRadius: 999,
+                backgroundColor: theme.colors.accent,
+                fontFamily: fontFamily(theme.fonts.mono),
+                fontSize: fs(0.026),
+                color: "#ffffff",
+              }}
+            >
+              листай <span style={{ fontSize: fs(0.036) }}>→</span>
+            </div>
+          ) : null}
+        </div>
+      ) : null}
+
+      {!framed ? (
+        <AbsoluteFill
+          style={{
+            padding: `${sp(0.12)}px ${sp(0.08)}px`,
+            justifyContent: slide.type === "cover" ? "flex-end" : "center",
+            gap: sp(0.035),
+          }}
+        >
+          {slide.type === "cover" ? (
+            <>
+              <div
+                style={{
+                  fontFamily: fontFamily(theme.fonts.mono),
+                  fontSize: fs(0.032),
+                  letterSpacing: fs(0.004),
+                  // Поверх фотографии кикер белый: акцентный цвет на светлом
+                  // участке кадра пропадает даже с тенью.
+                  color: hasImage ? "#ffffff" : theme.colors.accent,
+                  textShadow: "0 2px 12px rgba(0,0,0,0.9)",
+                }}
+              >
+                {slide.kicker.toUpperCase()}
+              </div>
+              <h1
+                style={{
+                  margin: 0,
+                  fontFamily: fontFamily(theme.fonts.heading),
+                  fontWeight: theme.fonts.headingWeight,
+                  fontSize: coverTitleSize(slide.title),
+                  lineHeight: 1.08,
+                  letterSpacing: -1,
+                  color: "#ffffff",
+                  textShadow: "0 4px 24px rgba(0,0,0,0.75)",
+                }}
+              >
+                {slide.title}
+              </h1>
+              <p
+                style={{
+                  margin: 0,
+                  fontFamily: fontFamily(theme.fonts.body),
+                  fontSize: fs(0.042),
+                  lineHeight: 1.35,
+                  color: "rgba(255,255,255,0.85)",
+                  textShadow: "0 2px 14px rgba(0,0,0,0.7)",
+                }}
+              >
+                {slide.subtitle}
+              </p>
+            </>
+          ) : null}
+
+          {slide.type === "point" ? (
           <>
             <div
               style={{
@@ -350,8 +759,13 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
           </>
         ) : null}
       </AbsoluteFill>
+      ) : null}
 
-      {showCounter ? (
+      {/* Счётчик, подпись сайта и подсказка «листай» для НЕ-framed стиля
+          (тёмная заливка под фото или полностью светлый слайд без фото) —
+          для framed-фото те же элементы уже отрисованы внутри карточки
+          фото выше, плашками поверх резкой части снимка. */}
+      {!framed && showCounter ? (
         <div
           style={{
             position: "absolute",
@@ -367,7 +781,7 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
         </div>
       ) : null}
 
-      {footer && slide.type !== "cta" ? (
+      {!framed && footer && slide.type !== "cta" ? (
         <div
           style={{
             position: "absolute",
@@ -385,7 +799,7 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
 
       {/* Подсказка листать — только на первом слайде: дальше она бессмысленна,
           а место занимает. */}
-      {showSwipeHint && position.index === 0 ? (
+      {!framed && showSwipeHint && position.index === 0 ? (
         <div
           style={{
             position: "absolute",

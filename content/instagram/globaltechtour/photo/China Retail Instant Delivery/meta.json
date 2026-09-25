@@ -1,0 +1,24 @@
+{
+  "channel": "instagram",
+  "brand": "globaltechtour",
+  "slug": "china-retail-instant",
+  "type": "carousel",
+  "folder": "China Retail Instant Delivery",
+  "publishAt": null,
+  "status": "saved",
+  "files": [
+    "01-cover.png",
+    "02-metric.png",
+    "03-point.png",
+    "04-point.png",
+    "05-point.png",
+    "06-point.png",
+    "07-point.png",
+    "08-point.png",
+    "09-point.png",
+    "10-cta.png"
+  ],
+  "createdAt": "2026-09-21T18:26:00.000Z",
+  "kind": "photo",
+  "note": "Готовая карусель, дата публикации ещё не назначена — не добавлена в queue.json. Источник текста: data/carousel-retail-instant.json в remotion-video-tools. Стоимость 480 000 ₽ + перелёт ~80 000 ₽ указана на сайте."
+}
