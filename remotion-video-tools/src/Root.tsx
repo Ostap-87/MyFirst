@@ -208,6 +208,68 @@ export const RemotionRoot: React.FC = () => {
         width={1080}
         height={1920}
       />
+      {/* Арсенал врезок на реальной сторис: окна, карточки внахлёст,
+          B-roll со шторкой, видео в рамке. Витрина приёмов, не выпуск. */}
+      <Composition
+        id="GTT-Arsenal"
+        component={ChinaStories}
+        schema={chinaStoriesSchema}
+        calculateMetadata={calculateStoriesMetadata}
+        defaultProps={{
+          footage: "local/st4-graded.mp4",
+          captionsSrc: "captions/st4.json",
+          durationSeconds: 22,
+          hookTop: "Арсенал приёмов",
+          hookBottom: "поверх говорящей головы",
+          brandMark: "GLOBAL TECH TOUR",
+          logoScale: 1.5,
+          logoSpin: 72,
+          plates: [],
+          cutaways: [],
+          focusY: 0.42,
+          popWindows: [
+            {
+              at: 3,
+              until: 6.6,
+              items: [
+                { src: "site/home.png" },
+                { src: "tg-images/globaltechtour/2026-08-23-bytedance-tiktok-vs-douyin.png" },
+                { src: "site/cases.jpg" },
+                { src: "tg-images/globaltechtour/2026-08-16-nio-battery-swap.png" },
+              ],
+            },
+          ],
+          photoCards: [
+            {
+              at: 7.4,
+              until: 11.2,
+              items: [
+                { src: "tg-images/globaltechtour/2026-08-22-tencent-wechat-os.png" },
+                { src: "tg-images/globaltechtour/2026-08-26-ant-group-alipay-infra.png" },
+                { src: "tg-images/globaltechtour/2026-08-28-sf-express-air-cargo.png" },
+              ],
+            },
+          ],
+          brolls: [
+            {
+              at: 11.8,
+              until: 16.6,
+              items: [
+                { src: "tg-images/globaltechtour/2026-08-21-foxconn-ai-servers.png", caption: "Foxconn" },
+                { src: "tg-images/globaltechtour/2026-09-01-longi-envision-solar-wind.png", caption: "LONGi" },
+                { src: "site/route-tea.mp4", caption: "Маршрут" },
+              ],
+            },
+          ],
+          inserts: [
+            { at: 17.4, until: 21.2, src: "local/china-expo.mp4", caption: "На выставке" },
+          ],
+        }}
+        durationInFrames={660}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
       {/* Монтажный стол: ролик ChinaStories и его лента в одном кадре.
           Пропсы любой сторис подставляет `npm run editor -- --id <id>`;
           здесь по умолчанию GTT-Invite — в ней есть стопка из трёх плашек. */}

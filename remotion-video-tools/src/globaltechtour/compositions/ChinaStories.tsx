@@ -13,8 +13,13 @@ import { z } from "zod";
 import { KaraokeCaptions } from "../../shared/components/KaraokeCaptions";
 import {
   CameraMoves,
+  FramedInsert,
+  mediaItemSchema,
+  PhotoCards,
+  PopWindows,
   SiteCutaway,
   SpinningTetra,
+  WipeBroll,
 } from "../../shared/components/effects";
 import { useCaptions } from "../../shared/useCaptions";
 import { useFormat } from "../../shared/format";
@@ -77,6 +82,32 @@ const moveSchema = z.object({
   scale: z.number().min(1).max(1.6).describe("Во сколько раз крупнее"),
 });
 
+const span = {
+  at: z.number().describe("Секунда начала — на начале слова"),
+  until: z.number().describe("Секунда конца — на конце фразы"),
+};
+
+const photoCardsBlock = z.object({
+  ...span,
+  items: z.array(mediaItemSchema).describe("Карточки по порядку — по словам"),
+  stepSeconds: z.number().optional().describe("Шаг между карточками; по умолчанию 0,35 с"),
+  side: z.enum(["left", "right"]).optional(),
+});
+const popWindowsBlock = z.object({
+  ...span,
+  items: z.array(mediaItemSchema).describe("Окна по порядку, до шести"),
+});
+const insertBlock = z.object({
+  ...span,
+  src: z.string().describe("Видео или фото внутри public"),
+  caption: z.string().optional(),
+  side: z.enum(["left", "right", "center"]).optional(),
+});
+const brollBlock = z.object({
+  ...span,
+  items: z.array(mediaItemSchema).describe("Кадры на весь экран; caption — геометка"),
+});
+
 export const chinaStoriesSchema = z.object({
   footage: z.string().describe("Путь к видео внутри public"),
   captionsSrc: z.string().describe("Путь к расшифровке внутри public"),
@@ -105,6 +136,10 @@ export const chinaStoriesSchema = z.object({
     .max(1)
     .optional()
     .describe("Где глаза по высоте кадра — центр зумов; по умолчанию 0,4"),
+  photoCards: z.array(photoCardsBlock).optional().describe("Фотокарточки внахлёст"),
+  popWindows: z.array(popWindowsBlock).optional().describe("Всплывающие окна вокруг спикера"),
+  inserts: z.array(insertBlock).optional().describe("Видеоврезки и фото в рамке"),
+  brolls: z.array(brollBlock).optional().describe("B-roll на весь кадр со шторкой"),
 });
 
 export type ChinaStoriesProps = z.infer<typeof chinaStoriesSchema>;
@@ -217,6 +252,10 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
   cutaways,
   moves = [],
   focusY = 0.4,
+  photoCards = [],
+  popWindows = [],
+  inserts = [],
+  brolls = [],
 }) => {
   const frame = useCurrentFrame();
   const { fps, height } = useVideoConfig();
@@ -239,9 +278,10 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
   // на экране сайта те же отрасли и программы уже перечислены списком, и
   // плашка поверх них повторяет сказанное дважды. Заодно освобождается
   // место под окно перебивки.
-  const cutawayNow = cutaways.some(
-    (c) => second >= c.at && second < c.at + c.seconds,
-  );
+  // B-roll на весь кадр закрывает спикера — плашки прячутся так же.
+  const cutawayNow =
+    cutaways.some((c) => second >= c.at && second < c.at + c.seconds) ||
+    brolls.some((b) => second >= b.at && second < b.until);
 
   const visible = cutawayNow
     ? []
@@ -277,6 +317,14 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
         </AbsoluteFill>
       </Sequence>
 
+      {/* B-roll — под затемнениями: знак и субтитры поверх него читаются
+          так же, как поверх съёмки. */}
+      {brolls.map((b) => (
+        <Sequence key={`b-${b.at}`} from={AT(b.at, fps)} durationInFrames={AT(b.until - b.at, fps)}>
+          <WipeBroll items={b.items} />
+        </Sequence>
+      ))}
+
       <AbsoluteFill
         style={{
           background:
@@ -308,6 +356,27 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
             zoom={1.05}
             fadeFrames={8}
           />
+        </Sequence>
+      ))}
+
+      {/* ——— Врезки поверх спикера: окна, карточки, видео в рамке ——— */}
+      {popWindows.map((b) => (
+        <Sequence key={`w-${b.at}`} from={AT(b.at, fps)} durationInFrames={AT(b.until - b.at, fps)}>
+          <PopWindows items={b.items} />
+        </Sequence>
+      ))}
+      {photoCards.map((b) => (
+        <Sequence key={`pc-${b.at}`} from={AT(b.at, fps)} durationInFrames={AT(b.until - b.at, fps)}>
+          <PhotoCards
+            items={b.items}
+            side={b.side}
+            stepFrames={AT(b.stepSeconds ?? 0.35, fps)}
+          />
+        </Sequence>
+      ))}
+      {inserts.map((b) => (
+        <Sequence key={`i-${b.at}`} from={AT(b.at, fps)} durationInFrames={AT(b.until - b.at, fps)}>
+          <FramedInsert src={b.src} caption={b.caption} side={b.side} />
         </Sequence>
       ))}
 
