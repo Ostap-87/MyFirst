@@ -159,14 +159,16 @@ for (const [i, e] of events.entries()) {
 
 // Лист: все скриншоты в одну картинку — на телефоне видно ход ролика сразу.
 {
-  const cols = Math.min(4, stills.length);
+  // Две колонки по 540 пикселей: владелец смотрит с телефона, и при
+  // четырёх колонках по 360 надписи стола было не прочитать.
+  const cols = Math.min(2, stills.length);
   const rows = Math.ceil(stills.length / cols);
   const list = resolve(outDir, "sheet.txt");
   writeFileSync(list, stills.map((f) => `file '${f}'`).join("\n"));
   const sheet = resolve(outDir, "sheet.jpg");
   execFileSync("ffmpeg", [
     "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", list,
-    "-vf", `scale=360:-1,tile=${cols}x${rows}:padding=8:color=0x0B0E14`,
+    "-vf", `scale=540:-1,tile=${cols}x${rows}:padding=8:color=0x0B0E14`,
     "-frames:v", "1", "-q:v", "3", sheet,
   ]);
   rmSync(list);
