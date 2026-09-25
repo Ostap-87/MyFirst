@@ -749,14 +749,16 @@ export const ChinaStoriesEditor: React.FC<EditorProps> = (props) => {
         />
       ))}
 
-      {/* Подписи дорожек поверх уезжающих клипов */}
+      {/* Подписи дорожек поверх уезжающих клипов. Колонка сплошная на всю
+          высоту ленты: иначе обводка активного клипа светится в щелях
+          между подписями. */}
       <div
         style={{
           position: "absolute",
           left: 0,
           top: TIMELINE_TOP,
           width: LABEL_W,
-          height: RULER_H,
+          bottom: 0,
           backgroundColor: C.panel,
           borderRight: `1px solid ${C.line}`,
         }}
