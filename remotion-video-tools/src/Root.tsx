@@ -1,5 +1,7 @@
 import "./index.css";
 import carouselExample from "../data/carousel.example.json";
+import siteTourRu from "../data/site-tour/ru.json";
+import { SiteTour, siteTourSchema, type SiteTourProps } from "./globaltechtour/compositions/SiteTour";
 import { Composition } from "remotion";
 import {
   MotionLab,
@@ -1169,6 +1171,17 @@ export const RemotionRoot: React.FC = () => {
         fps={30}
         width={1920}
         height={1080}
+      />
+      {/* Промо сайта по одному промпту: пропсы из npm run site-tour. */}
+      <Composition
+        id="GTT-SiteTour"
+        component={SiteTour}
+        schema={siteTourSchema}
+        durationInFrames={1800}
+        fps={30}
+        width={1080}
+        height={1920}
+        defaultProps={siteTourRu as SiteTourProps}
       />
     </>
   );

@@ -60,6 +60,7 @@
     "recut": "node hyperframes/build.mjs",
     "editor": "node scripts/editor.mjs",
     "head": "node scripts/head.mjs",
+    "site-tour": "node scripts/site-tour.mjs",
     "make-outline": "node scripts/make-outline.mjs"
   },
   "sideEffects": [
