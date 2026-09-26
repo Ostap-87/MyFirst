@@ -419,11 +419,11 @@
         "filter": "brightness(0.84) contrast(1.04) saturate(0.92) sepia(0.1)"
       },
       {
-        "at": 69.0,
+        "at": 69,
         "until": 70.3,
         "src": "local/head/0926-angle.mp4",
         "from": 62.44,
-        "rate": 1.0,
+        "rate": 1,
         "filter": "brightness(0.84) contrast(1.04) saturate(0.92) sepia(0.1)"
       }
     ]
