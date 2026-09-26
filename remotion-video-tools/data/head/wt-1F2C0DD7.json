@@ -4,7 +4,7 @@
   "props": {
     "footage": "local/head/wt-1F2C0DD7.mp4",
     "captionsSrc": "captions/head-wt-1F2C0DD7.json",
-    "durationSeconds": 90.15,
+    "durationSeconds": 89.75,
     "hookTop": "Большинство видит Китай",
     "hookBottom": "из окна автобуса",
     "brandMark": "GLOBAL TECH TOUR",
@@ -408,22 +408,6 @@
         "src": "local/head/0926-angle.mp4",
         "from": 107.8,
         "rate": 1.09,
-        "filter": "brightness(0.84) contrast(1.04) saturate(0.92) sepia(0.1)"
-      },
-      {
-        "at": 62.58,
-        "until": 64.05,
-        "src": "local/head/0926-angle.mp4",
-        "from": 49.64,
-        "rate": 1.14,
-        "filter": "brightness(0.84) contrast(1.04) saturate(0.92) sepia(0.1)"
-      },
-      {
-        "at": 69,
-        "until": 70.3,
-        "src": "local/head/0926-angle.mp4",
-        "from": 62.44,
-        "rate": 1,
         "filter": "brightness(0.84) contrast(1.04) saturate(0.92) sepia(0.1)"
       }
     ]
