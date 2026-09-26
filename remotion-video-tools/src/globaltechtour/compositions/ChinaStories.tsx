@@ -12,6 +12,7 @@ import {
 import { z } from "zod";
 import { KaraokeCaptions } from "../../shared/components/KaraokeCaptions";
 import {
+  AngleCuts,
   CameraMoves,
   FramedInsert,
   mediaItemSchema,
@@ -137,6 +138,13 @@ const splitBlock = z.object({
     .optional()
     .describe("Откуда открывается показ; по умолчанию снизу"),
 });
+const angleBlock = z.object({
+  ...span,
+  src: z.string().describe("Вторая камера внутри public, без звука"),
+  from: z.number().describe("Секунда в дубле, где начинается та же фраза"),
+  rate: z.number().optional().describe("Темп дубля под губы; по умолчанию 1"),
+  filter: z.string().optional().describe("CSS-фильтр под свет основной съёмки"),
+});
 const stageBlock = z.object({
   ...span,
   items: z.array(mediaItemSchema).describe("Что показывать за спикером"),
@@ -219,6 +227,10 @@ export const chinaStoriesSchema = z.object({
     .max(1)
     .optional()
     .describe("Где лицо по ширине кадра; по умолчанию 0,5"),
+  angles: z
+    .array(angleBlock)
+    .optional()
+    .describe("Смена ракурса: вставки второй камеры на совпадающих фразах"),
   safeZone: z
     .enum(["stories", "reels"])
     .optional()
@@ -380,6 +392,7 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
   cutoutSrc,
   stages = [],
   safeZone = "stories",
+  angles = [],
 }) => {
   const reels = safeZone === "reels";
   const logoTop = reels ? REELS.logoTop : LOGO_TOP;
@@ -474,15 +487,29 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
                       scale: m.scale,
                     }))}
                   >
-                    <OffthreadVideo
-                      src={staticFile(footage)}
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                        display: "block",
-                      }}
-                    />
+                    {/* Вторая камера — поверх основной, внутри движений камеры:
+                        зум и наезд продолжаются и на другом ракурсе. */}
+                    <AbsoluteFill>
+                      <OffthreadVideo
+                        src={staticFile(footage)}
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover",
+                          display: "block",
+                        }}
+                      />
+                      <AngleCuts
+                        cuts={angles.map((a) => ({
+                          fromFrame: AT(a.at, fps),
+                          toFrame: AT(a.until, fps),
+                          src: a.src,
+                          from: a.from,
+                          rate: a.rate,
+                          filter: a.filter,
+                        }))}
+                      />
+                    </AbsoluteFill>
                   </CameraMoves>
                 </PipScreen>
               </SplitScreen>

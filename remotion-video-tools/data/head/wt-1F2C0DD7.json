@@ -392,6 +392,40 @@
           }
         ]
       }
+    ],
+    "angles": [
+      {
+        "at": 7.36,
+        "until": 9.5,
+        "src": "local/head/0926-angle.mp4",
+        "from": 94.6,
+        "rate": 1.2,
+        "filter": "brightness(0.84) contrast(1.04) saturate(0.92) sepia(0.1)"
+      },
+      {
+        "at": 49.72,
+        "until": 52.17,
+        "src": "local/head/0926-angle.mp4",
+        "from": 107.8,
+        "rate": 1.09,
+        "filter": "brightness(0.84) contrast(1.04) saturate(0.92) sepia(0.1)"
+      },
+      {
+        "at": 62.58,
+        "until": 64.05,
+        "src": "local/head/0926-angle.mp4",
+        "from": 49.64,
+        "rate": 1.14,
+        "filter": "brightness(0.84) contrast(1.04) saturate(0.92) sepia(0.1)"
+      },
+      {
+        "at": 69.0,
+        "until": 70.3,
+        "src": "local/head/0926-angle.mp4",
+        "from": 62.44,
+        "rate": 1.0,
+        "filter": "brightness(0.84) contrast(1.04) saturate(0.92) sepia(0.1)"
+      }
     ]
   },
   "proposals": [
