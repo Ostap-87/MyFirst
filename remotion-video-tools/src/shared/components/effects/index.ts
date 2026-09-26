@@ -33,3 +33,4 @@ export { TetraField, tetraFieldDefaults, tetraFieldSchema } from "./TetraField";
 export { Media, mediaItemSchema, type MediaItem } from "./media";
 export * from "./ScreenCapture";
 export * from "./PromoOverlays";
+export * from "./GiphySticker";

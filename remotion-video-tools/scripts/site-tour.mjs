@@ -134,15 +134,27 @@ const clicks = rec.cursor.filter((c) => c.kind === "click").map((c) => c.t);
 // 4 «Все экспедиции», 5 «Собрать свою программу», 6 карточка индустрии,
 // 7 «Корпоративное обучение».
 const C = (n) => clicks[n];
-// Загрузки страниц вырезаются: в каждом блоке — только то, что видно.
+// В кадр идут только загруженные страницы: каждый кусок после перехода
+// начинается с метки «…-ready», записанной через 3–5 с после загрузки.
 const PLAN = {
-  2: [[M.blank - 0.1, M.loaded + 2.6]],
-  3: [[C(0) - 0.9, C(0) + 0.35], [M.industries + 0.2, M["card-3"] + 0.4]],
-  4: [[C(1) - 0.8, C(1) + 0.5], [C(2) - 0.6, C(2) + 0.3], [C(3) - 1.6, C(3) + 0.35], [M.map - 0.9, M["city-2"] + 0.4]],
-  6: [[C(5) - 1.2, C(5) + 0.35], [M.build + 0.2, C(6) + 1.2]],
-  7: [[C(7) - 1.3, C(7) + 0.3], [M.corp + 0.3, M["corp-2"] + 0.6]],
+  2: [[M.blank - 0.1, M.enter + 0.2], [M["home-ready"] - 0.2, M["home-ready"] + 3.4]],
+  3: [[C(0) - 0.9, C(0) + 0.35], [M["industries-ready"], M["card-3"] + 0.4]],
+  4: [[C(1) - 0.8, C(1) + 0.5], [C(2) - 0.6, C(2) + 0.3], [M["expeditions-ready"], C(3) + 0.35], [M["robo-ready"], M["city-2"] + 0.4]],
+  6: [[C(5) - 1.2, C(5) + 0.35], [M["build-ready"], C(6) + 1.6]],
+  7: [[C(7) - 1.3, C(7) + 0.3], [M["corp-ready"], M["corp-2"] + 0.6]],
+};
+// Планы камеры: [номер куска в блоке, секунда от его начала, приближение,
+// точка на экране по ширине и высоте]. Блок начинается общим планом и за
+// 0,7 с до конца отъезжает к нему же.
+const ZOOM = {
+  2: [[1, 0.4, 1.12, 0.5, 0.42]],
+  3: [[1, 0.5, 1.42, 0.5, 0.64]],
+  4: [[2, 0.2, 1.35, 0.3, 0.55], [3, 1.6, 1.62, 0.28, 0.52]],
+  6: [[0, 0.1, 1.38, 0.33, 0.44], [1, 0.5, 1.4, 0.5, 0.62]],
+  7: [[1, 1.8, 1.42, 0.5, 0.45]],
 };
 const screen = [];
+const shots = [];
 for (const [n, segs] of Object.entries(PLAN)) {
   const b = blocks[Number(n) - 1];
   const len = b.until - b.from;
@@ -152,11 +164,18 @@ for (const [n, segs] of Object.entries(PLAN)) {
   if (rate < 0.8) { segs[segs.length - 1][1] += len * 0.8 - total; rate = 0.8; }
   rate = Math.min(rate, 1.9);
   let at = b.from;
+  const starts = [];
   for (const [s, e] of segs) {
     const out = (e - s) / rate;
+    starts.push(at);
     screen.push({ from: Math.round(at * FPS), to: Math.round((at + out) * FPS), rec: +s.toFixed(3), rate: +rate.toFixed(4) });
     at += out;
   }
+  shots.push({ frame: Math.round(b.from * FPS), scale: 1, fx: 0.5, fy: 0.5 });
+  for (const [seg, dt, scale, fx, fy] of ZOOM[n] ?? []) {
+    shots.push({ frame: Math.round((starts[seg] + dt) * FPS), scale, fx, fy });
+  }
+  shots.push({ frame: Math.round((b.until - 0.8) * FPS), scale: 1, fx: 0.5, fy: 0.5 });
 }
 // Точки маршрута на карте — в кадрах ролика, по меткам записи.
 const recToFrame = (tr) => {
@@ -181,9 +200,13 @@ const props = {
   url: lang === "en" ? "globaltechtour.ru/en" : "globaltechtour.ru",
   screen,
   cursor: rec.cursor.map((c) => ({ t: +c.t.toFixed(3), x: Math.round(c.x), y: Math.round(c.y), kind: c.kind })),
-  typing: { from: Math.round(blocks[1].from * FPS), to: recToFrame(M.enter) ?? Math.round((blocks[1].from + 0.6) * FPS) },
+  typing: { from: Math.round(blocks[1].from * FPS), to: screen[1].from },
+  shots,
+  enterFrame: Math.round(blocks[1].from * FPS),
   phoneSrc: `${DIR}/phone.mp4`,
-  phone: { from: Math.round(blocks[4].from * FPS), to: Math.round(blocks[4].until * FPS), rec: phone.marks["m-start"] - 0.3, rate: +((phone.marks["m-end"] - phone.marks["m-start"] + 0.3) / (blocks[4].until - blocks[4].from)).toFixed(4) },
+  // Телефон — только первая прокрутка вниз, ×1,25: вся запись в три
+  // секунды блока шла втрое быстрее и страницу было не разглядеть.
+  phone: { from: Math.round(blocks[4].from * FPS), to: Math.round(blocks[4].until * FPS), rec: phone.marks["m-start"] - 0.2, rate: 1.25 },
   heads: [
     { from: 0, to: Math.round(blocks[0].until * FPS), clips: [{ src: "local/pool/DJI_20010108123424_0148_D.MP4", start: 13.0 }] },
     { from: Math.round(blocks[7].from * FPS), to: TOTAL * FPS, clips: [{ src: "local/pool/0926-3.mov", start: 57.2, seconds: 4.4 }, { src: "local/pool/DJI_20010108123424_0148_D.MP4", start: 31.6 }] },

@@ -92,6 +92,10 @@ fs.mkdirSync(path.join(outDir, 'f'), { recursive: true });
     await page.mouse.move(cx, cy);
     await wait(1500);
     mark('loaded');
+    // Треугольники собираются в карту Китая около пяти секунд — в кадр
+    // идёт только готовая страница.
+    await wait(4500);
+    mark('home-ready');
     await moveTo(880, 460, 1500);
     await wait(1500);
     await moveTo(820, 560, 1200);
@@ -105,7 +109,8 @@ fs.mkdirSync(path.join(outDir, 'f'), { recursive: true });
     await wait(500);
     await click(); await nav();
     mark('industries');
-    await wait(1200);
+    await wait(3200);
+    mark('industries-ready');
     for (const [i, [x, y]] of [[300, 465], [720, 465], [1135, 465], [300, 568], [720, 568], [1135, 568]].entries()) {
       await moveTo(x, y, 550); await wait(350); mark(`card-${i}`);
     }
@@ -117,11 +122,13 @@ fs.mkdirSync(path.join(outDir, 'f'), { recursive: true });
     await hoverEl('a', T.ready, 500, true);
     await wait(300); await click(); await nav();
     mark('expeditions');
-    await wait(1300);
+    await wait(3200);
+    mark('expeditions-ready');
     await hoverEl('a', 'Robotics Expedition', 800);
     await wait(700); await click(); await nav();
     mark('robo');
-    await wait(2000);
+    await wait(3500);
+    mark('robo-ready');
     await scrollBy(480, 1300);
     mark('map');
     for (const [i, [x, y]] of [[480, 400], [600, 640], [560, 760]].entries()) {
@@ -139,10 +146,11 @@ fs.mkdirSync(path.join(outDir, 'f'), { recursive: true });
     mark('build-hover');
     await wait(550); await click(); await nav();
     mark('build');
-    await wait(1300);
+    await wait(3200);
+    mark('build-ready');
     await hoverEl('button', T.robo, 800);
     await wait(500); await click();
-    await wait(2000);
+    await wait(3500);
     mark('robo-companies');
     await moveTo(700, 600, 1000);
     await scrollBy(300, 1300);
@@ -152,7 +160,8 @@ fs.mkdirSync(path.join(outDir, 'f'), { recursive: true });
     await hoverEl('a', T.corp, 800, true);
     await wait(300); await click(); await nav();
     mark('corp');
-    await wait(1500);
+    await wait(3200);
+    mark('corp-ready');
     await scrollBy(560, 1400);
     mark('corp-cards');
     for (const [i, x] of [300, 720, 1135].entries()) { await moveTo(x, 420, 650); await wait(650); mark(`corp-${i}`); }

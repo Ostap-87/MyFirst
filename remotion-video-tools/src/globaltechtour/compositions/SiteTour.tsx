@@ -9,6 +9,7 @@ import {
 import { z } from "zod";
 import {
   BlockFade,
+  cameraShotSchema,
   captureSegmentSchema,
   CtaCard,
   cursorEventSchema,
@@ -47,6 +48,8 @@ export const siteTourSchema = z.object({
   screen: z.array(captureSegmentSchema),
   cursor: z.array(cursorEventSchema),
   typing: z.object({ from: z.number().int(), to: z.number().int() }),
+  shots: z.array(cameraShotSchema),
+  enterFrame: z.number().int(),
   phoneSrc: z.string(),
   phone: z.object({ from: z.number().int(), to: z.number().int(), rec: z.number(), rate: z.number() }),
   heads: z.array(z.object({ from: z.number().int(), to: z.number().int(), clips: z.array(headClip) })),
@@ -133,8 +136,9 @@ export const SiteTour: React.FC<SiteTourProps> = (p) => {
           cursor={p.cursor}
           url={p.url}
           typing={p.typing}
-          zoom={1.42}
-          centerY={0.47}
+          shots={p.shots}
+          centerY={0.46}
+          enterFrame={p.enterFrame}
         />
       </Sequence>
 

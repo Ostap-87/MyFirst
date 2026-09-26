@@ -29,9 +29,10 @@ import { z } from "zod";
  *
  * ——— Камера ———
  *
- * Страница шириной 1440 в вертикальном кадре мелкая. Камера плавно
- * наезжает к курсору и держит его ближе к центру, как в Screen Studio:
- * наезд в начале каждого блока, отъезд в конце.
+ * Ноутбук при обычном плане виден целиком. Камера за курсором не ездит —
+ * первая версия так делала, и при наезде ноутбук мотало по кадру. Вместо
+ * этого планы: в каждом блоке общий план, затем наезд к тому, о чём
+ * говорят (карточки, карта маршрута), и отъезд к концу блока.
  */
 export const captureSegmentSchema = z.object({
   from: z.number().int().describe("Кадр ролика, с которого идёт кусок"),
@@ -46,6 +47,12 @@ export const cursorEventSchema = z.object({
   kind: z.enum(["from", "to", "click"]),
 });
 
+export const cameraShotSchema = z.object({
+  frame: z.number().int().describe("Кадр ролика"),
+  scale: z.number().min(1).max(2.5).describe("Приближение: 1 — ноутбук целиком"),
+  fx: z.number().min(0).max(1).describe("Куда смотрим по ширине экрана, доля"),
+  fy: z.number().min(0).max(1).describe("Куда смотрим по высоте экрана, доля"),
+});
 export const laptopCaptureSchema = z.object({
   src: z.string().describe("Запись экрана внутри public"),
   screenW: z.number().describe("Ширина вьюпорта записи"),
@@ -56,8 +63,11 @@ export const laptopCaptureSchema = z.object({
   typing: z
     .object({ from: z.number().int(), to: z.number().int() })
     .describe("Кадры, когда адрес печатается"),
-  zoom: z.number().min(1).max(2).describe("Наезд камеры к курсору"),
+  shots: z
+    .array(cameraShotSchema)
+    .describe("Планы камеры по кадрам: между ними — плавный наезд или отъезд"),
   centerY: z.number().describe("Где центр ноутбука по высоте кадра, доля"),
+  enterFrame: z.number().int().describe("Кадр, когда ноутбук въезжает в кадр"),
 });
 export type LaptopCaptureParams = z.infer<typeof laptopCaptureSchema>;
 export type CaptureSegment = z.infer<typeof captureSegmentSchema>;
@@ -141,68 +151,50 @@ export const LaptopCapture: React.FC<LaptopCaptureParams> = ({
   cursor,
   url,
   typing,
-  zoom,
+  shots,
   centerY,
+  enterFrame,
 }) => {
   const frame = useCurrentFrame();
   const { width, height } = useVideoConfig();
   const t = recTimeAt(segments, frame);
   if (t === null) return null;
 
-  // Ноутбук вписан по ширине кадра.
-  const screenWpx = width * 0.92;
+  // Ноутбук целиком в кадре: крышка на 86% ширины, основание чуть шире.
+  const bezel = 14;
+  const lidW = width * 0.86;
+  const screenWpx = lidW - bezel * 2;
   const s0 = screenWpx / screenW;
   const innerH = (screenH + CHROME) * s0;
-  const bezel = 18;
-  const lidW = screenWpx + bezel * 2;
-  const lidH = innerH + bezel * 2;
+  const lidH = innerH + bezel * 2 + 10;
   const lidX = (width - lidW) / 2;
   const lidY = height * centerY - lidH / 2;
+  const screenX = lidX + bezel;
+  const screenY = lidY + bezel + 6;
 
-  // Блок — непрерывная цепочка кусков; наезд идёт от начала блока.
-  const block = segments.reduce<{ from: number; to: number } | null>((acc, s) => {
-    if (acc) return acc;
-    let from = s.from, to = s.to;
-    for (const x of segments) {
-      if (x.to === from) from = x.from;
-    }
-    for (const x of segments) {
-      if (x.from === to) to = x.to;
-    }
-    return frame >= from && frame < to ? { from, to } : null;
-  }, null) ?? { from: frame, to: frame + 1 };
-  let blockFrom = block.from, blockTo = block.to;
-  // Цепочка могла оборваться на первом найденном куске — дотягиваем.
-  let grew = true;
-  while (grew) {
-    grew = false;
-    for (const x of segments) {
-      if (x.to === blockFrom) { blockFrom = x.from; grew = true; }
-      if (x.from === blockTo) { blockTo = x.to; grew = true; }
-    }
-  }
-  const z = interpolate(
-    frame,
-    [blockFrom, blockFrom + 18, blockTo - 12, blockTo],
-    [1, zoom, zoom, 1.02],
-    { ...clamp, easing: ease },
-  );
-  // Фокус камеры — курсор, сглаженный по последним кадрам: камера
-  // догоняет его, а не дёргается следом.
-  let fx = 0, fy = 0, n = 0;
-  for (let k = 0; k < 14; k++) {
-    const tk = recTimeAt(segments, Math.max(blockFrom, frame - k));
-    if (tk === null) continue;
-    const p = cursorAt(cursor, tk, screenW, screenH);
-    fx += p.x; fy += p.y; n++;
-  }
-  fx /= n; fy /= n;
-  const focusX = lidX + bezel + fx * s0;
-  const focusY = lidY + bezel + (CHROME + fy) * s0;
-  // Точка фокуса едет к центру кадра по мере наезда.
-  const k = (z - 1) / Math.max(0.001, zoom - 1);
-  const shiftX = (width / 2 - focusX) * 0.55 * k;
-  const shiftY = (height * centerY - focusY) * 0.45 * k;
+  // ——— Камера: планы из пропсов, между ними — плавный переход ———
+  // Никакого слежения за курсором: камера стоит, пока план не сменится,
+  // и ездит только наездом к заданной точке и отъездом обратно.
+  const sorted = [...shots].sort((x, y) => x.frame - y.frame);
+  const prev = [...sorted].reverse().find((x) => x.frame <= frame) ?? { frame: 0, scale: 1, fx: 0.5, fy: 0.5 };
+  // Переход к плану занимает до 24 кадров от его начала, дальше план стоит.
+  const from = sorted[sorted.indexOf(prev) - 1] ?? prev;
+  const nextShot = sorted.find((x) => x.frame > prev.frame);
+  const span = Math.min(24, nextShot ? nextShot.frame - prev.frame : 24);
+  const kIn = ease(Math.min(1, (frame - prev.frame) / Math.max(1, span)));
+  const lerp = (a: number, b: number, x: number) => a + (b - a) * x;
+  const z = lerp(from.scale, prev.scale, kIn);
+  const fx = lerp(from.fx, prev.fx, kIn);
+  const fy = lerp(from.fy, prev.fy, kIn);
+  // Точка на экране, куда смотрим, при приближении встаёт в центр кадра.
+  const px = screenX + fx * screenWpx;
+  const py = screenY + (CHROME * s0) + fy * screenH * s0;
+  const m = Math.min(1, (z - 1) / 0.35);
+  const tx = (width / 2 - px) * m;
+  const ty = (height * centerY - py) * m;
+
+  // Въезд: снизу, с наклоном крышки на себя.
+  const enter = interpolate(frame, [enterFrame, enterFrame + 22], [0, 1], { ...clamp, easing: Easing.out(Easing.cubic) });
 
   const cur = cursorAt(cursor, t, screenW, screenH);
   const lastClick = [...cursor].reverse().find((c) => c.kind === "click" && c.t <= t);
@@ -215,102 +207,150 @@ export const LaptopCapture: React.FC<LaptopCaptureParams> = ({
   return (
     <AbsoluteFill
       style={{
-        transform: `translate(${shiftX}px, ${shiftY}px) scale(${z})`,
-        transformOrigin: `${focusX}px ${focusY}px`,
+        transform: `translate(${tx}px, ${ty + (1 - enter) * height * 0.18}px) scale(${z})`,
+        transformOrigin: `${px}px ${py}px`,
+        opacity: enter,
       }}
     >
-      {/* Крышка ноутбука */}
+      {/* Свечение и отражение под ноутбуком */}
+      <div
+        style={{
+          position: "absolute",
+          left: lidX - width * 0.1,
+          top: lidY - lidH * 0.25,
+          width: lidW + width * 0.2,
+          height: lidH * 1.5,
+          borderRadius: "50%",
+          background: "radial-gradient(closest-side, rgba(37,99,235,0.32), rgba(37,99,235,0) 70%)",
+        }}
+      />
       <div
         style={{
           position: "absolute",
           left: lidX,
-          top: lidY,
+          top: lidY + lidH + 30,
           width: lidW,
-          height: lidH,
-          borderRadius: 26,
-          background: "linear-gradient(180deg,#1b1e26,#0c0e13)",
-          boxShadow: "0 40px 90px rgba(0,0,0,0.55), inset 0 0 0 2px rgba(255,255,255,0.08)",
-        }}
-      />
-      {/* Основание */}
-      <div
-        style={{
-          position: "absolute",
-          left: lidX - 40,
-          top: lidY + lidH - 4,
-          width: lidW + 80,
-          height: 26,
-          borderRadius: "0 0 22px 22px",
-          background: "linear-gradient(180deg,#c9ccd4,#8d919b)",
-          boxShadow: "0 18px 40px rgba(0,0,0,0.45)",
+          height: 60,
+          borderRadius: "50%",
+          background: "radial-gradient(closest-side, rgba(0,0,0,0.65), rgba(0,0,0,0))",
         }}
       />
       <div
         style={{
           position: "absolute",
-          left: lidX + bezel,
-          top: lidY + bezel,
-          width: screenW,
-          height: screenH + CHROME,
-          transform: `scale(${s0})`,
-          transformOrigin: "0 0",
-          overflow: "hidden",
-          borderRadius: 10,
-          background: "#fff",
+          inset: 0,
+          transform: `perspective(2200px) rotateX(${(1 - enter) * 14}deg)`,
+          transformOrigin: `50% ${lidY + lidH}px`,
         }}
       >
-        {/* Строка браузера */}
+        {/* Крышка */}
         <div
           style={{
             position: "absolute",
-            inset: "0 0 auto 0",
-            height: CHROME,
-            background: "#eceef2",
-            borderBottom: "1px solid #d7d9df",
-            display: "flex",
-            alignItems: "center",
-            gap: 10,
-            padding: "0 20px",
-            fontFamily: "Inter, sans-serif",
+            left: lidX,
+            top: lidY,
+            width: lidW,
+            height: lidH,
+            borderRadius: 30,
+            background: "linear-gradient(180deg,#23262e 0%,#0d0f14 100%)",
+            boxShadow: "0 50px 100px rgba(0,0,0,0.6), inset 0 0 0 1.5px rgba(255,255,255,0.14), inset 0 2px 0 rgba(255,255,255,0.18)",
+          }}
+        />
+        {/* Камера */}
+        <div style={{ position: "absolute", left: width / 2 - 4, top: lidY + 6, width: 8, height: 8, borderRadius: 4, background: "#1c2433", boxShadow: "inset 0 0 0 2px #2f3a4d" }} />
+        {/* Основание */}
+        <div
+          style={{
+            position: "absolute",
+            left: lidX - width * 0.035,
+            top: lidY + lidH - 2,
+            width: lidW + width * 0.07,
+            height: 22,
+            borderRadius: "4px 4px 26px 26px",
+            background: "linear-gradient(180deg,#e4e6eb 0%,#b7bbc4 55%,#8c909a 100%)",
+            boxShadow: "0 22px 40px rgba(0,0,0,0.5)",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            left: width / 2 - 70,
+            top: lidY + lidH - 2,
+            width: 140,
+            height: 9,
+            borderRadius: "0 0 10px 10px",
+            background: "linear-gradient(180deg,#a3a7b0,#c9ccd3)",
+          }}
+        />
+        {/* Экран */}
+        <div
+          style={{
+            position: "absolute",
+            left: screenX,
+            top: screenY,
+            width: screenW,
+            height: screenH + CHROME,
+            transform: `scale(${s0})`,
+            transformOrigin: "0 0",
+            overflow: "hidden",
+            borderRadius: 12,
+            background: "#fff",
           }}
         >
-          {["#ff5f57", "#febc2e", "#28c840"].map((c) => (
-            <div key={c} style={{ width: 14, height: 14, borderRadius: 7, background: c }} />
-          ))}
           <div
             style={{
-              marginLeft: 26,
-              flex: 1,
-              maxWidth: 760,
-              height: 36,
-              borderRadius: 18,
-              background: "#fff",
+              position: "absolute",
+              inset: "0 0 auto 0",
+              height: CHROME,
+              background: "#eceef2",
+              borderBottom: "1px solid #d7d9df",
               display: "flex",
               alignItems: "center",
-              padding: "0 18px",
-              fontSize: 20,
-              color: "#1f2330",
-              gap: 8,
+              gap: 10,
+              padding: "0 20px",
+              fontFamily: "Inter, sans-serif",
             }}
           >
-            <span style={{ color: "#8a8f9c", fontSize: 18 }}>🔒</span>
-            {typed}
-            {caret ? <span style={{ width: 2, height: 22, background: "#2563eb" }} /> : null}
+            {["#ff5f57", "#febc2e", "#28c840"].map((c) => (
+              <div key={c} style={{ width: 14, height: 14, borderRadius: 7, background: c }} />
+            ))}
+            <div
+              style={{
+                marginLeft: 26,
+                flex: 1,
+                maxWidth: 760,
+                height: 36,
+                borderRadius: 18,
+                background: "#fff",
+                display: "flex",
+                alignItems: "center",
+                padding: "0 18px",
+                fontSize: 20,
+                color: "#1f2330",
+                gap: 8,
+              }}
+            >
+              <span style={{ color: "#8a8f9c", fontSize: 18 }}>🔒</span>
+              {typed}
+              {caret ? <span style={{ width: 2, height: 22, background: "#2563eb" }} /> : null}
+            </div>
           </div>
-        </div>
-        <div style={{ position: "absolute", left: 0, top: CHROME, width: screenW, height: screenH, overflow: "hidden" }}>
-          {segments.map((s) => (
-            <Sequence key={`seg-${s.from}`} from={s.from} durationInFrames={s.to - s.from} layout="none">
-              <OffthreadVideo
-                src={staticFile(src)}
-                muted
-                trimBefore={Math.round(s.rec * FPS)}
-                playbackRate={s.rate}
-                style={{ width: screenW, height: screenH, display: "block" }}
-              />
-            </Sequence>
-          ))}
-          <Cursor x={cur.x} y={cur.y} press={press} />
+          <div style={{ position: "absolute", left: 0, top: CHROME, width: screenW, height: screenH, overflow: "hidden" }}>
+            {segments.map((sg) => (
+              <Sequence key={`seg-${sg.from}`} from={sg.from} durationInFrames={sg.to - sg.from} layout="none">
+                <OffthreadVideo
+                  src={staticFile(src)}
+                  muted
+                  trimBefore={Math.round(sg.rec * FPS)}
+                  playbackRate={sg.rate}
+                  style={{ width: screenW, height: screenH, display: "block" }}
+                />
+              </Sequence>
+            ))}
+            <Cursor x={cur.x} y={cur.y} press={press} />
+          </div>
+          {/* Блик на стекле */}
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(115deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0) 35%)", pointerEvents: "none" }} />
         </div>
       </div>
     </AbsoluteFill>

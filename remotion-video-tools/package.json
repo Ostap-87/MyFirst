@@ -61,6 +61,7 @@
     "editor": "node scripts/editor.mjs",
     "head": "node scripts/head.mjs",
     "site-tour": "node scripts/site-tour.mjs",
+    "giphy": "node scripts/giphy.mjs",
     "make-outline": "node scripts/make-outline.mjs"
   },
   "sideEffects": [
