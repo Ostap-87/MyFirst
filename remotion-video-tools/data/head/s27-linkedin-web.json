@@ -4,7 +4,7 @@
   "props": {
     "footage": "local/head/s27-linkedin-web.mp4",
     "captionsSrc": "captions/head-s27-linkedin-web.json",
-    "durationSeconds": 22.87,
+    "durationSeconds": 22.8,
     "hookTop": "Где читать",
     "hookBottom": "мои статьи",
     "brandMark": "GLOBAL TECH TOUR",
@@ -47,7 +47,7 @@
       }
     ],
     "music": "audio/music/gtt-bed-light-long.m4a",
-    "musicVolume": 0.1,
+    "musicVolume": 0.12,
     "pips": [
       {
         "at": 12.8,
@@ -64,7 +64,7 @@
       },
       {
         "at": 17.4,
-        "until": 22.9,
+        "until": 22.8,
         "items": [
           {
             "src": "site/linkedin-ostap.jpg",

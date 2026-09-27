@@ -4,7 +4,7 @@
   "props": {
     "footage": "local/head/s27-linkedin.mp4",
     "captionsSrc": "captions/head-s27-linkedin.json",
-    "durationSeconds": 23.49,
+    "durationSeconds": 23.43,
     "hookTop": "Новости индустрий",
     "hookBottom": "на английском",
     "brandMark": "GLOBAL TECH TOUR",
@@ -70,7 +70,7 @@
       }
     ],
     "music": "audio/music/gtt-bed-light-long.m4a",
-    "musicVolume": 0.1,
+    "musicVolume": 0.12,
     "pips": [
       {
         "at": 4.3,

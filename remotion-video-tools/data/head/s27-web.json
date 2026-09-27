@@ -4,7 +4,7 @@
   "props": {
     "footage": "local/head/s27-web.mp4",
     "captionsSrc": "captions/head-s27-web.json",
-    "durationSeconds": 14.59,
+    "durationSeconds": 14.57,
     "hookTop": "Мой сайт",
     "hookBottom": "разделы на выбор",
     "brandMark": "GLOBAL TECH TOUR",
@@ -35,11 +35,11 @@
       }
     ],
     "music": "audio/music/gtt-bed-light-long.m4a",
-    "musicVolume": 0.1,
+    "musicVolume": 0.12,
     "pips": [
       {
         "at": 7.3,
-        "until": 14.6,
+        "until": 14.57,
         "items": [
           {
             "src": "site/ostapdotcenko.jpg",

@@ -4,7 +4,7 @@
   "props": {
     "footage": "local/head/s27-tg.mp4",
     "captionsSrc": "captions/head-s27-tg.json",
-    "durationSeconds": 21.13,
+    "durationSeconds": 15.23,
     "hookTop": "Новости индустрии",
     "hookBottom": "каждый день",
     "brandMark": "GLOBAL TECH TOUR",
@@ -14,32 +14,32 @@
     "plates": [
       {
         "text": "Telegram · Global Tech Tour",
-        "at": 7.4,
-        "until": 11.2,
+        "at": 2.9,
+        "until": 5.2,
         "kind": "accent"
       },
       {
         "text": "Каждый день",
-        "at": 10.1,
-        "until": 11.2,
+        "at": 4.2,
+        "until": 5.2,
         "kind": "term"
       },
       {
         "text": "Новости индустрии",
-        "at": 11.3,
-        "until": 17.5,
+        "at": 5.3,
+        "until": 11.9,
         "kind": "term"
       },
       {
         "text": "Новости компаний",
-        "at": 12.7,
-        "until": 17.5,
+        "at": 6.6,
+        "until": 11.9,
         "kind": "term"
       },
       {
         "text": "Хай-тек · робототехника",
-        "at": 14.1,
-        "until": 17.5,
+        "at": 8.3,
+        "until": 11.9,
         "kind": "term"
       }
     ],
@@ -47,36 +47,29 @@
     "moves": [
       {
         "at": 0,
-        "until": 2.2,
+        "until": 1.9,
         "kind": "punch",
         "scale": 1.15
       },
       {
-        "at": 13.28,
-        "until": 14.11,
+        "at": 3.1,
+        "until": 5.2,
+        "kind": "push",
+        "scale": 1.07
+      },
+      {
+        "at": 7.4,
+        "until": 8.9,
         "kind": "punch",
         "scale": 1.2
       }
     ],
     "music": "audio/music/gtt-bed-light-long.m4a",
-    "musicVolume": 0.1,
+    "musicVolume": 0.12,
     "pips": [
       {
-        "at": 4.0,
-        "until": 7.3,
-        "items": [
-          {
-            "src": "site/telegram-gtt.jpg",
-            "present": "site",
-            "title": "Global Tech Tour",
-            "url": "t.me/GlobalTechTour",
-            "scrollTo": 0.1
-          }
-        ]
-      },
-      {
-        "at": 17.6,
-        "until": 21.1,
+        "at": 12.0,
+        "until": 15.23,
         "items": [
           {
             "src": "site/telegram-gtt.jpg",
