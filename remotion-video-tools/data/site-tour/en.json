@@ -8,76 +8,76 @@
   "url": "globaltechtour.ru/en",
   "screen": [
     {
-      "from": 284,
-      "to": 329,
+      "from": 274,
+      "to": 319,
       "rec": 0.478,
       "rate": 0.8
     },
     {
-      "from": 329,
-      "to": 475,
+      "from": 319,
+      "to": 498,
       "rec": 9.766,
       "rate": 0.8
     },
     {
-      "from": 475,
-      "to": 507,
+      "from": 498,
+      "to": 530,
       "rec": 19.671,
-      "rate": 1.1559
+      "rate": 1.1978
     },
     {
-      "from": 507,
-      "to": 639,
+      "from": 530,
+      "to": 657,
       "rec": 27.486,
-      "rate": 1.1559
+      "rate": 1.1978
     },
     {
-      "from": 639,
-      "to": 667,
+      "from": 657,
+      "to": 685,
       "rec": 36.218,
       "rate": 1.3917
     },
     {
-      "from": 667,
-      "to": 686,
+      "from": 685,
+      "to": 704,
       "rec": 39.388,
       "rate": 1.3917
     },
     {
-      "from": 686,
-      "to": 755,
+      "from": 704,
+      "to": 773,
       "rec": 73.666,
       "rate": 1.3917
     },
     {
-      "from": 755,
-      "to": 954,
+      "from": 773,
+      "to": 972,
       "rec": 83.287,
       "rate": 1.3917
     },
     {
-      "from": 1046,
-      "to": 1098,
+      "from": 1061,
+      "to": 1111,
       "rec": 101.173,
-      "rate": 0.904
+      "rate": 0.9367
     },
     {
-      "from": 1098,
-      "to": 1219,
+      "from": 1111,
+      "to": 1228,
       "rec": 108.986,
-      "rate": 0.904
+      "rate": 0.9367
     },
     {
-      "from": 1219,
-      "to": 1271,
+      "from": 1228,
+      "to": 1278,
       "rec": 118.336,
-      "rate": 0.9208
+      "rate": 0.9543
     },
     {
-      "from": 1271,
+      "from": 1278,
       "to": 1465,
       "rec": 153.549,
-      "rate": 0.9208
+      "rate": 0.9543
     }
   ],
   "cursor": [
@@ -425,102 +425,102 @@
     }
   ],
   "typing": {
-    "from": 284,
-    "to": 329
+    "from": 274,
+    "to": 319
   },
   "shots": [
     {
-      "frame": 284,
+      "frame": 274,
       "scale": 1,
       "fx": 0.5,
       "fy": 0.5
     },
     {
-      "frame": 341,
+      "frame": 331,
       "scale": 1.12,
       "fx": 0.5,
       "fy": 0.42
     },
     {
-      "frame": 451,
+      "frame": 474,
       "scale": 1,
       "fx": 0.5,
       "fy": 0.5
     },
     {
-      "frame": 475,
+      "frame": 498,
       "scale": 1,
       "fx": 0.5,
       "fy": 0.5
     },
     {
-      "frame": 522,
+      "frame": 545,
       "scale": 1.42,
       "fx": 0.5,
       "fy": 0.64
     },
     {
-      "frame": 615,
+      "frame": 633,
       "scale": 1,
       "fx": 0.5,
       "fy": 0.5
     },
     {
-      "frame": 639,
+      "frame": 657,
       "scale": 1,
       "fx": 0.5,
       "fy": 0.5
     },
     {
-      "frame": 692,
+      "frame": 710,
       "scale": 1.35,
       "fx": 0.3,
       "fy": 0.55
     },
     {
-      "frame": 803,
+      "frame": 821,
       "scale": 1.62,
       "fx": 0.28,
       "fy": 0.52
     },
     {
-      "frame": 930,
+      "frame": 948,
       "scale": 1,
       "fx": 0.5,
       "fy": 0.5
     },
     {
-      "frame": 1046,
+      "frame": 1061,
       "scale": 1,
       "fx": 0.5,
       "fy": 0.5
     },
     {
-      "frame": 1049,
+      "frame": 1064,
       "scale": 1.38,
       "fx": 0.33,
       "fy": 0.44
     },
     {
-      "frame": 1113,
+      "frame": 1126,
       "scale": 1.4,
       "fx": 0.5,
       "fy": 0.62
     },
     {
-      "frame": 1195,
+      "frame": 1204,
       "scale": 1,
       "fx": 0.5,
       "fy": 0.5
     },
     {
-      "frame": 1219,
+      "frame": 1228,
       "scale": 1,
       "fx": 0.5,
       "fy": 0.5
     },
     {
-      "frame": 1325,
+      "frame": 1332,
       "scale": 1.42,
       "fx": 0.5,
       "fy": 0.45
@@ -532,18 +532,18 @@
       "fy": 0.5
     }
   ],
-  "enterFrame": 284,
+  "enterFrame": 274,
   "phoneSrc": "local/promo/en/phone.mp4",
   "phone": {
-    "from": 954,
-    "to": 1046,
+    "from": 972,
+    "to": 1061,
     "rec": 6.715513038635254,
     "rate": 1.25
   },
   "heads": [
     {
       "from": 0,
-      "to": 284,
+      "to": 274,
       "clips": [
         {
           "src": "local/pool/DJI_20010108123424_0148_D.MP4",
@@ -568,14 +568,14 @@
     }
   ],
   "stat": {
-    "from": 344,
-    "to": 475,
-    "value": 900,
-    "label": "companies in the catalogue"
+    "from": 334,
+    "to": 498,
+    "value": 1000,
+    "label": "companies in our database"
   },
   "ticker": {
-    "from": 475,
-    "to": 639,
+    "from": 498,
+    "to": 657,
     "items": [
       "Automotive & NEV",
       "Robotics & Autonomous Systems",
@@ -592,9 +592,9 @@
       "Shenzhen"
     ],
     "frames": [
-      810,
-      864,
-      919
+      828,
+      882,
+      937
     ]
   },
   "cta": {
@@ -607,42 +607,42 @@
       "i": 1,
       "kind": "head",
       "from": 0,
-      "to": 284
+      "to": 274
     },
     {
       "i": 2,
       "kind": "screen",
-      "from": 284,
-      "to": 475
+      "from": 274,
+      "to": 498
     },
     {
       "i": 3,
       "kind": "screen",
-      "from": 475,
-      "to": 639
+      "from": 498,
+      "to": 657
     },
     {
       "i": 4,
       "kind": "screen",
-      "from": 639,
-      "to": 954
+      "from": 657,
+      "to": 972
     },
     {
       "i": 5,
       "kind": "phone",
-      "from": 954,
-      "to": 1046
+      "from": 972,
+      "to": 1061
     },
     {
       "i": 6,
       "kind": "screen",
-      "from": 1046,
-      "to": 1219
+      "from": 1061,
+      "to": 1228
     },
     {
       "i": 7,
       "kind": "screen",
-      "from": 1219,
+      "from": 1228,
       "to": 1465
     },
     {

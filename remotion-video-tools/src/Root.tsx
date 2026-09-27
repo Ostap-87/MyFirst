@@ -824,8 +824,8 @@ export const RemotionRoot: React.FC = () => {
       {/* Промо сайта: ни говорящей головы, ни звука — только страницы и
           цифры. 45 с ровно = 1350 кадров.
 
-          Цифры посчитаны по каталогу, а не взяты с его же страницы: там
-          написано «более 900 компаний и 17 отраслей», а на деле 998 и 18. */}
+          Компаний — «более 1000»: жёсткое правило владельца (CLAUDE.md,
+          «Факты GTT»), что бы ни было написано на сайте. */}
       <Composition
         id="GTT-SitePromo"
         component={SitePromo}
@@ -836,11 +836,11 @@ export const RemotionRoot: React.FC = () => {
           site: "globaltechtour.ru",
           // Пути пустые до записи. Озвучка кладётся в public/audio,
           // и сцены после этого подгоняются под неё, а не она под них.
-          voiceover: "audio/promo-voice-final.m4a",
+          voiceover: "audio/promo-voice-studio.m4a",
           captionsSrc: "captions/promo-final.json",
           platform: "stories" as const,
-          music: "",
-          musicVolume: 0.16,
+          music: "audio/music/gtt-bed-light.m4a",
+          musicVolume: 0.24,
           openSeconds: 4.68,
           closeSeconds: 2.0,
           scenes: [
@@ -848,9 +848,8 @@ export const RemotionRoot: React.FC = () => {
               from: 0.02, to: 0.26, label: "Не туризм, а исследование", value: 0, prefix: "", unit: "" },
             { kind: "page" as const, src: "site/industries.png", seconds: 1.45,
               from: 0.03, to: 0.20, label: "отраслей в каталоге", value: 18, prefix: "", unit: "выбираете свою" },
-            // В каталоге сейчас 998 компаний. Округление вверх — решение
-            // владельца: каталог растёт, и «более 1000» он считает
-            // правильной формулировкой для промо.
+            // «Более 1000 компаний» — жёсткое правило владельца
+            // (CLAUDE.md, «Факты GTT»).
             { kind: "page" as const, src: "site/industries.png", seconds: 4.55,
               from: 0.22, to: 0.44, label: "компаний в базе", value: 1000, prefix: "более", unit: "с прямым выходом" },
             { kind: "page" as const, src: "site/expeditions.jpg", seconds: 5.04,
@@ -887,11 +886,11 @@ export const RemotionRoot: React.FC = () => {
           site: "globaltechtour.ru",
           // Пути пустые до записи. Озвучка кладётся в public/audio,
           // и сцены после этого подгоняются под неё, а не она под них.
-          voiceover: "audio/promo-voice-final.m4a",
+          voiceover: "audio/promo-voice-studio.m4a",
           captionsSrc: "captions/promo-final.json",
           platform: "reels" as const,
-          music: "",
-          musicVolume: 0.16,
+          music: "audio/music/gtt-bed-light.m4a",
+          musicVolume: 0.24,
           openSeconds: 4.68,
           closeSeconds: 2.0,
           scenes: [
@@ -899,9 +898,8 @@ export const RemotionRoot: React.FC = () => {
               from: 0.02, to: 0.26, label: "Не туризм, а исследование", value: 0, prefix: "", unit: "" },
             { kind: "page" as const, src: "site/industries.png", seconds: 1.45,
               from: 0.03, to: 0.20, label: "отраслей в каталоге", value: 18, prefix: "", unit: "выбираете свою" },
-            // В каталоге сейчас 998 компаний. Округление вверх — решение
-            // владельца: каталог растёт, и «более 1000» он считает
-            // правильной формулировкой для промо.
+            // «Более 1000 компаний» — жёсткое правило владельца
+            // (CLAUDE.md, «Факты GTT»).
             { kind: "page" as const, src: "site/industries.png", seconds: 4.55,
               from: 0.22, to: 0.44, label: "компаний в базе", value: 1000, prefix: "более", unit: "с прямым выходом" },
             { kind: "page" as const, src: "site/expeditions.jpg", seconds: 5.04,

@@ -1,5 +1,6 @@
 import {
   AbsoluteFill,
+  Audio,
   type CalculateMetadataFunction,
   interpolate,
   OffthreadVideo,
@@ -231,6 +232,16 @@ export const chinaStoriesSchema = z.object({
     .array(angleBlock)
     .optional()
     .describe("Смена ракурса: вставки второй камеры на совпадающих фразах"),
+  music: z
+    .string()
+    .optional()
+    .describe("Музыкальная подложка внутри public; пусто — без неё"),
+  musicVolume: z
+    .number()
+    .min(0)
+    .max(1)
+    .optional()
+    .describe("Громкость подложки под живой речью; по умолчанию 0,1"),
   safeZone: z
     .enum(["stories", "reels"])
     .optional()
@@ -393,6 +404,8 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
   stages = [],
   safeZone = "stories",
   angles = [],
+  music,
+  musicVolume = 0.1,
 }) => {
   const reels = safeZone === "reels";
   const logoTop = reels ? REELS.logoTop : LOGO_TOP;
@@ -746,6 +759,28 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
             />
           </AbsoluteFill>
         </Sequence>
+
+        {/* Подложка стоит тихо под речью и зациклена на случай, если трек
+            короче съёмки; входит и уходит плавно, чтобы не рвать начало
+            и последнее слово. */}
+        {music ? (
+          <Sequence durationInFrames={footageFrames}>
+            <Audio
+              src={staticFile(music)}
+              loop
+              volume={(f) =>
+                musicVolume *
+                Math.min(
+                  interpolate(f, [0, AT(1.2, fps)], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }),
+                  interpolate(f, [footageFrames - AT(2, fps), footageFrames - 1], [1, 0], {
+                    extrapolateLeft: "clamp",
+                    extrapolateRight: "clamp",
+                  }),
+                )
+              }
+            />
+          </Sequence>
+        ) : null}
       </AbsoluteFill>
     </SitePhoneHeight.Provider>
   );

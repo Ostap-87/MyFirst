@@ -1,1353 +1,1402 @@
 [
   {
     "text": "Have",
-    "startMs": 70,
-    "endMs": 240,
+    "startMs": 60,
+    "endMs": 220,
     "timestampMs": 120,
-    "confidence": 0.914599
+    "confidence": 0.887691
   },
   {
     "text": " you",
-    "startMs": 240,
-    "endMs": 350,
-    "timestampMs": 300,
-    "confidence": 0.996694
+    "startMs": 220,
+    "endMs": 400,
+    "timestampMs": 320,
+    "confidence": 0.995642
   },
   {
     "text": " also",
-    "startMs": 350,
+    "startMs": 400,
     "endMs": 550,
-    "timestampMs": 560,
-    "confidence": 0.970184
+    "timestampMs": 520,
+    "confidence": 0.967147
   },
   {
     "text": " dealt",
     "startMs": 550,
-    "endMs": 920,
-    "timestampMs": 700,
-    "confidence": 0.996961
+    "endMs": 880,
+    "timestampMs": 660,
+    "confidence": 0.99717
   },
   {
     "text": " with",
-    "startMs": 920,
-    "endMs": 1010,
-    "timestampMs": 900,
-    "confidence": 0.996556
+    "startMs": 880,
+    "endMs": 1050,
+    "timestampMs": 880,
+    "confidence": 0.995568
   },
   {
     "text": " tech",
-    "startMs": 1010,
-    "endMs": 1200,
-    "timestampMs": 1120,
-    "confidence": 0.954482
+    "startMs": 1050,
+    "endMs": 1240,
+    "timestampMs": 1080,
+    "confidence": 0.941115
   },
   {
     "text": " expedition",
-    "startMs": 1200,
-    "endMs": 1710,
-    "timestampMs": 1580,
-    "confidence": 0.911348
+    "startMs": 1240,
+    "endMs": 1680,
+    "timestampMs": 1520,
+    "confidence": 0.916911
   },
   {
-    "text": " organizers,",
-    "startMs": 1710,
-    "endMs": 2330,
-    "timestampMs": 2020,
-    "confidence": 0.282665
+    "text": " organizers",
+    "startMs": 1680,
+    "endMs": 2200,
+    "timestampMs": 2100,
+    "confidence": 0.847271
   },
   {
     "text": " who",
-    "startMs": 2330,
-    "endMs": 2440,
-    "timestampMs": 2480,
-    "confidence": 0.594306
+    "startMs": 2200,
+    "endMs": 2370,
+    "timestampMs": 2380,
+    "confidence": 0.992706
   },
   {
     "text": " play",
-    "startMs": 2440,
-    "endMs": 2530,
-    "timestampMs": 2600,
-    "confidence": 0.689227
+    "startMs": 2370,
+    "endMs": 2550,
+    "timestampMs": 2500,
+    "confidence": 0.560132
   },
   {
     "text": " it",
-    "startMs": 2530,
-    "endMs": 2630,
-    "timestampMs": 2740,
-    "confidence": 0.987873
+    "startMs": 2550,
+    "endMs": 2650,
+    "timestampMs": 2660,
+    "confidence": 0.974633
   },
   {
     "text": " mysterious,",
-    "startMs": 2630,
-    "endMs": 3310,
-    "timestampMs": 2970,
-    "confidence": 0.93686
+    "startMs": 2650,
+    "endMs": 3250,
+    "timestampMs": 2950,
+    "confidence": 0.856086
   },
   {
     "text": " take",
-    "startMs": 3310,
-    "endMs": 3460,
-    "timestampMs": 3480,
-    "confidence": 0.71048
+    "startMs": 3250,
+    "endMs": 3430,
+    "timestampMs": 3360,
+    "confidence": 0.615331
   },
   {
     "text": " weeks",
-    "startMs": 3460,
+    "startMs": 3430,
     "endMs": 3660,
-    "timestampMs": 3700,
-    "confidence": 0.983607
+    "timestampMs": 3580,
+    "confidence": 0.998548
   },
   {
     "text": " to",
     "startMs": 3660,
-    "endMs": 3790,
-    "timestampMs": 3860,
-    "confidence": 0.976526
+    "endMs": 3750,
+    "timestampMs": 3720,
+    "confidence": 0.987048
   },
   {
     "text": " reply",
-    "startMs": 3790,
-    "endMs": 4120,
-    "timestampMs": 4080,
-    "confidence": 0.93055
+    "startMs": 3750,
+    "endMs": 4000,
+    "timestampMs": 3940,
+    "confidence": 0.940342
   },
   {
     "text": " and",
-    "startMs": 4120,
-    "endMs": 4250,
-    "timestampMs": 4240,
-    "confidence": 0.994852
+    "startMs": 4000,
+    "endMs": 4120,
+    "timestampMs": 4100,
+    "confidence": 0.999493
   },
   {
     "text": " make",
-    "startMs": 4250,
-    "endMs": 4420,
-    "timestampMs": 4420,
-    "confidence": 0.992748
+    "startMs": 4120,
+    "endMs": 4280,
+    "timestampMs": 4280,
+    "confidence": 0.996276
   },
   {
     "text": " the",
-    "startMs": 4420,
-    "endMs": 4550,
-    "timestampMs": 4580,
-    "confidence": 0.986801
+    "startMs": 4280,
+    "endMs": 4400,
+    "timestampMs": 4400,
+    "confidence": 0.997326
   },
   {
     "text": " whole",
-    "startMs": 4550,
-    "endMs": 4760,
-    "timestampMs": 4740,
-    "confidence": 0.985936
+    "startMs": 4400,
+    "endMs": 4600,
+    "timestampMs": 4580,
+    "confidence": 0.997067
   },
   {
     "text": " process",
-    "startMs": 4760,
-    "endMs": 5080,
-    "timestampMs": 4980,
-    "confidence": 0.99865
+    "startMs": 4600,
+    "endMs": 4880,
+    "timestampMs": 4800,
+    "confidence": 0.999607
   },
   {
     "text": " harder",
-    "startMs": 5080,
-    "endMs": 5360,
-    "timestampMs": 5300,
-    "confidence": 0.99279
+    "startMs": 4880,
+    "endMs": 5170,
+    "timestampMs": 5120,
+    "confidence": 0.992634
   },
   {
     "text": " than",
-    "startMs": 5360,
-    "endMs": 5540,
-    "timestampMs": 5460,
-    "confidence": 0.960734
+    "startMs": 5170,
+    "endMs": 5340,
+    "timestampMs": 5280,
+    "confidence": 0.974713
   },
   {
     "text": " it",
-    "startMs": 5540,
-    "endMs": 5590,
-    "timestampMs": 5620,
-    "confidence": 0.993331
+    "startMs": 5340,
+    "endMs": 5390,
+    "timestampMs": 5420,
+    "confidence": 0.996903
   },
   {
     "text": " needs",
-    "startMs": 5590,
-    "endMs": 5800,
-    "timestampMs": 5820,
-    "confidence": 0.990766
+    "startMs": 5390,
+    "endMs": 5600,
+    "timestampMs": 5600,
+    "confidence": 0.997969
   },
   {
     "text": " to",
-    "startMs": 5800,
-    "endMs": 5890,
-    "timestampMs": 5940,
-    "confidence": 0.990573
+    "startMs": 5600,
+    "endMs": 5660,
+    "timestampMs": 5720,
+    "confidence": 0.998094
   },
   {
     "text": " be?",
-    "startMs": 5890,
-    "endMs": 6180,
-    "timestampMs": 6035,
-    "confidence": 0.846238
+    "startMs": 5660,
+    "endMs": 5880,
+    "timestampMs": 5770,
+    "confidence": 0.830618
   },
   {
     "text": " We",
-    "startMs": 6180,
-    "endMs": 6280,
-    "timestampMs": 6240,
-    "confidence": 0.996394
+    "startMs": 5880,
+    "endMs": 5990,
+    "timestampMs": 6000,
+    "confidence": 0.996166
   },
   {
     "text": " know",
-    "startMs": 6280,
-    "endMs": 6490,
-    "timestampMs": 6400,
-    "confidence": 0.993942
+    "startMs": 5990,
+    "endMs": 6220,
+    "timestampMs": 6180,
+    "confidence": 0.982564
   },
   {
     "text": " this",
-    "startMs": 6490,
-    "endMs": 6700,
-    "timestampMs": 6600,
-    "confidence": 0.981661
+    "startMs": 6220,
+    "endMs": 6450,
+    "timestampMs": 6380,
+    "confidence": 0.988112
   },
   {
     "text": " industry",
-    "startMs": 6700,
-    "endMs": 7130,
-    "timestampMs": 6940,
-    "confidence": 0.990873
+    "startMs": 6450,
+    "endMs": 6910,
+    "timestampMs": 6700,
+    "confidence": 0.997451
   },
   {
     "text": " inside",
-    "startMs": 7130,
-    "endMs": 7450,
-    "timestampMs": 7300,
-    "confidence": 0.982583
+    "startMs": 6910,
+    "endMs": 7440,
+    "timestampMs": 7040,
+    "confidence": 0.989089
   },
   {
-    "text": " out,",
-    "startMs": 7450,
-    "endMs": 7730,
-    "timestampMs": 7590,
-    "confidence": 0.52482
+    "text": " out",
+    "startMs": 7440,
+    "endMs": 7440,
+    "timestampMs": 7360,
+    "confidence": 0.951513
   },
   {
     "text": " and",
-    "startMs": 7730,
-    "endMs": 7870,
-    "timestampMs": 7820,
-    "confidence": 0.970487
+    "startMs": 7440,
+    "endMs": 7590,
+    "timestampMs": 7540,
+    "confidence": 0.992017
   },
   {
     "text": " with",
-    "startMs": 7870,
-    "endMs": 8060,
-    "timestampMs": 7980,
-    "confidence": 0.98818
+    "startMs": 7590,
+    "endMs": 7770,
+    "timestampMs": 7680,
+    "confidence": 0.988949
   },
   {
-    "text": " us",
-    "startMs": 8060,
-    "endMs": 8280,
-    "timestampMs": 8240,
-    "confidence": 0.996839
+    "text": " us,",
+    "startMs": 7770,
+    "endMs": 8010,
+    "timestampMs": 7890,
+    "confidence": 0.507176
   },
   {
     "text": " it's",
-    "startMs": 8280,
-    "endMs": 8390,
-    "timestampMs": 8335,
-    "confidence": 0.592747
+    "startMs": 8010,
+    "endMs": 8190,
+    "timestampMs": 8100,
+    "confidence": 0.991393
   },
   {
     "text": " simpler",
-    "startMs": 8390,
-    "endMs": 8840,
-    "timestampMs": 8760,
-    "confidence": 0.992572
+    "startMs": 8190,
+    "endMs": 8550,
+    "timestampMs": 8440,
+    "confidence": 0.997154
   },
   {
     "text": " and",
-    "startMs": 8840,
-    "endMs": 8910,
-    "timestampMs": 9060,
-    "confidence": 0.983322
+    "startMs": 8550,
+    "endMs": 8700,
+    "timestampMs": 8740,
+    "confidence": 0.99631
   },
   {
     "text": " faster.",
-    "startMs": 8910,
-    "endMs": 9400,
-    "timestampMs": 9155,
-    "confidence": 0.902774
+    "startMs": 8700,
+    "endMs": 9060,
+    "timestampMs": 8880,
+    "confidence": 0.888988
   },
   {
     "text": " Over",
-    "startMs": 9400,
-    "endMs": 9610,
-    "timestampMs": 9620,
-    "confidence": 0.986282
+    "startMs": 9060,
+    "endMs": 9310,
+    "timestampMs": 9300,
+    "confidence": 0.997402
   },
   {
-    "text": " 900",
-    "startMs": 9610,
-    "endMs": 10090,
-    "timestampMs": 9980,
-    "confidence": 0.959075
+    "text": " a",
+    "startMs": 9310,
+    "endMs": 9310,
+    "timestampMs": 9500,
+    "confidence": 0.749174
   },
   {
-    "text": " companies,",
-    "startMs": 10090,
-    "endMs": 10670,
-    "timestampMs": 10380,
-    "confidence": 0.82335
-  },
-  {
-    "text": " 17",
-    "startMs": 10670,
-    "endMs": 10990,
-    "timestampMs": 10980,
-    "confidence": 0.989577
-  },
-  {
-    "text": " industries,",
-    "startMs": 10990,
-    "endMs": 11640,
-    "timestampMs": 11315,
-    "confidence": 0.708276
-  },
-  {
-    "text": " China,",
-    "startMs": 11640,
-    "endMs": 12070,
-    "timestampMs": 11855,
-    "confidence": 0.985173
-  },
-  {
-    "text": " Southeast",
-    "startMs": 12070,
-    "endMs": 12490,
-    "timestampMs": 12440,
-    "confidence": 0.48979
-  },
-  {
-    "text": " Asia",
-    "startMs": 12490,
-    "endMs": 12790,
-    "timestampMs": 12740,
-    "confidence": 0.997021
-  },
-  {
-    "text": " and",
-    "startMs": 12790,
-    "endMs": 12850,
-    "timestampMs": 12920,
-    "confidence": 0.649735
-  },
-  {
-    "text": " beyond,",
-    "startMs": 12850,
-    "endMs": 13320,
-    "timestampMs": 13085,
-    "confidence": 0.500117
-  },
-  {
-    "text": " all",
-    "startMs": 13320,
-    "endMs": 13480,
-    "timestampMs": 13440,
-    "confidence": 0.973242
-  },
-  {
-    "text": " in",
-    "startMs": 13480,
-    "endMs": 13590,
-    "timestampMs": 13600,
-    "confidence": 0.995653
-  },
-  {
-    "text": " one",
-    "startMs": 13590,
-    "endMs": 13750,
-    "timestampMs": 13800,
-    "confidence": 0.987212
-  },
-  {
-    "text": " place.",
-    "startMs": 13750,
-    "endMs": 14400,
-    "timestampMs": 14075,
-    "confidence": 0.54673
-  },
-  {
-    "text": " Globaltechtour.ru",
-    "startMs": 14400,
-    "endMs": 15840,
-    "timestampMs": 15120,
-    "confidence": 0.207838
-  },
-  {
-    "text": " The",
-    "startMs": 15840,
-    "endMs": 16040,
-    "timestampMs": 15960,
-    "confidence": 0.397644
-  },
-  {
-    "text": " catalogue",
-    "startMs": 16040,
-    "endMs": 16440,
-    "timestampMs": 16240,
-    "confidence": 0.687406
-  },
-  {
-    "text": " is",
-    "startMs": 16440,
-    "endMs": 16560,
-    "timestampMs": 16580,
-    "confidence": 0.985646
-  },
-  {
-    "text": " everything",
-    "startMs": 16560,
-    "endMs": 17040,
-    "timestampMs": 16880,
-    "confidence": 0.994484
-  },
-  {
-    "text": " you",
-    "startMs": 17040,
-    "endMs": 17210,
-    "timestampMs": 17020,
-    "confidence": 0.99218
-  },
-  {
-    "text": " can",
-    "startMs": 17210,
-    "endMs": 17340,
-    "timestampMs": 17280,
-    "confidence": 0.9983
-  },
-  {
-    "text": " explore,",
-    "startMs": 17340,
-    "endMs": 17880,
-    "timestampMs": 17610,
-    "confidence": 0.631788
-  },
-  {
-    "text": " from",
-    "startMs": 17880,
-    "endMs": 18090,
-    "timestampMs": 17940,
-    "confidence": 0.981523
-  },
-  {
-    "text": " robots",
-    "startMs": 18090,
-    "endMs": 18410,
-    "timestampMs": 18260,
-    "confidence": 0.978687
-  },
-  {
-    "text": " and",
-    "startMs": 18410,
-    "endMs": 18570,
-    "timestampMs": 18540,
-    "confidence": 0.975941
-  },
-  {
-    "text": " electric",
-    "startMs": 18570,
-    "endMs": 19010,
-    "timestampMs": 18860,
-    "confidence": 0.995055
-  },
-  {
-    "text": " vehicles",
-    "startMs": 19010,
-    "endMs": 19430,
-    "timestampMs": 19220,
-    "confidence": 0.994347
-  },
-  {
-    "text": " to",
-    "startMs": 19430,
-    "endMs": 19530,
-    "timestampMs": 19500,
-    "confidence": 0.71858
-  },
-  {
-    "text": " tea,",
-    "startMs": 19530,
-    "endMs": 19840,
-    "timestampMs": 19685,
-    "confidence": 0.879105
-  },
-  {
-    "text": " cosmetics",
-    "startMs": 19840,
-    "endMs": 20310,
-    "timestampMs": 20200,
-    "confidence": 0.983706
-  },
-  {
-    "text": " and",
-    "startMs": 20310,
-    "endMs": 20430,
-    "timestampMs": 20480,
-    "confidence": 0.907777
-  },
-  {
-    "text": " waste",
-    "startMs": 20430,
-    "endMs": 20690,
-    "timestampMs": 20700,
-    "confidence": 0.995552
-  },
-  {
-    "text": " recycling.",
-    "startMs": 20690,
-    "endMs": 21840,
-    "timestampMs": 21265,
-    "confidence": 0.975615
-  },
-  {
-    "text": " Expeditions",
-    "startMs": 21840,
-    "endMs": 22500,
-    "timestampMs": 22170,
-    "confidence": 0.987615
-  },
-  {
-    "text": " are",
-    "startMs": 22500,
-    "endMs": 22590,
-    "timestampMs": 22540,
-    "confidence": 0.991499
-  },
-  {
-    "text": " ready-made",
-    "startMs": 22590,
-    "endMs": 23120,
-    "timestampMs": 22855,
-    "confidence": 0.717189
-  },
-  {
-    "text": " routes.",
-    "startMs": 23120,
-    "endMs": 23640,
-    "timestampMs": 23380,
-    "confidence": 0.773507
-  },
-  {
-    "text": " Take",
-    "startMs": 23640,
-    "endMs": 23820,
-    "timestampMs": 23720,
-    "confidence": 0.995114
-  },
-  {
-    "text": " the",
-    "startMs": 23820,
-    "endMs": 23950,
-    "timestampMs": 23920,
-    "confidence": 0.986686
-  },
-  {
-    "text": " robotics",
-    "startMs": 23950,
-    "endMs": 24320,
-    "timestampMs": 24220,
-    "confidence": 0.492305
-  },
-  {
-    "text": " program.",
-    "startMs": 24320,
-    "endMs": 24800,
-    "timestampMs": 24560,
-    "confidence": 0.518192
-  },
-  {
-    "text": " The",
-    "startMs": 24800,
-    "endMs": 25030,
-    "timestampMs": 24960,
-    "confidence": 0.708671
-  },
-  {
-    "text": " route",
-    "startMs": 25030,
-    "endMs": 25440,
-    "timestampMs": 25240,
-    "confidence": 0.981343
-  },
-  {
-    "text": " city",
-    "startMs": 25440,
-    "endMs": 25770,
-    "timestampMs": 25680,
-    "confidence": 0.441883
-  },
-  {
-    "text": " by",
-    "startMs": 25770,
-    "endMs": 25920,
-    "timestampMs": 26040,
-    "confidence": 0.868835
-  },
-  {
-    "text": " city.",
-    "startMs": 25920,
-    "endMs": 26500,
-    "timestampMs": 26210,
-    "confidence": 0.882965
-  },
-  {
-    "text": " The",
-    "startMs": 26500,
-    "endMs": 26700,
-    "timestampMs": 26540,
-    "confidence": 0.98937
-  },
-  {
-    "text": " list",
-    "startMs": 26700,
-    "endMs": 26970,
-    "timestampMs": 26780,
-    "confidence": 0.991734
-  },
-  {
-    "text": " of",
-    "startMs": 26970,
-    "endMs": 27110,
-    "timestampMs": 27020,
-    "confidence": 0.997543
+    "text": " thousand",
+    "startMs": 9310,
+    "endMs": 9730,
+    "timestampMs": 9700,
+    "confidence": 0.962083
   },
   {
     "text": " companies",
-    "startMs": 27110,
-    "endMs": 27730,
-    "timestampMs": 27500,
-    "confidence": 0.989013
-  },
-  {
-    "text": " and",
-    "startMs": 27730,
-    "endMs": 27930,
-    "timestampMs": 27980,
-    "confidence": 0.928996
-  },
-  {
-    "text": " exact",
-    "startMs": 27930,
-    "endMs": 28270,
-    "timestampMs": 28280,
-    "confidence": 0.983963
-  },
-  {
-    "text": " dates,",
-    "startMs": 28270,
-    "endMs": 28740,
-    "timestampMs": 28505,
-    "confidence": 0.507232
-  },
-  {
-    "text": " all",
-    "startMs": 28740,
-    "endMs": 28990,
-    "timestampMs": 28960,
-    "confidence": 0.988146
-  },
-  {
-    "text": " on",
-    "startMs": 28990,
-    "endMs": 29080,
-    "timestampMs": 29160,
-    "confidence": 0.977678
-  },
-  {
-    "text": " one",
-    "startMs": 29080,
-    "endMs": 29280,
-    "timestampMs": 29380,
-    "confidence": 0.97145
-  },
-  {
-    "text": " page,",
-    "startMs": 29280,
-    "endMs": 29830,
-    "timestampMs": 29555,
-    "confidence": 0.830954
-  },
-  {
-    "text": " not",
-    "startMs": 29830,
-    "endMs": 29880,
-    "timestampMs": 30080,
-    "confidence": 0.98432
+    "startMs": 9730,
+    "endMs": 10180,
+    "timestampMs": 10080,
+    "confidence": 0.998609
   },
   {
     "text": " in",
-    "startMs": 29880,
-    "endMs": 30090,
-    "timestampMs": 30320,
-    "confidence": 0.967848
+    "startMs": 10180,
+    "endMs": 10280,
+    "timestampMs": 10260,
+    "confidence": 0.993172
   },
   {
-    "text": " a",
-    "startMs": 30090,
-    "endMs": 30090,
-    "timestampMs": 30440,
-    "confidence": 0.94176
+    "text": " our",
+    "startMs": 10280,
+    "endMs": 10420,
+    "timestampMs": 10420,
+    "confidence": 0.999005
   },
   {
-    "text": " chat",
-    "startMs": 30090,
-    "endMs": 30360,
-    "timestampMs": 30640,
-    "confidence": 0.990295
+    "text": " database,",
+    "startMs": 10420,
+    "endMs": 10860,
+    "timestampMs": 10640,
+    "confidence": 0.632364
   },
   {
-    "text": " with",
-    "startMs": 30360,
-    "endMs": 30700,
-    "timestampMs": 30980,
-    "confidence": 0.981661
+    "text": " fast",
+    "startMs": 10860,
+    "endMs": 11120,
+    "timestampMs": 11140,
+    "confidence": 0.977495
   },
   {
-    "text": " a",
-    "startMs": 30700,
-    "endMs": 30760,
-    "timestampMs": 31020,
-    "confidence": 0.888862
+    "text": " approvals",
+    "startMs": 11120,
+    "endMs": 11690,
+    "timestampMs": 11405,
+    "confidence": 0.998759
   },
   {
-    "text": " manager.",
-    "startMs": 30760,
-    "endMs": 31800,
-    "timestampMs": 31280,
-    "confidence": 0.847616
+    "text": " for",
+    "startMs": 11690,
+    "endMs": 11780,
+    "timestampMs": 11860,
+    "confidence": 0.994791
   },
   {
-    "text": " All",
-    "startMs": 31800,
-    "endMs": 31970,
-    "timestampMs": 31900,
-    "confidence": 0.994408
+    "text": " every",
+    "startMs": 11780,
+    "endMs": 12050,
+    "timestampMs": 12040,
+    "confidence": 0.998731
   },
   {
-    "text": " the",
-    "startMs": 31970,
-    "endMs": 32140,
-    "timestampMs": 32120,
-    "confidence": 0.990252
+    "text": " visit,",
+    "startMs": 12050,
+    "endMs": 12360,
+    "timestampMs": 12205,
+    "confidence": 0.656338
   },
   {
-    "text": " same",
-    "startMs": 32140,
-    "endMs": 32490,
-    "timestampMs": 32360,
-    "confidence": 0.998315
+    "text": " China,",
+    "startMs": 12360,
+    "endMs": 12810,
+    "timestampMs": 12585,
+    "confidence": 0.99671
+  },
+  {
+    "text": " Southeast",
+    "startMs": 12810,
+    "endMs": 13290,
+    "timestampMs": 13160,
+    "confidence": 0.927403
+  },
+  {
+    "text": " Asia",
+    "startMs": 13290,
+    "endMs": 13580,
+    "timestampMs": 13480,
+    "confidence": 0.998677
+  },
+  {
+    "text": " and",
+    "startMs": 13580,
+    "endMs": 13690,
+    "timestampMs": 13780,
+    "confidence": 0.578943
+  },
+  {
+    "text": " beyond,",
+    "startMs": 13690,
+    "endMs": 14080,
+    "timestampMs": 13885,
+    "confidence": 0.565752
+  },
+  {
+    "text": " all",
+    "startMs": 14080,
+    "endMs": 14280,
+    "timestampMs": 14280,
+    "confidence": 0.996284
+  },
+  {
+    "text": " in",
+    "startMs": 14280,
+    "endMs": 14410,
+    "timestampMs": 14420,
+    "confidence": 0.999199
+  },
+  {
+    "text": " one",
+    "startMs": 14410,
+    "endMs": 14610,
+    "timestampMs": 14620,
+    "confidence": 0.997451
+  },
+  {
+    "text": " place,",
+    "startMs": 14610,
+    "endMs": 15110,
+    "timestampMs": 14860,
+    "confidence": 0.617551
+  },
+  {
+    "text": " globaltechtour.ru.",
+    "startMs": 15110,
+    "endMs": 16560,
+    "timestampMs": 15835,
+    "confidence": 0.448279
+  },
+  {
+    "text": " The",
+    "startMs": 16560,
+    "endMs": 16720,
+    "timestampMs": 16760,
+    "confidence": 0.996656
+  },
+  {
+    "text": " catalog",
+    "startMs": 16720,
+    "endMs": 17150,
+    "timestampMs": 17040,
+    "confidence": 0.742641
+  },
+  {
+    "text": " is",
+    "startMs": 17150,
+    "endMs": 17190,
+    "timestampMs": 17360,
+    "confidence": 0.993885
+  },
+  {
+    "text": " everything",
+    "startMs": 17190,
+    "endMs": 17720,
+    "timestampMs": 17620,
+    "confidence": 0.999131
+  },
+  {
+    "text": " you",
+    "startMs": 17720,
+    "endMs": 17880,
+    "timestampMs": 17760,
+    "confidence": 0.995851
+  },
+  {
+    "text": " can",
+    "startMs": 17880,
+    "endMs": 18040,
+    "timestampMs": 18000,
+    "confidence": 0.999279
+  },
+  {
+    "text": " explore,",
+    "startMs": 18040,
+    "endMs": 18440,
+    "timestampMs": 18240,
+    "confidence": 0.460316
   },
   {
     "text": " from",
-    "startMs": 32490,
-    "endMs": 32600,
-    "timestampMs": 32620,
-    "confidence": 0.838462
+    "startMs": 18440,
+    "endMs": 18650,
+    "timestampMs": 18660,
+    "confidence": 0.998247
   },
   {
-    "text": " your",
-    "startMs": 32600,
-    "endMs": 32830,
-    "timestampMs": 32860,
-    "confidence": 0.978778
+    "text": " robots",
+    "startMs": 18650,
+    "endMs": 19070,
+    "timestampMs": 18960,
+    "confidence": 0.997204
   },
   {
-    "text": " phone,",
-    "startMs": 32830,
-    "endMs": 33230,
-    "timestampMs": 33030,
-    "confidence": 0.218517
+    "text": " and",
+    "startMs": 19070,
+    "endMs": 19130,
+    "timestampMs": 19240,
+    "confidence": 0.990263
   },
   {
-    "text": " on",
-    "startMs": 33230,
-    "endMs": 33340,
-    "timestampMs": 33420,
-    "confidence": 0.956357
+    "text": " electric",
+    "startMs": 19130,
+    "endMs": 19560,
+    "timestampMs": 19520,
+    "confidence": 0.997592
+  },
+  {
+    "text": " vehicles",
+    "startMs": 19560,
+    "endMs": 20000,
+    "timestampMs": 19880,
+    "confidence": 0.998342
+  },
+  {
+    "text": " to",
+    "startMs": 20000,
+    "endMs": 20160,
+    "timestampMs": 20200,
+    "confidence": 0.999291
+  },
+  {
+    "text": " tea,",
+    "startMs": 20160,
+    "endMs": 20480,
+    "timestampMs": 20320,
+    "confidence": 0.636275
+  },
+  {
+    "text": " cosmetics",
+    "startMs": 20480,
+    "endMs": 20810,
+    "timestampMs": 20840,
+    "confidence": 0.983256
+  },
+  {
+    "text": " and",
+    "startMs": 20810,
+    "endMs": 20950,
+    "timestampMs": 21100,
+    "confidence": 0.851536
+  },
+  {
+    "text": " waste",
+    "startMs": 20950,
+    "endMs": 21240,
+    "timestampMs": 21300,
+    "confidence": 0.994596
+  },
+  {
+    "text": " recycling.",
+    "startMs": 21240,
+    "endMs": 21820,
+    "timestampMs": 21530,
+    "confidence": 0.986711
+  },
+  {
+    "text": " Expeditions",
+    "startMs": 21820,
+    "endMs": 22740,
+    "timestampMs": 22280,
+    "confidence": 0.992584
+  },
+  {
+    "text": " are",
+    "startMs": 22740,
+    "endMs": 22880,
+    "timestampMs": 23140,
+    "confidence": 0.985195
+  },
+  {
+    "text": " ready-made",
+    "startMs": 22880,
+    "endMs": 23620,
+    "timestampMs": 23250,
+    "confidence": 0.71369
+  },
+  {
+    "text": " routes.",
+    "startMs": 23620,
+    "endMs": 24120,
+    "timestampMs": 23870,
+    "confidence": 0.744516
+  },
+  {
+    "text": " Take",
+    "startMs": 24120,
+    "endMs": 24330,
+    "timestampMs": 24320,
+    "confidence": 0.997896
   },
   {
     "text": " the",
-    "startMs": 33340,
-    "endMs": 33510,
-    "timestampMs": 33540,
-    "confidence": 0.974018
+    "startMs": 24330,
+    "endMs": 24470,
+    "timestampMs": 24500,
+    "confidence": 0.992748
+  },
+  {
+    "text": " robotics",
+    "startMs": 24470,
+    "endMs": 24880,
+    "timestampMs": 24820,
+    "confidence": 0.686275
+  },
+  {
+    "text": " program,",
+    "startMs": 24880,
+    "endMs": 25330,
+    "timestampMs": 25105,
+    "confidence": 0.767982
+  },
+  {
+    "text": " the",
+    "startMs": 25330,
+    "endMs": 25600,
+    "timestampMs": 25560,
+    "confidence": 0.714735
+  },
+  {
+    "text": " route",
+    "startMs": 25600,
+    "endMs": 26060,
+    "timestampMs": 25840,
+    "confidence": 0.979505
+  },
+  {
+    "text": " city",
+    "startMs": 26060,
+    "endMs": 26420,
+    "timestampMs": 26280,
+    "confidence": 0.70068
+  },
+  {
+    "text": " by",
+    "startMs": 26420,
+    "endMs": 26610,
+    "timestampMs": 26640,
+    "confidence": 0.9006
+  },
+  {
+    "text": " city,",
+    "startMs": 26610,
+    "endMs": 27000,
+    "timestampMs": 26805,
+    "confidence": 0.745513
+  },
+  {
+    "text": " the",
+    "startMs": 27020,
+    "endMs": 27230,
+    "timestampMs": 27160,
+    "confidence": 0.995027
+  },
+  {
+    "text": " list",
+    "startMs": 27230,
+    "endMs": 27550,
+    "timestampMs": 27380,
+    "confidence": 0.99324
+  },
+  {
+    "text": " of",
+    "startMs": 27550,
+    "endMs": 27690,
+    "timestampMs": 27580,
+    "confidence": 0.999119
+  },
+  {
+    "text": " companies",
+    "startMs": 27690,
+    "endMs": 28460,
+    "timestampMs": 28080,
+    "confidence": 0.996288
+  },
+  {
+    "text": " and",
+    "startMs": 28460,
+    "endMs": 28630,
+    "timestampMs": 28580,
+    "confidence": 0.970769
+  },
+  {
+    "text": " exact",
+    "startMs": 28630,
+    "endMs": 29080,
+    "timestampMs": 28880,
+    "confidence": 0.993021
+  },
+  {
+    "text": " dates",
+    "startMs": 29080,
+    "endMs": 29410,
+    "timestampMs": 29180,
+    "confidence": 0.997322
+  },
+  {
+    "text": " all",
+    "startMs": 29410,
+    "endMs": 29640,
+    "timestampMs": 29540,
+    "confidence": 0.481059
+  },
+  {
+    "text": " on",
+    "startMs": 29640,
+    "endMs": 29790,
+    "timestampMs": 29740,
+    "confidence": 0.994199
+  },
+  {
+    "text": " one",
+    "startMs": 29790,
+    "endMs": 30020,
+    "timestampMs": 29980,
+    "confidence": 0.996174
+  },
+  {
+    "text": " page,",
+    "startMs": 30020,
+    "endMs": 30400,
+    "timestampMs": 30210,
+    "confidence": 0.741427
+  },
+  {
+    "text": " not",
+    "startMs": 30400,
+    "endMs": 30680,
+    "timestampMs": 30680,
+    "confidence": 0.996041
+  },
+  {
+    "text": " in",
+    "startMs": 30680,
+    "endMs": 30830,
+    "timestampMs": 30920,
+    "confidence": 0.9953
+  },
+  {
+    "text": " a",
+    "startMs": 30830,
+    "endMs": 30900,
+    "timestampMs": 31040,
+    "confidence": 0.987984
+  },
+  {
+    "text": " chat",
+    "startMs": 30900,
+    "endMs": 31360,
+    "timestampMs": 31240,
+    "confidence": 0.994522
+  },
+  {
+    "text": " with",
+    "startMs": 31360,
+    "endMs": 31590,
+    "timestampMs": 31560,
+    "confidence": 0.996253
+  },
+  {
+    "text": " a",
+    "startMs": 31590,
+    "endMs": 31670,
+    "timestampMs": 31620,
+    "confidence": 0.914112
+  },
+  {
+    "text": " manager.",
+    "startMs": 31670,
+    "endMs": 32320,
+    "timestampMs": 31995,
+    "confidence": 0.646002
+  },
+  {
+    "text": " All",
+    "startMs": 32320,
+    "endMs": 32500,
+    "timestampMs": 32460,
+    "confidence": 0.993263
+  },
+  {
+    "text": " the",
+    "startMs": 32500,
+    "endMs": 32680,
+    "timestampMs": 32680,
+    "confidence": 0.99755
+  },
+  {
+    "text": " same",
+    "startMs": 32680,
+    "endMs": 33050,
+    "timestampMs": 32920,
+    "confidence": 0.999325
+  },
+  {
+    "text": " from",
+    "startMs": 33050,
+    "endMs": 33160,
+    "timestampMs": 33180,
+    "confidence": 0.889782
+  },
+  {
+    "text": " your",
+    "startMs": 33160,
+    "endMs": 33400,
+    "timestampMs": 33420,
+    "confidence": 0.997181
+  },
+  {
+    "text": " phone.",
+    "startMs": 33400,
+    "endMs": 33720,
+    "timestampMs": 33560,
+    "confidence": 0.471628
+  },
+  {
+    "text": " On",
+    "startMs": 33720,
+    "endMs": 33830,
+    "timestampMs": 33940,
+    "confidence": 0.994446
+  },
+  {
+    "text": " the",
+    "startMs": 33830,
+    "endMs": 34000,
+    "timestampMs": 34060,
+    "confidence": 0.995406
   },
   {
     "text": " road,",
-    "startMs": 33510,
-    "endMs": 33850,
-    "timestampMs": 33680,
-    "confidence": 0.765
+    "startMs": 34000,
+    "endMs": 34350,
+    "timestampMs": 34175,
+    "confidence": 0.905567
   },
   {
     "text": " no",
-    "startMs": 33850,
-    "endMs": 33960,
-    "timestampMs": 34080,
-    "confidence": 0.979398
+    "startMs": 34350,
+    "endMs": 34450,
+    "timestampMs": 34580,
+    "confidence": 0.996185
   },
   {
     "text": " laptop",
-    "startMs": 33960,
-    "endMs": 34310,
-    "timestampMs": 34380,
-    "confidence": 0.981068
+    "startMs": 34450,
+    "endMs": 34790,
+    "timestampMs": 34880,
+    "confidence": 0.99693
   },
   {
     "text": " needed.",
-    "startMs": 34310,
-    "endMs": 34920,
-    "timestampMs": 34615,
-    "confidence": 0.720625
+    "startMs": 34790,
+    "endMs": 35310,
+    "timestampMs": 35050,
+    "confidence": 0.592234
   },
   {
     "text": " No",
-    "startMs": 34920,
-    "endMs": 35050,
-    "timestampMs": 35020,
-    "confidence": 0.990265
+    "startMs": 35310,
+    "endMs": 35360,
+    "timestampMs": 35520,
+    "confidence": 0.871454
   },
   {
     "text": " ready",
-    "startMs": 35050,
-    "endMs": 35490,
-    "timestampMs": 35240,
-    "confidence": 0.965552
+    "startMs": 35360,
+    "endMs": 35570,
+    "timestampMs": 35720,
+    "confidence": 0.947544
   },
   {
-    "text": " route?",
-    "startMs": 35490,
+    "text": " route.",
+    "startMs": 35570,
     "endMs": 35920,
-    "timestampMs": 35705,
-    "confidence": 0.830802
+    "timestampMs": 35745,
+    "confidence": 0.621215
   },
   {
     "text": " Click",
     "startMs": 35920,
-    "endMs": 36190,
-    "timestampMs": 35740,
-    "confidence": 0.986579
-  },
-  {
-    "text": " \"build",
-    "startMs": 36190,
-    "endMs": 36540,
-    "timestampMs": 36365,
-    "confidence": 0.525901
-  },
-  {
-    "text": " your",
-    "startMs": 36540,
-    "endMs": 36600,
-    "timestampMs": 36300,
-    "confidence": 0.976019
-  },
-  {
-    "text": " own",
-    "startMs": 36600,
-    "endMs": 36740,
-    "timestampMs": 36580,
-    "confidence": 0.976723
-  },
-  {
-    "text": " program\"",
-    "startMs": 36740,
-    "endMs": 37100,
-    "timestampMs": 36920,
-    "confidence": 0.573011
-  },
-  {
-    "text": " and",
-    "startMs": 37100,
-    "endMs": 37240,
-    "timestampMs": 37100,
-    "confidence": 0.936822
-  },
-  {
-    "text": " it's",
-    "startMs": 37240,
-    "endMs": 37420,
-    "timestampMs": 37330,
-    "confidence": 0.963876
-  },
-  {
-    "text": " built",
-    "startMs": 37420,
-    "endMs": 37720,
-    "timestampMs": 37400,
-    "confidence": 0.974475
-  },
-  {
-    "text": " around",
-    "startMs": 37720,
-    "endMs": 37950,
-    "timestampMs": 37720,
-    "confidence": 0.992858
-  },
-  {
-    "text": " your",
-    "startMs": 37950,
-    "endMs": 38100,
-    "timestampMs": 38020,
-    "confidence": 0.988402
-  },
-  {
-    "text": " task,",
-    "startMs": 38100,
-    "endMs": 38440,
-    "timestampMs": 38270,
-    "confidence": 0.93011
-  },
-  {
-    "text": " not",
-    "startMs": 38440,
-    "endMs": 38600,
-    "timestampMs": 38580,
-    "confidence": 0.976503
-  },
-  {
-    "text": " squeezed",
-    "startMs": 38600,
-    "endMs": 39110,
-    "timestampMs": 39020,
-    "confidence": 0.972116
-  },
-  {
-    "text": " into",
-    "startMs": 39110,
-    "endMs": 39280,
-    "timestampMs": 39420,
-    "confidence": 0.955831
-  },
-  {
-    "text": " someone",
-    "startMs": 39280,
-    "endMs": 39640,
-    "timestampMs": 39720,
-    "confidence": 0.68837
-  },
-  {
-    "text": " else's",
-    "startMs": 39640,
-    "endMs": 39980,
-    "timestampMs": 39810,
-    "confidence": 0.975327
-  },
-  {
-    "text": " template.",
-    "startMs": 39980,
-    "endMs": 40640,
-    "timestampMs": 40310,
-    "confidence": 0.98295
-  },
-  {
-    "text": " A",
-    "startMs": 40640,
-    "endMs": 40680,
-    "timestampMs": 40740,
-    "confidence": 0.98841
-  },
-  {
-    "text": " separate",
-    "startMs": 40680,
-    "endMs": 41040,
-    "timestampMs": 40980,
-    "confidence": 0.964578
-  },
-  {
-    "text": " section",
-    "startMs": 41040,
-    "endMs": 41380,
-    "timestampMs": 41280,
-    "confidence": 0.994579
-  },
-  {
-    "text": " is",
-    "startMs": 41380,
-    "endMs": 41440,
-    "timestampMs": 41500,
-    "confidence": 0.968143
-  },
-  {
-    "text": " corporate",
-    "startMs": 41440,
-    "endMs": 41840,
-    "timestampMs": 41800,
-    "confidence": 0.855175
-  },
-  {
-    "text": " training,",
-    "startMs": 41840,
-    "endMs": 42300,
-    "timestampMs": 42070,
-    "confidence": 0.533716
-  },
-  {
-    "text": " a",
-    "startMs": 42300,
-    "endMs": 42340,
-    "timestampMs": 42360,
-    "confidence": 0.97958
-  },
-  {
-    "text": " campus",
-    "startMs": 42340,
-    "endMs": 42610,
-    "timestampMs": 42540,
-    "confidence": 0.818484
-  },
-  {
-    "text": " visit",
-    "startMs": 42610,
-    "endMs": 42920,
-    "timestampMs": 42820,
-    "confidence": 0.982306
-  },
-  {
-    "text": " to",
-    "startMs": 42920,
-    "endMs": 42920,
-    "timestampMs": 43020,
-    "confidence": 0.960763
-  },
-  {
-    "text": " a",
-    "startMs": 42920,
-    "endMs": 42960,
-    "timestampMs": 43060,
-    "confidence": 0.982913
-  },
-  {
-    "text": " specific",
-    "startMs": 42960,
-    "endMs": 43320,
-    "timestampMs": 43380,
-    "confidence": 0.997368
-  },
-  {
-    "text": " company",
-    "startMs": 43320,
-    "endMs": 43630,
-    "timestampMs": 43740,
-    "confidence": 0.995057
-  },
-  {
-    "text": " with",
-    "startMs": 43630,
-    "endMs": 43880,
-    "timestampMs": 43960,
-    "confidence": 0.524989
-  },
-  {
-    "text": " a",
-    "startMs": 43880,
-    "endMs": 43920,
-    "timestampMs": 44060,
-    "confidence": 0.826254
-  },
-  {
-    "text": " case",
-    "startMs": 43920,
-    "endMs": 44150,
-    "timestampMs": 44200,
-    "confidence": 0.998062
-  },
-  {
-    "text": " study,",
-    "startMs": 44150,
-    "endMs": 44550,
-    "timestampMs": 44350,
-    "confidence": 0.684876
-  },
-  {
-    "text": " not",
-    "startMs": 44550,
-    "endMs": 44720,
-    "timestampMs": 44700,
-    "confidence": 0.982225
-  },
-  {
-    "text": " just",
-    "startMs": 44720,
-    "endMs": 44960,
-    "timestampMs": 44920,
-    "confidence": 0.993176
-  },
-  {
-    "text": " a",
-    "startMs": 44960,
-    "endMs": 45000,
-    "timestampMs": 45040,
-    "confidence": 0.944948
-  },
-  {
-    "text": " tour,",
-    "startMs": 45000,
-    "endMs": 45340,
-    "timestampMs": 45170,
-    "confidence": 0.438286
-  },
-  {
-    "text": " Huawei,",
-    "startMs": 45340,
-    "endMs": 45800,
-    "timestampMs": 45570,
-    "confidence": 0.874704
-  },
-  {
-    "text": " Alibaba,",
-    "startMs": 45800,
-    "endMs": 46380,
-    "timestampMs": 46090,
-    "confidence": 0.988885
-  },
-  {
-    "text": " Xiaomi",
-    "startMs": 46380,
-    "endMs": 46650,
-    "timestampMs": 46780,
-    "confidence": 0.981495
-  },
-  {
-    "text": " and",
-    "startMs": 46650,
-    "endMs": 46870,
-    "timestampMs": 47100,
-    "confidence": 0.769311
-  },
-  {
-    "text": " a",
-    "startMs": 46870,
-    "endMs": 46950,
-    "timestampMs": 47160,
-    "confidence": 0.970269
-  },
-  {
-    "text": " few",
-    "startMs": 46950,
-    "endMs": 47040,
-    "timestampMs": 47280,
-    "confidence": 0.997904
-  },
-  {
-    "text": " more",
-    "startMs": 47040,
-    "endMs": 47270,
-    "timestampMs": 47460,
-    "confidence": 0.969067
-  },
-  {
-    "text": " names",
-    "startMs": 47270,
-    "endMs": 47560,
-    "timestampMs": 47700,
-    "confidence": 0.974161
-  },
-  {
-    "text": " you",
-    "startMs": 47560,
-    "endMs": 47810,
-    "timestampMs": 47980,
-    "confidence": 0.910146
-  },
-  {
-    "text": " definitely",
-    "startMs": 47810,
-    "endMs": 48440,
-    "timestampMs": 48460,
-    "confidence": 0.910286
-  },
-  {
-    "text": " know.",
-    "startMs": 48440,
-    "endMs": 49440,
-    "timestampMs": 48940,
-    "confidence": 0.978872
-  },
-  {
-    "text": " Apply",
-    "startMs": 49440,
-    "endMs": 50110,
-    "timestampMs": 49100,
-    "confidence": 0.986653
-  },
-  {
-    "text": " right",
-    "startMs": 50110,
-    "endMs": 50260,
-    "timestampMs": 49320,
-    "confidence": 0.980385
-  },
-  {
-    "text": " on",
-    "startMs": 50260,
-    "endMs": 50420,
-    "timestampMs": 49500,
-    "confidence": 0.982737
-  },
-  {
-    "text": " the",
-    "startMs": 50420,
-    "endMs": 50780,
-    "timestampMs": 49760,
-    "confidence": 0.839275
-  },
-  {
-    "text": " site",
-    "startMs": 50780,
-    "endMs": 51010,
-    "timestampMs": 50060,
-    "confidence": 0.987765
-  },
-  {
-    "text": " globaltechtour.ru",
-    "startMs": 51010,
-    "endMs": 52480,
-    "timestampMs": 51745,
-    "confidence": 0.248337
-  },
-  {
-    "text": " or",
-    "startMs": 52480,
-    "endMs": 52650,
-    "timestampMs": 52580,
-    "confidence": 0.759596
-  },
-  {
-    "text": " message",
-    "startMs": 52650,
-    "endMs": 53390,
-    "timestampMs": 52920,
-    "confidence": 0.987637
-  },
-  {
-    "text": " me",
-    "startMs": 53390,
-    "endMs": 53440,
-    "timestampMs": 53420,
-    "confidence": 0.992339
-  },
-  {
-    "text": " directly.",
-    "startMs": 53440,
-    "endMs": 54440,
-    "timestampMs": 53940,
-    "confidence": 0.946286
-  },
-  {
-    "text": " We'll",
-    "startMs": 54440,
-    "endMs": 54750,
-    "timestampMs": 54595,
-    "confidence": 0.659599
-  },
-  {
-    "text": " look",
-    "startMs": 54750,
-    "endMs": 55040,
-    "timestampMs": 54760,
-    "confidence": 0.996371
-  },
-  {
-    "text": " at",
-    "startMs": 55040,
-    "endMs": 55120,
-    "timestampMs": 54860,
-    "confidence": 0.997691
-  },
-  {
-    "text": " your",
-    "startMs": 55120,
-    "endMs": 55590,
-    "timestampMs": 55100,
-    "confidence": 0.995999
-  },
-  {
-    "text": " task",
-    "startMs": 55590,
-    "endMs": 55620,
-    "timestampMs": 55420,
-    "confidence": 0.97647
-  },
-  {
-    "text": " and",
-    "startMs": 55620,
-    "endMs": 55810,
-    "timestampMs": 55780,
-    "confidence": 0.92169
+    "endMs": 36210,
+    "timestampMs": 36180,
+    "confidence": 0.99605
   },
   {
     "text": " build",
-    "startMs": 55810,
-    "endMs": 56120,
-    "timestampMs": 56000,
-    "confidence": 0.986557
+    "startMs": 36210,
+    "endMs": 36500,
+    "timestampMs": 36480,
+    "confidence": 0.5416
   },
   {
     "text": " your",
-    "startMs": 56120,
-    "endMs": 56250,
-    "timestampMs": 56240,
-    "confidence": 0.987603
+    "startMs": 36500,
+    "endMs": 36740,
+    "timestampMs": 36740,
+    "confidence": 0.994655
   },
   {
-    "text": " route.",
-    "startMs": 56250,
-    "endMs": 56960,
-    "timestampMs": 56605,
-    "confidence": 0.710495
+    "text": " own",
+    "startMs": 36740,
+    "endMs": 36960,
+    "timestampMs": 37000,
+    "confidence": 0.990728
   },
   {
-    "text": " From",
-    "startMs": 56960,
-    "endMs": 57240,
-    "timestampMs": 57040,
-    "confidence": 0.994884
+    "text": " program",
+    "startMs": 36960,
+    "endMs": 37360,
+    "timestampMs": 37300,
+    "confidence": 0.997683
   },
   {
-    "text": " From application",
-    "startMs": 57240,
-    "endMs": 58030,
-    "timestampMs": 57760,
-    "confidence": 0.931862
+    "text": " and",
+    "startMs": 37360,
+    "endMs": 37510,
+    "timestampMs": 37480,
+    "confidence": 0.998224
+  },
+  {
+    "text": " it's",
+    "startMs": 37510,
+    "endMs": 37680,
+    "timestampMs": 37595,
+    "confidence": 0.990784
+  },
+  {
+    "text": " built",
+    "startMs": 37680,
+    "endMs": 37920,
+    "timestampMs": 37780,
+    "confidence": 0.990698
+  },
+  {
+    "text": " around",
+    "startMs": 37920,
+    "endMs": 38210,
+    "timestampMs": 38100,
+    "confidence": 0.99865
+  },
+  {
+    "text": " your",
+    "startMs": 38210,
+    "endMs": 38400,
+    "timestampMs": 38380,
+    "confidence": 0.998205
+  },
+  {
+    "text": " task,",
+    "startMs": 38400,
+    "endMs": 38620,
+    "timestampMs": 38510,
+    "confidence": 0.833802
+  },
+  {
+    "text": " not",
+    "startMs": 38620,
+    "endMs": 38790,
+    "timestampMs": 38980,
+    "confidence": 0.998978
+  },
+  {
+    "text": " squeezed",
+    "startMs": 38790,
+    "endMs": 39250,
+    "timestampMs": 39360,
+    "confidence": 0.995015
+  },
+  {
+    "text": " into",
+    "startMs": 39250,
+    "endMs": 39480,
+    "timestampMs": 39740,
+    "confidence": 0.995881
+  },
+  {
+    "text": " someone",
+    "startMs": 39480,
+    "endMs": 39880,
+    "timestampMs": 40020,
+    "confidence": 0.995839
+  },
+  {
+    "text": " else's",
+    "startMs": 39880,
+    "endMs": 40220,
+    "timestampMs": 40050,
+    "confidence": 0.995357
+  },
+  {
+    "text": " template.",
+    "startMs": 40220,
+    "endMs": 40880,
+    "timestampMs": 40550,
+    "confidence": 0.990422
+  },
+  {
+    "text": " A",
+    "startMs": 40880,
+    "endMs": 40920,
+    "timestampMs": 41040,
+    "confidence": 0.993081
+  },
+  {
+    "text": " separate",
+    "startMs": 40920,
+    "endMs": 41260,
+    "timestampMs": 41260,
+    "confidence": 0.996136
+  },
+  {
+    "text": " section",
+    "startMs": 41260,
+    "endMs": 41640,
+    "timestampMs": 41560,
+    "confidence": 0.997219
+  },
+  {
+    "text": " is",
+    "startMs": 41640,
+    "endMs": 41640,
+    "timestampMs": 41780,
+    "confidence": 0.989244
+  },
+  {
+    "text": " corporate",
+    "startMs": 41640,
+    "endMs": 42040,
+    "timestampMs": 42040,
+    "confidence": 0.975463
+  },
+  {
+    "text": " training,",
+    "startMs": 42040,
+    "endMs": 42400,
+    "timestampMs": 42220,
+    "confidence": 0.659592
+  },
+  {
+    "text": " a",
+    "startMs": 42400,
+    "endMs": 42470,
+    "timestampMs": 42580,
+    "confidence": 0.994757
+  },
+  {
+    "text": " campus",
+    "startMs": 42470,
+    "endMs": 42760,
+    "timestampMs": 42740,
+    "confidence": 0.877167
+  },
+  {
+    "text": " visit",
+    "startMs": 42760,
+    "endMs": 43110,
+    "timestampMs": 43020,
+    "confidence": 0.994021
   },
   {
     "text": " to",
-    "startMs": 58030,
-    "endMs": 58160,
+    "startMs": 43110,
+    "endMs": 43120,
+    "timestampMs": 43220,
+    "confidence": 0.982883
+  },
+  {
+    "text": " a",
+    "startMs": 43120,
+    "endMs": 43170,
+    "timestampMs": 43300,
+    "confidence": 0.993411
+  },
+  {
+    "text": " specific",
+    "startMs": 43170,
+    "endMs": 43580,
+    "timestampMs": 43560,
+    "confidence": 0.999195
+  },
+  {
+    "text": " company",
+    "startMs": 43580,
+    "endMs": 43980,
+    "timestampMs": 43900,
+    "confidence": 0.998517
+  },
+  {
+    "text": " with",
+    "startMs": 43980,
+    "endMs": 44170,
+    "timestampMs": 44120,
+    "confidence": 0.479421
+  },
+  {
+    "text": " a",
+    "startMs": 44170,
+    "endMs": 44220,
+    "timestampMs": 44220,
+    "confidence": 0.967427
+  },
+  {
+    "text": " case",
+    "startMs": 44220,
+    "endMs": 44410,
+    "timestampMs": 44360,
+    "confidence": 0.998214
+  },
+  {
+    "text": " study,",
+    "startMs": 44410,
+    "endMs": 44680,
+    "timestampMs": 44545,
+    "confidence": 0.656835
+  },
+  {
+    "text": " not",
+    "startMs": 44680,
+    "endMs": 44860,
+    "timestampMs": 44860,
+    "confidence": 0.994552
+  },
+  {
+    "text": " just",
+    "startMs": 44860,
+    "endMs": 45090,
+    "timestampMs": 45040,
+    "confidence": 0.999073
+  },
+  {
+    "text": " a",
+    "startMs": 45090,
+    "endMs": 45150,
+    "timestampMs": 45160,
+    "confidence": 0.920688
+  },
+  {
+    "text": " tour,",
+    "startMs": 45150,
+    "endMs": 45520,
+    "timestampMs": 45335,
+    "confidence": 0.736825
+  },
+  {
+    "text": " Huawei,",
+    "startMs": 45520,
+    "endMs": 45940,
+    "timestampMs": 45730,
+    "confidence": 0.881916
+  },
+  {
+    "text": " Alibaba,",
+    "startMs": 45940,
+    "endMs": 46460,
+    "timestampMs": 46200,
+    "confidence": 0.986728
+  },
+  {
+    "text": " Xiaomi",
+    "startMs": 46460,
+    "endMs": 47000,
+    "timestampMs": 46860,
+    "confidence": 0.906656
+  },
+  {
+    "text": " and",
+    "startMs": 47000,
+    "endMs": 47140,
+    "timestampMs": 47140,
+    "confidence": 0.999344
+  },
+  {
+    "text": " a",
+    "startMs": 47140,
+    "endMs": 47220,
+    "timestampMs": 47220,
+    "confidence": 0.997238
+  },
+  {
+    "text": " few",
+    "startMs": 47220,
+    "endMs": 47320,
+    "timestampMs": 47300,
+    "confidence": 0.999691
+  },
+  {
+    "text": " more",
+    "startMs": 47320,
+    "endMs": 47510,
+    "timestampMs": 47480,
+    "confidence": 0.999458
+  },
+  {
+    "text": " names",
+    "startMs": 47510,
+    "endMs": 47840,
+    "timestampMs": 47720,
+    "confidence": 0.998525
+  },
+  {
+    "text": " you",
+    "startMs": 47840,
+    "endMs": 47890,
+    "timestampMs": 48020,
+    "confidence": 0.91503
+  },
+  {
+    "text": " definitely",
+    "startMs": 47890,
+    "endMs": 48370,
+    "timestampMs": 48420,
+    "confidence": 0.996751
+  },
+  {
+    "text": " know.",
+    "startMs": 48370,
+    "endMs": 48760,
+    "timestampMs": 48565,
+    "confidence": 0.982163
+  },
+  {
+    "text": " Apply",
+    "startMs": 48760,
+    "endMs": 49070,
+    "timestampMs": 49100,
+    "confidence": 0.993769
+  },
+  {
+    "text": " right",
+    "startMs": 49070,
+    "endMs": 49380,
+    "timestampMs": 49320,
+    "confidence": 0.989606
+  },
+  {
+    "text": " on",
+    "startMs": 49380,
+    "endMs": 49500,
+    "timestampMs": 49500,
+    "confidence": 0.984185
+  },
+  {
+    "text": " the",
+    "startMs": 49500,
+    "endMs": 49680,
+    "timestampMs": 49760,
+    "confidence": 0.936983
+  },
+  {
+    "text": " site,",
+    "startMs": 49680,
+    "endMs": 50110,
+    "timestampMs": 49895,
+    "confidence": 0.710994
+  },
+  {
+    "text": " globaltechtour.ru",
+    "startMs": 50110,
+    "endMs": 52360,
+    "timestampMs": 51235,
+    "confidence": 0.919925
+  },
+  {
+    "text": " or",
+    "startMs": 52360,
+    "endMs": 52540,
+    "timestampMs": 52580,
+    "confidence": 0.992301
+  },
+  {
+    "text": " message",
+    "startMs": 52540,
+    "endMs": 53350,
+    "timestampMs": 52920,
+    "confidence": 0.99779
+  },
+  {
+    "text": " me",
+    "startMs": 53350,
+    "endMs": 53370,
+    "timestampMs": 53420,
+    "confidence": 0.998456
+  },
+  {
+    "text": " directly.",
+    "startMs": 53370,
+    "endMs": 54360,
+    "timestampMs": 53865,
+    "confidence": 0.959624
+  },
+  {
+    "text": " We'll",
+    "startMs": 54360,
+    "endMs": 54660,
+    "timestampMs": 54510,
+    "confidence": 0.958226
+  },
+  {
+    "text": " look",
+    "startMs": 54660,
+    "endMs": 54910,
+    "timestampMs": 54760,
+    "confidence": 0.999085
+  },
+  {
+    "text": " at",
+    "startMs": 54910,
+    "endMs": 55040,
+    "timestampMs": 54880,
+    "confidence": 0.99899
+  },
+  {
+    "text": " your",
+    "startMs": 55040,
+    "endMs": 55300,
+    "timestampMs": 55080,
+    "confidence": 0.998849
+  },
+  {
+    "text": " task",
+    "startMs": 55300,
+    "endMs": 55600,
+    "timestampMs": 55400,
+    "confidence": 0.979402
+  },
+  {
+    "text": " and",
+    "startMs": 55600,
+    "endMs": 55790,
+    "timestampMs": 55820,
+    "confidence": 0.971892
+  },
+  {
+    "text": " build",
+    "startMs": 55790,
+    "endMs": 56130,
+    "timestampMs": 56000,
+    "confidence": 0.992589
+  },
+  {
+    "text": " your",
+    "startMs": 56130,
+    "endMs": 56740,
+    "timestampMs": 56220,
+    "confidence": 0.993775
+  },
+  {
+    "text": " route.",
+    "startMs": 56740,
+    "endMs": 56800,
+    "timestampMs": 56770,
+    "confidence": 0.632944
+  },
+  {
+    "text": " From",
+    "startMs": 56860,
+    "endMs": 57180,
+    "timestampMs": 57020,
+    "confidence": 0.763523
+  },
+  {
+    "text": " From application",
+    "startMs": 57180,
+    "endMs": 57970,
+    "timestampMs": 57740,
+    "confidence": 0.917985
+  },
+  {
+    "text": " to",
+    "startMs": 57970,
+    "endMs": 58110,
     "timestampMs": 58060,
-    "confidence": 0.986195
+    "confidence": 0.991032
   },
   {
     "text": " visit.",
-    "startMs": 58160,
+    "startMs": 58110,
     "endMs": 58760,
-    "timestampMs": 58460,
-    "confidence": 0.79649
+    "timestampMs": 58435,
+    "confidence": 0.568214
   },
   {
-    "text": " Ten",
+    "text": " 10",
     "startMs": 58760,
-    "endMs": 59020,
-    "timestampMs": 59020,
-    "confidence": 0.473749
+    "endMs": 59250,
+    "timestampMs": 59000,
+    "confidence": 0.598676
   },
   {
     "text": " days.",
-    "startMs": 59020,
-    "endMs": 59400,
-    "timestampMs": 59210,
-    "confidence": 0.660895
+    "startMs": 59250,
+    "endMs": 59600,
+    "timestampMs": 59425,
+    "confidence": 0.894288
   }
 ]

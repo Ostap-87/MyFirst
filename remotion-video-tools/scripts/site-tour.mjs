@@ -37,8 +37,8 @@ const VO = "local/promo/vo";
 
 // Какой дубль реплики брать (переделанные лежат с суффиксом b).
 const TAKES = {
-  ru: ["ru-1", "ru-2c", "ru-3", "ru-4", "ru-5", "ru-6", "ru-7", "ru-8"],
-  en: ["en-1b", "en-2c", "en-3", "en-4", "en-5", "en-6b", "en-7c", "en-8c"],
+  ru: ["ru-1", "ru-2d", "ru-3", "ru-4", "ru-5", "ru-6", "ru-7", "ru-8"],
+  en: ["en-1b", "en-2d", "en-3", "en-4", "en-5", "en-6b", "en-7c", "en-8c"],
 }[lang];
 // Блоки: голова, главная, каталог, экспедиции, телефон, своя программа,
 // корпоративное обучение, голова.
@@ -185,7 +185,7 @@ const recToFrame = (tr) => {
 const phone = JSON.parse(readFileSync(resolve(PUB, DIR, "phone.json"), "utf8"));
 
 const L = lang === "en"
-  ? { companies: "companies in the catalogue", cities: ["Beijing", "Shanghai", "Shenzhen"], days: "days from request to visit",
+  ? { companies: "companies in our database", cities: ["Beijing", "Shanghai", "Shenzhen"], days: "days from request to visit",
       industries: ["Automotive & NEV", "Robotics & Autonomous Systems", "AI, Large Models & AI Chips", "Food, Beverage & Catering", "Consumer Brands, Apparel & Retail", "New Energy & Storage"] }
   : { companies: "компаний в базе", cities: ["Пекин", "Шанхай", "Шэньчжэнь"], days: "дней от заявки до посещения",
       industries: ["Автопром и электромобили", "Робототехника и беспилотные системы", "AI, большие модели и чипы", "Продукты, напитки и общепит", "Потребительские бренды и ритейл", "Новая энергетика и накопители"] };
@@ -211,7 +211,7 @@ const props = {
     { from: 0, to: Math.round(blocks[0].until * FPS), clips: [{ src: "local/pool/DJI_20010108123424_0148_D.MP4", start: 13.0 }] },
     { from: Math.round(blocks[7].from * FPS), to: TOTAL * FPS, clips: [{ src: "local/pool/0926-3.mov", start: 57.2, seconds: 4.4 }, { src: "local/pool/DJI_20010108123424_0148_D.MP4", start: 31.6 }] },
   ],
-  stat: { from: Math.round((blocks[1].from + 2) * FPS), to: Math.round(blocks[1].until * FPS), value: 900, label: L.companies },
+  stat: { from: Math.round((blocks[1].from + 2) * FPS), to: Math.round(blocks[1].until * FPS), value: 1000, label: L.companies },
   ticker: { from: Math.round(blocks[2].from * FPS), to: Math.round(blocks[2].until * FPS), items: L.industries },
   route: { cities: L.cities, frames: ["city-0", "city-1", "city-2"].map((m) => recToFrame(M[m] - 1.2)) },
   cta: { from: Math.round(blocks[7].from * FPS), days: 10, daysLabel: L.days },
