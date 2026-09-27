@@ -6,6 +6,11 @@
 примерно в этом темпе. Чуть длиннее — не страшно: подгоню паузами и
 лёгким ускорением, но больше чем на 15% ускорять уже заметно.
 
+Реплика 2 дополнена: экспедиции не только в Китай. Формулировка — с
+главной сайта («Бизнес-экспедиции в Китай и не только») и из твоего
+90-секундного ролика (компании Китая и Юго-Восточной Азии). Ролик
+по-прежнему 60 секунд: остальные реплики надо читать чуть бодрее.
+
 ## Как снимать реплики 1 и 8
 
 - Вертикально, 9:16, 4K или 1080p, 30 или 60 к/с.
@@ -24,7 +29,7 @@
 | № | Где | Время | Текст |
 | - | --- | ----- | ----- |
 | 1 | **в кадр** | 10 с | А вы тоже сталкивались с тем, что организаторы технологических экспедиций напускают загадочности, тянут с ответом неделями и заведомо усложняют весь процесс? Мы знаем эту индустрию досконально, и у нас всё проще и быстрее. |
-| 2 | за кадром · главная сайта | 4 с | Больше девятисот компаний. Семнадцать индустрий. Всё в одном месте — globaltechtour.ru. |
+| 2 | за кадром · главная сайта | 6 с | Больше девятисот компаний. Семнадцать индустрий. Китай, Юго-Восточная Азия и не только — всё в одном месте: globaltechtour.ru. |
 | 3 | за кадром · каталог | 6 с | Каталог индустрий — это всё, что можно изучить: от роботов и электромобилей до чая, косметики и переработки отходов. |
 | 4 | за кадром · экспедиции, карта | 9,5 с | В «Экспедициях» — готовые маршруты. Вот, например, программа по робототехнике: маршрут по городам, список компаний и точные даты — всё на одной странице, а не в переписке с менеджером. |
 | 5 | за кадром · телефон | 3 с | Всё то же самое — с телефона, в дороге, без ноутбука под рукой. |
@@ -37,7 +42,7 @@
 | № | Где | Время | Текст |
 | - | --- | ----- | ----- |
 | 1 | **on camera** | 10 s | Have you also dealt with tech expedition organizers who play it mysterious, take weeks to reply and make the whole process harder than it needs to be? We know this industry inside out — and with us, it's simpler and faster. |
-| 2 | voice-over · home page | 5 s | Over nine hundred companies. Seventeen industries. All in one place — globaltechtour.ru. |
+| 2 | voice-over · home page | 6,5 s | Over nine hundred companies. Seventeen industries. China, Southeast Asia and beyond — all in one place: globaltechtour.ru. |
 | 3 | voice-over · catalogue | 5,5 s | The Catalogue is everything you can explore: from robots and electric vehicles to tea, cosmetics and waste recycling. |
 | 4 | voice-over · expeditions, map | 10,5 s | Expeditions are ready-made routes. Take the robotics program: the route city by city, the list of companies and exact dates — all on one page, not in a chat with a manager. |
 | 5 | voice-over · phone | 3 s | All the same from your phone — on the road, no laptop needed. |
