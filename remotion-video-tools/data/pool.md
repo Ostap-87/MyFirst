@@ -80,3 +80,18 @@
 | `wt-EB9BB8CF.MOV`     | 29 с   | `data/head/wt-EB9BB8CF.json`            |
 | `wt-1F2C0DD7.MOV`     | 90 с   | `data/head/wt-1F2C0DD7.json`            |
 | `test-src13.mp4`      | —      | `data/head/test-src13.json` (пример)    |
+
+## Панорамы городов (public/local/pano, CC0 — Wikimedia Commons)
+
+| Файл | Источник | Лицензия |
+| ---- | -------- | -------- |
+| beijing.jpg | commons.wikimedia.org/wiki/File:Jingshan_View_of_Beijing_CBD_-_Flickr.jpg | CC0 |
+| shanghai.jpg | commons.wikimedia.org/wiki/File:Pudong_Skyline_from_The_Bund_20260417.jpg | CC0 |
+| shenzhen.jpg | commons.wikimedia.org/wiki/File:Skyline_in_Shenzhen_(20250327).jpg | CC0 (жилые дома, в ролик не взята) |
+
+Скачиваются заново: `https://commons.wikimedia.org/wiki/Special:FilePath/<имя>?width=4300`.
+
+## s27-route — промо Robotics Expedition (16–21 ноября)
+
+Съёмка 27.09, 78 с после подтяжки. Звук очищен локально (Resemble Enhance).
+Черновик: `data/head/s27-route.json`.

@@ -1,0 +1,560 @@
+{
+  "name": "s27-route",
+  "stage": "черновик",
+  "props": {
+    "footage": "local/head/s27-route.mp4",
+    "captionsSrc": "captions/head-s27-route.json",
+    "durationSeconds": 77.95,
+    "hookTop": "Как делают роботов",
+    "hookBottom": "которые меняют реальность",
+    "brandMark": "GLOBAL TECH TOUR",
+    "logoScale": 1.5,
+    "logoSpin": 72,
+    "focusY": 0.48,
+    "plates": [
+      {
+        "text": "Гуглить",
+        "at": 4.3,
+        "until": 7.0,
+        "kind": "struck"
+      },
+      {
+        "text": "Приехать и увидеть",
+        "at": 5.3,
+        "until": 7.0,
+        "kind": "accent"
+      },
+      {
+        "text": "AgiBot · Kepler · Fourier",
+        "at": 8.7,
+        "until": 11.3,
+        "kind": "accent"
+      },
+      {
+        "text": "и многие другие",
+        "at": 10.3,
+        "until": 11.3,
+        "kind": "term"
+      },
+      {
+        "text": "70% гуманоидов мира",
+        "at": 15.4,
+        "until": 19.4,
+        "kind": "accent"
+      },
+      {
+        "text": "Робот каждую минуту",
+        "at": 20.0,
+        "until": 21.6,
+        "kind": "term"
+      },
+      {
+        "text": "Реальные компании",
+        "at": 22.0,
+        "until": 27.3,
+        "kind": "term"
+      },
+      {
+        "text": "R&D-центры",
+        "at": 23.5,
+        "until": 27.3,
+        "kind": "term"
+      },
+      {
+        "text": "Руководители проектов",
+        "at": 25.9,
+        "until": 27.3,
+        "kind": "accent"
+      },
+      {
+        "text": "Рядовые менеджеры",
+        "at": 27.5,
+        "until": 29.4,
+        "kind": "struck"
+      },
+      {
+        "text": "Зачем ехать вам?",
+        "at": 29.5,
+        "until": 31.0,
+        "kind": "accent"
+      },
+      {
+        "text": "1 · Рынок за 5 дней",
+        "at": 32.2,
+        "until": 36.1,
+        "kind": "accent"
+      },
+      {
+        "text": "2 · Кому доверять",
+        "at": 37.3,
+        "until": 40.9,
+        "kind": "accent"
+      },
+      {
+        "text": "3 · 10+ лет в Китае",
+        "at": 42.0,
+        "until": 48.8,
+        "kind": "accent"
+      },
+      {
+        "text": "Свободный китайский",
+        "at": 44.4,
+        "until": 48.8,
+        "kind": "term"
+      },
+      {
+        "text": "Робототехника изнутри",
+        "at": 46.3,
+        "until": 48.8,
+        "kind": "term"
+      },
+      {
+        "text": "Не к двери — а внутрь",
+        "at": 49.2,
+        "until": 51.3,
+        "kind": "accent"
+      },
+      {
+        "text": "Итог поездки",
+        "at": 53.3,
+        "until": 61.8,
+        "kind": "accent"
+      },
+      {
+        "text": "100 визиток",
+        "at": 54.6,
+        "until": 61.8,
+        "kind": "struck"
+      },
+      {
+        "text": "3–5 реальных контактов",
+        "at": 56.0,
+        "until": 61.8,
+        "kind": "accent"
+      },
+      {
+        "text": "Читать о роботах год",
+        "at": 62.8,
+        "until": 65.6,
+        "kind": "struck"
+      },
+      {
+        "text": "16–21 ноября · с нами",
+        "at": 66.2,
+        "until": 69.7,
+        "kind": "accent"
+      },
+      {
+        "text": "Группа набирается быстро",
+        "at": 73.4,
+        "kind": "accent"
+      },
+      {
+        "text": "16–21 ноября",
+        "at": 74.6,
+        "kind": "term"
+      }
+    ],
+    "cutaways": [],
+    "moves": [
+      {
+        "at": 0,
+        "until": 0.9,
+        "kind": "punch",
+        "scale": 1.15
+      },
+      {
+        "at": 4.34,
+        "until": 5.34,
+        "kind": "cut",
+        "scale": 1.12
+      },
+      {
+        "at": 9.67,
+        "until": 11.38,
+        "kind": "punch",
+        "scale": 1.2
+      },
+      {
+        "at": 23.47,
+        "until": 27.26,
+        "kind": "push",
+        "scale": 1.07
+      },
+      {
+        "at": 31.06,
+        "until": 32.06,
+        "kind": "cut",
+        "scale": 1.12
+      },
+      {
+        "at": 54.26,
+        "until": 55.95,
+        "kind": "cut",
+        "scale": 1.12
+      },
+      {
+        "at": 58.9,
+        "until": 59.81,
+        "kind": "punch",
+        "scale": 1.2
+      },
+      {
+        "at": 62.28,
+        "until": 65.66,
+        "kind": "push",
+        "scale": 1.07
+      },
+      {
+        "at": 75.62,
+        "until": 77.78,
+        "kind": "cut",
+        "scale": 1.12
+      }
+    ],
+    "brolls": [
+      {
+        "at": 7.0,
+        "until": 8.65,
+        "items": [
+          {
+            "src": "local/pano/beijing.jpg",
+            "caption": "Пекин",
+            "seconds": 0.5
+          },
+          {
+            "src": "local/pano/shanghai.jpg",
+            "caption": "Шанхай",
+            "seconds": 0.6
+          },
+          {
+            "src": "generated/robotics-expedition-v2/shenzhen-v2.png",
+            "caption": "Шэньчжэнь"
+          }
+        ]
+      },
+      {
+        "at": 51.4,
+        "until": 53.2,
+        "items": [
+          {
+            "src": "generated/robotics-expedition/08.jpg"
+          }
+        ]
+      }
+    ],
+    "pips": [
+      {
+        "at": 11.4,
+        "until": 14.1,
+        "items": [
+          {
+            "src": "site/robotics-expedition-m.jpg",
+            "present": "site",
+            "title": "Robotics Expedition",
+            "url": "globaltechtour.ru",
+            "scrollTo": 0.3
+          }
+        ]
+      },
+      {
+        "at": 69.8,
+        "until": 73.3,
+        "items": [
+          {
+            "src": "site/robotics-expedition-m.jpg",
+            "present": "site",
+            "title": "Robotics Expedition",
+            "url": "globaltechtour.ru",
+            "scrollTo": 0.12
+          }
+        ]
+      }
+    ],
+    "splits": [
+      {
+        "at": 14.2,
+        "until": 21.6,
+        "items": [
+          {
+            "src": "generated/robotics-expedition/01.jpg",
+            "seconds": 5.3
+          },
+          {
+            "src": "generated/robotics-expedition/02.jpg"
+          }
+        ],
+        "side": "bottom"
+      }
+    ],
+    "photoCards": [
+      {
+        "at": 32.4,
+        "until": 36.1,
+        "items": [
+          {
+            "src": "generated/robotics-expedition/03.jpg"
+          }
+        ],
+        "side": "right"
+      },
+      {
+        "at": 37.7,
+        "until": 40.9,
+        "items": [
+          {
+            "src": "generated/robotics-expedition-v2/handshake-v2.png"
+          }
+        ],
+        "side": "right"
+      },
+      {
+        "at": 56.6,
+        "until": 61.8,
+        "items": [
+          {
+            "src": "generated/robotics-expedition-v2/negotiations.png"
+          }
+        ],
+        "side": "right"
+      }
+    ],
+    "music": "audio/music/gtt-bed-light-long.m4a",
+    "musicVolume": 0.12
+  },
+  "proposals": [
+    {
+      "at": 0,
+      "until": 0.9,
+      "kind": "punch",
+      "scale": 1.15,
+      "zone": "face",
+      "what": "быстрый зум ×1,15",
+      "why": "хук: первые слова решают, досмотрят ли",
+      "applied": true,
+      "n": 1
+    },
+    {
+      "at": 4.34,
+      "until": 5.34,
+      "kind": "cut",
+      "scale": 1.12,
+      "what": "смена кадра ×1,12",
+      "why": "новая мысль — склейка как со второй камеры",
+      "zone": "face",
+      "applied": true,
+      "n": 2
+    },
+    {
+      "at": 8.71,
+      "until": 10.69,
+      "kind": "plate",
+      "zone": "top",
+      "applied": true,
+      "what": "плашка «AgiBot»",
+      "why": "в речи: «AgiBot,»",
+      "n": 3
+    },
+    {
+      "at": 9.67,
+      "until": 11.38,
+      "kind": "punch",
+      "scale": 1.2,
+      "what": "быстрый зум ×1,2",
+      "why": "удар на «Fourier»",
+      "zone": "face",
+      "applied": true,
+      "n": 4
+    },
+    {
+      "at": 13.48,
+      "until": 16.48,
+      "kind": "cutaway",
+      "zone": "full",
+      "applied": false,
+      "what": "перебивка",
+      "why": "на «маршруте» — нужен скрин или B-roll",
+      "n": 5
+    },
+    {
+      "at": 14.22,
+      "until": 18.14,
+      "kind": "push",
+      "scale": 1.07,
+      "what": "лёгкий наезд ×1,07",
+      "why": "длинная фраза 3.9 с без событий",
+      "zone": "face",
+      "applied": true,
+      "n": 6
+    },
+    {
+      "at": 15.81,
+      "until": 19.64,
+      "kind": "plate",
+      "zone": "top",
+      "applied": true,
+      "what": "плашка «70% всех»",
+      "why": "в речи: «В Китае собирают более 70% всех гуманоидов в мире.»",
+      "n": 7
+    },
+    {
+      "at": 19.99,
+      "until": 21.74,
+      "kind": "punch",
+      "scale": 1.2,
+      "what": "быстрый зум ×1,2",
+      "why": "удар на «каждую»",
+      "zone": "face",
+      "applied": true,
+      "n": 8
+    },
+    {
+      "at": 23.47,
+      "until": 27.26,
+      "kind": "push",
+      "scale": 1.07,
+      "what": "лёгкий наезд ×1,07",
+      "why": "длинная фраза 3.8 с без событий",
+      "zone": "face",
+      "applied": true,
+      "n": 9
+    },
+    {
+      "at": 31.06,
+      "until": 32.06,
+      "kind": "cut",
+      "scale": 1.12,
+      "what": "смена кадра ×1,12",
+      "why": "новая мысль — склейка как со второй камеры",
+      "zone": "face",
+      "applied": true,
+      "n": 10
+    },
+    {
+      "at": 32.35,
+      "until": 35.82,
+      "kind": "plate",
+      "zone": "top",
+      "applied": true,
+      "what": "плашка «пять дней»",
+      "why": "в речи: «Вы за пять дней поймете рынок лучше,»",
+      "n": 11
+    },
+    {
+      "at": 40.43,
+      "until": 42.48,
+      "kind": "plate",
+      "zone": "top",
+      "applied": true,
+      "what": "плашка «стороной Ну»",
+      "why": "в речи: «а кого лучше обходить стороной.»",
+      "n": 12
+    },
+    {
+      "at": 50.59,
+      "until": 52.92,
+      "kind": "plate",
+      "zone": "top",
+      "applied": true,
+      "what": "плашка «двери и»",
+      "why": "в речи: «Вас не подведут просто к парадной двери и бросят.»",
+      "n": 13
+    },
+    {
+      "at": 50.59,
+      "until": 51.42,
+      "kind": "punch",
+      "scale": 1.2,
+      "what": "быстрый зум ×1,2",
+      "why": "удар на «двери»",
+      "zone": "face",
+      "applied": true,
+      "n": 14
+    },
+    {
+      "at": 54.26,
+      "until": 55.95,
+      "kind": "cut",
+      "scale": 1.12,
+      "what": "смена кадра ×1,12",
+      "why": "новая мысль — склейка как со второй камеры",
+      "zone": "face",
+      "applied": true,
+      "n": 15
+    },
+    {
+      "at": 54.61,
+      "until": 57.45,
+      "kind": "plate",
+      "zone": "top",
+      "applied": true,
+      "what": "плашка «сто визиток»",
+      "why": "в речи: «Это не сто визиток в кармане,»",
+      "n": 16
+    },
+    {
+      "at": 58.9,
+      "until": 59.81,
+      "kind": "punch",
+      "scale": 1.2,
+      "what": "быстрый зум ×1,2",
+      "why": "удар на «подписывать»",
+      "zone": "face",
+      "applied": true,
+      "n": 17
+    },
+    {
+      "at": 62.28,
+      "until": 65.66,
+      "kind": "push",
+      "scale": 1.07,
+      "what": "лёгкий наезд ×1,07",
+      "why": "длинная фраза 3.4 с без событий",
+      "zone": "face",
+      "applied": true,
+      "n": 18
+    },
+    {
+      "at": 67.87,
+      "until": 71.28,
+      "kind": "plate",
+      "zone": "top",
+      "applied": true,
+      "what": "плашка «16 по»",
+      "why": "в речи: «либо едете уже с нами с 16 по 21 ноября.»",
+      "n": 19
+    },
+    {
+      "at": 70.54,
+      "until": 72.34,
+      "kind": "punch",
+      "scale": 1.2,
+      "what": "быстрый зум ×1,2",
+      "why": "удар на «Global»",
+      "zone": "face",
+      "applied": true,
+      "n": 20
+    },
+    {
+      "at": 74.62,
+      "until": 77.62,
+      "kind": "cutaway",
+      "zone": "full",
+      "applied": false,
+      "what": "перебивка",
+      "why": "на «маршрут» — нужен скрин или B-roll",
+      "n": 21
+    },
+    {
+      "at": 75.62,
+      "until": 77.78,
+      "kind": "cut",
+      "scale": 1.12,
+      "what": "смена кадра ×1,12",
+      "why": "новая мысль — склейка как со второй камеры",
+      "zone": "face",
+      "applied": true,
+      "n": 22
+    }
+  ]
+}
