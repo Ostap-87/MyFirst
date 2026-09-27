@@ -14,7 +14,7 @@ lang, frames_dir, out = sys.argv[1:4]
 P = json.load(open(f'data/site-tour/{lang}.json'))
 TXT = {
  'ru': ['А вы тоже сталкивались с тем, что организаторы технологических экспедиций напускают загадочности…',
-        'Больше девятисот компаний. Семнадцать индустрий. Всё в одном месте — globaltechtour.ru.',
+        'Больше девятисот компаний. Семнадцать индустрий. Китай, Юго-Восточная Азия и не только — всё в одном месте: globaltechtour.ru.',
         'Каталог индустрий — это всё, что можно изучить…',
         'В «Экспедициях» — готовые маршруты. Вот, например, программа по робототехнике…',
         'Всё то же самое — с телефона, в дороге…',
@@ -22,7 +22,7 @@ TXT = {
         'Отдельный раздел — корпоративное обучение… Huawei, Alibaba, Xiaomi…',
         'Заявка — прямо на сайте… от заявки до посещения… десять дней.'],
  'en': ['Have you also dealt with tech expedition organizers who play it mysterious…',
-        'Over nine hundred companies. Seventeen industries…',
+        'Over nine hundred companies. Seventeen industries. China, Southeast Asia and beyond…',
         'The Catalogue is everything you can explore…',
         'Expeditions are ready-made routes. Take the robotics program…',
         'All the same from your phone…',
