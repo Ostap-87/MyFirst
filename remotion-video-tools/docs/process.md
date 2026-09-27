@@ -44,7 +44,9 @@
 
 **Другое**
 - Post-ролик: промышленные роботы Borunte.
-- Карусели: роботы Borunte, NIO battery swap, робототехническая экспедиция.
+- Карусели в стиле GTT Horizon — 19 штук, черновики в
+  `content/instagram/globaltechtour/photo/` (чай и кофе, техгиганты,
+  электромобили, робототехника, Таиланд, финтех, логистика, отели и др.).
 - Демо эффектов: EffectsLab, MotionLab, Arsenal, раскладки, SplitDemo,
   CutoutStage.
 
