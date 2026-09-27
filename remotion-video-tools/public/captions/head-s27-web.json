@@ -1,0 +1,226 @@
+[
+ {
+  "text": " Что",
+  "startMs": 210,
+  "endMs": 600,
+  "timestampMs": 1940,
+  "confidence": 0.676984
+ },
+ {
+  "text": " касается",
+  "startMs": 600,
+  "endMs": 1760,
+  "timestampMs": 1180,
+  "confidence": 0.996246
+ },
+ {
+  "text": " рефлексии",
+  "startMs": 1760,
+  "endMs": 2840,
+  "timestampMs": 2300,
+  "confidence": 0.837094
+ },
+ {
+  "text": " и",
+  "startMs": 2840,
+  "endMs": 2970,
+  "timestampMs": 4260,
+  "confidence": 0.930177
+ },
+ {
+  "text": " новостей",
+  "startMs": 2970,
+  "endMs": 4030,
+  "timestampMs": 3500,
+  "confidence": 0.962918
+ },
+ {
+  "text": " на",
+  "startMs": 4030,
+  "endMs": 4290,
+  "timestampMs": 5220,
+  "confidence": 0.919563
+ },
+ {
+  "text": " ежедневной",
+  "startMs": 4290,
+  "endMs": 5680,
+  "timestampMs": 4985,
+  "confidence": 0.986323
+ },
+ {
+  "text": " основе.",
+  "startMs": 5680,
+  "endMs": 6680,
+  "timestampMs": 6180,
+  "confidence": 0.384979
+ },
+ {
+  "text": " Я",
+  "startMs": 6680,
+  "endMs": 6730,
+  "timestampMs": 6480,
+  "confidence": 0.975186
+ },
+ {
+  "text": " их",
+  "startMs": 6730,
+  "endMs": 6890,
+  "timestampMs": 6620,
+  "confidence": 0.993644
+ },
+ {
+  "text": " публикую",
+  "startMs": 6890,
+  "endMs": 7290,
+  "timestampMs": 7090,
+  "confidence": 0.985562
+ },
+ {
+  "text": " на",
+  "startMs": 7290,
+  "endMs": 7400,
+  "timestampMs": 7240,
+  "confidence": 0.988483
+ },
+ {
+  "text": " своем",
+  "startMs": 7400,
+  "endMs": 7690,
+  "timestampMs": 7545,
+  "confidence": 0.814366
+ },
+ {
+  "text": " личном",
+  "startMs": 7690,
+  "endMs": 8020,
+  "timestampMs": 7855,
+  "confidence": 0.976198
+ },
+ {
+  "text": " сайте,",
+  "startMs": 8020,
+  "endMs": 8400,
+  "timestampMs": 8210,
+  "confidence": 0.412887
+ },
+ {
+  "text": " вот",
+  "startMs": 8400,
+  "endMs": 8520,
+  "timestampMs": 8740,
+  "confidence": 0.605524
+ },
+ {
+  "text": " ссылка",
+  "startMs": 8520,
+  "endMs": 8960,
+  "timestampMs": 8740,
+  "confidence": 0.993006
+ },
+ {
+  "text": " на",
+  "startMs": 8960,
+  "endMs": 9040,
+  "timestampMs": 9220,
+  "confidence": 0.878763
+ },
+ {
+  "text": " сайт.",
+  "startMs": 9040,
+  "endMs": 10080,
+  "timestampMs": 9560,
+  "confidence": 0.814719
+ },
+ {
+  "text": " У",
+  "startMs": 10080,
+  "endMs": 10150,
+  "timestampMs": 10240,
+  "confidence": 0.994723
+ },
+ {
+  "text": " меня",
+  "startMs": 10150,
+  "endMs": 10410,
+  "timestampMs": 10420,
+  "confidence": 0.998571
+ },
+ {
+  "text": " несколько",
+  "startMs": 10410,
+  "endMs": 11030,
+  "timestampMs": 10840,
+  "confidence": 0.990155
+ },
+ {
+  "text": " разделов,",
+  "startMs": 11030,
+  "endMs": 11640,
+  "timestampMs": 11335,
+  "confidence": 0.577677
+ },
+ {
+  "text": " я",
+  "startMs": 11640,
+  "endMs": 11660,
+  "timestampMs": 11960,
+  "confidence": 0.934491
+ },
+ {
+  "text": " думаю",
+  "startMs": 11660,
+  "endMs": 11990,
+  "timestampMs": 12160,
+  "confidence": 0.997137
+ },
+ {
+  "text": " каждый",
+  "startMs": 11990,
+  "endMs": 12390,
+  "timestampMs": 12540,
+  "confidence": 0.697303
+ },
+ {
+  "text": " выберет",
+  "startMs": 12390,
+  "endMs": 12920,
+  "timestampMs": 12655,
+  "confidence": 0.984219
+ },
+ {
+  "text": " под",
+  "startMs": 12920,
+  "endMs": 13110,
+  "timestampMs": 13140,
+  "confidence": 0.986312
+ },
+ {
+  "text": " себя,",
+  "startMs": 13110,
+  "endMs": 13430,
+  "timestampMs": 13270,
+  "confidence": 0.464974
+ },
+ {
+  "text": " что",
+  "startMs": 13430,
+  "endMs": 13620,
+  "timestampMs": 13700,
+  "confidence": 0.994016
+ },
+ {
+  "text": " ему",
+  "startMs": 13620,
+  "endMs": 13800,
+  "timestampMs": 13860,
+  "confidence": 0.996082
+ },
+ {
+  "text": " интересно.",
+  "startMs": 13800,
+  "endMs": 14440,
+  "timestampMs": 14120,
+  "confidence": 0.948789
+ }
+]

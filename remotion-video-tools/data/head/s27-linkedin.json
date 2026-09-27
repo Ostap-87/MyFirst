@@ -1,0 +1,155 @@
+{
+  "name": "s27-linkedin",
+  "stage": "черновик",
+  "props": {
+    "footage": "local/head/s27-linkedin.mp4",
+    "captionsSrc": "captions/head-s27-linkedin.json",
+    "durationSeconds": 23.49,
+    "hookTop": "Новости индустрий",
+    "hookBottom": "на английском",
+    "brandMark": "GLOBAL TECH TOUR",
+    "logoScale": 1.5,
+    "logoSpin": 72,
+    "focusY": 0.5,
+    "plates": [
+      {
+        "text": "LinkedIn",
+        "at": 4.6,
+        "until": 10.5,
+        "kind": "accent"
+      },
+      {
+        "text": "Каждый день",
+        "at": 6.2,
+        "until": 10.5,
+        "kind": "term"
+      },
+      {
+        "text": "Новости индустрий",
+        "at": 8.2,
+        "until": 10.5,
+        "kind": "term"
+      },
+      {
+        "text": "Central Kitchen",
+        "at": 10.7,
+        "until": 14.9,
+        "kind": "term"
+      },
+      {
+        "text": "Высокие технологии",
+        "at": 11.8,
+        "until": 14.9,
+        "kind": "term"
+      },
+      {
+        "text": "Робототехника",
+        "at": 13.4,
+        "until": 14.9,
+        "kind": "term"
+      },
+      {
+        "text": "Всё на английском",
+        "at": 15.0,
+        "until": 18.7,
+        "kind": "accent"
+      },
+      {
+        "text": "Ссылка — в описании",
+        "at": 16.4,
+        "until": 18.7,
+        "kind": "term"
+      },
+      {
+        "text": "Отвечу на вопросы",
+        "at": 18.8,
+        "kind": "accent"
+      }
+    ],
+    "cutaways": [],
+    "moves": [
+      {
+        "at": 0,
+        "until": 2.2,
+        "kind": "punch",
+        "scale": 1.15
+      },
+      {
+        "at": 5.92,
+        "until": 9.25,
+        "kind": "push",
+        "scale": 1.07
+      },
+      {
+        "at": 13.41,
+        "until": 15.21,
+        "kind": "punch",
+        "scale": 1.2
+      },
+      {
+        "at": 19.2,
+        "until": 21.49,
+        "kind": "cut",
+        "scale": 1.12
+      }
+    ],
+    "music": "audio/music/gtt-bed-light-long.m4a",
+    "musicVolume": 0.1
+  },
+  "proposals": [
+    {
+      "at": 0,
+      "until": 2.2,
+      "kind": "punch",
+      "scale": 1.15,
+      "zone": "face",
+      "what": "быстрый зум ×1,15",
+      "why": "хук: первые слова решают, досмотрят ли",
+      "applied": true,
+      "n": 1
+    },
+    {
+      "at": 4.6,
+      "until": 7.42,
+      "kind": "plate",
+      "zone": "top",
+      "applied": true,
+      "what": "плашка «LinkedIn»",
+      "why": "в речи: «меня есть мой LinkedIn где я»",
+      "n": 2
+    },
+    {
+      "at": 5.92,
+      "until": 9.25,
+      "kind": "push",
+      "scale": 1.07,
+      "what": "лёгкий наезд ×1,07",
+      "why": "длинная фраза 3.3 с без событий",
+      "zone": "face",
+      "applied": true,
+      "n": 3
+    },
+    {
+      "at": 13.41,
+      "until": 15.21,
+      "kind": "punch",
+      "scale": 1.2,
+      "what": "быстрый зум ×1,2",
+      "why": "удар на «робототехника»",
+      "zone": "face",
+      "applied": true,
+      "n": 4
+    },
+    {
+      "at": 19.2,
+      "until": 21.49,
+      "kind": "cut",
+      "scale": 1.12,
+      "what": "смена кадра ×1,12",
+      "why": "новая мысль — склейка как со второй камеры",
+      "zone": "face",
+      "applied": true,
+      "n": 5
+    }
+  ]
+}

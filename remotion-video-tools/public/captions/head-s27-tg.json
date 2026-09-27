@@ -1,0 +1,184 @@
+[
+ {
+  "text": "Канал",
+  "startMs": 30,
+  "endMs": 860,
+  "timestampMs": 445,
+  "confidence": 0.166591
+ },
+ {
+  "text": " в",
+  "startMs": 860,
+  "endMs": 1040,
+  "timestampMs": 3400,
+  "confidence": 0.879489
+ },
+ {
+  "text": " Телеграме",
+  "startMs": 1040,
+  "endMs": 2610,
+  "timestampMs": 1825,
+  "confidence": 0.541276
+ },
+ {
+  "text": " называется",
+  "startMs": 2610,
+  "endMs": 4390,
+  "timestampMs": 4720,
+  "confidence": 0.941242
+ },
+ {
+  "text": " Global",
+  "startMs": 4390,
+  "endMs": 4920,
+  "timestampMs": 5100,
+  "confidence": 0.717236
+ },
+ {
+  "text": " Tech",
+  "startMs": 4920,
+  "endMs": 5370,
+  "timestampMs": 5380,
+  "confidence": 0.407894
+ },
+ {
+  "text": " Tour,",
+  "startMs": 5370,
+  "endMs": 6010,
+  "timestampMs": 5690,
+  "confidence": 0.217387
+ },
+ {
+  "text": " там",
+  "startMs": 6010,
+  "endMs": 6810,
+  "timestampMs": 9340,
+  "confidence": 0.672222
+ },
+ {
+  "text": " я",
+  "startMs": 6810,
+  "endMs": 7160,
+  "timestampMs": 9540,
+  "confidence": 0.990248
+ },
+ {
+  "text": " публикую",
+  "startMs": 7160,
+  "endMs": 9960,
+  "timestampMs": 8560,
+  "confidence": 0.951742
+ },
+ {
+  "text": " на",
+  "startMs": 9960,
+  "endMs": 10110,
+  "timestampMs": 10140,
+  "confidence": 0.994042
+ },
+ {
+  "text": " ежедневной",
+  "startMs": 10110,
+  "endMs": 10840,
+  "timestampMs": 10475,
+  "confidence": 0.974987
+ },
+ {
+  "text": " основе",
+  "startMs": 10840,
+  "endMs": 11290,
+  "timestampMs": 11065,
+  "confidence": 0.998525
+ },
+ {
+  "text": " новости",
+  "startMs": 11290,
+  "endMs": 11810,
+  "timestampMs": 11550,
+  "confidence": 0.995714
+ },
+ {
+  "text": " индустрии,",
+  "startMs": 11810,
+  "endMs": 12650,
+  "timestampMs": 12230,
+  "confidence": 0.934044
+ },
+ {
+  "text": " новости",
+  "startMs": 12650,
+  "endMs": 12910,
+  "timestampMs": 12780,
+  "confidence": 0.880172
+ },
+ {
+  "text": " различных",
+  "startMs": 12910,
+  "endMs": 13280,
+  "timestampMs": 13095,
+  "confidence": 0.957428
+ },
+ {
+  "text": " компаний,",
+  "startMs": 13280,
+  "endMs": 14110,
+  "timestampMs": 13695,
+  "confidence": 0.817748
+ },
+ {
+  "text": " хай-тека,",
+  "startMs": 14110,
+  "endMs": 15110,
+  "timestampMs": 14610,
+  "confidence": 0.93049
+ },
+ {
+  "text": " робототехники,",
+  "startMs": 15110,
+  "endMs": 16380,
+  "timestampMs": 15745,
+  "confidence": 0.64184
+ },
+ {
+  "text": " новых",
+  "startMs": 16380,
+  "endMs": 16840,
+  "timestampMs": 16840,
+  "confidence": 0.978245
+ },
+ {
+  "text": " технологий.",
+  "startMs": 16840,
+  "endMs": 17840,
+  "timestampMs": 17340,
+  "confidence": 0.511272
+ },
+ {
+  "text": " Ссылочка",
+  "startMs": 17840,
+  "endMs": 18290,
+  "timestampMs": 18065,
+  "confidence": 0.87692
+ },
+ {
+  "text": " будет",
+  "startMs": 18290,
+  "endMs": 18580,
+  "timestampMs": 18540,
+  "confidence": 0.994298
+ },
+ {
+  "text": " здесь,",
+  "startMs": 18580,
+  "endMs": 19030,
+  "timestampMs": 18805,
+  "confidence": 0.398282
+ },
+ {
+  "text": " подписывайтесь.",
+  "startMs": 19030,
+  "endMs": 19800,
+  "timestampMs": 19415,
+  "confidence": 0.676763
+ }
+]

@@ -1,0 +1,142 @@
+{
+  "name": "s27-tg",
+  "stage": "черновик",
+  "props": {
+    "footage": "local/head/s27-tg.mp4",
+    "captionsSrc": "captions/head-s27-tg.json",
+    "durationSeconds": 21.13,
+    "hookTop": "Новости индустрии",
+    "hookBottom": "каждый день",
+    "brandMark": "GLOBAL TECH TOUR",
+    "logoScale": 1.5,
+    "logoSpin": 72,
+    "focusY": 0.5,
+    "plates": [
+      {
+        "text": "Telegram · Global Tech Tour",
+        "at": 4.4,
+        "until": 9.9,
+        "kind": "accent"
+      },
+      {
+        "text": "Каждый день",
+        "at": 10.1,
+        "until": 11.2,
+        "kind": "accent"
+      },
+      {
+        "text": "Новости индустрии",
+        "at": 11.3,
+        "until": 17.6,
+        "kind": "term"
+      },
+      {
+        "text": "Новости компаний",
+        "at": 12.7,
+        "until": 17.6,
+        "kind": "term"
+      },
+      {
+        "text": "Хай-тек · робототехника",
+        "at": 14.1,
+        "until": 17.6,
+        "kind": "term"
+      },
+      {
+        "text": "Ссылка — в описании",
+        "at": 17.8,
+        "kind": "term"
+      },
+      {
+        "text": "Подписывайтесь",
+        "at": 19.0,
+        "kind": "accent"
+      }
+    ],
+    "cutaways": [],
+    "moves": [
+      {
+        "at": 0,
+        "until": 2.2,
+        "kind": "punch",
+        "scale": 1.15
+      },
+      {
+        "at": 6.01,
+        "until": 10.11,
+        "kind": "push",
+        "scale": 1.07
+      },
+      {
+        "at": 13.28,
+        "until": 14.11,
+        "kind": "punch",
+        "scale": 1.2
+      },
+      {
+        "at": 17.84,
+        "until": 19.03,
+        "kind": "cut",
+        "scale": 1.12
+      }
+    ],
+    "music": "audio/music/gtt-bed-light-long.m4a",
+    "musicVolume": 0.1
+  },
+  "proposals": [
+    {
+      "at": 0,
+      "until": 2.2,
+      "kind": "punch",
+      "scale": 1.15,
+      "zone": "face",
+      "what": "быстрый зум ×1,15",
+      "why": "хук: первые слова решают, досмотрят ли",
+      "applied": true,
+      "n": 1
+    },
+    {
+      "at": 4.39,
+      "until": 7.51,
+      "kind": "plate",
+      "zone": "top",
+      "applied": true,
+      "what": "плашка «Global · Tech · Tour»",
+      "why": "в речи: «Global Tech Tour,»",
+      "n": 2
+    },
+    {
+      "at": 6.01,
+      "until": 10.11,
+      "kind": "push",
+      "scale": 1.07,
+      "what": "лёгкий наезд ×1,07",
+      "why": "длинная фраза 4.1 с без событий",
+      "zone": "face",
+      "applied": true,
+      "n": 3
+    },
+    {
+      "at": 13.28,
+      "until": 14.11,
+      "kind": "punch",
+      "scale": 1.2,
+      "what": "быстрый зум ×1,2",
+      "why": "удар на «компаний»",
+      "zone": "face",
+      "applied": true,
+      "n": 4
+    },
+    {
+      "at": 17.84,
+      "until": 19.03,
+      "kind": "cut",
+      "scale": 1.12,
+      "what": "смена кадра ×1,12",
+      "why": "новая мысль — склейка как со второй камеры",
+      "zone": "face",
+      "applied": true,
+      "n": 5
+    }
+  ]
+}
