@@ -27,35 +27,11 @@
       {
         "text": "На английском",
         "at": 9.8,
-        "until": 14.2,
-        "kind": "accent"
-      },
-      {
-        "text": "Ссылка — в описании",
-        "at": 14.3,
-        "until": 17.4,
-        "kind": "term"
-      },
-      {
-        "text": "LinkedIn",
-        "at": 17.5,
-        "kind": "term"
-      },
-      {
-        "text": "ostapdotcenko.ru",
-        "at": 19.0,
+        "until": 12.7,
         "kind": "accent"
       }
     ],
-    "cutaways": [
-      {
-        "src": "site/ostapdotcenko.jpg",
-        "at": 20.4,
-        "seconds": 2.4,
-        "from": 0,
-        "to": 0.12
-      }
-    ],
+    "cutaways": [],
     "moves": [
       {
         "at": 0,
@@ -68,16 +44,46 @@
         "until": 6.9,
         "kind": "push",
         "scale": 1.07
-      },
-      {
-        "at": 15.62,
-        "until": 16.37,
-        "kind": "punch",
-        "scale": 1.2
       }
     ],
     "music": "audio/music/gtt-bed-light-long.m4a",
-    "musicVolume": 0.1
+    "musicVolume": 0.1,
+    "pips": [
+      {
+        "at": 12.8,
+        "until": 16.4,
+        "items": [
+          {
+            "src": "site/linkedin-ostap.jpg",
+            "present": "site",
+            "title": "Ostap Dotcenko",
+            "url": "LinkedIn",
+            "scrollTo": 0.25
+          }
+        ]
+      },
+      {
+        "at": 17.4,
+        "until": 22.9,
+        "items": [
+          {
+            "src": "site/linkedin-ostap.jpg",
+            "present": "site",
+            "title": "Ostap Dotcenko",
+            "url": "LinkedIn",
+            "scrollTo": 0.5,
+            "seconds": 1.6
+          },
+          {
+            "src": "site/ostapdotcenko-blog.jpg",
+            "present": "site",
+            "title": "Блог: статьи и зарисовки",
+            "url": "ostapdotcenko.ru",
+            "scrollTo": 0.12
+          }
+        ]
+      }
+    ]
   },
   "proposals": [
     {

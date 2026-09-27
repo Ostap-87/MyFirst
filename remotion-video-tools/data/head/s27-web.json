@@ -15,57 +15,50 @@
       {
         "text": "Размышления и новости",
         "at": 3.0,
-        "until": 6.6,
+        "until": 7.2,
         "kind": "term"
       },
       {
         "text": "Каждый день",
         "at": 4.3,
-        "until": 6.6,
+        "until": 7.2,
         "kind": "term"
-      },
-      {
-        "text": "ostapdotcenko.ru",
-        "at": 7.7,
-        "until": 10.3,
-        "kind": "accent"
-      },
-      {
-        "text": "Несколько разделов",
-        "at": 10.4,
-        "kind": "term"
-      },
-      {
-        "text": "Каждый найдёт своё",
-        "at": 12.0,
-        "kind": "accent"
       }
     ],
-    "cutaways": [
-      {
-        "src": "site/ostapdotcenko.jpg",
-        "at": 8.4,
-        "seconds": 2.8,
-        "from": 0,
-        "to": 0.15
-      }
-    ],
+    "cutaways": [],
     "moves": [
       {
         "at": 0,
         "until": 2.2,
         "kind": "punch",
         "scale": 1.15
-      },
-      {
-        "at": 6.68,
-        "until": 8.4,
-        "kind": "cut",
-        "scale": 1.12
       }
     ],
     "music": "audio/music/gtt-bed-light-long.m4a",
-    "musicVolume": 0.1
+    "musicVolume": 0.1,
+    "pips": [
+      {
+        "at": 7.3,
+        "until": 14.6,
+        "items": [
+          {
+            "src": "site/ostapdotcenko.jpg",
+            "present": "site",
+            "title": "Остап Доценко",
+            "url": "ostapdotcenko.ru",
+            "scrollTo": 0.1,
+            "seconds": 3.0
+          },
+          {
+            "src": "site/ostapdotcenko-blog.jpg",
+            "present": "site",
+            "title": "Блог: статьи и зарисовки",
+            "url": "ostapdotcenko.ru",
+            "scrollTo": 0.12
+          }
+        ]
+      }
+    ]
   },
   "proposals": [
     {

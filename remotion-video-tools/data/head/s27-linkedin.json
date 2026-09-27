@@ -13,22 +13,10 @@
     "focusY": 0.5,
     "plates": [
       {
-        "text": "LinkedIn",
-        "at": 4.6,
+        "text": "Каждый день · новости индустрий",
+        "at": 8.1,
         "until": 10.5,
         "kind": "accent"
-      },
-      {
-        "text": "Каждый день",
-        "at": 6.2,
-        "until": 10.5,
-        "kind": "term"
-      },
-      {
-        "text": "Новости индустрий",
-        "at": 8.2,
-        "until": 10.5,
-        "kind": "term"
       },
       {
         "text": "Central Kitchen",
@@ -51,14 +39,8 @@
       {
         "text": "Всё на английском",
         "at": 15.0,
-        "until": 18.7,
+        "until": 16.1,
         "kind": "accent"
-      },
-      {
-        "text": "Ссылка — в описании",
-        "at": 16.4,
-        "until": 18.7,
-        "kind": "term"
       },
       {
         "text": "Отвечу на вопросы",
@@ -75,12 +57,6 @@
         "scale": 1.15
       },
       {
-        "at": 5.92,
-        "until": 9.25,
-        "kind": "push",
-        "scale": 1.07
-      },
-      {
         "at": 13.41,
         "until": 15.21,
         "kind": "punch",
@@ -94,7 +70,35 @@
       }
     ],
     "music": "audio/music/gtt-bed-light-long.m4a",
-    "musicVolume": 0.1
+    "musicVolume": 0.1,
+    "pips": [
+      {
+        "at": 4.3,
+        "until": 8.0,
+        "items": [
+          {
+            "src": "site/linkedin-ostap.jpg",
+            "present": "site",
+            "title": "Ostap Dotcenko",
+            "url": "LinkedIn",
+            "scrollTo": 0.15
+          }
+        ]
+      },
+      {
+        "at": 16.2,
+        "until": 18.7,
+        "items": [
+          {
+            "src": "site/linkedin-ostap.jpg",
+            "present": "site",
+            "title": "Ostap Dotcenko",
+            "url": "LinkedIn",
+            "scrollTo": 0.55
+          }
+        ]
+      }
+    ]
   },
   "proposals": [
     {

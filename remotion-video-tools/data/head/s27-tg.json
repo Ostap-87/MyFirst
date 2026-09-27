@@ -14,43 +14,33 @@
     "plates": [
       {
         "text": "Telegram · Global Tech Tour",
-        "at": 4.4,
-        "until": 9.9,
+        "at": 7.4,
+        "until": 11.2,
         "kind": "accent"
       },
       {
         "text": "Каждый день",
         "at": 10.1,
         "until": 11.2,
-        "kind": "accent"
+        "kind": "term"
       },
       {
         "text": "Новости индустрии",
         "at": 11.3,
-        "until": 17.6,
+        "until": 17.5,
         "kind": "term"
       },
       {
         "text": "Новости компаний",
         "at": 12.7,
-        "until": 17.6,
+        "until": 17.5,
         "kind": "term"
       },
       {
         "text": "Хай-тек · робототехника",
         "at": 14.1,
-        "until": 17.6,
+        "until": 17.5,
         "kind": "term"
-      },
-      {
-        "text": "Ссылка — в описании",
-        "at": 17.8,
-        "kind": "term"
-      },
-      {
-        "text": "Подписывайтесь",
-        "at": 19.0,
-        "kind": "accent"
       }
     ],
     "cutaways": [],
@@ -62,26 +52,42 @@
         "scale": 1.15
       },
       {
-        "at": 6.01,
-        "until": 10.11,
-        "kind": "push",
-        "scale": 1.07
-      },
-      {
         "at": 13.28,
         "until": 14.11,
         "kind": "punch",
         "scale": 1.2
-      },
-      {
-        "at": 17.84,
-        "until": 19.03,
-        "kind": "cut",
-        "scale": 1.12
       }
     ],
     "music": "audio/music/gtt-bed-light-long.m4a",
-    "musicVolume": 0.1
+    "musicVolume": 0.1,
+    "pips": [
+      {
+        "at": 4.0,
+        "until": 7.3,
+        "items": [
+          {
+            "src": "site/telegram-gtt.jpg",
+            "present": "site",
+            "title": "Global Tech Tour",
+            "url": "t.me/GlobalTechTour",
+            "scrollTo": 0.1
+          }
+        ]
+      },
+      {
+        "at": 17.6,
+        "until": 21.1,
+        "items": [
+          {
+            "src": "site/telegram-gtt.jpg",
+            "present": "site",
+            "title": "Global Tech Tour",
+            "url": "t.me/GlobalTechTour",
+            "scrollTo": 0.3
+          }
+        ]
+      }
+    ]
   },
   "proposals": [
     {
