@@ -219,8 +219,8 @@
     ],
     "pips": [
       {
-        "at": 34.567,
-        "until": 37.067,
+        "at": 35.22,
+        "until": 37.67,
         "items": [
           {
             "src": "site/expeditions.jpg",
@@ -234,8 +234,8 @@
     ],
     "flips": [
       {
-        "at": 51.967,
-        "until": 53.417,
+        "at": 51.97,
+        "until": 53.42,
         "items": [
           {
             "src": "local/gtt/flip-alibaba.png",
@@ -246,13 +246,13 @@
           }
         ],
         "overlay": true,
-        "widthFraction": 0.4,
+        "widthFraction": 0.34,
         "centerY": 0.6,
-        "centerX": 0.73
+        "centerX": 0.8
       },
       {
-        "at": 59.167,
-        "until": 60.567,
+        "at": 59.17,
+        "until": 60.57,
         "items": [
           {
             "src": "local/gtt/flip-bytedance.png",
@@ -263,74 +263,81 @@
           }
         ],
         "overlay": true,
-        "widthFraction": 0.4,
+        "widthFraction": 0.34,
         "centerY": 0.6,
-        "centerX": 0.73
+        "centerX": 0.8
       }
     ],
     "numbers": [
       {
-        "at": 17.517,
-        "until": 18.267,
+        "at": 17.52,
+        "until": 18.27,
         "text": "1",
-        "label": "из 7",
-        "x": 0.8,
-        "y": 0.42,
-        "size": 0.38
+        "label": "",
+        "x": 0.82,
+        "y": 0.3,
+        "size": 0.34,
+        "look": "gradient"
       },
       {
-        "at": 21.517,
-        "until": 22.267,
+        "at": 21.52,
+        "until": 22.27,
         "text": "2",
-        "label": "из 7",
-        "x": 0.8,
-        "y": 0.42,
-        "size": 0.38
+        "label": "",
+        "x": 0.82,
+        "y": 0.3,
+        "size": 0.34,
+        "look": "gradient"
       },
       {
-        "at": 34.517,
-        "until": 35.167,
+        "at": 34.52,
+        "until": 35.17,
         "text": "3",
-        "label": "из 7",
-        "x": 0.8,
-        "y": 0.42,
-        "size": 0.38
+        "label": "",
+        "x": 0.82,
+        "y": 0.3,
+        "size": 0.34,
+        "look": "gradient"
       },
       {
-        "at": 40.717,
-        "until": 41.467,
+        "at": 40.72,
+        "until": 41.47,
         "text": "4",
-        "label": "из 7",
-        "x": 0.8,
-        "y": 0.42,
-        "size": 0.38
+        "label": "",
+        "x": 0.82,
+        "y": 0.3,
+        "size": 0.34,
+        "look": "gradient"
       },
       {
-        "at": 46.917,
-        "until": 47.567,
+        "at": 46.92,
+        "until": 47.57,
         "text": "5",
-        "label": "из 7",
-        "x": 0.8,
-        "y": 0.42,
-        "size": 0.38
+        "label": "",
+        "x": 0.82,
+        "y": 0.3,
+        "size": 0.34,
+        "look": "gradient"
       },
       {
-        "at": 53.417,
-        "until": 54.367,
+        "at": 53.42,
+        "until": 54.37,
         "text": "6",
-        "label": "из 7",
-        "x": 0.8,
-        "y": 0.42,
-        "size": 0.38
+        "label": "",
+        "x": 0.82,
+        "y": 0.3,
+        "size": 0.34,
+        "look": "gradient"
       },
       {
-        "at": 60.567,
-        "until": 61.367,
+        "at": 60.57,
+        "until": 61.37,
         "text": "7",
-        "label": "из 7",
-        "x": 0.8,
-        "y": 0.42,
-        "size": 0.38
+        "label": "",
+        "x": 0.82,
+        "y": 0.3,
+        "size": 0.34,
+        "look": "gradient"
       }
     ],
     "flags": [
