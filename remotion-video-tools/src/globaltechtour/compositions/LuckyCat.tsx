@@ -2,9 +2,10 @@ import { z } from "zod";
 import { MascotRig, mascotRigSchema } from "../../shared/components/effects";
 
 /**
- * GTT-LuckyCat — фигурка манэки-нэко (стикер владельца): машет лапкой и
- * моргает. Слои нарезаны из `public/local/cat/open.png`, закрытые глаза —
- * заплатки по мотивам второй фигурки.
+ * GTT-LuckyCat — фигурка манэки-нэко (стикер владельца): манит лапкой
+ * вниз-вверх и моргает, на груди — 錢 («деньги»). Слои нарезаны из
+ * `public/local/cat/open.png`, закрытые глаза — заплатки по мотивам второй
+ * фигурки, предплечье рисует сам эффект.
  *
  * Квадрат 1080, 5 с, зациклен: период взмаха 1,25 с укладывается 4 раза.
  */
@@ -19,10 +20,21 @@ export const gttLuckyCatDefaults: GTTLuckyCatProps = {
   eyesClosed: "local/cat/eyes-closed.png",
   imageWidth: 1254,
   imageHeight: 1254,
-  pivotX: 848,
-  pivotY: 760,
-  swingDeg: 14,
+  slideDx: 0,
+  slideDy: 72,
   wavePeriodSeconds: 1.25,
+  limbA1: { x: 886, y: 598 },
+  limbA2: { x: 846, y: 640 },
+  limbB1: { x: 946, y: 664 },
+  limbB2: { x: 900, y: 702 },
+  limbStroke: 22,
+  limbOuter: 24,
+  limbColor: "#e61e24",
+  markText: "錢",
+  markX: 0.5,
+  markY: 0.685,
+  markSize: 0.135,
+  markColor: "#e61e24",
   blinkEverySeconds: 2.5,
   blinkFrames: 3,
   background: "#ffffff",
