@@ -27,6 +27,7 @@ import {
   SplitScreen,
   WipeBroll,
   BigNumber,
+  bigNumberLooks,
   FlagWave,
   FlipCards,
   flipCardItemSchema,
@@ -187,6 +188,8 @@ const numberBlock = z.object({
   x: z.number().optional().describe("Центр по ширине, доля кадра"),
   y: z.number().optional().describe("Центр по высоте, доля кадра"),
   size: z.number().optional().describe("Высота цифры, доля ширины кадра"),
+  look: z.enum(bigNumberLooks).optional().describe("Начертание цифры"),
+  total: z.string().optional().describe("Всего пунктов — для счётчика «01/07»"),
 });
 const brollBlock = z.object({
   ...span,
@@ -632,6 +635,8 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
               x={n.x}
               y={n.y}
               sizeFraction={n.size}
+              look={n.look}
+              total={n.total}
             />
           </Sequence>
         ))}
