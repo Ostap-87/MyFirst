@@ -233,8 +233,8 @@
     ],
     "pips": [
       {
-        "at": 40.6,
-        "until": 43.1,
+        "at": 41.25,
+        "until": 43.7,
         "items": [
           {
             "src": "site/expeditions.jpg",
@@ -260,9 +260,9 @@
           }
         ],
         "overlay": true,
-        "widthFraction": 0.4,
+        "widthFraction": 0.34,
         "centerY": 0.6,
-        "centerX": 0.73
+        "centerX": 0.8
       },
       {
         "at": 65.2,
@@ -277,9 +277,9 @@
           }
         ],
         "overlay": true,
-        "widthFraction": 0.4,
+        "widthFraction": 0.34,
         "centerY": 0.6,
-        "centerX": 0.73
+        "centerX": 0.8
       }
     ],
     "numbers": [
@@ -287,64 +287,71 @@
         "at": 23.55,
         "until": 24.3,
         "text": "1",
-        "label": "из 7",
-        "x": 0.8,
-        "y": 0.42,
-        "size": 0.38
+        "label": "",
+        "x": 0.82,
+        "y": 0.3,
+        "size": 0.34,
+        "look": "gradient"
       },
       {
         "at": 27.55,
         "until": 28.3,
         "text": "2",
-        "label": "из 7",
-        "x": 0.8,
-        "y": 0.42,
-        "size": 0.38
+        "label": "",
+        "x": 0.82,
+        "y": 0.3,
+        "size": 0.34,
+        "look": "gradient"
       },
       {
         "at": 40.55,
         "until": 41.2,
         "text": "3",
-        "label": "из 7",
-        "x": 0.8,
-        "y": 0.42,
-        "size": 0.38
+        "label": "",
+        "x": 0.82,
+        "y": 0.3,
+        "size": 0.34,
+        "look": "gradient"
       },
       {
         "at": 46.75,
         "until": 47.5,
         "text": "4",
-        "label": "из 7",
-        "x": 0.8,
-        "y": 0.42,
-        "size": 0.38
+        "label": "",
+        "x": 0.82,
+        "y": 0.3,
+        "size": 0.34,
+        "look": "gradient"
       },
       {
         "at": 52.95,
         "until": 53.6,
         "text": "5",
-        "label": "из 7",
-        "x": 0.8,
-        "y": 0.42,
-        "size": 0.38
+        "label": "",
+        "x": 0.82,
+        "y": 0.3,
+        "size": 0.34,
+        "look": "gradient"
       },
       {
         "at": 59.45,
         "until": 60.4,
         "text": "6",
-        "label": "из 7",
-        "x": 0.8,
-        "y": 0.42,
-        "size": 0.38
+        "label": "",
+        "x": 0.82,
+        "y": 0.3,
+        "size": 0.34,
+        "look": "gradient"
       },
       {
         "at": 66.6,
         "until": 67.4,
         "text": "7",
-        "label": "из 7",
-        "x": 0.8,
-        "y": 0.42,
-        "size": 0.38
+        "label": "",
+        "x": 0.82,
+        "y": 0.3,
+        "size": 0.34,
+        "look": "gradient"
       }
     ],
     "flags": [
