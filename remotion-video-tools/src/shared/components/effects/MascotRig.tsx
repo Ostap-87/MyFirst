@@ -14,9 +14,10 @@ import { withDefaults } from "./media";
  *
  * ——— Как движется ———
  *
- * Лапка: угол = −swing · ½(1 − cos 2πt/T) — из покоя вверх и обратно,
- * без остановок на концах, как у манэки-нэко. Ось — плечо (`pivotX/Y` в
- * пикселях исходника). Моргание: каждые `blinkEvery` секунд веко
+ * Лапка: угол = swing · ½(1 − cos 2πt/T) — из покоя вниз и обратно, без
+ * остановок на концах, как у манэки-нэко. Ось — запястье у левого края
+ * ладошки (`pivotX/Y` в пикселях исходника): точка справа от оси ходит
+ * по вертикали; ось у плеча давала бы взмах вбок. Моргание: каждые `blinkEvery` секунд веко
  * опускается на полкадра (1 кадр `eyesHalf`), держится закрытым
  * `blinkFrames`, поднимается (1 кадр `eyesHalf`). Второе, короткое
  * моргание через 0,35 с после каждого третьего — так глаза не тикают
@@ -77,7 +78,8 @@ export const MascotRig: React.FC<MascotRigProps> = (params) => {
   const layer: React.CSSProperties = { position: "absolute", inset: 0, width: "100%", height: "100%" };
 
   const t = frame / fps;
-  const angle = -p.swingDeg * 0.5 * (1 - Math.cos((2 * Math.PI * t) / p.wavePeriodSeconds));
+  // Плюс — по часовой: правый край ладошки идёт вниз (манит), потом назад.
+  const angle = p.swingDeg * 0.5 * (1 - Math.cos((2 * Math.PI * t) / p.wavePeriodSeconds));
 
   // Моргание: фаза внутри цикла blinkEvery; второе короткое — на каждом третьем.
   const cycleFrames = Math.round(p.blinkEverySeconds * fps);
