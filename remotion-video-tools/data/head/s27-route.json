@@ -280,7 +280,8 @@
     "photoCards": [],
     "music": "audio/music/gtt-bed-light-long.m4a",
     "musicVolume": 0.12,
-    "splitEyesAt": 0.36
+    "splitEyesAt": 0.36,
+    "splitSeam": 0.58
   },
   "proposals": [
     {
