@@ -104,6 +104,7 @@ import {
 } from "./ostapdotcenko/compositions/Carousel";
 import { GTTCarouselAnimated, gttCarouselAnimatedDefaults, gttCarouselAnimatedSchema } from "./globaltechtour/compositions/CarouselAnimated";
 import { GTTCarouselZoomTest, gttCarouselZoomTestDefaults, gttCarouselZoomTestSchema } from "./globaltechtour/compositions/CarouselZoomTest";
+import { GTTLuckyCat, gttLuckyCatDefaults, gttLuckyCatSchema } from "./globaltechtour/compositions/LuckyCat";
 // new-composition:imports:end
 
 export const RemotionRoot: React.FC = () => {
@@ -1147,7 +1148,17 @@ export const RemotionRoot: React.FC = () => {
         width={1080}
         height={1350}
       />
-                  {/* new-composition:end */}
+                  <Composition
+        id="GTT-LuckyCat"
+        component={GTTLuckyCat}
+        schema={gttLuckyCatSchema}
+        defaultProps={gttLuckyCatDefaults}
+        durationInFrames={150}
+        fps={30}
+        width={1080}
+        height={1080}
+      />
+                        {/* new-composition:end */}
 
       {/* Витрина эффектов на нейтральных данных: сюда смотрим, когда
           проверяем новый эффект из src/shared/components/effects. */}

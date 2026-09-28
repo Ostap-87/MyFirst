@@ -19,6 +19,7 @@ export * from "./AngleCuts";
 export * from "./FlipCards";
 export * from "./FlagWave";
 export * from "./BigNumber";
+export * from "./MascotRig";
 // new-effect:exports:end
 export * from "./ChatOverlay";
 export * from "./CountUp";
