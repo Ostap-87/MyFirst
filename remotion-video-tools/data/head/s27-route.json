@@ -3,8 +3,8 @@
   "stage": "черновик",
   "props": {
     "footage": "local/head/s27-route.mp4",
-    "captionsSrc": "captions/head-s27-route.json",
-    "durationSeconds": 74.7,
+    "captionsSrc": "captions/head-s27-route-end.json",
+    "durationSeconds": 73.3,
     "hookTop": "Как делают роботов",
     "hookBottom": "которые меняют реальность",
     "brandMark": "GLOBAL TECH TOUR",
@@ -119,11 +119,6 @@
         "at": 66.05,
         "until": 69.6,
         "kind": "accent"
-      },
-      {
-        "text": "Группа набирается быстро",
-        "at": 73.32,
-        "kind": "accent"
       }
     ],
     "cutaways": [],
@@ -221,7 +216,7 @@
       },
       {
         "at": 69.72,
-        "until": 73.2,
+        "until": 71.15,
         "items": [
           {
             "src": "site/robotics-expedition-m.jpg",
@@ -306,19 +301,11 @@
         "filter": "brightness(0.95)"
       },
       {
-        "at": 48.84,
-        "until": 51.4,
+        "at": 64.55,
+        "until": 65.95,
         "src": "local/head/s28-third.mp4",
-        "from": 49.48,
-        "rate": 0.86,
-        "filter": "brightness(0.95)"
-      },
-      {
-        "at": 62.22,
-        "until": 65.55,
-        "src": "local/head/s28-third.mp4",
-        "from": 64.08,
-        "rate": 0.96,
+        "from": 65.98,
+        "rate": 1.28,
         "filter": "brightness(0.95)"
       }
     ]

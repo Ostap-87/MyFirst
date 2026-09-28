@@ -1,51 +1,51 @@
 [
  {
   "text": "Тебе",
-  "startMs": 130,
-  "endMs": 790,
-  "timestampMs": 460,
+  "startMs": 1990,
+  "endMs": 2140,
+  "timestampMs": 2065,
   "confidence": 0.0458613
  },
  {
   "text": " не",
-  "startMs": 790,
-  "endMs": 1270,
-  "timestampMs": 3220,
+  "startMs": 2140,
+  "endMs": 2240,
+  "timestampMs": 2190,
   "confidence": 0.976861
  },
  {
   "text": " нужен",
-  "startMs": 1270,
-  "endMs": 1780,
-  "timestampMs": 3420,
+  "startMs": 2240,
+  "endMs": 2450,
+  "timestampMs": 2345,
   "confidence": 0.956067
  },
  {
   "text": " свой",
-  "startMs": 1780,
-  "endMs": 2030,
-  "timestampMs": 3720,
+  "startMs": 2550,
+  "endMs": 2950,
+  "timestampMs": 2750,
   "confidence": 0.967669
  },
  {
   "text": " чайный",
-  "startMs": 2030,
-  "endMs": 2820,
-  "timestampMs": 2425,
+  "startMs": 2950,
+  "endMs": 3400,
+  "timestampMs": 3175,
   "confidence": 0.946518
  },
  {
   "text": " или",
-  "startMs": 2820,
-  "endMs": 3190,
-  "timestampMs": 4120,
+  "startMs": 3400,
+  "endMs": 3620,
+  "timestampMs": 3510,
   "confidence": 0.970767
  },
  {
   "text": " кофейный",
-  "startMs": 3190,
-  "endMs": 4280,
-  "timestampMs": 3735,
+  "startMs": 3620,
+  "endMs": 4260,
+  "timestampMs": 3940,
   "confidence": 0.945635
  },
  {
