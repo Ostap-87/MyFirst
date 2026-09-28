@@ -1,0 +1,356 @@
+{
+  "name": "s28b-v3",
+  "stage": "черновик",
+  "props": {
+    "footage": "local/head/s28b-v3.mp4",
+    "captionsSrc": "captions/head-s28b-v3.json",
+    "durationSeconds": 72.1,
+    "hookTop": "7 причин ехать в Китай",
+    "hookBottom": "с Global Tech Tour",
+    "brandMark": "GLOBAL TECH TOUR",
+    "logoScale": 1.5,
+    "logoSpin": 72,
+    "focusY": 0.43,
+    "plates": [
+      {
+        "text": "Загадочность",
+        "at": 4.467,
+        "kind": "struck",
+        "until": 6.267
+      },
+      {
+        "text": "Ответ неделями",
+        "at": 6.267,
+        "kind": "struck",
+        "until": 9.867
+      },
+      {
+        "text": "Проще и быстрее",
+        "at": 12.667,
+        "kind": "accent",
+        "until": 14.367
+      },
+      {
+        "text": "Чем мы отличаемся?",
+        "at": 14.467,
+        "kind": "term",
+        "until": 17.467
+      },
+      {
+        "text": "Широкая география",
+        "at": 18.267,
+        "kind": "accent",
+        "until": 21.467
+      },
+      {
+        "text": "18 индустрий",
+        "at": 22.267,
+        "kind": "accent",
+        "until": 23.167
+      },
+      {
+        "text": "Более 1000 компаний",
+        "at": 23.167,
+        "kind": "accent",
+        "until": 27.867
+      },
+      {
+        "text": "Продукты питания",
+        "at": 28.067,
+        "kind": "term",
+        "until": 33.867
+      },
+      {
+        "text": "Полимеры",
+        "at": 29.667,
+        "kind": "term",
+        "until": 33.867
+      },
+      {
+        "text": "ИИ",
+        "at": 31.067,
+        "kind": "term",
+        "until": 33.867
+      },
+      {
+        "text": "E-commerce",
+        "at": 32.667,
+        "kind": "term",
+        "until": 33.867
+      },
+      {
+        "text": "Готовые программы",
+        "at": 35.167,
+        "kind": "accent",
+        "until": 40.567
+      },
+      {
+        "text": "Согласование от 10 дней",
+        "at": 41.467,
+        "kind": "accent",
+        "until": 46.767
+      },
+      {
+        "text": "Пересогласования",
+        "at": 43.767,
+        "kind": "struck",
+        "until": 46.767
+      },
+      {
+        "text": "Своя программа",
+        "at": 47.567,
+        "kind": "accent",
+        "until": 49.567
+      },
+      {
+        "text": "Быстрое согласование",
+        "at": 49.667,
+        "kind": "accent",
+        "until": 51.867
+      },
+      {
+        "text": "Обучение в кампусах",
+        "at": 54.367,
+        "kind": "accent",
+        "until": 58.867
+      },
+      {
+        "text": "Фиксированная стоимость",
+        "at": 61.367,
+        "kind": "accent",
+        "until": 65.767
+      },
+      {
+        "text": "Пишите мне",
+        "at": 65.867,
+        "kind": "accent",
+        "until": 69.767
+      },
+      {
+        "text": "Вечные пересогласования",
+        "at": 69.867,
+        "kind": "struck"
+      }
+    ],
+    "cutaways": [],
+    "moves": [
+      {
+        "at": 0,
+        "until": 1.6,
+        "kind": "punch",
+        "scale": 1.22
+      },
+      {
+        "at": 14.467,
+        "until": 15.567,
+        "kind": "punch",
+        "scale": 1.2
+      },
+      {
+        "at": 40.767,
+        "until": 42.667,
+        "kind": "cut",
+        "scale": 1.12
+      },
+      {
+        "at": 46.967,
+        "until": 48.967,
+        "kind": "cut",
+        "scale": 1.12
+      },
+      {
+        "at": 60.567,
+        "until": 62.867,
+        "kind": "punch",
+        "scale": 1.2
+      },
+      {
+        "at": 65.867,
+        "until": 67.267,
+        "kind": "punch",
+        "scale": 1.2
+      }
+    ],
+    "splitEyesAt": 0.36,
+    "splitSeam": 0.58,
+    "music": "audio/music/gtt-bed-light-long.m4a",
+    "musicVolume": 0.12,
+    "angles": [
+      {
+        "at": 10.357,
+        "until": 12.627,
+        "src": "local/head/s28b-angle.mp4",
+        "from": 17.9,
+        "rate": 0.99,
+        "filter": "brightness(1.02) saturate(1.05)"
+      },
+      {
+        "at": 16.707,
+        "until": 19.007,
+        "src": "local/head/s28b-angle.mp4",
+        "from": 24.75,
+        "rate": 1.03,
+        "filter": "brightness(1.02) saturate(1.05)"
+      },
+      {
+        "at": 37.087,
+        "until": 39.667,
+        "src": "local/head/s28b-angle.mp4",
+        "from": 46.54,
+        "rate": 0.98,
+        "filter": "brightness(1.02) saturate(1.05)"
+      },
+      {
+        "at": 54.827,
+        "until": 57.217,
+        "src": "local/head/s28b-angle.mp4",
+        "from": 66.39,
+        "rate": 0.97,
+        "filter": "brightness(1.02) saturate(1.05)"
+      },
+      {
+        "at": 62.847,
+        "until": 65.147,
+        "src": "local/head/s28b-angle.mp4",
+        "from": 75.25,
+        "rate": 0.98,
+        "filter": "brightness(1.02) saturate(1.05)"
+      }
+    ],
+    "pips": [
+      {
+        "at": 34.567,
+        "until": 37.067,
+        "items": [
+          {
+            "src": "site/expeditions.jpg",
+            "present": "site",
+            "title": "Экспедиции",
+            "url": "globaltechtour.ru",
+            "scrollTo": 0.05
+          }
+        ]
+      }
+    ],
+    "flips": [
+      {
+        "at": 51.967,
+        "until": 53.417,
+        "items": [
+          {
+            "src": "local/gtt/flip-alibaba.png",
+            "seconds": 0.85
+          },
+          {
+            "src": "local/gtt/flip-deepseek.png"
+          }
+        ],
+        "overlay": true,
+        "widthFraction": 0.4,
+        "centerY": 0.6,
+        "centerX": 0.73
+      },
+      {
+        "at": 59.167,
+        "until": 60.567,
+        "items": [
+          {
+            "src": "local/gtt/flip-bytedance.png",
+            "seconds": 0.75
+          },
+          {
+            "src": "local/gtt/flip-huawei.png"
+          }
+        ],
+        "overlay": true,
+        "widthFraction": 0.4,
+        "centerY": 0.6,
+        "centerX": 0.73
+      }
+    ],
+    "numbers": [
+      {
+        "at": 17.517,
+        "until": 18.267,
+        "text": "1",
+        "label": "из 7",
+        "x": 0.8,
+        "y": 0.42,
+        "size": 0.38
+      },
+      {
+        "at": 21.517,
+        "until": 22.267,
+        "text": "2",
+        "label": "из 7",
+        "x": 0.8,
+        "y": 0.42,
+        "size": 0.38
+      },
+      {
+        "at": 34.517,
+        "until": 35.167,
+        "text": "3",
+        "label": "из 7",
+        "x": 0.8,
+        "y": 0.42,
+        "size": 0.38
+      },
+      {
+        "at": 40.717,
+        "until": 41.467,
+        "text": "4",
+        "label": "из 7",
+        "x": 0.8,
+        "y": 0.42,
+        "size": 0.38
+      },
+      {
+        "at": 46.917,
+        "until": 47.567,
+        "text": "5",
+        "label": "из 7",
+        "x": 0.8,
+        "y": 0.42,
+        "size": 0.38
+      },
+      {
+        "at": 53.417,
+        "until": 54.367,
+        "text": "6",
+        "label": "из 7",
+        "x": 0.8,
+        "y": 0.42,
+        "size": 0.38
+      },
+      {
+        "at": 60.567,
+        "until": 61.367,
+        "text": "7",
+        "label": "из 7",
+        "x": 0.8,
+        "y": 0.42,
+        "size": 0.38
+      }
+    ],
+    "flags": [
+      {
+        "at": 19.817,
+        "until": 21.567,
+        "src": "local/flags/cn.svg",
+        "x": 0.17,
+        "y": 0.36,
+        "widthFraction": 0.28
+      },
+      {
+        "at": 20.317,
+        "until": 21.567,
+        "src": "local/flags/sa.svg",
+        "x": 0.84,
+        "y": 0.36,
+        "widthFraction": 0.28
+      }
+    ]
+  },
+  "proposals": []
+}
