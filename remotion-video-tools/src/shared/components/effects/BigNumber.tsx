@@ -124,7 +124,9 @@ const Glyph: React.FC<{ readonly p: BigNumberParams; readonly size: number }> = 
         </>
       );
     case "badge": {
-      const d = size * 0.95;
+      // Круг меньше остальных начертаний: заливка и так тяжёлая, крупный
+      // диск спорил с лицом (замечание владельца).
+      const d = size * 0.72;
       return (
         <>
           <div
@@ -141,7 +143,7 @@ const Glyph: React.FC<{ readonly p: BigNumberParams; readonly size: number }> = 
               margin: "0 auto",
             }}
           >
-            <span style={{ ...heavy, fontSize: size * 0.62, color: "#fff" }}>{p.text}</span>
+            <span style={{ ...heavy, fontSize: size * 0.48, color: "#fff" }}>{p.text}</span>
           </div>
           {label}
         </>
