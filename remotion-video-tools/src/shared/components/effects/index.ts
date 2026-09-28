@@ -16,6 +16,7 @@ export * from "./CutoutStage";
 export * from "./Shimmer";
 export * from "./SlowZoom";
 export * from "./AngleCuts";
+export * from "./FlipCards";
 // new-effect:exports:end
 export * from "./ChatOverlay";
 export * from "./CountUp";

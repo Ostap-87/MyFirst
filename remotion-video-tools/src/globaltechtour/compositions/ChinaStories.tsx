@@ -26,6 +26,8 @@ import {
   PipScreen,
   SplitScreen,
   WipeBroll,
+  FlipCards,
+  flipCardItemSchema,
 } from "../../shared/components/effects";
 import { useCaptions } from "../../shared/useCaptions";
 import { useFormat } from "../../shared/format";
@@ -157,6 +159,11 @@ const pipBlock = z.object({
     .enum(["bottom-right", "bottom-left", "top-right", "top-left"])
     .optional(),
 });
+const flipBlock = z.object({
+  ...span,
+  background: z.string().optional().describe("Фон на весь кадр внутри public"),
+  items: z.array(flipCardItemSchema).describe("PNG-карточки по порядку — по словам"),
+});
 const brollBlock = z.object({
   ...span,
   items: z
@@ -208,6 +215,10 @@ export const chinaStoriesSchema = z.object({
     .array(brollBlock)
     .optional()
     .describe("B-roll на весь кадр со шторкой"),
+  flips: z
+    .array(flipBlock)
+    .optional()
+    .describe("Карточки на весь кадр, которые переворачиваются по словам"),
   splits: z
     .array(splitBlock)
     .optional()
@@ -402,6 +413,7 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
   popWindows = [],
   inserts = [],
   brolls = [],
+  flips = [],
   splits = [],
   splitSeam,
   splitEyesAt,
@@ -444,7 +456,7 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
   // сверху ложилась на телефон с сайтом.
   const cutawayNow =
     cutaways.some((c) => second >= c.at && second < c.at + c.seconds) ||
-    [...brolls, ...pips, ...(cutoutSrc ? stages : [])].some(
+    [...brolls, ...flips, ...pips, ...(cutoutSrc ? stages : [])].some(
       (b) => second >= b.at && second < b.until,
     );
 
@@ -547,6 +559,15 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
             durationInFrames={AT(b.until - b.at, fps)}
           >
             <WipeBroll items={b.items} />
+          </Sequence>
+        ))}
+        {flips.map((b) => (
+          <Sequence
+            key={`f-${b.at}`}
+            from={AT(b.at, fps)}
+            durationInFrames={AT(b.until - b.at, fps)}
+          >
+            <FlipCards background={b.background} items={b.items} />
           </Sequence>
         ))}
 

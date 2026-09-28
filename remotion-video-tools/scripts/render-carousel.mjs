@@ -186,9 +186,12 @@ if (args["dry-run"]) {
 }
 
 console.log("  Собираю бандл…");
+// --public-dir: облегчённая папка материалов (жёсткие ссылки на нужное) —
+// иначе бандл копирует весь public, а это больше 5 ГБ.
 const serveUrl = await bundle({
   entryPoint: resolve(ROOT, "src/index.ts"),
   onProgress: () => undefined,
+  ...(typeof args["public-dir"] === "string" ? { publicDir: resolve(String(args["public-dir"])) } : {}),
 });
 
 const started = Date.now();

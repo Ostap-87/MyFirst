@@ -189,22 +189,10 @@
     "brolls": [
       {
         "at": 9.06,
-        "until": 15.5,
+        "until": 12.45,
         "items": [
           {
-            "src": "local/aura/route-tea-fast.mp4",
-            "seconds": 3.31
-          },
-          {
-            "src": "local/aura/brand-chagee.jpg",
-            "seconds": 0.6
-          },
-          {
-            "src": "local/aura/brand-luckin.jpg",
-            "seconds": 1.57
-          },
-          {
-            "src": "local/aura/brand-heytea.jpg"
+            "src": "local/aura/route-tea-fast.mp4"
           }
         ]
       }
@@ -270,7 +258,27 @@
       }
     ],
     "photoCards": [],
-    "popWindows": []
+    "popWindows": [],
+    "flips": [
+      {
+        "at": 12.05,
+        "until": 15.5,
+        "background": "local/aura/brand-bg.jpg",
+        "items": [
+          {
+            "src": "local/aura/flip-chagee.png",
+            "seconds": 0.92
+          },
+          {
+            "src": "local/aura/flip-luckin.png",
+            "seconds": 1.57
+          },
+          {
+            "src": "local/aura/flip-heytea.png"
+          }
+        ]
+      }
+    ]
   },
   "proposals": [
     {
