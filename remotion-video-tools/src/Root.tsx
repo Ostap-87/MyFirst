@@ -836,7 +836,7 @@ export const RemotionRoot: React.FC = () => {
           site: "globaltechtour.ru",
           // Пути пустые до записи. Озвучка кладётся в public/audio,
           // и сцены после этого подгоняются под неё, а не она под них.
-          voiceover: "audio/promo-voice-studio-tight.m4a",
+          voiceover: "audio/promo-voice-clean-tight.m4a",
           captionsSrc: "captions/promo-final-tight.json",
           platform: "stories" as const,
           music: "audio/music/gtt-bed-light.m4a",
@@ -887,7 +887,7 @@ export const RemotionRoot: React.FC = () => {
           site: "globaltechtour.ru",
           // Пути пустые до записи. Озвучка кладётся в public/audio,
           // и сцены после этого подгоняются под неё, а не она под них.
-          voiceover: "audio/promo-voice-studio-tight.m4a",
+          voiceover: "audio/promo-voice-clean-tight.m4a",
           captionsSrc: "captions/promo-final-tight.json",
           platform: "reels" as const,
           music: "audio/music/gtt-bed-light.m4a",
