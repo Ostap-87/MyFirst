@@ -113,3 +113,18 @@
 - Stats — ролик на цифрах.
 - Intro — заставка бренда.
 - Промо сайта — запись экрана, ноутбук и телефон.
+
+## Рендер без лишнего места на диске
+
+`remotion bundle` копирует всю папку `public` (сейчас больше 5 ГБ) — второй
+копии диск не выдерживает. Для одного ролика собираем облегчённую папку из
+жёстких ссылок (места не занимает) и передаём её `--public-dir`:
+
+```bash
+SP=/tmp/slim-public; mkdir -p $SP/local/head $SP/captions
+cp -al public/fonts public/audio public/site $SP/
+cp -al public/captions/head-<ролик>.json $SP/captions/
+cp -al public/local/head/<ролик>.mp4 $SP/local/head/   # + картинки и видео из пропсов
+npx remotion bundle src/index.ts --out-dir /tmp/bundle --public-dir $SP
+npx remotion render /tmp/bundle GTT-Head out/<ролик>.mp4 --props=<пропсы>.json
+```

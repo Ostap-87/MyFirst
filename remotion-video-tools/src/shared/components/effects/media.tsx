@@ -23,6 +23,12 @@ export const mediaItemSchema = z.object({
     .number()
     .optional()
     .describe("Сколько держится этот кадр; без — делят остаток поровну"),
+  focusY: z
+    .number()
+    .min(0)
+    .max(1)
+    .optional()
+    .describe("Какую часть снимка по высоте держать в кадре: 0 — верх, 0,5 — центр"),
 });
 
 export type MediaItem = z.infer<typeof mediaItemSchema>;
@@ -53,6 +59,9 @@ export const Media: React.FC<{
     width: "100%",
     height: "100%",
     objectFit: "cover",
+    // В узком окне (деление экрана) обрезка по центру срезает головы и
+    // оставляет руки у верхнего края — focusY сдвигает кадрирование.
+    objectPosition: item?.focusY !== undefined ? `50% ${Math.round(item.focusY * 100)}%` : undefined,
     display: "block",
     ...style,
   };
