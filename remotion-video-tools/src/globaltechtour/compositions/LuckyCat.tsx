@@ -18,6 +18,7 @@ export const gttLuckyCatDefaults: GTTLuckyCatProps = {
   paw: "local/cat/paw.png",
   eyesHalf: "local/cat/eyes-half.png",
   eyesClosed: "local/cat/eyes-closed.png",
+  shoulder: "local/cat/shoulder.png",
   imageWidth: 1254,
   imageHeight: 1254,
   slideDx: 6,
@@ -29,7 +30,7 @@ export const gttLuckyCatDefaults: GTTLuckyCatProps = {
   // Концы предплечья — под чёрными штрихами: плечо на внутреннем крае
   // штриха головы и воротника, ладошка — на середине её верхнего штриха.
   limbA1: { x: 895, y: 606 },
-  limbA2: { x: 851, y: 634 },
+  limbA2: { x: 858, y: 638 },
   limbB1: { x: 946, y: 667 },
   limbB2: { x: 898, y: 692 },
   limbStroke: 22,

@@ -41,6 +41,9 @@ export const mascotRigSchema = z.object({
   paw: z.string().describe("Ладошка с прозрачностью, внутри public"),
   eyesHalf: z.string().describe("Полуприкрытые глаза (заплатка), пусто — без"),
   eyesClosed: z.string().describe("Закрытые глаза (заплатка), пусто — без моргания"),
+  shoulder: z
+    .string()
+    .describe("Штрихи плеча (голова, воротник) — слой поверх заливки предплечья, чтобы она их не резала; пусто — без"),
   imageWidth: z.number().int().min(1).describe("Ширина исходника, px"),
   imageHeight: z.number().int().min(1).describe("Высота исходника, px"),
   slideDx: z.number().describe("Сдвиг ладошки по X в нижней точке, px исходника"),
@@ -74,6 +77,7 @@ export const mascotRigDefaults: MascotRigParams = {
   paw: "",
   eyesHalf: "",
   eyesClosed: "",
+  shoulder: "",
   imageWidth: 1000,
   imageHeight: 1000,
   slideDx: 0,
@@ -154,12 +158,12 @@ export const MascotRig: React.FC<MascotRigProps> = (params) => {
       y: p.pivotY + rx * Math.sin(theta) + ry * Math.cos(theta) + dy,
     };
   };
-  const b1 = turn(p.limbB1);
-  const b2 = turn(p.limbB2);
-  const len = Math.hypot(b1.x - p.limbA1.x, b1.y - p.limbA1.y) || 1;
+  const b1r = turn(p.limbB1);
+  const b2r = turn(p.limbB2);
+  const len = Math.hypot(b1r.x - p.limbA1.x, b1r.y - p.limbA1.y) || 1;
   // Нормаль к верхней стороне, смотрящая от нижней стороны (наружу).
-  let nx = -(b1.y - p.limbA1.y) / len;
-  let ny = (b1.x - p.limbA1.x) / len;
+  let nx = -(b1r.y - p.limbA1.y) / len;
+  let ny = (b1r.x - p.limbA1.x) / len;
   const toInside = (p.limbA2.x - p.limbA1.x) * nx + (p.limbA2.y - p.limbA1.y) * ny;
   if (toInside > 0) {
     nx = -nx;
@@ -169,12 +173,15 @@ export const MascotRig: React.FC<MascotRigProps> = (params) => {
   // Кайма и штрихи заходят за свои концы: у плеча — под растровую кайму и
   // штрих головы, у ладошки — под саму ладошку (она рисуется сверху).
   // Так на стыке нет ни излома, ни ступеньки.
-  const ux = (b1.x - p.limbA1.x) / len;
-  const uy = (b1.y - p.limbA1.y) / len;
+  const ux = (b1r.x - p.limbA1.x) / len;
+  const uy = (b1r.y - p.limbA1.y) / len;
   const ext = p.limbOuter;
+  const deep = p.limbStroke * 0.9;
+  const b1 = { x: b1r.x + ux * deep, y: b1r.y + uy * deep };
+  const b2 = { x: b2r.x + ux * deep, y: b2r.y + uy * deep };
   const o1 = { x: p.limbA1.x + nx * off - ux * ext, y: p.limbA1.y + ny * off - uy * ext };
   const o2 = { x: b1.x + nx * off + ux * ext, y: b1.y + ny * off + uy * ext };
-  const back = p.limbStroke * 0.4;
+  const back = p.limbStroke * 0.2;
   const a1 = { x: p.limbA1.x - ux * back, y: p.limbA1.y - uy * back };
   const a2 = { x: p.limbA2.x - ux * back, y: p.limbA2.y - uy * back };
 
@@ -216,9 +223,12 @@ export const MascotRig: React.FC<MascotRigProps> = (params) => {
               strokeLinecap="round"
             />
             <polygon
-              points={`${p.limbA1.x},${p.limbA1.y} ${b1.x},${b1.y} ${b2.x},${b2.y} ${p.limbA2.x},${p.limbA2.y}`}
+              points={`${a1.x},${a1.y} ${b1.x},${b1.y} ${b2.x},${b2.y} ${a2.x},${a2.y}`}
               fill="#fff"
             />
+            {p.shoulder ? (
+              <image href={staticFile(p.shoulder)} x={0} y={0} width={p.imageWidth} height={p.imageHeight} />
+            ) : null}
             <line
               x1={a1.x}
               y1={a1.y}
