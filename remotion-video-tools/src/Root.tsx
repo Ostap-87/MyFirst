@@ -836,8 +836,8 @@ export const RemotionRoot: React.FC = () => {
           site: "globaltechtour.ru",
           // Пути пустые до записи. Озвучка кладётся в public/audio,
           // и сцены после этого подгоняются под неё, а не она под них.
-          voiceover: "audio/promo-voice-studio.m4a",
-          captionsSrc: "captions/promo-final.json",
+          voiceover: "audio/promo-voice-studio-tight.m4a",
+          captionsSrc: "captions/promo-final-tight.json",
           platform: "stories" as const,
           music: "audio/music/gtt-bed-light.m4a",
           musicVolume: 0.24,
@@ -855,7 +855,8 @@ export const RemotionRoot: React.FC = () => {
             { kind: "page" as const, src: "site/expeditions.jpg", seconds: 5.04,
               from: 0.02, to: 0.16, label: "готовых программ", value: 20, prefix: "",
               unit: "по каждой из стран: от Китая до ОАЭ" },
-            { kind: "clip" as const, src: "site/route-tea.mp4", seconds: 6.46,
+            // Было 6,46 с: пауза в озвучке после «компании.» вырезана (2,27 с).
+            { kind: "clip" as const, src: "site/route-tea.mp4", seconds: 4.19,
               from: 0, to: 0, label: "Маршрут по дням", value: 0, prefix: "", unit: "города, перелёты, компании" },
             { kind: "page" as const, src: "site/tea-expedition.png", seconds: 4.84,
               from: 0.28, to: 0.52, label: "Программа расписана по часам", value: 0, prefix: "", unit: "" },
@@ -868,7 +869,7 @@ export const RemotionRoot: React.FC = () => {
               from: 0.02, to: 0.26, label: "Обучение в кампусах", value: 0, prefix: "", unit: "" },
           ],
         }}
-        durationInFrames={1339}
+        durationInFrames={1271}
         fps={30}
         width={1080}
         height={1920}
@@ -886,8 +887,8 @@ export const RemotionRoot: React.FC = () => {
           site: "globaltechtour.ru",
           // Пути пустые до записи. Озвучка кладётся в public/audio,
           // и сцены после этого подгоняются под неё, а не она под них.
-          voiceover: "audio/promo-voice-studio.m4a",
-          captionsSrc: "captions/promo-final.json",
+          voiceover: "audio/promo-voice-studio-tight.m4a",
+          captionsSrc: "captions/promo-final-tight.json",
           platform: "reels" as const,
           music: "audio/music/gtt-bed-light.m4a",
           musicVolume: 0.24,
@@ -905,7 +906,8 @@ export const RemotionRoot: React.FC = () => {
             { kind: "page" as const, src: "site/expeditions.jpg", seconds: 5.04,
               from: 0.02, to: 0.16, label: "готовых программ", value: 20, prefix: "",
               unit: "по каждой из стран: от Китая до ОАЭ" },
-            { kind: "clip" as const, src: "site/route-tea.mp4", seconds: 6.46,
+            // Было 6,46 с: пауза в озвучке после «компании.» вырезана (2,27 с).
+            { kind: "clip" as const, src: "site/route-tea.mp4", seconds: 4.19,
               from: 0, to: 0, label: "Маршрут по дням", value: 0, prefix: "", unit: "города, перелёты, компании" },
             { kind: "page" as const, src: "site/tea-expedition.png", seconds: 4.84,
               from: 0.28, to: 0.52, label: "Программа расписана по часам", value: 0, prefix: "", unit: "" },
@@ -918,7 +920,7 @@ export const RemotionRoot: React.FC = () => {
               from: 0.02, to: 0.26, label: "Обучение в кампусах", value: 0, prefix: "", unit: "" },
           ],
         }}
-        durationInFrames={1339}
+        durationInFrames={1271}
         fps={30}
         width={1080}
         height={1920}
