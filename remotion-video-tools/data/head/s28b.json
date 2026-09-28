@@ -49,7 +49,7 @@
         "until": 27.5
       },
       {
-        "text": "17 индустрий",
+        "text": "18 индустрий",
         "at": 28.3,
         "kind": "accent",
         "until": 29.2
@@ -233,19 +233,6 @@
     ],
     "pips": [
       {
-        "at": 28.3,
-        "until": 31.6,
-        "items": [
-          {
-            "src": "site/industries.png",
-            "present": "site",
-            "title": "Индустрии",
-            "url": "globaltechtour.ru",
-            "scrollTo": 0.1
-          }
-        ]
-      },
-      {
         "at": 40.6,
         "until": 43.1,
         "items": [
@@ -274,7 +261,7 @@
         ],
         "overlay": true,
         "widthFraction": 0.4,
-        "centerY": 0.55,
+        "centerY": 0.6,
         "centerX": 0.73
       },
       {
@@ -291,7 +278,7 @@
         ],
         "overlay": true,
         "widthFraction": 0.4,
-        "centerY": 0.55,
+        "centerY": 0.6,
         "centerX": 0.73
       }
     ],
