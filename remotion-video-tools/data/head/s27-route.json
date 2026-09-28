@@ -25,18 +25,6 @@
         "kind": "accent"
       },
       {
-        "text": "AgiBot · Kepler · Fourier",
-        "at": 8.7,
-        "until": 11.3,
-        "kind": "accent"
-      },
-      {
-        "text": "и многие другие",
-        "at": 10.3,
-        "until": 11.3,
-        "kind": "term"
-      },
-      {
         "text": "70% гуманоидов мира",
         "at": 15.4,
         "until": 19.4,
@@ -170,12 +158,6 @@
         "scale": 1.12
       },
       {
-        "at": 9.67,
-        "until": 11.38,
-        "kind": "punch",
-        "scale": 1.2
-      },
-      {
         "at": 23.47,
         "until": 27.26,
         "kind": "push",
@@ -215,21 +197,33 @@
     "brolls": [
       {
         "at": 7.0,
-        "until": 8.65,
+        "until": 11.3,
         "items": [
           {
-            "src": "local/pano/beijing.jpg",
+            "src": "local/pano/beijing-v.jpg",
             "caption": "Пекин",
             "seconds": 0.5
           },
           {
-            "src": "local/pano/shanghai.jpg",
+            "src": "local/pano/shanghai-v.jpg",
             "caption": "Шанхай",
             "seconds": 0.6
           },
           {
             "src": "generated/robotics-expedition-v2/shenzhen-v2.png",
-            "caption": "Шэньчжэнь"
+            "caption": "Шэньчжэнь",
+            "seconds": 0.6
+          },
+          {
+            "src": "local/robots/agibot-v.jpg",
+            "seconds": 0.5
+          },
+          {
+            "src": "local/robots/kepler-v.jpg",
+            "seconds": 0.5
+          },
+          {
+            "src": "local/robots/fourier-v.jpg"
           }
         ]
       },
@@ -281,7 +275,7 @@
             "seconds": 5.3
           },
           {
-            "src": "generated/robotics-expedition/02.jpg"
+            "src": "local/robots/kepler-line.jpg"
           }
         ],
         "side": "bottom"

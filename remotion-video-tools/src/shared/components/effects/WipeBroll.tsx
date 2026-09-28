@@ -115,9 +115,16 @@ const Shot: React.FC<{
 
 export const WipeBroll: React.FC<WipeBrollProps> = (params) => {
   const { items, wipeFrames, zoom, labelBottomFraction } = withDefaults(wipeBrollDefaults, params);
-  const { durationInFrames } = useVideoConfig();
+  const { durationInFrames, fps } = useVideoConfig();
   if (!items.length) return null;
-  const per = Math.floor(durationInFrames / items.length);
+  // Кадр с `seconds` держится ровно столько — так смена попадает на слово
+  // («Пекин, Шанхай, Шэньчжэнь»). Остаток делят поровну кадры без него.
+  const fixed = items.map((it) => (it.seconds ? Math.round(it.seconds * fps) : null));
+  const fixedSum = fixed.reduce<number>((a, f) => a + (f ?? 0), 0);
+  const free = fixed.filter((f) => f === null).length;
+  const per = free ? Math.floor(Math.max(0, durationInFrames - fixedSum) / free) : 0;
+  const lens = fixed.map((f) => f ?? per);
+  const starts = lens.map((_, i) => lens.slice(0, i).reduce((a, b) => a + b, 0));
 
   return (
     <AbsoluteFill>
@@ -125,8 +132,8 @@ export const WipeBroll: React.FC<WipeBrollProps> = (params) => {
         const last = i === items.length - 1;
         // Кадры перекрываются на длину шторки: следующий въезжает поверх
         // ещё идущего предыдущего, без чёрной дыры между ними.
-        const from = i * per;
-        const len = last ? durationInFrames - from : per + wipeFrames;
+        const from = starts[i];
+        const len = last ? durationInFrames - from : lens[i] + wipeFrames;
         return (
           <Sequence key={`${item.src}-${i}`} from={from} durationInFrames={len} layout="none">
             <Shot
