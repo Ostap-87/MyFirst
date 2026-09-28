@@ -1,0 +1,10 @@
+{
+  "name": "s28-tea-angle",
+  "stage": "подготовлен",
+  "props": {
+    "footage": "local/head/s28-tea-angle.mp4",
+    "captionsSrc": "captions/head-s28-tea-angle.json",
+    "durationSeconds": 82.2
+  },
+  "proposals": []
+}

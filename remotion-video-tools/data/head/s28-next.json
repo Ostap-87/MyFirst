@@ -278,6 +278,40 @@
           }
         ]
       }
+    ],
+    "angles": [
+      {
+        "at": 15.54,
+        "until": 19.65,
+        "src": "local/head/s28-tea-angle.mp4",
+        "from": 12.18,
+        "rate": 1.11,
+        "filter": "brightness(0.96)"
+      },
+      {
+        "at": 34.24,
+        "until": 37.2,
+        "src": "local/head/s28-tea-angle.mp4",
+        "from": 33.14,
+        "rate": 1.16,
+        "filter": "brightness(0.96)"
+      },
+      {
+        "at": 57.66,
+        "until": 62.5,
+        "src": "local/head/s28-tea-angle.mp4",
+        "from": 57.68,
+        "rate": 1.0,
+        "filter": "brightness(0.96)"
+      },
+      {
+        "at": 71.36,
+        "until": 73.9,
+        "src": "local/head/s28-tea-angle.mp4",
+        "from": 71.98,
+        "rate": 1.0,
+        "filter": "brightness(0.96)"
+      }
     ]
   },
   "proposals": [
