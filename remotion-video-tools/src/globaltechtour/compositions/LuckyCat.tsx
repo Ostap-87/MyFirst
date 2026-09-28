@@ -3,9 +3,9 @@ import { MascotRig, mascotRigSchema } from "../../shared/components/effects";
 
 /**
  * GTT-LuckyCat — фигурка манэки-нэко (стикер владельца): манит лапкой
- * вниз-вверх и моргает, на груди — 錢 («деньги»). Слои нарезаны из
- * `public/local/cat/open.png`, закрытые глаза — заплатки по мотивам второй
- * фигурки, предплечье рисует сам эффект.
+ * вниз-вверх и моргает, на груди — 錢 («деньги»). Фигурка обведена в вектор
+ * из `public/local/cat/open.png` (скрипт catvec.py), предплечье рисует сам
+ * эффект.
  *
  * Квадрат 1080, 5 с, зациклен: период взмаха 1,25 с укладывается 4 раза.
  */
@@ -14,11 +14,13 @@ export const gttLuckyCatSchema = mascotRigSchema.partial();
 export type GTTLuckyCatProps = z.infer<typeof gttLuckyCatSchema>;
 
 export const gttLuckyCatDefaults: GTTLuckyCatProps = {
-  body: "local/cat/body.png",
-  paw: "local/cat/paw.png",
-  eyesHalf: "local/cat/eyes-half.png",
-  eyesClosed: "local/cat/eyes-closed.png",
-  shoulder: "local/cat/shoulder.png",
+  bodyRed: "local/cat/body-red.svg",
+  bodyWhite: "local/cat/body-white.svg",
+  bodyBlack: "local/cat/body-black.svg",
+  bodyEdge: "local/cat/body-edge.svg",
+  palm: "local/cat/palm.svg",
+  eyesHalf: "local/cat/eyes-half.svg",
+  eyesClosed: "local/cat/eyes-closed.svg",
   imageWidth: 1254,
   imageHeight: 1254,
   slideDx: 6,

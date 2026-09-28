@@ -5,13 +5,21 @@ import { fontFamily } from "../../fonts";
 
 /**
  * MascotRig — оживляет плоскую фигурку-стикер: лапка ходит вниз-вверх,
- * предплечье тянется за ней, глаза моргают заплатками.
+ * предплечье тянется за ней, глаза моргают.
  *
- * Фигурка приходит слоями, нарезанными заранее (PIL, `docs/process.md`):
- * `body` — тело без лапки и предплечья, с дорисованным краем; `paw` —
- * ладошка с прозрачностью; `eyesHalf` и `eyesClosed` — заплатки поверх
- * открытых глаз. Всё одного размера с исходником; слои кладутся друг на
- * друга «как есть», картинка вписывается в кадр целиком.
+ * Фигурка целиком векторная: контуры обведены по маскам исходника
+ * (скрипт `catvec.py`, skimage) и разложены на три SVG — красный силуэт,
+ * белая внутренность, чёрные штрихи — плюс отдельный SVG ладошки и SVG
+ * заплаток глаз. Растра нет вовсе: раньше любой стык растрового штриха с
+ * векторным предплечьем был виден как ступенька из-за разного сглаживания.
+ *
+ * ——— Порядок слоёв ———
+ *
+ * силуэт (красный) → красная кайма предплечья → белая внутренность →
+ * край тела под лапой → белая заливка предплечья → знак на груди → чёрные штрихи тела →
+ * чёрные штрихи предплечья → глаза → ладошка.
+ * Заливка предплечья лежит ПОД чёрными штрихами тела, а его штрихи
+ * начинаются внутри штриха головы и воротника — стыков не существует.
  *
  * ——— Как движется ———
  *
@@ -19,31 +27,26 @@ import { fontFamily } from "../../fonts";
  * положения вниз и обратно, без остановок на концах: так манит настоящий
  * манэки-нэко (ладонь наружу, лапа ходит вниз-вверх). Внизу она ещё
  * наклонена на `tiltDeg` вокруг запястья (`pivotX/Y`) — рука в перспективе
- * идёт к зрителю, а не соскальзывает. Предплечье — не
- * картинка, а SVG-четырёхугольник между плечом (`limbA1`, `limbA2`,
- * неподвижны) и ладошкой (`limbB1`, `limbB2` едут вместе с ней): белая
- * заливка, чёрные штрихи по длинным сторонам, красная кайма снаружи. Его
- * перерисовка на каждом кадре и есть причина, по которой графика не рвётся:
- * вращать или двигать растровое предплечье значило бы отрывать его от плеча.
+ * идёт к зрителю, а не соскальзывает. Предплечье — четырёхугольник между
+ * плечом (`limbA1`, `limbA2`, неподвижны) и ладошкой (`limbB1`, `limbB2`
+ * едут вместе с ней): белая заливка, чёрные штрихи по длинным сторонам,
+ * красная кайма снаружи; концы уходят под плечо и под ладошку.
  *
  * Моргание: каждые `blinkEvery` секунд веко опускается на полкадра
  * (1 кадр `eyesHalf`), держится закрытым `blinkFrames`, поднимается.
  * Второе короткое моргание через 0,35 с на каждом третьем — чтобы глаза
  * не тикали по метроному.
- *
- * `markText` — знак на груди (например, 錢), рисуется поверх тела шрифтом
- * с иероглифами; координаты и размер — в долях картинки.
  */
 const point = z.object({ x: z.number(), y: z.number() });
 
 export const mascotRigSchema = z.object({
-  body: z.string().describe("Тело без лапки, внутри public"),
-  paw: z.string().describe("Ладошка с прозрачностью, внутри public"),
-  eyesHalf: z.string().describe("Полуприкрытые глаза (заплатка), пусто — без"),
-  eyesClosed: z.string().describe("Закрытые глаза (заплатка), пусто — без моргания"),
-  shoulder: z
-    .string()
-    .describe("Штрихи плеча (голова, воротник) — слой поверх заливки предплечья, чтобы она их не резала; пусто — без"),
+  bodyRed: z.string().describe("SVG: красный силуэт тела, внутри public"),
+  bodyWhite: z.string().describe("SVG: белая внутренность тела"),
+  bodyBlack: z.string().describe("SVG: чёрные штрихи тела"),
+  bodyEdge: z.string().describe("SVG: край тела под лапой — лежит под заливкой предплечья; пусто — без"),
+  palm: z.string().describe("SVG ладошки (кайма, заливка, штрих)"),
+  eyesHalf: z.string().describe("SVG полуприкрытых глаз; пусто — без"),
+  eyesClosed: z.string().describe("SVG закрытых глаз; пусто — без моргания"),
   imageWidth: z.number().int().min(1).describe("Ширина исходника, px"),
   imageHeight: z.number().int().min(1).describe("Высота исходника, px"),
   slideDx: z.number().describe("Сдвиг ладошки по X в нижней точке, px исходника"),
@@ -73,11 +76,13 @@ export type MascotRigParams = z.infer<typeof mascotRigSchema>;
 export type MascotRigProps = Partial<MascotRigParams>;
 
 export const mascotRigDefaults: MascotRigParams = {
-  body: "",
-  paw: "",
+  bodyRed: "",
+  bodyWhite: "",
+  bodyBlack: "",
+  bodyEdge: "",
+  palm: "",
   eyesHalf: "",
   eyesClosed: "",
-  shoulder: "",
   imageWidth: 1000,
   imageHeight: 1000,
   slideDx: 0,
@@ -107,7 +112,7 @@ export const MascotRig: React.FC<MascotRigProps> = (params) => {
   const p = withDefaults(mascotRigDefaults, params);
   const frame = useCurrentFrame();
   const { fps, width, height } = useVideoConfig();
-  if (!p.body) return null;
+  if (!p.bodyBlack) return null;
 
   // Картинка вписывается целиком; слои — в одном боксе, поэтому совпадают.
   const scale = Math.min(width / p.imageWidth, height / p.imageHeight);
@@ -121,6 +126,9 @@ export const MascotRig: React.FC<MascotRigProps> = (params) => {
     height: boxH,
   };
   const layer: React.CSSProperties = { position: "absolute", inset: 0, width: "100%", height: "100%" };
+  const svgLayer = (src: string, style?: React.CSSProperties) => (
+    <Img src={staticFile(src)} style={{ ...layer, ...style }} />
+  );
 
   const t = frame / fps;
   const k = 0.5 * (1 - Math.cos((2 * Math.PI * t) / p.wavePeriodSeconds));
@@ -144,11 +152,8 @@ export const MascotRig: React.FC<MascotRigProps> = (params) => {
   // Лёгкое «дыхание» тела в такт взмаху — иначе двигается только лапка.
   const bob = interpolate(k, [0, 1], [1, 1.006]);
 
-  // Предплечье: A — плечо, B — ладошка со сдвигом. Красная кайма — линия,
-  // отнесённая наружу от верхней стороны на половину своей ширины.
-  // Ладошка чуть наклоняется, опускаясь: рука в перспективе идёт к зрителю,
-  // а не соскальзывает вниз как отдельная деталь. Концы предплечья едут за
-  // теми же точками запястья, поэтому стык остаётся под чёрным штрихом.
+  // Ладошка чуть наклоняется, опускаясь. Концы предплечья едут за теми же
+  // точками запястья, поэтому стык всегда под ладошкой.
   const theta = (p.tiltDeg * k * Math.PI) / 180;
   const turn = (q: { x: number; y: number }) => {
     const rx = q.x - p.pivotX;
@@ -161,34 +166,60 @@ export const MascotRig: React.FC<MascotRigProps> = (params) => {
   const b1r = turn(p.limbB1);
   const b2r = turn(p.limbB2);
   const len = Math.hypot(b1r.x - p.limbA1.x, b1r.y - p.limbA1.y) || 1;
+  const ux = (b1r.x - p.limbA1.x) / len;
+  const uy = (b1r.y - p.limbA1.y) / len;
   // Нормаль к верхней стороне, смотрящая от нижней стороны (наружу).
-  let nx = -(b1r.y - p.limbA1.y) / len;
-  let ny = (b1r.x - p.limbA1.x) / len;
+  let nx = -uy;
+  let ny = ux;
   const toInside = (p.limbA2.x - p.limbA1.x) * nx + (p.limbA2.y - p.limbA1.y) * ny;
   if (toInside > 0) {
     nx = -nx;
     ny = -ny;
   }
-  const off = p.limbStroke / 2 + p.limbOuter / 2;
-  // Кайма и штрихи заходят за свои концы: у плеча — под растровую кайму и
-  // штрих головы, у ладошки — под саму ладошку (она рисуется сверху).
-  // Так на стыке нет ни излома, ни ступеньки.
-  const ux = (b1r.x - p.limbA1.x) / len;
-  const uy = (b1r.y - p.limbA1.y) / len;
-  const ext = p.limbOuter;
-  const deep = p.limbStroke * 0.9;
-  const b1 = { x: b1r.x + ux * deep, y: b1r.y + uy * deep };
-  const b2 = { x: b2r.x + ux * deep, y: b2r.y + uy * deep };
-  const o1 = { x: p.limbA1.x + nx * off - ux * ext, y: p.limbA1.y + ny * off - uy * ext };
-  const o2 = { x: b1.x + nx * off + ux * ext, y: b1.y + ny * off + uy * ext };
-  const back = p.limbStroke * 0.2;
+  // Концы заходят за свои точки: у плеча — под штрих головы и воротник,
+  // у ладошки — под саму ладошку (она рисуется последней).
+  const back = p.limbStroke * 0.6;
+  const deep = p.limbStroke * 1.2;
   const a1 = { x: p.limbA1.x - ux * back, y: p.limbA1.y - uy * back };
   const a2 = { x: p.limbA2.x - ux * back, y: p.limbA2.y - uy * back };
+  const b1 = { x: b1r.x + ux * deep, y: b1r.y + uy * deep };
+  const b2 = { x: b2r.x + ux * deep, y: b2r.y + uy * deep };
+  const off = p.limbStroke / 2 + p.limbOuter / 2;
+  const ext = p.limbOuter * 1.6;
+  const o1 = { x: p.limbA1.x + nx * off - ux * ext, y: p.limbA1.y + ny * off - uy * ext };
+  const o2 = { x: b1r.x + nx * off + ux * ext, y: b1r.y + ny * off + uy * ext };
+
+  const limb = p.limbStroke > 0;
+  const svgProps = {
+    viewBox: `0 0 ${p.imageWidth} ${p.imageHeight}`,
+    style: layer,
+    preserveAspectRatio: "none" as const,
+  };
 
   return (
     <AbsoluteFill style={{ backgroundColor: p.background }}>
       <div style={{ ...box, transform: `scaleY(${bob})`, transformOrigin: "50% 100%" }}>
-        <Img src={staticFile(p.body)} style={layer} />
+        {p.bodyRed ? svgLayer(p.bodyRed) : null}
+        {limb ? (
+          <svg {...svgProps}>
+            <line
+              x1={o1.x}
+              y1={o1.y}
+              x2={o2.x}
+              y2={o2.y}
+              stroke={p.limbColor}
+              strokeWidth={p.limbOuter}
+              strokeLinecap="round"
+            />
+          </svg>
+        ) : null}
+        {p.bodyWhite ? svgLayer(p.bodyWhite) : null}
+        {p.bodyEdge ? svgLayer(p.bodyEdge) : null}
+        {limb ? (
+          <svg {...svgProps}>
+            <polygon points={`${a1.x},${a1.y} ${b1.x},${b1.y} ${b2.x},${b2.y} ${a2.x},${a2.y}`} fill="#fff" />
+          </svg>
+        ) : null}
         {p.markText ? (
           <div
             style={{
@@ -206,59 +237,20 @@ export const MascotRig: React.FC<MascotRigProps> = (params) => {
             {p.markText}
           </div>
         ) : null}
-        {eyesSrc ? <Img src={staticFile(eyesSrc)} style={layer} /> : null}
-        {p.limbStroke > 0 ? (
-          <svg
-            viewBox={`0 0 ${p.imageWidth} ${p.imageHeight}`}
-            style={layer}
-            preserveAspectRatio="none"
-          >
-            <line
-              x1={o1.x}
-              y1={o1.y}
-              x2={o2.x}
-              y2={o2.y}
-              stroke={p.limbColor}
-              strokeWidth={p.limbOuter}
-              strokeLinecap="round"
-            />
-            <polygon
-              points={`${a1.x},${a1.y} ${b1.x},${b1.y} ${b2.x},${b2.y} ${a2.x},${a2.y}`}
-              fill="#fff"
-            />
-            {p.shoulder ? (
-              <image href={staticFile(p.shoulder)} x={0} y={0} width={p.imageWidth} height={p.imageHeight} />
-            ) : null}
-            <line
-              x1={a1.x}
-              y1={a1.y}
-              x2={b1.x}
-              y2={b1.y}
-              stroke="#000"
-              strokeWidth={p.limbStroke}
-              strokeLinecap="round"
-            />
-            <line
-              x1={a2.x}
-              y1={a2.y}
-              x2={b2.x}
-              y2={b2.y}
-              stroke="#000"
-              strokeWidth={p.limbStroke}
-              strokeLinecap="round"
-            />
+        {svgLayer(p.bodyBlack)}
+        {limb ? (
+          <svg {...svgProps}>
+            <line x1={a1.x} y1={a1.y} x2={b1.x} y2={b1.y} stroke="#000" strokeWidth={p.limbStroke} strokeLinecap="round" />
+            <line x1={a2.x} y1={a2.y} x2={b2.x} y2={b2.y} stroke="#000" strokeWidth={p.limbStroke} strokeLinecap="round" />
           </svg>
         ) : null}
-        {p.paw ? (
-          <Img
-            src={staticFile(p.paw)}
-            style={{
-              ...layer,
+        {eyesSrc ? svgLayer(eyesSrc) : null}
+        {p.palm
+          ? svgLayer(p.palm, {
               transform: `translate(${(dx / p.imageWidth) * 100}%, ${(dy / p.imageHeight) * 100}%) rotate(${p.tiltDeg * k}deg)`,
               transformOrigin: `${(p.pivotX / p.imageWidth) * 100}% ${(p.pivotY / p.imageHeight) * 100}%`,
-            }}
-          />
-        ) : null}
+            })
+          : null}
       </div>
     </AbsoluteFill>
   );
