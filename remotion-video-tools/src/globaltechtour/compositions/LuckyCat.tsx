@@ -3,43 +3,27 @@ import { MascotRig, mascotRigSchema } from "../../shared/components/effects";
 
 /**
  * GTT-LuckyCat — фигурка манэки-нэко (стикер владельца): манит лапкой
- * вниз-вверх и моргает, на груди — 錢 («деньги»). Фигурка обведена в вектор
- * из `public/local/cat/open.png` (скрипт catvec.py), предплечье рисует сам
- * эффект.
+ * вниз-вверх и моргает, на груди — 錢 («деньги»). Лапка движется плавной
+ * деформацией всей картинки (`scripts/cat-warp.py` из
+ * `public/local/cat/open.png`), поэтому ни один штрих не рвётся.
  *
- * Квадрат 1080, 5 с, зациклен: период взмаха 1,25 с укладывается 4 раза.
+ * Квадрат 1080, 5 с, зациклен: цикл кадров — 75 (два взмаха по 1,25 с),
+ * в 150 кадрах укладывается дважды.
  */
 export const gttLuckyCatSchema = mascotRigSchema.partial();
 
 export type GTTLuckyCatProps = z.infer<typeof gttLuckyCatSchema>;
 
 export const gttLuckyCatDefaults: GTTLuckyCatProps = {
-  bodyRed: "local/cat/body-red.svg",
-  bodyWhite: "local/cat/body-white.svg",
-  bodyBlack: "local/cat/body-black.svg",
-  bodyEdge: "local/cat/body-edge.svg",
-  bodyUnder: "local/cat/body-under.svg",
-  palm: "local/cat/arm.svg",
+  framesDir: "local/cat/warp",
+  frameCount: 75,
+  frameDigits: 2,
   eyesHalf: "local/cat/eyes-half.svg",
   eyesClosed: "local/cat/eyes-closed.svg",
   imageWidth: 1254,
   imageHeight: 1254,
-  // Вдоль штриха головы у плеча (направление (−0,55; 0,83)), 46 px в нижней точке.
-  slideDx: -25,
-  slideDy: 38,
   wavePeriodSeconds: 1.25,
-  tiltDeg: 0,
-  pivotX: 896,
-  pivotY: 690,
-  // Концы предплечья — под чёрными штрихами: плечо на внутреннем крае
-  // штриха головы и воротника, ладошка — на середине её верхнего штриха.
-  limbA1: { x: 895, y: 606 },
-  limbA2: { x: 858, y: 638 },
-  limbB1: { x: 946, y: 667 },
-  limbB2: { x: 898, y: 692 },
-  limbStroke: 0,
-  limbOuter: 24,
-  limbColor: "#e61e24",
+  breathe: 0.006,
   markText: "錢",
   markX: 0.5,
   markY: 0.685,
