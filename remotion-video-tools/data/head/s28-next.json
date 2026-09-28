@@ -196,18 +196,15 @@
             "seconds": 3.31
           },
           {
-            "src": "local/aura/chagee-v.jpg",
-            "caption": "Chagee",
+            "src": "local/aura/brand-chagee.jpg",
             "seconds": 0.6
           },
           {
-            "src": "generated/tea-coffee-retail/xiamen-v1-roasting.png",
-            "caption": "Luckin Coffee",
+            "src": "local/aura/brand-luckin.jpg",
             "seconds": 1.57
           },
           {
-            "src": "generated/tea-coffee-retail/shenzhen-v1-storefronts.png",
-            "caption": "HeyTea"
+            "src": "local/aura/brand-heytea.jpg"
           }
         ]
       }
