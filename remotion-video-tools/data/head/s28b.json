@@ -1,0 +1,300 @@
+{
+  "name": "s28b",
+  "stage": "черновик",
+  "props": {
+    "footage": "local/head/s28b.mp4",
+    "captionsSrc": "captions/head-s28b.json",
+    "durationSeconds": 78.13,
+    "hookTop": "7 причин ехать в Китай",
+    "hookBottom": "с Global Tech Tour",
+    "brandMark": "GLOBAL TECH TOUR",
+    "logoScale": 1.5,
+    "logoSpin": 72,
+    "focusY": 0.43,
+    "plates": [
+      {
+        "text": "Месяц на согласование",
+        "at": 4.3,
+        "kind": "struck",
+        "until": 6.4
+      },
+      {
+        "text": "Загадочность",
+        "at": 10.5,
+        "kind": "struck",
+        "until": 12.3
+      },
+      {
+        "text": "Ответ неделями",
+        "at": 12.3,
+        "kind": "struck",
+        "until": 15.9
+      },
+      {
+        "text": "Проще и быстрее",
+        "at": 18.7,
+        "kind": "accent",
+        "until": 20.4
+      },
+      {
+        "text": "Чем мы отличаемся?",
+        "at": 20.5,
+        "kind": "term",
+        "until": 23.5
+      },
+      {
+        "text": "1 · Широкая география",
+        "at": 23.6,
+        "until": 25.8,
+        "kind": "accent"
+      },
+      {
+        "text": "До Саудовской Аравии",
+        "at": 25.8,
+        "until": 27.5,
+        "kind": "term"
+      },
+      {
+        "text": "2 · 17 индустрий",
+        "at": 27.6,
+        "kind": "accent",
+        "until": 29.2
+      },
+      {
+        "text": "Более 1000 компаний",
+        "at": 29.2,
+        "kind": "accent",
+        "until": 33.9
+      },
+      {
+        "text": "Продукты питания",
+        "at": 34.1,
+        "kind": "term",
+        "until": 39.9
+      },
+      {
+        "text": "Полимеры",
+        "at": 35.7,
+        "kind": "term",
+        "until": 39.9
+      },
+      {
+        "text": "ИИ",
+        "at": 37.1,
+        "kind": "term",
+        "until": 39.9
+      },
+      {
+        "text": "E-commerce",
+        "at": 38.7,
+        "kind": "term",
+        "until": 39.9
+      },
+      {
+        "text": "3 · Готовые программы",
+        "at": 40.6,
+        "kind": "accent",
+        "until": 46.6
+      },
+      {
+        "text": "4 · Согласование от 10 дней",
+        "at": 46.8,
+        "kind": "accent",
+        "until": 52.8
+      },
+      {
+        "text": "Пересогласования",
+        "at": 49.8,
+        "kind": "struck",
+        "until": 52.8
+      },
+      {
+        "text": "5 · Своя программа",
+        "at": 53.0,
+        "kind": "accent",
+        "until": 55.6
+      },
+      {
+        "text": "Быстрое согласование",
+        "at": 55.7,
+        "kind": "accent",
+        "until": 57.9
+      },
+      {
+        "text": "6 · Обучение в кампусах",
+        "at": 59.5,
+        "kind": "accent",
+        "until": 64.9
+      },
+      {
+        "text": "7 · Фиксированная стоимость",
+        "at": 66.6,
+        "kind": "accent",
+        "until": 71.8
+      },
+      {
+        "text": "Пишите мне",
+        "at": 71.9,
+        "kind": "accent",
+        "until": 75.8
+      },
+      {
+        "text": "Вечные пересогласования",
+        "at": 75.9,
+        "kind": "struck"
+      }
+    ],
+    "cutaways": [],
+    "moves": [
+      {
+        "at": 0,
+        "until": 1.6,
+        "kind": "punch",
+        "scale": 1.22
+      },
+      {
+        "at": 20.5,
+        "until": 21.6,
+        "kind": "punch",
+        "scale": 1.2
+      },
+      {
+        "at": 46.8,
+        "until": 48.7,
+        "kind": "cut",
+        "scale": 1.12
+      },
+      {
+        "at": 53.0,
+        "until": 55.0,
+        "kind": "cut",
+        "scale": 1.12
+      },
+      {
+        "at": 66.6,
+        "until": 68.9,
+        "kind": "punch",
+        "scale": 1.2
+      },
+      {
+        "at": 71.9,
+        "until": 73.3,
+        "kind": "punch",
+        "scale": 1.2
+      }
+    ],
+    "splitEyesAt": 0.36,
+    "splitSeam": 0.58,
+    "music": "audio/music/gtt-bed-light-long.m4a",
+    "musicVolume": 0.12,
+    "angles": [
+      {
+        "at": 1.67,
+        "until": 4.34,
+        "src": "local/head/s28b-angle.mp4",
+        "from": 2.16,
+        "rate": 0.99,
+        "filter": "brightness(1.02) saturate(1.05)"
+      },
+      {
+        "at": 16.39,
+        "until": 18.66,
+        "src": "local/head/s28b-angle.mp4",
+        "from": 17.9,
+        "rate": 0.99,
+        "filter": "brightness(1.02) saturate(1.05)"
+      },
+      {
+        "at": 22.74,
+        "until": 25.04,
+        "src": "local/head/s28b-angle.mp4",
+        "from": 24.75,
+        "rate": 1.03,
+        "filter": "brightness(1.02) saturate(1.05)"
+      },
+      {
+        "at": 43.12,
+        "until": 45.7,
+        "src": "local/head/s28b-angle.mp4",
+        "from": 46.54,
+        "rate": 0.98,
+        "filter": "brightness(1.02) saturate(1.05)"
+      },
+      {
+        "at": 60.86,
+        "until": 63.25,
+        "src": "local/head/s28b-angle.mp4",
+        "from": 66.39,
+        "rate": 0.97,
+        "filter": "brightness(1.02) saturate(1.05)"
+      },
+      {
+        "at": 68.88,
+        "until": 71.18,
+        "src": "local/head/s28b-angle.mp4",
+        "from": 75.25,
+        "rate": 0.98,
+        "filter": "brightness(1.02) saturate(1.05)"
+      }
+    ],
+    "pips": [
+      {
+        "at": 28.3,
+        "until": 31.6,
+        "items": [
+          {
+            "src": "site/industries.png",
+            "present": "site",
+            "title": "Индустрии",
+            "url": "globaltechtour.ru",
+            "scrollTo": 0.1
+          }
+        ]
+      },
+      {
+        "at": 40.6,
+        "until": 43.1,
+        "items": [
+          {
+            "src": "site/expeditions.jpg",
+            "present": "site",
+            "title": "Экспедиции",
+            "url": "globaltechtour.ru",
+            "scrollTo": 0.05
+          }
+        ]
+      }
+    ],
+    "flips": [
+      {
+        "at": 57.95,
+        "until": 59.5,
+        "background": "local/aura/brand-bg.jpg",
+        "items": [
+          {
+            "src": "local/gtt/flip-alibaba.png",
+            "seconds": 0.8
+          },
+          {
+            "src": "local/gtt/flip-deepseek.png"
+          }
+        ]
+      },
+      {
+        "at": 65.05,
+        "until": 66.6,
+        "background": "local/aura/brand-bg.jpg",
+        "items": [
+          {
+            "src": "local/gtt/flip-bytedance.png",
+            "seconds": 0.8
+          },
+          {
+            "src": "local/gtt/flip-huawei.png"
+          }
+        ]
+      }
+    ]
+  },
+  "proposals": []
+}

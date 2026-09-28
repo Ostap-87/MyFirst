@@ -43,6 +43,9 @@ console.log("\n  Собираю бандл…");
 const serveUrl = await bundle({
   entryPoint: resolve(ROOT, "src/index.ts"),
   onProgress: () => undefined,
+  // --public-dir: облегчённая public из жёстких ссылок (docs/process.md,
+  // «Рендер без лишнего места на диске») — полная не влезает второй копией.
+  publicDir: typeof args["public-dir"] === "string" ? resolve(ROOT, args["public-dir"]) : undefined,
 });
 // Бандл копирует к себе всю public — с исходниками это гигабайты на
 // каждый запуск. Не убирать за собой значит за день забить диск.
@@ -129,6 +132,7 @@ for (const b of props.brolls ?? []) events.push({ at: mid(b), label: "На ве�
 for (const b of props.pips ?? []) events.push({ at: mid(b), label: "В углу" });
 for (const b of props.stages ?? []) events.push({ at: mid(b), label: "Без фона" });
 for (const b of props.angles ?? []) events.push({ at: mid(b), label: "Второй ракурс" });
+for (const b of props.flips ?? []) events.push({ at: mid(b), label: "Бренды" });
 for (const b of props.splits ?? []) {
   let t = b.at;
   const fixed = b.items.reduce((a, i) => a + (i.seconds ?? 0), 0);

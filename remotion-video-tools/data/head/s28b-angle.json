@@ -1,0 +1,10 @@
+{
+  "name": "s28b-angle",
+  "stage": "подготовлен",
+  "props": {
+    "footage": "local/head/s28b-angle.mp4",
+    "captionsSrc": "captions/head-s28b-angle.json",
+    "durationSeconds": 86.3
+  },
+  "proposals": []
+}
