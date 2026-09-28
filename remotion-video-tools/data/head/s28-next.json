@@ -1,0 +1,547 @@
+{
+  "name": "s28-next",
+  "stage": "черновик",
+  "props": {
+    "footage": "local/head/s28-next.mp4",
+    "captionsSrc": "captions/head-s28-next.json",
+    "durationSeconds": 77.9,
+    "hookTop": "Как на стакане кофе",
+    "hookBottom": "зарабатывают миллиарды",
+    "brandMark": "GLOBAL TECH TOUR",
+    "logoScale": 1.5,
+    "logoSpin": 72,
+    "focusY": 0.48,
+    "plates": [
+      {
+        "text": "Миллиарды на одном стакане",
+        "at": 8.06,
+        "until": 9.0,
+        "kind": "accent"
+      },
+      {
+        "text": "Рецепт → продукт",
+        "at": 17.57,
+        "until": 21.5,
+        "kind": "accent"
+      },
+      {
+        "text": "Читать новости",
+        "at": 19.7,
+        "until": 21.5,
+        "kind": "struck"
+      },
+      {
+        "text": "1 бренд = 3 компании",
+        "at": 25.56,
+        "until": 27.3,
+        "kind": "accent"
+      },
+      {
+        "text": "Рецепт",
+        "at": 27.6,
+        "until": 31.6,
+        "kind": "term"
+      },
+      {
+        "text": "Молоко",
+        "at": 28.81,
+        "until": 31.6,
+        "kind": "term"
+      },
+      {
+        "text": "Стаканчик",
+        "at": 30.05,
+        "until": 31.6,
+        "kind": "term"
+      },
+      {
+        "text": "3 разных визита",
+        "at": 31.72,
+        "until": 34.1,
+        "kind": "accent"
+      },
+      {
+        "text": "Чего не покажут на сайте",
+        "at": 34.24,
+        "until": 37.2,
+        "kind": "accent"
+      },
+      {
+        "text": "Себестоимость чашки",
+        "at": 37.32,
+        "until": 40.6,
+        "kind": "accent"
+      },
+      {
+        "text": "Общий поставщик",
+        "at": 40.68,
+        "until": 45.1,
+        "kind": "accent"
+      },
+      {
+        "text": "Упаковка дороже напитка",
+        "at": 45.2,
+        "until": 48.6,
+        "kind": "accent"
+      },
+      {
+        "text": "Давно работаю с рынком",
+        "at": 49.16,
+        "until": 51.1,
+        "kind": "term"
+      },
+      {
+        "text": "Знаю компании",
+        "at": 51.13,
+        "until": 54.6,
+        "kind": "term"
+      },
+      {
+        "text": "Вся цепочка, не вывеска",
+        "at": 54.64,
+        "until": 57.5,
+        "kind": "accent"
+      },
+      {
+        "text": "С кем работать именно вам",
+        "at": 59.5,
+        "until": 62.5,
+        "kind": "accent"
+      },
+      {
+        "text": "Переплата за этикетку",
+        "at": 63.4,
+        "until": 67.6,
+        "kind": "struck"
+      },
+      {
+        "text": "30 ноября – 5 декабря",
+        "at": 73.97,
+        "kind": "accent"
+      },
+      {
+        "text": "Мест немного",
+        "at": 76.12,
+        "kind": "term"
+      }
+    ],
+    "cutaways": [],
+    "moves": [
+      {
+        "at": 0,
+        "until": 1.6,
+        "kind": "punch",
+        "scale": 1.22
+      },
+      {
+        "at": 5.1,
+        "until": 5.97,
+        "kind": "cut",
+        "scale": 1.12
+      },
+      {
+        "at": 19.7,
+        "until": 21.64,
+        "kind": "cut",
+        "scale": 1.12
+      },
+      {
+        "at": 23.02,
+        "until": 24.19,
+        "kind": "punch",
+        "scale": 1.2
+      },
+      {
+        "at": 27.38,
+        "until": 28.81,
+        "kind": "cut",
+        "scale": 1.12
+      },
+      {
+        "at": 32.11,
+        "until": 33.47,
+        "kind": "punch",
+        "scale": 1.2
+      },
+      {
+        "at": 57.66,
+        "until": 60.2,
+        "kind": "cut",
+        "scale": 1.12
+      },
+      {
+        "at": 62.63,
+        "until": 64.43,
+        "kind": "punch",
+        "scale": 1.2
+      },
+      {
+        "at": 74.06,
+        "until": 75.86,
+        "kind": "punch",
+        "scale": 1.2
+      }
+    ],
+    "splitEyesAt": 0.36,
+    "splitSeam": 0.58,
+    "music": "audio/music/gtt-bed-light-long.m4a",
+    "musicVolume": 0.12,
+    "brolls": [
+      {
+        "at": 9.06,
+        "until": 15.5,
+        "items": [
+          {
+            "src": "local/aura/route-tea-fast.mp4",
+            "seconds": 3.31
+          },
+          {
+            "src": "local/aura/chagee-v.jpg",
+            "caption": "Chagee",
+            "seconds": 0.6
+          },
+          {
+            "src": "generated/tea-coffee-retail/xiamen-v1-roasting.png",
+            "caption": "Luckin Coffee",
+            "seconds": 1.57
+          },
+          {
+            "src": "generated/tea-coffee-retail/shenzhen-v1-storefronts.png",
+            "caption": "HeyTea"
+          }
+        ]
+      }
+    ],
+    "splits": [
+      {
+        "at": 6.3,
+        "until": 8.95,
+        "items": [
+          {
+            "src": "generated/tea-coffee-retail/cta-woman-v2-crop.png",
+            "focusY": 0.35
+          }
+        ],
+        "side": "bottom"
+      },
+      {
+        "at": 37.32,
+        "until": 48.6,
+        "items": [
+          {
+            "src": "generated/tea-coffee-retail/cta-woman-v2-crop.png",
+            "seconds": 3.36,
+            "focusY": 0.35
+          },
+          {
+            "src": "generated/tea-coffee-retail/xiamen-v1-roasting.png",
+            "seconds": 4.52,
+            "focusY": 0.4
+          },
+          {
+            "src": "generated/tea-coffee-retail/metric-v2-grid.png",
+            "focusY": 0.4
+          }
+        ],
+        "side": "bottom"
+      },
+      {
+        "at": 49.16,
+        "until": 57.5,
+        "items": [
+          {
+            "src": "generated/tea-coffee-retail/negotiations.png",
+            "focusY": 0.3
+          }
+        ],
+        "side": "bottom"
+      }
+    ],
+    "pips": [
+      {
+        "at": 67.82,
+        "until": 71.3,
+        "items": [
+          {
+            "src": "site/tea-expedition.png",
+            "present": "site",
+            "title": "Чай и кофе",
+            "url": "globaltechtour.ru",
+            "scrollTo": 0.15
+          }
+        ]
+      }
+    ],
+    "photoCards": [],
+    "popWindows": []
+  },
+  "proposals": [
+    {
+      "at": 0,
+      "until": 2.03,
+      "kind": "punch",
+      "scale": 1.15,
+      "zone": "face",
+      "what": "быстрый зум ×1,15",
+      "why": "хук: первые слова решают, досмотрят ли",
+      "applied": true,
+      "n": 1
+    },
+    {
+      "at": 5.1,
+      "until": 5.97,
+      "kind": "cut",
+      "scale": 1.12,
+      "what": "смена кадра ×1,12",
+      "why": "новая мысль — склейка как со второй камеры",
+      "zone": "face",
+      "applied": true,
+      "n": 2
+    },
+    {
+      "at": 8.64,
+      "until": 10.56,
+      "kind": "plate",
+      "zone": "top",
+      "applied": true,
+      "what": "плашка «миллиарды Шанхай»",
+      "why": "в речи: «как на одном стакане кофе и молока с пенкой зарабатывают миллиарды.»",
+      "n": 3
+    },
+    {
+      "at": 9.06,
+      "until": 9.79,
+      "kind": "punch",
+      "scale": 1.2,
+      "what": "быстрый зум ×1,2",
+      "why": "удар на «Шанхай»",
+      "zone": "face",
+      "applied": true,
+      "n": 4
+    },
+    {
+      "at": 12.37,
+      "until": 12.97,
+      "kind": "cut",
+      "scale": 1.12,
+      "what": "смена кадра ×1,12",
+      "why": "новая мысль — склейка как со второй камеры",
+      "zone": "face",
+      "applied": true,
+      "n": 5
+    },
+    {
+      "at": 12.97,
+      "until": 16.04,
+      "kind": "plate",
+      "zone": "top",
+      "applied": true,
+      "what": "плашка «Luckin · Coffee»",
+      "why": "в речи: «Luckin Coffee,»",
+      "n": 6
+    },
+    {
+      "at": 14.54,
+      "until": 15.54,
+      "kind": "punch",
+      "scale": 1.2,
+      "what": "быстрый зум ×1,2",
+      "why": "удар на «HeyTea»",
+      "zone": "face",
+      "applied": true,
+      "n": 7
+    },
+    {
+      "at": 19.7,
+      "until": 21.64,
+      "kind": "cut",
+      "scale": 1.12,
+      "what": "смена кадра ×1,12",
+      "why": "новая мысль — склейка как со второй камеры",
+      "zone": "face",
+      "applied": true,
+      "n": 8
+    },
+    {
+      "at": 23.02,
+      "until": 24.19,
+      "kind": "punch",
+      "scale": 1.2,
+      "what": "быстрый зум ×1,2",
+      "why": "удар на «знаете»",
+      "zone": "face",
+      "applied": true,
+      "n": 9
+    },
+    {
+      "at": 27.38,
+      "until": 30.31,
+      "kind": "plate",
+      "zone": "top",
+      "applied": true,
+      "what": "плашка «Одна придумывает»",
+      "why": "в речи: «Одна придумывает рецепт,»",
+      "n": 10
+    },
+    {
+      "at": 27.38,
+      "until": 28.81,
+      "kind": "cut",
+      "scale": 1.12,
+      "what": "смена кадра ×1,12",
+      "why": "новая мысль — склейка как со второй камеры",
+      "zone": "face",
+      "applied": true,
+      "n": 11
+    },
+    {
+      "at": 32.11,
+      "until": 34.97,
+      "kind": "plate",
+      "zone": "top",
+      "applied": true,
+      "what": "плашка «три разных»",
+      "why": "в речи: «И это три разных визита,»",
+      "n": 12
+    },
+    {
+      "at": 32.11,
+      "until": 33.47,
+      "kind": "punch",
+      "scale": 1.2,
+      "what": "быстрый зум ×1,2",
+      "why": "удар на «три»",
+      "zone": "face",
+      "applied": true,
+      "n": 13
+    },
+    {
+      "at": 36.31,
+      "until": 39.31,
+      "kind": "cutaway",
+      "zone": "full",
+      "applied": false,
+      "what": "перебивка",
+      "why": "на «сайте» — нужен скрин или B-roll",
+      "n": 14
+    },
+    {
+      "at": 37.32,
+      "until": 40.68,
+      "kind": "push",
+      "scale": 1.07,
+      "what": "лёгкий наезд ×1,07",
+      "why": "длинная фраза 3.4 с без событий",
+      "zone": "face",
+      "applied": true,
+      "n": 15
+    },
+    {
+      "at": 43.24,
+      "until": 45.04,
+      "kind": "punch",
+      "scale": 1.2,
+      "what": "быстрый зум ×1,2",
+      "why": "удар на «делят»",
+      "zone": "face",
+      "applied": true,
+      "n": 16
+    },
+    {
+      "at": 45.96,
+      "until": 49.16,
+      "kind": "push",
+      "scale": 1.07,
+      "what": "лёгкий наезд ×1,07",
+      "why": "длинная фраза 3.2 с без событий",
+      "zone": "face",
+      "applied": true,
+      "n": 17
+    },
+    {
+      "at": 46.92,
+      "until": 50.66,
+      "kind": "plate",
+      "zone": "top",
+      "applied": true,
+      "what": "плашка «стоит дороже»",
+      "why": "в речи: «которая иногда стоит дороже самого напитка.»",
+      "n": 18
+    },
+    {
+      "at": 53.6,
+      "until": 54.45,
+      "kind": "punch",
+      "scale": 1.2,
+      "what": "быстрый зум ×1,2",
+      "why": "удар на «именно»",
+      "zone": "face",
+      "applied": true,
+      "n": 19
+    },
+    {
+      "at": 57.66,
+      "until": 60.2,
+      "kind": "cut",
+      "scale": 1.12,
+      "what": "смена кадра ×1,12",
+      "why": "новая мысль — склейка как со второй камеры",
+      "zone": "face",
+      "applied": true,
+      "n": 20
+    },
+    {
+      "at": 62.63,
+      "until": 64.43,
+      "kind": "punch",
+      "scale": 1.2,
+      "what": "быстрый зум ×1,2",
+      "why": "удар на «перестанете»",
+      "zone": "face",
+      "applied": true,
+      "n": 21
+    },
+    {
+      "at": 67.82,
+      "until": 71.36,
+      "kind": "push",
+      "scale": 1.07,
+      "what": "лёгкий наезд ×1,07",
+      "why": "длинная фраза 3.5 с без событий",
+      "zone": "face",
+      "applied": true,
+      "n": 22
+    },
+    {
+      "at": 68.57,
+      "until": 72.86,
+      "kind": "plate",
+      "zone": "top",
+      "applied": true,
+      "what": "плашка «Global · Tech · Tour»",
+      "why": "в речи: «Заявка на Global Tech Tour или мне в личные сообщения.»",
+      "n": 23
+    },
+    {
+      "at": 74.06,
+      "until": 77.62,
+      "kind": "plate",
+      "zone": "top",
+      "applied": true,
+      "what": "плашка «30 ноября»",
+      "why": "в речи: «с 30 ноября по 5 декабря.»",
+      "n": 24
+    },
+    {
+      "at": 74.06,
+      "until": 75.86,
+      "kind": "punch",
+      "scale": 1.2,
+      "what": "быстрый зум ×1,2",
+      "why": "удар на «30»",
+      "zone": "face",
+      "applied": true,
+      "n": 25
+    }
+  ]
+}

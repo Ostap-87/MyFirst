@@ -1,0 +1,10 @@
+{
+  "name": "s28-third",
+  "stage": "подготовлен",
+  "props": {
+    "footage": "local/head/s28-third.mp4",
+    "captionsSrc": "captions/head-s28-third.json",
+    "durationSeconds": 81.6
+  },
+  "proposals": []
+}
