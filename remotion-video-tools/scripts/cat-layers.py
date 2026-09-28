@@ -28,8 +28,6 @@ curve=bez((893,548),(878,640),(952,740),(949,946))   # конец — там, г
 # Сам край в body.png не рисуем — его кладёт вектором catvec.py. Здесь только
 # маска-граница, чтобы заливка тела при обводке не вытекала под лапу.
 em=Image.new("L",(W,H),0);ImageDraw.Draw(em).line(curve,fill=255,width=22,joint="curve");em.save(D+"edge-mask.png")
-collar=[(826,612),(892,562),(896,660),(826,684)];wedge=[(836,608),(870,594),(882,616),(848,642)]
-d.polygon(collar,fill=(0,0,0,255));d.polygon(wedge,fill=(0,0,0,255))
 base.save(D+"body.png")
 # 3) плечо: штрих головы с каймой и воротник — поверх заливки предплечья
 zone=(xx>=790)&(xx<=935)&(yy>=500)&(yy<=705)
@@ -37,5 +35,5 @@ keep=nonwhite&zone&~md&~band
 src=np.array(im);al=np.where(keep,255,0).astype(float)
 soft=np.clip((760-Ssum)*2,0,255);edge=zone&~md&~band&(al==0)&(soft>0);al=np.where(edge,soft,al)
 src[:,:,3]=al.astype(np.uint8);src[al==0]=(0,0,0,0)
-sh=Image.fromarray(src);ds=ImageDraw.Draw(sh);ds.polygon(collar,fill=(0,0,0,255));ds.polygon(wedge,fill=(0,0,0,255));sh.save(D+"shoulder.png")
+Image.fromarray(src).save(D+"shoulder.png")
 print("layers ok")

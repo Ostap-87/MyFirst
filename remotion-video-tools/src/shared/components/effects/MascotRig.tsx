@@ -15,19 +15,24 @@ import { fontFamily } from "../../fonts";
  *
  * ——— Порядок слоёв ———
  *
- * силуэт (красный) → красная кайма предплечья → белая внутренность →
- * край тела под лапой → белая заливка предплечья → знак на груди → чёрные штрихи тела →
- * чёрные штрихи предплечья → глаза → ладошка.
- * Заливка предплечья лежит ПОД чёрными штрихами тела, а его штрихи
- * начинаются внутри штриха головы и воротника — стыков не существует.
+ * силуэт (красный) → [кайма предплечья] → белая заплатка под окном → край
+ * тела под лапой → РУКА (palm) → белая внутренность тела (с окном под
+ * ладошку) → [заливка предплечья] → знак на груди → чёрные штрихи тела →
+ * [штрихи предплечья] → глаза.
+ * Рука лежит под белой внутренностью и чёрными штрихами тела: всё, что она
+ * заносит внутрь тела при движении, прячется, а голова и воротник закрывают
+ * место входа. Видна только ладошка — для неё в белом оставлено окно. Векторное предплечье (limb*) —
+ * запасной режим, когда рука в palm без предплечья; при limbStroke 0 его нет.
  *
  * ——— Как движется ———
  *
- * Ладошка: сдвиг = (slideDx, slideDy) · ½(1 − cos 2πt/T) — из верхнего
- * положения вниз и обратно, без остановок на концах: так манит настоящий
- * манэки-нэко (ладонь наружу, лапа ходит вниз-вверх). Внизу она ещё
- * наклонена на `tiltDeg` вокруг запястья (`pivotX/Y`) — рука в перспективе
- * идёт к зрителю, а не соскальзывает. Предплечье — четырёхугольник между
+ * Рука — цельная деталь из исходника (ладошка + предплечье + кайма), она
+ * не деформируется. Сдвиг = (slideDx, slideDy) · ½(1 − cos 2πt/T) — из
+ * верхнего положения вниз и обратно, без остановок на концах: так манит
+ * настоящий манэки-нэко. Направление сдвига — ВДОЛЬ штриха головы, к
+ * которому рука примыкает: тогда линия стыка параллельна движению, рука
+ * скользит по ней и щели не открывается. `tiltDeg` — наклон вокруг
+ * `pivotX/Y`; для цельной детали обычно 0. Предплечье — четырёхугольник между
  * плечом (`limbA1`, `limbA2`, неподвижны) и ладошкой (`limbB1`, `limbB2`
  * едут вместе с ней): белая заливка, чёрные штрихи по длинным сторонам,
  * красная кайма снаружи; концы уходят под плечо и под ладошку.
@@ -43,7 +48,8 @@ export const mascotRigSchema = z.object({
   bodyRed: z.string().describe("SVG: красный силуэт тела, внутри public"),
   bodyWhite: z.string().describe("SVG: белая внутренность тела"),
   bodyBlack: z.string().describe("SVG: чёрные штрихи тела"),
-  bodyEdge: z.string().describe("SVG: край тела под лапой — лежит под заливкой предплечья; пусто — без"),
+  bodyEdge: z.string().describe("SVG: край тела под лапой — лежит под рукой; пусто — без"),
+  bodyUnder: z.string().describe("SVG: белая заплатка тела под окном для ладошки; пусто — без"),
   palm: z.string().describe("SVG ладошки (кайма, заливка, штрих)"),
   eyesHalf: z.string().describe("SVG полуприкрытых глаз; пусто — без"),
   eyesClosed: z.string().describe("SVG закрытых глаз; пусто — без моргания"),
@@ -80,6 +86,7 @@ export const mascotRigDefaults: MascotRigParams = {
   bodyWhite: "",
   bodyBlack: "",
   bodyEdge: "",
+  bodyUnder: "",
   palm: "",
   eyesHalf: "",
   eyesClosed: "",
@@ -213,8 +220,15 @@ export const MascotRig: React.FC<MascotRigProps> = (params) => {
             />
           </svg>
         ) : null}
-        {p.bodyWhite ? svgLayer(p.bodyWhite) : null}
+        {p.bodyUnder ? svgLayer(p.bodyUnder) : null}
         {p.bodyEdge ? svgLayer(p.bodyEdge) : null}
+        {p.palm
+          ? svgLayer(p.palm, {
+              transform: `translate(${(dx / p.imageWidth) * 100}%, ${(dy / p.imageHeight) * 100}%) rotate(${p.tiltDeg * k}deg)`,
+              transformOrigin: `${(p.pivotX / p.imageWidth) * 100}% ${(p.pivotY / p.imageHeight) * 100}%`,
+            })
+          : null}
+        {p.bodyWhite ? svgLayer(p.bodyWhite) : null}
         {limb ? (
           <svg {...svgProps}>
             <polygon points={`${a1.x},${a1.y} ${b1.x},${b1.y} ${b2.x},${b2.y} ${a2.x},${a2.y}`} fill="#fff" />
@@ -245,12 +259,6 @@ export const MascotRig: React.FC<MascotRigProps> = (params) => {
           </svg>
         ) : null}
         {eyesSrc ? svgLayer(eyesSrc) : null}
-        {p.palm
-          ? svgLayer(p.palm, {
-              transform: `translate(${(dx / p.imageWidth) * 100}%, ${(dy / p.imageHeight) * 100}%) rotate(${p.tiltDeg * k}deg)`,
-              transformOrigin: `${(p.pivotX / p.imageWidth) * 100}% ${(p.pivotY / p.imageHeight) * 100}%`,
-            })
-          : null}
       </div>
     </AbsoluteFill>
   );

@@ -31,28 +31,43 @@ sil=red|black|inner|em
 EDGE="M893 548 C878 640 952 740 949 946"
 open(D+"body-red.svg","w").write(svg(W,H,[("#e61e24",path_of(sil))],
     f'<path d="{EDGE}" fill="none" stroke="#e61e24" stroke-width="64" stroke-linecap="round"/>'))
-open(D+"body-white.svg","w").write(svg(W,H,[("#ffffff",path_of(inner|black|em))]))
+# Окно под ладошку: белая внутренность тела рисуется ПОВЕРХ руки и прячет всё,
+# что рука заносит внутрь тела при движении, — кроме самой ладошки, для неё в
+# белом оставлено окно; под окном — отдельная белая заплатка, чтобы в
+# прозрачной версии не было дыры.
+_core=[(880,663),(920,652),(960,650),(1000,655),(1040,670),(1070,696),(1086,730),(1088,780),(1078,820),(1058,848),(1030,860),(1000,852),(975,840),(950,844),(925,853),(898,849),(878,838),(858,817),(841,792),(834,760),(837,725),(845,704),(855,690)]
+_pc=Image.new("L",(W,H),0);ImageDraw.Draw(_pc).polygon(_core,fill=255)
+yy0=np.arange(H)[:,None]
+_dia=[(884,604),(900,614),(944,652),(950,672),(905,706),(876,720),(858,650),(864,622)]
+_pd=Image.new("L",(W,H),0);ImageDraw.Draw(_pd).polygon(_dia,fill=255)
+# Окно: ладошка с запасом на ход вниз-влево, предплечье в покое; у самого
+# воротника (x < 835, y 686–712) окна нет — туда при движении заходят концы штрихов.
+hole=((np.array(_pc.filter(ImageFilter.MaxFilter(51)))>0)&(yy0>712))|((np.array(_pc.filter(ImageFilter.MaxFilter(11)))>0)&(yy0>686))|(np.array(_pd.filter(ImageFilter.MaxFilter(9)))>0)
+open(D+"body-white.svg","w").write(svg(W,H,[("#ffffff",path_of((inner|black|em)&~hole))]))
+open(D+"body-under.svg","w").write(svg(W,H,[("#ffffff",path_of((inner|em)&hole))]))
 # край тела — отдельный слой: он должен лежать ПОД заливкой предплечья, а штрихи тела — над ней
-open(D+"body-edge.svg","w").write(svg(W,H,[],f'<path d="{EDGE}" fill="none" stroke="#000000" stroke-width="26" stroke-linecap="round"/>'))
+# Под рукой: край тела и продолжение воротника до края — в покое скрыты
+# предплечьем, при движении руки выглядят как продолжение рисунка.
+open(D+"body-edge.svg","w").write(svg(W,H,[],
+    f'<path d="{EDGE}" fill="none" stroke="#000000" stroke-width="26" stroke-linecap="round"/>'
+    '<polygon points="826,612 886,602 896,660 826,684" fill="#000000"/>'))
 open(D+"body-black.svg","w").write(svg(W,H,[("#000000",path_of(black))]))
-# ——— ладошка: из исходника, в её зоне ———
+# ——— рука целиком: ладошка + предплечье + их красная кайма, из исходника ———
 src=np.array(Image.open(D+"open.png").convert("RGB"))
 yy=np.arange(H)[:,None];xx=np.arange(W)[None,:]
-core=[(880,663),(920,652),(960,650),(1000,655),(1040,670),(1070,696),(1086,730),(1088,780),(1078,820),(1058,848),(1030,856),(1000,850),(975,840),(950,844),(925,851),(898,849),(878,836),(858,815),(841,790),(834,760),(837,725),(845,704),(855,690)]
+core=[(880,663),(920,652),(960,650),(1000,655),(1040,670),(1070,696),(1086,730),(1088,780),(1078,820),(1058,848),(1030,860),(1000,852),(975,840),(950,844),(925,853),(898,851),(878,838),(858,817),(841,792),(834,760),(837,725),(845,704),(855,690)]
 diamond=[(884,604),(900,614),(944,652),(950,672),(905,706),(876,720),(858,650),(864,622)]
 pc=Image.new("L",(W,H),0);ImageDraw.Draw(pc).polygon(core,fill=255)
 pd=Image.new("L",(W,H),0);ImageDraw.Draw(pd).polygon(diamond,fill=255)
-zone=(np.array(pc.filter(ImageFilter.MaxFilter(41)))>0)&~(np.array(pd.filter(ImageFilter.MaxFilter(15)))>0)&(yy>=644)
 rf,bf=masks(src)
-ringint=interior(rf,bf,(960,750))&zone           # внутренность ладошки — по замкнутому кольцу исходника
-# хвост нижнего штриха предплечья и кайма выше ладошки — не её: их рисует эффект
-zone&=~((xx<886)&(yy<693))&~(yy<640)
+zone=((np.array(pc.filter(ImageFilter.MaxFilter(41)))>0)&(yy>=644))|(np.array(pd.filter(ImageFilter.MaxFilter(13)))>0)|(rf&(xx>930)&(yy>586)&(yy<716)&(xx<1035))
+zone&=~((yy>880)&(xx<962))                       # кайма тела под лапой — не рука
+palm_in=interior(rf,bf,(960,750));arm_in=interior(rf,bf,(900,650))
+inner=(palm_in|arm_in)&zone
 r2=rf&zone;b2=bf&zone
-# кайма ладошки — только та, что примыкает к её кольцу: убираем кусок каймы тела под лапой левее x=960 ниже y=880
-r2&=~((yy>880)&(xx<962))
 from scipy import ndimage
-r2d=ndimage.binary_dilation(r2,iterations=2)     # красное чуть под чёрное, но не под белое — без волосяных кромок
-open(D+"palm.svg","w").write(svg(W,H,[("#e61e24",path_of(r2d|b2)),("#ffffff",path_of(ringint|b2)),("#000000",path_of(b2))]))
+r2d=ndimage.binary_dilation(r2,iterations=2)
+open(D+"arm.svg","w").write(svg(W,H,[("#e61e24",path_of(r2d|b2)),("#ffffff",path_of(inner|b2)),("#000000",path_of(b2))]))
 # ——— глаза ———
 def eyes(kind):
     el=[]
