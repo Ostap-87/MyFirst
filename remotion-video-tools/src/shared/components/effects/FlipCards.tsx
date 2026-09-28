@@ -9,6 +9,7 @@ import {
   useVideoConfig,
 } from "remotion";
 import { z } from "zod";
+import { withDefaults } from "./media";
 
 /**
  * FlipCards — карточки на фоне по очереди переворачиваются вокруг
@@ -46,6 +47,7 @@ export const flipCardsSchema = z.object({
   fadeFrames: z.number().int().min(1).describe("Проявление фона в кадрах"),
   widthFraction: z.number().min(0.2).max(1).describe("Ширина карточки, доля кадра"),
   centerY: z.number().min(0).max(1).describe("Центр карточки по высоте, доля кадра"),
+  centerX: z.number().min(0).max(1).describe("Центр карточки по ширине, доля кадра"),
   perspective: z.number().min(200).describe("Глубина перспективы, px"),
 });
 
@@ -59,12 +61,13 @@ export const flipCardsDefaults: FlipCardsParams = {
   fadeFrames: 6,
   widthFraction: 0.84,
   centerY: 0.45,
+  centerX: 0.5,
   perspective: 1800,
 };
 
 export const FlipCards: React.FC<FlipCardsProps> = (params) => {
-  const p = { ...flipCardsDefaults, ...params };
-  const { items, flipFrames, fadeFrames, widthFraction, centerY, perspective, background } = p;
+  const p = withDefaults(flipCardsDefaults, params);
+  const { items, flipFrames, fadeFrames, widthFraction, centerY, centerX, perspective, background } = p;
   const frame = useCurrentFrame();
   const { fps, width, height, durationInFrames } = useVideoConfig();
   if (!items.length) return null;
@@ -125,7 +128,7 @@ export const FlipCards: React.FC<FlipCardsProps> = (params) => {
             key={`${item.src}-${i}`}
             style={{
               position: "absolute",
-              left: (width - cardW) / 2,
+              left: width * centerX - cardW / 2,
               top: height * centerY,
               width: cardW,
               transform: `translateY(-50%) perspective(${perspective}px) rotateY(${angle}deg) scale(${lift})`,

@@ -43,20 +43,14 @@
         "until": 23.5
       },
       {
-        "text": "1 · Широкая география",
-        "at": 23.6,
-        "until": 25.8,
-        "kind": "accent"
+        "text": "Широкая география",
+        "at": 24.3,
+        "kind": "accent",
+        "until": 27.5
       },
       {
-        "text": "До Саудовской Аравии",
-        "at": 25.8,
-        "until": 27.5,
-        "kind": "term"
-      },
-      {
-        "text": "2 · 17 индустрий",
-        "at": 27.6,
+        "text": "17 индустрий",
+        "at": 28.3,
         "kind": "accent",
         "until": 29.2
       },
@@ -91,14 +85,14 @@
         "until": 39.9
       },
       {
-        "text": "3 · Готовые программы",
-        "at": 40.6,
+        "text": "Готовые программы",
+        "at": 41.2,
         "kind": "accent",
         "until": 46.6
       },
       {
-        "text": "4 · Согласование от 10 дней",
-        "at": 46.8,
+        "text": "Согласование от 10 дней",
+        "at": 47.5,
         "kind": "accent",
         "until": 52.8
       },
@@ -109,8 +103,8 @@
         "until": 52.8
       },
       {
-        "text": "5 · Своя программа",
-        "at": 53.0,
+        "text": "Своя программа",
+        "at": 53.6,
         "kind": "accent",
         "until": 55.6
       },
@@ -121,14 +115,14 @@
         "until": 57.9
       },
       {
-        "text": "6 · Обучение в кампусах",
-        "at": 59.5,
+        "text": "Обучение в кампусах",
+        "at": 60.4,
         "kind": "accent",
         "until": 64.9
       },
       {
-        "text": "7 · Фиксированная стоимость",
-        "at": 66.6,
+        "text": "Фиксированная стоимость",
+        "at": 67.4,
         "kind": "accent",
         "until": 71.8
       },
@@ -267,32 +261,121 @@
     ],
     "flips": [
       {
-        "at": 57.95,
-        "until": 59.5,
-        "background": "local/aura/brand-bg.jpg",
+        "at": 58.0,
+        "until": 59.45,
         "items": [
           {
             "src": "local/gtt/flip-alibaba.png",
-            "seconds": 0.8
+            "seconds": 0.85
           },
           {
             "src": "local/gtt/flip-deepseek.png"
           }
-        ]
+        ],
+        "overlay": true,
+        "widthFraction": 0.4,
+        "centerY": 0.55,
+        "centerX": 0.73
       },
       {
-        "at": 65.05,
+        "at": 65.2,
         "until": 66.6,
-        "background": "local/aura/brand-bg.jpg",
         "items": [
           {
             "src": "local/gtt/flip-bytedance.png",
-            "seconds": 0.8
+            "seconds": 0.75
           },
           {
             "src": "local/gtt/flip-huawei.png"
           }
-        ]
+        ],
+        "overlay": true,
+        "widthFraction": 0.4,
+        "centerY": 0.55,
+        "centerX": 0.73
+      }
+    ],
+    "numbers": [
+      {
+        "at": 23.55,
+        "until": 24.3,
+        "text": "1",
+        "label": "из 7",
+        "x": 0.8,
+        "y": 0.42,
+        "size": 0.38
+      },
+      {
+        "at": 27.55,
+        "until": 28.3,
+        "text": "2",
+        "label": "из 7",
+        "x": 0.8,
+        "y": 0.42,
+        "size": 0.38
+      },
+      {
+        "at": 40.55,
+        "until": 41.2,
+        "text": "3",
+        "label": "из 7",
+        "x": 0.8,
+        "y": 0.42,
+        "size": 0.38
+      },
+      {
+        "at": 46.75,
+        "until": 47.5,
+        "text": "4",
+        "label": "из 7",
+        "x": 0.8,
+        "y": 0.42,
+        "size": 0.38
+      },
+      {
+        "at": 52.95,
+        "until": 53.6,
+        "text": "5",
+        "label": "из 7",
+        "x": 0.8,
+        "y": 0.42,
+        "size": 0.38
+      },
+      {
+        "at": 59.45,
+        "until": 60.4,
+        "text": "6",
+        "label": "из 7",
+        "x": 0.8,
+        "y": 0.42,
+        "size": 0.38
+      },
+      {
+        "at": 66.6,
+        "until": 67.4,
+        "text": "7",
+        "label": "из 7",
+        "x": 0.8,
+        "y": 0.42,
+        "size": 0.38
+      }
+    ],
+    "flags": [
+      {
+        "at": 25.85,
+        "until": 27.6,
+        "src": "local/flags/cn.svg",
+        "x": 0.17,
+        "y": 0.36,
+        "widthFraction": 0.28
+      },
+      {
+        "at": 26.35,
+        "until": 27.6,
+        "src": "local/flags/sa.svg",
+        "x": 0.84,
+        "y": 0.36,
+        "widthFraction": 0.28
       }
     ]
   },

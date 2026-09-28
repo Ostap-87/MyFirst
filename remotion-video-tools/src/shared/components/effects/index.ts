@@ -17,6 +17,8 @@ export * from "./Shimmer";
 export * from "./SlowZoom";
 export * from "./AngleCuts";
 export * from "./FlipCards";
+export * from "./FlagWave";
+export * from "./BigNumber";
 // new-effect:exports:end
 export * from "./ChatOverlay";
 export * from "./CountUp";

@@ -26,6 +26,8 @@ import {
   PipScreen,
   SplitScreen,
   WipeBroll,
+  BigNumber,
+  FlagWave,
   FlipCards,
   flipCardItemSchema,
 } from "../../shared/components/effects";
@@ -163,6 +165,28 @@ const flipBlock = z.object({
   ...span,
   background: z.string().optional().describe("Фон на весь кадр внутри public"),
   items: z.array(flipCardItemSchema).describe("PNG-карточки по порядку — по словам"),
+  overlay: z
+    .boolean()
+    .optional()
+    .describe("Поверх съёмки: без фона, спикер в кадре, плашки не прячутся"),
+  widthFraction: z.number().optional().describe("Ширина карточки, доля кадра"),
+  centerY: z.number().optional().describe("Центр карточки по высоте, доля кадра"),
+  centerX: z.number().optional().describe("Центр карточки по ширине, доля кадра"),
+});
+const flagBlock = z.object({
+  ...span,
+  src: z.string().describe("Флаг внутри public (SVG или PNG, 3:2)"),
+  x: z.number().describe("Центр по ширине, доля кадра"),
+  y: z.number().describe("Центр по высоте, доля кадра"),
+  widthFraction: z.number().optional().describe("Ширина флага, доля кадра"),
+});
+const numberBlock = z.object({
+  ...span,
+  text: z.string().describe("Цифра пункта"),
+  label: z.string().optional().describe("Подпись под цифрой, например «из 7»"),
+  x: z.number().optional().describe("Центр по ширине, доля кадра"),
+  y: z.number().optional().describe("Центр по высоте, доля кадра"),
+  size: z.number().optional().describe("Высота цифры, доля ширины кадра"),
 });
 const brollBlock = z.object({
   ...span,
@@ -219,6 +243,14 @@ export const chinaStoriesSchema = z.object({
     .array(flipBlock)
     .optional()
     .describe("Карточки на весь кадр, которые переворачиваются по словам"),
+  flags: z
+    .array(flagBlock)
+    .optional()
+    .describe("Флаги стран рядом со спикером — на названии страны"),
+  numbers: z
+    .array(numberBlock)
+    .optional()
+    .describe("Крупные цифры пунктов перечисления"),
   splits: z
     .array(splitBlock)
     .optional()
@@ -414,6 +446,8 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
   inserts = [],
   brolls = [],
   flips = [],
+  flags = [],
+  numbers = [],
   splits = [],
   splitSeam,
   splitEyesAt,
@@ -456,7 +490,7 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
   // сверху ложилась на телефон с сайтом.
   const cutawayNow =
     cutaways.some((c) => second >= c.at && second < c.at + c.seconds) ||
-    [...brolls, ...flips, ...pips, ...(cutoutSrc ? stages : [])].some(
+    [...brolls, ...flips.filter((f) => !f.overlay), ...pips, ...(cutoutSrc ? stages : [])].some(
       (b) => second >= b.at && second < b.until,
     );
 
@@ -567,7 +601,38 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
             from={AT(b.at, fps)}
             durationInFrames={AT(b.until - b.at, fps)}
           >
-            <FlipCards background={b.background} items={b.items} />
+            <FlipCards
+              background={b.overlay ? "" : b.background}
+              items={b.items}
+              widthFraction={b.widthFraction}
+              centerY={b.centerY}
+              centerX={b.centerX}
+            />
+          </Sequence>
+        ))}
+        {flags.map((f) => (
+          <Sequence
+            key={`fl-${f.at}`}
+            from={AT(f.at, fps)}
+            durationInFrames={AT(f.until - f.at, fps)}
+          >
+            <FlagWave src={f.src} x={f.x} y={f.y} widthFraction={f.widthFraction} />
+          </Sequence>
+        ))}
+        {numbers.map((n) => (
+          <Sequence
+            key={`n-${n.at}`}
+            from={AT(n.at, fps)}
+            durationInFrames={AT(n.until - n.at, fps)}
+          >
+            <BigNumber
+              text={n.text}
+              label={n.label ?? ""}
+              color={theme.colors.accent}
+              x={n.x}
+              y={n.y}
+              sizeFraction={n.size}
+            />
           </Sequence>
         ))}
 
