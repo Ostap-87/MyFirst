@@ -185,7 +185,7 @@ export const MascotRig: React.FC<MascotRigProps> = (params) => {
   const b1 = { x: b1r.x + ux * deep, y: b1r.y + uy * deep };
   const b2 = { x: b2r.x + ux * deep, y: b2r.y + uy * deep };
   const off = p.limbStroke / 2 + p.limbOuter / 2;
-  const ext = p.limbOuter * 1.6;
+  const ext = p.limbOuter * 2;
   const o1 = { x: p.limbA1.x + nx * off - ux * ext, y: p.limbA1.y + ny * off - uy * ext };
   const o2 = { x: b1r.x + nx * off + ux * ext, y: b1r.y + ny * off + uy * ext };
 
