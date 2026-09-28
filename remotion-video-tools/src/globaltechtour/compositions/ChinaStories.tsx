@@ -212,6 +212,12 @@ export const chinaStoriesSchema = z.object({
     .array(splitBlock)
     .optional()
     .describe("Деление экрана: спикер сверху, фото или видео снизу"),
+  splitEyesAt: z
+    .number()
+    .min(0.2)
+    .max(0.45)
+    .optional()
+    .describe("Где встают глаза при делении экрана, доля высоты; ниже — дальше от плашек"),
   splitSeam: z
     .number()
     .min(0.3)
@@ -398,6 +404,7 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
   brolls = [],
   splits = [],
   splitSeam,
+  splitEyesAt,
   pips = [],
   focusX = 0.5,
   cutoutSrc,
@@ -467,6 +474,7 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
                 focusY={focusY}
                 focusX={focusX}
                 seam={splitSeam}
+                eyesAt={splitEyesAt}
                 splits={splits.map((sp) => ({
                   fromFrame: AT(sp.at, fps),
                   toFrame: AT(sp.until, fps),

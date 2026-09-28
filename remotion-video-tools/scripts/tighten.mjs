@@ -159,8 +159,26 @@ for (const [from, to] of cuts) {
 }
 if (duration - cursor > 0.02) keep.push([cursor, duration]);
 
-const expr = keep
-  .map(([from, to]) => `between(t,${from.toFixed(3)},${to.toFixed(3)})`)
+// Границы кусков — строго по сетке кадров. Видео режется целыми кадрами,
+// звук — сэмплами; если граница легла между кадрами, картинка на каждом
+// стыке теряет или получает лишнюю долю кадра, и за десятки стыков звук
+// уходит вперёд губ на 0,2 с (так было на s27-route: 78,13 с видео против
+// 77,95 с звука). Поэтому кадры f0…f1-1 и звук ровно (f1-f0)/fps.
+const fps = (() => {
+  const rate = execFileSync("ffprobe", ["-v", "error", "-select_streams", "v:0",
+    "-show_entries", "stream=r_frame_rate", "-of", "default=nw=1:nk=1", videoPath]).toString().trim();
+  const [n, d] = rate.split("/").map(Number);
+  return n / (d || 1);
+})();
+const frames = keep
+  .map(([from, to]) => [Math.round(from * fps), Math.round(to * fps)])
+  .filter(([f0, f1]) => f1 > f0);
+const half = 0.5 / fps;
+const vexpr = frames
+  .map(([f0, f1]) => `between(t,${(f0 / fps - half).toFixed(4)},${((f1 - 1) / fps + half).toFixed(4)})`)
+  .join("+");
+const aexpr = frames
+  .map(([f0, f1]) => `between(t,${(f0 / fps).toFixed(5)},${(f1 / fps).toFixed(5)})`)
   .join("+");
 
 const outPath = typeof args.out === "string"
@@ -174,8 +192,8 @@ execFileSync(
   [
     "-v", "error", "-y",
     "-i", videoPath,
-    "-vf", `select='${expr}',setpts=N/FRAME_RATE/TB`,
-    "-af", `aselect='${expr}',asetpts=N/SR/TB`,
+    "-vf", `select='${vexpr}',setpts=N/FRAME_RATE/TB`,
+    "-af", `aselect='${aexpr}',asetpts=N/SR/TB`,
     "-c:v", "libx264", "-preset", "medium", "-crf", "18",
     "-pix_fmt", "yuv420p",
     "-c:a", "aac", "-b:a", "192k",
