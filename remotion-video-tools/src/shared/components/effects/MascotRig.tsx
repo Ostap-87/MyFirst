@@ -17,7 +17,9 @@ import { fontFamily } from "../../fonts";
  *
  * Ладошка: сдвиг = (slideDx, slideDy) · ½(1 − cos 2πt/T) — из верхнего
  * положения вниз и обратно, без остановок на концах: так манит настоящий
- * манэки-нэко (ладонь наружу, лапа ходит вниз-вверх). Предплечье — не
+ * манэки-нэко (ладонь наружу, лапа ходит вниз-вверх). Внизу она ещё
+ * наклонена на `tiltDeg` вокруг запястья (`pivotX/Y`) — рука в перспективе
+ * идёт к зрителю, а не соскальзывает. Предплечье — не
  * картинка, а SVG-четырёхугольник между плечом (`limbA1`, `limbA2`,
  * неподвижны) и ладошкой (`limbB1`, `limbB2` едут вместе с ней): белая
  * заливка, чёрные штрихи по длинным сторонам, красная кайма снаружи. Его
@@ -44,6 +46,9 @@ export const mascotRigSchema = z.object({
   slideDx: z.number().describe("Сдвиг ладошки по X в нижней точке, px исходника"),
   slideDy: z.number().describe("Сдвиг ладошки по Y в нижней точке, px исходника"),
   wavePeriodSeconds: z.number().min(0.2).describe("Период взмаха, с"),
+  tiltDeg: z.number().describe("Наклон ладошки в нижней точке, градусы; плюс — по часовой"),
+  pivotX: z.number().describe("Ось наклона (запястье) по X, px исходника"),
+  pivotY: z.number().describe("Ось наклона по Y, px исходника"),
   limbA1: point.describe("Плечо, верхняя сторона предплечья, px исходника"),
   limbA2: point.describe("Плечо, нижняя сторона предплечья"),
   limbB1: point.describe("Ладошка, верхняя сторона (в покое)"),
@@ -74,6 +79,9 @@ export const mascotRigDefaults: MascotRigParams = {
   slideDx: 0,
   slideDy: 60,
   wavePeriodSeconds: 1.25,
+  tiltDeg: 0,
+  pivotX: 0,
+  pivotY: 0,
   limbA1: { x: 0, y: 0 },
   limbA2: { x: 0, y: 0 },
   limbB1: { x: 0, y: 0 },
@@ -134,8 +142,20 @@ export const MascotRig: React.FC<MascotRigProps> = (params) => {
 
   // Предплечье: A — плечо, B — ладошка со сдвигом. Красная кайма — линия,
   // отнесённая наружу от верхней стороны на половину своей ширины.
-  const b1 = { x: p.limbB1.x + dx, y: p.limbB1.y + dy };
-  const b2 = { x: p.limbB2.x + dx, y: p.limbB2.y + dy };
+  // Ладошка чуть наклоняется, опускаясь: рука в перспективе идёт к зрителю,
+  // а не соскальзывает вниз как отдельная деталь. Концы предплечья едут за
+  // теми же точками запястья, поэтому стык остаётся под чёрным штрихом.
+  const theta = (p.tiltDeg * k * Math.PI) / 180;
+  const turn = (q: { x: number; y: number }) => {
+    const rx = q.x - p.pivotX;
+    const ry = q.y - p.pivotY;
+    return {
+      x: p.pivotX + rx * Math.cos(theta) - ry * Math.sin(theta) + dx,
+      y: p.pivotY + rx * Math.sin(theta) + ry * Math.cos(theta) + dy,
+    };
+  };
+  const b1 = turn(p.limbB1);
+  const b2 = turn(p.limbB2);
   const len = Math.hypot(b1.x - p.limbA1.x, b1.y - p.limbA1.y) || 1;
   // Нормаль к верхней стороне, смотрящая от нижней стороны (наружу).
   let nx = -(b1.y - p.limbA1.y) / len;
@@ -146,8 +166,17 @@ export const MascotRig: React.FC<MascotRigProps> = (params) => {
     ny = -ny;
   }
   const off = p.limbStroke / 2 + p.limbOuter / 2;
-  const o1 = { x: p.limbA1.x + nx * off, y: p.limbA1.y + ny * off };
-  const o2 = { x: b1.x + nx * off, y: b1.y + ny * off };
+  // Кайма и штрихи заходят за свои концы: у плеча — под растровую кайму и
+  // штрих головы, у ладошки — под саму ладошку (она рисуется сверху).
+  // Так на стыке нет ни излома, ни ступеньки.
+  const ux = (b1.x - p.limbA1.x) / len;
+  const uy = (b1.y - p.limbA1.y) / len;
+  const ext = p.limbOuter;
+  const o1 = { x: p.limbA1.x + nx * off - ux * ext, y: p.limbA1.y + ny * off - uy * ext };
+  const o2 = { x: b1.x + nx * off + ux * ext, y: b1.y + ny * off + uy * ext };
+  const back = p.limbStroke * 0.4;
+  const a1 = { x: p.limbA1.x - ux * back, y: p.limbA1.y - uy * back };
+  const a2 = { x: p.limbA2.x - ux * back, y: p.limbA2.y - uy * back };
 
   return (
     <AbsoluteFill style={{ backgroundColor: p.background }}>
@@ -184,15 +213,15 @@ export const MascotRig: React.FC<MascotRigProps> = (params) => {
               y2={o2.y}
               stroke={p.limbColor}
               strokeWidth={p.limbOuter}
-              strokeLinecap="butt"
+              strokeLinecap="round"
             />
             <polygon
               points={`${p.limbA1.x},${p.limbA1.y} ${b1.x},${b1.y} ${b2.x},${b2.y} ${p.limbA2.x},${p.limbA2.y}`}
               fill="#fff"
             />
             <line
-              x1={p.limbA1.x}
-              y1={p.limbA1.y}
+              x1={a1.x}
+              y1={a1.y}
               x2={b1.x}
               y2={b1.y}
               stroke="#000"
@@ -200,8 +229,8 @@ export const MascotRig: React.FC<MascotRigProps> = (params) => {
               strokeLinecap="round"
             />
             <line
-              x1={p.limbA2.x}
-              y1={p.limbA2.y}
+              x1={a2.x}
+              y1={a2.y}
               x2={b2.x}
               y2={b2.y}
               stroke="#000"
@@ -213,7 +242,11 @@ export const MascotRig: React.FC<MascotRigProps> = (params) => {
         {p.paw ? (
           <Img
             src={staticFile(p.paw)}
-            style={{ ...layer, transform: `translate(${(dx / p.imageWidth) * 100}%, ${(dy / p.imageHeight) * 100}%)` }}
+            style={{
+              ...layer,
+              transform: `translate(${(dx / p.imageWidth) * 100}%, ${(dy / p.imageHeight) * 100}%) rotate(${p.tiltDeg * k}deg)`,
+              transformOrigin: `${(p.pivotX / p.imageWidth) * 100}% ${(p.pivotY / p.imageHeight) * 100}%`,
+            }}
           />
         ) : null}
       </div>
