@@ -10,7 +10,7 @@
 // тайминги речи, поэтому расшифровку после него надо делать заново. Порядок
 // всегда такой: подтянуть -> расшифровать -> собирать композицию.
 import { execFileSync, execSync } from "node:child_process";
-import { existsSync } from "node:fs";
+import { copyFileSync, existsSync } from "node:fs";
 import { resolve } from "node:path";
 import { fail, parseArgs, read, ROOT } from "./lib.mjs";
 
@@ -128,6 +128,10 @@ cuts.sort((a, b) => a[0] - b[0]);
 
 if (cuts.length === 0) {
   console.log("\n  Резать нечего: длинных пауз и заполнителей не найдено.\n");
+  // Конвейер Head ждёт файл по --out — отдаём исходник как есть.
+  if (typeof args.out === "string" && !args["dry-run"]) {
+    copyFileSync(videoPath, resolve(ROOT, args.out));
+  }
   process.exit(0);
 }
 
