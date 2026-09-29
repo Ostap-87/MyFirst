@@ -1,6 +1,7 @@
 // Презентация в PDF: HTML-слайды 1920×1080 → PNG каждого слайда + deck.pdf (Chromium, печать фонов).
 // Запуск: node scripts/deck-render.cjs deck/<файл>.html out/deck/<имя>
 // Слайды — секции .slide; шрифты и картинки — относительными путями из public/.
+const puppeteer = require('/root/.npm/_npx/702923228c2ce1e6/node_modules/puppeteer-core');
 const fs = require('fs'), path = require('path');
 const [html, outDir] = process.argv.slice(2); fs.mkdirSync(outDir, { recursive: true });
 (async () => {
