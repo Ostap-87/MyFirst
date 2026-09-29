@@ -10,7 +10,7 @@ html,body{margin:0;background:#888}
 .slide{position:relative;width:1920px;height:1080px;overflow:hidden;background:var(--bg);color:var(--ink);font-family:Inter,sans-serif;page-break-after:always;break-after:page}
 .slide:last-child{page-break-after:auto}
 .grid{position:absolute;inset:0;background-image:linear-gradient(rgba(2,71,223,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(2,71,223,.05) 1px,transparent 1px);background-size:120px 120px;background-position:60px 60px}
-.wm{position:absolute;font-family:Anton;color:var(--blue);line-height:1;letter-spacing:-.01em;white-space:nowrap;transform:scaleX(var(--sx,.86));transform-origin:left top}
+.wm{position:absolute;font-family:LG;font-stretch:75%;color:var(--blue);line-height:1;letter-spacing:0;white-space:nowrap;transform:scaleX(var(--sx,.74));transform-origin:left top;paint-order:stroke fill;-webkit-text-stroke:12px var(--blue)}
 .h{font-family:Oswald;font-weight:700;text-transform:uppercase;line-height:1.2;letter-spacing:-.005em;color:var(--blue)}
 .kicker{font-family:Oswald;font-weight:500;text-transform:uppercase;letter-spacing:.22em;font-size:22px;color:var(--blue)}
 .num{font-family:Anton;color:var(--blue);line-height:.9;letter-spacing:-.01em}
@@ -27,9 +27,9 @@ html,body{margin:0;background:#888}
 
 <!-- 1. Обложка: робот из референса владельца (scripts/deck-cover-ref-robot.py), логотип — Anton в пропорциях референса -->
 <section class="slide">
-  <div class="wm" style="left:54px;top:137px;font-size:568px;--sx:.6">GLOBAL</div>
-  <div class="wm" style="right:52px;top:137px;font-size:568px;--sx:.6;transform-origin:right top">TECH</div>
-  <div class="wm" style="left:54px;top:700px;font-size:354px;--sx:.88">TOUR</div>
+  <div class="wm" style="left:54px;top:80px;font-size:717px">GLOBAL</div>
+  <div class="wm" style="right:52px;top:80px;font-size:717px;transform-origin:right top">TECH</div>
+  <div class="wm" style="left:54px;top:722px;font-size:276px;--sx:1.05;font-stretch:100%">TOUR</div>
   <img src="../public/local/deck/ref-robot.png" style="position:absolute;left:-4px;top:0;width:1929px;height:1080px">
   <svg style="position:absolute;left:1520px;top:700px" width="360" height="270" viewBox="0 0 360 270" fill="none" stroke="#0247DF" stroke-width="3">
     <path d="M2 30 L20 12 H330 l28 20"/><path d="M296 12 l-12 12 M312 12 l-12 12 M328 12 l-12 12" stroke-width="4"/>
