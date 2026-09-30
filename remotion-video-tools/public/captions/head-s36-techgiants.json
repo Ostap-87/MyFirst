@@ -1634,21 +1634,14 @@
  {
   "text": " Матсу.",
   "startMs": 106600,
-  "endMs": 108600,
+  "endMs": 106800,
   "timestampMs": 109000,
   "confidence": 0.261047
  },
  {
-  "text": " Пойдемте,",
-  "startMs": 108600,
-  "endMs": 109990,
-  "timestampMs": 110695,
-  "confidence": 0.40307
- },
- {
   "text": " пока!",
-  "startMs": 109990,
-  "endMs": 110600,
+  "startMs": 106800,
+  "endMs": 107000,
   "timestampMs": 111695,
   "confidence": 0.707687
  }
