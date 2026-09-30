@@ -197,7 +197,13 @@ execFileSync(
     "-v", "error", "-y",
     "-i", videoPath,
     "-vf", `select='${vexpr}',setpts=N/FRAME_RATE/TB`,
-    "-af", `aselect='${aexpr}',asetpts=N/SR/TB`,
+    // aselect решает по целым аудиокадрам декодера (AAC — 1024 сэмпла, 21 мс):
+    // на каждом стыке терялся почти кадр, и за 35 стыков звук отставал на 0,7 с
+    // (s30-auto: 102,53 с видео против 101,80 с звука). asetnsamples дробит
+    // поток до 1 мс, и стык ошибается не больше чем на миллисекунду.
+    // aresample=first_pts=0 — звук, начинающийся позже картинки, дополняется
+    // тишиной до t=0, иначе куски звука берутся со сдвигом на этот отступ.
+    "-af", `aresample=first_pts=0,asetnsamples=n=48:p=0,aselect='${aexpr}',asetpts=N/SR/TB`,
     "-c:v", "libx264", "-preset", "medium", "-crf", "18",
     "-pix_fmt", "yuv420p",
     "-c:a", "aac", "-b:a", "192k",

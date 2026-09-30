@@ -103,6 +103,10 @@ if (args.prepare) {
   const norm = resolve(WORK, `${name}-norm.mp4`);
   run("ffmpeg", ["-v", "error", "-y", "-i", raw,
     "-vf", "scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,fps=30,format=yuv420p",
+    // Звук с айфона начинается позже картинки (s30-auto: на 0,74 с). Если это
+    // не выровнять тишиной в начале, подтяжка режет звук по t видео и весь
+    // ролик уходит в рассинхрон на эти же 0,74 с.
+    "-af", "aresample=first_pts=0",
     "-c:v", "libx264", "-preset", "veryfast", "-crf", "18",
     "-c:a", "aac", "-ar", "48000", "-b:a", "192k", norm]);
   const first = resolve(out, "01-ishodnik.jpg");
