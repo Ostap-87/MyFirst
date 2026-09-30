@@ -27,6 +27,7 @@ import {
   SplitScreen,
   WipeBroll,
   BigNumber,
+  ArrowChart,
   bigNumberLooks,
   FlagWave,
   FlipCards,
@@ -183,6 +184,15 @@ const flagBlock = z.object({
   sound: z.string().optional().describe("Звук на появление флага внутри public, например audio/sfx/pop.wav"),
   soundVolume: z.number().min(0).max(1).optional().describe("Громкость звука; по умолчанию 0,5"),
 });
+const chartBlock = z.object({
+  ...span,
+  x: z.number().optional().describe("Центр карточки по ширине, доля кадра"),
+  y: z.number().optional().describe("Центр карточки по высоте, доля кадра"),
+  widthFraction: z.number().optional().describe("Ширина карточки, доля кадра"),
+  label: z.string().optional().describe("Подпись сверху карточки"),
+  color: z.string().optional().describe("Цвет линии и стрелки"),
+  drawSeconds: z.number().optional().describe("За сколько секунд стрелка доходит до верха"),
+});
 const numberBlock = z.object({
   ...span,
   text: z.string().describe("Цифра пункта"),
@@ -256,6 +266,10 @@ export const chinaStoriesSchema = z.object({
     .array(numberBlock)
     .optional()
     .describe("Крупные цифры пунктов перечисления"),
+  charts: z
+    .array(chartBlock)
+    .optional()
+    .describe("График роста со стрелкой вверх — на «рынок растёт», «забирают рынок»"),
   splits: z
     .array(splitBlock)
     .optional()
@@ -453,6 +467,7 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
   flips = [],
   flags = [],
   numbers = [],
+  charts = [],
   splits = [],
   splitSeam,
   splitEyesAt,
@@ -624,6 +639,22 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
             <FlagWave src={f.src} x={f.x} y={f.y} widthFraction={f.widthFraction} />
             {/* «Пузырёк» на каждый флаг: десять флагов подряд — десять хлопков. */}
             {f.sound ? <Audio src={staticFile(f.sound)} volume={f.soundVolume ?? 0.5} /> : null}
+          </Sequence>
+        ))}
+        {charts.map((c) => (
+          <Sequence
+            key={`ch-${c.at}`}
+            from={AT(c.at, fps)}
+            durationInFrames={AT(c.until - c.at, fps)}
+          >
+            <ArrowChart
+              x={c.x}
+              y={c.y}
+              widthFraction={c.widthFraction}
+              label={c.label}
+              color={c.color ?? theme.colors.accent}
+              drawSeconds={c.drawSeconds}
+            />
           </Sequence>
         ))}
         {numbers.map((n) => (
