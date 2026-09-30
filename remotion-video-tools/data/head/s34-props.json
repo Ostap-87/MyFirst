@@ -1,0 +1,486 @@
+{
+ "footage": "local/head/s34-retail.mp4",
+ "captionsSrc": "captions/head-s34-retail.json",
+ "durationSeconds": 108.93,
+ "hookTop": "Курьер быстрее,",
+ "hookBottom": "чем вы дойдёте до магазина",
+ "brandMark": "GLOBAL TECH TOUR",
+ "logoScale": 1.5,
+ "logoSpin": 72,
+ "focusY": 0.42,
+ "plates": [
+  {
+   "text": "Своими глазами",
+   "at": 6.5,
+   "until": 8.0,
+   "kind": "accent"
+  },
+  {
+   "text": "5 дней · 9 лидеров ритейла",
+   "at": 7.6,
+   "until": 10.8,
+   "kind": "accent"
+  },
+  {
+   "text": "Hema: магазин = склад",
+   "at": 20.0,
+   "until": 24.0,
+   "kind": "term"
+  },
+  {
+   "text": "Свежее за 30 минут",
+   "at": 24.0,
+   "until": 25.3,
+   "kind": "accent"
+  },
+  {
+   "text": "Meituan: миллионы заказов",
+   "at": 25.5,
+   "until": 28.6,
+   "kind": "term"
+  },
+  {
+   "text": "Война доставки",
+   "at": 31.7,
+   "until": 35.2,
+   "kind": "struck"
+  },
+  {
+   "text": "Pinduoduo: групповые покупки",
+   "at": 35.5,
+   "until": 38.6,
+   "kind": "term"
+  },
+  {
+   "text": "Sam's Club: платное членство",
+   "at": 39.1,
+   "until": 43.6,
+   "kind": "term"
+  },
+  {
+   "text": "Yonghui: офлайн против онлайна",
+   "at": 46.9,
+   "until": 49.8,
+   "kind": "term"
+  },
+  {
+   "text": "Это не экскурсия по полкам",
+   "at": 50.1,
+   "until": 52.2,
+   "kind": "struck"
+  },
+  {
+   "text": "Онлайн + офлайн",
+   "at": 54.2,
+   "until": 57.0,
+   "kind": "accent"
+  },
+  {
+   "text": "Остап Доценко",
+   "at": 61.6,
+   "until": 64.4,
+   "kind": "term"
+  },
+  {
+   "text": "Говорю по-китайски",
+   "at": 67.4,
+   "until": 69.0,
+   "kind": "term"
+  },
+  {
+   "text": "Знаком лично",
+   "at": 74.0,
+   "until": 75.0,
+   "kind": "accent"
+  },
+  {
+   "text": "Куда с улицы не пускают",
+   "at": 76.9,
+   "until": 78.6,
+   "kind": "term"
+  },
+  {
+   "text": "Быстрое согласование",
+   "at": 78.8,
+   "until": 81.3,
+   "kind": "accent"
+  },
+  {
+   "text": "Бесконечные переписки",
+   "at": 81.5,
+   "until": 84.2,
+   "kind": "struck"
+  },
+  {
+   "text": "18 индустрий",
+   "at": 87.2,
+   "until": 88.3,
+   "kind": "accent"
+  },
+  {
+   "text": "Цены прозрачные",
+   "at": 88.4,
+   "until": 91.6,
+   "kind": "term"
+  },
+  {
+   "text": "Всё на русском языке",
+   "at": 96.1,
+   "until": 97.5,
+   "kind": "accent"
+  }
+ ],
+ "cutaways": [],
+ "moves": [
+  {
+   "at": 0.0,
+   "until": 2.0,
+   "kind": "punch",
+   "scale": 1.15
+  },
+  {
+   "at": 4.3,
+   "until": 5.3,
+   "kind": "cut",
+   "scale": 1.12
+  },
+  {
+   "at": 10.3,
+   "until": 11.0,
+   "kind": "punch",
+   "scale": 1.2
+  },
+  {
+   "at": 18.9,
+   "until": 20.0,
+   "kind": "cut",
+   "scale": 1.12
+  },
+  {
+   "at": 28.9,
+   "until": 29.8,
+   "kind": "cut",
+   "scale": 1.12
+  },
+  {
+   "at": 31.0,
+   "until": 33.0,
+   "kind": "push",
+   "scale": 1.07
+  },
+  {
+   "at": 44.1,
+   "until": 45.0,
+   "kind": "cut",
+   "scale": 1.12
+  },
+  {
+   "at": 52.4,
+   "until": 55.5,
+   "kind": "push",
+   "scale": 1.07
+  },
+  {
+   "at": 58.7,
+   "until": 60.3,
+   "kind": "push",
+   "scale": 1.06
+  },
+  {
+   "at": 64.5,
+   "until": 65.5,
+   "kind": "cut",
+   "scale": 1.12
+  },
+  {
+   "at": 77.8,
+   "until": 78.6,
+   "kind": "punch",
+   "scale": 1.2
+  },
+  {
+   "at": 89.6,
+   "until": 91.2,
+   "kind": "push",
+   "scale": 1.07
+  },
+  {
+   "at": 97.6,
+   "until": 98.6,
+   "kind": "cut",
+   "scale": 1.12
+  }
+ ],
+ "numbers": [
+  {
+   "text": "9",
+   "label": "лидеров",
+   "at": 8.3,
+   "until": 10.8,
+   "look": "gradient",
+   "x": 0.17,
+   "y": 0.38,
+   "size": 0.16
+  },
+  {
+   "text": "30",
+   "label": "минут",
+   "at": 24.1,
+   "until": 25.3,
+   "look": "gradient",
+   "x": 0.17,
+   "y": 0.38,
+   "size": 0.16
+  },
+  {
+   "text": "10+",
+   "label": "лет",
+   "at": 66.7,
+   "until": 68.6,
+   "look": "gradient",
+   "x": 0.17,
+   "y": 0.38,
+   "size": 0.16
+  },
+  {
+   "text": "1000+",
+   "label": "компаний",
+   "at": 86.0,
+   "until": 88.0,
+   "look": "gradient",
+   "x": 0.16,
+   "y": 0.27,
+   "size": 0.1
+  }
+ ],
+ "flags": [
+  {
+   "src": "local/flags/cn.svg",
+   "at": 0.12,
+   "until": 1.6,
+   "x": 0.84,
+   "y": 0.36,
+   "widthFraction": 0.18,
+   "sound": "audio/sfx/pop.wav",
+   "soundVolume": 0.45
+  },
+  {
+   "src": "local/flags/cn.svg",
+   "at": 66.0,
+   "until": 67.3,
+   "x": 0.84,
+   "y": 0.36,
+   "widthFraction": 0.18,
+   "sound": "audio/sfx/pop.wav",
+   "soundVolume": 0.45
+  }
+ ],
+ "splits": [
+  {
+   "at": 20.0,
+   "until": 24.6,
+   "side": "bottom",
+   "items": [
+    {
+     "src": "generated/retail-instant/hangzhou.png",
+     "focusY": 0.5
+    }
+   ]
+  },
+  {
+   "at": 39.1,
+   "until": 43.6,
+   "side": "bottom",
+   "items": [
+    {
+     "src": "generated/retail-instant/shanghai2.png",
+     "focusY": 0.5
+    }
+   ]
+  }
+ ],
+ "stages": [
+  {
+   "at": 25.3,
+   "until": 28.7,
+   "items": [
+    {
+     "src": "generated/retail-instant/beijing.png"
+    }
+   ]
+  },
+  {
+   "at": 72.0,
+   "until": 74.6,
+   "items": [
+    {
+     "src": "generated/retail-instant/negotiations.png"
+    }
+   ]
+  },
+  {
+   "at": 105.8,
+   "until": 108.9,
+   "items": [
+    {
+     "src": "generated/retail-instant/cta.png"
+    }
+   ]
+  }
+ ],
+ "flips": [
+  {
+   "at": 10.8,
+   "until": 15.6,
+   "overlay": true,
+   "widthFraction": 0.4,
+   "centerX": 0.76,
+   "centerY": 0.62,
+   "items": [
+    {
+     "src": "local/gtt/flip-jd.png",
+     "seconds": 0.45
+    },
+    {
+     "src": "local/gtt/flip-meituan.png",
+     "seconds": 0.7
+    },
+    {
+     "src": "local/gtt/flip-hema.png",
+     "seconds": 0.5
+    },
+    {
+     "src": "local/gtt/flip-pinduoduo.png",
+     "seconds": 1.0
+    },
+    {
+     "src": "local/gtt/flip-alibaba.png",
+     "seconds": 0.7
+    },
+    {
+     "src": "local/gtt/flip-samsclub.png",
+     "seconds": 0.9
+    },
+    {
+     "src": "local/gtt/flip-yonghui.png"
+    }
+   ]
+  },
+  {
+   "at": 33.6,
+   "until": 35.2,
+   "overlay": true,
+   "widthFraction": 0.36,
+   "centerX": 0.76,
+   "centerY": 0.34,
+   "items": [
+    {
+     "src": "local/gtt/flip-meituan.png",
+     "seconds": 0.7
+    },
+    {
+     "src": "local/gtt/flip-alibaba.png",
+     "seconds": 0.5
+    },
+    {
+     "src": "local/gtt/flip-jd.png"
+    }
+   ]
+  },
+  {
+   "at": 63.5,
+   "until": 64.6,
+   "overlay": true,
+   "widthFraction": 0.34,
+   "centerX": 0.8,
+   "centerY": 0.6,
+   "items": [
+    {
+     "src": "local/gtt/flip-alibaba.png",
+     "seconds": 0.4
+    },
+    {
+     "src": "local/gtt/flip-sber.png"
+    }
+   ]
+  }
+ ],
+ "pips": [
+  {
+   "at": 102.5,
+   "until": 105.5,
+   "items": [
+    {
+     "src": "site/home.png",
+     "present": "site",
+     "title": "Global Tech Tour",
+     "url": "globaltechtour.ru",
+     "scrollTo": 0.08
+    }
+   ]
+  }
+ ],
+ "photoCards": [
+  {
+   "at": 16.3,
+   "until": 18.9,
+   "side": "right",
+   "widthFraction": 0.34,
+   "stepSeconds": 0.55,
+   "spread": 0.3,
+   "items": [
+    {
+     "src": "local/pano/beijing-temple-v.jpg",
+     "caption": "Пекин"
+    },
+    {
+     "src": "local/pano/shanghai-bund-v.jpg",
+     "caption": "Шанхай"
+    },
+    {
+     "src": "generated/retail-instant/hangzhou.png",
+     "caption": "Ханчжоу"
+    },
+    {
+     "src": "local/pano/shenzhen-pingan-v.jpg",
+     "caption": "Шэньчжэнь"
+    }
+   ]
+  }
+ ],
+ "popWindows": [
+  {
+   "at": 97.6,
+   "until": 100.8,
+   "items": [
+    {
+     "src": "generated/retail-instant/shanghai1.png"
+    },
+    {
+     "src": "generated/retail-instant/shenzhen.png"
+    },
+    {
+     "src": "generated/retail-instant/metric.png"
+    }
+   ]
+  }
+ ],
+ "brolls": [
+  {
+   "at": 44.3,
+   "until": 46.8,
+   "items": [
+    {
+     "src": "generated/retail-instant/shenzhen.png",
+     "caption": "Супермаркеты нового формата"
+    }
+   ]
+  }
+ ],
+ "splitEyesAt": 0.36,
+ "splitSeam": 0.58,
+ "music": "audio/music/gtt-bed-light-long.m4a",
+ "musicVolume": 0.12,
+ "safeZone": "reels",
+ "cutoutSrc": "local/head/s34-retail-cutout.webm"
+}
