@@ -11,6 +11,7 @@ import {
   useVideoConfig,
 } from "remotion";
 import { z } from "zod";
+import { measureText } from "@remotion/layout-utils";
 import { KaraokeCaptions } from "../../shared/components/KaraokeCaptions";
 import {
   AngleCuts,
@@ -383,9 +384,24 @@ const PlateView: React.FC<{
   readonly fs: (fraction: number) => number;
 }> = ({ plate, appearAt, fs }) => {
   const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
+  const { fps, width } = useVideoConfig();
   const since = frame - appearAt;
   const struck = plate.kind === "struck";
+
+  // Плашка не должна вылезать за кадр: длинный текст ужимается по ширине.
+  // Меряем реальную ширину строки в этом шрифте; предел — ширина кадра без
+  // полей ряда плашек и внутренних отступов самой плашки.
+  const baseSize = fs(0.044);
+  const padX = fs(0.028);
+  const measured = measureText({
+    text: plate.text,
+    fontFamily: fontFamily(theme.fonts.heading),
+    fontSize: baseSize,
+    fontWeight: 700,
+    letterSpacing: `${fs(-0.0008)}px`,
+  }).width;
+  const maxText = width * 0.9 - padX * 2 - fs(0.008);
+  const fontSize = measured > maxText ? baseSize * (maxText / measured) : baseSize;
 
   const enter = spring({
     frame: since,
@@ -423,7 +439,7 @@ const PlateView: React.FC<{
         WebkitBackdropFilter: struck ? "blur(10px)" : "none",
         fontFamily: fontFamily(theme.fonts.heading),
         fontWeight: 700,
-        fontSize: fs(0.044),
+        fontSize,
         letterSpacing: fs(-0.0008),
         color: struck ? "rgba(255,255,255,0.74)" : theme.colors.text,
         whiteSpace: "nowrap",

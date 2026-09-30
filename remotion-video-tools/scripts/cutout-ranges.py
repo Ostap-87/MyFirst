@@ -1,8 +1,9 @@
 # Вырезка спикера из фона только на нужных отрезках (stages), остальное — прозрачные кадры.
 # Итог — WebM VP9 с альфой той же длины, что съёмка: CutoutStage читает его по общей шкале времени.
+# Нужны обе модели rembg (isnet-general-use, u2net_human_seg) — скачиваются при первом запуске.
 # python3 scripts/cutout-ranges.py public/local/head/<ролик>.mp4 <out.webm> 14.6-19.5 41.7-47.2 ...
 import sys, os, subprocess, shutil, tempfile
-from PIL import Image
+from PIL import Image, ImageChops
 from rembg import remove, new_session
 src, out, ranges = sys.argv[1], sys.argv[2], [tuple(map(float, r.split('-'))) for r in sys.argv[3:]]
 FPS = 30
@@ -16,7 +17,15 @@ for a, b in ranges:
     subprocess.run(['ffmpeg', '-v', 'error', '-ss', f'{(i0 - 1) / FPS:.4f}', '-i', src, '-t', f'{b - a + 0.4:.3f}', '-vf', f'fps={FPS}', '-q:v', '2', '-start_number', str(i0), os.path.join(frames, '%05d.jpg')], check=True)
 w, h = Image.open(os.path.join(frames, sorted(os.listdir(frames))[0])).size
 blank = os.path.join(tmp, 'blank.png'); Image.new('RGBA', (w, h), (0, 0, 0, 0)).save(blank)
+# Две модели и пересечение масок: isnet тянет за головой кусок тёмного навеса
+# (в кадре он прямо над макушкой), u2net_human_seg — цепляет предметы у края
+# кадра. Пиксель остаётся, только если его оставили обе — оба артефакта уходят.
 sess = new_session('isnet-general-use')
+sess_h = new_session('u2net_human_seg')
+def cut(im):
+    a = remove(im, session=sess).split()[3]
+    b = remove(im, session=sess_h).split()[3]
+    o = im.convert('RGBA'); o.putalpha(ImageChops.darker(a, b)); return o
 outdir = os.path.join(tmp, 'o'); os.makedirs(outdir)
 done = 0
 for i in range(1, n + 1):
@@ -25,7 +34,7 @@ for i in range(1, n + 1):
     if any(a - 0.2 <= t <= b + 0.2 for a, b in ranges):
         f = os.path.join(frames, f'{i:05d}.jpg')
         if not os.path.exists(f): os.link(blank, dst); continue
-        remove(Image.open(f).convert('RGB'), session=sess).save(dst); done += 1
+        cut(Image.open(f).convert('RGB')).save(dst); done += 1
         if done % 50 == 0: print('cut', done, flush=True)
     else:
         os.link(blank, dst)

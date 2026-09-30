@@ -10,7 +10,7 @@
  "focusY": 0.45,
  "plates": [
   {
-   "text": "NIO: замена батареи за минуты",
+   "text": "NIO: батарея за минуты",
    "at": 4.07,
    "until": 8.17,
    "kind": "term"
@@ -22,7 +22,7 @@
    "kind": "accent"
   },
   {
-   "text": "Xiaomi делает электромобили",
+   "text": "Xiaomi: электромобили",
    "at": 22.56,
    "until": 27.15,
    "kind": "accent"
@@ -46,7 +46,7 @@
    "kind": "term"
   },
   {
-   "text": "XPeng и GAC Aion: автопилот",
+   "text": "XPeng · Aion: автопилот",
    "at": 36.8,
    "until": 41.09,
    "kind": "term"
@@ -58,7 +58,7 @@
    "kind": "accent"
   },
   {
-   "text": "Увидеть раньше конкурентов",
+   "text": "Раньше конкурентов",
    "at": 50.4,
    "until": 52.43,
    "kind": "accent"
@@ -70,7 +70,7 @@
    "kind": "term"
   },
   {
-   "text": "Эксперт по Китаю · Шанхай",
+   "text": "Эксперт по Китаю",
    "at": 53.66,
    "until": 56.0,
    "kind": "accent"
@@ -88,7 +88,7 @@
    "kind": "accent"
   },
   {
-   "text": "Знаком с компаниями лично",
+   "text": "Знаком лично",
    "at": 64.18,
    "until": 66.79,
    "kind": "term"
