@@ -1,0 +1,416 @@
+{
+ "footage": "local/head/s37-tea.mp4",
+ "captionsSrc": "captions/head-s37-tea.json",
+ "durationSeconds": 87.2,
+ "hookTop": "Главный учитель кофеен",
+ "hookBottom": "сейчас в Китае",
+ "brandMark": "GLOBAL TECH TOUR",
+ "logoScale": 1.5,
+ "logoSpin": 72,
+ "focusY": 0.42,
+ "plates": [
+  {
+   "text": "Не Италия и не Америка",
+   "at": 5.8,
+   "until": 8.2,
+   "kind": "struck"
+  },
+  {
+   "text": "1000 точек за считанные годы",
+   "at": 11.1,
+   "until": 13.4,
+   "kind": "accent"
+  },
+  {
+   "text": "Рецептура · Сырьё · Упаковка",
+   "at": 16.1,
+   "until": 18.2,
+   "kind": "accent"
+  },
+  {
+   "text": "Где настоящие деньги и идеи",
+   "at": 23.5,
+   "until": 25.6,
+   "kind": "accent"
+  },
+  {
+   "text": "Остап Доценко",
+   "at": 26.5,
+   "until": 29.2,
+   "kind": "term"
+  },
+  {
+   "text": "Говорю по-китайски",
+   "at": 32.5,
+   "until": 34.0,
+   "kind": "term"
+  },
+  {
+   "text": "Индустрия изнутри",
+   "at": 35.5,
+   "until": 36.8,
+   "kind": "accent"
+  },
+  {
+   "text": "7–12 декабря",
+   "at": 36.9,
+   "until": 39.6,
+   "kind": "accent"
+  },
+  {
+   "text": "Не витрины для туристов",
+   "at": 49.4,
+   "until": 50.8,
+   "kind": "struck"
+  },
+  {
+   "text": "Встречи с командами брендов",
+   "at": 50.9,
+   "until": 53.6,
+   "kind": "term"
+  },
+  {
+   "text": "Все визиты согласованы",
+   "at": 57.0,
+   "until": 58.9,
+   "kind": "accent"
+  },
+  {
+   "text": "Бесконечные переписки",
+   "at": 59.1,
+   "until": 61.4,
+   "kind": "struck"
+  },
+  {
+   "text": "Цены прозрачные",
+   "at": 66.8,
+   "until": 69.9,
+   "kind": "term"
+  },
+  {
+   "text": "Идеи для меню · Поставщики",
+   "at": 77.6,
+   "until": 80.9,
+   "kind": "accent"
+  }
+ ],
+ "cutaways": [],
+ "moves": [
+  {
+   "at": 0.0,
+   "until": 2.0,
+   "kind": "punch",
+   "scale": 1.15
+  },
+  {
+   "at": 8.1,
+   "until": 8.9,
+   "kind": "punch",
+   "scale": 1.2
+  },
+  {
+   "at": 13.5,
+   "until": 14.5,
+   "kind": "cut",
+   "scale": 1.12
+  },
+  {
+   "at": 18.3,
+   "until": 21.5,
+   "kind": "push",
+   "scale": 1.06
+  },
+  {
+   "at": 25.8,
+   "until": 26.8,
+   "kind": "cut",
+   "scale": 1.12
+  },
+  {
+   "at": 34.1,
+   "until": 35.1,
+   "kind": "cut",
+   "scale": 1.12
+  },
+  {
+   "at": 49.4,
+   "until": 50.2,
+   "kind": "punch",
+   "scale": 1.2
+  },
+  {
+   "at": 53.8,
+   "until": 54.8,
+   "kind": "cut",
+   "scale": 1.12
+  },
+  {
+   "at": 61.7,
+   "until": 62.7,
+   "kind": "cut",
+   "scale": 1.12
+  },
+  {
+   "at": 70.9,
+   "until": 74.0,
+   "kind": "push",
+   "scale": 1.06
+  },
+  {
+   "at": 75.4,
+   "until": 76.4,
+   "kind": "cut",
+   "scale": 1.12
+  },
+  {
+   "at": 81.2,
+   "until": 82.0,
+   "kind": "cut",
+   "scale": 1.12
+  }
+ ],
+ "numbers": [
+  {
+   "text": "1000",
+   "label": "точек",
+   "at": 11.2,
+   "until": 13.4,
+   "look": "gradient",
+   "x": 0.22,
+   "y": 0.38,
+   "size": 0.14
+  },
+  {
+   "text": "3",
+   "label": "бизнеса",
+   "at": 15.2,
+   "until": 17.5,
+   "look": "gradient",
+   "x": 0.17,
+   "y": 0.38,
+   "size": 0.16
+  },
+  {
+   "text": "10+",
+   "label": "лет",
+   "at": 31.2,
+   "until": 33.0,
+   "look": "gradient",
+   "x": 0.17,
+   "y": 0.38,
+   "size": 0.16
+  },
+  {
+   "text": "1000+",
+   "label": "компаний",
+   "at": 63.0,
+   "until": 65.4,
+   "look": "gradient",
+   "x": 0.3,
+   "y": 0.31,
+   "size": 0.12
+  },
+  {
+   "text": "18",
+   "label": "индустрий",
+   "at": 64.4,
+   "until": 66.3,
+   "look": "gradient",
+   "x": 0.17,
+   "y": 0.5,
+   "size": 0.13
+  }
+ ],
+ "flags": [
+  {
+   "src": "local/flags/cn.svg",
+   "at": 8.1,
+   "until": 9.5,
+   "x": 0.84,
+   "y": 0.36,
+   "widthFraction": 0.18,
+   "sound": "audio/sfx/pop.wav",
+   "soundVolume": 0.45
+  },
+  {
+   "src": "local/flags/cn.svg",
+   "at": 30.6,
+   "until": 31.9,
+   "x": 0.84,
+   "y": 0.36,
+   "widthFraction": 0.18,
+   "sound": "audio/sfx/pop.wav",
+   "soundVolume": 0.45
+  }
+ ],
+ "splits": [
+  {
+   "at": 18.3,
+   "until": 23.2,
+   "side": "bottom",
+   "items": [
+    {
+     "src": "generated/tea-coffee-retail/xiamen-v1-roasting.png",
+     "focusY": 0.5,
+     "seconds": 2.4
+    },
+    {
+     "src": "generated/tea-coffee-retail/guangzhou-v1-shelf.png",
+     "focusY": 0.5
+    }
+   ]
+  }
+ ],
+ "stages": [
+  {
+   "at": 9.1,
+   "until": 13.2,
+   "items": [
+    {
+     "src": "generated/tea-coffee-retail/shanghai1-v1-storefronts.png"
+    }
+   ]
+  },
+  {
+   "at": 50.9,
+   "until": 53.5,
+   "items": [
+    {
+     "src": "generated/tea-coffee-retail/negotiations.png"
+    }
+   ]
+  },
+  {
+   "at": 85.4,
+   "until": 87.2,
+   "items": [
+    {
+     "src": "generated/tea-coffee-retail/cta-woman-v2-crop.png"
+    }
+   ]
+  }
+ ],
+ "flips": [
+  {
+   "at": 43.4,
+   "until": 49.2,
+   "overlay": true,
+   "widthFraction": 0.4,
+   "centerX": 0.76,
+   "centerY": 0.62,
+   "items": [
+    {
+     "src": "local/gtt/flip-chagee.png",
+     "seconds": 0.5
+    },
+    {
+     "src": "local/gtt/flip-heytea.png",
+     "seconds": 0.5
+    },
+    {
+     "src": "local/gtt/flip-luckin.png",
+     "seconds": 1.0
+    },
+    {
+     "src": "local/gtt/flip-manner.png",
+     "seconds": 1.0
+    },
+    {
+     "src": "local/gtt/flip-mstand.png",
+     "seconds": 0.9
+    },
+    {
+     "src": "local/gtt/flip-yidiandian.png",
+     "seconds": 0.9
+    },
+    {
+     "src": "local/gtt/flip-wanglaoji.png"
+    }
+   ]
+  },
+  {
+   "at": 28.1,
+   "until": 29.3,
+   "overlay": true,
+   "widthFraction": 0.34,
+   "centerX": 0.8,
+   "centerY": 0.6,
+   "items": [
+    {
+     "src": "local/gtt/flip-alibaba.png",
+     "seconds": 0.5
+    },
+    {
+     "src": "local/gtt/flip-sber.png"
+    }
+   ]
+  }
+ ],
+ "pips": [
+  {
+   "at": 81.9,
+   "until": 84.9,
+   "items": [
+    {
+     "src": "site/home.png",
+     "present": "site",
+     "title": "Global Tech Tour",
+     "url": "globaltechtour.ru",
+     "scrollTo": 0.08
+    }
+   ]
+  }
+ ],
+ "photoCards": [
+  {
+   "at": 39.6,
+   "until": 42.0,
+   "side": "right",
+   "widthFraction": 0.34,
+   "stepSeconds": 0.5,
+   "spread": 0.3,
+   "items": [
+    {
+     "src": "local/pano/shanghai-bund-v.jpg",
+     "caption": "Шанхай"
+    },
+    {
+     "src": "generated/tea-coffee-retail/xiamen-v1-roasting.png",
+     "caption": "Сямэнь"
+    },
+    {
+     "src": "local/pano/shenzhen-pingan-v.jpg",
+     "caption": "Шэньчжэнь"
+    },
+    {
+     "src": "local/pano/guangzhou-tower-v.jpg",
+     "caption": "Гуанчжоу"
+    }
+   ]
+  }
+ ],
+ "popWindows": [
+  {
+   "at": 75.4,
+   "until": 77.4,
+   "items": [
+    {
+     "src": "generated/tea-coffee-retail/shenzhen-v1-storefronts.png"
+    },
+    {
+     "src": "generated/tea-coffee-retail/shanghai2-v3-facade.png"
+    },
+    {
+     "src": "generated/tea-coffee-retail/cover-v4-crop.png"
+    }
+   ]
+  }
+ ],
+ "brolls": [],
+ "splitEyesAt": 0.36,
+ "splitSeam": 0.58,
+ "music": "audio/music/gtt-bed-light-long.m4a",
+ "musicVolume": 0.12,
+ "safeZone": "reels",
+ "cutoutSrc": "local/head/s37-tea-cutout.webm"
+}
