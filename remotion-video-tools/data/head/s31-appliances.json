@@ -1,830 +1,830 @@
 {
-  "name": "s31-appliances",
-  "stage": "черновик",
-  "props": {
-    "footage": "local/head/s31-appliances.mp4",
-    "captionsSrc": "captions/head-s31-appliances.json",
-    "durationSeconds": 103.9,
-    "hookTop": "9 лидеров техники",
-    "hookBottom": "за 5 дней",
-    "brandMark": "GLOBAL TECH TOUR",
-    "logoScale": 1.5,
-    "logoSpin": 72,
-    "focusY": 0.42,
-    "plates": [
-      {
-        "text": "5 дней · 9 лидеров",
-        "at": 10.58,
-        "until": 13.0,
-        "kind": "accent"
-      },
-      {
-        "text": "Шуньдэ · Циндао",
-        "at": 26.3,
-        "until": 28.3,
-        "kind": "accent"
-      },
-      {
-        "text": "Haier — №1 в мире",
-        "at": 33.6,
-        "until": 36.6,
-        "kind": "term"
-      },
-      {
-        "text": "Gree — кондиционеры",
-        "at": 36.9,
-        "until": 39.1,
-        "kind": "term"
-      },
-      {
-        "text": "Galanz — микроволновки",
-        "at": 39.2,
-        "until": 42.6,
-        "kind": "term"
-      },
-      {
-        "text": "Умный дом Xiaomi",
-        "at": 43.3,
-        "until": 46.6,
-        "kind": "term"
-      },
-      {
-        "text": "захватывает рынки",
-        "at": 56.3,
-        "until": 58.1,
-        "kind": "accent"
-      },
-      {
-        "text": "Остап Доценко",
-        "at": 58.2,
-        "until": 60.8,
-        "kind": "term"
-      },
-      {
-        "text": "говорю по-китайски",
-        "at": 65.1,
-        "until": 67.3,
-        "kind": "term"
-      },
-      {
-        "text": "знаком лично",
-        "at": 73.9,
-        "until": 75.0,
-        "kind": "accent"
-      },
-      {
-        "text": "куда с улицы не пускают",
-        "at": 76.7,
-        "until": 78.3,
-        "kind": "term"
-      },
-      {
-        "text": "быстрое согласование",
-        "at": 78.5,
-        "until": 81.0,
-        "kind": "accent"
-      },
-      {
-        "text": "бесконечные переписки",
-        "at": 81.5,
-        "until": 83.9,
-        "kind": "struck"
-      },
-      {
-        "text": "цены прозрачные",
-        "at": 88.0,
-        "until": 90.6,
-        "kind": "term"
-      },
-      {
-        "text": "всё на русском языке",
-        "at": 91.6,
-        "until": 93.6,
-        "kind": "accent"
-      }
+ "name": "s31-appliances",
+ "stage": "черновик",
+ "props": {
+  "footage": "local/head/s31-appliances.mp4",
+  "captionsSrc": "captions/head-s31-appliances.json",
+  "durationSeconds": 100.0,
+  "hookTop": "9 лидеров техники",
+  "hookBottom": "за 5 дней",
+  "brandMark": "GLOBAL TECH TOUR",
+  "logoScale": 1.5,
+  "logoSpin": 72,
+  "focusY": 0.42,
+  "plates": [
+   {
+    "text": "5 дней · 9 лидеров",
+    "at": 10.58,
+    "until": 13.0,
+    "kind": "accent"
+   },
+   {
+    "text": "Шуньдэ · Циндао",
+    "at": 26.3,
+    "until": 28.3,
+    "kind": "accent"
+   },
+   {
+    "text": "Haier — №1 в мире",
+    "at": 33.6,
+    "until": 36.6,
+    "kind": "term"
+   },
+   {
+    "text": "Gree — кондиционеры",
+    "at": 36.9,
+    "until": 39.1,
+    "kind": "term"
+   },
+   {
+    "text": "Galanz — микроволновки",
+    "at": 39.2,
+    "until": 42.6,
+    "kind": "term"
+   },
+   {
+    "text": "Умный дом Xiaomi",
+    "at": 43.3,
+    "until": 46.6,
+    "kind": "term"
+   },
+   {
+    "text": "захватывает рынки",
+    "at": 54.0,
+    "until": 55.8,
+    "kind": "accent"
+   },
+   {
+    "text": "Остап Доценко",
+    "at": 55.9,
+    "until": 58.5,
+    "kind": "term"
+   },
+   {
+    "text": "говорю по-китайски",
+    "at": 62.8,
+    "until": 64.9,
+    "kind": "term"
+   },
+   {
+    "text": "знаком лично",
+    "at": 70.0,
+    "until": 71.1,
+    "kind": "accent"
+   },
+   {
+    "text": "куда с улицы не пускают",
+    "at": 72.8,
+    "until": 74.4,
+    "kind": "term"
+   },
+   {
+    "text": "быстрое согласование",
+    "at": 74.6,
+    "until": 77.1,
+    "kind": "accent"
+   },
+   {
+    "text": "бесконечные переписки",
+    "at": 77.6,
+    "until": 80.0,
+    "kind": "struck"
+   },
+   {
+    "text": "цены прозрачные",
+    "at": 84.1,
+    "until": 86.7,
+    "kind": "term"
+   },
+   {
+    "text": "всё на русском языке",
+    "at": 87.7,
+    "until": 89.7,
+    "kind": "accent"
+   }
+  ],
+  "cutaways": [],
+  "moves": [
+   {
+    "at": 0.0,
+    "until": 2.0,
+    "kind": "punch",
+    "scale": 1.15
+   },
+   {
+    "at": 5.7,
+    "until": 7.1,
+    "kind": "cut",
+    "scale": 1.12
+   },
+   {
+    "at": 13.06,
+    "until": 13.7,
+    "kind": "cut",
+    "scale": 1.12
+   },
+   {
+    "at": 18.7,
+    "until": 21.0,
+    "kind": "push",
+    "scale": 1.07
+   },
+   {
+    "at": 28.5,
+    "until": 30.3,
+    "kind": "punch",
+    "scale": 1.2
+   },
+   {
+    "at": 47.4,
+    "until": 47.4,
+    "kind": "cut",
+    "scale": 1.12
+   },
+   {
+    "at": 51.6,
+    "until": 55.2,
+    "kind": "push",
+    "scale": 1.07
+   },
+   {
+    "at": 59.8,
+    "until": 61.2,
+    "kind": "cut",
+    "scale": 1.12
+   },
+   {
+    "at": 73.7,
+    "until": 74.5,
+    "kind": "punch",
+    "scale": 1.2
+   },
+   {
+    "at": 80.3,
+    "until": 81.3,
+    "kind": "cut",
+    "scale": 1.12
+   },
+   {
+    "at": 90.8,
+    "until": 91.7,
+    "kind": "punch",
+    "scale": 1.2
+   },
+   {
+    "at": 93.6,
+    "until": 94.4,
+    "kind": "cut",
+    "scale": 1.12
+   }
+  ],
+  "numbers": [
+   {
+    "text": "9",
+    "label": "компаний",
+    "at": 8.33,
+    "until": 10.5,
+    "look": "gradient",
+    "x": 0.17,
+    "y": 0.38,
+    "size": 0.16
+   },
+   {
+    "text": "2",
+    "label": "центра",
+    "at": 28.5,
+    "until": 31.2,
+    "look": "gradient",
+    "x": 0.17,
+    "y": 0.38,
+    "size": 0.16
+   },
+   {
+    "text": "10+",
+    "label": "лет",
+    "at": 62.15,
+    "until": 64.1,
+    "look": "gradient",
+    "x": 0.17,
+    "y": 0.38,
+    "size": 0.16
+   },
+   {
+    "text": "1000+",
+    "label": "компаний",
+    "at": 81.44,
+    "until": 83.7,
+    "look": "gradient",
+    "x": 0.3,
+    "y": 0.31,
+    "size": 0.12
+   }
+  ],
+  "flags": [
+   {
+    "src": "local/flags/cn.svg",
+    "at": 6.64,
+    "until": 8.1,
+    "x": 0.84,
+    "y": 0.36,
+    "widthFraction": 0.18,
+    "sound": "audio/sfx/pop.wav",
+    "soundVolume": 0.45
+   },
+   {
+    "src": "local/flags/cn.svg",
+    "at": 61.3,
+    "until": 62.7,
+    "x": 0.84,
+    "y": 0.36,
+    "widthFraction": 0.18,
+    "sound": "audio/sfx/pop.wav",
+    "soundVolume": 0.45
+   }
+  ],
+  "splits": [
+   {
+    "at": 47.4,
+    "until": 51.1,
+    "side": "bottom",
+    "items": [
+     {
+      "src": "generated/appliances/metric.png",
+      "focusY": 0.45
+     }
+    ]
+   }
+  ],
+  "stages": [
+   {
+    "at": 33.0,
+    "until": 36.6,
+    "items": [
+     {
+      "src": "generated/appliances/qingdao.png"
+     }
+    ]
+   },
+   {
+    "at": 43.2,
+    "until": 46.6,
+    "items": [
+     {
+      "src": "generated/appliances/beijing.png"
+     }
+    ]
+   },
+   {
+    "at": 68.0,
+    "until": 70.7,
+    "items": [
+     {
+      "src": "generated/appliances/negotiations.png"
+     }
+    ]
+   },
+   {
+    "at": 98.0,
+    "until": 100.0,
+    "items": [
+     {
+      "src": "generated/appliances/cta.png"
+     }
+    ]
+   }
+  ],
+  "flips": [
+   {
+    "at": 13.0,
+    "until": 18.6,
+    "overlay": true,
+    "widthFraction": 0.4,
+    "centerX": 0.76,
+    "centerY": 0.62,
+    "items": [
+     {
+      "src": "local/gtt/flip-xiaomi.png",
+      "seconds": 0.67
+     },
+     {
+      "src": "local/gtt/flip-haier.png",
+      "seconds": 0.52
+     },
+     {
+      "src": "local/gtt/flip-hisense.png",
+      "seconds": 0.72
+     },
+     {
+      "src": "local/gtt/flip-robam.png",
+      "seconds": 0.48
+     },
+     {
+      "src": "local/gtt/flip-supor.png",
+      "seconds": 0.66
+     },
+     {
+      "src": "local/gtt/flip-midea.png",
+      "seconds": 0.71
+     },
+     {
+      "src": "local/gtt/flip-galanz.png",
+      "seconds": 0.75
+     },
+     {
+      "src": "local/gtt/flip-gree.png",
+      "seconds": 0.47
+     },
+     {
+      "src": "local/gtt/flip-skyworth.png"
+     }
+    ]
+   },
+   {
+    "at": 58.58,
+    "until": 60.0,
+    "overlay": true,
+    "widthFraction": 0.34,
+    "centerX": 0.8,
+    "centerY": 0.6,
+    "items": [
+     {
+      "src": "local/gtt/flip-alibaba.png",
+      "seconds": 0.7
+     },
+     {
+      "src": "local/gtt/flip-sber.png"
+     }
+    ]
+   },
+   {
+    "at": 89.8,
+    "until": 93.4,
+    "overlay": true,
+    "widthFraction": 0.4,
+    "centerX": 0.76,
+    "centerY": 0.62,
+    "items": [
+     {
+      "src": "local/gtt/flip-haier.png",
+      "seconds": 0.4
+     },
+     {
+      "src": "local/gtt/flip-gree.png",
+      "seconds": 0.4
+     },
+     {
+      "src": "local/gtt/flip-midea.png",
+      "seconds": 0.4
+     },
+     {
+      "src": "local/gtt/flip-hisense.png",
+      "seconds": 0.4
+     },
+     {
+      "src": "local/gtt/flip-xiaomi.png",
+      "seconds": 0.4
+     },
+     {
+      "src": "local/gtt/flip-galanz.png",
+      "seconds": 0.4
+     },
+     {
+      "src": "local/gtt/flip-robam.png",
+      "seconds": 0.4
+     },
+     {
+      "src": "local/gtt/flip-supor.png",
+      "seconds": 0.4
+     },
+     {
+      "src": "local/gtt/flip-skyworth.png"
+     }
+    ]
+   }
+  ],
+  "pips": [
+   {
+    "at": 93.7,
+    "until": 97.5,
+    "items": [
+     {
+      "src": "site/home.png",
+      "present": "site",
+      "title": "Global Tech Tour",
+      "url": "globaltechtour.ru",
+      "scrollTo": 0.08
+     }
+    ]
+   }
+  ],
+  "photoCards": [
+   {
+    "at": 21.0,
+    "until": 24.9,
+    "side": "right",
+    "widthFraction": 0.34,
+    "stepSeconds": 0.6,
+    "items": [
+     {
+      "src": "local/pano/beijing-temple-v.jpg",
+      "caption": "Пекин"
+     },
+     {
+      "src": "generated/appliances/qingdao.png",
+      "caption": "Циндао"
+     },
+     {
+      "src": "generated/appliances/hangzhou.png",
+      "caption": "Ханчжоу"
+     },
+     {
+      "src": "generated/appliances/foshan.png",
+      "caption": "Фошань"
+     },
+     {
+      "src": "generated/appliances/zhuhai-shenzhen.png",
+      "caption": "Чжухай"
+     },
+     {
+      "src": "local/pano/shenzhen-pingan-v.jpg",
+      "caption": "Шэньчжэнь"
+     }
     ],
-    "cutaways": [],
-    "moves": [
-      {
-        "at": 0.0,
-        "until": 2.0,
-        "kind": "punch",
-        "scale": 1.15
-      },
-      {
-        "at": 5.7,
-        "until": 7.1,
-        "kind": "cut",
-        "scale": 1.12
-      },
-      {
-        "at": 13.06,
-        "until": 13.7,
-        "kind": "cut",
-        "scale": 1.12
-      },
-      {
-        "at": 18.7,
-        "until": 21.0,
-        "kind": "push",
-        "scale": 1.07
-      },
-      {
-        "at": 28.5,
-        "until": 30.3,
-        "kind": "punch",
-        "scale": 1.2
-      },
-      {
-        "at": 47.6,
-        "until": 48.7,
-        "kind": "cut",
-        "scale": 1.12
-      },
-      {
-        "at": 53.9,
-        "until": 57.5,
-        "kind": "push",
-        "scale": 1.07
-      },
-      {
-        "at": 62.1,
-        "until": 63.5,
-        "kind": "cut",
-        "scale": 1.12
-      },
-      {
-        "at": 77.6,
-        "until": 78.4,
-        "kind": "punch",
-        "scale": 1.2
-      },
-      {
-        "at": 84.2,
-        "until": 85.2,
-        "kind": "cut",
-        "scale": 1.12
-      },
-      {
-        "at": 94.7,
-        "until": 95.6,
-        "kind": "punch",
-        "scale": 1.2
-      },
-      {
-        "at": 97.5,
-        "until": 98.3,
-        "kind": "cut",
-        "scale": 1.12
-      }
-    ],
-    "numbers": [
-      {
-        "text": "9",
-        "label": "компаний",
-        "at": 8.33,
-        "until": 10.5,
-        "look": "gradient",
-        "x": 0.17,
-        "y": 0.38,
-        "size": 0.16
-      },
-      {
-        "text": "2",
-        "label": "центра",
-        "at": 28.5,
-        "until": 31.2,
-        "look": "gradient",
-        "x": 0.17,
-        "y": 0.38,
-        "size": 0.16
-      },
-      {
-        "text": "10+",
-        "label": "лет",
-        "at": 64.45,
-        "until": 66.4,
-        "look": "gradient",
-        "x": 0.17,
-        "y": 0.38,
-        "size": 0.16
-      },
-      {
-        "text": "1000+",
-        "label": "компаний",
-        "at": 85.34,
-        "until": 87.6,
-        "look": "gradient",
-        "x": 0.3,
-        "y": 0.31,
-        "size": 0.12
-      }
-    ],
-    "flags": [
-      {
-        "src": "local/flags/cn.svg",
-        "at": 6.64,
-        "until": 8.1,
-        "x": 0.84,
-        "y": 0.36,
-        "widthFraction": 0.18,
-        "sound": "audio/sfx/pop.wav",
-        "soundVolume": 0.45
-      },
-      {
-        "src": "local/flags/cn.svg",
-        "at": 63.6,
-        "until": 65.0,
-        "x": 0.84,
-        "y": 0.36,
-        "widthFraction": 0.18,
-        "sound": "audio/sfx/pop.wav",
-        "soundVolume": 0.45
-      }
-    ],
-    "splits": [
-      {
-        "at": 48.8,
-        "until": 53.4,
-        "side": "bottom",
-        "items": [
-          {
-            "src": "generated/appliances/metric.png",
-            "focusY": 0.45
-          }
-        ]
-      }
-    ],
-    "stages": [
-      {
-        "at": 33.0,
-        "until": 36.6,
-        "items": [
-          {
-            "src": "generated/appliances/qingdao.png"
-          }
-        ]
-      },
-      {
-        "at": 43.2,
-        "until": 46.6,
-        "items": [
-          {
-            "src": "generated/appliances/beijing.png"
-          }
-        ]
-      },
-      {
-        "at": 71.9,
-        "until": 74.6,
-        "items": [
-          {
-            "src": "generated/appliances/negotiations.png"
-          }
-        ]
-      },
-      {
-        "at": 101.9,
-        "until": 103.9,
-        "items": [
-          {
-            "src": "generated/appliances/cta.png"
-          }
-        ]
-      }
-    ],
-    "flips": [
-      {
-        "at": 13.0,
-        "until": 18.6,
-        "overlay": true,
-        "widthFraction": 0.4,
-        "centerX": 0.76,
-        "centerY": 0.62,
-        "items": [
-          {
-            "src": "local/gtt/flip-xiaomi.png",
-            "seconds": 0.67
-          },
-          {
-            "src": "local/gtt/flip-haier.png",
-            "seconds": 0.52
-          },
-          {
-            "src": "local/gtt/flip-hisense.png",
-            "seconds": 0.72
-          },
-          {
-            "src": "local/gtt/flip-robam.png",
-            "seconds": 0.48
-          },
-          {
-            "src": "local/gtt/flip-supor.png",
-            "seconds": 0.66
-          },
-          {
-            "src": "local/gtt/flip-midea.png",
-            "seconds": 0.71
-          },
-          {
-            "src": "local/gtt/flip-galanz.png",
-            "seconds": 0.75
-          },
-          {
-            "src": "local/gtt/flip-gree.png",
-            "seconds": 0.47
-          },
-          {
-            "src": "local/gtt/flip-skyworth.png"
-          }
-        ]
-      },
-      {
-        "at": 60.88,
-        "until": 62.3,
-        "overlay": true,
-        "widthFraction": 0.34,
-        "centerX": 0.8,
-        "centerY": 0.6,
-        "items": [
-          {
-            "src": "local/gtt/flip-alibaba.png",
-            "seconds": 0.7
-          },
-          {
-            "src": "local/gtt/flip-sber.png"
-          }
-        ]
-      },
-      {
-        "at": 93.7,
-        "until": 97.3,
-        "overlay": true,
-        "widthFraction": 0.4,
-        "centerX": 0.76,
-        "centerY": 0.62,
-        "items": [
-          {
-            "src": "local/gtt/flip-haier.png",
-            "seconds": 0.4
-          },
-          {
-            "src": "local/gtt/flip-gree.png",
-            "seconds": 0.4
-          },
-          {
-            "src": "local/gtt/flip-midea.png",
-            "seconds": 0.4
-          },
-          {
-            "src": "local/gtt/flip-hisense.png",
-            "seconds": 0.4
-          },
-          {
-            "src": "local/gtt/flip-xiaomi.png",
-            "seconds": 0.4
-          },
-          {
-            "src": "local/gtt/flip-galanz.png",
-            "seconds": 0.4
-          },
-          {
-            "src": "local/gtt/flip-robam.png",
-            "seconds": 0.4
-          },
-          {
-            "src": "local/gtt/flip-supor.png",
-            "seconds": 0.4
-          },
-          {
-            "src": "local/gtt/flip-skyworth.png"
-          }
-        ]
-      }
-    ],
-    "pips": [
-      {
-        "at": 97.6,
-        "until": 101.4,
-        "items": [
-          {
-            "src": "site/home.png",
-            "present": "site",
-            "title": "Global Tech Tour",
-            "url": "globaltechtour.ru",
-            "scrollTo": 0.08
-          }
-        ]
-      }
-    ],
-    "photoCards": [
-      {
-        "at": 21.0,
-        "until": 24.9,
-        "side": "right",
-        "widthFraction": 0.34,
-        "stepSeconds": 0.6,
-        "items": [
-          {
-            "src": "local/pano/beijing-temple-v.jpg",
-            "caption": "Пекин"
-          },
-          {
-            "src": "generated/appliances/qingdao.png",
-            "caption": "Циндао"
-          },
-          {
-            "src": "generated/appliances/hangzhou.png",
-            "caption": "Ханчжоу"
-          },
-          {
-            "src": "generated/appliances/foshan.png",
-            "caption": "Фошань"
-          },
-          {
-            "src": "generated/appliances/zhuhai-shenzhen.png",
-            "caption": "Чжухай"
-          },
-          {
-            "src": "local/pano/shenzhen-pingan-v.jpg",
-            "caption": "Шэньчжэнь"
-          }
-        ],
-        "spread": 0.25
-      }
-    ],
-    "popWindows": [],
-    "brolls": [
-      {
-        "at": 36.9,
-        "until": 39.1,
-        "items": [
-          {
-            "src": "generated/appliances/zhuhai-shenzhen.png",
-            "caption": "Gree · Чжухай"
-          }
-        ]
-      }
-    ],
-    "splitEyesAt": 0.36,
-    "splitSeam": 0.58,
-    "music": "audio/music/gtt-bed-light-long.m4a",
-    "musicVolume": 0.12,
-    "safeZone": "reels",
-    "cutoutSrc": "local/head/s31-appliances-cutout.webm"
+    "spread": 0.25
+   }
+  ],
+  "popWindows": [],
+  "brolls": [
+   {
+    "at": 36.9,
+    "until": 39.1,
+    "items": [
+     {
+      "src": "generated/appliances/zhuhai-shenzhen.png",
+      "caption": "Gree · Чжухай"
+     }
+    ]
+   }
+  ],
+  "splitEyesAt": 0.36,
+  "splitSeam": 0.58,
+  "music": "audio/music/gtt-bed-light-long.m4a",
+  "musicVolume": 0.12,
+  "safeZone": "reels",
+  "cutoutSrc": "local/head/s31-appliances-cutout.webm"
+ },
+ "proposals": [
+  {
+   "at": 0,
+   "until": 2,
+   "kind": "punch",
+   "scale": 1.15,
+   "zone": "face",
+   "what": "быстрый зум ×1,15",
+   "why": "хук: первые слова решают, досмотрят ли",
+   "applied": true,
+   "n": 1
   },
-  "proposals": [
-    {
-      "at": 0,
-      "until": 2,
-      "kind": "punch",
-      "scale": 1.15,
-      "zone": "face",
-      "what": "быстрый зум ×1,15",
-      "why": "хук: первые слова решают, досмотрят ли",
-      "applied": true,
-      "n": 1
-    },
-    {
-      "at": 5.66,
-      "until": 7.14,
-      "kind": "cut",
-      "scale": 1.12,
-      "what": "смена кадра ×1,12",
-      "why": "новая мысль — склейка как со второй камеры",
-      "zone": "face",
-      "applied": true,
-      "n": 2
-    },
-    {
-      "at": 8.71,
-      "until": 9.33,
-      "kind": "punch",
-      "scale": 1.2,
-      "what": "быстрый зум ×1,2",
-      "why": "удар на «компаний»",
-      "zone": "face",
-      "applied": true,
-      "n": 3
-    },
-    {
-      "at": 10.58,
-      "until": 12.78,
-      "kind": "plate",
-      "zone": "top",
-      "applied": true,
-      "what": "плашка «Пять дней»",
-      "why": "в речи: «Пять дней,»",
-      "n": 4
-    },
-    {
-      "at": 13.06,
-      "until": 13.67,
-      "kind": "cut",
-      "scale": 1.12,
-      "what": "смена кадра ×1,12",
-      "why": "новая мысль — склейка как со второй камеры",
-      "zone": "face",
-      "applied": true,
-      "n": 5
-    },
-    {
-      "at": 14.91,
-      "until": 16.89,
-      "kind": "plate",
-      "zone": "top",
-      "applied": true,
-      "what": "плашка «Robam»",
-      "why": "в речи: «Robam,»",
-      "n": 6
-    },
-    {
-      "at": 15.39,
-      "until": 16.05,
-      "kind": "punch",
-      "scale": 1.2,
-      "what": "быстрый зум ×1,2",
-      "why": "удар на «Supor»",
-      "zone": "face",
-      "applied": true,
-      "n": 7
-    },
-    {
-      "at": 18.66,
-      "until": 21.1,
-      "kind": "cut",
-      "scale": 1.12,
-      "what": "смена кадра ×1,12",
-      "why": "новая мысль — склейка как со второй камеры",
-      "zone": "face",
-      "applied": true,
-      "n": 8
-    },
-    {
-      "at": 22.31,
-      "until": 23,
-      "kind": "punch",
-      "scale": 1.2,
-      "what": "быстрый зум ×1,2",
-      "why": "удар на «Ханчжоу»",
-      "zone": "face",
-      "applied": true,
-      "n": 9
-    },
-    {
-      "at": 26.13,
-      "until": 27.18,
-      "kind": "cut",
-      "scale": 1.12,
-      "what": "смена кадра ×1,12",
-      "why": "новая мысль — склейка как со второй камеры",
-      "zone": "face",
-      "applied": true,
-      "n": 10
-    },
-    {
-      "at": 28.5,
-      "until": 32.82,
-      "kind": "plate",
-      "zone": "top",
-      "applied": true,
-      "what": "плашка «два главных»",
-      "why": "в речи: «Это два главных центра бытовой техники страны.»",
-      "n": 11
-    },
-    {
-      "at": 28.5,
-      "until": 30.3,
-      "kind": "punch",
-      "scale": 1.2,
-      "what": "быстрый зум ×1,2",
-      "why": "удар на «два»",
-      "zone": "face",
-      "applied": true,
-      "n": 12
-    },
-    {
-      "at": 33.63,
-      "until": 35.61,
-      "kind": "plate",
-      "zone": "top",
-      "applied": true,
-      "what": "плашка «Haier»",
-      "why": "в речи: «Вы увидите Haier,»",
-      "n": 13
-    },
-    {
-      "at": 34.11,
-      "until": 36.78,
-      "kind": "cut",
-      "scale": 1.12,
-      "what": "смена кадра ×1,12",
-      "why": "новая мысль — склейка как со второй камеры",
-      "zone": "face",
-      "applied": true,
-      "n": 14
-    },
-    {
-      "at": 39.18,
-      "until": 40.98,
-      "kind": "plate",
-      "zone": "top",
-      "applied": true,
-      "what": "плашка «Galanz»",
-      "why": "в речи: «Galanz,»",
-      "n": 15
-    },
-    {
-      "at": 41.54,
-      "until": 43.14,
-      "kind": "punch",
-      "scale": 1.2,
-      "what": "быстрый зум ×1,2",
-      "why": "удар на «микроволновок»",
-      "zone": "face",
-      "applied": true,
-      "n": 16
-    },
-    {
-      "at": 43.88,
-      "until": 45.97,
-      "kind": "plate",
-      "zone": "top",
-      "applied": true,
-      "what": "плашка «Xiaomi»",
-      "why": "в речи: «И умный дом Xiaomi,»",
-      "n": 17
-    },
-    {
-      "at": 44.47,
-      "until": 47.56,
-      "kind": "push",
-      "scale": 1.07,
-      "what": "лёгкий наезд ×1,07",
-      "why": "длинная фраза 3.1 с без событий",
-      "zone": "face",
-      "applied": true,
-      "n": 18
-    },
-    {
-      "at": 48.84,
-      "until": 50.64,
-      "kind": "punch",
-      "scale": 1.2,
-      "what": "быстрый зум ×1,2",
-      "why": "удар на «как»",
-      "zone": "face",
-      "applied": true,
-      "n": 19
-    },
-    {
-      "at": 53.9,
-      "until": 58.14,
-      "kind": "push",
-      "scale": 1.07,
-      "what": "лёгкий наезд ×1,07",
-      "why": "длинная фраза 4.2 с без событий",
-      "zone": "face",
-      "applied": true,
-      "n": 20
-    },
-    {
-      "at": 60.88,
-      "until": 63.62,
-      "kind": "plate",
-      "zone": "top",
-      "applied": true,
-      "what": "плашка «Alibaba»",
-      "why": "в речи: «Меня зовут Остап Доценко и я работал вAlibabaиСбере.»",
-      "n": 21
-    },
-    {
-      "at": 66.48,
-      "until": 67.38,
-      "kind": "punch",
-      "scale": 1.2,
-      "what": "быстрый зум ×1,2",
-      "why": "удар на «по-китайски»",
-      "zone": "face",
-      "applied": true,
-      "n": 22
-    },
-    {
-      "at": 71.86,
-      "until": 75.02,
-      "kind": "push",
-      "scale": 1.07,
-      "what": "лёгкий наезд ×1,07",
-      "why": "длинная фраза 3.2 с без событий",
-      "zone": "face",
-      "applied": true,
-      "n": 23
-    },
-    {
-      "at": 77.58,
-      "until": 78.38,
-      "kind": "punch",
-      "scale": 1.2,
-      "what": "быстрый зум ×1,2",
-      "why": "удар на «не»",
-      "zone": "face",
-      "applied": true,
-      "n": 24
-    },
-    {
-      "at": 81.1,
-      "until": 84.22,
-      "kind": "push",
-      "scale": 1.07,
-      "what": "лёгкий наезд ×1,07",
-      "why": "длинная фраза 3.1 с без событий",
-      "zone": "face",
-      "applied": true,
-      "n": 25
-    },
-    {
-      "at": 85.34,
-      "until": 89.28,
-      "kind": "plate",
-      "zone": "top",
-      "applied": true,
-      "what": "плашка «тысячи компаний»",
-      "why": "в речи: «В моей базе более тысячи компаний из 18 индустрий.»",
-      "n": 26
-    },
-    {
-      "at": 88.04,
-      "until": 88.85,
-      "kind": "punch",
-      "scale": 1.2,
-      "what": "быстрый зум ×1,2",
-      "why": "удар на «прозрачные»",
-      "zone": "face",
-      "applied": true,
-      "n": 27
-    },
-    {
-      "at": 91.62,
-      "until": 93.7,
-      "kind": "cut",
-      "scale": 1.12,
-      "what": "смена кадра ×1,12",
-      "why": "новая мысль — склейка как со второй камеры",
-      "zone": "face",
-      "applied": true,
-      "n": 28
-    },
-    {
-      "at": 94.73,
-      "until": 95.62,
-      "kind": "punch",
-      "scale": 1.2,
-      "what": "быстрый зум ×1,2",
-      "why": "удар на «ритейлеры»",
-      "zone": "face",
-      "applied": true,
-      "n": 29
-    },
-    {
-      "at": 98.64,
-      "until": 101.64,
-      "kind": "cutaway",
-      "zone": "full",
-      "applied": false,
-      "what": "перебивка",
-      "why": "на «сайт» — нужен скрин или B-roll",
-      "n": 30
-    },
-    {
-      "at": 98.94,
-      "until": 101.22,
-      "kind": "plate",
-      "zone": "top",
-      "applied": true,
-      "what": "плашка «Global · Tech · Tour»",
-      "why": "в речи: «Заходите на сайт Global Tech Tour»",
-      "n": 31
-    },
-    {
-      "at": 99.72,
-      "until": 102.58,
-      "kind": "cut",
-      "scale": 1.12,
-      "what": "смена кадра ×1,12",
-      "why": "новая мысль — склейка как со второй камеры",
-      "zone": "face",
-      "applied": true,
-      "n": 32
-    },
-    {
-      "at": 103.3,
-      "until": 103.9,
-      "kind": "cutaway",
-      "zone": "full",
-      "applied": false,
-      "what": "перебивка",
-      "why": "на «программу» — нужен скрин или B-roll",
-      "n": 33
-    }
-  ]
+  {
+   "at": 5.66,
+   "until": 7.14,
+   "kind": "cut",
+   "scale": 1.12,
+   "what": "смена кадра ×1,12",
+   "why": "новая мысль — склейка как со второй камеры",
+   "zone": "face",
+   "applied": true,
+   "n": 2
+  },
+  {
+   "at": 8.71,
+   "until": 9.33,
+   "kind": "punch",
+   "scale": 1.2,
+   "what": "быстрый зум ×1,2",
+   "why": "удар на «компаний»",
+   "zone": "face",
+   "applied": true,
+   "n": 3
+  },
+  {
+   "at": 10.58,
+   "until": 12.78,
+   "kind": "plate",
+   "zone": "top",
+   "applied": true,
+   "what": "плашка «Пять дней»",
+   "why": "в речи: «Пять дней,»",
+   "n": 4
+  },
+  {
+   "at": 13.06,
+   "until": 13.67,
+   "kind": "cut",
+   "scale": 1.12,
+   "what": "смена кадра ×1,12",
+   "why": "новая мысль — склейка как со второй камеры",
+   "zone": "face",
+   "applied": true,
+   "n": 5
+  },
+  {
+   "at": 14.91,
+   "until": 16.89,
+   "kind": "plate",
+   "zone": "top",
+   "applied": true,
+   "what": "плашка «Robam»",
+   "why": "в речи: «Robam,»",
+   "n": 6
+  },
+  {
+   "at": 15.39,
+   "until": 16.05,
+   "kind": "punch",
+   "scale": 1.2,
+   "what": "быстрый зум ×1,2",
+   "why": "удар на «Supor»",
+   "zone": "face",
+   "applied": true,
+   "n": 7
+  },
+  {
+   "at": 18.66,
+   "until": 21.1,
+   "kind": "cut",
+   "scale": 1.12,
+   "what": "смена кадра ×1,12",
+   "why": "новая мысль — склейка как со второй камеры",
+   "zone": "face",
+   "applied": true,
+   "n": 8
+  },
+  {
+   "at": 22.31,
+   "until": 23,
+   "kind": "punch",
+   "scale": 1.2,
+   "what": "быстрый зум ×1,2",
+   "why": "удар на «Ханчжоу»",
+   "zone": "face",
+   "applied": true,
+   "n": 9
+  },
+  {
+   "at": 26.13,
+   "until": 27.18,
+   "kind": "cut",
+   "scale": 1.12,
+   "what": "смена кадра ×1,12",
+   "why": "новая мысль — склейка как со второй камеры",
+   "zone": "face",
+   "applied": true,
+   "n": 10
+  },
+  {
+   "at": 28.5,
+   "until": 32.82,
+   "kind": "plate",
+   "zone": "top",
+   "applied": true,
+   "what": "плашка «два главных»",
+   "why": "в речи: «Это два главных центра бытовой техники страны.»",
+   "n": 11
+  },
+  {
+   "at": 28.5,
+   "until": 30.3,
+   "kind": "punch",
+   "scale": 1.2,
+   "what": "быстрый зум ×1,2",
+   "why": "удар на «два»",
+   "zone": "face",
+   "applied": true,
+   "n": 12
+  },
+  {
+   "at": 33.63,
+   "until": 35.61,
+   "kind": "plate",
+   "zone": "top",
+   "applied": true,
+   "what": "плашка «Haier»",
+   "why": "в речи: «Вы увидите Haier,»",
+   "n": 13
+  },
+  {
+   "at": 34.11,
+   "until": 36.78,
+   "kind": "cut",
+   "scale": 1.12,
+   "what": "смена кадра ×1,12",
+   "why": "новая мысль — склейка как со второй камеры",
+   "zone": "face",
+   "applied": true,
+   "n": 14
+  },
+  {
+   "at": 39.18,
+   "until": 40.98,
+   "kind": "plate",
+   "zone": "top",
+   "applied": true,
+   "what": "плашка «Galanz»",
+   "why": "в речи: «Galanz,»",
+   "n": 15
+  },
+  {
+   "at": 41.54,
+   "until": 43.14,
+   "kind": "punch",
+   "scale": 1.2,
+   "what": "быстрый зум ×1,2",
+   "why": "удар на «микроволновок»",
+   "zone": "face",
+   "applied": true,
+   "n": 16
+  },
+  {
+   "at": 43.88,
+   "until": 45.97,
+   "kind": "plate",
+   "zone": "top",
+   "applied": true,
+   "what": "плашка «Xiaomi»",
+   "why": "в речи: «И умный дом Xiaomi,»",
+   "n": 17
+  },
+  {
+   "at": 44.47,
+   "until": 47.56,
+   "kind": "push",
+   "scale": 1.07,
+   "what": "лёгкий наезд ×1,07",
+   "why": "длинная фраза 3.1 с без событий",
+   "zone": "face",
+   "applied": true,
+   "n": 18
+  },
+  {
+   "at": 48.84,
+   "until": 50.64,
+   "kind": "punch",
+   "scale": 1.2,
+   "what": "быстрый зум ×1,2",
+   "why": "удар на «как»",
+   "zone": "face",
+   "applied": true,
+   "n": 19
+  },
+  {
+   "at": 53.9,
+   "until": 58.14,
+   "kind": "push",
+   "scale": 1.07,
+   "what": "лёгкий наезд ×1,07",
+   "why": "длинная фраза 4.2 с без событий",
+   "zone": "face",
+   "applied": true,
+   "n": 20
+  },
+  {
+   "at": 60.88,
+   "until": 63.62,
+   "kind": "plate",
+   "zone": "top",
+   "applied": true,
+   "what": "плашка «Alibaba»",
+   "why": "в речи: «Меня зовут Остап Доценко и я работал вAlibabaиСбере.»",
+   "n": 21
+  },
+  {
+   "at": 66.48,
+   "until": 67.38,
+   "kind": "punch",
+   "scale": 1.2,
+   "what": "быстрый зум ×1,2",
+   "why": "удар на «по-китайски»",
+   "zone": "face",
+   "applied": true,
+   "n": 22
+  },
+  {
+   "at": 71.86,
+   "until": 75.02,
+   "kind": "push",
+   "scale": 1.07,
+   "what": "лёгкий наезд ×1,07",
+   "why": "длинная фраза 3.2 с без событий",
+   "zone": "face",
+   "applied": true,
+   "n": 23
+  },
+  {
+   "at": 77.58,
+   "until": 78.38,
+   "kind": "punch",
+   "scale": 1.2,
+   "what": "быстрый зум ×1,2",
+   "why": "удар на «не»",
+   "zone": "face",
+   "applied": true,
+   "n": 24
+  },
+  {
+   "at": 81.1,
+   "until": 84.22,
+   "kind": "push",
+   "scale": 1.07,
+   "what": "лёгкий наезд ×1,07",
+   "why": "длинная фраза 3.1 с без событий",
+   "zone": "face",
+   "applied": true,
+   "n": 25
+  },
+  {
+   "at": 85.34,
+   "until": 89.28,
+   "kind": "plate",
+   "zone": "top",
+   "applied": true,
+   "what": "плашка «тысячи компаний»",
+   "why": "в речи: «В моей базе более тысячи компаний из 18 индустрий.»",
+   "n": 26
+  },
+  {
+   "at": 88.04,
+   "until": 88.85,
+   "kind": "punch",
+   "scale": 1.2,
+   "what": "быстрый зум ×1,2",
+   "why": "удар на «прозрачные»",
+   "zone": "face",
+   "applied": true,
+   "n": 27
+  },
+  {
+   "at": 91.62,
+   "until": 93.7,
+   "kind": "cut",
+   "scale": 1.12,
+   "what": "смена кадра ×1,12",
+   "why": "новая мысль — склейка как со второй камеры",
+   "zone": "face",
+   "applied": true,
+   "n": 28
+  },
+  {
+   "at": 94.73,
+   "until": 95.62,
+   "kind": "punch",
+   "scale": 1.2,
+   "what": "быстрый зум ×1,2",
+   "why": "удар на «ритейлеры»",
+   "zone": "face",
+   "applied": true,
+   "n": 29
+  },
+  {
+   "at": 98.64,
+   "until": 101.64,
+   "kind": "cutaway",
+   "zone": "full",
+   "applied": false,
+   "what": "перебивка",
+   "why": "на «сайт» — нужен скрин или B-roll",
+   "n": 30
+  },
+  {
+   "at": 98.94,
+   "until": 101.22,
+   "kind": "plate",
+   "zone": "top",
+   "applied": true,
+   "what": "плашка «Global · Tech · Tour»",
+   "why": "в речи: «Заходите на сайт Global Tech Tour»",
+   "n": 31
+  },
+  {
+   "at": 99.72,
+   "until": 102.58,
+   "kind": "cut",
+   "scale": 1.12,
+   "what": "смена кадра ×1,12",
+   "why": "новая мысль — склейка как со второй камеры",
+   "zone": "face",
+   "applied": true,
+   "n": 32
+  },
+  {
+   "at": 103.3,
+   "until": 103.9,
+   "kind": "cutaway",
+   "zone": "full",
+   "applied": false,
+   "what": "перебивка",
+   "why": "на «программу» — нужен скрин или B-roll",
+   "n": 33
+  }
+ ]
 }

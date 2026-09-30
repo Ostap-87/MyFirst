@@ -1,7 +1,7 @@
 {
  "footage": "local/head/s31-appliances.mp4",
  "captionsSrc": "captions/head-s31-appliances.json",
- "durationSeconds": 103.9,
+ "durationSeconds": 100.0,
  "hookTop": "9 лидеров техники",
  "hookBottom": "за 5 дней",
  "brandMark": "GLOBAL TECH TOUR",
@@ -47,56 +47,56 @@
   },
   {
    "text": "захватывает рынки",
-   "at": 56.3,
-   "until": 58.1,
+   "at": 54.0,
+   "until": 55.8,
    "kind": "accent"
   },
   {
    "text": "Остап Доценко",
-   "at": 58.2,
-   "until": 60.8,
+   "at": 55.9,
+   "until": 58.5,
    "kind": "term"
   },
   {
    "text": "говорю по-китайски",
-   "at": 65.1,
-   "until": 67.3,
+   "at": 62.8,
+   "until": 64.9,
    "kind": "term"
   },
   {
    "text": "знаком лично",
-   "at": 73.9,
-   "until": 75.0,
+   "at": 70.0,
+   "until": 71.1,
    "kind": "accent"
   },
   {
    "text": "куда с улицы не пускают",
-   "at": 76.7,
-   "until": 78.3,
+   "at": 72.8,
+   "until": 74.4,
    "kind": "term"
   },
   {
    "text": "быстрое согласование",
-   "at": 78.5,
-   "until": 81.0,
+   "at": 74.6,
+   "until": 77.1,
    "kind": "accent"
   },
   {
    "text": "бесконечные переписки",
-   "at": 81.5,
-   "until": 83.9,
+   "at": 77.6,
+   "until": 80.0,
    "kind": "struck"
   },
   {
    "text": "цены прозрачные",
-   "at": 88.0,
-   "until": 90.6,
+   "at": 84.1,
+   "until": 86.7,
    "kind": "term"
   },
   {
    "text": "всё на русском языке",
-   "at": 91.6,
-   "until": 93.6,
+   "at": 87.7,
+   "until": 89.7,
    "kind": "accent"
   }
  ],
@@ -133,44 +133,44 @@
    "scale": 1.2
   },
   {
-   "at": 47.6,
-   "until": 48.7,
+   "at": 47.4,
+   "until": 47.4,
    "kind": "cut",
    "scale": 1.12
   },
   {
-   "at": 53.9,
-   "until": 57.5,
+   "at": 51.6,
+   "until": 55.2,
    "kind": "push",
    "scale": 1.07
   },
   {
-   "at": 62.1,
-   "until": 63.5,
+   "at": 59.8,
+   "until": 61.2,
    "kind": "cut",
    "scale": 1.12
   },
   {
-   "at": 77.6,
-   "until": 78.4,
+   "at": 73.7,
+   "until": 74.5,
    "kind": "punch",
    "scale": 1.2
   },
   {
-   "at": 84.2,
-   "until": 85.2,
+   "at": 80.3,
+   "until": 81.3,
    "kind": "cut",
    "scale": 1.12
   },
   {
-   "at": 94.7,
-   "until": 95.6,
+   "at": 90.8,
+   "until": 91.7,
    "kind": "punch",
    "scale": 1.2
   },
   {
-   "at": 97.5,
-   "until": 98.3,
+   "at": 93.6,
+   "until": 94.4,
    "kind": "cut",
    "scale": 1.12
   }
@@ -199,8 +199,8 @@
   {
    "text": "10+",
    "label": "лет",
-   "at": 64.45,
-   "until": 66.4,
+   "at": 62.15,
+   "until": 64.1,
    "look": "gradient",
    "x": 0.17,
    "y": 0.38,
@@ -209,8 +209,8 @@
   {
    "text": "1000+",
    "label": "компаний",
-   "at": 85.34,
-   "until": 87.6,
+   "at": 81.44,
+   "until": 83.7,
    "look": "gradient",
    "x": 0.3,
    "y": 0.31,
@@ -230,8 +230,8 @@
   },
   {
    "src": "local/flags/cn.svg",
-   "at": 63.6,
-   "until": 65.0,
+   "at": 61.3,
+   "until": 62.7,
    "x": 0.84,
    "y": 0.36,
    "widthFraction": 0.18,
@@ -241,8 +241,8 @@
  ],
  "splits": [
   {
-   "at": 48.8,
-   "until": 53.4,
+   "at": 47.4,
+   "until": 51.1,
    "side": "bottom",
    "items": [
     {
@@ -272,8 +272,8 @@
    ]
   },
   {
-   "at": 71.9,
-   "until": 74.6,
+   "at": 68.0,
+   "until": 70.7,
    "items": [
     {
      "src": "generated/appliances/negotiations.png"
@@ -281,8 +281,8 @@
    ]
   },
   {
-   "at": 101.9,
-   "until": 103.9,
+   "at": 98.0,
+   "until": 100.0,
    "items": [
     {
      "src": "generated/appliances/cta.png"
@@ -337,8 +337,8 @@
    ]
   },
   {
-   "at": 60.88,
-   "until": 62.3,
+   "at": 58.58,
+   "until": 60.0,
    "overlay": true,
    "widthFraction": 0.34,
    "centerX": 0.8,
@@ -354,8 +354,8 @@
    ]
   },
   {
-   "at": 93.7,
-   "until": 97.3,
+   "at": 89.8,
+   "until": 93.4,
    "overlay": true,
    "widthFraction": 0.4,
    "centerX": 0.76,
@@ -401,8 +401,8 @@
  ],
  "pips": [
   {
-   "at": 97.6,
-   "until": 101.4,
+   "at": 93.7,
+   "until": 97.5,
    "items": [
     {
      "src": "site/home.png",
