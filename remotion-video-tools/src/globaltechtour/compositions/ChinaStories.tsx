@@ -180,6 +180,8 @@ const flagBlock = z.object({
   x: z.number().describe("Центр по ширине, доля кадра"),
   y: z.number().describe("Центр по высоте, доля кадра"),
   widthFraction: z.number().optional().describe("Ширина флага, доля кадра"),
+  sound: z.string().optional().describe("Звук на появление флага внутри public, например audio/sfx/pop.wav"),
+  soundVolume: z.number().min(0).max(1).optional().describe("Громкость звука; по умолчанию 0,5"),
 });
 const numberBlock = z.object({
   ...span,
@@ -620,6 +622,8 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
             durationInFrames={AT(f.until - f.at, fps)}
           >
             <FlagWave src={f.src} x={f.x} y={f.y} widthFraction={f.widthFraction} />
+            {/* «Пузырёк» на каждый флаг: десять флагов подряд — десять хлопков. */}
+            {f.sound ? <Audio src={staticFile(f.sound)} volume={f.soundVolume ?? 0.5} /> : null}
           </Sequence>
         ))}
         {numbers.map((n) => (

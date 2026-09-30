@@ -31,7 +31,7 @@
     "kind": "struck"
    },
    {
-    "text": "Задачи сложнее и интереснее",
+    "text": "Сложнее и интереснее",
     "at": 12.4,
     "until": 14.5,
     "kind": "accent"
@@ -57,7 +57,7 @@
    {
     "text": "10+ лет в Китае и ЮВА",
     "at": 30.9,
-    "until": 37.9,
+    "until": 32.8,
     "kind": "term"
    },
    {
@@ -85,13 +85,13 @@
     "kind": "accent"
    },
    {
-    "text": "«Здравствуйте, можно к вам?»",
+    "text": "Здравствуйте, можно к вам?",
     "at": 59.2,
     "until": 61.3,
     "kind": "term"
    },
    {
-    "text": "Ответ — к китайскому Новому году",
+    "text": "Ответ — к Новому году",
     "at": 61.9,
     "until": 65.5,
     "kind": "struck"
@@ -103,8 +103,14 @@
     "kind": "accent"
    },
    {
-    "text": "Бизнес-экспедиции в Китай и не только",
+    "text": "Бизнес-экспедиции в Китай",
     "at": 73.2,
+    "until": 76.2,
+    "kind": "accent"
+   },
+   {
+    "text": "…и не только",
+    "at": 75.3,
     "until": 76.2,
     "kind": "accent"
    },
@@ -202,21 +208,113 @@
     "text": "10+",
     "label": "лет",
     "at": 30.9,
-    "until": 33.9,
+    "until": 32.8,
     "look": "gradient",
-    "x": 0.83,
-    "y": 0.42,
-    "size": 0.26
+    "x": 0.17,
+    "y": 0.38,
+    "size": 0.16
    }
   ],
   "flags": [
    {
     "src": "local/flags/cn.svg",
+    "x": 0.135,
+    "y": 0.537,
+    "widthFraction": 0.12,
     "at": 32.9,
-    "until": 34.6,
+    "until": 35.8,
+    "sound": "audio/sfx/pop.wav",
+    "soundVolume": 0.45
+   },
+   {
+    "src": "local/flags/th.svg",
     "x": 0.17,
-    "y": 0.34,
-    "widthFraction": 0.2
+    "y": 0.418,
+    "widthFraction": 0.12,
+    "at": 33.02,
+    "until": 35.8,
+    "sound": "audio/sfx/pop.wav",
+    "soundVolume": 0.45
+   },
+   {
+    "src": "local/flags/vn.svg",
+    "x": 0.238,
+    "y": 0.317,
+    "widthFraction": 0.12,
+    "at": 33.14,
+    "until": 35.8,
+    "sound": "audio/sfx/pop.wav",
+    "soundVolume": 0.45
+   },
+   {
+    "src": "local/flags/id.svg",
+    "x": 0.332,
+    "y": 0.244,
+    "widthFraction": 0.12,
+    "at": 33.26,
+    "until": 35.8,
+    "sound": "audio/sfx/pop.wav",
+    "soundVolume": 0.45
+   },
+   {
+    "src": "local/flags/in.svg",
+    "x": 0.442,
+    "y": 0.205,
+    "widthFraction": 0.12,
+    "at": 33.38,
+    "until": 35.8,
+    "sound": "audio/sfx/pop.wav",
+    "soundVolume": 0.45
+   },
+   {
+    "src": "local/flags/kr.svg",
+    "x": 0.558,
+    "y": 0.205,
+    "widthFraction": 0.12,
+    "at": 33.5,
+    "until": 35.8,
+    "sound": "audio/sfx/pop.wav",
+    "soundVolume": 0.45
+   },
+   {
+    "src": "local/flags/jp.svg",
+    "x": 0.668,
+    "y": 0.244,
+    "widthFraction": 0.12,
+    "at": 33.62,
+    "until": 35.8,
+    "sound": "audio/sfx/pop.wav",
+    "soundVolume": 0.45
+   },
+   {
+    "src": "local/flags/la.svg",
+    "x": 0.762,
+    "y": 0.317,
+    "widthFraction": 0.12,
+    "at": 33.74,
+    "until": 35.8,
+    "sound": "audio/sfx/pop.wav",
+    "soundVolume": 0.45
+   },
+   {
+    "src": "local/flags/kh.svg",
+    "x": 0.83,
+    "y": 0.418,
+    "widthFraction": 0.12,
+    "at": 33.86,
+    "until": 35.8,
+    "sound": "audio/sfx/pop.wav",
+    "soundVolume": 0.45
+   },
+   {
+    "src": "local/flags/my.svg",
+    "x": 0.865,
+    "y": 0.537,
+    "widthFraction": 0.12,
+    "at": 33.98,
+    "until": 35.8,
+    "sound": "audio/sfx/pop.wav",
+    "soundVolume": 0.45
    }
   ],
   "splits": [
@@ -286,14 +384,18 @@
   "flips": [
    {
     "at": 48.9,
-    "until": 50.4,
+    "until": 50.8,
     "overlay": true,
     "widthFraction": 0.34,
     "centerX": 0.8,
     "centerY": 0.6,
     "items": [
      {
-      "src": "local/gtt/flip-alibaba.png"
+      "src": "local/gtt/flip-alibaba.png",
+      "seconds": 0.8
+     },
+     {
+      "src": "local/gtt/flip-sber.png"
      }
     ]
    }
