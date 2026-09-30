@@ -91,12 +91,6 @@
         "kind": "struck"
       },
       {
-        "text": "18 индустрий",
-        "at": 86.6,
-        "until": 88.0,
-        "kind": "accent"
-      },
-      {
         "text": "цены прозрачные",
         "at": 88.0,
         "until": 90.6,
@@ -221,9 +215,9 @@
         "at": 85.34,
         "until": 87.6,
         "look": "gradient",
-        "x": 0.17,
-        "y": 0.38,
-        "size": 0.14
+        "x": 0.3,
+        "y": 0.31,
+        "size": 0.12
       }
     ],
     "flags": [
@@ -361,6 +355,51 @@
             "src": "local/gtt/flip-sber.png"
           }
         ]
+      },
+      {
+        "at": 93.7,
+        "until": 97.3,
+        "overlay": true,
+        "widthFraction": 0.4,
+        "centerX": 0.76,
+        "centerY": 0.62,
+        "items": [
+          {
+            "src": "local/gtt/flip-haier.png",
+            "seconds": 0.4
+          },
+          {
+            "src": "local/gtt/flip-gree.png",
+            "seconds": 0.4
+          },
+          {
+            "src": "local/gtt/flip-midea.png",
+            "seconds": 0.4
+          },
+          {
+            "src": "local/gtt/flip-hisense.png",
+            "seconds": 0.4
+          },
+          {
+            "src": "local/gtt/flip-xiaomi.png",
+            "seconds": 0.4
+          },
+          {
+            "src": "local/gtt/flip-galanz.png",
+            "seconds": 0.4
+          },
+          {
+            "src": "local/gtt/flip-robam.png",
+            "seconds": 0.4
+          },
+          {
+            "src": "local/gtt/flip-supor.png",
+            "seconds": 0.4
+          },
+          {
+            "src": "local/gtt/flip-skyworth.png"
+          }
+        ]
       }
     ],
     "pips": [
@@ -414,23 +453,7 @@
         "spread": 0.25
       }
     ],
-    "popWindows": [
-      {
-        "at": 93.7,
-        "until": 97.0,
-        "items": [
-          {
-            "src": "generated/appliances/cover.png"
-          },
-          {
-            "src": "generated/appliances/foshan.png"
-          },
-          {
-            "src": "generated/appliances/cta.png"
-          }
-        ]
-      }
-    ],
+    "popWindows": [],
     "brolls": [
       {
         "at": 36.9,
