@@ -7,10 +7,18 @@ d = b - a
 src = f'public/local/head/{name}.mp4'; bak = f'public/local/head/{name}-before-cut.mp4'
 if not os.path.exists(bak): shutil.copy(src, bak)
 tmp = f'public/local/head/{name}-cut.mp4'
-subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', bak, '-filter_complex',
+dur = float(subprocess.check_output(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', bak]))
+if b >= dur - 0.05:
+    # Вырез до самого конца: второй кусок пустой, acrossfade на нём висит вечно — просто обрезаем.
+    b = dur
+    subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', bak, '-t', f'{a:.3f}', '-af', 'afade=t=out:st=' + f'{max(0, a - 0.05):.3f}' + ':d=0.05',
+        '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '18', '-c:a', 'aac', '-b:a', '192k', '-movflags', '+faststart', tmp], check=True)
+else:
+  subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', bak, '-filter_complex',
     f'[0:v]trim=0:{a},setpts=PTS-STARTPTS[v0];[0:v]trim={b},setpts=PTS-STARTPTS[v1];[v0][v1]concat=n=2:v=1:a=0[v];'
     f'[0:a]atrim=0:{a},asetpts=PTS-STARTPTS[a0];[0:a]atrim={b},asetpts=PTS-STARTPTS[a1];[a0][a1]acrossfade=d=0.02[a]',
     '-map', '[v]', '-map', '[a]', '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '18', '-c:a', 'aac', '-b:a', '192k', '-movflags', '+faststart', tmp], check=True)
+d = b - a
 os.replace(tmp, src)
 j = json.load(open(draft)); p = j['props']
 cap = 'public/' + p['captionsSrc']; words = json.load(open(cap)); out = []
