@@ -16,27 +16,26 @@ for a, b in ranges:
     i0 = max(1, int((a - 0.2) * FPS) + 1)
     subprocess.run(['ffmpeg', '-v', 'error', '-ss', f'{(i0 - 1) / FPS:.4f}', '-i', src, '-t', f'{b - a + 0.4:.3f}', '-vf', f'fps={FPS}', '-q:v', '2', '-start_number', str(i0), os.path.join(frames, '%05d.jpg')], check=True)
 w, h = Image.open(os.path.join(frames, sorted(os.listdir(frames))[0])).size
-blank = os.path.join(tmp, 'blank.png'); Image.new('RGBA', (w, h), (0, 0, 0, 0)).save(blank)
-# Две модели и пересечение масок: isnet тянет за головой кусок тёмного навеса
-# (в кадре он прямо над макушкой), u2net_human_seg — цепляет предметы у края
-# кадра. Пиксель остаётся, только если его оставили обе — оба артефакта уходят.
+# Готовые кадры не складываются на диск (RGBA-PNG на 1080×1920 — по 2–3 МБ, полный ролик не влезал):
+# они уходят в ffmpeg сырым потоком через stdin, прозрачные кадры — одним и тем же буфером нулей.
 sess = new_session('isnet-general-use')
 sess_h = new_session('u2net_human_seg')
 def cut(im):
     a = remove(im, session=sess).split()[3]
     b = remove(im, session=sess_h).split()[3]
     o = im.convert('RGBA'); o.putalpha(ImageChops.darker(a, b)); return o
-outdir = os.path.join(tmp, 'o'); os.makedirs(outdir)
+blank = bytes(w * h * 4)
+enc = subprocess.Popen(['ffmpeg', '-v', 'error', '-y', '-f', 'rawvideo', '-pix_fmt', 'rgba', '-s', f'{w}x{h}', '-r', str(FPS), '-i', '-',
+    '-c:v', 'libvpx-vp9', '-pix_fmt', 'yuva420p', '-b:v', '0', '-crf', '30', '-deadline', 'realtime', '-cpu-used', '8', '-row-mt', '1', '-auto-alt-ref', '0', out], stdin=subprocess.PIPE)
 done = 0
 for i in range(1, n + 1):
     t = (i - 1) / FPS
-    dst = os.path.join(outdir, f'{i:05d}.png')
-    if any(a - 0.2 <= t <= b + 0.2 for a, b in ranges):
-        f = os.path.join(frames, f'{i:05d}.jpg')
-        if not os.path.exists(f): os.link(blank, dst); continue
-        cut(Image.open(f).convert('RGB')).save(dst); done += 1
+    f = os.path.join(frames, f'{i:05d}.jpg')
+    if any(a - 0.2 <= t <= b + 0.2 for a, b in ranges) and os.path.exists(f):
+        enc.stdin.write(cut(Image.open(f).convert('RGB')).tobytes()); os.remove(f); done += 1
         if done % 50 == 0: print('cut', done, flush=True)
     else:
-        os.link(blank, dst)
-subprocess.run(['ffmpeg', '-v', 'error', '-y', '-framerate', str(FPS), '-i', os.path.join(outdir, '%05d.png'), '-c:v', 'libvpx-vp9', '-pix_fmt', 'yuva420p', '-b:v', '0', '-crf', '30', '-deadline', 'realtime', '-cpu-used', '8', '-row-mt', '1', '-auto-alt-ref', '0', out], check=True)
+        enc.stdin.write(blank)
+enc.stdin.close(); enc.wait()
+if enc.returncode: raise SystemExit(f'ffmpeg failed: {enc.returncode}')
 shutil.rmtree(tmp); print('ok', out, 'frames', n, 'cut', done)

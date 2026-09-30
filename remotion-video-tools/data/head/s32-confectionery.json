@@ -1,0 +1,10 @@
+{
+  "name": "s32-confectionery",
+  "stage": "подготовлен",
+  "props": {
+    "footage": "local/head/s32-confectionery.mp4",
+    "captionsSrc": "captions/head-s32-confectionery.json",
+    "durationSeconds": 100.2
+  },
+  "proposals": []
+}
