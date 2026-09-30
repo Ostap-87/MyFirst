@@ -106,6 +106,7 @@ import { GTTCarouselAnimated, gttCarouselAnimatedDefaults, gttCarouselAnimatedSc
 import { GTTCarouselZoomTest, gttCarouselZoomTestDefaults, gttCarouselZoomTestSchema } from "./globaltechtour/compositions/CarouselZoomTest";
 import { GTTLuckyCat, gttLuckyCatDefaults, gttLuckyCatSchema } from "./globaltechtour/compositions/LuckyCat";
 import { FlagClip, flagClipDefaults, flagClipSchema } from "./shared/FlagClip";
+import { ChartClip, chartClipDefaults, chartClipSchema } from "./shared/ChartClip";
 // new-composition:imports:end
 
 export const RemotionRoot: React.FC = () => {
@@ -1168,6 +1169,16 @@ export const RemotionRoot: React.FC = () => {
         height={1920}
         fps={30}
         durationInFrames={120}
+      />
+      <Composition
+        id="Shared-ChartClip"
+        component={ChartClip}
+        schema={chartClipSchema}
+        defaultProps={chartClipDefaults}
+        width={1080}
+        height={1920}
+        fps={30}
+        durationInFrames={105}
       />
                         {/* new-composition:end */}
 

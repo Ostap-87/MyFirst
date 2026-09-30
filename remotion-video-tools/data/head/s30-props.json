@@ -291,6 +291,15 @@
    ]
   },
   {
+   "at": 47.3,
+   "until": 50.5,
+   "items": [
+    {
+     "src": "local/gtt/chart-brands.mp4"
+    }
+   ]
+  },
+  {
    "at": 66.88,
    "until": 69.47,
    "items": [
@@ -458,15 +467,5 @@
    ]
   }
  ],
- "charts": [
-  {
-   "at": 47.4,
-   "until": 50.4,
-   "x": 0.27,
-   "y": 0.6,
-   "widthFraction": 0.48,
-   "label": "Доля китайских брендов",
-   "drawSeconds": 1.8
-  }
- ]
+ "charts": []
 }
