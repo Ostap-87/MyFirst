@@ -1,0 +1,10 @@
+{
+  "name": "s33-ai",
+  "stage": "подготовлен",
+  "props": {
+    "footage": "local/head/s33-ai.mp4",
+    "captionsSrc": "captions/head-s33-ai.json",
+    "durationSeconds": 92.83
+  },
+  "proposals": []
+}
