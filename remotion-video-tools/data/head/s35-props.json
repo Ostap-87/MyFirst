@@ -1,0 +1,467 @@
+{
+ "footage": "local/head/s35-cosmetics.mp4",
+ "captionsSrc": "captions/head-s35-cosmetics.json",
+ "durationSeconds": 106.7,
+ "hookTop": "L'Oréal строил 100 лет,",
+ "hookBottom": "китайцы — за несколько",
+ "brandMark": "GLOBAL TECH TOUR",
+ "logoScale": 1.5,
+ "logoSpin": 72,
+ "focusY": 0.42,
+ "plates": [
+  {
+   "text": "Лидеры за несколько лет",
+   "at": 7.4,
+   "until": 9.3,
+   "kind": "accent"
+  },
+  {
+   "text": "5 дней · 10 лидеров красоты",
+   "at": 14.1,
+   "until": 16.6,
+   "kind": "accent"
+  },
+  {
+   "text": "Pechoin: почти 100 лет",
+   "at": 27.2,
+   "until": 31.4,
+   "kind": "term"
+  },
+  {
+   "text": "Proya: №1 в уходе за кожей",
+   "at": 31.7,
+   "until": 34.5,
+   "kind": "term"
+  },
+  {
+   "text": "Florasis: эстетика → тренд",
+   "at": 34.7,
+   "until": 38.5,
+   "kind": "term"
+  },
+  {
+   "text": "Mao Geping: люкс-макияж",
+   "at": 38.7,
+   "until": 41.9,
+   "kind": "term"
+  },
+  {
+   "text": "Kailinwei: биотех-лаборатория",
+   "at": 42.6,
+   "until": 45.6,
+   "kind": "term"
+  },
+  {
+   "text": "Anti-age нового поколения",
+   "at": 45.7,
+   "until": 47.8,
+   "kind": "accent"
+  },
+  {
+   "text": "Формулы · Стримы · Соцсети",
+   "at": 49.6,
+   "until": 53.8,
+   "kind": "accent"
+  },
+  {
+   "text": "Обходят мировых гигантов",
+   "at": 56.7,
+   "until": 59.9,
+   "kind": "accent"
+  },
+  {
+   "text": "Остап Доценко",
+   "at": 61.1,
+   "until": 63.9,
+   "kind": "term"
+  },
+  {
+   "text": "Говорю по-китайски",
+   "at": 66.9,
+   "until": 68.3,
+   "kind": "term"
+  },
+  {
+   "text": "Знаком лично",
+   "at": 73.3,
+   "until": 74.3,
+   "kind": "accent"
+  },
+  {
+   "text": "Куда с улицы не пускают",
+   "at": 76.1,
+   "until": 77.5,
+   "kind": "term"
+  },
+  {
+   "text": "Быстрое согласование",
+   "at": 77.6,
+   "until": 80.3,
+   "kind": "accent"
+  },
+  {
+   "text": "Бесконечные переписки",
+   "at": 80.5,
+   "until": 83.7,
+   "kind": "struck"
+  },
+  {
+   "text": "Цены прозрачные",
+   "at": 88.1,
+   "until": 91.3,
+   "kind": "term"
+  },
+  {
+   "text": "Всё на русском языке",
+   "at": 92.2,
+   "until": 93.8,
+   "kind": "accent"
+  }
+ ],
+ "cutaways": [],
+ "moves": [
+  {
+   "at": 0.0,
+   "until": 2.0,
+   "kind": "punch",
+   "scale": 1.15
+  },
+  {
+   "at": 3.6,
+   "until": 4.6,
+   "kind": "cut",
+   "scale": 1.12
+  },
+  {
+   "at": 11.8,
+   "until": 13.5,
+   "kind": "push",
+   "scale": 1.06
+  },
+  {
+   "at": 26.1,
+   "until": 27.0,
+   "kind": "cut",
+   "scale": 1.12
+  },
+  {
+   "at": 30.3,
+   "until": 31.2,
+   "kind": "punch",
+   "scale": 1.2
+  },
+  {
+   "at": 48.1,
+   "until": 49.2,
+   "kind": "cut",
+   "scale": 1.12
+  },
+  {
+   "at": 54.3,
+   "until": 58.0,
+   "kind": "push",
+   "scale": 1.07
+  },
+  {
+   "at": 64.0,
+   "until": 65.0,
+   "kind": "cut",
+   "scale": 1.12
+  },
+  {
+   "at": 76.8,
+   "until": 77.5,
+   "kind": "punch",
+   "scale": 1.2
+  },
+  {
+   "at": 88.1,
+   "until": 89.5,
+   "kind": "push",
+   "scale": 1.06
+  },
+  {
+   "at": 94.0,
+   "until": 95.0,
+   "kind": "cut",
+   "scale": 1.12
+  }
+ ],
+ "numbers": [
+  {
+   "text": "100",
+   "label": "лет",
+   "at": 3.2,
+   "until": 4.8,
+   "look": "gradient",
+   "x": 0.17,
+   "y": 0.38,
+   "size": 0.16
+  },
+  {
+   "text": "10",
+   "label": "лидеров",
+   "at": 14.8,
+   "until": 16.6,
+   "look": "gradient",
+   "x": 0.17,
+   "y": 0.38,
+   "size": 0.16
+  },
+  {
+   "text": "100",
+   "label": "лет Pechoin",
+   "at": 30.9,
+   "until": 32.4,
+   "look": "gradient",
+   "x": 0.17,
+   "y": 0.38,
+   "size": 0.16
+  },
+  {
+   "text": "10+",
+   "label": "лет",
+   "at": 66.2,
+   "until": 68.0,
+   "look": "gradient",
+   "x": 0.17,
+   "y": 0.38,
+   "size": 0.16
+  },
+  {
+   "text": "1000+",
+   "label": "компаний",
+   "at": 85.4,
+   "until": 87.5,
+   "look": "gradient",
+   "x": 0.3,
+   "y": 0.31,
+   "size": 0.12
+  }
+ ],
+ "flags": [
+  {
+   "src": "local/flags/cn.svg",
+   "at": 3.6,
+   "until": 5.0,
+   "x": 0.84,
+   "y": 0.36,
+   "widthFraction": 0.18,
+   "sound": "audio/sfx/pop.wav",
+   "soundVolume": 0.45
+  },
+  {
+   "src": "local/flags/cn.svg",
+   "at": 65.4,
+   "until": 66.7,
+   "x": 0.84,
+   "y": 0.36,
+   "widthFraction": 0.18,
+   "sound": "audio/sfx/pop.wav",
+   "soundVolume": 0.45
+  }
+ ],
+ "splits": [
+  {
+   "at": 34.7,
+   "until": 38.4,
+   "side": "bottom",
+   "items": [
+    {
+     "src": "generated/beauty-antiage/hangzhou2.png",
+     "focusY": 0.5
+    }
+   ]
+  },
+  {
+   "at": 49.4,
+   "until": 53.6,
+   "side": "bottom",
+   "items": [
+    {
+     "src": "generated/beauty-antiage/metric.png",
+     "focusY": 0.5
+    }
+   ]
+  }
+ ],
+ "stages": [
+  {
+   "at": 42.6,
+   "until": 47.5,
+   "items": [
+    {
+     "src": "generated/beauty-antiage/shanghai2.png"
+    }
+   ]
+  },
+  {
+   "at": 71.2,
+   "until": 74.0,
+   "items": [
+    {
+     "src": "generated/beauty-antiage/negotiations.png"
+    }
+   ]
+  },
+  {
+   "at": 103.5,
+   "until": 106.7,
+   "items": [
+    {
+     "src": "generated/beauty-antiage/cta.png"
+    }
+   ]
+  }
+ ],
+ "flips": [
+  {
+   "at": 5.3,
+   "until": 7.2,
+   "overlay": true,
+   "widthFraction": 0.4,
+   "centerX": 0.76,
+   "centerY": 0.62,
+   "items": [
+    {
+     "src": "local/gtt/flip-perfectdiary.png",
+     "seconds": 0.9
+    },
+    {
+     "src": "local/gtt/flip-florasis.png"
+    }
+   ]
+  },
+  {
+   "at": 16.8,
+   "until": 23.0,
+   "overlay": true,
+   "widthFraction": 0.4,
+   "centerX": 0.76,
+   "centerY": 0.62,
+   "items": [
+    {
+     "src": "local/gtt/flip-pechoin.png",
+     "seconds": 0.8
+    },
+    {
+     "src": "local/gtt/flip-kans.png",
+     "seconds": 0.5
+    },
+    {
+     "src": "local/gtt/flip-proya.png",
+     "seconds": 0.7
+    },
+    {
+     "src": "local/gtt/flip-florasis.png",
+     "seconds": 0.6
+    },
+    {
+     "src": "local/gtt/flip-maogeping.png",
+     "seconds": 1.0
+    },
+    {
+     "src": "local/gtt/flip-kailinwei.png",
+     "seconds": 0.8
+    },
+    {
+     "src": "local/gtt/flip-perfectdiary.png",
+     "seconds": 1.1
+    },
+    {
+     "src": "local/gtt/flip-carslan.png"
+    }
+   ]
+  },
+  {
+   "at": 62.7,
+   "until": 64.0,
+   "overlay": true,
+   "widthFraction": 0.34,
+   "centerX": 0.8,
+   "centerY": 0.6,
+   "items": [
+    {
+     "src": "local/gtt/flip-alibaba.png",
+     "seconds": 0.55
+    },
+    {
+     "src": "local/gtt/flip-sber.png"
+    }
+   ]
+  }
+ ],
+ "pips": [
+  {
+   "at": 99.9,
+   "until": 102.9,
+   "items": [
+    {
+     "src": "site/home.png",
+     "present": "site",
+     "title": "Global Tech Tour",
+     "url": "globaltechtour.ru",
+     "scrollTo": 0.08
+    }
+   ]
+  }
+ ],
+ "photoCards": [
+  {
+   "at": 23.6,
+   "until": 26.0,
+   "side": "right",
+   "widthFraction": 0.38,
+   "stepSeconds": 0.6,
+   "items": [
+    {
+     "src": "local/pano/shanghai-bund-v.jpg",
+     "caption": "Шанхай"
+    },
+    {
+     "src": "generated/beauty-antiage/hangzhou1.png",
+     "caption": "Ханчжоу"
+    },
+    {
+     "src": "local/pano/guangzhou-tower-v.jpg",
+     "caption": "Гуанчжоу"
+    }
+   ]
+  }
+ ],
+ "popWindows": [
+  {
+   "at": 94.0,
+   "until": 98.3,
+   "items": [
+    {
+     "src": "generated/beauty-antiage/shanghai1.png"
+    },
+    {
+     "src": "generated/beauty-antiage/guangzhou.png"
+    },
+    {
+     "src": "generated/beauty-antiage/cover.png"
+    }
+   ]
+  }
+ ],
+ "brolls": [
+  {
+   "at": 56.4,
+   "until": 59.8,
+   "items": [
+    {
+     "src": "generated/beauty-antiage/cover.png",
+     "caption": "Китайская косметика обходит гигантов"
+    }
+   ]
+  }
+ ],
+ "splitEyesAt": 0.36,
+ "splitSeam": 0.58,
+ "music": "audio/music/gtt-bed-light-long.m4a",
+ "musicVolume": 0.12,
+ "safeZone": "reels",
+ "cutoutSrc": "local/head/s35-cosmetics-cutout.webm"
+}
