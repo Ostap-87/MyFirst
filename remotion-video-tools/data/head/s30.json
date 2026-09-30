@@ -14,169 +14,145 @@
   "plates": [
    {
     "text": "NIO: замена батареи за минуты",
-    "at": 3.8,
-    "until": 8.1,
+    "at": 4.07,
+    "until": 8.17,
     "kind": "term"
    },
    {
     "text": "5 дней · 6 автозаводов",
-    "at": 12.0,
-    "until": 14.0,
+    "at": 12.29,
+    "until": 14.2,
     "kind": "accent"
    },
    {
-    "text": "Xiaomi · NIO · Maextro",
-    "at": 14.0,
-    "until": 18.5,
-    "kind": "term"
-   },
-   {
-    "text": "SAIC · Aion · XPeng",
-    "at": 16.3,
-    "until": 18.5,
-    "kind": "term"
-   },
-   {
-    "text": "Пекин · Хэфэй",
-    "at": 19.0,
-    "until": 21.5,
-    "kind": "term"
-   },
-   {
-    "text": "Шанхай · Гуанчжоу",
-    "at": 20.1,
-    "until": 21.5,
-    "kind": "term"
-   },
-   {
     "text": "Xiaomi делает электромобили",
-    "at": 22.6,
-    "until": 27.0,
+    "at": 22.56,
+    "until": 27.15,
     "kind": "accent"
    },
    {
     "text": "NIO: замена батареи",
-    "at": 27.8,
-    "until": 30.0,
+    "at": 27.96,
+    "until": 30.11,
     "kind": "term"
    },
    {
     "text": "Maextro — люкс от Huawei",
-    "at": 30.4,
-    "until": 34.0,
+    "at": 30.52,
+    "until": 33.68,
     "kind": "term"
    },
    {
     "text": "SAIC — автоконцерн №1",
-    "at": 34.5,
-    "until": 37.5,
+    "at": 34.03,
+    "until": 36.72,
     "kind": "term"
    },
    {
     "text": "XPeng и GAC Aion: автопилот",
-    "at": 37.6,
-    "until": 41.0,
+    "at": 36.8,
+    "until": 41.09,
     "kind": "term"
    },
    {
     "text": "Бренды забирают рынок",
-    "at": 47.5,
-    "until": 49.8,
+    "at": 47.54,
+    "until": 50.23,
     "kind": "accent"
    },
    {
     "text": "Увидеть раньше конкурентов",
-    "at": 50.0,
-    "until": 52.2,
+    "at": 50.4,
+    "until": 52.43,
     "kind": "accent"
    },
    {
     "text": "Остап Доценко",
-    "at": 52.9,
-    "until": 56.4,
+    "at": 52.96,
+    "until": 56.0,
     "kind": "term"
    },
    {
     "text": "Эксперт по Китаю · Шанхай",
-    "at": 53.7,
-    "until": 56.4,
+    "at": 53.66,
+    "until": 56.0,
     "kind": "accent"
    },
    {
     "text": "10+ лет с Китаем",
-    "at": 56.8,
-    "until": 60.0,
+    "at": 56.63,
+    "until": 60.13,
     "kind": "term"
    },
    {
     "text": "Свободный китайский",
-    "at": 59.2,
-    "until": 61.0,
+    "at": 59.34,
+    "until": 61.04,
     "kind": "accent"
    },
    {
     "text": "Знаком с компаниями лично",
-    "at": 64.2,
-    "until": 66.9,
+    "at": 64.18,
+    "until": 66.79,
     "kind": "term"
    },
    {
     "text": "Всё согласовано заранее",
-    "at": 70.7,
-    "until": 73.0,
+    "at": 70.56,
+    "until": 73.33,
     "kind": "accent"
    },
    {
     "text": "Бесконечные переписки",
-    "at": 73.5,
-    "until": 76.0,
+    "at": 73.68,
+    "until": 76.08,
     "kind": "struck"
    },
    {
     "text": "Более 1000 компаний",
-    "at": 77.3,
-    "until": 80.0,
+    "at": 77.56,
+    "until": 80.12,
     "kind": "term"
    },
    {
     "text": "18 индустрий",
-    "at": 78.9,
-    "until": 80.5,
+    "at": 79.06,
+    "until": 80.52,
     "kind": "term"
    },
    {
     "text": "Прозрачные цены",
-    "at": 80.4,
-    "until": 83.5,
+    "at": 80.45,
+    "until": 83.54,
     "kind": "accent"
    },
    {
     "text": "Всё на русском",
-    "at": 84.3,
-    "until": 86.0,
+    "at": 84.32,
+    "until": 85.91,
     "kind": "accent"
    },
    {
     "text": "Уехать с тест-драйва",
-    "at": 86.5,
-    "until": 89.0,
+    "at": 86.53,
+    "until": 88.98,
     "kind": "struck"
    },
    {
     "text": "Дилерам и импортёрам",
-    "at": 90.0,
-    "until": 93.2,
+    "at": 89.63,
+    "until": 93.42,
     "kind": "term"
    },
    {
     "text": "Пишите в директ",
-    "at": 96.2,
-    "until": 98.4,
+    "at": 96.07,
+    "until": 98.0,
     "kind": "accent"
    },
    {
     "text": "Пришлю программу",
-    "at": 98.5,
+    "at": 98.1,
     "until": 101.8,
     "kind": "accent"
    }
@@ -184,90 +160,72 @@
   "cutaways": [],
   "moves": [
    {
-    "at": 0,
-    "until": 2.2,
+    "at": 0.09,
+    "until": 2.34,
     "kind": "punch",
     "scale": 1.15
    },
    {
-    "at": 3.06,
-    "until": 7,
+    "at": 3.16,
+    "until": 7.06,
     "kind": "push",
     "scale": 1.07
    },
    {
-    "at": 9.2,
-    "until": 11,
+    "at": 9.3,
+    "until": 11.16,
     "kind": "punch",
     "scale": 1.2
    },
    {
-    "at": 27.5,
-    "until": 30,
+    "at": 27.92,
+    "until": 30.11,
     "kind": "cut",
     "scale": 1.12
    },
    {
-    "at": 37.56,
-    "until": 38.52,
+    "at": 36.73,
+    "until": 38.58,
     "kind": "punch",
     "scale": 1.2
    },
    {
-    "at": 46.36,
-    "until": 47,
-    "kind": "punch",
-    "scale": 1.2
-   },
-   {
-    "at": 50,
-    "until": 52.5,
+    "at": 50.4,
+    "until": 52.73,
     "kind": "cut",
     "scale": 1.12
    },
    {
-    "at": 55.29,
-    "until": 56.5,
-    "kind": "punch",
-    "scale": 1.2
-   },
-   {
-    "at": 59,
-    "until": 61,
+    "at": 59.16,
+    "until": 61.04,
     "kind": "cut",
     "scale": 1.12
    },
    {
-    "at": 73,
-    "until": 76.5,
+    "at": 73.33,
+    "until": 76.6,
     "kind": "push",
     "scale": 1.07
    },
    {
-    "at": 80,
-    "until": 81.56,
+    "at": 80.12,
+    "until": 81.34,
     "kind": "punch",
     "scale": 1.2
    },
    {
-    "at": 86.42,
-    "until": 88.5,
+    "at": 86.32,
+    "until": 88.56,
     "kind": "cut",
     "scale": 1.12
-   },
-   {
-    "at": 90.49,
-    "until": 91.47,
-    "kind": "punch",
-    "scale": 1.2
    }
   ],
   "numbers": [
    {
     "text": "6",
     "label": "заводов",
-    "at": 12.7,
-    "until": 14.0,
+    "at": 13.03,
+    "until": 14.2,
     "look": "gradient",
     "x": 0.17,
     "y": 0.38,
@@ -276,8 +234,8 @@
    {
     "text": "10+",
     "label": "лет",
-    "at": 58.1,
-    "until": 60.0,
+    "at": 58.03,
+    "until": 60.13,
     "look": "gradient",
     "x": 0.17,
     "y": 0.38,
@@ -286,8 +244,8 @@
    {
     "text": "1000+",
     "label": "компаний",
-    "at": 77.3,
-    "until": 79.0,
+    "at": 77.56,
+    "until": 79.33,
     "look": "gradient",
     "x": 0.2,
     "y": 0.38,
@@ -297,8 +255,8 @@
   "flags": [
    {
     "src": "local/flags/cn.svg",
-    "at": 59.7,
-    "until": 61.2,
+    "at": 59.84,
+    "until": 61.27,
     "x": 0.84,
     "y": 0.36,
     "widthFraction": 0.18,
@@ -308,40 +266,8 @@
   ],
   "splits": [
    {
-    "at": 14.0,
-    "until": 18.5,
-    "side": "bottom",
-    "items": [
-     {
-      "src": "generated/auto-ev/cover.png",
-      "seconds": 2.4,
-      "focusY": 0.4
-     },
-     {
-      "src": "generated/auto-ev/beijing.png",
-      "focusY": 0.45
-     }
-    ]
-   },
-   {
-    "at": 19.0,
-    "until": 21.5,
-    "side": "bottom",
-    "items": [
-     {
-      "src": "generated/robotics-expedition-v2/beijing-v2.png",
-      "seconds": 1.2,
-      "focusY": 0.4
-     },
-     {
-      "src": "generated/china-tech-giants/shanghai-v2.png",
-      "focusY": 0.4
-     }
-    ]
-   },
-   {
-    "at": 22.4,
-    "until": 27.0,
+    "at": 22.47,
+    "until": 27.15,
     "side": "bottom",
     "items": [
      {
@@ -353,17 +279,17 @@
   ],
   "stages": [
    {
-    "at": 41.5,
-    "until": 44.4,
+    "at": 43.67,
+    "until": 46.36,
     "items": [
      {
-      "src": "generated/auto-ev/beijing.png"
+      "src": "generated/robotics-expedition-v2/negotiations.png"
      }
     ]
    },
    {
-    "at": 67.0,
-    "until": 69.8,
+    "at": 66.88,
+    "until": 69.47,
     "items": [
      {
       "src": "generated/tech-parks/lingang.png",
@@ -375,7 +301,7 @@
     ]
    },
    {
-    "at": 98.5,
+    "at": 98.1,
     "until": 101.8,
     "items": [
      {
@@ -390,8 +316,41 @@
   ],
   "flips": [
    {
-    "at": 55.1,
-    "until": 56.6,
+    "at": 14.15,
+    "until": 18.53,
+    "overlay": true,
+    "widthFraction": 0.4,
+    "centerX": 0.76,
+    "centerY": 0.62,
+    "items": [
+     {
+      "src": "local/gtt/flip-xiaomi.png",
+      "seconds": 0.64
+     },
+     {
+      "src": "local/gtt/flip-nio.png",
+      "seconds": 0.28
+     },
+     {
+      "src": "local/gtt/flip-maextro.png",
+      "seconds": 1.05
+     },
+     {
+      "src": "local/gtt/flip-saic.png",
+      "seconds": 0.67
+     },
+     {
+      "src": "local/gtt/flip-aion.png",
+      "seconds": 0.59
+     },
+     {
+      "src": "local/gtt/flip-xpeng.png"
+     }
+    ]
+   },
+   {
+    "at": 54.92,
+    "until": 56.27,
     "overlay": true,
     "widthFraction": 0.34,
     "centerX": 0.8,
@@ -409,8 +368,8 @@
   ],
   "pips": [
    {
-    "at": 94.0,
-    "until": 97.6,
+    "at": 94.24,
+    "until": 97.22,
     "items": [
      {
       "src": "site/home.png",
@@ -427,7 +386,63 @@
   "music": "audio/music/gtt-bed-light-long.m4a",
   "musicVolume": 0.12,
   "safeZone": "reels",
-  "cutoutSrc": "local/head/s30-auto-cutout.webm"
+  "cutoutSrc": "local/head/s30-auto-cutout.webm",
+  "photoCards": [
+   {
+    "at": 19.27,
+    "until": 21.61,
+    "side": "right",
+    "widthFraction": 0.42,
+    "stepSeconds": 0.55,
+    "items": [
+     {
+      "src": "local/pano/beijing-temple-v.jpg",
+      "caption": "Пекин"
+     },
+     {
+      "src": "generated/tech-parks/cover.png",
+      "caption": "Хэфэй"
+     },
+     {
+      "src": "local/pano/shanghai-bund-v.jpg",
+      "caption": "Шанхай"
+     },
+     {
+      "src": "generated/china-tech-giants/shenzhen-v2.png",
+      "caption": "Гуанчжоу"
+     }
+    ]
+   }
+  ],
+  "popWindows": [
+   {
+    "at": 89.63,
+    "until": 93.22,
+    "items": [
+     {
+      "src": "generated/auto-ev/cover.png"
+     },
+     {
+      "src": "generated/auto-ev/cta.png"
+     },
+     {
+      "src": "generated/auto-ev/beijing.png"
+     }
+    ]
+   }
+  ],
+  "brolls": [
+   {
+    "at": 41.67,
+    "until": 43.67,
+    "items": [
+     {
+      "src": "generated/auto-ev/beijing.png",
+      "caption": "Завод Xiaomi · Пекин"
+     }
+    ]
+   }
+  ]
  },
  "proposals": [
   {

@@ -1,0 +1,449 @@
+{
+  "footage": "local/head/s31-appliances.mp4",
+  "captionsSrc": "captions/head-s31-appliances.json",
+  "durationSeconds": 103.9,
+  "hookTop": "9 лидеров техники",
+  "hookBottom": "за 5 дней",
+  "brandMark": "GLOBAL TECH TOUR",
+  "logoScale": 1.5,
+  "logoSpin": 72,
+  "focusY": 0.42,
+  "plates": [
+    {
+      "text": "5 дней · 9 лидеров",
+      "at": 10.58,
+      "until": 13.0,
+      "kind": "accent"
+    },
+    {
+      "text": "Шуньдэ · Циндао",
+      "at": 26.3,
+      "until": 28.3,
+      "kind": "accent"
+    },
+    {
+      "text": "Haier — №1 в мире",
+      "at": 33.6,
+      "until": 36.6,
+      "kind": "term"
+    },
+    {
+      "text": "Gree — кондиционеры",
+      "at": 36.9,
+      "until": 39.1,
+      "kind": "term"
+    },
+    {
+      "text": "Galanz — микроволновки",
+      "at": 39.2,
+      "until": 42.6,
+      "kind": "term"
+    },
+    {
+      "text": "Умный дом Xiaomi",
+      "at": 43.3,
+      "until": 46.6,
+      "kind": "term"
+    },
+    {
+      "text": "захватывает рынки",
+      "at": 56.3,
+      "until": 58.1,
+      "kind": "accent"
+    },
+    {
+      "text": "Остап Доценко",
+      "at": 58.2,
+      "until": 60.8,
+      "kind": "term"
+    },
+    {
+      "text": "говорю по-китайски",
+      "at": 65.1,
+      "until": 67.3,
+      "kind": "term"
+    },
+    {
+      "text": "знаком лично",
+      "at": 73.9,
+      "until": 75.0,
+      "kind": "accent"
+    },
+    {
+      "text": "куда с улицы не пускают",
+      "at": 76.7,
+      "until": 78.3,
+      "kind": "term"
+    },
+    {
+      "text": "быстрое согласование",
+      "at": 78.5,
+      "until": 81.0,
+      "kind": "accent"
+    },
+    {
+      "text": "бесконечные переписки",
+      "at": 81.5,
+      "until": 83.9,
+      "kind": "struck"
+    },
+    {
+      "text": "18 индустрий",
+      "at": 86.6,
+      "until": 88.0,
+      "kind": "accent"
+    },
+    {
+      "text": "цены прозрачные",
+      "at": 88.0,
+      "until": 90.6,
+      "kind": "term"
+    },
+    {
+      "text": "всё на русском языке",
+      "at": 91.6,
+      "until": 93.6,
+      "kind": "accent"
+    }
+  ],
+  "cutaways": [],
+  "moves": [
+    {
+      "at": 0.0,
+      "until": 2.0,
+      "kind": "punch",
+      "scale": 1.15
+    },
+    {
+      "at": 5.7,
+      "until": 7.1,
+      "kind": "cut",
+      "scale": 1.12
+    },
+    {
+      "at": 13.06,
+      "until": 13.7,
+      "kind": "cut",
+      "scale": 1.12
+    },
+    {
+      "at": 18.7,
+      "until": 21.0,
+      "kind": "push",
+      "scale": 1.07
+    },
+    {
+      "at": 28.5,
+      "until": 30.3,
+      "kind": "punch",
+      "scale": 1.2
+    },
+    {
+      "at": 47.6,
+      "until": 48.7,
+      "kind": "cut",
+      "scale": 1.12
+    },
+    {
+      "at": 53.9,
+      "until": 57.5,
+      "kind": "push",
+      "scale": 1.07
+    },
+    {
+      "at": 62.1,
+      "until": 63.5,
+      "kind": "cut",
+      "scale": 1.12
+    },
+    {
+      "at": 77.6,
+      "until": 78.4,
+      "kind": "punch",
+      "scale": 1.2
+    },
+    {
+      "at": 84.2,
+      "until": 85.2,
+      "kind": "cut",
+      "scale": 1.12
+    },
+    {
+      "at": 94.7,
+      "until": 95.6,
+      "kind": "punch",
+      "scale": 1.2
+    },
+    {
+      "at": 97.5,
+      "until": 98.3,
+      "kind": "cut",
+      "scale": 1.12
+    }
+  ],
+  "numbers": [
+    {
+      "text": "9",
+      "label": "компаний",
+      "at": 8.33,
+      "until": 10.5,
+      "look": "gradient",
+      "x": 0.17,
+      "y": 0.38,
+      "size": 0.16
+    },
+    {
+      "text": "2",
+      "label": "центра",
+      "at": 28.5,
+      "until": 31.2,
+      "look": "gradient",
+      "x": 0.17,
+      "y": 0.38,
+      "size": 0.16
+    },
+    {
+      "text": "10+",
+      "label": "лет",
+      "at": 64.45,
+      "until": 66.4,
+      "look": "gradient",
+      "x": 0.17,
+      "y": 0.38,
+      "size": 0.16
+    },
+    {
+      "text": "1000+",
+      "label": "компаний",
+      "at": 85.34,
+      "until": 87.6,
+      "look": "gradient",
+      "x": 0.17,
+      "y": 0.38,
+      "size": 0.14
+    }
+  ],
+  "flags": [
+    {
+      "src": "local/flags/cn.svg",
+      "at": 6.64,
+      "until": 8.1,
+      "x": 0.84,
+      "y": 0.36,
+      "widthFraction": 0.18,
+      "sound": "audio/sfx/pop.wav",
+      "soundVolume": 0.45
+    },
+    {
+      "src": "local/flags/cn.svg",
+      "at": 63.6,
+      "until": 65.0,
+      "x": 0.84,
+      "y": 0.36,
+      "widthFraction": 0.18,
+      "sound": "audio/sfx/pop.wav",
+      "soundVolume": 0.45
+    }
+  ],
+  "splits": [
+    {
+      "at": 48.8,
+      "until": 53.4,
+      "side": "bottom",
+      "items": [
+        {
+          "src": "generated/appliances/metric.png",
+          "focusY": 0.45
+        }
+      ]
+    }
+  ],
+  "stages": [
+    {
+      "at": 33.0,
+      "until": 36.6,
+      "items": [
+        {
+          "src": "generated/appliances/qingdao.png"
+        }
+      ]
+    },
+    {
+      "at": 43.2,
+      "until": 46.6,
+      "items": [
+        {
+          "src": "generated/appliances/beijing.png"
+        }
+      ]
+    },
+    {
+      "at": 71.9,
+      "until": 74.6,
+      "items": [
+        {
+          "src": "generated/appliances/negotiations.png"
+        }
+      ]
+    },
+    {
+      "at": 101.9,
+      "until": 103.9,
+      "items": [
+        {
+          "src": "generated/appliances/cta.png"
+        }
+      ]
+    }
+  ],
+  "flips": [
+    {
+      "at": 13.0,
+      "until": 18.6,
+      "overlay": true,
+      "widthFraction": 0.4,
+      "centerX": 0.76,
+      "centerY": 0.62,
+      "items": [
+        {
+          "src": "local/gtt/flip-xiaomi.png",
+          "seconds": 0.67
+        },
+        {
+          "src": "local/gtt/flip-haier.png",
+          "seconds": 0.52
+        },
+        {
+          "src": "local/gtt/flip-hisense.png",
+          "seconds": 0.72
+        },
+        {
+          "src": "local/gtt/flip-robam.png",
+          "seconds": 0.48
+        },
+        {
+          "src": "local/gtt/flip-supor.png",
+          "seconds": 0.66
+        },
+        {
+          "src": "local/gtt/flip-midea.png",
+          "seconds": 0.71
+        },
+        {
+          "src": "local/gtt/flip-galanz.png",
+          "seconds": 0.75
+        },
+        {
+          "src": "local/gtt/flip-gree.png",
+          "seconds": 0.47
+        },
+        {
+          "src": "local/gtt/flip-skyworth.png"
+        }
+      ]
+    },
+    {
+      "at": 60.88,
+      "until": 62.3,
+      "overlay": true,
+      "widthFraction": 0.34,
+      "centerX": 0.8,
+      "centerY": 0.6,
+      "items": [
+        {
+          "src": "local/gtt/flip-alibaba.png",
+          "seconds": 0.7
+        },
+        {
+          "src": "local/gtt/flip-sber.png"
+        }
+      ]
+    }
+  ],
+  "pips": [
+    {
+      "at": 97.6,
+      "until": 101.4,
+      "items": [
+        {
+          "src": "site/home.png",
+          "present": "site",
+          "title": "Global Tech Tour",
+          "url": "globaltechtour.ru",
+          "scrollTo": 0.08
+        }
+      ]
+    }
+  ],
+  "photoCards": [
+    {
+      "at": 21.0,
+      "until": 24.9,
+      "side": "right",
+      "widthFraction": 0.34,
+      "stepSeconds": 0.6,
+      "items": [
+        {
+          "src": "local/pano/beijing-temple-v.jpg",
+          "caption": "Пекин"
+        },
+        {
+          "src": "generated/appliances/qingdao.png",
+          "caption": "Циндао"
+        },
+        {
+          "src": "generated/appliances/hangzhou.png",
+          "caption": "Ханчжоу"
+        },
+        {
+          "src": "generated/appliances/foshan.png",
+          "caption": "Фошань"
+        },
+        {
+          "src": "generated/appliances/zhuhai-shenzhen.png",
+          "caption": "Чжухай"
+        },
+        {
+          "src": "local/pano/shenzhen-pingan-v.jpg",
+          "caption": "Шэньчжэнь"
+        }
+      ],
+      "spread": 0.25
+    }
+  ],
+  "popWindows": [
+    {
+      "at": 93.7,
+      "until": 97.0,
+      "items": [
+        {
+          "src": "generated/appliances/cover.png"
+        },
+        {
+          "src": "generated/appliances/foshan.png"
+        },
+        {
+          "src": "generated/appliances/cta.png"
+        }
+      ]
+    }
+  ],
+  "brolls": [
+    {
+      "at": 36.9,
+      "until": 39.1,
+      "items": [
+        {
+          "src": "generated/appliances/zhuhai-shenzhen.png",
+          "caption": "Gree · Чжухай"
+        }
+      ]
+    }
+  ],
+  "splitEyesAt": 0.36,
+  "splitSeam": 0.58,
+  "music": "audio/music/gtt-bed-light-long.m4a",
+  "musicVolume": 0.12,
+  "safeZone": "reels",
+  "cutoutSrc": "local/head/s31-appliances-cutout.webm"
+}
