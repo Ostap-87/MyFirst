@@ -105,6 +105,7 @@ import {
 import { GTTCarouselAnimated, gttCarouselAnimatedDefaults, gttCarouselAnimatedSchema } from "./globaltechtour/compositions/CarouselAnimated";
 import { GTTCarouselZoomTest, gttCarouselZoomTestDefaults, gttCarouselZoomTestSchema } from "./globaltechtour/compositions/CarouselZoomTest";
 import { GTTLuckyCat, gttLuckyCatDefaults, gttLuckyCatSchema } from "./globaltechtour/compositions/LuckyCat";
+import { FlagClip, flagClipDefaults, flagClipSchema } from "./shared/FlagClip";
 // new-composition:imports:end
 
 export const RemotionRoot: React.FC = () => {
@@ -1157,6 +1158,16 @@ export const RemotionRoot: React.FC = () => {
         fps={30}
         width={1080}
         height={1080}
+      />
+      <Composition
+        id="Shared-FlagClip"
+        component={FlagClip}
+        schema={flagClipSchema}
+        defaultProps={flagClipDefaults}
+        width={1080}
+        height={1920}
+        fps={30}
+        durationInFrames={120}
       />
                         {/* new-composition:end */}
 
