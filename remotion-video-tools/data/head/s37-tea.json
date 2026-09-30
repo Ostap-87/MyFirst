@@ -1,0 +1,10 @@
+{
+  "name": "s37-tea",
+  "stage": "подготовлен",
+  "props": {
+    "footage": "local/head/s37-tea.mp4",
+    "captionsSrc": "captions/head-s37-tea.json",
+    "durationSeconds": 88.37
+  },
+  "proposals": []
+}

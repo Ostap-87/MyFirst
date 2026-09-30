@@ -1,10 +1,498 @@
 {
-  "name": "s36-techgiants",
-  "stage": "подготовлен",
-  "props": {
-    "footage": "local/head/s36-techgiants.mp4",
-    "captionsSrc": "captions/head-s36-techgiants.json",
-    "durationSeconds": 111.8
-  },
-  "proposals": []
+ "name": "s36-techgiants",
+ "stage": "черновик",
+ "props": {
+  "footage": "local/head/s36-techgiants.mp4",
+  "captionsSrc": "captions/head-s36-techgiants.json",
+  "durationSeconds": 110.4,
+  "hookTop": "Xiaomi или Huawei",
+  "hookBottom": "в кармане — а в офисе были?",
+  "brandMark": "GLOBAL TECH TOUR",
+  "logoScale": 1.5,
+  "logoSpin": 72,
+  "focusY": 0.42,
+  "plates": [
+   {
+    "text": "Мы едем к ним в офис",
+    "at": 5.7,
+    "until": 7.0,
+    "kind": "accent"
+   },
+   {
+    "text": "5 дней · 9 техгигантов",
+    "at": 7.0,
+    "until": 9.9,
+    "kind": "accent"
+   },
+   {
+    "text": "Xiaomi: от смартфонов до авто",
+    "at": 21.0,
+    "until": 24.8,
+    "kind": "term"
+   },
+   {
+    "text": "Tencent: WeChat на весь день",
+    "at": 25.4,
+    "until": 30.8,
+    "kind": "term"
+   },
+   {
+    "text": "Meituan: еда за 15 минут",
+    "at": 31.2,
+    "until": 34.9,
+    "kind": "term"
+   },
+   {
+    "text": "Unitree: роботы-собаки",
+    "at": 36.7,
+    "until": 41.5,
+    "kind": "term"
+   },
+   {
+    "text": "Xiaohongshu — ответ Instagram",
+    "at": 42.3,
+    "until": 44.9,
+    "kind": "term"
+   },
+   {
+    "text": "Это не экскурсия по холлам",
+    "at": 45.0,
+    "until": 47.0,
+    "kind": "struck"
+   },
+   {
+    "text": "Экосистемы · Продукты · Рост",
+    "at": 48.1,
+    "until": 52.0,
+    "kind": "accent"
+   },
+   {
+    "text": "Растут быстрее всех",
+    "at": 54.3,
+    "until": 55.9,
+    "kind": "accent"
+   },
+   {
+    "text": "Остап Доценко",
+    "at": 56.8,
+    "until": 59.5,
+    "kind": "term"
+   },
+   {
+    "text": "Говорю по-китайски",
+    "at": 63.3,
+    "until": 64.8,
+    "kind": "term"
+   },
+   {
+    "text": "Покажу, что реально интересно",
+    "at": 65.2,
+    "until": 69.8,
+    "kind": "accent"
+   },
+   {
+    "text": "Знаком лично",
+    "at": 75.6,
+    "until": 76.6,
+    "kind": "accent"
+   },
+   {
+    "text": "Быстрое согласование",
+    "at": 77.0,
+    "until": 79.6,
+    "kind": "accent"
+   },
+   {
+    "text": "Бесконечные переписки",
+    "at": 80.0,
+    "until": 82.0,
+    "kind": "struck"
+   },
+   {
+    "text": "Цены прозрачные",
+    "at": 86.6,
+    "until": 89.8,
+    "kind": "term"
+   },
+   {
+    "text": "Всё на русском языке",
+    "at": 90.6,
+    "until": 92.3,
+    "kind": "accent"
+   },
+   {
+    "text": "Гостевой бейдж — ваш сувенир",
+    "at": 92.9,
+    "until": 98.2,
+    "kind": "accent"
+   }
+  ],
+  "cutaways": [],
+  "moves": [
+   {
+    "at": 0.0,
+    "until": 2.0,
+    "kind": "punch",
+    "scale": 1.15
+   },
+   {
+    "at": 3.9,
+    "until": 5.0,
+    "kind": "cut",
+    "scale": 1.12
+   },
+   {
+    "at": 9.6,
+    "until": 10.4,
+    "kind": "punch",
+    "scale": 1.2
+   },
+   {
+    "at": 20.0,
+    "until": 21.0,
+    "kind": "cut",
+    "scale": 1.12
+   },
+   {
+    "at": 28.7,
+    "until": 30.6,
+    "kind": "push",
+    "scale": 1.06
+   },
+   {
+    "at": 45.0,
+    "until": 46.0,
+    "kind": "cut",
+    "scale": 1.12
+   },
+   {
+    "at": 52.3,
+    "until": 55.6,
+    "kind": "push",
+    "scale": 1.07
+   },
+   {
+    "at": 60.0,
+    "until": 61.0,
+    "kind": "cut",
+    "scale": 1.12
+   },
+   {
+    "at": 65.0,
+    "until": 66.0,
+    "kind": "cut",
+    "scale": 1.12
+   },
+   {
+    "at": 82.05,
+    "until": 82.6,
+    "kind": "cut",
+    "scale": 1.12
+   },
+   {
+    "at": 92.6,
+    "until": 93.6,
+    "kind": "punch",
+    "scale": 1.15
+   },
+   {
+    "at": 98.6,
+    "until": 99.6,
+    "kind": "cut",
+    "scale": 1.12
+   }
+  ],
+  "numbers": [
+   {
+    "text": "9",
+    "label": "гигантов",
+    "at": 7.6,
+    "until": 9.9,
+    "look": "gradient",
+    "x": 0.17,
+    "y": 0.38,
+    "size": 0.16
+   },
+   {
+    "text": "15",
+    "label": "минут",
+    "at": 34.1,
+    "until": 35.0,
+    "look": "gradient",
+    "x": 0.17,
+    "y": 0.38,
+    "size": 0.16
+   },
+   {
+    "text": "10+",
+    "label": "лет",
+    "at": 62.3,
+    "until": 64.2,
+    "look": "gradient",
+    "x": 0.17,
+    "y": 0.38,
+    "size": 0.16
+   },
+   {
+    "text": "1000+",
+    "label": "компаний",
+    "at": 84.2,
+    "until": 86.2,
+    "look": "gradient",
+    "x": 0.3,
+    "y": 0.31,
+    "size": 0.12
+   }
+  ],
+  "flags": [
+   {
+    "src": "local/flags/cn.svg",
+    "at": 9.6,
+    "until": 10.9,
+    "x": 0.84,
+    "y": 0.36,
+    "widthFraction": 0.18,
+    "sound": "audio/sfx/pop.wav",
+    "soundVolume": 0.45
+   },
+   {
+    "src": "local/flags/cn.svg",
+    "at": 61.5,
+    "until": 62.8,
+    "x": 0.84,
+    "y": 0.36,
+    "widthFraction": 0.18,
+    "sound": "audio/sfx/pop.wav",
+    "soundVolume": 0.45
+   }
+  ],
+  "splits": [
+   {
+    "at": 21.0,
+    "until": 24.8,
+    "side": "bottom",
+    "items": [
+     {
+      "src": "generated/auto-ev/beijing.png",
+      "focusY": 0.5
+     }
+    ]
+   },
+   {
+    "at": 36.7,
+    "until": 41.8,
+    "side": "bottom",
+    "items": [
+     {
+      "src": "generated/robotics-expedition-v2/beijing-v2.png",
+      "focusY": 0.5
+     }
+    ]
+   }
+  ],
+  "stages": [
+   {
+    "at": 47.0,
+    "until": 51.8,
+    "items": [
+     {
+      "src": "generated/china-tech-giants/logos-wall.png"
+     }
+    ]
+   },
+   {
+    "at": 73.0,
+    "until": 76.3,
+    "items": [
+     {
+      "src": "generated/robotics-expedition-v2/negotiations.png"
+     }
+    ]
+   },
+   {
+    "at": 103.2,
+    "until": 106.6,
+    "items": [
+     {
+      "src": "generated/china-tech-giants/shenzhen-v2.png"
+     }
+    ]
+   }
+  ],
+  "flips": [
+   {
+    "at": 2.6,
+    "until": 3.9,
+    "overlay": true,
+    "widthFraction": 0.38,
+    "centerX": 0.76,
+    "centerY": 0.62,
+    "items": [
+     {
+      "src": "local/gtt/flip-xiaomi.png",
+      "seconds": 0.45
+     },
+     {
+      "src": "local/gtt/flip-huawei.png"
+     }
+    ]
+   },
+   {
+    "at": 10.0,
+    "until": 16.0,
+    "overlay": true,
+    "widthFraction": 0.4,
+    "centerX": 0.76,
+    "centerY": 0.62,
+    "items": [
+     {
+      "src": "local/gtt/flip-baidu.png",
+      "seconds": 0.5
+     },
+     {
+      "src": "local/gtt/flip-xiaomi.png",
+      "seconds": 0.6
+     },
+     {
+      "src": "local/gtt/flip-alibaba.png",
+      "seconds": 0.7
+     },
+     {
+      "src": "local/gtt/flip-unitree.png",
+      "seconds": 0.6
+     },
+     {
+      "src": "local/gtt/flip-meituan.png",
+      "seconds": 0.7
+     },
+     {
+      "src": "local/gtt/flip-xiaohongshu.png",
+      "seconds": 1.0
+     },
+     {
+      "src": "local/gtt/flip-tencent.png",
+      "seconds": 0.7
+     },
+     {
+      "src": "local/gtt/flip-huawei.png",
+      "seconds": 0.6
+     },
+     {
+      "src": "local/gtt/flip-ubtech.png"
+     }
+    ]
+   },
+   {
+    "at": 25.4,
+    "until": 27.0,
+    "overlay": true,
+    "widthFraction": 0.36,
+    "centerX": 0.76,
+    "centerY": 0.34,
+    "items": [
+     {
+      "src": "local/gtt/flip-tencent.png"
+     }
+    ]
+   },
+   {
+    "at": 42.3,
+    "until": 44.9,
+    "overlay": true,
+    "widthFraction": 0.36,
+    "centerX": 0.76,
+    "centerY": 0.34,
+    "items": [
+     {
+      "src": "local/gtt/flip-xiaohongshu.png"
+     }
+    ]
+   },
+   {
+    "at": 58.7,
+    "until": 59.9,
+    "overlay": true,
+    "widthFraction": 0.34,
+    "centerX": 0.8,
+    "centerY": 0.6,
+    "items": [
+     {
+      "src": "local/gtt/flip-alibaba.png",
+      "seconds": 0.5
+     },
+     {
+      "src": "local/gtt/flip-sber.png"
+     }
+    ]
+   }
+  ],
+  "pips": [
+   {
+    "at": 99.8,
+    "until": 102.9,
+    "items": [
+     {
+      "src": "site/home.png",
+      "present": "site",
+      "title": "Global Tech Tour",
+      "url": "globaltechtour.ru",
+      "scrollTo": 0.08
+     }
+    ]
+   }
+  ],
+  "photoCards": [
+   {
+    "at": 17.0,
+    "until": 19.9,
+    "side": "right",
+    "widthFraction": 0.34,
+    "stepSeconds": 0.55,
+    "spread": 0.3,
+    "items": [
+     {
+      "src": "local/pano/beijing-temple-v.jpg",
+      "caption": "Пекин"
+     },
+     {
+      "src": "generated/china-tech-giants/hangzhou-v2.png",
+      "caption": "Ханчжоу"
+     },
+     {
+      "src": "local/pano/shanghai-bund-v.jpg",
+      "caption": "Шанхай"
+     },
+     {
+      "src": "local/pano/shenzhen-pingan-v.jpg",
+      "caption": "Шэньчжэнь"
+     }
+    ]
+   }
+  ],
+  "popWindows": [
+   {
+    "at": 95.2,
+    "until": 98.1,
+    "items": [
+     {
+      "src": "generated/china-tech-giants/beijing-v5.png"
+     },
+     {
+      "src": "generated/china-tech-giants/logos-wall-zoom.png"
+     },
+     {
+      "src": "generated/china-tech-giants/shanghai-v2.png"
+     }
+    ]
+   }
+  ],
+  "brolls": [],
+  "splitEyesAt": 0.36,
+  "splitSeam": 0.58,
+  "music": "audio/music/gtt-bed-light-long.m4a",
+  "musicVolume": 0.12,
+  "safeZone": "reels",
+  "cutoutSrc": "local/head/s36-techgiants-cutout.webm"
+ },
+ "proposals": []
 }
