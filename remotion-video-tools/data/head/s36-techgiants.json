@@ -1,0 +1,10 @@
+{
+  "name": "s36-techgiants",
+  "stage": "подготовлен",
+  "props": {
+    "footage": "local/head/s36-techgiants.mp4",
+    "captionsSrc": "captions/head-s36-techgiants.json",
+    "durationSeconds": 111.8
+  },
+  "proposals": []
+}
