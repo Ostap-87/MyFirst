@@ -1,0 +1,10 @@
+{
+  "name": "s34-retail",
+  "stage": "подготовлен",
+  "props": {
+    "footage": "local/head/s34-retail.mp4",
+    "captionsSrc": "captions/head-s34-retail.json",
+    "durationSeconds": 108.93
+  },
+  "proposals": []
+}
