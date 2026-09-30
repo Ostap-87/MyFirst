@@ -1,0 +1,443 @@
+{
+ "footage": "local/head/s33-ai.mp4",
+ "captionsSrc": "captions/head-s33-ai.json",
+ "durationSeconds": 92.83,
+ "hookTop": "DeepSeek обрушил Nvidia",
+ "hookBottom": "на $600 млрд за день",
+ "brandMark": "GLOBAL TECH TOUR",
+ "logoScale": 1.5,
+ "logoSpin": 72,
+ "focusY": 0.42,
+ "plates": [
+  {
+   "text": "DeepSeek — едем в гости",
+   "at": 6.8,
+   "until": 9.0,
+   "kind": "accent"
+  },
+  {
+   "text": "10 компаний · 4 города · 5 дней",
+   "at": 13.1,
+   "until": 15.4,
+   "kind": "accent"
+  },
+  {
+   "text": "Нейроинтерфейсы и протезы",
+   "at": 24.9,
+   "until": 27.0,
+   "kind": "term"
+  },
+  {
+   "text": "Весь путь ИИ",
+   "at": 29.1,
+   "until": 31.5,
+   "kind": "accent"
+  },
+  {
+   "text": "Вопросы — создателям",
+   "at": 34.6,
+   "until": 36.9,
+   "kind": "term"
+  },
+  {
+   "text": "Остап Доценко",
+   "at": 37.8,
+   "until": 40.5,
+   "kind": "term"
+  },
+  {
+   "text": "Говорю по-китайски",
+   "at": 43.1,
+   "until": 44.9,
+   "kind": "term"
+  },
+  {
+   "text": "Знаком лично",
+   "at": 50.3,
+   "until": 51.5,
+   "kind": "accent"
+  },
+  {
+   "text": "Куда с улицы не пускают",
+   "at": 53.1,
+   "until": 55.2,
+   "kind": "term"
+  },
+  {
+   "text": "Быстрое согласование",
+   "at": 59.2,
+   "until": 62.4,
+   "kind": "accent"
+  },
+  {
+   "text": "Бесконечные переписки",
+   "at": 62.6,
+   "until": 65.8,
+   "kind": "struck"
+  },
+  {
+   "text": "18 индустрий",
+   "at": 68.7,
+   "until": 70.0,
+   "kind": "accent"
+  },
+  {
+   "text": "Цены прозрачные",
+   "at": 70.3,
+   "until": 73.8,
+   "kind": "term"
+  },
+  {
+   "text": "Группы по отраслям",
+   "at": 75.1,
+   "until": 76.6,
+   "kind": "accent"
+  },
+  {
+   "text": "Всё на русском языке",
+   "at": 76.6,
+   "until": 78.0,
+   "kind": "accent"
+  },
+  {
+   "text": "Контакты · Знания · Партнёры",
+   "at": 81.6,
+   "until": 84.9,
+   "kind": "accent"
+  }
+ ],
+ "cutaways": [],
+ "moves": [
+  {
+   "at": 0.0,
+   "until": 2.0,
+   "kind": "punch",
+   "scale": 1.15
+  },
+  {
+   "at": 6.6,
+   "until": 7.4,
+   "kind": "punch",
+   "scale": 1.2
+  },
+  {
+   "at": 9.0,
+   "until": 10.0,
+   "kind": "cut",
+   "scale": 1.12
+  },
+  {
+   "at": 18.0,
+   "until": 21.5,
+   "kind": "push",
+   "scale": 1.07
+  },
+  {
+   "at": 27.0,
+   "until": 28.0,
+   "kind": "cut",
+   "scale": 1.12
+  },
+  {
+   "at": 32.0,
+   "until": 36.0,
+   "kind": "push",
+   "scale": 1.07
+  },
+  {
+   "at": 41.0,
+   "until": 42.0,
+   "kind": "cut",
+   "scale": 1.12
+  },
+  {
+   "at": 54.0,
+   "until": 54.8,
+   "kind": "punch",
+   "scale": 1.2
+  },
+  {
+   "at": 55.4,
+   "until": 56.6,
+   "kind": "cut",
+   "scale": 1.12
+  },
+  {
+   "at": 66.0,
+   "until": 67.0,
+   "kind": "cut",
+   "scale": 1.12
+  },
+  {
+   "at": 78.0,
+   "until": 79.0,
+   "kind": "punch",
+   "scale": 1.15
+  },
+  {
+   "at": 85.0,
+   "until": 86.0,
+   "kind": "cut",
+   "scale": 1.12
+  }
+ ],
+ "numbers": [
+  {
+   "text": "$600",
+   "label": "млрд за день",
+   "at": 5.1,
+   "until": 7.4,
+   "look": "gradient",
+   "x": 0.2,
+   "y": 0.38,
+   "size": 0.14
+  },
+  {
+   "text": "10",
+   "label": "ИИ-компаний",
+   "at": 13.1,
+   "until": 15.4,
+   "look": "gradient",
+   "x": 0.17,
+   "y": 0.38,
+   "size": 0.16
+  },
+  {
+   "text": "10+",
+   "label": "лет",
+   "at": 42.6,
+   "until": 44.6,
+   "look": "gradient",
+   "x": 0.17,
+   "y": 0.38,
+   "size": 0.16
+  },
+  {
+   "text": "1000+",
+   "label": "компаний",
+   "at": 67.3,
+   "until": 69.5,
+   "look": "gradient",
+   "x": 0.16,
+   "y": 0.27,
+   "size": 0.1
+  }
+ ],
+ "flags": [
+  {
+   "src": "local/flags/cn.svg",
+   "at": 0.3,
+   "until": 1.8,
+   "x": 0.84,
+   "y": 0.36,
+   "widthFraction": 0.18,
+   "sound": "audio/sfx/pop.wav",
+   "soundVolume": 0.45
+  },
+  {
+   "src": "local/flags/cn.svg",
+   "at": 42.0,
+   "until": 43.3,
+   "x": 0.84,
+   "y": 0.36,
+   "widthFraction": 0.18,
+   "sound": "audio/sfx/pop.wav",
+   "soundVolume": 0.45
+  }
+ ],
+ "splits": [
+  {
+   "at": 21.5,
+   "until": 26.8,
+   "side": "bottom",
+   "items": [
+    {
+     "src": "generated/robotics-expedition-v2/handshake-v2.png",
+     "focusY": 0.5
+    }
+   ]
+  }
+ ],
+ "stages": [
+  {
+   "at": 27.0,
+   "until": 31.5,
+   "items": [
+    {
+     "src": "generated/china-tech-giants/logos-wall.png"
+    }
+   ]
+  },
+  {
+   "at": 48.0,
+   "until": 50.8,
+   "items": [
+    {
+     "src": "generated/robotics-expedition-v2/negotiations.png"
+    }
+   ]
+  },
+  {
+   "at": 88.9,
+   "until": 92.8,
+   "items": [
+    {
+     "src": "generated/china-tech-giants/shenzhen-v2.png"
+    }
+   ]
+  }
+ ],
+ "flips": [
+  {
+   "at": 6.7,
+   "until": 8.6,
+   "overlay": true,
+   "widthFraction": 0.4,
+   "centerX": 0.76,
+   "centerY": 0.62,
+   "items": [
+    {
+     "src": "local/gtt/flip-deepseek.png"
+    }
+   ]
+  },
+  {
+   "at": 9.9,
+   "until": 13.0,
+   "overlay": true,
+   "widthFraction": 0.4,
+   "centerX": 0.76,
+   "centerY": 0.62,
+   "items": [
+    {
+     "src": "local/gtt/flip-alibaba.png",
+     "seconds": 1.1
+    },
+    {
+     "src": "local/gtt/flip-bytedance.png",
+     "seconds": 1.0
+    },
+    {
+     "src": "local/gtt/flip-tencent.png",
+     "seconds": 0.6
+    },
+    {
+     "src": "local/gtt/flip-baidu.png"
+    }
+   ]
+  },
+  {
+   "at": 21.5,
+   "until": 24.0,
+   "overlay": true,
+   "widthFraction": 0.36,
+   "centerX": 0.76,
+   "centerY": 0.34,
+   "items": [
+    {
+     "src": "local/gtt/flip-zhipu.png",
+     "seconds": 0.4
+    },
+    {
+     "src": "local/gtt/flip-kimi.png",
+     "seconds": 0.5
+    },
+    {
+     "src": "local/gtt/flip-kuaishou.png",
+     "seconds": 0.5
+    },
+    {
+     "src": "local/gtt/flip-sensetime.png",
+     "seconds": 0.7
+    },
+    {
+     "src": "local/gtt/flip-brainco.png"
+    }
+   ]
+  },
+  {
+   "at": 39.6,
+   "until": 41.0,
+   "overlay": true,
+   "widthFraction": 0.34,
+   "centerX": 0.8,
+   "centerY": 0.6,
+   "items": [
+    {
+     "src": "local/gtt/flip-alibaba.png",
+     "seconds": 0.6
+    },
+    {
+     "src": "local/gtt/flip-sber.png"
+    }
+   ]
+  }
+ ],
+ "pips": [
+  {
+   "at": 85.9,
+   "until": 88.8,
+   "items": [
+    {
+     "src": "site/home.png",
+     "present": "site",
+     "title": "Global Tech Tour",
+     "url": "globaltechtour.ru",
+     "scrollTo": 0.08
+    }
+   ]
+  }
+ ],
+ "photoCards": [
+  {
+   "at": 15.4,
+   "until": 18.0,
+   "side": "right",
+   "widthFraction": 0.34,
+   "stepSeconds": 0.55,
+   "spread": 0.3,
+   "items": [
+    {
+     "src": "local/pano/beijing-temple-v.jpg",
+     "caption": "Пекин"
+    },
+    {
+     "src": "local/pano/shanghai-bund-v.jpg",
+     "caption": "Шанхай"
+    },
+    {
+     "src": "generated/china-tech-giants/hangzhou-v2.png",
+     "caption": "Ханчжоу"
+    },
+    {
+     "src": "local/pano/shenzhen-pingan-v.jpg",
+     "caption": "Шэньчжэнь"
+    }
+   ]
+  }
+ ],
+ "popWindows": [
+  {
+   "at": 79.6,
+   "until": 81.5,
+   "items": [
+    {
+     "src": "generated/robotics-expedition-v2/beijing-v2.png"
+    },
+    {
+     "src": "generated/china-tech-giants/shenzhen-v2.png"
+    },
+    {
+     "src": "generated/robotics-expedition-v2/shanghai-v2.png"
+    }
+   ]
+  }
+ ],
+ "brolls": [],
+ "splitEyesAt": 0.36,
+ "splitSeam": 0.58,
+ "music": "audio/music/gtt-bed-light-long.m4a",
+ "musicVolume": 0.12,
+ "safeZone": "reels",
+ "cutoutSrc": "local/head/s33-ai-cutout.webm"
+}
