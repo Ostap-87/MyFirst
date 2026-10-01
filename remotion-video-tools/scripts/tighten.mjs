@@ -169,6 +169,7 @@ if (duration - cursor > 0.02) keep.push([cursor, duration]);
 // уходит вперёд губ на 0,2 с (так было на s27-route: 78,13 с видео против
 // 77,95 с звука). Поэтому кадры f0…f1-1 и звук ровно (f1-f0)/fps.
 const fps = (() => {
+  if (args.fps) return Number(args.fps);
   const rate = execFileSync("ffprobe", ["-v", "error", "-select_streams", "v:0",
     "-show_entries", "stream=r_frame_rate", "-of", "default=nw=1:nk=1", videoPath]).toString().trim();
   const [n, d] = rate.split("/").map(Number);
@@ -190,6 +191,16 @@ const outPath = typeof args.out === "string"
   : videoPath.replace(/\.(mp4|mov)$/i, "-tight.mp4");
 
 console.log(`\n  Собираю ${keep.length} кусков…`);
+
+// --audio-only: та же сетка кадров, но на выходе только звук (wav 48 кГц) —
+// чтобы пересобрать голос из исходника без перекодирования картинки.
+if (args["audio-only"]) {
+  execFileSync("ffmpeg", ["-v", "error", "-y", "-i", videoPath, "-vn",
+    "-af", `aresample=first_pts=0,asetnsamples=n=48:p=0,aselect='${aexpr}',asetpts=N/SR/TB`,
+    "-ac", "1", "-ar", "48000", outPath], { stdio: "inherit" });
+  console.log(`  ✔ ${outPath}`);
+  process.exit(0);
+}
 
 execFileSync(
   "ffmpeg",
