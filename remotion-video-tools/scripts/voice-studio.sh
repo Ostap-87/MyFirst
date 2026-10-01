@@ -14,7 +14,7 @@ CHAIN="highpass=f=85,equalizer=f=220:t=q:w=1.0:g=-2.5,equalizer=f=2500:t=o:w=1.2
 ffmpeg -v error -y -i "$src" -vn -ac 1 -ar 48000 -f wav $W/src.wav
 source "$VENV/bin/activate"
 python3 scripts/voice-dfn.py $W/src.wav $W/dfn.wav "$DFN_MODEL" 2 2>&1 | grep -v -i warn | tail -1
-python3 scripts/voice-gate.py $W/dfn.wav $W/gated.wav "$cap"
+python3 scripts/voice-gate.py $W/dfn.wav $W/gated.wav
 ffmpeg -v error -y -i $W/gated.wav -af "$CHAIN" $W/eq.wav
 LN=$(ffmpeg -hide_banner -i $W/eq.wav -af loudnorm=I=-16:TP=-1.5:LRA=11:print_format=json -f null - 2>&1 | python3 -c "
 import sys,json; t=sys.stdin.read(); j=json.loads(t[t.rindex('{'):]); print(f\"loudnorm=I=-16:TP=-1.5:LRA=11:measured_I={j['input_i']}:measured_TP={j['input_tp']}:measured_LRA={j['input_lra']}:measured_thresh={j['input_thresh']}:offset={j['target_offset']}:linear=true\")")
