@@ -168,6 +168,36 @@ const text_en = buildLimitedPost(enArticle.title, enArticle.body, `Read the full
 const image_ru = `${BASE}${ruArticle.image}`;
 const image_en = `${BASE}${enArticle.image}`;
 
+// Make.com's webhook step returns 200 the instant it accepts the payload,
+// well before the Facebook/LinkedIn modules downstream actually run — so a
+// successful fetch() below does NOT mean the post went out. The one thing
+// that reliably fails right after a fresh deploy is the image: nginx can
+// serve a brand-new file inconsistently for a few seconds (observed
+// 01.10.2026 — Facebook's Graph API got "Missing or invalid image file"
+// for an image that returned 200 moments later). Checking both image URLs
+// here, with retries, is the actual fix — once this passes, Facebook's own
+// fetch of the same URL a few seconds later is reliable.
+async function waitForImage(imageUrl, attempts = 10, delayMs = 3000) {
+  for (let i = 1; i <= attempts; i++) {
+    try {
+      const head = await fetch(imageUrl, { method: "HEAD" });
+      if (head.ok) return true;
+    } catch {
+      // network hiccup — fall through to retry
+    }
+    if (i < attempts) await new Promise((r) => setTimeout(r, delayMs));
+  }
+  return false;
+}
+
+for (const imageUrl of [image_ru, image_en]) {
+  const ready = await waitForImage(imageUrl);
+  if (!ready) {
+    console.error(`Image not reachable after retries, aborting post: ${imageUrl}`);
+    process.exit(1);
+  }
+}
+
 const res = await fetch(WEBHOOK_URL, {
   method: "POST",
   headers: { "Content-Type": "application/json" },
