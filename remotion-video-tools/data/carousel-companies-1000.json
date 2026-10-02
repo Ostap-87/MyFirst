@@ -31,7 +31,7 @@
       "title": "Чай и кофе",
       "text": "Chagee, HeyTea, Luckin Coffee, Manner, Nayuki: как сети открывают тысячи точек.",
       "image": "generated/companies-1000/tea-coffee.png",
-      "logos": ["logos/chagee.svg", "logos/heytea.svg", "logos/luckin.svg", "logos/manner.png"]
+      "logos": ["logos/chagee.svg", "logos/heytea.svg", "logos/luckin.svg", "logos/manner.png", "logos/nayuki.png"]
     },
     {
       "type": "point",

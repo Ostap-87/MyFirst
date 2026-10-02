@@ -1,0 +1,67 @@
+{
+  "name": "about",
+  "brand": "gtt",
+  "footer": "globaltechtour.ru",
+  "slides": [
+    {
+      "type": "cover",
+      "kicker": "Global Tech Tour",
+      "title": "Кто везёт вас в Китай",
+      "subtitle": "Остап Доценко, основатель Global Tech Tour",
+      "image": "real-photos/ostap-stage.jpg",
+      "cornerTheme": "dark"
+    },
+    {
+      "type": "point",
+      "index": 1,
+      "title": "**10+ лет** в Китае",
+      "text": "Живу и работаю в Шанхае, говорю на китайском свободно.",
+      "image": "real-photos/ostap-shanghai.jpg",
+      "cornerTheme": "dark"
+    },
+    {
+      "type": "point",
+      "index": 2,
+      "title": "Работал внутри",
+      "text": "Alibaba (O2O) и Сбер (B2B): знаю, как устроены большие компании изнутри.",
+      "image": "generated/about/divider.png",
+      "logos": ["logos/alibaba.svg"]
+    },
+    {
+      "type": "point",
+      "index": 3,
+      "title": "Свои контакты",
+      "text": "Сеть знакомств в корпорациях Китая и Юго-Восточной Азии. Поэтому двери открываются.",
+      "image": "real-photos/ostap-meeting-partner.jpg",
+      "cornerTheme": "dark"
+    },
+    {
+      "type": "point",
+      "index": 4,
+      "title": "Своя компания в Шанхае",
+      "text": "Shanghai Pinnacle Technology: робототехника, B2B-консалтинг, поставки.",
+      "image": "generated/about/office.png"
+    },
+    {
+      "type": "quote",
+      "text": "Доступ к передовым технологиям не должен быть привилегией только больших корпораций.",
+      "author": "Моя миссия",
+      "image": "generated/about/mission.png",
+      "cornerTheme": "dark"
+    },
+    {
+      "type": "quote",
+      "text": "千里之行，始于足下 — «Путь в тысячу ли начинается с первого шага»",
+      "author": "",
+      "image": "generated/about/calligraphy.png"
+    },
+    {
+      "type": "cta",
+      "title": "Подписывайтесь на личный блог @ostap.dotsenko",
+      "text": "Задать вопрос лично → Telegram @GLOBALTECHTOUR · WhatsApp/Telegram @ostapdotcenko",
+      "keyword": "",
+      "handle": "globaltechtour.ru",
+      "image": "generated/about/cta.png"
+    }
+  ]
+}
