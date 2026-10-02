@@ -220,12 +220,16 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
                 vh(("textRaise" in slide && slide.textRaise) || 0)
               }px`,
               gap: sp(0.02),
-              // noFrost: сам текстовый блок — компактная белая плашка с
-              // тенью поверх резкого фото, а не растянутая на всю ширину
-              // прозрачная панель.
+              // noFrost: сам текстовый блок — компактная полупрозрачная
+              // плашка с лёгким блюром поверх резкого фото (не растянутая
+              // на всю ширину прозрачная панель, не сплошной белый блок,
+              // который закрывает человека на фото — запрос пользователя
+              // 02.10.2026: фото должно просвечивать сквозь плашку).
               ...(frostless
                 ? {
-                    backgroundColor: "#ffffff",
+                    backgroundColor: "rgba(255,255,255,0.38)",
+                    backdropFilter: "blur(14px)",
+                    WebkitBackdropFilter: "blur(14px)",
                     borderRadius: sp(0.04),
                     boxShadow: "0 16px 40px rgba(23,23,29,0.18)",
                     maxWidth: "78%",
