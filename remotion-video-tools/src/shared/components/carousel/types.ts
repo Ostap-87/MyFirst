@@ -81,7 +81,20 @@ export const slideSchema = z.discriminatedUnion("type", [
       )
       .optional(),
     logoStack: z
-      .array(z.string())
+      .array(
+        z.union([
+          z.string(),
+          z.object({
+            src: z.string().describe("Путь к логотипу в public"),
+            scale: z
+              .number()
+              .describe(
+                "Во сколько раз увеличить логотип внутри его плашки — нужно, когда у файла лого много внутренних полей и на весь размер плашки он всё равно выглядит мелким",
+              )
+              .optional(),
+          }),
+        ]),
+      )
       .describe(
         "Альтернатива logos для случая 'два-три крупных отдельных логотипа друг под другом' (например 'работал в X и Y') — каждый на своей полноширинной белой плашке, а не мелким чипом в ряд",
       )

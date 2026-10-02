@@ -363,7 +363,10 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
                       width: "100%",
                     }}
                   >
-                    {slide.logoStack.map((src, i) => (
+                    {slide.logoStack.map((logo, i) => {
+                      const src = typeof logo === "string" ? logo : logo.src;
+                      const scale = typeof logo === "string" ? 1 : (logo.scale ?? 1);
+                      return (
                       <div
                         key={i}
                         style={{
@@ -377,18 +380,20 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
                           alignItems: "center",
                           justifyContent: "center",
                           boxSizing: "border-box",
+                          overflow: "hidden",
                         }}
                       >
                         <Img
                           src={staticFile(src)}
                           style={{
-                            maxHeight: "100%",
-                            maxWidth: "100%",
+                            maxHeight: `${scale * 100}%`,
+                            maxWidth: `${scale * 100}%`,
                             objectFit: "contain",
                           }}
                         />
                       </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 ) : null}
                 {slide.title ? (
