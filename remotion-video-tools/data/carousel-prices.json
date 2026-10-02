@@ -11,10 +11,13 @@
       "image": "generated/prices/cover.png"
     },
     {
-      "type": "point",
-      "index": 1,
-      "title": "Индивидуальное участие",
-      "text": "От **$4 000** за человека. Зависит от отрасли и маршрута.",
+      "type": "metric",
+      "value": 4000,
+      "prefix": "от $",
+      "suffix": "",
+      "compact": false,
+      "label": "Индивидуальное участие — за человека",
+      "source": "Зависит от отрасли и маршрута",
       "image": "generated/corporate-training/haier.png"
     },
     {
@@ -58,7 +61,8 @@
       "text": "Напишите отрасль и даты. Telegram: @ostapdotcenko (в директ) · info@globaltechtour.ru",
       "keyword": "",
       "handle": "globaltechtour.ru",
-      "image": "generated/shared/cta-bright.png"
+      "image": "generated/about/cta.png",
+      "textRaise": 0.04
     }
   ]
 }
