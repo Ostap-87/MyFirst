@@ -305,24 +305,25 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
                         <div
                           key={i}
                           style={{
-                            height: fs(0.13),
-                            padding: `${fs(0.02)}px ${fs(0.03)}px`,
-                            borderRadius: sp(0.02),
+                            // Карточка растёт вместе с логотипом (не только сам
+                            // логотип), иначе увеличенный через scale() логотип
+                            // вылезает за пределы белой подложки — некрасиво.
+                            height: fs(0.13 * scale),
+                            padding: `${fs(0.02 * scale)}px ${fs(0.03 * scale)}px`,
+                            borderRadius: sp(0.02 * scale),
                             backgroundColor: "#ffffff",
                             border: `1px solid ${theme.colors.line}`,
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center",
-                            overflow: "visible",
                           }}
                         >
                           <Img
                             src={staticFile(src)}
                             style={{
                               height: "100%",
-                              maxWidth: fs(0.42),
+                              maxWidth: fs(0.42 * scale),
                               objectFit: "contain",
-                              transform: scale !== 1 ? `scale(${scale})` : undefined,
                             }}
                           />
                         </div>
