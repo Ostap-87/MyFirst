@@ -16,7 +16,7 @@
       "title": "Huawei",
       "text": "Как выстроить R&D и выжить под санкциями двух континентов.",
       "image": "generated/corporate-training/huawei.png",
-      "logos": ["logos/huawei.svg"]
+      "logos": [{"src": "logos/huawei.svg", "scale": 2}]
     },
     {
       "type": "point",
@@ -24,7 +24,7 @@
       "title": "Alibaba",
       "text": "Экосистема и культура, которая придумала День холостяков.",
       "image": "generated/corporate-training/alibaba.png",
-      "logos": ["logos/alibaba.svg"]
+      "logos": [{"src": "logos/alibaba.svg", "scale": 2}]
     },
     {
       "type": "point",
@@ -56,7 +56,7 @@
       "title": "Ping An",
       "text": "Страховая, которая построила экосистему с медициной и финтехом.",
       "image": "generated/corporate-training/pingan.png",
-      "logos": ["logos/pingan.svg"]
+      "logos": [{"src": "logos/pingan.svg", "scale": 2}]
     },
     {
       "type": "point",

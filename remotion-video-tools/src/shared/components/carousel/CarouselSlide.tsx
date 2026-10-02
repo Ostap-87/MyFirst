@@ -298,30 +298,36 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
                       gap: sp(0.03),
                     }}
                   >
-                    {slide.logos.map((logo, i) => (
-                      <div
-                        key={i}
-                        style={{
-                          height: fs(0.13),
-                          padding: `${fs(0.02)}px ${fs(0.03)}px`,
-                          borderRadius: sp(0.02),
-                          backgroundColor: "#ffffff",
-                          border: `1px solid ${theme.colors.line}`,
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                        }}
-                      >
-                        <Img
-                          src={staticFile(logo)}
+                    {slide.logos.map((logo, i) => {
+                      const src = typeof logo === "string" ? logo : logo.src;
+                      const scale = typeof logo === "string" ? 1 : (logo.scale ?? 1);
+                      return (
+                        <div
+                          key={i}
                           style={{
-                            height: "100%",
-                            maxWidth: fs(0.42),
-                            objectFit: "contain",
+                            height: fs(0.13),
+                            padding: `${fs(0.02)}px ${fs(0.03)}px`,
+                            borderRadius: sp(0.02),
+                            backgroundColor: "#ffffff",
+                            border: `1px solid ${theme.colors.line}`,
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            overflow: "visible",
                           }}
-                        />
-                      </div>
-                    ))}
+                        >
+                          <Img
+                            src={staticFile(src)}
+                            style={{
+                              height: "100%",
+                              maxWidth: fs(0.42),
+                              objectFit: "contain",
+                              transform: scale !== 1 ? `scale(${scale})` : undefined,
+                            }}
+                          />
+                        </div>
+                      );
+                    })}
                   </div>
                 ) : null}
                 {slide.title ? (

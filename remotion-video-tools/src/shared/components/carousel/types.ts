@@ -46,7 +46,20 @@ export const slideSchema = z.discriminatedUnion("type", [
     text: z.string().describe("Раскрытие в 1–3 предложения"),
     image: z.string().describe("Фон-картинка из public; пусто — фирменный фон").optional(),
     logos: z
-      .array(z.string())
+      .array(
+        z.union([
+          z.string(),
+          z.object({
+            src: z.string().describe("Путь к логотипу в public"),
+            scale: z
+              .number()
+              .describe(
+                "Во сколько раз увеличить логотип внутри чипа — нужно, когда у исходного файла лого много внутренних полей (квадратная иконка-марка вместо широкого ворднейма) и на стандартной высоте оно выглядит мельче соседних",
+              )
+              .optional(),
+          }),
+        ]),
+      )
       .describe(
         "Реальные логотипы упомянутых брендов (пути в public) — показываются рядом с номером пункта, над заголовком",
       )
