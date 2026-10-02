@@ -40,31 +40,33 @@
       "type": "point",
       "index": 4,
       "title": "Своя компания в Шанхае",
-      "text": "Shanghai Pinnacle Technology: робототехника, B2B-консалтинг, поставки.",
+      "text": "Shanghai Pinnacle Technology: робототехника, B2B-консалтинг, технологический туризм.",
       "image": "generated/about/office.png"
     },
     {
       "type": "quote",
       "text": "Доступ к передовым технологиям не должен быть привилегией только больших корпораций.",
-      "author": "Моя миссия",
+      "author": "Наша миссия",
+      "authorScale": 1.8,
       "image": "generated/about/mission.png",
       "cornerTheme": "dark"
     },
     {
       "type": "quote",
-      "text": "千里之行，始于足下 — «Путь в тысячу ли начинается с первого шага»",
-      "author": "",
+      "text": "千里之行，始于足下",
+      "author": "«Путь в тысячу ли начинается с первого шага» — наш девиз",
       "image": "generated/about/calligraphy.png",
-      "textScale": 1.5,
-      "textRaise": 0.04
+      "textScale": 1.1,
+      "textRaise": 0.03
     },
     {
       "type": "cta",
       "title": "ostapdotcenko.ru · globaltechtour.ru",
-      "text": "Telegram-канал @GLOBALTECHTOUR · личный Telegram @ostapdotcenko",
+      "text": "Telegram-канал @GLOBALTECHTOUR · личный Telegram @ostapdotcenko · info@globaltechtour.ru",
       "keyword": "",
       "handle": "globaltechtour.ru",
-      "image": "generated/about/cta.png"
+      "image": "generated/about/cta.png",
+      "textRaise": 0.04
     }
   ]
 }

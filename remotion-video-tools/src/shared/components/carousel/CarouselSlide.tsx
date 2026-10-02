@@ -485,29 +485,40 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
 
             {slide.type === "quote" ? (
               <>
-                <p
-                  style={{
-                    margin: 0,
-                    fontFamily: fontFamily(theme.fonts.heading),
-                    fontWeight: theme.fonts.headingWeight,
-                    fontSize: fs(0.052 * (slide.textScale ?? 1)),
-                    lineHeight: 1.25,
-                    color: theme.colors.text,
-                  }}
-                >
-                  «{slide.text}»
-                </p>
-                {slide.author ? (
-                  <div
-                    style={{
-                      fontFamily: fontFamily(theme.fonts.mono),
-                      fontSize: fs(0.026),
-                      color: theme.colors.text,
-                    }}
-                  >
-                    {slide.author}
-                  </div>
-                ) : null}
+                {(() => {
+                  // Насыщенный/тёмный фон (cornerTheme "dark") делает тёмный
+                  // текст на светлой frosted-панели нечитаемым — запрос
+                  // пользователя 02.10.2026 (цитата на синем фоне). На таких
+                  // фото текст цитаты — белый.
+                  const quoteColor = cornerTheme === "dark" ? "#ffffff" : theme.colors.text;
+                  return (
+                    <>
+                      <p
+                        style={{
+                          margin: 0,
+                          fontFamily: fontFamily(theme.fonts.heading),
+                          fontWeight: theme.fonts.headingWeight,
+                          fontSize: fs(0.052 * (slide.textScale ?? 1)),
+                          lineHeight: 1.25,
+                          color: quoteColor,
+                        }}
+                      >
+                        «{slide.text}»
+                      </p>
+                      {slide.author ? (
+                        <div
+                          style={{
+                            fontFamily: fontFamily(theme.fonts.mono),
+                            fontSize: fs(0.026 * (slide.authorScale ?? 1)),
+                            color: quoteColor,
+                          }}
+                        >
+                          {slide.author}
+                        </div>
+                      ) : null}
+                    </>
+                  );
+                })()}
               </>
             ) : null}
 

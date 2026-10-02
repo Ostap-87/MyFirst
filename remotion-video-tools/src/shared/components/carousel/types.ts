@@ -121,6 +121,10 @@ export const slideSchema = z.discriminatedUnion("type", [
       .number()
       .describe("Во сколько раз увеличить размер текста цитаты (например для крупных иероглифов)")
       .optional(),
+    authorScale: z
+      .number()
+      .describe("Во сколько раз увеличить размер подписи под цитатой (author)")
+      .optional(),
     textRaise,
   }),
   z.object({
@@ -138,6 +142,7 @@ export const slideSchema = z.discriminatedUnion("type", [
     image: z.string().describe("Фон-картинка из public; пусто — фирменный фон").optional(),
     cornerTheme,
     textLower,
+    textRaise,
   }),
 ]);
 

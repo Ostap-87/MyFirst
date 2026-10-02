@@ -29,14 +29,14 @@
       "index": 3,
       "title": "Что входит ✓",
       "text": "Визиты и входные билеты в компании, отели 6 ночей, трансферы, переводчик, сопровождение, брифинги и разборы, переезды между городами.",
-      "image": "generated/prices/included.png"
+      "image": "generated/prices/included-v2.png"
     },
     {
       "type": "point",
       "index": 4,
       "title": "Чего нет в цене ✕",
       "text": "Международный перелёт, виза, личные расходы, ужины вне программы.",
-      "image": "generated/prices/excluded.png"
+      "image": "generated/prices/excluded-v2.png"
     },
     {
       "type": "point",
