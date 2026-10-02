@@ -45,19 +45,22 @@
     },
     {
       "type": "quote",
+      "kicker": "Наша миссия",
+      "kickerScale": 1.8,
       "text": "Доступ к передовым технологиям не должен быть привилегией только больших корпораций.",
-      "author": "Наша миссия",
-      "authorScale": 1.8,
+      "author": "",
       "image": "generated/about/mission.png",
       "cornerTheme": "dark"
     },
     {
       "type": "quote",
+      "kicker": "Наш девиз",
       "text": "千里之行，始于足下",
-      "author": "«Путь в тысячу ли начинается с первого шага» — наш девиз",
+      "author": "«Путь в тысячу ли начинается с первого шага»",
+      "authorScale": 1.8,
       "image": "generated/about/calligraphy.png",
       "textScale": 1.1,
-      "textRaise": 0.03
+      "textRaise": 0.22
     },
     {
       "type": "cta",

@@ -493,6 +493,17 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
                   const quoteColor = cornerTheme === "dark" ? "#ffffff" : theme.colors.text;
                   return (
                     <>
+                      {slide.kicker ? (
+                        <div
+                          style={{
+                            fontFamily: fontFamily(theme.fonts.mono),
+                            fontSize: fs(0.026 * (slide.kickerScale ?? 1)),
+                            color: quoteColor,
+                          }}
+                        >
+                          {slide.kicker}
+                        </div>
+                      ) : null}
                       <p
                         style={{
                           margin: 0,

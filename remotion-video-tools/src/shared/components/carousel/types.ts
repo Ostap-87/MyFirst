@@ -114,7 +114,15 @@ export const slideSchema = z.discriminatedUnion("type", [
   z.object({
     type: z.literal("quote"),
     text: z.string().describe("Цитата"),
-    author: z.string().describe("Кто сказал"),
+    author: z.string().describe("Кто сказал — показывается под цитатой"),
+    kicker: z
+      .string()
+      .describe("Короткая надпись над цитатой (например 'Наша миссия', 'Наш девиз')")
+      .optional(),
+    kickerScale: z
+      .number()
+      .describe("Во сколько раз увеличить размер надписи над цитатой (kicker)")
+      .optional(),
     image: z.string().describe("Фон-картинка из public; пусто — фирменный фон").optional(),
     cornerTheme,
     textScale: z
