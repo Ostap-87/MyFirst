@@ -15,42 +15,48 @@
       "index": 1,
       "title": "Huawei",
       "text": "Как выстроить R&D и выжить под санкциями двух континентов.",
-      "image": "generated/corporate-training/huawei.png"
+      "image": "generated/corporate-training/huawei.png",
+      "logos": ["logos/huawei.svg"]
     },
     {
       "type": "point",
       "index": 2,
       "title": "Alibaba",
       "text": "Экосистема и культура, которая придумала День холостяков.",
-      "image": "generated/corporate-training/alibaba.png"
+      "image": "generated/corporate-training/alibaba.png",
+      "logos": ["logos/alibaba.svg"]
     },
     {
       "type": "point",
       "index": 3,
       "title": "Xiaomi",
       "text": "От прошивок до электромобиля: как строить продуктовую линейку.",
-      "image": "generated/corporate-training/xiaomi.png"
+      "image": "generated/corporate-training/xiaomi.png",
+      "logos": ["logos/xiaomi.svg"]
     },
     {
       "type": "point",
       "index": 4,
       "title": "Haier",
       "text": "Как производитель холодильников стал глобальной корпорацией с R&D-центрами по миру.",
-      "image": "generated/corporate-training/haier.png"
+      "image": "generated/corporate-training/haier.png",
+      "logos": ["logos/haier.svg"]
     },
     {
       "type": "point",
       "index": 5,
       "title": "ByteDance",
       "text": "Алгоритмы и скорость запуска продуктов.",
-      "image": "generated/corporate-training/bytedance.png"
+      "image": "generated/corporate-training/bytedance.png",
+      "logos": ["logos/bytedance.png"]
     },
     {
       "type": "point",
       "index": 6,
       "title": "Ping An",
       "text": "Страховая, которая построила экосистему с медициной и финтехом.",
-      "image": "generated/corporate-training/pingan.png"
+      "image": "generated/corporate-training/pingan.png",
+      "logos": ["logos/pingan.svg"]
     },
     {
       "type": "point",

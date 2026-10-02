@@ -290,6 +290,40 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
                 >
                   {slide.index}
                 </div>
+                {"logos" in slide && slide.logos && slide.logos.length > 0 ? (
+                  <div
+                    style={{
+                      display: "flex",
+                      flexWrap: "wrap",
+                      gap: sp(0.02),
+                    }}
+                  >
+                    {slide.logos.map((logo, i) => (
+                      <div
+                        key={i}
+                        style={{
+                          height: fs(0.052),
+                          padding: `${fs(0.01)}px ${fs(0.018)}px`,
+                          borderRadius: sp(0.015),
+                          backgroundColor: "#ffffff",
+                          border: `1px solid ${theme.colors.line}`,
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <Img
+                          src={staticFile(logo)}
+                          style={{
+                            height: "100%",
+                            maxWidth: fs(0.16),
+                            objectFit: "contain",
+                          }}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                ) : null}
                 {slide.title ? (
                   <h2 style={{ margin: 0, lineHeight: 1.12 }}>
                     {renderRich(

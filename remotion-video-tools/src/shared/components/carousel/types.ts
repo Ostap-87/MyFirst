@@ -45,6 +45,12 @@ export const slideSchema = z.discriminatedUnion("type", [
     title: z.string().describe("Заголовок пункта"),
     text: z.string().describe("Раскрытие в 1–3 предложения"),
     image: z.string().describe("Фон-картинка из public; пусто — фирменный фон").optional(),
+    logos: z
+      .array(z.string())
+      .describe(
+        "Реальные логотипы упомянутых брендов (пути в public) — показываются рядом с номером пункта, над заголовком",
+      )
+      .optional(),
     cornerTheme,
   }),
   z.object({

@@ -22,14 +22,16 @@
       "index": 2,
       "title": "Робототехника",
       "text": "AgiBot, UBTech, Galbot, Fourier, Pudu и другие лидеры гуманоидов и сервисных роботов.",
-      "image": "generated/companies-1000/robotics.png"
+      "image": "generated/companies-1000/robotics.png",
+      "logos": ["logos/agibot.png", "logos/ubtech.svg", "logos/galbot.png", "logos/fourier.png", "logos/pudu.svg"]
     },
     {
       "type": "point",
       "index": 3,
       "title": "Чай и кофе",
       "text": "Chagee, HeyTea, Luckin Coffee, Manner, Nayuki: как сети открывают тысячи точек.",
-      "image": "generated/companies-1000/tea-coffee.png"
+      "image": "generated/companies-1000/tea-coffee.png",
+      "logos": ["logos/chagee.svg", "logos/heytea.svg", "logos/luckin.svg", "logos/manner.png"]
     },
     {
       "type": "point",
