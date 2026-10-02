@@ -1,453 +1,453 @@
 {
- "footage": "local/head/s32-confectionery.mp4",
- "captionsSrc": "captions/head-s32-confectionery.json",
- "durationSeconds": 98.9,
- "hookTop": "Один торт —",
- "hookBottom": "сотни точек",
- "brandMark": "GLOBAL TECH TOUR",
- "logoScale": 1.5,
- "logoSpin": 72,
- "focusY": 0.42,
- "plates": [
-  {
-   "text": "Везде одинаково вкусно",
-   "at": 3.9,
-   "until": 6.0,
-   "kind": "accent"
-  },
-  {
-   "text": "5 дней · 8 сетей",
-   "at": 11.7,
-   "until": 14.5,
-   "kind": "accent"
-  },
-  {
-   "text": "Производство Maxim's",
-   "at": 24.8,
-   "until": 28.3,
-   "kind": "term"
-  },
-  {
-   "text": "Рецептура · Бренд · Масштаб",
-   "at": 30.3,
-   "until": 32.6,
-   "kind": "accent"
-  },
-  {
-   "text": "Тысячи тортов без потерь",
-   "at": 39.3,
-   "until": 42.0,
-   "kind": "term"
-  },
-  {
-   "text": "Остап Доценко",
-   "at": 42.15,
-   "until": 44.3,
-   "kind": "term"
-  },
-  {
-   "text": "Говорю по-китайски",
-   "at": 49.2,
-   "until": 50.8,
-   "kind": "term"
-  },
-  {
-   "text": "Знаком лично",
-   "at": 56.0,
-   "until": 57.1,
-   "kind": "accent"
-  },
-  {
-   "text": "Куда с улицы не пускают",
-   "at": 59.3,
-   "until": 61.1,
-   "kind": "term"
-  },
-  {
-   "text": "Быстрое согласование",
-   "at": 61.5,
-   "until": 64.0,
-   "kind": "accent"
-  },
-  {
-   "text": "Бесконечные переписки",
-   "at": 64.7,
-   "until": 67.0,
-   "kind": "struck"
-  },
-  {
-   "text": "18 индустрий",
-   "at": 70.3,
-   "until": 71.6,
-   "kind": "accent"
-  },
-  {
-   "text": "Цены прозрачные",
-   "at": 71.7,
-   "until": 74.5,
-   "kind": "term"
-  },
-  {
-   "text": "Всё на русском языке",
-   "at": 75.5,
-   "until": 77.0,
-   "kind": "accent"
-  },
-  {
-   "text": "Единственный минус…",
-   "at": 77.1,
-   "until": 79.5,
-   "kind": "struck"
-  },
-  {
-   "text": "+2 кг и идеи, которые окупятся",
-   "at": 80.9,
-   "until": 85.2,
-   "kind": "accent"
-  }
- ],
- "cutaways": [],
- "moves": [
-  {
-   "at": 0.0,
-   "until": 2.0,
-   "kind": "punch",
-   "scale": 1.15
-  },
-  {
-   "at": 5.8,
-   "until": 7.0,
-   "kind": "cut",
-   "scale": 1.12
-  },
-  {
-   "at": 11.7,
-   "until": 12.4,
-   "kind": "punch",
-   "scale": 1.2
-  },
-  {
-   "at": 20.2,
-   "until": 22.8,
-   "kind": "push",
-   "scale": 1.07
-  },
-  {
-   "at": 29.0,
-   "until": 30.0,
-   "kind": "cut",
-   "scale": 1.12
-  },
-  {
-   "at": 32.7,
-   "until": 35.6,
-   "kind": "push",
-   "scale": 1.07
-  },
-  {
-   "at": 38.1,
-   "until": 41.4,
-   "kind": "push",
-   "scale": 1.06
-  },
-  {
-   "at": 46.3,
-   "until": 47.3,
-   "kind": "cut",
-   "scale": 1.12
-  },
-  {
-   "at": 60.2,
-   "until": 61.0,
-   "kind": "punch",
-   "scale": 1.2
-  },
-  {
-   "at": 67.5,
-   "until": 68.5,
-   "kind": "cut",
-   "scale": 1.12
-  },
-  {
-   "at": 77.1,
-   "until": 78.0,
-   "kind": "punch",
-   "scale": 1.2
-  },
-  {
-   "at": 85.9,
-   "until": 86.9,
-   "kind": "cut",
-   "scale": 1.12
-  },
-  {
-   "at": 96.8,
-   "until": 98.2,
-   "kind": "punch",
-   "scale": 1.15
-  }
- ],
- "numbers": [
-  {
-   "text": "8",
-   "label": "сетей",
-   "at": 12.4,
-   "until": 14.5,
-   "look": "gradient",
-   "x": 0.17,
-   "y": 0.38,
-   "size": 0.16
-  },
-  {
-   "text": "3",
-   "label": "вещи",
-   "at": 29.6,
-   "until": 32.4,
-   "look": "gradient",
-   "x": 0.17,
-   "y": 0.38,
-   "size": 0.16
-  },
-  {
-   "text": "10+",
-   "label": "лет",
-   "at": 48.6,
-   "until": 50.7,
-   "look": "gradient",
-   "x": 0.17,
-   "y": 0.38,
-   "size": 0.16
-  },
-  {
-   "text": "1000+",
-   "label": "компаний",
-   "at": 68.8,
-   "until": 71.2,
-   "look": "gradient",
-   "x": 0.16,
-   "y": 0.27,
-   "size": 0.1
-  }
- ],
- "flags": [
-  {
-   "src": "local/flags/cn.svg",
-   "at": 47.8,
-   "until": 49.1,
-   "x": 0.84,
-   "y": 0.36,
-   "widthFraction": 0.18,
-   "sound": "audio/sfx/pop.wav",
-   "soundVolume": 0.45
-  },
-  {
-   "src": "local/gtt/flip-holiland.png",
-   "at": 5.9,
-   "until": 8.9,
-   "x": 0.17,
-   "y": 0.418,
-   "widthFraction": 0.17,
-   "sound": "audio/sfx/pop.wav",
-   "soundVolume": 0.4
-  },
-  {
-   "src": "local/gtt/flip-wedome.png",
-   "at": 6.05,
-   "until": 8.9,
-   "x": 0.332,
-   "y": 0.244,
-   "widthFraction": 0.17,
-   "sound": "audio/sfx/pop.wav",
-   "soundVolume": 0.4
-  },
-  {
-   "src": "local/gtt/flip-21cake.png",
-   "at": 6.2,
-   "until": 8.9,
-   "x": 0.442,
-   "y": 0.205,
-   "widthFraction": 0.17,
-   "sound": "audio/sfx/pop.wav",
-   "soundVolume": 0.4
-  },
-  {
-   "src": "local/gtt/flip-ganso.png",
-   "at": 6.35,
-   "until": 8.9,
-   "x": 0.558,
-   "y": 0.205,
-   "widthFraction": 0.17,
-   "sound": "audio/sfx/pop.wav",
-   "soundVolume": 0.4
-  },
-  {
-   "src": "local/gtt/flip-xingfu.png",
-   "at": 6.5,
-   "until": 8.9,
-   "x": 0.668,
-   "y": 0.244,
-   "widthFraction": 0.17,
-   "sound": "audio/sfx/pop.wav",
-   "soundVolume": 0.4
-  },
-  {
-   "src": "local/gtt/flip-maxims.png",
-   "at": 6.65,
-   "until": 8.9,
-   "x": 0.83,
-   "y": 0.418,
-   "widthFraction": 0.17,
-   "sound": "audio/sfx/pop.wav",
-   "soundVolume": 0.4
-  }
- ],
- "splits": [
-  {
-   "at": 32.9,
-   "until": 37.5,
-   "side": "bottom",
-   "items": [
+  "footage": "local/head/s32-confectionery.mp4",
+  "captionsSrc": "captions/head-s32-confectionery.json",
+  "durationSeconds": 98.9,
+  "hookTop": "Один торт —",
+  "hookBottom": "сотни точек",
+  "brandMark": "GLOBAL TECH TOUR",
+  "logoScale": 1.5,
+  "logoSpin": 72,
+  "focusY": 0.42,
+  "plates": [
     {
-     "src": "local/gtt/user/cake-line.jpg",
-     "focusY": 0.5
-    }
-   ]
-  }
- ],
- "stages": [
-  {
-   "at": 5.8,
-   "until": 9.2,
-   "items": [
-    {
-     "src": "local/flags/cn-wave.mp4"
-    }
-   ]
-  },
-  {
-   "at": 23.3,
-   "until": 28.3,
-   "items": [
-    {
-     "src": "local/gtt/user/maxims-shop.png"
-    }
-   ]
-  },
-  {
-   "at": 54.1,
-   "until": 56.7,
-   "items": [
-    {
-     "src": "generated/tea-coffee-retail/negotiations.png"
-    }
-   ]
-  },
-  {
-   "at": 95.7,
-   "until": 98.9,
-   "items": [
-    {
-     "src": "local/gtt/user/maxims-shop.png"
-    }
-   ]
-  }
- ],
- "flips": [
-  {
-   "at": 14.8,
-   "until": 19.9,
-   "overlay": true,
-   "widthFraction": 0.32,
-   "centerX": 0.78,
-   "centerY": 0.3,
-   "items": [
-    {
-     "src": "local/gtt/flip-holiland.png",
-     "seconds": 0.9
+      "text": "Везде одинаково вкусно",
+      "at": 3.9,
+      "until": 6.0,
+      "kind": "accent"
     },
     {
-     "src": "local/gtt/flip-wedome.png",
-     "seconds": 0.8
+      "text": "5 дней · 8 сетей",
+      "at": 11.7,
+      "until": 14.5,
+      "kind": "accent"
     },
     {
-     "src": "local/gtt/flip-21cake.png",
-     "seconds": 0.9
+      "text": "Производство Maxim's",
+      "at": 24.8,
+      "until": 28.3,
+      "kind": "term"
     },
     {
-     "src": "local/gtt/flip-ganso.png",
-     "seconds": 0.8
+      "text": "Рецептура · Бренд · Масштаб",
+      "at": 30.3,
+      "until": 32.6,
+      "kind": "accent"
     },
     {
-     "src": "local/gtt/flip-xingfu.png",
-     "seconds": 1.1
+      "text": "Тысячи тортов без потерь",
+      "at": 39.3,
+      "until": 42.0,
+      "kind": "term"
     },
     {
-     "src": "local/gtt/flip-maxims.png"
+      "text": "Остап Доценко",
+      "at": 42.15,
+      "until": 44.3,
+      "kind": "term"
+    },
+    {
+      "text": "Говорю по-китайски",
+      "at": 49.2,
+      "until": 50.8,
+      "kind": "term"
+    },
+    {
+      "text": "Знаком лично",
+      "at": 56.0,
+      "until": 57.1,
+      "kind": "accent"
+    },
+    {
+      "text": "Куда с улицы не пускают",
+      "at": 59.3,
+      "until": 61.1,
+      "kind": "term"
+    },
+    {
+      "text": "Быстрое согласование",
+      "at": 61.5,
+      "until": 64.0,
+      "kind": "accent"
+    },
+    {
+      "text": "Бесконечные переписки",
+      "at": 64.7,
+      "until": 67.0,
+      "kind": "struck"
+    },
+    {
+      "text": "18 индустрий",
+      "at": 70.3,
+      "until": 71.6,
+      "kind": "accent"
+    },
+    {
+      "text": "Цены прозрачные",
+      "at": 71.7,
+      "until": 74.5,
+      "kind": "term"
+    },
+    {
+      "text": "Всё на русском языке",
+      "at": 75.5,
+      "until": 77.0,
+      "kind": "accent"
+    },
+    {
+      "text": "Единственный минус…",
+      "at": 77.1,
+      "until": 79.5,
+      "kind": "struck"
+    },
+    {
+      "text": "+2 кг и идеи, которые окупятся",
+      "at": 80.9,
+      "until": 85.2,
+      "kind": "accent"
     }
-   ]
-  },
-  {
-   "at": 45.0,
-   "until": 46.4,
-   "overlay": true,
-   "widthFraction": 0.32,
-   "centerX": 0.78,
-   "centerY": 0.3,
-   "items": [
+  ],
+  "cutaways": [],
+  "moves": [
     {
-     "src": "local/gtt/flip-alibaba.png",
-     "seconds": 0.6
+      "at": 0.0,
+      "until": 2.0,
+      "kind": "punch",
+      "scale": 1.15
     },
     {
-     "src": "local/gtt/flip-sber.png"
-    }
-   ]
-  }
- ],
- "pips": [
-  {
-   "at": 88.7,
-   "until": 92.5,
-   "items": [
-    {
-     "src": "site/home.png",
-     "present": "site",
-     "title": "Global Tech Tour",
-     "url": "globaltechtour.ru",
-     "scrollTo": 0.08
-    }
-   ]
-  }
- ],
- "photoCards": [
-  {
-   "at": 21.0,
-   "until": 23.2,
-   "side": "right",
-   "widthFraction": 0.38,
-   "stepSeconds": 0.7,
-   "items": [
-    {
-     "src": "local/pano/beijing-temple-v.jpg",
-     "caption": "Пекин"
+      "at": 5.8,
+      "until": 7.0,
+      "kind": "cut",
+      "scale": 1.12
     },
     {
-     "src": "local/pano/shanghai-bund-v.jpg",
-     "caption": "Шанхай"
+      "at": 11.7,
+      "until": 12.4,
+      "kind": "punch",
+      "scale": 1.2
     },
     {
-     "src": "local/pano/guangzhou-tower-v.jpg",
-     "caption": "Юг Китая"
+      "at": 20.2,
+      "until": 22.8,
+      "kind": "push",
+      "scale": 1.07
+    },
+    {
+      "at": 29.0,
+      "until": 30.0,
+      "kind": "cut",
+      "scale": 1.12
+    },
+    {
+      "at": 32.7,
+      "until": 35.6,
+      "kind": "push",
+      "scale": 1.07
+    },
+    {
+      "at": 38.1,
+      "until": 41.4,
+      "kind": "push",
+      "scale": 1.06
+    },
+    {
+      "at": 46.3,
+      "until": 47.3,
+      "kind": "cut",
+      "scale": 1.12
+    },
+    {
+      "at": 60.2,
+      "until": 61.0,
+      "kind": "punch",
+      "scale": 1.2
+    },
+    {
+      "at": 67.5,
+      "until": 68.5,
+      "kind": "cut",
+      "scale": 1.12
+    },
+    {
+      "at": 77.1,
+      "until": 78.0,
+      "kind": "punch",
+      "scale": 1.2
+    },
+    {
+      "at": 85.9,
+      "until": 86.9,
+      "kind": "cut",
+      "scale": 1.12
+    },
+    {
+      "at": 96.8,
+      "until": 98.2,
+      "kind": "punch",
+      "scale": 1.15
     }
-   ]
-  }
- ],
- "popWindows": [],
- "brolls": [],
- "splitEyesAt": 0.36,
- "splitSeam": 0.58,
- "music": "audio/music/gtt-bed-light-long.m4a",
- "musicVolume": 0.12,
- "safeZone": "reels",
- "cutoutSrc": "local/head/s32-confectionery-cutout.webm"
+  ],
+  "numbers": [
+    {
+      "text": "8",
+      "label": "сетей",
+      "at": 12.4,
+      "until": 14.5,
+      "look": "gradient",
+      "x": 0.17,
+      "y": 0.38,
+      "size": 0.16
+    },
+    {
+      "text": "3",
+      "label": "вещи",
+      "at": 29.6,
+      "until": 32.4,
+      "look": "gradient",
+      "x": 0.17,
+      "y": 0.38,
+      "size": 0.16
+    },
+    {
+      "text": "10+",
+      "label": "лет",
+      "at": 48.6,
+      "until": 50.7,
+      "look": "gradient",
+      "x": 0.17,
+      "y": 0.38,
+      "size": 0.16
+    },
+    {
+      "text": "1000+",
+      "label": "компаний",
+      "at": 68.8,
+      "until": 71.2,
+      "look": "gradient",
+      "x": 0.16,
+      "y": 0.27,
+      "size": 0.1
+    }
+  ],
+  "flags": [
+    {
+      "src": "local/flags/cn.svg",
+      "at": 47.8,
+      "until": 49.1,
+      "x": 0.84,
+      "y": 0.36,
+      "widthFraction": 0.18,
+      "sound": "audio/sfx/pop.wav",
+      "soundVolume": 0.45
+    },
+    {
+      "src": "local/gtt/flip-holiland.png",
+      "at": 5.9,
+      "until": 8.9,
+      "x": 0.12,
+      "y": 0.4,
+      "widthFraction": 0.14,
+      "sound": "audio/sfx/pop.wav",
+      "soundVolume": 0.4
+    },
+    {
+      "src": "local/gtt/flip-wedome.png",
+      "at": 6.05,
+      "until": 8.9,
+      "x": 0.27,
+      "y": 0.27,
+      "widthFraction": 0.14,
+      "sound": "audio/sfx/pop.wav",
+      "soundVolume": 0.4
+    },
+    {
+      "src": "local/gtt/flip-21cake.png",
+      "at": 6.2,
+      "until": 8.9,
+      "x": 0.42,
+      "y": 0.21,
+      "widthFraction": 0.14,
+      "sound": "audio/sfx/pop.wav",
+      "soundVolume": 0.4
+    },
+    {
+      "src": "local/gtt/flip-ganso.png",
+      "at": 6.35,
+      "until": 8.9,
+      "x": 0.58,
+      "y": 0.21,
+      "widthFraction": 0.14,
+      "sound": "audio/sfx/pop.wav",
+      "soundVolume": 0.4
+    },
+    {
+      "src": "local/gtt/flip-xingfu.png",
+      "at": 6.5,
+      "until": 8.9,
+      "x": 0.73,
+      "y": 0.27,
+      "widthFraction": 0.14,
+      "sound": "audio/sfx/pop.wav",
+      "soundVolume": 0.4
+    },
+    {
+      "src": "local/gtt/flip-maxims.png",
+      "at": 6.65,
+      "until": 8.9,
+      "x": 0.88,
+      "y": 0.4,
+      "widthFraction": 0.14,
+      "sound": "audio/sfx/pop.wav",
+      "soundVolume": 0.4
+    }
+  ],
+  "splits": [
+    {
+      "at": 32.9,
+      "until": 37.5,
+      "side": "bottom",
+      "items": [
+        {
+          "src": "local/gtt/user/cake-line.jpg",
+          "focusY": 0.5
+        }
+      ]
+    }
+  ],
+  "stages": [
+    {
+      "at": 5.8,
+      "until": 9.2,
+      "items": [
+        {
+          "src": "local/flags/cn-wave.mp4"
+        }
+      ]
+    },
+    {
+      "at": 23.3,
+      "until": 28.3,
+      "items": [
+        {
+          "src": "local/gtt/user/maxims-shop.png"
+        }
+      ]
+    },
+    {
+      "at": 54.1,
+      "until": 56.7,
+      "items": [
+        {
+          "src": "generated/tea-coffee-retail/negotiations.png"
+        }
+      ]
+    },
+    {
+      "at": 95.7,
+      "until": 98.9,
+      "items": [
+        {
+          "src": "local/gtt/user/maxims-shop.png"
+        }
+      ]
+    }
+  ],
+  "flips": [
+    {
+      "at": 14.8,
+      "until": 19.9,
+      "overlay": true,
+      "widthFraction": 0.32,
+      "centerX": 0.78,
+      "centerY": 0.3,
+      "items": [
+        {
+          "src": "local/gtt/flip-holiland.png",
+          "seconds": 0.9
+        },
+        {
+          "src": "local/gtt/flip-wedome.png",
+          "seconds": 0.8
+        },
+        {
+          "src": "local/gtt/flip-21cake.png",
+          "seconds": 0.9
+        },
+        {
+          "src": "local/gtt/flip-ganso.png",
+          "seconds": 0.8
+        },
+        {
+          "src": "local/gtt/flip-xingfu.png",
+          "seconds": 1.1
+        },
+        {
+          "src": "local/gtt/flip-maxims.png"
+        }
+      ]
+    },
+    {
+      "at": 45.0,
+      "until": 46.4,
+      "overlay": true,
+      "widthFraction": 0.32,
+      "centerX": 0.78,
+      "centerY": 0.3,
+      "items": [
+        {
+          "src": "local/gtt/flip-alibaba.png",
+          "seconds": 0.6
+        },
+        {
+          "src": "local/gtt/flip-sber.png"
+        }
+      ]
+    }
+  ],
+  "pips": [
+    {
+      "at": 88.7,
+      "until": 92.5,
+      "items": [
+        {
+          "src": "site/home.png",
+          "present": "site",
+          "title": "Global Tech Tour",
+          "url": "globaltechtour.ru",
+          "scrollTo": 0.08
+        }
+      ]
+    }
+  ],
+  "photoCards": [
+    {
+      "at": 21.0,
+      "until": 23.2,
+      "side": "right",
+      "widthFraction": 0.38,
+      "stepSeconds": 0.7,
+      "items": [
+        {
+          "src": "local/pano/beijing-temple-v.jpg",
+          "caption": "Пекин"
+        },
+        {
+          "src": "local/pano/shanghai-bund-v.jpg",
+          "caption": "Шанхай"
+        },
+        {
+          "src": "local/pano/guangzhou-tower-v.jpg",
+          "caption": "Юг Китая"
+        }
+      ]
+    }
+  ],
+  "popWindows": [],
+  "brolls": [],
+  "splitEyesAt": 0.36,
+  "splitSeam": 0.58,
+  "music": "audio/music/gtt-bed-light-long.m4a",
+  "musicVolume": 0.12,
+  "safeZone": "reels",
+  "cutoutSrc": "local/head/s32-confectionery-cutout.webm"
 }
