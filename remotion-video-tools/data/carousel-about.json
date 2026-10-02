@@ -17,15 +17,16 @@
       "title": "**10+ лет** в Китае",
       "text": "Живу и работаю в Шанхае, говорю на китайском свободно.",
       "image": "real-photos/ostap-shanghai.jpg",
-      "cornerTheme": "dark"
+      "cornerTheme": "dark",
+      "noFrost": true
     },
     {
       "type": "point",
       "index": 2,
       "title": "Работал внутри",
       "text": "Alibaba (O2O) и Сбер (B2B): знаю, как устроены большие компании изнутри.",
-      "image": "generated/about/divider.png",
-      "logos": ["logos/alibaba.svg"]
+      "image": "generated/about/divider-bright.png",
+      "logos": [{"src": "logos/alibaba.svg", "scale": 2}, {"src": "logos/sber.svg", "scale": 2}]
     },
     {
       "type": "point",
@@ -53,12 +54,14 @@
       "type": "quote",
       "text": "千里之行，始于足下 — «Путь в тысячу ли начинается с первого шага»",
       "author": "",
-      "image": "generated/about/calligraphy.png"
+      "image": "generated/about/calligraphy.png",
+      "textScale": 1.5,
+      "textRaise": 0.04
     },
     {
       "type": "cta",
-      "title": "Подписывайтесь на личный блог @ostap.dotsenko",
-      "text": "Задать вопрос лично → Telegram @GLOBALTECHTOUR · WhatsApp/Telegram @ostapdotcenko",
+      "title": "ostapdotcenko.ru · globaltechtour.ru",
+      "text": "Telegram-канал @GLOBALTECHTOUR · личный Telegram @ostapdotcenko",
       "keyword": "",
       "handle": "globaltechtour.ru",
       "image": "generated/about/cta.png"

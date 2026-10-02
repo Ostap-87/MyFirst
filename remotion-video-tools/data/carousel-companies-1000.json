@@ -45,7 +45,7 @@
       "index": 5,
       "title": "Не только Китай",
       "text": "Япония, Корея, Таиланд, Вьетнам, Индонезия, Малайзия, Индия.",
-      "image": "generated/companies-1000/asia-map.png"
+      "image": "generated/companies-1000/flags.png"
     },
     {
       "type": "point",
@@ -57,10 +57,10 @@
     {
       "type": "cta",
       "title": "Вашей отрасли нет в списке?",
-      "text": "Соберём программу под вас. Пишите → Telegram @GLOBALTECHTOUR · WhatsApp/Telegram @ostapdotcenko",
+      "text": "Соберём программу под вас. Telegram: @ostapdotcenko (в директ) · info@globaltechtour.ru",
       "keyword": "",
       "handle": "globaltechtour.ru",
-      "image": "generated/companies-1000/cta.png"
+      "image": "generated/companies-1000/cta-question.png"
     }
   ]
 }

@@ -30,6 +30,15 @@ const textLower = z
   .describe("На сколько (доля высоты кадра) опустить текст ниже обычного — точечно для этого слайда")
   .optional();
 
+// Обратное textLower — поднимает текстовый блок выше обычного (например,
+// чтобы освободить место под крупную картинку/иероглифы над текстом).
+const textRaise = z
+  .number()
+  .min(0)
+  .max(0.1)
+  .describe("На сколько (доля высоты кадра) поднять текст выше обычного — точечно для этого слайда")
+  .optional();
+
 export const slideSchema = z.discriminatedUnion("type", [
   z.object({
     type: z.literal("cover"),
@@ -65,6 +74,12 @@ export const slideSchema = z.discriminatedUnion("type", [
       )
       .optional(),
     cornerTheme,
+    noFrost: z
+      .boolean()
+      .describe(
+        "Убрать размытую светлую frosted-панель снизу фото — нужно, когда панель закрывает слишком много важного на снимке (например лицо/задний план на портретном фото). Вместо панели — лёгкий тёмный градиент только у самого низа, текст белый, в компактной белой плашке.",
+      )
+      .optional(),
   }),
   z.object({
     type: z.literal("metric"),
@@ -83,6 +98,11 @@ export const slideSchema = z.discriminatedUnion("type", [
     author: z.string().describe("Кто сказал"),
     image: z.string().describe("Фон-картинка из public; пусто — фирменный фон").optional(),
     cornerTheme,
+    textScale: z
+      .number()
+      .describe("Во сколько раз увеличить размер текста цитаты (например для крупных иероглифов)")
+      .optional(),
+    textRaise,
   }),
   z.object({
     type: z.literal("image"),

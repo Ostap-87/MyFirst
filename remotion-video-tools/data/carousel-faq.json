@@ -39,10 +39,13 @@
       "image": "generated/faq/group-size.png"
     },
     {
-      "type": "point",
-      "index": 5,
-      "title": "Сколько длится экспедиция?",
-      "text": "5 рабочих дней и 6 ночей, 2 компании в день. Программа начинается в день прилёта.",
+      "type": "metric",
+      "value": 5,
+      "prefix": "",
+      "suffix": " дней",
+      "compact": false,
+      "label": "Сколько длится экспедиция",
+      "source": "6 ночей, 2 компании в день. Программа начинается в день прилёта.",
       "image": "generated/faq/duration.png"
     },
     {
@@ -50,7 +53,7 @@
       "index": 6,
       "title": "Можно поехать одному или только компанией?",
       "text": "И так, и так: индивидуальное участие или программа для вашей команды.",
-      "image": "generated/faq/solo-or-team.png"
+      "image": "generated/faq/solo-or-team-v2.png"
     },
     {
       "type": "point",

@@ -118,6 +118,12 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
     framedCardHeight * (slide.type === "cover" ? 0.66 : 0.6),
   );
 
+  // Когда на фото важно видеть сам снимок целиком (портрет, узнаваемый фон),
+  // а не только его верхнюю треть — размытая frosted-панель убирается, текст
+  // вместо этого живёт в компактной белой плашке снизу (см. noFrost в types.ts).
+  const frostless =
+    slide.type === "point" && "noFrost" in slide && !!slide.noFrost;
+
   return (
     <AbsoluteFill style={{ backgroundColor: background }}>
       {hasImage && "image" in slide && slide.image && !framed ? (
@@ -167,36 +173,41 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
           {/* Frosted-панель: размытие и белый оттенок нарастают плавно
               (маска-градиент), а не жёсткой линией — верх карточки при
               этом остаётся резким. Светлая, не тёмная (запрос
-              пользователя 21.09.2026), текст поверх — тёмный. */}
-          <div
-            style={{
-              position: "absolute",
-              left: 0,
-              right: 0,
-              bottom: 0,
-              height: framedPanelHeight,
-              // Дымка, а не сплошной туман (запрос 21.09.2026): меньше
-              // непрозрачности и размытия — силуэт фото должен слегка
-              // проглядывать сквозь панель, а не пропадать под ней целиком.
-              backdropFilter: "blur(24px)",
-              WebkitBackdropFilter: "blur(24px)",
-              backgroundColor: "rgba(255,255,255,0.5)",
-              maskImage:
-                "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 30%)",
-              WebkitMaskImage:
-                "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 30%)",
-            }}
-          />
+              пользователя 21.09.2026), текст поверх — тёмный.
+              Пропускается для noFrost-слайдов — там важно видеть фото
+              целиком, текст вместо этого в отдельной белой плашке ниже. */}
+          {!frostless ? (
+            <div
+              style={{
+                position: "absolute",
+                left: 0,
+                right: 0,
+                bottom: 0,
+                height: framedPanelHeight,
+                // Дымка, а не сплошной туман (запрос 21.09.2026): меньше
+                // непрозрачности и размытия — силуэт фото должен слегка
+                // проглядывать сквозь панель, а не пропадать под ней целиком.
+                backdropFilter: "blur(24px)",
+                WebkitBackdropFilter: "blur(24px)",
+                backgroundColor: "rgba(255,255,255,0.5)",
+                maskImage:
+                  "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 30%)",
+                WebkitMaskImage:
+                  "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 30%)",
+              }}
+            />
+          ) : null}
 
           <div
             style={{
               position: "absolute",
               left: 0,
-              right: 0,
+              right: frostless ? undefined : 0,
               bottom: 0,
-              height: framedPanelHeight,
+              height: frostless ? undefined : framedPanelHeight,
               display: "flex",
               flexDirection: "column",
+              alignItems: frostless ? "flex-start" : "stretch",
               justifyContent: "flex-end",
               // На первом слайде плашка «листай» лежит в правом нижнем углу
               // карточки — резервируем под неё запас снизу, иначе последняя
@@ -205,9 +216,23 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
               padding: `0 ${sp(0.07)}px ${
                 (showSwipeHint && position.index === 0 ? sp(0.1) : sp(0.06)) +
                 vh(0.06) -
-                vh(("textLower" in slide && slide.textLower) || 0)
+                vh(("textLower" in slide && slide.textLower) || 0) +
+                vh(("textRaise" in slide && slide.textRaise) || 0)
               }px`,
               gap: sp(0.02),
+              // noFrost: сам текстовый блок — компактная белая плашка с
+              // тенью поверх резкого фото, а не растянутая на всю ширину
+              // прозрачная панель.
+              ...(frostless
+                ? {
+                    backgroundColor: "#ffffff",
+                    borderRadius: sp(0.04),
+                    boxShadow: "0 16px 40px rgba(23,23,29,0.18)",
+                    maxWidth: "78%",
+                    margin: `0 ${sp(0.07)}px ${vh(0.06)}px`,
+                    padding: `${vh(0.03)}px ${sp(0.05)}px`,
+                  }
+                : {}),
             }}
           >
             {slide.type === "cover" ? (
@@ -414,22 +439,24 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
                     margin: 0,
                     fontFamily: fontFamily(theme.fonts.heading),
                     fontWeight: theme.fonts.headingWeight,
-                    fontSize: fs(0.052),
+                    fontSize: fs(0.052 * (slide.textScale ?? 1)),
                     lineHeight: 1.25,
                     color: theme.colors.text,
                   }}
                 >
                   «{slide.text}»
                 </p>
-                <div
-                  style={{
-                    fontFamily: fontFamily(theme.fonts.mono),
-                    fontSize: fs(0.026),
-                    color: theme.colors.text,
-                  }}
-                >
-                  {slide.author}
-                </div>
+                {slide.author ? (
+                  <div
+                    style={{
+                      fontFamily: fontFamily(theme.fonts.mono),
+                      fontSize: fs(0.026),
+                      color: theme.colors.text,
+                    }}
+                  >
+                    {slide.author}
+                  </div>
+                ) : null}
               </>
             ) : null}
 

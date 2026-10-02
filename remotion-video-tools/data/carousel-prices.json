@@ -15,7 +15,7 @@
       "index": 1,
       "title": "Индивидуальное участие",
       "text": "От **$4 000** за человека. Зависит от отрасли и маршрута.",
-      "image": "generated/prices/individual.png"
+      "image": "generated/corporate-training/haier.png"
     },
     {
       "type": "point",
@@ -41,7 +41,7 @@
     {
       "type": "point",
       "index": 5,
-      "title": "Почему так дорого?",
+      "title": "Почему это столько стоит?",
       "text": "Самая большая статья — согласованные визиты в компании. Это **закрытые двери**, которые открываются не бесплатно.",
       "image": "generated/prices/why-expensive.png"
     },
@@ -55,10 +55,10 @@
     {
       "type": "cta",
       "title": "Рассчитаем вашу программу",
-      "text": "Напишите отрасль и даты → Telegram @GLOBALTECHTOUR · WhatsApp/Telegram @ostapdotcenko",
+      "text": "Напишите отрасль и даты. Telegram: @ostapdotcenko (в директ) · info@globaltechtour.ru",
       "keyword": "",
       "handle": "globaltechtour.ru",
-      "image": "generated/prices/cta.png"
+      "image": "generated/shared/cta-bright.png"
     }
   ]
 }
