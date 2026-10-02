@@ -295,16 +295,16 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
                     style={{
                       display: "flex",
                       flexWrap: "wrap",
-                      gap: sp(0.02),
+                      gap: sp(0.03),
                     }}
                   >
                     {slide.logos.map((logo, i) => (
                       <div
                         key={i}
                         style={{
-                          height: fs(0.052),
-                          padding: `${fs(0.01)}px ${fs(0.018)}px`,
-                          borderRadius: sp(0.015),
+                          height: fs(0.13),
+                          padding: `${fs(0.02)}px ${fs(0.03)}px`,
+                          borderRadius: sp(0.02),
                           backgroundColor: "#ffffff",
                           border: `1px solid ${theme.colors.line}`,
                           display: "flex",
@@ -316,7 +316,7 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
                           src={staticFile(logo)}
                           style={{
                             height: "100%",
-                            maxWidth: fs(0.16),
+                            maxWidth: fs(0.42),
                             objectFit: "contain",
                           }}
                         />
