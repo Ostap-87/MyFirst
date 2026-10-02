@@ -555,1093 +555,1086 @@
  {
   "text": " Посмотрите",
   "startMs": 35000,
-  "endMs": 36410,
+  "endMs": 35720,
   "timestampMs": 35705,
   "confidence": 0.992545
  },
  {
-  "text": " на",
-  "startMs": 36410,
-  "endMs": 36730,
-  "timestampMs": 38040,
-  "confidence": 0.686546
- },
- {
   "text": " роботов",
-  "startMs": 36730,
-  "endMs": 37670,
+  "startMs": 35720,
+  "endMs": 36330,
   "timestampMs": 37200,
   "confidence": 0.939178
  },
  {
   "text": " собак",
-  "startMs": 37670,
-  "endMs": 38370,
+  "startMs": 36330,
+  "endMs": 37030,
   "timestampMs": 38020,
   "confidence": 0.542786
  },
  {
   "text": " Unitree,",
-  "startMs": 38370,
-  "endMs": 39000,
+  "startMs": 37030,
+  "endMs": 37660,
   "timestampMs": 38685,
   "confidence": 0.565529
  },
  {
   "text": " которые",
-  "startMs": 39000,
-  "endMs": 39430,
+  "startMs": 37660,
+  "endMs": 38090,
   "timestampMs": 40140,
   "confidence": 0.946673
  },
  {
   "text": " танцуют",
-  "startMs": 39430,
-  "endMs": 39960,
+  "startMs": 38090,
+  "endMs": 38620,
   "timestampMs": 39695,
   "confidence": 0.985957
  },
  {
   "text": " по",
-  "startMs": 39960,
-  "endMs": 40040,
+  "startMs": 38620,
+  "endMs": 38700,
   "timestampMs": 41120,
   "confidence": 0.974877
  },
  {
   "text": " всему",
-  "startMs": 40040,
-  "endMs": 40360,
+  "startMs": 38700,
+  "endMs": 39020,
   "timestampMs": 40200,
   "confidence": 0.991223
  },
  {
   "text": " интернету.",
-  "startMs": 40360,
-  "endMs": 42000,
+  "startMs": 39020,
+  "endMs": 40660,
   "timestampMs": 41180,
   "confidence": 0.767695
  },
  {
   "text": " И",
-  "startMs": 42000,
-  "endMs": 42160,
+  "startMs": 40660,
+  "endMs": 40820,
   "timestampMs": 42320,
   "confidence": 0.966086
  },
  {
   "text": " на",
-  "startMs": 42160,
-  "endMs": 42310,
+  "startMs": 40820,
+  "endMs": 40970,
   "timestampMs": 42500,
   "confidence": 0.994194
  },
  {
   "text": " Xiaohongshu,",
-  "startMs": 42310,
-  "endMs": 42980,
+  "startMs": 40970,
+  "endMs": 41640,
   "timestampMs": 42645,
   "confidence": 0.466023
  },
  {
   "text": " китайский",
-  "startMs": 42980,
-  "endMs": 43920,
+  "startMs": 41640,
+  "endMs": 42580,
   "timestampMs": 43450,
   "confidence": 0.942912
  },
  {
   "text": " ответ",
-  "startMs": 43920,
-  "endMs": 44450,
+  "startMs": 42580,
+  "endMs": 43110,
   "timestampMs": 44360,
   "confidence": 0.986199
  },
  {
   "text": " Instagram.",
-  "startMs": 44450,
-  "endMs": 45000,
+  "startMs": 43110,
+  "endMs": 43660,
   "timestampMs": 44725,
   "confidence": 0.66727
  },
  {
   "text": " Это",
-  "startMs": 45000,
-  "endMs": 45190,
+  "startMs": 43660,
+  "endMs": 43850,
   "timestampMs": 45660,
   "confidence": 0.978986
  },
  {
   "text": " не",
-  "startMs": 45190,
-  "endMs": 45320,
+  "startMs": 43850,
+  "endMs": 43980,
   "timestampMs": 45840,
   "confidence": 0.991204
  },
  {
   "text": " экскурсия",
-  "startMs": 45320,
-  "endMs": 45850,
+  "startMs": 43980,
+  "endMs": 44510,
   "timestampMs": 45585,
   "confidence": 0.996679
  },
  {
   "text": " по",
-  "startMs": 45850,
-  "endMs": 46010,
+  "startMs": 44510,
+  "endMs": 44670,
   "timestampMs": 46600,
   "confidence": 0.997619
  },
  {
   "text": " красивым",
-  "startMs": 46010,
-  "endMs": 46500,
+  "startMs": 44670,
+  "endMs": 45160,
   "timestampMs": 46255,
   "confidence": 0.939942
  },
  {
   "text": " холлам,",
-  "startMs": 46500,
-  "endMs": 47000,
+  "startMs": 45160,
+  "endMs": 45660,
   "timestampMs": 46750,
   "confidence": 0.401295
  },
  {
   "text": " это",
-  "startMs": 47000,
-  "endMs": 47150,
+  "startMs": 45660,
+  "endMs": 45810,
   "timestampMs": 47760,
   "confidence": 0.951911
  },
  {
   "text": " возможность",
-  "startMs": 47150,
-  "endMs": 47690,
+  "startMs": 45810,
+  "endMs": 46350,
   "timestampMs": 48320,
   "confidence": 0.997288
  },
  {
   "text": " понять,",
-  "startMs": 47690,
-  "endMs": 48080,
+  "startMs": 46350,
+  "endMs": 46740,
   "timestampMs": 47885,
   "confidence": 0.872953
  },
  {
   "text": " как",
-  "startMs": 48080,
-  "endMs": 48350,
+  "startMs": 46740,
+  "endMs": 47010,
   "timestampMs": 49380,
   "confidence": 0.884949
  },
  {
   "text": " строятся",
-  "startMs": 48350,
-  "endMs": 49020,
+  "startMs": 47010,
+  "endMs": 47680,
   "timestampMs": 48685,
   "confidence": 0.840809
  },
  {
   "text": " экосистемы,",
-  "startMs": 49020,
-  "endMs": 50000,
+  "startMs": 47680,
+  "endMs": 48660,
   "timestampMs": 49510,
   "confidence": 0.803412
  },
  {
   "text": " как",
-  "startMs": 50000,
-  "endMs": 50270,
+  "startMs": 48660,
+  "endMs": 48930,
   "timestampMs": 50880,
   "confidence": 0.982339
  },
  {
   "text": " запускаются",
-  "startMs": 50270,
-  "endMs": 51280,
+  "startMs": 48930,
+  "endMs": 49940,
   "timestampMs": 50775,
   "confidence": 0.994713
  },
  {
   "text": " продукты",
-  "startMs": 51280,
-  "endMs": 52040,
+  "startMs": 49940,
+  "endMs": 50700,
   "timestampMs": 51660,
   "confidence": 0.998388
  },
  {
   "text": " и",
-  "startMs": 52040,
-  "endMs": 52270,
+  "startMs": 50700,
+  "endMs": 50930,
   "timestampMs": 52400,
   "confidence": 0.82828
  },
  {
   "text": " почему",
-  "startMs": 52270,
-  "endMs": 52650,
+  "startMs": 50930,
+  "endMs": 51310,
   "timestampMs": 52900,
   "confidence": 0.995816
  },
  {
   "text": " китайские",
-  "startMs": 52650,
-  "endMs": 53490,
+  "startMs": 51310,
+  "endMs": 52150,
   "timestampMs": 53070,
   "confidence": 0.985244
  },
  {
   "text": " компании",
-  "startMs": 53490,
-  "endMs": 54300,
+  "startMs": 52150,
+  "endMs": 52960,
   "timestampMs": 54120,
   "confidence": 0.995089
  },
  {
   "text": " растут",
-  "startMs": 54300,
-  "endMs": 54960,
+  "startMs": 52960,
+  "endMs": 53620,
   "timestampMs": 54630,
   "confidence": 0.985338
  },
  {
   "text": " быстрее",
-  "startMs": 54960,
-  "endMs": 55410,
+  "startMs": 53620,
+  "endMs": 54070,
   "timestampMs": 55185,
   "confidence": 0.99643
  },
  {
   "text": " всех.",
-  "startMs": 55410,
-  "endMs": 56000,
+  "startMs": 54070,
+  "endMs": 54660,
   "timestampMs": 55705,
   "confidence": 0.985334
  },
  {
   "text": " Меня",
-  "startMs": 56090,
-  "endMs": 56360,
+  "startMs": 54750,
+  "endMs": 55020,
   "timestampMs": 56600,
   "confidence": 0.971626
  },
  {
   "text": " зовут",
-  "startMs": 56360,
-  "endMs": 56810,
+  "startMs": 55020,
+  "endMs": 55470,
   "timestampMs": 57080,
   "confidence": 0.9977
  },
  {
   "text": " Остап",
-  "startMs": 56810,
-  "endMs": 57260,
+  "startMs": 55470,
+  "endMs": 55920,
   "timestampMs": 57035,
   "confidence": 0.403942
  },
  {
   "text": " Доценко,",
-  "startMs": 57260,
-  "endMs": 57980,
+  "startMs": 55920,
+  "endMs": 56640,
   "timestampMs": 57620,
   "confidence": 0.532466
  },
  {
   "text": " я",
-  "startMs": 57980,
-  "endMs": 58070,
+  "startMs": 56640,
+  "endMs": 56730,
   "timestampMs": 58720,
   "confidence": 0.934178
  },
  {
   "text": " работал",
-  "startMs": 58070,
-  "endMs": 58700,
+  "startMs": 56730,
+  "endMs": 57360,
   "timestampMs": 58385,
   "confidence": 0.960943
  },
  {
   "text": " в",
-  "startMs": 58700,
-  "endMs": 58790,
+  "startMs": 57360,
+  "endMs": 57450,
   "timestampMs": 59340,
   "confidence": 0.984945
  },
  {
   "text": "Alibaba",
-  "startMs": 58790,
-  "endMs": 59334
+  "startMs": 57450,
+  "endMs": 57994
  },
  {
   "text": "и",
-  "startMs": 59334,
-  "endMs": 59455
+  "startMs": 57994,
+  "endMs": 58115
  },
  {
   "text": "Сбере.",
-  "startMs": 59455,
-  "endMs": 60000
+  "startMs": 58115,
+  "endMs": 58660
  },
  {
   "text": " И",
-  "startMs": 60000,
-  "endMs": 60260,
+  "startMs": 58660,
+  "endMs": 58920,
   "timestampMs": 60500,
   "confidence": 0.908491
  },
  {
   "text": " мой",
-  "startMs": 60260,
-  "endMs": 60300,
+  "startMs": 58920,
+  "endMs": 58960,
   "timestampMs": 60600,
   "confidence": 0.989389
  },
  {
   "text": " общий",
-  "startMs": 60300,
-  "endMs": 60670,
+  "startMs": 58960,
+  "endMs": 59330,
   "timestampMs": 60485,
   "confidence": 0.984791
  },
  {
   "text": " стаж",
-  "startMs": 60670,
-  "endMs": 60980,
+  "startMs": 59330,
+  "endMs": 59640,
   "timestampMs": 60825,
   "confidence": 0.907069
  },
  {
   "text": " работы",
-  "startMs": 60980,
-  "endMs": 61430,
+  "startMs": 59640,
+  "endMs": 60090,
   "timestampMs": 61600,
   "confidence": 0.994753
  },
  {
   "text": " с",
-  "startMs": 61430,
-  "endMs": 61500,
+  "startMs": 60090,
+  "endMs": 60160,
   "timestampMs": 61920,
   "confidence": 0.968147
  },
  {
   "text": " Китаем",
-  "startMs": 61500,
-  "endMs": 61960,
+  "startMs": 60160,
+  "endMs": 60620,
   "timestampMs": 61730,
   "confidence": 0.674297
  },
  {
   "text": " более",
-  "startMs": 61960,
-  "endMs": 62340,
+  "startMs": 60620,
+  "endMs": 61000,
   "timestampMs": 62600,
   "confidence": 0.968001
  },
  {
   "text": " 10",
-  "startMs": 62340,
-  "endMs": 62570,
+  "startMs": 61000,
+  "endMs": 61230,
   "timestampMs": 62900,
   "confidence": 0.773718
  },
  {
   "text": " лет.",
-  "startMs": 62570,
-  "endMs": 63000,
+  "startMs": 61230,
+  "endMs": 61660,
   "timestampMs": 62785,
   "confidence": 0.721315
  },
  {
   "text": " Я",
-  "startMs": 63000,
-  "endMs": 63300,
+  "startMs": 61660,
+  "endMs": 61960,
   "timestampMs": 63580,
   "confidence": 0.98957
  },
  {
   "text": " свободно",
-  "startMs": 63300,
-  "endMs": 63650,
+  "startMs": 61960,
+  "endMs": 62310,
   "timestampMs": 63475,
   "confidence": 0.995744
  },
  {
   "text": " говорю",
-  "startMs": 63650,
-  "endMs": 64090,
+  "startMs": 62310,
+  "endMs": 62750,
   "timestampMs": 64300,
   "confidence": 0.995835
  },
  {
   "text": " по-китайски.",
-  "startMs": 64090,
-  "endMs": 65000,
+  "startMs": 62750,
+  "endMs": 63660,
   "timestampMs": 64545,
   "confidence": 0.779577
  },
  {
   "text": " Я",
-  "startMs": 65000,
-  "endMs": 65150,
+  "startMs": 63660,
+  "endMs": 63810,
   "timestampMs": 65640,
   "confidence": 0.993275
  },
  {
   "text": " знаю,",
-  "startMs": 65150,
-  "endMs": 65440,
+  "startMs": 63810,
+  "endMs": 64100,
   "timestampMs": 65295,
   "confidence": 0.912677
  },
  {
   "text": " где",
-  "startMs": 65440,
-  "endMs": 65670,
+  "startMs": 64100,
+  "endMs": 64330,
   "timestampMs": 66320,
   "confidence": 0.9983
  },
  {
   "text": " в",
-  "startMs": 65670,
-  "endMs": 65740,
+  "startMs": 64330,
+  "endMs": 64400,
   "timestampMs": 66480,
   "confidence": 0.984769
  },
  {
   "text": " этих",
-  "startMs": 65740,
-  "endMs": 66130,
+  "startMs": 64400,
+  "endMs": 64790,
   "timestampMs": 66660,
   "confidence": 0.995723
  },
  {
   "text": " компаниях",
-  "startMs": 66130,
-  "endMs": 66710,
+  "startMs": 64790,
+  "endMs": 65370,
   "timestampMs": 66420,
   "confidence": 0.983115
  },
  {
   "text": " реально",
-  "startMs": 66710,
-  "endMs": 67260,
+  "startMs": 65370,
+  "endMs": 65920,
   "timestampMs": 67800,
   "confidence": 0.89917
  },
  {
   "text": " интересно",
-  "startMs": 67260,
-  "endMs": 68000,
+  "startMs": 65920,
+  "endMs": 66660,
   "timestampMs": 67630,
   "confidence": 0.874034
  },
  {
   "text": " и",
-  "startMs": 68000,
-  "endMs": 68090,
+  "startMs": 66660,
+  "endMs": 66750,
   "timestampMs": 68660,
   "confidence": 0.369169
  },
  {
   "text": " покажу",
-  "startMs": 68090,
-  "endMs": 68670,
+  "startMs": 66750,
+  "endMs": 67330,
   "timestampMs": 68380,
   "confidence": 0.995598
  },
  {
   "text": " вам",
-  "startMs": 68670,
-  "endMs": 68960,
+  "startMs": 67330,
+  "endMs": 67620,
   "timestampMs": 69480,
   "confidence": 0.957662
  },
  {
   "text": " именно",
-  "startMs": 68960,
-  "endMs": 69540,
+  "startMs": 67620,
+  "endMs": 68200,
   "timestampMs": 69800,
   "confidence": 0.978666
  },
  {
   "text": " это.",
-  "startMs": 69540,
-  "endMs": 70000,
+  "startMs": 68200,
+  "endMs": 68660,
   "timestampMs": 69770,
   "confidence": 0.988815
  },
  {
   "text": " У",
-  "startMs": 70000,
-  "endMs": 70070,
+  "startMs": 68660,
+  "endMs": 68730,
   "timestampMs": 70540,
   "confidence": 0.99616
  },
  {
   "text": " меня",
-  "startMs": 70070,
-  "endMs": 70440,
+  "startMs": 68730,
+  "endMs": 69100,
   "timestampMs": 70720,
   "confidence": 0.999237
  },
  {
   "text": " большой",
-  "startMs": 70440,
-  "endMs": 70900,
+  "startMs": 69100,
+  "endMs": 69560,
   "timestampMs": 71100,
   "confidence": 0.996105
  },
  {
   "text": " опыт",
-  "startMs": 70900,
-  "endMs": 71200,
+  "startMs": 69560,
+  "endMs": 69860,
   "timestampMs": 71400,
   "confidence": 0.999542
  },
  {
   "text": " организации",
-  "startMs": 71200,
-  "endMs": 72030,
+  "startMs": 69860,
+  "endMs": 70690,
   "timestampMs": 71615,
   "confidence": 0.973559
  },
  {
   "text": " таких",
-  "startMs": 72030,
-  "endMs": 72440,
+  "startMs": 70690,
+  "endMs": 71100,
   "timestampMs": 72600,
   "confidence": 0.993585
  },
  {
   "text": " визитов.",
-  "startMs": 72440,
-  "endMs": 73000,
+  "startMs": 71100,
+  "endMs": 71660,
   "timestampMs": 72720,
   "confidence": 0.473572
  },
  {
   "text": " И",
-  "startMs": 73000,
-  "endMs": 73130,
+  "startMs": 71660,
+  "endMs": 71790,
   "timestampMs": 73540,
   "confidence": 0.989464
  },
  {
   "text": " со",
-  "startMs": 73130,
-  "endMs": 73330,
+  "startMs": 71790,
+  "endMs": 71990,
   "timestampMs": 73660,
   "confidence": 0.979923
  },
  {
   "text": " многими",
-  "startMs": 73330,
-  "endMs": 74040,
+  "startMs": 71990,
+  "endMs": 72700,
   "timestampMs": 73685,
   "confidence": 0.99612
  },
  {
   "text": " из",
-  "startMs": 74040,
-  "endMs": 74250,
+  "startMs": 72700,
+  "endMs": 72910,
   "timestampMs": 74340,
   "confidence": 0.993165
  },
  {
   "text": " этих",
-  "startMs": 74250,
-  "endMs": 74710,
+  "startMs": 72910,
+  "endMs": 73370,
   "timestampMs": 74580,
   "confidence": 0.994038
  },
  {
   "text": " компаний",
-  "startMs": 74710,
-  "endMs": 75510,
+  "startMs": 73370,
+  "endMs": 74170,
   "timestampMs": 75110,
   "confidence": 0.997048
  },
  {
   "text": " я",
-  "startMs": 75510,
-  "endMs": 75610,
+  "startMs": 74170,
+  "endMs": 74270,
   "timestampMs": 75600,
   "confidence": 0.966988
  },
  {
   "text": " знаком",
-  "startMs": 75610,
-  "endMs": 76240,
+  "startMs": 74270,
+  "endMs": 74900,
   "timestampMs": 76000,
   "confidence": 0.996706
  },
  {
   "text": " лично.",
-  "startMs": 76240,
-  "endMs": 77000,
+  "startMs": 74900,
+  "endMs": 75660,
   "timestampMs": 76620,
   "confidence": 0.5476
  },
  {
   "text": " Всё",
-  "startMs": 77000,
-  "endMs": 77460,
+  "startMs": 75660,
+  "endMs": 76120,
   "timestampMs": 77760,
   "confidence": 0.827854
  },
  {
   "text": " систематизировано",
-  "startMs": 77460,
-  "endMs": 78450,
+  "startMs": 76120,
+  "endMs": 77110,
   "timestampMs": 77955,
   "confidence": 0.873906
  },
  {
   "text": " и",
-  "startMs": 78450,
-  "endMs": 78520,
+  "startMs": 77110,
+  "endMs": 77180,
   "timestampMs": 79040,
   "confidence": 0.899614
  },
  {
   "text": " заранее",
-  "startMs": 78520,
-  "endMs": 79020,
+  "startMs": 77180,
+  "endMs": 77680,
   "timestampMs": 78770,
   "confidence": 0.997474
  },
  {
   "text": " согласовано.",
-  "startMs": 79020,
-  "endMs": 80000,
+  "startMs": 77680,
+  "endMs": 78660,
   "timestampMs": 79510,
   "confidence": 0.887971
  },
  {
   "text": " Никаких",
-  "startMs": 80000,
-  "endMs": 80560,
+  "startMs": 78660,
+  "endMs": 79220,
   "timestampMs": 80280,
   "confidence": 0.922479
  },
  {
   "text": " бесконечных",
-  "startMs": 80560,
-  "endMs": 81390,
+  "startMs": 79220,
+  "endMs": 80050,
   "timestampMs": 80975,
   "confidence": 0.988732
  },
  {
   "text": " переписок",
-  "startMs": 81390,
-  "endMs": 82050,
+  "startMs": 80050,
+  "endMs": 80710,
   "timestampMs": 81745,
   "confidence": 0.996635
  },
  {
   "text": " ожидания",
-  "startMs": 82050,
-  "endMs": 82320,
+  "startMs": 80710,
+  "endMs": 80980,
   "timestampMs": 83400,
   "confidence": 0.64707
  },
  {
   "text": " ответов.",
-  "startMs": 82320,
-  "endMs": 83000,
+  "startMs": 80980,
+  "endMs": 81660,
   "timestampMs": 84060,
   "confidence": 0.763004
  },
  {
   "text": " В",
-  "startMs": 83000,
-  "endMs": 83220,
+  "startMs": 81660,
+  "endMs": 81880,
   "timestampMs": 85060,
   "confidence": 0.97775
  },
  {
   "text": " нашей",
-  "startMs": 83220,
-  "endMs": 83480,
+  "startMs": 81880,
+  "endMs": 82140,
   "timestampMs": 85260,
   "confidence": 0.997398
  },
  {
   "text": " базе",
-  "startMs": 83480,
-  "endMs": 83800,
+  "startMs": 82140,
+  "endMs": 82460,
   "timestampMs": 85040,
   "confidence": 0.999033
  },
  {
   "text": " более",
-  "startMs": 83800,
-  "endMs": 84200,
+  "startMs": 82460,
+  "endMs": 82860,
   "timestampMs": 85920,
   "confidence": 0.933624
  },
  {
   "text": " тысячи",
-  "startMs": 84200,
-  "endMs": 84680,
+  "startMs": 82860,
+  "endMs": 83340,
   "timestampMs": 85840,
   "confidence": 0.620822
  },
  {
   "text": " компаний",
-  "startMs": 84680,
-  "endMs": 85320,
+  "startMs": 83340,
+  "endMs": 83980,
   "timestampMs": 86400,
   "confidence": 0.960992
  },
  {
   "text": " из",
-  "startMs": 85320,
-  "endMs": 85560,
+  "startMs": 83980,
+  "endMs": 84220,
   "timestampMs": 87180,
   "confidence": 0.971337
  },
  {
   "text": " 18",
-  "startMs": 85560,
-  "endMs": 85720,
+  "startMs": 84220,
+  "endMs": 84380,
   "timestampMs": 87760,
   "confidence": 0.937845
  },
  {
   "text": " индустрий.",
-  "startMs": 85720,
-  "endMs": 86600,
+  "startMs": 84380,
+  "endMs": 85260,
   "timestampMs": 87560,
   "confidence": 0.921718
  },
  {
   "text": " Цены",
-  "startMs": 86600,
-  "endMs": 86890,
+  "startMs": 85260,
+  "endMs": 85550,
   "timestampMs": 88145,
   "confidence": 0.985947
  },
  {
   "text": " прозрачные,",
-  "startMs": 86890,
-  "endMs": 87720,
+  "startMs": 85550,
+  "endMs": 86380,
   "timestampMs": 88705,
   "confidence": 0.696551
  },
  {
   "text": " без",
-  "startMs": 87720,
-  "endMs": 87920,
+  "startMs": 86380,
+  "endMs": 86580,
   "timestampMs": 90060,
   "confidence": 0.997137
  },
  {
   "text": " загадочности",
-  "startMs": 87920,
-  "endMs": 88820,
+  "startMs": 86580,
+  "endMs": 87480,
   "timestampMs": 89770,
   "confidence": 0.896579
  },
  {
   "text": " и",
-  "startMs": 88820,
-  "endMs": 88890,
+  "startMs": 87480,
+  "endMs": 87550,
   "timestampMs": 91120,
   "confidence": 0.974063
  },
  {
   "text": " ореола",
-  "startMs": 88890,
-  "endMs": 89380,
+  "startMs": 87550,
+  "endMs": 88040,
   "timestampMs": 90535,
   "confidence": 0.448173
  },
  {
   "text": " таинственности.",
-  "startMs": 89380,
-  "endMs": 90600,
+  "startMs": 88040,
+  "endMs": 89260,
   "timestampMs": 91390,
   "confidence": 0.866543
  },
  {
   "text": " Всё",
-  "startMs": 90600,
-  "endMs": 91050,
+  "startMs": 89260,
+  "endMs": 89710,
   "timestampMs": 92940,
   "confidence": 0.939288
  },
  {
   "text": " на",
-  "startMs": 91050,
-  "endMs": 91220,
+  "startMs": 89710,
+  "endMs": 89880,
   "timestampMs": 93120,
   "confidence": 0.997044
  },
  {
   "text": " русском",
-  "startMs": 91220,
-  "endMs": 91880,
+  "startMs": 89880,
+  "endMs": 90540,
   "timestampMs": 92950,
   "confidence": 0.996557
  },
  {
   "text": " языке.",
-  "startMs": 91880,
-  "endMs": 92600,
+  "startMs": 90540,
+  "endMs": 91260,
   "timestampMs": 93640,
   "confidence": 0.956463
  },
  {
   "text": " И",
-  "startMs": 92600,
-  "endMs": 92840,
+  "startMs": 91260,
+  "endMs": 91500,
   "timestampMs": 94500,
   "confidence": 0.992301
  },
  {
   "text": " да,",
-  "startMs": 92840,
-  "endMs": 92920,
+  "startMs": 91500,
+  "endMs": 91580,
   "timestampMs": 94280,
   "confidence": 0.91525
  },
  {
   "text": " гостевой",
-  "startMs": 92920,
-  "endMs": 93570,
+  "startMs": 91580,
+  "endMs": 92230,
   "timestampMs": 94645,
   "confidence": 0.920833
  },
  {
   "text": " бейдж",
-  "startMs": 93570,
-  "endMs": 93970,
+  "startMs": 92230,
+  "endMs": 92630,
   "timestampMs": 95170,
   "confidence": 0.679511
  },
  {
   "text": " можно",
-  "startMs": 93970,
-  "endMs": 94440,
+  "startMs": 92630,
+  "endMs": 93100,
   "timestampMs": 96220,
   "confidence": 0.993699
  },
  {
   "text": " оставить",
-  "startMs": 94440,
-  "endMs": 95060,
+  "startMs": 93100,
+  "endMs": 93720,
   "timestampMs": 96150,
   "confidence": 0.990223
  },
  {
   "text": " себе.",
-  "startMs": 95060,
-  "endMs": 95600,
+  "startMs": 93720,
+  "endMs": 94260,
   "timestampMs": 96730,
   "confidence": 0.827721
  },
  {
   "text": " Это",
-  "startMs": 95600,
-  "endMs": 95810,
+  "startMs": 94260,
+  "endMs": 94470,
   "timestampMs": 97460,
   "confidence": 0.990248
  },
  {
   "text": " самый",
-  "startMs": 95810,
-  "endMs": 96170,
+  "startMs": 94470,
+  "endMs": 94830,
   "timestampMs": 97680,
   "confidence": 0.998268
  },
  {
   "text": " ценный",
-  "startMs": 96170,
-  "endMs": 96660,
+  "startMs": 94830,
+  "endMs": 95320,
   "timestampMs": 97815,
   "confidence": 0.992812
  },
  {
   "text": " сувенир",
-  "startMs": 96660,
-  "endMs": 97090,
+  "startMs": 95320,
+  "endMs": 95750,
   "timestampMs": 98275,
   "confidence": 0.991223
  },
  {
   "text": " из",
-  "startMs": 97090,
-  "endMs": 97220,
+  "startMs": 95750,
+  "endMs": 95880,
   "timestampMs": 99000,
   "confidence": 0.884884
  },
  {
   "text": " Китая",
-  "startMs": 97220,
-  "endMs": 97600,
+  "startMs": 95880,
+  "endMs": 96260,
   "timestampMs": 98810,
   "confidence": 0.98838
  },
  {
   "text": " и",
-  "startMs": 97600,
-  "endMs": 97650,
+  "startMs": 96260,
+  "endMs": 96310,
   "timestampMs": 99880,
   "confidence": 0.9218
  },
  {
   "text": " этой",
-  "startMs": 97650,
-  "endMs": 97920,
+  "startMs": 96310,
+  "endMs": 96580,
   "timestampMs": 100020,
   "confidence": 0.993138
  },
  {
   "text": " поездки.",
-  "startMs": 97920,
-  "endMs": 98600,
+  "startMs": 96580,
+  "endMs": 97260,
   "timestampMs": 99660,
   "confidence": 0.995065
  },
  {
   "text": " Заходите",
-  "startMs": 98600,
-  "endMs": 99740,
+  "startMs": 97260,
+  "endMs": 98400,
   "timestampMs": 100570,
   "confidence": 0.996571
  },
  {
   "text": " на",
-  "startMs": 99740,
-  "endMs": 100000,
+  "startMs": 98400,
+  "endMs": 98660,
   "timestampMs": 101700,
   "confidence": 0.996424
  },
  {
   "text": " сайт",
-  "startMs": 100000,
-  "endMs": 100550,
+  "startMs": 98660,
+  "endMs": 99210,
   "timestampMs": 101675,
   "confidence": 0.986079
  },
  {
   "text": " Global",
-  "startMs": 100550,
-  "endMs": 100980,
+  "startMs": 99210,
+  "endMs": 99640,
   "timestampMs": 102340,
   "confidence": 0.896543
  },
  {
   "text": " Tech",
-  "startMs": 100980,
-  "endMs": 101260,
+  "startMs": 99640,
+  "endMs": 99920,
   "timestampMs": 102600,
   "confidence": 0.520131
  },
  {
   "text": " Tour",
-  "startMs": 101260,
-  "endMs": 101670,
+  "startMs": 99920,
+  "endMs": 100330,
   "timestampMs": 102860,
   "confidence": 0.923094
  },
  {
   "text": " или",
-  "startMs": 101670,
-  "endMs": 101800,
+  "startMs": 100330,
+  "endMs": 100460,
   "timestampMs": 103260,
   "confidence": 0.841972
  },
  {
   "text": " пишите",
-  "startMs": 101800,
-  "endMs": 102200,
+  "startMs": 100460,
+  "endMs": 100860,
   "timestampMs": 103400,
   "confidence": 0.993714
  },
  {
   "text": " мне",
-  "startMs": 102200,
-  "endMs": 102400,
+  "startMs": 100860,
+  "endMs": 101060,
   "timestampMs": 104080,
   "confidence": 0.997942
  },
  {
   "text": " в",
-  "startMs": 102400,
-  "endMs": 102460,
+  "startMs": 101060,
+  "endMs": 101120,
   "timestampMs": 104440,
   "confidence": 0.975428
  },
  {
   "text": " личные",
-  "startMs": 102460,
-  "endMs": 102860,
+  "startMs": 101120,
+  "endMs": 101520,
   "timestampMs": 104060,
   "confidence": 0.974074
  },
  {
   "text": " сообщения.",
-  "startMs": 102860,
-  "endMs": 103600,
+  "startMs": 101520,
+  "endMs": 102260,
   "timestampMs": 104630,
   "confidence": 0.87915
  },
  {
   "text": " Пришлю",
-  "startMs": 103600,
-  "endMs": 104040,
+  "startMs": 102260,
+  "endMs": 102700,
   "timestampMs": 105220,
   "confidence": 0.627703
  },
  {
   "text": " полную",
-  "startMs": 104040,
-  "endMs": 104630,
+  "startMs": 102700,
+  "endMs": 103290,
   "timestampMs": 105735,
   "confidence": 0.990843
  },
  {
   "text": " программу",
-  "startMs": 104630,
-  "endMs": 105060,
+  "startMs": 103290,
+  "endMs": 103720,
   "timestampMs": 106245,
   "confidence": 0.9934
  },
  {
   "text": " и",
-  "startMs": 105060,
-  "endMs": 105140,
+  "startMs": 103720,
+  "endMs": 103800,
   "timestampMs": 107360,
   "confidence": 0.993392
  },
  {
   "text": " подробную",
-  "startMs": 105140,
-  "endMs": 105770,
+  "startMs": 103800,
+  "endMs": 104430,
   "timestampMs": 106855,
   "confidence": 0.997396
  },
  {
   "text": " информацию.",
-  "startMs": 105770,
-  "endMs": 106600,
+  "startMs": 104430,
+  "endMs": 105260,
   "timestampMs": 107585,
   "confidence": 0.988025
  },
  {
   "text": " Матсу.",
-  "startMs": 106600,
-  "endMs": 106800,
+  "startMs": 105260,
+  "endMs": 105460,
   "timestampMs": 109000,
   "confidence": 0.261047
  },
  {
   "text": " пока!",
-  "startMs": 106800,
-  "endMs": 107000,
+  "startMs": 105460,
+  "endMs": 105660,
   "timestampMs": 111695,
   "confidence": 0.707687
  }

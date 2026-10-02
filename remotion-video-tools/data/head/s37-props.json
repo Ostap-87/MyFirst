@@ -89,7 +89,7 @@
   },
   {
    "text": "Идеи для меню · Поставщики",
-   "at": 77.6,
+   "at": 78.0,
    "until": 80.9,
    "kind": "accent"
   }
@@ -295,9 +295,9 @@
    "at": 43.4,
    "until": 49.2,
    "overlay": true,
-   "widthFraction": 0.4,
-   "centerX": 0.76,
-   "centerY": 0.62,
+   "widthFraction": 0.32,
+   "centerX": 0.78,
+   "centerY": 0.3,
    "items": [
     {
      "src": "local/gtt/flip-chagee.png",
@@ -332,9 +332,9 @@
    "at": 28.1,
    "until": 29.3,
    "overlay": true,
-   "widthFraction": 0.34,
-   "centerX": 0.8,
-   "centerY": 0.6,
+   "widthFraction": 0.32,
+   "centerX": 0.78,
+   "centerY": 0.3,
    "items": [
     {
      "src": "local/gtt/flip-alibaba.png",
@@ -342,6 +342,43 @@
     },
     {
      "src": "local/gtt/flip-sber.png"
+    }
+   ]
+  },
+  {
+   "at": 75.3,
+   "until": 77.9,
+   "overlay": true,
+   "centerX": 0.5,
+   "centerY": 0.2,
+   "widthFraction": 0.5,
+   "items": [
+    {
+     "src": "local/gtt/flip-chagee.png",
+     "seconds": 0.37
+    },
+    {
+     "src": "local/gtt/flip-heytea.png",
+     "seconds": 0.37
+    },
+    {
+     "src": "local/gtt/flip-luckin.png",
+     "seconds": 0.37
+    },
+    {
+     "src": "local/gtt/flip-manner.png",
+     "seconds": 0.37
+    },
+    {
+     "src": "local/gtt/flip-mstand.png",
+     "seconds": 0.37
+    },
+    {
+     "src": "local/gtt/flip-yidiandian.png",
+     "seconds": 0.37
+    },
+    {
+     "src": "local/gtt/flip-wanglaoji.png"
     }
    ]
   }
@@ -389,23 +426,7 @@
    ]
   }
  ],
- "popWindows": [
-  {
-   "at": 75.4,
-   "until": 77.4,
-   "items": [
-    {
-     "src": "generated/tea-coffee-retail/shenzhen-v1-storefronts.png"
-    },
-    {
-     "src": "generated/tea-coffee-retail/shanghai2-v3-facade.png"
-    },
-    {
-     "src": "generated/tea-coffee-retail/cover-v4-crop.png"
-    }
-   ]
-  }
- ],
+ "popWindows": [],
  "brolls": [],
  "splitEyesAt": 0.36,
  "splitSeam": 0.58,

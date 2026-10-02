@@ -49,7 +49,7 @@
         "kind": "term"
       },
       {
-        "text": "Kailinwei: биотех-лаборатория",
+        "text": "KylinWay: биотех-лаборатория",
         "at": 42.6,
         "until": 45.6,
         "kind": "term"
@@ -271,7 +271,7 @@
         "side": "bottom",
         "items": [
           {
-            "src": "generated/beauty-antiage/hangzhou2.png",
+            "src": "local/logos/user/florasis.png",
             "focusY": 0.5
           }
         ]
@@ -322,9 +322,9 @@
         "at": 5.3,
         "until": 7.2,
         "overlay": true,
-        "widthFraction": 0.4,
-        "centerX": 0.76,
-        "centerY": 0.62,
+        "centerX": 0.78,
+        "centerY": 0.3,
+        "widthFraction": 0.32,
         "items": [
           {
             "src": "local/gtt/flip-perfectdiary.png",
@@ -339,9 +339,9 @@
         "at": 16.8,
         "until": 23.0,
         "overlay": true,
-        "widthFraction": 0.4,
-        "centerX": 0.76,
-        "centerY": 0.62,
+        "centerX": 0.78,
+        "centerY": 0.3,
+        "widthFraction": 0.32,
         "items": [
           {
             "src": "local/gtt/flip-pechoin.png",
@@ -364,7 +364,7 @@
             "seconds": 1.0
           },
           {
-            "src": "local/gtt/flip-kailinwei.png",
+            "src": "local/gtt/flip-kylinway.png",
             "seconds": 0.8
           },
           {
@@ -377,12 +377,25 @@
         ]
       },
       {
+        "at": 42.6,
+        "until": 44.6,
+        "overlay": true,
+        "centerX": 0.78,
+        "centerY": 0.3,
+        "widthFraction": 0.32,
+        "items": [
+          {
+            "src": "local/gtt/flip-kylinway.png"
+          }
+        ]
+      },
+      {
         "at": 62.7,
         "until": 64.0,
         "overlay": true,
-        "widthFraction": 0.34,
-        "centerX": 0.8,
-        "centerY": 0.6,
+        "centerX": 0.78,
+        "centerY": 0.3,
+        "widthFraction": 0.32,
         "items": [
           {
             "src": "local/gtt/flip-alibaba.png",
@@ -422,7 +435,7 @@
             "caption": "Шанхай"
           },
           {
-            "src": "generated/beauty-antiage/hangzhou1.png",
+            "src": "local/pano/hangzhou-xihu.jpg",
             "caption": "Ханчжоу"
           },
           {
@@ -432,23 +445,7 @@
         ]
       }
     ],
-    "popWindows": [
-      {
-        "at": 94.0,
-        "until": 98.3,
-        "items": [
-          {
-            "src": "generated/beauty-antiage/shanghai1.png"
-          },
-          {
-            "src": "generated/beauty-antiage/guangzhou.png"
-          },
-          {
-            "src": "generated/beauty-antiage/cover.png"
-          }
-        ]
-      }
-    ],
+    "popWindows": [],
     "brolls": [
       {
         "at": 56.4,

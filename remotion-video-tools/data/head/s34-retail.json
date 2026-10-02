@@ -280,12 +280,38 @@
     ],
     "splits": [
       {
+        "at": 16.3,
+        "until": 18.9,
+        "side": "bottom",
+        "items": [
+          {
+            "src": "local/pano/beijing-temple-v.jpg",
+            "seconds": 0.6,
+            "focusY": 0.5
+          },
+          {
+            "src": "local/pano/shanghai-bund-v.jpg",
+            "seconds": 0.6,
+            "focusY": 0.5
+          },
+          {
+            "src": "local/pano/hangzhou-xihu.jpg",
+            "seconds": 0.6,
+            "focusY": 0.5
+          },
+          {
+            "src": "local/pano/shenzhen-pingan-v.jpg",
+            "focusY": 0.5
+          }
+        ]
+      },
+      {
         "at": 20.0,
         "until": 24.6,
         "side": "bottom",
         "items": [
           {
-            "src": "generated/retail-instant/hangzhou.png",
+            "src": "local/gtt/user/hema-store.jpg",
             "focusY": 0.5
           }
         ]
@@ -296,7 +322,7 @@
         "side": "bottom",
         "items": [
           {
-            "src": "generated/retail-instant/shanghai2.png",
+            "src": "local/gtt/user/samsclub.jpg",
             "focusY": 0.5
           }
         ]
@@ -308,7 +334,7 @@
         "until": 28.7,
         "items": [
           {
-            "src": "generated/retail-instant/beijing.png"
+            "src": "local/gtt/meituan-bg.png"
           }
         ]
       },
@@ -336,9 +362,9 @@
         "at": 10.8,
         "until": 15.6,
         "overlay": true,
-        "widthFraction": 0.4,
-        "centerX": 0.76,
-        "centerY": 0.62,
+        "widthFraction": 0.32,
+        "centerX": 0.78,
+        "centerY": 0.3,
         "items": [
           {
             "src": "local/gtt/flip-jd.png",
@@ -373,9 +399,9 @@
         "at": 33.6,
         "until": 35.2,
         "overlay": true,
-        "widthFraction": 0.36,
-        "centerX": 0.76,
-        "centerY": 0.34,
+        "widthFraction": 0.32,
+        "centerX": 0.78,
+        "centerY": 0.3,
         "items": [
           {
             "src": "local/gtt/flip-meituan.png",
@@ -394,9 +420,9 @@
         "at": 63.5,
         "until": 64.6,
         "overlay": true,
-        "widthFraction": 0.34,
-        "centerX": 0.8,
-        "centerY": 0.6,
+        "widthFraction": 0.32,
+        "centerX": 0.78,
+        "centerY": 0.3,
         "items": [
           {
             "src": "local/gtt/flip-alibaba.png",
@@ -404,6 +430,27 @@
           },
           {
             "src": "local/gtt/flip-sber.png"
+          }
+        ]
+      },
+      {
+        "at": 97.6,
+        "until": 100.8,
+        "overlay": true,
+        "centerX": 0.78,
+        "centerY": 0.3,
+        "widthFraction": 0.36,
+        "items": [
+          {
+            "src": "local/gtt/flip-magnit.png",
+            "seconds": 1.0
+          },
+          {
+            "src": "local/gtt/flip-x5.png",
+            "seconds": 1.0
+          },
+          {
+            "src": "local/gtt/flip-pyaterochka.png"
           }
         ]
       }
@@ -423,51 +470,8 @@
         ]
       }
     ],
-    "photoCards": [
-      {
-        "at": 16.3,
-        "until": 18.9,
-        "side": "right",
-        "widthFraction": 0.34,
-        "stepSeconds": 0.55,
-        "spread": 0.3,
-        "items": [
-          {
-            "src": "local/pano/beijing-temple-v.jpg",
-            "caption": "Пекин"
-          },
-          {
-            "src": "local/pano/shanghai-bund-v.jpg",
-            "caption": "Шанхай"
-          },
-          {
-            "src": "generated/retail-instant/hangzhou.png",
-            "caption": "Ханчжоу"
-          },
-          {
-            "src": "local/pano/shenzhen-pingan-v.jpg",
-            "caption": "Шэньчжэнь"
-          }
-        ]
-      }
-    ],
-    "popWindows": [
-      {
-        "at": 97.6,
-        "until": 100.8,
-        "items": [
-          {
-            "src": "generated/retail-instant/shanghai1.png"
-          },
-          {
-            "src": "generated/retail-instant/shenzhen.png"
-          },
-          {
-            "src": "generated/retail-instant/metric.png"
-          }
-        ]
-      }
-    ],
+    "photoCards": [],
+    "popWindows": [],
     "brolls": [
       {
         "at": 44.3,

@@ -247,6 +247,42 @@
  ],
  "splits": [
   {
+   "at": 6.5,
+   "until": 9.0,
+   "side": "bottom",
+   "items": [
+    {
+     "src": "local/gtt/user/deepseek-logo.mp4"
+    }
+   ]
+  },
+  {
+   "at": 15.3,
+   "until": 18.0,
+   "side": "bottom",
+   "items": [
+    {
+     "src": "local/pano/beijing-temple-v.jpg",
+     "seconds": 0.6,
+     "focusY": 0.5
+    },
+    {
+     "src": "local/pano/shanghai-bund-v.jpg",
+     "seconds": 0.6,
+     "focusY": 0.5
+    },
+    {
+     "src": "local/pano/hangzhou-xihu.jpg",
+     "seconds": 0.6,
+     "focusY": 0.5
+    },
+    {
+     "src": "local/pano/shenzhen-pingan-v.jpg",
+     "focusY": 0.5
+    }
+   ]
+  },
+  {
    "at": 21.5,
    "until": 26.8,
    "side": "bottom",
@@ -273,7 +309,7 @@
    "until": 50.8,
    "items": [
     {
-     "src": "generated/robotics-expedition-v2/negotiations.png"
+     "src": "local/gtt/user/baidu-visit.jpg"
     }
    ]
   },
@@ -282,32 +318,19 @@
    "until": 92.8,
    "items": [
     {
-     "src": "generated/china-tech-giants/shenzhen-v2.png"
+     "src": "local/gtt/user/deepseek-xihu.mp4"
     }
    ]
   }
  ],
  "flips": [
   {
-   "at": 6.7,
-   "until": 8.6,
-   "overlay": true,
-   "widthFraction": 0.4,
-   "centerX": 0.76,
-   "centerY": 0.62,
-   "items": [
-    {
-     "src": "local/gtt/flip-deepseek.png"
-    }
-   ]
-  },
-  {
    "at": 9.9,
    "until": 13.0,
    "overlay": true,
-   "widthFraction": 0.4,
-   "centerX": 0.76,
-   "centerY": 0.62,
+   "centerX": 0.78,
+   "centerY": 0.3,
+   "widthFraction": 0.32,
    "items": [
     {
      "src": "local/gtt/flip-alibaba.png",
@@ -330,9 +353,9 @@
    "at": 21.5,
    "until": 24.0,
    "overlay": true,
-   "widthFraction": 0.36,
-   "centerX": 0.76,
-   "centerY": 0.34,
+   "centerX": 0.78,
+   "centerY": 0.3,
+   "widthFraction": 0.32,
    "items": [
     {
      "src": "local/gtt/flip-zhipu.png",
@@ -359,9 +382,9 @@
    "at": 39.6,
    "until": 41.0,
    "overlay": true,
-   "widthFraction": 0.34,
-   "centerX": 0.8,
-   "centerY": 0.6,
+   "centerX": 0.78,
+   "centerY": 0.3,
+   "widthFraction": 0.32,
    "items": [
     {
      "src": "local/gtt/flip-alibaba.png",
@@ -369,6 +392,27 @@
     },
     {
      "src": "local/gtt/flip-sber.png"
+    }
+   ]
+  },
+  {
+   "at": 81.6,
+   "until": 84.4,
+   "overlay": true,
+   "centerX": 0.78,
+   "centerY": 0.3,
+   "widthFraction": 0.36,
+   "items": [
+    {
+     "src": "local/gtt/flip-word-kontakty.png",
+     "seconds": 0.8
+    },
+    {
+     "src": "local/gtt/flip-word-znaniya.png",
+     "seconds": 0.8
+    },
+    {
+     "src": "local/gtt/flip-word-partnery.png"
     }
    ]
   }
@@ -388,51 +432,8 @@
    ]
   }
  ],
- "photoCards": [
-  {
-   "at": 15.4,
-   "until": 18.0,
-   "side": "right",
-   "widthFraction": 0.34,
-   "stepSeconds": 0.55,
-   "spread": 0.3,
-   "items": [
-    {
-     "src": "local/pano/beijing-temple-v.jpg",
-     "caption": "Пекин"
-    },
-    {
-     "src": "local/pano/shanghai-bund-v.jpg",
-     "caption": "Шанхай"
-    },
-    {
-     "src": "generated/china-tech-giants/hangzhou-v2.png",
-     "caption": "Ханчжоу"
-    },
-    {
-     "src": "local/pano/shenzhen-pingan-v.jpg",
-     "caption": "Шэньчжэнь"
-    }
-   ]
-  }
- ],
- "popWindows": [
-  {
-   "at": 79.6,
-   "until": 81.5,
-   "items": [
-    {
-     "src": "generated/robotics-expedition-v2/beijing-v2.png"
-    },
-    {
-     "src": "generated/china-tech-giants/shenzhen-v2.png"
-    },
-    {
-     "src": "generated/robotics-expedition-v2/shanghai-v2.png"
-    }
-   ]
-  }
- ],
+ "photoCards": [],
+ "popWindows": [],
  "brolls": [],
  "splitEyesAt": 0.36,
  "splitSeam": 0.58,

@@ -1,7 +1,7 @@
 {
  "footage": "local/head/s29-intro.mp4",
  "captionsSrc": "captions/head-s29-intro.json",
- "durationSeconds": 78.38,
+ "durationSeconds": 78.27,
  "hookTop": "Остап, ты турагент?",
  "hookBottom": "Нет. Сейчас объясню",
  "brandMark": "GLOBAL TECH TOUR",
@@ -71,44 +71,44 @@
   },
   {
    "text": "Не открывает незнакомцам!",
-   "at": 53.33,
-   "until": 54.4,
+   "at": 53.23,
+   "until": 54.3,
    "kind": "accent"
   },
   {
    "text": "Здравствуйте, можно к вам?",
-   "at": 57.53,
-   "until": 59.32,
+   "at": 57.42,
+   "until": 59.21,
    "kind": "term"
   },
   {
    "text": "Ответ — к Новому году",
-   "at": 60.29,
-   "until": 63.6,
+   "at": 60.18,
+   "until": 63.49,
    "kind": "struck"
   },
   {
    "text": "Global Tech Tour",
-   "at": 68.7,
-   "until": 71.68,
+   "at": 68.59,
+   "until": 71.57,
    "kind": "accent"
   },
   {
    "text": "Бизнес-экспедиции в Китай",
-   "at": 71.77,
-   "until": 74.53,
+   "at": 71.66,
+   "until": 74.42,
    "kind": "accent"
   },
   {
    "text": "…и не только",
-   "at": 73.68,
-   "until": 74.53,
+   "at": 73.57,
+   "until": 74.42,
    "kind": "accent"
   },
   {
    "text": "Подписывайтесь →",
-   "at": 74.73,
-   "until": 78.38,
+   "at": 74.62,
+   "until": 78.27,
    "kind": "accent"
   }
  ],
@@ -157,32 +157,32 @@
    "scale": 1.2
   },
   {
-   "at": 53.34,
-   "until": 54.38,
+   "at": 53.24,
+   "until": 54.28,
    "kind": "punch",
    "scale": 1.2
   },
   {
-   "at": 54.51,
-   "until": 58.64,
+   "at": 54.44,
+   "until": 58.53,
    "kind": "push",
    "scale": 1.07
   },
   {
-   "at": 59.48,
-   "until": 61.73,
+   "at": 59.37,
+   "until": 61.62,
    "kind": "punch",
    "scale": 1.2
   },
   {
-   "at": 63.8,
-   "until": 68.5,
+   "at": 63.69,
+   "until": 68.39,
    "kind": "push",
    "scale": 1.07
   },
   {
-   "at": 70.88,
-   "until": 72.73,
+   "at": 70.77,
+   "until": 72.62,
    "kind": "punch",
    "scale": 1.2
   }
@@ -362,8 +362,8 @@
    ]
   },
   {
-   "at": 74.73,
-   "until": 78.38,
+   "at": 74.62,
+   "until": 78.27,
    "items": [
     {
      "src": "generated/robotics-expedition-v2/beijing-v2.png",
@@ -396,8 +396,8 @@
  ],
  "pips": [
   {
-   "at": 68.57,
-   "until": 71.68,
+   "at": 68.46,
+   "until": 71.57,
    "items": [
     {
      "src": "site/expeditions.jpg",

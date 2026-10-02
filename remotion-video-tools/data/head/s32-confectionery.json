@@ -4,7 +4,7 @@
   "props": {
     "footage": "local/head/s32-confectionery.mp4",
     "captionsSrc": "captions/head-s32-confectionery.json",
-    "durationSeconds": 100.2,
+    "durationSeconds": 98.9,
     "hookTop": "Один торт —",
     "hookBottom": "сотни точек",
     "brandMark": "GLOBAL TECH TOUR",
@@ -44,68 +44,68 @@
       },
       {
         "text": "Остап Доценко",
-        "at": 42.9,
-        "until": 45.6,
+        "at": 42.15,
+        "until": 44.3,
         "kind": "term"
       },
       {
         "text": "Говорю по-китайски",
-        "at": 50.5,
-        "until": 52.1,
+        "at": 49.2,
+        "until": 50.8,
         "kind": "term"
       },
       {
         "text": "Знаком лично",
-        "at": 57.3,
-        "until": 58.4,
+        "at": 56.0,
+        "until": 57.1,
         "kind": "accent"
       },
       {
         "text": "Куда с улицы не пускают",
-        "at": 60.6,
-        "until": 62.4,
+        "at": 59.3,
+        "until": 61.1,
         "kind": "term"
       },
       {
         "text": "Быстрое согласование",
-        "at": 62.8,
-        "until": 65.3,
+        "at": 61.5,
+        "until": 64.0,
         "kind": "accent"
       },
       {
         "text": "Бесконечные переписки",
-        "at": 66.0,
-        "until": 68.3,
+        "at": 64.7,
+        "until": 67.0,
         "kind": "struck"
       },
       {
         "text": "18 индустрий",
-        "at": 71.6,
-        "until": 72.9,
+        "at": 70.3,
+        "until": 71.6,
         "kind": "accent"
       },
       {
         "text": "Цены прозрачные",
-        "at": 73.0,
-        "until": 75.8,
+        "at": 71.7,
+        "until": 74.5,
         "kind": "term"
       },
       {
         "text": "Всё на русском языке",
-        "at": 76.8,
-        "until": 78.3,
+        "at": 75.5,
+        "until": 77.0,
         "kind": "accent"
       },
       {
         "text": "Единственный минус…",
-        "at": 78.4,
-        "until": 80.8,
+        "at": 77.1,
+        "until": 79.5,
         "kind": "struck"
       },
       {
         "text": "+2 кг и идеи, которые окупятся",
-        "at": 82.2,
-        "until": 86.5,
+        "at": 80.9,
+        "until": 85.2,
         "kind": "accent"
       }
     ],
@@ -154,38 +154,38 @@
         "scale": 1.06
       },
       {
-        "at": 47.6,
-        "until": 48.6,
+        "at": 46.3,
+        "until": 47.3,
         "kind": "cut",
         "scale": 1.12
       },
       {
-        "at": 61.5,
-        "until": 62.3,
+        "at": 60.2,
+        "until": 61.0,
         "kind": "punch",
         "scale": 1.2
       },
       {
-        "at": 68.8,
-        "until": 69.8,
+        "at": 67.5,
+        "until": 68.5,
         "kind": "cut",
         "scale": 1.12
       },
       {
-        "at": 78.4,
-        "until": 79.3,
+        "at": 77.1,
+        "until": 78.0,
         "kind": "punch",
         "scale": 1.2
       },
       {
-        "at": 87.2,
-        "until": 88.2,
+        "at": 85.9,
+        "until": 86.9,
         "kind": "cut",
         "scale": 1.12
       },
       {
-        "at": 98.1,
-        "until": 99.5,
+        "at": 96.8,
+        "until": 98.2,
         "kind": "punch",
         "scale": 1.15
       }
@@ -214,8 +214,8 @@
       {
         "text": "10+",
         "label": "лет",
-        "at": 49.9,
-        "until": 52.0,
+        "at": 48.6,
+        "until": 50.7,
         "look": "gradient",
         "x": 0.17,
         "y": 0.38,
@@ -224,8 +224,8 @@
       {
         "text": "1000+",
         "label": "компаний",
-        "at": 70.1,
-        "until": 72.5,
+        "at": 68.8,
+        "until": 71.2,
         "look": "gradient",
         "x": 0.16,
         "y": 0.27,
@@ -235,8 +235,8 @@
     "flags": [
       {
         "src": "local/flags/cn.svg",
-        "at": 5.8,
-        "until": 7.4,
+        "at": 47.8,
+        "until": 49.1,
         "x": 0.84,
         "y": 0.36,
         "widthFraction": 0.18,
@@ -244,14 +244,64 @@
         "soundVolume": 0.45
       },
       {
-        "src": "local/flags/cn.svg",
-        "at": 49.1,
-        "until": 50.4,
-        "x": 0.84,
-        "y": 0.36,
-        "widthFraction": 0.18,
+        "src": "local/gtt/flip-holiland.png",
+        "at": 5.9,
+        "until": 8.9,
+        "x": 0.17,
+        "y": 0.418,
+        "widthFraction": 0.17,
         "sound": "audio/sfx/pop.wav",
-        "soundVolume": 0.45
+        "soundVolume": 0.4
+      },
+      {
+        "src": "local/gtt/flip-wedome.png",
+        "at": 6.05,
+        "until": 8.9,
+        "x": 0.332,
+        "y": 0.244,
+        "widthFraction": 0.17,
+        "sound": "audio/sfx/pop.wav",
+        "soundVolume": 0.4
+      },
+      {
+        "src": "local/gtt/flip-21cake.png",
+        "at": 6.2,
+        "until": 8.9,
+        "x": 0.442,
+        "y": 0.205,
+        "widthFraction": 0.17,
+        "sound": "audio/sfx/pop.wav",
+        "soundVolume": 0.4
+      },
+      {
+        "src": "local/gtt/flip-ganso.png",
+        "at": 6.35,
+        "until": 8.9,
+        "x": 0.558,
+        "y": 0.205,
+        "widthFraction": 0.17,
+        "sound": "audio/sfx/pop.wav",
+        "soundVolume": 0.4
+      },
+      {
+        "src": "local/gtt/flip-xingfu.png",
+        "at": 6.5,
+        "until": 8.9,
+        "x": 0.668,
+        "y": 0.244,
+        "widthFraction": 0.17,
+        "sound": "audio/sfx/pop.wav",
+        "soundVolume": 0.4
+      },
+      {
+        "src": "local/gtt/flip-maxims.png",
+        "at": 6.65,
+        "until": 8.9,
+        "x": 0.83,
+        "y": 0.418,
+        "widthFraction": 0.17,
+        "sound": "audio/sfx/pop.wav",
+        "soundVolume": 0.4
       }
     ],
     "splits": [
@@ -261,7 +311,7 @@
         "side": "bottom",
         "items": [
           {
-            "src": "generated/tea-coffee-retail/guangzhou-v1-shelf.png",
+            "src": "local/gtt/user/cake-line.jpg",
             "focusY": 0.5
           }
         ]
@@ -269,17 +319,26 @@
     ],
     "stages": [
       {
-        "at": 23.3,
-        "until": 28.3,
+        "at": 5.8,
+        "until": 9.2,
         "items": [
           {
-            "src": "generated/tea-coffee-retail/xiamen-v1-roasting.png"
+            "src": "local/flags/cn-wave.mp4"
           }
         ]
       },
       {
-        "at": 55.4,
-        "until": 58.0,
+        "at": 23.3,
+        "until": 28.3,
+        "items": [
+          {
+            "src": "local/gtt/user/maxims-shop.png"
+          }
+        ]
+      },
+      {
+        "at": 54.1,
+        "until": 56.7,
         "items": [
           {
             "src": "generated/tea-coffee-retail/negotiations.png"
@@ -287,11 +346,11 @@
         ]
       },
       {
-        "at": 97.0,
-        "until": 100.2,
+        "at": 95.7,
+        "until": 98.9,
         "items": [
           {
-            "src": "generated/tea-coffee-retail/cta-woman-v2-crop.png"
+            "src": "local/gtt/user/maxims-shop.png"
           }
         ]
       }
@@ -301,9 +360,9 @@
         "at": 14.8,
         "until": 19.9,
         "overlay": true,
-        "widthFraction": 0.4,
-        "centerX": 0.76,
-        "centerY": 0.62,
+        "widthFraction": 0.32,
+        "centerX": 0.78,
+        "centerY": 0.3,
         "items": [
           {
             "src": "local/gtt/flip-holiland.png",
@@ -331,12 +390,12 @@
         ]
       },
       {
-        "at": 46.3,
-        "until": 47.7,
+        "at": 45.0,
+        "until": 46.4,
         "overlay": true,
-        "widthFraction": 0.34,
-        "centerX": 0.8,
-        "centerY": 0.6,
+        "widthFraction": 0.32,
+        "centerX": 0.78,
+        "centerY": 0.3,
         "items": [
           {
             "src": "local/gtt/flip-alibaba.png",
@@ -350,8 +409,8 @@
     ],
     "pips": [
       {
-        "at": 90.0,
-        "until": 93.8,
+        "at": 88.7,
+        "until": 92.5,
         "items": [
           {
             "src": "site/home.png",
@@ -386,23 +445,7 @@
         ]
       }
     ],
-    "popWindows": [
-      {
-        "at": 87.2,
-        "until": 89.8,
-        "items": [
-          {
-            "src": "generated/tea-coffee-retail/shanghai1-v1-storefronts.png"
-          },
-          {
-            "src": "generated/tea-coffee-retail/shenzhen-v1-storefronts.png"
-          },
-          {
-            "src": "generated/tea-coffee-retail/hotel.png"
-          }
-        ]
-      }
-    ],
+    "popWindows": [],
     "brolls": [],
     "splitEyesAt": 0.36,
     "splitSeam": 0.58,
