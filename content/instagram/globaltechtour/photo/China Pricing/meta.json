@@ -1,0 +1,13 @@
+{
+  "channel": "instagram",
+  "brand": "globaltechtour",
+  "slug": "prices",
+  "type": "carousel",
+  "folder": "China Pricing",
+  "publishAt": null,
+  "status": "saved",
+  "files": ["01-cover.png", "02-point.png", "03-point.png", "04-point.png", "05-point.png", "06-point.png", "07-point.png", "08-cta.png"],
+  "createdAt": "2026-10-02T10:58:45Z",
+  "kind": "photo",
+  "note": "Готовая карусель, дата публикации ещё не назначена — не добавлена в queue.json. Источник текста: data/carousel-prices.json в remotion-video-tools (карусель 4 из документа GTT_Prompty_Karuseli_2-7.docx). Цена указана только нижней границей «от $4000» по решению пользователя, без верхней границы и без donut-диаграммы на слайде 6 (заменена визуалом «закрытая дверь»)."
+}

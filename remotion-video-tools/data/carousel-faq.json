@@ -1,0 +1,71 @@
+{
+  "name": "faq",
+  "brand": "gtt",
+  "footer": "globaltechtour.ru",
+  "slides": [
+    {
+      "type": "cover",
+      "kicker": "Global Tech Tour",
+      "title": "**8 вопросов**, которые задают перед экспедицией в Китай",
+      "subtitle": "FAQ",
+      "image": "generated/faq/cover.png"
+    },
+    {
+      "type": "point",
+      "index": 1,
+      "title": "Нужна ли виза?",
+      "text": "Для граждан РФ и СНГ действует безвизовый режим. Дополнительные детали обсуждаются индивидуально.",
+      "image": "generated/faq/visa.png"
+    },
+    {
+      "type": "point",
+      "index": 2,
+      "title": "Перелёт входит в стоимость?",
+      "text": "Нет, международный перелёт покупаете сами. Подскажем удобные рейсы.",
+      "image": "generated/faq/flight.png"
+    },
+    {
+      "type": "point",
+      "index": 3,
+      "title": "Я не говорю по-английски и по-китайски",
+      "text": "Не нужно: программа на русском, перевод с китайского на встречах — наш.",
+      "image": "generated/faq/interpreter.png"
+    },
+    {
+      "type": "point",
+      "index": 4,
+      "title": "Сколько человек в группе?",
+      "text": "От 8 до 15 человек. Небольшие группы, чтобы все могли задать вопросы.",
+      "image": "generated/faq/group-size.png"
+    },
+    {
+      "type": "point",
+      "index": 5,
+      "title": "Сколько длится экспедиция?",
+      "text": "5 рабочих дней и 6 ночей, 2 компании в день. Программа начинается в день прилёта.",
+      "image": "generated/faq/duration.png"
+    },
+    {
+      "type": "point",
+      "index": 6,
+      "title": "Можно поехать одному или только компанией?",
+      "text": "И так, и так: индивидуальное участие или программа для вашей команды.",
+      "image": "generated/faq/solo-or-team.png"
+    },
+    {
+      "type": "point",
+      "index": 7,
+      "title": "Можно собрать тур под мою отрасль?",
+      "text": "Да. В базе 1000+ компаний в 18 отраслях.",
+      "image": "generated/faq/industry-map.png"
+    },
+    {
+      "type": "cta",
+      "title": "Не нашли свой вопрос?",
+      "text": "Пишите — отвечаю лично → Telegram @GLOBALTECHTOUR · WhatsApp/Telegram @ostapdotcenko",
+      "keyword": "",
+      "handle": "globaltechtour.ru",
+      "image": "generated/faq/cta.png"
+    }
+  ]
+}

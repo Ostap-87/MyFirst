@@ -1,0 +1,71 @@
+{
+  "name": "corporate-training",
+  "brand": "gtt",
+  "footer": "globaltechtour.ru",
+  "slides": [
+    {
+      "type": "cover",
+      "kicker": "Global Tech Tour",
+      "title": "**6 китайских гигантов** — 6 уроков для вашей команды",
+      "subtitle": "Корпоративное обучение в Китае",
+      "image": "generated/corporate-training/cover.png"
+    },
+    {
+      "type": "point",
+      "index": 1,
+      "title": "Huawei",
+      "text": "Как выстроить R&D и выжить под санкциями двух континентов.",
+      "image": "generated/corporate-training/huawei.png"
+    },
+    {
+      "type": "point",
+      "index": 2,
+      "title": "Alibaba",
+      "text": "Экосистема и культура, которая придумала День холостяков.",
+      "image": "generated/corporate-training/alibaba.png"
+    },
+    {
+      "type": "point",
+      "index": 3,
+      "title": "Xiaomi",
+      "text": "От прошивок до электромобиля: как строить продуктовую линейку.",
+      "image": "generated/corporate-training/xiaomi.png"
+    },
+    {
+      "type": "point",
+      "index": 4,
+      "title": "Haier",
+      "text": "Как производитель холодильников стал глобальной корпорацией с R&D-центрами по миру.",
+      "image": "generated/corporate-training/haier.png"
+    },
+    {
+      "type": "point",
+      "index": 5,
+      "title": "ByteDance",
+      "text": "Алгоритмы и скорость запуска продуктов.",
+      "image": "generated/corporate-training/bytedance.png"
+    },
+    {
+      "type": "point",
+      "index": 6,
+      "title": "Ping An",
+      "text": "Страховая, которая построила экосистему с медициной и финтехом.",
+      "image": "generated/corporate-training/pingan.png"
+    },
+    {
+      "type": "point",
+      "index": 7,
+      "title": "Формат",
+      "text": "Визит в компанию, лекции, разбор кейсов. Лекции читают действующие сотрудники и топ-менеджеры корпораций. Длительность — от 3 дней/4 ночей.",
+      "image": "generated/corporate-training/format.png"
+    },
+    {
+      "type": "cta",
+      "title": "Для кого",
+      "text": "Собственники, топ-менеджмент, HR и команды развития. globaltechtour.ru/corporate-training",
+      "keyword": "",
+      "handle": "globaltechtour.ru",
+      "image": "generated/corporate-training/cta.png"
+    }
+  ]
+}

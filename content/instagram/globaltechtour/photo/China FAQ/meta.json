@@ -1,0 +1,13 @@
+{
+  "channel": "instagram",
+  "brand": "globaltechtour",
+  "slug": "faq",
+  "type": "carousel",
+  "folder": "China FAQ",
+  "publishAt": null,
+  "status": "saved",
+  "files": ["01-cover.png", "02-point.png", "03-point.png", "04-point.png", "05-point.png", "06-point.png", "07-point.png", "08-point.png", "09-cta.png"],
+  "createdAt": "2026-10-02T10:59:00Z",
+  "kind": "photo",
+  "note": "Готовая карусель, дата публикации ещё не назначена — не добавлена в queue.json. Источник текста: data/carousel-faq.json в remotion-video-tools (карусель 7 из документа GTT_Prompty_Karuseli_2-7.docx). Визовые правила указаны на дату создания (безвизовый режим для РФ/СНГ) — проверить перед публикацией, не устарели ли."
+}

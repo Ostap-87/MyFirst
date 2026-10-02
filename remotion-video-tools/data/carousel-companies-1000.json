@@ -1,0 +1,64 @@
+{
+  "name": "companies-1000",
+  "brand": "gtt",
+  "footer": "globaltechtour.ru",
+  "slides": [
+    {
+      "type": "cover",
+      "kicker": "Global Tech Tour",
+      "title": "Куда обычных туристов не пускают. **1000+** компаний в нашей базе",
+      "subtitle": "Компании — у кого бываем",
+      "image": "generated/companies-1000/cover.png"
+    },
+    {
+      "type": "point",
+      "index": 1,
+      "title": "**18 отраслей**",
+      "text": "От робототехники и электромобилей до чая, бьюти и финтеха.",
+      "image": "generated/companies-1000/industries.png"
+    },
+    {
+      "type": "point",
+      "index": 2,
+      "title": "Робототехника",
+      "text": "AgiBot, UBTech, Galbot, Fourier, Pudu и другие лидеры гуманоидов и сервисных роботов.",
+      "image": "generated/companies-1000/robotics.png"
+    },
+    {
+      "type": "point",
+      "index": 3,
+      "title": "Чай и кофе",
+      "text": "Chagee, HeyTea, Luckin Coffee, Manner, Nayuki: как сети открывают тысячи точек.",
+      "image": "generated/companies-1000/tea-coffee.png"
+    },
+    {
+      "type": "point",
+      "index": 4,
+      "title": "Новая розница и доставка",
+      "text": "Дарккитчены и логистика, где обрабатывают миллионы заказов в день.",
+      "image": "generated/companies-1000/retail-delivery.png"
+    },
+    {
+      "type": "point",
+      "index": 5,
+      "title": "Не только Китай",
+      "text": "Япония, Корея, Таиланд, Вьетнам, Индонезия, Малайзия, Индия.",
+      "image": "generated/companies-1000/asia-map.png"
+    },
+    {
+      "type": "point",
+      "index": 6,
+      "title": "Почему нас пускают",
+      "text": "Визиты согласованы заранее, компании знаем лично, говорим с ними на китайском.",
+      "image": "generated/companies-1000/meeting.png"
+    },
+    {
+      "type": "cta",
+      "title": "Вашей отрасли нет в списке?",
+      "text": "Соберём программу под вас. Пишите → Telegram @GLOBALTECHTOUR · WhatsApp/Telegram @ostapdotcenko",
+      "keyword": "",
+      "handle": "globaltechtour.ru",
+      "image": "generated/companies-1000/cta.png"
+    }
+  ]
+}
