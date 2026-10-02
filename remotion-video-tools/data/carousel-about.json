@@ -25,8 +25,8 @@
       "index": 2,
       "title": "Работал внутри",
       "text": "Alibaba (O2O) и Сбер (B2B): знаю, как устроены большие компании изнутри.",
-      "image": "generated/about/divider-bright.png",
-      "logos": [{"src": "logos/alibaba.svg", "scale": 2}, {"src": "logos/sber.svg", "scale": 2}]
+      "image": "generated/about/divider.png",
+      "logoStack": ["logos/alibaba.svg", "logos/sber.svg"]
     },
     {
       "type": "point",

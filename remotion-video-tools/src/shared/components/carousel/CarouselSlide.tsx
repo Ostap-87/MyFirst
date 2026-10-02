@@ -220,21 +220,15 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
                 vh(("textRaise" in slide && slide.textRaise) || 0)
               }px`,
               gap: sp(0.02),
-              // noFrost: сам текстовый блок — компактная полупрозрачная
-              // плашка с лёгким блюром поверх резкого фото (не растянутая
-              // на всю ширину прозрачная панель, не сплошной белый блок,
-              // который закрывает человека на фото — запрос пользователя
-              // 02.10.2026: фото должно просвечивать сквозь плашку).
+              // noFrost: никакой плашки и блюра вообще — текст лежит прямо
+              // на резком фото (запрос пользователя 02.10.2026, второй
+              // заход: даже полупрозрачная плашка с блюром всё ещё мешала
+              // видеть человека на фото). Читаемость — через text-shadow
+              // у самого текста, см. ниже.
               ...(frostless
                 ? {
-                    backgroundColor: "rgba(255,255,255,0.38)",
-                    backdropFilter: "blur(14px)",
-                    WebkitBackdropFilter: "blur(14px)",
-                    borderRadius: sp(0.04),
-                    boxShadow: "0 16px 40px rgba(23,23,29,0.18)",
                     maxWidth: "78%",
                     margin: `0 ${sp(0.07)}px ${vh(0.06)}px`,
-                    padding: `${vh(0.03)}px ${sp(0.05)}px`,
                   }
                 : {}),
             }}
@@ -360,17 +354,62 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
                     })}
                   </div>
                 ) : null}
+                {"logoStack" in slide && slide.logoStack && slide.logoStack.length > 0 ? (
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: sp(0.025),
+                      width: "100%",
+                    }}
+                  >
+                    {slide.logoStack.map((src, i) => (
+                      <div
+                        key={i}
+                        style={{
+                          height: fs(0.15),
+                          width: "100%",
+                          padding: `${fs(0.025)}px ${fs(0.04)}px`,
+                          borderRadius: sp(0.025),
+                          backgroundColor: "#ffffff",
+                          border: `1px solid ${theme.colors.line}`,
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          boxSizing: "border-box",
+                        }}
+                      >
+                        <Img
+                          src={staticFile(src)}
+                          style={{
+                            maxHeight: "100%",
+                            maxWidth: "100%",
+                            objectFit: "contain",
+                          }}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                ) : null}
                 {slide.title ? (
-                  <h2 style={{ margin: 0, lineHeight: 1.12 }}>
+                  <h2
+                    style={{
+                      margin: 0,
+                      lineHeight: 1.12,
+                      textShadow: frostless
+                        ? "0 1px 3px rgba(0,0,0,0.85), 0 2px 16px rgba(0,0,0,0.6)"
+                        : undefined,
+                    }}
+                  >
                     {renderRich(
                       slide.title,
                       {
                         fontFamily: fontFamily(theme.fonts.heading),
                         fontWeight: theme.fonts.headingWeight,
                         fontSize: fs(0.062),
-                        color: theme.colors.text,
+                        color: frostless ? "#ffffff" : theme.colors.text,
                       },
-                      { color: theme.colors.accent },
+                      { color: frostless ? "#ffffff" : theme.colors.accent },
                     )}
                   </h2>
                 ) : null}
@@ -380,7 +419,10 @@ export const CarouselSlide: React.FC<CarouselSlideProps> = ({
                     fontFamily: fontFamily(theme.fonts.body),
                     fontSize: slide.title ? fs(0.036) : fs(0.044),
                     lineHeight: 1.4,
-                    color: theme.colors.text,
+                    color: frostless ? "#ffffff" : theme.colors.text,
+                    textShadow: frostless
+                      ? "0 1px 3px rgba(0,0,0,0.85), 0 2px 16px rgba(0,0,0,0.6)"
+                      : undefined,
                   }}
                 >
                   {slide.text}
