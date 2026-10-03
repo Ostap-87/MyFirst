@@ -14,7 +14,8 @@ import {
 } from "remotion";
 import type { Caption } from "@remotion/captions";
 import { z } from "zod";
-import { AuraBot, auraBotGestureSchema, GridCard, TickerStrip } from "../../shared/components/effects";
+import { AuraBot3D, auraBot3DGestureSchema, GridCard, TickerStrip } from "../../shared/components/effects";
+import { AuraLogo } from "../components/AuraLogo";
 import { useCaptions } from "../../shared/useCaptions";
 import { useFormat } from "../../shared/format";
 import { fontFamily } from "../../shared/fonts";
@@ -34,7 +35,7 @@ import theme from "../theme";
  * Правила — docs/aura-head.md.
  */
 const secondsAt = z.number().min(0);
-const gestureSchema = z.object({ at: secondsAt, kind: auraBotGestureSchema });
+const gestureSchema = z.object({ at: secondsAt, kind: auraBot3DGestureSchema });
 
 export const robotTalkSchema = z.object({
   footage: z.string().describe("Съёмка после --prepare, внутри public"),
@@ -46,15 +47,28 @@ export const robotTalkSchema = z.object({
   musicVolume: z.number().min(0).max(1),
   hookTop: z.string(),
   hookBottom: z.string().describe("Вторая строка крючка — на жёлтом маркере"),
-  logoSrc: z.string(),
-  logoScale: z.number().min(0.5).max(2),
+  logo: z.object({
+    size: z.number().min(0.12).max(0.5).describe("Диаметр круга знака, доля ширины"),
+    ring: z.boolean().describe("Кольцо «AURA ROBOTICS» вокруг монограммы"),
+    ringSecondsPerTurn: z.number().min(3).max(120),
+    reassembleEverySeconds: z.number().min(2).max(120).describe("Как часто знак пересобирается из элементов"),
+    shineEverySeconds: z.number().min(1).max(120),
+  }),
   bot: z.object({
     side: z.enum(["right", "left"]),
-    sizeFraction: z.number().min(0.08).max(0.4).describe("Ширина робота, доля ширины кадра"),
+    sizeFraction: z.number().min(0.08).max(0.4).describe("Рост робота, доля высоты кадра"),
     look: z.number().min(-1).max(1).describe("Куда смотрит в покое; 0 — на зрителя"),
     gestures: z.array(gestureSchema),
-    auto: z.boolean().describe("Жесты на события монтажа автоматически"),
+    auto: z.boolean().describe("Жесты и перемещения на события монтажа автоматически"),
     hidden: z.boolean(),
+    spots: z.array(
+      z.object({
+        at: secondsAt,
+        x: z.number().min(0).max(1).describe("Где стоят ноги, доля ширины"),
+        y: z.number().min(0).max(1).describe("Где стоят ноги, доля высоты"),
+        facing: z.number().describe("Поворот корпуса, градусы; 0 — к зрителю"),
+      }),
+    ),
   }),
   cards: z.array(
     z.object({
@@ -64,6 +78,7 @@ export const robotTalkSchema = z.object({
       title: z.string(),
       highlight: z.string().describe("Часть заголовка под жёлтым маркером"),
       text: z.string(),
+      items: z.array(z.string()).describe("Пункты перечисления: появляются по одному, робот подходит и показывает на каждый"),
     }),
   ),
   factories: z.array(
@@ -118,8 +133,8 @@ export const calculateRobotTalkMetadata: CalculateMetadataFunction<RobotTalkProp
 
 /** Геометрия: доли высоты, как в GTT Head (ChinaStories). */
 const GEO = {
-  stories: { logoTop: 0.09, marksTop: 0.2, captionsBottom: 0.16, rightPad: 0 },
-  reels: { logoTop: 0.1, marksTop: 0.2, captionsBottom: 0.22, rightPad: 0.16 },
+  stories: { logoTop: 0.09, marksTop: 0.245, captionsBottom: 0.16, rightPad: 0 },
+  reels: { logoTop: 0.1, marksTop: 0.25, captionsBottom: 0.22, rightPad: 0.16 },
 };
 const SIDES = 0.07;
 const AT = (seconds: number, fps: number) => Math.round(seconds * fps);
@@ -177,8 +192,7 @@ export const RobotTalk: React.FC<RobotTalkProps> = ({
   musicVolume,
   hookTop,
   hookBottom,
-  logoSrc,
-  logoScale,
+  logo,
   bot,
   cards,
   factories,
@@ -203,26 +217,56 @@ export const RobotTalk: React.FC<RobotTalkProps> = ({
   const sideL = width * SIDES;
   const sideR = width * (SIDES + geo.rightPad);
   const contentW = width - sideL - sideR;
+  const marksTopPx = height * geo.marksTop;
 
-  // ——— Логотип-таблетка и робот рядом ———
-  const pillH = fs(0.075) * logoScale;
-  const logoH = pillH * 0.62;
-  const logoW = logoH * (1280 / 415);
-  const pillW = logoW + pillH * 1.1;
-  const botW = width * bot.sizeFraction;
-  const botH = botW * 1.58;
+  // ——— Знак на круге и робот рядом ———
+  const ITEM_EVERY = 0.9; // секунд между пунктами перечисления
+  const MOVE = 0.9; // секунд на переход между точками
+  const logoD = width * logo.size;
+  const logoR = logoD / 2;
+  const botHpx = height * bot.sizeFraction; // рост робота в пикселях
+  const botBox = botHpx / 0.65; // квадрат SVG: робот занимает 65 % высоты, ноги на 0,787
+  const botWpx = botBox * 0.3;
   const headerTop = height * geo.logoTop;
-  const groupW = pillW + (bot.hidden ? 0 : botW * 0.82);
+  const groupW = logoD + (bot.hidden ? 0 : botWpx * 1.15);
   const groupLeft = Math.max(sideL, (width - sideR + sideL - groupW) / 2);
-  const pillLeft = bot.side === "right" ? groupLeft : groupLeft + (bot.hidden ? 0 : botW * 0.82);
-  const botLeft = bot.side === "right" ? pillLeft + pillW - botW * 0.18 : groupLeft;
-  const pillIn = spring({ frame, fps, config: { damping: 14, stiffness: 110 } });
+  const logoCx = bot.side === "right" ? groupLeft + logoR : groupLeft + groupW - logoR;
+  const logoCy = headerTop + logoR;
+  const homeSpot = { x: (bot.side === "right" ? logoCx + logoR + botWpx * 0.55 : logoCx - logoR - botWpx * 0.55) / width, y: (logoCy + logoR + botHpx * 0.08) / height, facing: 0 };
+
+  // Точки, куда робот ходит: заданные руками плюс автоматические — к карточке с пунктами и обратно.
+  type Spot = { at: number; x: number; y: number; facing: number };
+  const spots: Spot[] = [{ at: 0, ...homeSpot }, ...bot.spots];
+  if (bot.auto) {
+    for (const c of cards.filter((cc) => cc.items.length > 0)) {
+      const cardRight = (sideL + contentW * 0.7) / width;
+      spots.push({ at: c.at, x: cardRight + (botWpx * 0.6) / width, y: (marksTopPx + fs(0.06) + c.items.length * fs(0.075)) / height + 0.02, facing: -55 });
+      spots.push({ at: c.until - 0.2, ...homeSpot });
+    }
+  }
+  spots.sort((a, b) => a.at - b.at);
+  const next = [...spots].reverse().find((sp) => sp.at <= second) ?? spots[0];
+  const from = spots.filter((sp) => sp.at < next.at).pop() ?? next;
+  const moveT = next.at === 0 ? 1 : Math.min(1, Math.max(0, (second - next.at) / MOVE));
+  const ease = moveT * moveT * (3 - 2 * moveT);
+  const feetX = (from.x + (next.x - from.x) * ease) * width;
+  const feetY = (from.y + (next.y - from.y) * ease) * height;
+  const moving = moveT > 0 && moveT < 1;
+  const walk = moving ? Math.sin(moveT * Math.PI) : 0;
+  const dir = next.x >= from.x ? 1 : -1;
+  const facing = moving ? dir * 70 : next.facing;
+  const botLeft = feetX - botBox / 2;
+  const botTop = feetY - botBox * 0.787;
+  const logoIn = spring({ frame, fps, config: { damping: 14, stiffness: 110 } });
 
   // Жесты: заданные руками плюс автоматические на события монтажа.
   const gestures = [...bot.gestures.map((g) => ({ at: AT(g.at, fps), kind: g.kind }))];
   if (bot.auto) {
     if (hookTop || hookBottom) gestures.push({ at: AT(0.5, fps), kind: "wave" });
-    for (const c of cards) gestures.push({ at: AT(c.at + 0.1, fps), kind: "nod" });
+    for (const c of cards) {
+      if (c.items.length) for (let i = 0; i < c.items.length; i++) gestures.push({ at: AT(c.at + MOVE + 0.1 + i * ITEM_EVERY, fps), kind: "point" });
+      else gestures.push({ at: AT(c.at + 0.1, fps), kind: "nod" });
+    }
     for (const f of factories) gestures.push({ at: AT(f.at + 0.1, fps), kind: "scan" });
     for (const s of stats) gestures.push({ at: AT(s.at + 0.1, fps), kind: "jump" });
     for (const i of inserts) gestures.push({ at: AT(i.at + 0.2, fps), kind: "point" });
@@ -236,7 +280,7 @@ export const RobotTalk: React.FC<RobotTalkProps> = ({
   // ——— Крючок ———
   const hookIn = spring({ frame, fps, config: { damping: 15, stiffness: 120 } });
   const hookOut = interpolate(frame, [AT(2.2, fps), AT(2.7, fps)], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-  const marksTop = height * geo.marksTop;
+  const marksTop = marksTopPx;
 
   // ——— Субтитры ———
   const pages = buildPages(captions, captionsOffsetSeconds * 1000);
@@ -263,30 +307,13 @@ export const RobotTalk: React.FC<RobotTalkProps> = ({
         </Sequence>
       ))}
 
-      {/* ——— Шапка: таблетка с логотипом и робот ——— */}
-      <div
-        style={{
-          position: "absolute",
-          left: pillLeft,
-          top: headerTop,
-          width: pillW,
-          height: pillH,
-          borderRadius: pillH,
-          background: "#ffffff",
-          border: `${Math.max(2, Math.round(fs(0.003)))}px solid ${line}`,
-          boxShadow: "0 12px 30px rgba(0,0,0,0.22)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          transform: `translateY(${(1 - pillIn) * -pillH * 1.4}px)`,
-          opacity: pillIn,
-        }}
-      >
-        <Img src={staticFile(logoSrc)} style={{ height: logoH, width: logoW }} />
+      {/* ——— Шапка: знак на круге с кольцом и робот ——— */}
+      <div style={{ position: "absolute", inset: 0, opacity: logoIn }}>
+        <AuraLogo size={logoD} cx={logoCx} cy={logoCy} ink={ink} accent={accent} ring={logo.ring} ringSecondsPerTurn={logo.ringSecondsPerTurn} reassembleEverySeconds={logo.reassembleEverySeconds} shineEverySeconds={logo.shineEverySeconds} font={theme.fonts.heading} />
       </div>
       {bot.hidden ? null : (
-        <div style={{ position: "absolute", left: botLeft, top: headerTop + pillH * 1.45 - botH, width: botW, height: botH, opacity: pillIn, transform: `scale(${bot.side === "left" ? -1 : 1}, 1)` }}>
-          <AuraBot gestures={gestures} look={bot.side === "left" ? -look : look} light={theme.colors.primary} dark={ink} accent={accent} jumpHeight={60} />
+        <div style={{ position: "absolute", left: botLeft, top: botTop, width: botBox, height: botBox, opacity: logoIn, pointerEvents: "none" }}>
+          <AuraBot3D gestures={gestures} look={look} facing={facing} walk={walk} light={theme.colors.primary} dark={ink} accent={accent} jumpHeight={0.5} />
         </div>
       )}
 
@@ -304,12 +331,13 @@ export const RobotTalk: React.FC<RobotTalkProps> = ({
         const dur = AT(c.until - c.at, fps);
         return (
           <Sequence key={`card-${k}`} from={from} durationInFrames={dur} layout="none">
-            <Card top={marksTop} left={sideL} width={contentW} durationInFrames={dur} fs={fs} line={line}>
+            <Card top={marksTop} left={sideL} width={c.items.length ? contentW * 0.7 : contentW} durationInFrames={dur} fs={fs} line={line}>
               {c.index ? <div style={{ fontFamily: mono, fontSize: fs(0.026), color: muted, letterSpacing: "0.08em" }}>{c.index}</div> : null}
               <div style={{ fontWeight: 700, fontSize: fs(0.05), lineHeight: 1.15, letterSpacing: "-0.01em" }}>
                 <Marked text={c.title} highlight={c.highlight} accent={accent} />
               </div>
               {c.text ? <div style={{ fontSize: fs(0.032), lineHeight: 1.3, color: muted }}>{c.text}</div> : null}
+              {c.items.length ? <Items items={c.items} every={AT(ITEM_EVERY, fps)} start={AT(MOVE + 0.1, fps)} fs={fs} accent={accent} /> : null}
             </Card>
             <Sfx src={SFX.pop} />
           </Sequence>
@@ -396,6 +424,25 @@ export const RobotTalk: React.FC<RobotTalkProps> = ({
         </Sequence>
       ) : null}
     </AbsoluteFill>
+  );
+};
+
+/** Пункты перечисления: появляются по одному, с жёлтой точкой. */
+const Items: React.FC<{ items: string[]; every: number; start: number; fs: (f: number) => number; accent: string }> = ({ items, every, start, fs, accent }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: fs(0.012), marginTop: fs(0.012) }}>
+      {items.map((it, i) => {
+        const s = spring({ frame: frame - start - i * every, fps, config: { damping: 14, stiffness: 140 } });
+        return (
+          <div key={i} style={{ display: "flex", alignItems: "center", gap: fs(0.02), fontSize: fs(0.04), fontWeight: 600, opacity: s, transform: `translateX(${(1 - s) * -fs(0.04)}px)` }}>
+            <span style={{ width: fs(0.022), height: fs(0.022), borderRadius: "50%", background: accent, border: "2px solid #262626", flexShrink: 0 }} />
+            {it}
+          </div>
+        );
+      })}
+    </div>
   );
 };
 

@@ -111,6 +111,8 @@ import { HeadFxLab, headFxLabDefaults, headFxLabSchema } from "./shared/HeadFxLa
 import { SourcesLab, sourcesLabDefaults, sourcesLabSchema } from "./shared/SourcesLab";
 // new-composition:imports:end
 import { calculateRobotTalkMetadata, RobotTalk, robotTalkSchema } from "./aura-robotics/compositions/RobotTalk";
+import { BotLab, botLabSchema } from "./aura-robotics/labs/BotLab";
+import { LogoLab, logoLabDefaults, logoLabSchema } from "./aura-robotics/labs/LogoLab";
 
 
 export const RemotionRoot: React.FC = () => {
@@ -127,6 +129,8 @@ export const RemotionRoot: React.FC = () => {
         width={1920}
         height={1080}
       />
+      <Composition id="Aura-LogoLab" component={LogoLab} schema={logoLabSchema} defaultProps={logoLabDefaults} durationInFrames={420} fps={30} width={1920} height={1080} />
+      <Composition id="Aura-BotLab" component={BotLab} schema={botLabSchema} defaultProps={{ walk: 0, facing: 0, look: 0 }} durationInFrames={620} fps={30} width={1000} height={1000} />
       <Composition
         id="Aura-Head"
         component={RobotTalk}
@@ -142,20 +146,20 @@ export const RemotionRoot: React.FC = () => {
           musicVolume: 0.1,
           hookTop: "Как делают роботов",
           hookBottom: "приезжай и посмотри сам",
-          logoSrc: "aura/logo.png",
-          logoScale: 1,
-          bot: { side: "right" as const, sizeFraction: 0.105, look: -0.6, gestures: [], auto: true, hidden: false },
+          logo: { size: 0.24, ring: true, ringSecondsPerTurn: 16, reassembleEverySeconds: 12, shineEverySeconds: 4 },
+          bot: { side: "right" as const, sizeFraction: 0.15, look: -0.6, gestures: [], auto: true, hidden: false, spots: [] },
           cards: [
-            { at: 30.4, until: 34.6, index: "01", title: "За 5 дней поймёте рынок", highlight: "за 5 дней", text: "лучше, чем за полгода чтения обзоров" },
-            { at: 37.6, until: 41.6, index: "02", title: "Кому доверить деньги", highlight: "доверить деньги", text: "и кого обходить стороной" },
-            { at: 41.8, until: 46.5, index: "03", title: "Более 10 лет на рынке", highlight: "10 лет", text: "свободный китайский, робототехника изнутри" },
-            { at: 53.2, until: 58.6, index: "", title: "Итог: 3–5 реальных контактов", highlight: "3–5 реальных контактов", text: "с которыми можно подписывать контракт" },
+            { at: 30.4, until: 34.6, index: "01", title: "За 5 дней поймёте рынок", highlight: "за 5 дней", text: "лучше, чем за полгода чтения обзоров", items: [] },
+            { at: 37.6, until: 41.6, index: "02", title: "Кому доверить деньги", highlight: "доверить деньги", text: "и кого обходить стороной", items: [] },
+            { at: 41.8, until: 46.5, index: "03", title: "Более 10 лет на рынке", highlight: "10 лет", text: "свободный китайский, робототехника изнутри", items: [] },
+            { at: 53.2, until: 58.6, index: "", title: "Итог: 3–5 реальных контактов", highlight: "3–5 реальных контактов", text: "с которыми можно подписывать контракт", items: [] },
+            { at: 22.3, until: 29.9, index: "", title: "Что внутри поездки", highlight: "внутри", text: "", items: ["Реальная компания", "R&D-центр", "Руководители проектов"] },
           ],
           factories: [
             { at: 7.4, until: 11.2, logo: "local/aura/logos/estun.svg", name: "Estun", city: "Нанкин, Китай", note: "" },
           ],
           inserts: [
-            { at: 18.9, until: 26.0, src: "local/aura/rd-agibot.mp4", kind: "video" as const, label: "R&D-центр AgiBot", cx: 0.69, cy: 0.33, widthFraction: 0.5, aspect: 0.8, tilt: -14, trimBefore: 0 },
+            { at: 18.9, until: 22.1, src: "local/aura/rd-agibot.mp4", kind: "video" as const, label: "R&D-центр AgiBot", cx: 0.69, cy: 0.33, widthFraction: 0.5, aspect: 0.8, tilt: -14, trimBefore: 0 },
           ],
           tickers: [
             { at: 11.3, until: 15.0, items: [{ name: "AgiBot", city: "Шанхай" }, { name: "Kepler", city: "Шанхай" }, { name: "Fourier", city: "Шанхай" }, { name: "UBTech", city: "Шэньчжэнь" }, { name: "Galbot", city: "Пекин" }] },

@@ -50,5 +50,6 @@ export * from "./IconOrbit";
 export * from "./BeamsBackdrop";
 export * from "./DotGrid";
 export * from "./AuraBot";
+export * from "./AuraBot3D";
 export * from "./GridCard";
 export * from "./TickerStrip";
