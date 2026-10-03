@@ -20,7 +20,7 @@ type Scene = { label: string; sub: string; offset: number; kind?: CameraFxKind; 
 const SCENES: Scene[] = [
   { label: "Push in", sub: "наезд на глаза — настоящий", offset: 20.0, kind: "pushIn" },
   { label: "Whip pan", sub: "отмах с размытием — настоящий переход", offset: 25.0, kind: "whipPan", direction: "right" },
-  { label: "Dolly zoom", sub: "спикер на месте, фон наезжает — через вырезку", offset: 14.3, kind: "dollyZoom", withCutout: true },
+  { label: "Dolly zoom", sub: "спикер на месте, фон уезжает — через вырезку", offset: 14.3, kind: "dollyZoom", withCutout: true },
   { label: "Low angle", sub: "низкий ракурс — перспектива снизу", offset: 30.0, kind: "lowAngle" },
   { label: "Crane", sub: "кран: подъём с отъездом и наклоном", offset: 36.0, kind: "crane" },
   { label: "Orbit", sub: "псевдо-орбита 12° — параллакс через вырезку", offset: 41.4, kind: "orbit", direction: "right", withCutout: true },

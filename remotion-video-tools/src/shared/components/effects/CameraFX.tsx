@@ -84,13 +84,23 @@ export const cameraFxLayers = (move: CameraFxMove | undefined, frame: number, wi
       return { bg: l, fg: l };
     }
     case "dollyZoom": {
-      // Фон растёт вокруг спикера; его «двойник» в фоне прячется за вырезкой, остатки по краям
-      // размываются — заодно это читается как малая глубина резкости.
-      const e = smooth(p);
-      const k = 1 + (hasCutout ? 0.45 : 0.2) * s * e;
+      // Как у Хичкока: спикер (вырезка) держит размер, фон за ним уезжает.
+      // Сначала весь кадр быстро наезжает до 1,3 (вырезка и фон вместе), потом
+      // вырезка стоит, а фон сжимается обратно к 1,0 — его «двойник» спикера
+      // уменьшается и целиком прячется за вырезкой, краёв не видно.
+      if (!hasCutout) {
+        const k = 1 + 0.2 * s * smooth(p);
+        const l = { transform: `scale(${k})`, origin, filter: "none" };
+        return { bg: l, fg: l };
+      }
+      const big = 1 + 0.3 * s;
+      const a = smooth(p / 0.22); // наезд
+      const b = smooth((p - 0.22) / 0.78); // отъезд фона
+      const fgK = 1 + (big - 1) * a;
+      const bgK = fgK - (big - 1) * b;
       return {
-        bg: { transform: `scale(${k})`, origin, filter: hasCutout ? `blur(${5 * s * e}px)` : "none" },
-        fg: { transform: `translateY(${height * 0.004 * s * e}px)`, origin: `50% 100%`, filter: "none" },
+        bg: { transform: `scale(${Math.max(1, bgK)})`, origin, filter: `blur(${4 * s * b}px)` },
+        fg: { transform: `scale(${fgK})`, origin, filter: "none" },
       };
     }
     case "lowAngle": {
