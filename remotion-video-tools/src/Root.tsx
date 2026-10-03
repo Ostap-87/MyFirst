@@ -1193,7 +1193,7 @@ export const RemotionRoot: React.FC = () => {
         width={1080}
         height={1920}
         fps={30}
-        durationInFrames={540}
+        durationInFrames={480}
       />
 
       {/* Витрина эффектов на нейтральных данных: сюда смотрим, когда

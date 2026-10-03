@@ -1,5 +1,6 @@
 import { AbsoluteFill, Easing, interpolate, useCurrentFrame, useVideoConfig } from "remotion";
 import { z } from "zod";
+import { measureText } from "@remotion/layout-utils";
 import { fontFamily } from "../../fonts";
 import { withDefaults } from "./media";
 
@@ -62,13 +63,22 @@ export const BackTitle: React.FC<BackTitleProps> = ({ children, ...params }) => 
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
-  const size = width * p.fontSize * (side ? 0.62 : 1);
+  // Кегль подгоняется под самую длинную строку: надпись не вылезает за
+  // кадр ни в полном, ни в боковом столбике.
+  const maxWidth = side ? width * 0.42 : width * 0.94;
+  const base = width * p.fontSize * (side ? 0.62 : 1);
+  const family = fontFamily(p.font);
+  const widest = Math.max(
+    1,
+    ...p.lines.map((raw) => measureText({ text: raw.replace(/^\*/, ""), fontFamily: family, fontSize: base, fontWeight: 800, letterSpacing: "-0.01em" }).width),
+  );
+  const size = base * Math.min(1, maxWidth / widest);
 
   const text = (
     <div
       style={{
         position: "absolute",
-        left: side ? width * 0.52 : 0,
+        left: side ? width * 0.53 : 0,
         width: side ? width * 0.46 : width,
         top: 0,
         height,
