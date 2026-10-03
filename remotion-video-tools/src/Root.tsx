@@ -108,6 +108,7 @@ import { GTTLuckyCat, gttLuckyCatDefaults, gttLuckyCatSchema } from "./globaltec
 import { FlagClip, flagClipDefaults, flagClipSchema } from "./shared/FlagClip";
 import { ChartClip, chartClipDefaults, chartClipSchema } from "./shared/ChartClip";
 import { HeadFxLab, headFxLabDefaults, headFxLabSchema } from "./shared/HeadFxLab";
+import { SourcesLab, sourcesLabDefaults, sourcesLabSchema } from "./shared/SourcesLab";
 // new-composition:imports:end
 
 export const RemotionRoot: React.FC = () => {
@@ -1194,6 +1195,18 @@ export const RemotionRoot: React.FC = () => {
         height={1920}
         fps={30}
         durationInFrames={810}
+      />
+
+      {/* Что взято с LottieFiles, Fresh LUTs, Mixkit, Phosphor Icons и React Bits — на одном отрезке интро. */}
+      <Composition
+        id="Shared-SourcesLab"
+        component={SourcesLab}
+        schema={sourcesLabSchema}
+        defaultProps={sourcesLabDefaults}
+        width={1080}
+        height={1920}
+        fps={30}
+        durationInFrames={1200}
       />
 
       {/* Витрина эффектов на нейтральных данных: сюда смотрим, когда

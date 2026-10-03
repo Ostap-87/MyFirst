@@ -96,3 +96,6 @@ Shared-MotionLab). Для тёмных сцен берите `screen` или `so
 | `CycleDiagram` | Круговая диаграмма: центр и стрелки-секторы, которые присоединяются по одному и в конце образуют вращающееся кольцо | `delayInFrames`, `durationInFrames` |
 | `TypingPush` | Титры печатаются сбоку крупно, а съёмка по мере набора отъезжает в сторону, фон не меняется | `delayInFrames`, `durationInFrames` |
 | `BalloonTitle` | Буквы-шарики за спиной спикера: надуваются по одной, висят и покачиваются, сдуваются | `lines`, `charsPerSecond` (12), `holdFrames` (60), `deflate` (true), `fontSize` (0.16), `centerY` (0.3), `swayDeg` (4), `swayPx` (14) |
+| `AuroraBackdrop` | Мягкие цветные полосы плывут по тёмному фону (идея React Bits Aurora, от номера кадра) | `colors`, `background`, `speed` (1), `blur` (90), `intensity` (0.75), `seed` (0) |
+| `ShinyText` | Блик пробегает по тексту (идея React Bits Shiny Text) | `color`, `shine`, `periodSeconds` (2.4), `bandWidth` (0.25), `angle` (110) |
+| `IconOrbit` | Иконки Phosphor на орбите вокруг слова, появляются по одной и крутятся (идея React Bits Orbit Images) | `center`, `icons`, `stepFrames` (8), `spinSecondsPerTurn` (16), `radiusFraction` (0.32), `iconFraction` (0.13) |

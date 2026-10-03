@@ -44,3 +44,6 @@ export * from "./ScreenCapture";
 export * from "./PromoOverlays";
 export * from "./GiphySticker";
 export * from "./ArrowChart";
+export * from "./AuroraBackdrop";
+export * from "./ShinyText";
+export * from "./IconOrbit";
