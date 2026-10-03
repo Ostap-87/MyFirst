@@ -34,6 +34,10 @@ export const cycleDiagramSchema = z.object({
   labelColor: z.string().describe("Цвет подписей на секторах"),
   sound: z.string().describe("Звук на присоединение сектора; пусто — без звука"),
   font: z.string().describe("Гарнитура из public/fonts"),
+  shimmer: z.boolean().describe("Серебристый блик, бегущий по кольцу"),
+  growToFraction: z.number().min(0).max(0.5).describe("Внешний радиус после сборки, доля ширины; 0 — не укрупнять"),
+  growFrames: z.number().int().min(1).describe("Кадры на укрупнение после сборки"),
+  growCy: z.number().min(0).max(1).describe("Центр по высоте после укрупнения"),
 });
 
 export type CycleDiagramParams = z.infer<typeof cycleDiagramSchema>;
@@ -60,6 +64,10 @@ export const cycleDiagramDefaults: CycleDiagramParams = {
   labelColor: "#ffffff",
   sound: "audio/sfx/pop.wav",
   font: "Unbounded",
+  shimmer: true,
+  growToFraction: 0,
+  growFrames: 24,
+  growCy: 0.5,
 };
 
 const polar = (cx: number, cy: number, r: number, deg: number): [number, number] => {
@@ -93,27 +101,50 @@ export const CycleDiagram: React.FC<CycleDiagramProps> = (params) => {
   const p = withDefaults(cycleDiagramDefaults, params);
   const frame = useCurrentFrame();
   const { width, height, fps } = useVideoConfig();
-  const cx = width * p.cx;
-  const cy = height * p.cy;
-  const rOut = width * p.radiusFraction;
-  const rIn = rOut * (1 - p.thickness);
-  const rMid = (rOut + rIn) / 2;
   const n = Math.max(1, p.segments.length);
   const span = 360 / n - p.gapDeg;
+  const allIn = p.delayInFrames + 12 + (n - 1) * p.stepFrames + p.enterFrames;
+
+  // После сборки кольцо укрупняется и переезжает в заданный центр — за спину
+  // спикера; радиус ограничен так, чтобы края не выходили за кадр.
+  const grow = p.growToFraction > 0
+    ? interpolate(frame - allIn, [0, p.growFrames], [0, 1], { easing: Easing.inOut(Easing.cubic), extrapolateLeft: "clamp", extrapolateRight: "clamp" })
+    : 0;
+  const maxR = Math.min(width, height) * 0.48;
+  const rOut = Math.min(maxR, width * (p.radiusFraction + (p.growToFraction - p.radiusFraction) * grow));
+  const cx = width * p.cx;
+  const cy = height * (p.cy + (p.growCy - p.cy) * grow);
+  const rIn = rOut * (1 - p.thickness);
+  const rMid = (rOut + rIn) / 2;
 
   const centerIn = interpolate(frame - p.delayInFrames, [0, 16], [0, 1], {
     easing: Easing.out(Easing.back(1.5)),
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
-  const allIn = p.delayInFrames + 12 + (n - 1) * p.stepFrames + p.enterFrames;
   const spin = frame > allIn ? ((frame - allIn) / (fps * p.spinSecondsPerTurn)) * 360 : 0;
   const centerFont = rIn * 0.42;
+  // Блик: светлая полоса идёт по кольцу по кругу, период 2,4 с.
+  const shimmerAngle = ((frame / fps) / 2.4) * 360;
 
   return (
     <div style={{ position: "absolute", inset: 0, fontFamily: fontFamily(p.font) }}>
       <svg width={width} height={height} style={{ position: "absolute", inset: 0 }}>
         <defs>
+          {/* Металл: светлее к верху-слева, темнее к низу-справа. */}
+          <linearGradient id="cycle-metal" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="#ffffff" stopOpacity={0.35} />
+            <stop offset="45%" stopColor="#ffffff" stopOpacity={0.05} />
+            <stop offset="100%" stopColor="#000000" stopOpacity={0.28} />
+          </linearGradient>
+          {/* Бегущий серебристый блик: узкая светлая полоса, вращается вокруг центра. */}
+          <linearGradient id="cycle-shine" gradientUnits="userSpaceOnUse" x1={cx - rOut} y1={cy} x2={cx + rOut} y2={cy} gradientTransform={`rotate(${shimmerAngle} ${cx} ${cy})`}>
+            <stop offset="0%" stopColor="#ffffff" stopOpacity={0} />
+            <stop offset="42%" stopColor="#ffffff" stopOpacity={0} />
+            <stop offset="50%" stopColor="#ffffff" stopOpacity={0.75} />
+            <stop offset="58%" stopColor="#ffffff" stopOpacity={0} />
+            <stop offset="100%" stopColor="#ffffff" stopOpacity={0} />
+          </linearGradient>
           {p.segments.map((s, i) => {
             const a0 = i * (360 / n) + p.gapDeg / 2 + 4;
             const a1 = a0 + span - 14;
@@ -144,6 +175,12 @@ export const CycleDiagram: React.FC<CycleDiagramProps> = (params) => {
             return (
               <g key={`seg${i}`} opacity={op} transform={`rotate(${rot} ${cx} ${cy}) translate(${cx} ${cy}) scale(${sc}) translate(${-cx} ${-cy})`}>
                 <path d={arrowSector(cx, cy, rOut, rIn, a0, a1)} fill={s.color} style={{ filter: "drop-shadow(0 10px 24px rgba(0,0,0,0.35))" }} />
+                {p.shimmer ? (
+                  <>
+                    <path d={arrowSector(cx, cy, rOut, rIn, a0, a1)} fill="url(#cycle-metal)" />
+                    <path d={arrowSector(cx, cy, rOut, rIn, a0, a1)} fill="url(#cycle-shine)" style={{ mixBlendMode: "screen" }} />
+                  </>
+                ) : null}
                 <text fill={p.labelColor} fontSize={rMid * 0.16} fontWeight={700} letterSpacing="0.04em" dominantBaseline="middle">
                   <textPath href={`#cycle-tp-${i}`} startOffset="50%" textAnchor="middle">
                     {s.label}

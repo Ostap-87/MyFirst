@@ -68,9 +68,15 @@ export const BackTitle: React.FC<BackTitleProps> = ({ children, ...params }) => 
   const maxWidth = side ? width * 0.42 : width * 0.94;
   const base = width * p.fontSize * (side ? 0.62 : 1);
   const family = fontFamily(p.font);
+  // Берём большее из измеренной и оценочной ширины: если шрифт ещё не
+  // подгрузился в измеритель, оценка по числу знаков не даст вылезти за край.
   const widest = Math.max(
     1,
-    ...p.lines.map((raw) => measureText({ text: raw.replace(/^\*/, ""), fontFamily: family, fontSize: base, fontWeight: 800, letterSpacing: "-0.01em" }).width),
+    ...p.lines.map((raw) => {
+      const text = raw.replace(/^\*/, "");
+      const measured = measureText({ text, fontFamily: family, fontSize: base, fontWeight: 800, letterSpacing: "-0.01em" }).width;
+      return Math.max(measured, text.length * base * 0.74);
+    }),
   );
   const size = base * Math.min(1, maxWidth / widest);
 

@@ -95,3 +95,4 @@ Shared-MotionLab). Для тёмных сцен берите `screen` или `so
 | `CheckList` | Чек-лист: пункты появляются по одному, в окошке ставится галочка | `delayInFrames`, `durationInFrames` |
 | `CycleDiagram` | Круговая диаграмма: центр и стрелки-секторы, которые присоединяются по одному и в конце образуют вращающееся кольцо | `delayInFrames`, `durationInFrames` |
 | `TypingPush` | Титры печатаются сбоку крупно, а съёмка по мере набора отъезжает в сторону, фон не меняется | `delayInFrames`, `durationInFrames` |
+| `BalloonTitle` | Буквы-шарики за спиной спикера: надуваются по одной, висят и покачиваются, сдуваются | `lines`, `charsPerSecond` (12), `holdFrames` (60), `deflate` (true), `fontSize` (0.16), `centerY` (0.3), `swayDeg` (4), `swayPx` (14) |

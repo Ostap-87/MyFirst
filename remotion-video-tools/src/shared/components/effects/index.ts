@@ -24,6 +24,7 @@ export * from "./BackTitle";
 export * from "./CheckList";
 export * from "./CycleDiagram";
 export * from "./TypingPush";
+export * from "./BalloonTitle";
 // new-effect:exports:end
 export * from "./ChatOverlay";
 export * from "./CountUp";
