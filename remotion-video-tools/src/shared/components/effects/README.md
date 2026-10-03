@@ -101,3 +101,6 @@ Shared-MotionLab). Для тёмных сцен берите `screen` или `so
 | `IconOrbit` | Иконки Phosphor на орбите вокруг слова, появляются по одной и крутятся (идея React Bits Orbit Images) | `center`, `icons`, `stepFrames` (8), `spinSecondsPerTurn` (16), `radiusFraction` (0.32), `iconFraction` (0.13) |
 | `BeamsBackdrop` | Косые лучи света дышат на тёмном фоне (идея React Bits Beams, от номера кадра) | `color`, `background`, `count` (6), `angle` (−24), `speed` (1), `intensity` (0.55), `blur` (30) |
 | `DotGrid` | Сетка точек, по которой идёт волна от заданной точки (идея React Bits Dot Field) | `color`, `background`, `spacing` (54), `dot` (3), `waveSpeed` (1), `waveLength` (700), `originX`/`originY`, `intensity` |
+| `AuraBot` | Робот-маскот Aura Robotics (плоская версия 3D-маскота сайта) с жестами wave/nod/scan/point/shrug/jump и взглядом | `gestures` [{at, kind}], `look` (0), `light`/`dark`/`accent`, `seed`, `shadow`, `jumpHeight` (115) |
+| `GridCard` | «Лист в клетку» с сайта Aura: карточка с сеткой и 3D-наклоном, внутри фото или видео, въезжает с пружиной | `src`, `kind`, `label`, `cx`/`cy`, `widthFraction` (0.46), `aspect` (0.8), `tilt` (−14), `fromSide`, `durationInFrames` |
+| `TickerStrip` | Бегущая строка заводов «NAME — Город ·» на тёмной полосе, замкнутая лента | `items`, `y` (0.62), `heightFraction` (0.052), `speed` (140), `accent`, `durationInFrames` |

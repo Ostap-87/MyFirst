@@ -110,6 +110,8 @@ import { ChartClip, chartClipDefaults, chartClipSchema } from "./shared/ChartCli
 import { HeadFxLab, headFxLabDefaults, headFxLabSchema } from "./shared/HeadFxLab";
 import { SourcesLab, sourcesLabDefaults, sourcesLabSchema } from "./shared/SourcesLab";
 // new-composition:imports:end
+import { calculateRobotTalkMetadata, RobotTalk, robotTalkSchema } from "./aura-robotics/compositions/RobotTalk";
+
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -124,6 +126,46 @@ export const RemotionRoot: React.FC = () => {
         fps={30}
         width={1920}
         height={1080}
+      />
+      <Composition
+        id="Aura-Head"
+        component={RobotTalk}
+        schema={robotTalkSchema}
+        calculateMetadata={calculateRobotTalkMetadata}
+        defaultProps={{
+          footage: "local/head/s28-third.mp4",
+          captionsSrc: "captions/head-s28-third.json",
+          captionsOffsetSeconds: 0,
+          durationSeconds: 79,
+          safeZone: "stories" as const,
+          music: "",
+          musicVolume: 0.1,
+          hookTop: "Как делают роботов",
+          hookBottom: "приезжай и посмотри сам",
+          logoSrc: "aura/logo.png",
+          logoScale: 1,
+          bot: { side: "right" as const, sizeFraction: 0.105, look: -0.6, gestures: [], auto: true, hidden: false },
+          cards: [
+            { at: 30.4, until: 34.6, index: "01", title: "За 5 дней поймёте рынок", highlight: "за 5 дней", text: "лучше, чем за полгода чтения обзоров" },
+            { at: 37.6, until: 41.6, index: "02", title: "Кому доверить деньги", highlight: "доверить деньги", text: "и кого обходить стороной" },
+            { at: 41.8, until: 46.5, index: "03", title: "Более 10 лет на рынке", highlight: "10 лет", text: "свободный китайский, робототехника изнутри" },
+            { at: 53.2, until: 58.6, index: "", title: "Итог: 3–5 реальных контактов", highlight: "3–5 реальных контактов", text: "с которыми можно подписывать контракт" },
+          ],
+          factories: [
+            { at: 7.4, until: 11.2, logo: "local/aura/logos/estun.svg", name: "Estun", city: "Нанкин, Китай", note: "" },
+          ],
+          inserts: [
+            { at: 18.9, until: 26.0, src: "local/aura/rd-agibot.mp4", kind: "video" as const, label: "R&D-центр AgiBot", cx: 0.69, cy: 0.33, widthFraction: 0.5, aspect: 0.8, tilt: -14, trimBefore: 0 },
+          ],
+          tickers: [
+            { at: 11.3, until: 15.0, items: [{ name: "AgiBot", city: "Шанхай" }, { name: "Kepler", city: "Шанхай" }, { name: "Fourier", city: "Шанхай" }, { name: "UBTech", city: "Шэньчжэнь" }, { name: "Galbot", city: "Пекин" }] },
+          ],
+          stats: [{ at: 15.2, until: 18.6, prefix: "Более", value: 70, suffix: "%", label: "гуманоидов мира собирают в Китае" }],
+          cta: { at: 68.0, title: "16–21 ноября · Robotics Expedition", button: "Оставить заявку", url: "aura-robotics.ru/tours" },
+        }}
+        fps={30}
+        width={1080}
+        height={1920}
       />
       <Composition
         id="Aura-Intro"

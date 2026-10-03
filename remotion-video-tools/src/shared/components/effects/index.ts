@@ -49,3 +49,6 @@ export * from "./ShinyText";
 export * from "./IconOrbit";
 export * from "./BeamsBackdrop";
 export * from "./DotGrid";
+export * from "./AuraBot";
+export * from "./GridCard";
+export * from "./TickerStrip";
