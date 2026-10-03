@@ -1,0 +1,310 @@
+{
+  "footage": "local/head/s27-route.mp4",
+  "captionsSrc": "captions/head-s27-route-end.json",
+  "durationSeconds": 73.3,
+  "hookTop": "Как делают роботов",
+  "hookBottom": "которые меняют реальность",
+  "brandMark": "GLOBAL TECH TOUR",
+  "logoScale": 1.5,
+  "logoSpin": 72,
+  "focusY": 0.48,
+  "plates": [
+    {
+      "text": "Гуглить",
+      "at": 4.32,
+      "until": 6.95,
+      "kind": "struck"
+    },
+    {
+      "text": "Приехать и увидеть",
+      "at": 5.32,
+      "until": 6.95,
+      "kind": "accent"
+    },
+    {
+      "text": "70% гуманоидов мира",
+      "at": 15.7,
+      "until": 19.45,
+      "kind": "accent"
+    },
+    {
+      "text": "Робот каждую минуту",
+      "at": 20.0,
+      "until": 21.6,
+      "kind": "accent"
+    },
+    {
+      "text": "Реальные компании",
+      "at": 22.0,
+      "until": 25.7,
+      "kind": "term"
+    },
+    {
+      "text": "R&D-центры",
+      "at": 24.0,
+      "until": 25.7,
+      "kind": "term"
+    },
+    {
+      "text": "Руководители проектов",
+      "at": 25.8,
+      "until": 27.2,
+      "kind": "accent"
+    },
+    {
+      "text": "Рядовые менеджеры",
+      "at": 27.3,
+      "until": 29.1,
+      "kind": "struck"
+    },
+    {
+      "text": "Зачем ехать вам?",
+      "at": 29.18,
+      "until": 31.1,
+      "kind": "accent"
+    },
+    {
+      "text": "1 · Рынок за 5 дней",
+      "at": 31.2,
+      "until": 36.5,
+      "kind": "accent"
+    },
+    {
+      "text": "2 · Кому доверять",
+      "at": 36.6,
+      "until": 41.25,
+      "kind": "accent"
+    },
+    {
+      "text": "3 · 10+ лет в Китае",
+      "at": 41.36,
+      "until": 48.7,
+      "kind": "accent"
+    },
+    {
+      "text": "Не к двери — а внутрь",
+      "at": 49.1,
+      "until": 51.35,
+      "kind": "accent"
+    },
+    {
+      "text": "Итог поездки",
+      "at": 53.2,
+      "until": 54.5,
+      "kind": "accent"
+    },
+    {
+      "text": "100 визиток",
+      "at": 54.57,
+      "until": 56.1,
+      "kind": "struck"
+    },
+    {
+      "text": "3–5 реальных контактов",
+      "at": 56.18,
+      "until": 61.7,
+      "kind": "accent"
+    },
+    {
+      "text": "Читать о роботах год",
+      "at": 62.5,
+      "until": 65.5,
+      "kind": "struck"
+    },
+    {
+      "text": "16–21 ноября · с нами",
+      "at": 66.05,
+      "until": 69.6,
+      "kind": "accent"
+    }
+  ],
+  "cutaways": [],
+  "moves": [
+    {
+      "at": 0,
+      "until": 0.9,
+      "kind": "punch",
+      "scale": 1.22
+    },
+    {
+      "at": 4.34,
+      "until": 5.34,
+      "kind": "cut",
+      "scale": 1.12
+    },
+    {
+      "at": 23.47,
+      "until": 27.26,
+      "kind": "push",
+      "scale": 1.07
+    },
+    {
+      "at": 62.28,
+      "until": 65.66,
+      "kind": "push",
+      "scale": 1.07
+    }
+  ],
+  "brolls": [
+    {
+      "at": 1.45,
+      "until": 4.3,
+      "items": [
+        {
+          "src": "local/aura/hook-matrix.mp4"
+        }
+      ]
+    },
+    {
+      "at": 7.02,
+      "until": 11.2,
+      "items": [
+        {
+          "src": "local/pano/beijing-temple-v.jpg",
+          "caption": "Пекин",
+          "seconds": 0.44
+        },
+        {
+          "src": "local/pano/shanghai-bund-v.jpg",
+          "caption": "Шанхай",
+          "seconds": 0.51
+        },
+        {
+          "src": "local/pano/shenzhen-pingan-v.jpg",
+          "caption": "Шэньчжэнь",
+          "seconds": 0.58
+        },
+        {
+          "src": "local/robots/agibot-v.jpg",
+          "seconds": 0.54
+        },
+        {
+          "src": "local/robots/kepler-v.jpg",
+          "seconds": 0.49
+        },
+        {
+          "src": "local/robots/fourier-v.jpg"
+        }
+      ]
+    },
+    {
+      "at": 51.44,
+      "until": 53.1,
+      "items": [
+        {
+          "src": "local/aura/visit.mp4"
+        }
+      ]
+    }
+  ],
+  "pips": [
+    {
+      "at": 11.24,
+      "until": 14.0,
+      "items": [
+        {
+          "src": "site/robotics-expedition-m.jpg",
+          "present": "site",
+          "title": "Robotics Expedition",
+          "url": "globaltechtour.ru",
+          "scrollTo": 0.3
+        }
+      ]
+    },
+    {
+      "at": 69.72,
+      "until": 71.15,
+      "items": [
+        {
+          "src": "site/robotics-expedition-m.jpg",
+          "present": "site",
+          "title": "Robotics Expedition",
+          "url": "globaltechtour.ru",
+          "scrollTo": 0.12
+        }
+      ]
+    }
+  ],
+  "splits": [
+    {
+      "at": 14.08,
+      "until": 21.65,
+      "items": [
+        {
+          "src": "generated/robotics-expedition/01.jpg",
+          "seconds": 5.45,
+          "focusY": 0.38
+        },
+        {
+          "src": "local/robots/kepler-line.jpg",
+          "focusY": 0.1
+        }
+      ],
+      "side": "bottom"
+    },
+    {
+      "at": 31.2,
+      "until": 48.75,
+      "items": [
+        {
+          "src": "local/aura/rd-agibot.mp4",
+          "seconds": 5.4,
+          "focusY": 0.28
+        },
+        {
+          "src": "generated/robotics-expedition-v2/handshake-v2.png",
+          "seconds": 4.76,
+          "focusY": 0.0
+        },
+        {
+          "src": "generated/robotics-expedition-v2/negotiations.png",
+          "focusY": 0.12
+        }
+      ],
+      "side": "bottom"
+    },
+    {
+      "at": 53.2,
+      "until": 61.75,
+      "items": [
+        {
+          "src": "generated/robotics-expedition/06.jpg",
+          "focusY": 0.12
+        }
+      ],
+      "side": "bottom"
+    }
+  ],
+  "photoCards": [],
+  "music": "audio/music/gtt-bed-light-long.m4a",
+  "musicVolume": 0.12,
+  "splitEyesAt": 0.36,
+  "splitSeam": 0.58,
+  "angles": [
+    {
+      "at": 4.32,
+      "until": 6.95,
+      "src": "local/head/s28-third.mp4",
+      "from": 4.4,
+      "rate": 1.0,
+      "filter": "brightness(0.95)"
+    },
+    {
+      "at": 25.76,
+      "until": 29.1,
+      "src": "local/head/s28-third.mp4",
+      "from": 26.16,
+      "rate": 1.13,
+      "filter": "brightness(0.95)"
+    },
+    {
+      "at": 64.55,
+      "until": 65.95,
+      "src": "local/head/s28-third.mp4",
+      "from": 65.98,
+      "rate": 1.28,
+      "filter": "brightness(0.95)"
+    }
+  ],
+  "safeZone": "reels"
+}

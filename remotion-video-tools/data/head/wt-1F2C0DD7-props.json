@@ -1,0 +1,414 @@
+{
+  "footage": "local/head/wt-1F2C0DD7.mp4",
+  "captionsSrc": "captions/head-wt-1F2C0DD7.json",
+  "durationSeconds": 89.75,
+  "hookTop": "Большинство видит Китай",
+  "hookBottom": "из окна автобуса",
+  "brandMark": "GLOBAL TECH TOUR",
+  "logoScale": 1.5,
+  "logoSpin": 72,
+  "focusY": 0.46,
+  "cutaways": [],
+  "inserts": [],
+  "plates": [
+    {
+      "text": "Вход только своим",
+      "at": 7,
+      "until": 9.6,
+      "kind": "term"
+    },
+    {
+      "text": "Остап Доценко",
+      "at": 9.7,
+      "until": 12.86,
+      "kind": "term"
+    },
+    {
+      "text": "Эксперт по Китаю · Шанхай",
+      "at": 10.63,
+      "until": 12.86,
+      "kind": "accent"
+    },
+    {
+      "text": "Планёрка",
+      "at": 16.5,
+      "until": 17.74,
+      "kind": "struck"
+    },
+    {
+      "text": "Внутрь корпораций",
+      "at": 26.6,
+      "until": 28.3,
+      "kind": "accent"
+    },
+    {
+      "text": "Почему меня пускают?",
+      "at": 33.3,
+      "until": 37.5,
+      "kind": "accent"
+    },
+    {
+      "text": "Работал в Alibaba и Сбере",
+      "at": 38.02,
+      "until": 43.32,
+      "kind": "term"
+    },
+    {
+      "text": "Согласования в 5 инстанциях",
+      "at": 41.3,
+      "until": 43.32,
+      "kind": "struck"
+    },
+    {
+      "text": "10+ лет в Китае",
+      "at": 44.24,
+      "until": 46.93,
+      "kind": "term"
+    },
+    {
+      "text": "Свободный китайский",
+      "at": 45.49,
+      "until": 46.93,
+      "kind": "term"
+    },
+    {
+      "text": "Контакты в Китае и ЮВА",
+      "at": 46.93,
+      "until": 49.72,
+      "kind": "accent"
+    },
+    {
+      "text": "Экзотика",
+      "at": 50.4,
+      "until": 52.94,
+      "kind": "struck"
+    },
+    {
+      "text": "Профессия",
+      "at": 52.94,
+      "until": 53.76,
+      "kind": "accent"
+    },
+    {
+      "text": "Показуха к приезду автобуса",
+      "at": 69.23,
+      "until": 71.86,
+      "kind": "struck"
+    },
+    {
+      "text": "Личная отдушина",
+      "at": 73.61,
+      "until": 77.4,
+      "kind": "accent"
+    },
+    {
+      "text": "Мир через 5 лет",
+      "at": 79.9,
+      "until": 82.2,
+      "kind": "accent"
+    },
+    {
+      "text": "Трибуна конференции",
+      "at": 84.3,
+      "until": 85.66,
+      "kind": "struck"
+    }
+  ],
+  "moves": [
+    {
+      "at": 0,
+      "until": 2.2,
+      "kind": "punch",
+      "scale": 1.15
+    },
+    {
+      "at": 9.64,
+      "until": 12.86,
+      "kind": "cut",
+      "scale": 1.1
+    },
+    {
+      "at": 15.12,
+      "until": 16.06,
+      "kind": "punch",
+      "scale": 1.18
+    },
+    {
+      "at": 33.26,
+      "until": 34.8,
+      "kind": "punch",
+      "scale": 1.2
+    },
+    {
+      "at": 34.8,
+      "until": 37.5,
+      "kind": "cut",
+      "scale": 1.1
+    },
+    {
+      "at": 43.32,
+      "until": 49.72,
+      "kind": "push",
+      "scale": 1.06
+    },
+    {
+      "at": 52.94,
+      "until": 53.76,
+      "kind": "punch",
+      "scale": 1.18
+    },
+    {
+      "at": 60.68,
+      "until": 62.58,
+      "kind": "cut",
+      "scale": 1.1
+    },
+    {
+      "at": 64.05,
+      "until": 64.66,
+      "kind": "punch",
+      "scale": 1.15
+    },
+    {
+      "at": 71.86,
+      "until": 74.8,
+      "kind": "push",
+      "scale": 1.06
+    },
+    {
+      "at": 81.59,
+      "until": 82.2,
+      "kind": "punch",
+      "scale": 1.15
+    }
+  ],
+  "brolls": [
+    {
+      "at": 66.29,
+      "until": 68.42,
+      "items": [
+        {
+          "src": "tg-images/globaltechtour/2026-08-24-shein-ultrafast-fashion.png"
+        },
+        {
+          "src": "tg-images/globaltechtour/2026-08-28-sf-express-air-cargo.png"
+        }
+      ]
+    }
+  ],
+  "popWindows": [
+    {
+      "at": 12.9,
+      "until": 14.9,
+      "items": [
+        {
+          "src": "local/logos/huawei.png",
+          "caption": "Huawei"
+        },
+        {
+          "src": "local/logos/alibaba.png",
+          "caption": "Alibaba"
+        },
+        {
+          "src": "local/logos/baidu.png",
+          "caption": "Baidu"
+        },
+        {
+          "src": "local/logos/tencent.png",
+          "caption": "Tencent"
+        }
+      ]
+    },
+    {
+      "at": 77.53,
+      "until": 79.84,
+      "items": [
+        {
+          "src": "tg-images/globaltechtour/2026-08-16-nio-battery-swap.png"
+        },
+        {
+          "src": "tg-images/globaltechtour/2026-08-17-xpeng-robotaxi-evtol.png"
+        },
+        {
+          "src": "tg-images/globaltechtour/2026-08-20-hisense-tcl-tv-export.png"
+        },
+        {
+          "src": "tg-images/globaltechtour/2026-08-23-bytedance-tiktok-vs-douyin.png"
+        },
+        {
+          "src": "tg-images/globaltechtour/2026-08-28-sf-express-air-cargo.png"
+        },
+        {
+          "src": "tg-images/globaltechtour/2026-08-29-cosco-shipping-fleet.png"
+        }
+      ]
+    }
+  ],
+  "splits": [
+    {
+      "at": 17.74,
+      "until": 22.1,
+      "items": [
+        {
+          "src": "tg-images/globaltechtour/2026-08-27-ping-an-insurer-fintech.png",
+          "seconds": 1.74
+        },
+        {
+          "src": "tg-images/globaltechtour/2026-09-01-longi-envision-solar-wind.png",
+          "seconds": 1.17
+        },
+        {
+          "src": "tg-images/globaltechtour/2026-08-17-xpeng-robotaxi-evtol.png"
+        }
+      ]
+    },
+    {
+      "at": 57.1,
+      "until": 60.68,
+      "items": [
+        {
+          "src": "tg-images/globaltechtour/2026-09-01-longi-envision-solar-wind.png",
+          "seconds": 0.52,
+          "caption": "Роботы"
+        },
+        {
+          "src": "tg-images/globaltechtour/2026-08-16-nio-battery-swap.png",
+          "seconds": 0.57,
+          "caption": "Автопром"
+        },
+        {
+          "src": "tg-images/globaltechtour/2026-09-04-yili-mengniu-global-dairy.png",
+          "seconds": 0.6,
+          "caption": "Напитки"
+        },
+        {
+          "src": "tg-images/globaltechtour/2026-09-02-miniso-franchise-global.png",
+          "seconds": 0.54,
+          "caption": "Косметика"
+        },
+        {
+          "src": "tg-images/globaltechtour/2026-08-24-shein-ultrafast-fashion.png",
+          "caption": "Переработка"
+        }
+      ]
+    }
+  ],
+  "photoCards": [
+    {
+      "at": 26.6,
+      "until": 28.4,
+      "items": [
+        {
+          "src": "local/logos/byd.png",
+          "caption": "BYD"
+        },
+        {
+          "src": "local/logos/nio.png",
+          "caption": "NIO"
+        },
+        {
+          "src": "local/logos/bytedance.png",
+          "caption": "ByteDance"
+        }
+      ],
+      "stepSeconds": 0.35,
+      "spread": 1.02,
+      "widthFraction": 0.3
+    }
+  ],
+  "cutoutSrc": "local/head/wt-1F2C0DD7-cutout.webm",
+  "pips": [
+    {
+      "at": 22,
+      "until": 26.55,
+      "items": [
+        {
+          "src": "site/home.png",
+          "present": "site",
+          "title": "Global Tech Tour",
+          "url": "globaltechtour.ru",
+          "scrollTo": 0.35
+        }
+      ]
+    },
+    {
+      "at": 53.76,
+      "until": 57.1,
+      "items": [
+        {
+          "src": "site/industries.png",
+          "present": "site",
+          "title": "1000+ компаний · 17 индустрий",
+          "url": "globaltechtour.ru",
+          "scrollTo": 0.55
+        }
+      ]
+    },
+    {
+      "at": 85.5,
+      "until": 90.7,
+      "items": [
+        {
+          "src": "site/home.png",
+          "present": "site",
+          "title": "Global Tech Tour",
+          "url": "globaltechtour.ru",
+          "scrollTo": 0.25
+        }
+      ]
+    }
+  ],
+  "stages": [
+    {
+      "at": 3.86,
+      "until": 6.85,
+      "items": [
+        {
+          "src": "tg-images/globaltechtour/2026-08-19-lenovo-worlds-largest-pc.png",
+          "seconds": 1.4
+        },
+        {
+          "src": "tg-images/globaltechtour/2026-09-04-yili-mengniu-global-dairy.png"
+        }
+      ]
+    },
+    {
+      "at": 28.3,
+      "until": 33.2,
+      "items": [
+        {
+          "src": "tg-images/globaltechtour/2026-08-27-ping-an-insurer-fintech.png",
+          "seconds": 1.66
+        },
+        {
+          "src": "tg-images/globaltechtour/2026-08-19-lenovo-worlds-largest-pc.png",
+          "seconds": 1.5
+        },
+        {
+          "src": "tg-images/globaltechtour/2026-08-22-tencent-wechat-os.png"
+        }
+      ]
+    }
+  ],
+  "angles": [
+    {
+      "at": 7.36,
+      "until": 9.5,
+      "src": "local/head/0926-angle.mp4",
+      "from": 94.6,
+      "rate": 1.2,
+      "filter": "brightness(0.84) contrast(1.04) saturate(0.92) sepia(0.1)"
+    },
+    {
+      "at": 49.72,
+      "until": 52.17,
+      "src": "local/head/0926-angle.mp4",
+      "from": 107.8,
+      "rate": 1.09,
+      "filter": "brightness(0.84) contrast(1.04) saturate(0.92) sepia(0.1)"
+    }
+  ],
+  "music": "audio/music/gtt-bed-light-long.m4a",
+  "musicVolume": 0.11,
+  "safeZone": "reels"
+}

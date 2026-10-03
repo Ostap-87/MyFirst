@@ -1,0 +1,314 @@
+{
+  "footage": "local/head/s28-next.mp4",
+  "captionsSrc": "captions/head-s28-next.json",
+  "durationSeconds": 77.9,
+  "hookTop": "Как на стакане кофе",
+  "hookBottom": "зарабатывают миллиарды",
+  "brandMark": "GLOBAL TECH TOUR",
+  "logoScale": 1.5,
+  "logoSpin": 72,
+  "focusY": 0.48,
+  "plates": [
+    {
+      "text": "Миллиарды на одном стакане",
+      "at": 8.06,
+      "until": 9.0,
+      "kind": "accent"
+    },
+    {
+      "text": "Рецепт → продукт",
+      "at": 17.57,
+      "until": 21.5,
+      "kind": "accent"
+    },
+    {
+      "text": "Читать новости",
+      "at": 19.7,
+      "until": 21.5,
+      "kind": "struck"
+    },
+    {
+      "text": "1 бренд = 3 компании",
+      "at": 25.56,
+      "until": 27.3,
+      "kind": "accent"
+    },
+    {
+      "text": "Рецепт",
+      "at": 27.6,
+      "until": 31.6,
+      "kind": "term"
+    },
+    {
+      "text": "Молоко",
+      "at": 28.81,
+      "until": 31.6,
+      "kind": "term"
+    },
+    {
+      "text": "Стаканчик",
+      "at": 30.05,
+      "until": 31.6,
+      "kind": "term"
+    },
+    {
+      "text": "3 разных визита",
+      "at": 31.72,
+      "until": 34.1,
+      "kind": "accent"
+    },
+    {
+      "text": "Чего не покажут на сайте",
+      "at": 34.24,
+      "until": 37.2,
+      "kind": "accent"
+    },
+    {
+      "text": "Себестоимость чашки",
+      "at": 37.32,
+      "until": 40.6,
+      "kind": "accent"
+    },
+    {
+      "text": "Общий поставщик",
+      "at": 40.68,
+      "until": 45.1,
+      "kind": "accent"
+    },
+    {
+      "text": "Упаковка дороже напитка",
+      "at": 45.2,
+      "until": 48.6,
+      "kind": "accent"
+    },
+    {
+      "text": "Давно работаю с рынком",
+      "at": 49.16,
+      "until": 51.1,
+      "kind": "term"
+    },
+    {
+      "text": "Знаю компании",
+      "at": 51.13,
+      "until": 54.6,
+      "kind": "term"
+    },
+    {
+      "text": "Вся цепочка, не вывеска",
+      "at": 54.64,
+      "until": 57.5,
+      "kind": "accent"
+    },
+    {
+      "text": "С кем работать именно вам",
+      "at": 59.5,
+      "until": 62.5,
+      "kind": "accent"
+    },
+    {
+      "text": "Переплата за этикетку",
+      "at": 63.4,
+      "until": 67.6,
+      "kind": "struck"
+    },
+    {
+      "text": "30 ноября – 5 декабря",
+      "at": 73.97,
+      "kind": "accent"
+    },
+    {
+      "text": "Мест немного",
+      "at": 76.12,
+      "kind": "term"
+    }
+  ],
+  "cutaways": [],
+  "moves": [
+    {
+      "at": 0,
+      "until": 1.6,
+      "kind": "punch",
+      "scale": 1.22
+    },
+    {
+      "at": 5.1,
+      "until": 5.97,
+      "kind": "cut",
+      "scale": 1.12
+    },
+    {
+      "at": 19.7,
+      "until": 21.64,
+      "kind": "cut",
+      "scale": 1.12
+    },
+    {
+      "at": 23.02,
+      "until": 24.19,
+      "kind": "punch",
+      "scale": 1.2
+    },
+    {
+      "at": 27.38,
+      "until": 28.81,
+      "kind": "cut",
+      "scale": 1.12
+    },
+    {
+      "at": 32.11,
+      "until": 33.47,
+      "kind": "punch",
+      "scale": 1.2
+    },
+    {
+      "at": 57.66,
+      "until": 60.2,
+      "kind": "cut",
+      "scale": 1.12
+    },
+    {
+      "at": 62.63,
+      "until": 64.43,
+      "kind": "punch",
+      "scale": 1.2
+    },
+    {
+      "at": 74.06,
+      "until": 75.86,
+      "kind": "punch",
+      "scale": 1.2
+    }
+  ],
+  "splitEyesAt": 0.36,
+  "splitSeam": 0.58,
+  "music": "audio/music/gtt-bed-light-long.m4a",
+  "musicVolume": 0.12,
+  "brolls": [
+    {
+      "at": 9.06,
+      "until": 12.45,
+      "items": [
+        {
+          "src": "local/aura/route-tea-fast.mp4"
+        }
+      ]
+    }
+  ],
+  "splits": [
+    {
+      "at": 6.3,
+      "until": 8.95,
+      "items": [
+        {
+          "src": "generated/tea-coffee-retail/cta-woman-v2-crop.png",
+          "focusY": 0.35
+        }
+      ],
+      "side": "bottom"
+    },
+    {
+      "at": 37.32,
+      "until": 48.6,
+      "items": [
+        {
+          "src": "generated/tea-coffee-retail/cta-woman-v2-crop.png",
+          "seconds": 3.36,
+          "focusY": 0.35
+        },
+        {
+          "src": "generated/tea-coffee-retail/xiamen-v1-roasting.png",
+          "seconds": 4.52,
+          "focusY": 0.4
+        },
+        {
+          "src": "generated/tea-coffee-retail/metric-v2-grid.png",
+          "focusY": 0.4
+        }
+      ],
+      "side": "bottom"
+    },
+    {
+      "at": 49.16,
+      "until": 57.5,
+      "items": [
+        {
+          "src": "generated/tea-coffee-retail/negotiations.png",
+          "focusY": 0.3
+        }
+      ],
+      "side": "bottom"
+    }
+  ],
+  "pips": [
+    {
+      "at": 67.82,
+      "until": 71.3,
+      "items": [
+        {
+          "src": "site/tea-expedition.png",
+          "present": "site",
+          "title": "Чай и кофе",
+          "url": "globaltechtour.ru",
+          "scrollTo": 0.15
+        }
+      ]
+    }
+  ],
+  "photoCards": [],
+  "popWindows": [],
+  "flips": [
+    {
+      "at": 12.05,
+      "until": 15.5,
+      "background": "local/aura/brand-bg.jpg",
+      "items": [
+        {
+          "src": "local/aura/flip-chagee.png",
+          "seconds": 0.92
+        },
+        {
+          "src": "local/aura/flip-luckin.png",
+          "seconds": 1.57
+        },
+        {
+          "src": "local/aura/flip-heytea.png"
+        }
+      ]
+    }
+  ],
+  "angles": [
+    {
+      "at": 15.54,
+      "until": 19.65,
+      "src": "local/head/s28-tea-angle.mp4",
+      "from": 12.18,
+      "rate": 1.11,
+      "filter": "brightness(0.96)"
+    },
+    {
+      "at": 34.24,
+      "until": 37.2,
+      "src": "local/head/s28-tea-angle.mp4",
+      "from": 33.14,
+      "rate": 1.16,
+      "filter": "brightness(0.96)"
+    },
+    {
+      "at": 57.66,
+      "until": 62.5,
+      "src": "local/head/s28-tea-angle.mp4",
+      "from": 57.68,
+      "rate": 1.0,
+      "filter": "brightness(0.96)"
+    },
+    {
+      "at": 71.36,
+      "until": 73.9,
+      "src": "local/head/s28-tea-angle.mp4",
+      "from": 71.98,
+      "rate": 1.0,
+      "filter": "brightness(0.96)"
+    }
+  ],
+  "safeZone": "reels"
+}

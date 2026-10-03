@@ -1,0 +1,373 @@
+{
+  "footage": "local/head/s28b.mp4",
+  "captionsSrc": "captions/head-s28b.json",
+  "durationSeconds": 77.9,
+  "hookTop": "7 причин ехать в Китай",
+  "hookBottom": "с Global Tech Tour",
+  "brandMark": "GLOBAL TECH TOUR",
+  "logoScale": 1.5,
+  "logoSpin": 72,
+  "focusY": 0.43,
+  "plates": [
+    {
+      "text": "Месяц на согласование",
+      "at": 4.3,
+      "kind": "struck",
+      "until": 6.4
+    },
+    {
+      "text": "Загадочность",
+      "at": 10.5,
+      "kind": "struck",
+      "until": 12.3
+    },
+    {
+      "text": "Ответ неделями",
+      "at": 12.3,
+      "kind": "struck",
+      "until": 15.9
+    },
+    {
+      "text": "Проще и быстрее",
+      "at": 18.7,
+      "kind": "accent",
+      "until": 20.4
+    },
+    {
+      "text": "Чем мы отличаемся?",
+      "at": 20.5,
+      "kind": "term",
+      "until": 23.5
+    },
+    {
+      "text": "Широкая география",
+      "at": 24.3,
+      "kind": "accent",
+      "until": 27.5
+    },
+    {
+      "text": "18 индустрий",
+      "at": 28.3,
+      "kind": "accent",
+      "until": 29.2
+    },
+    {
+      "text": "Более 1000 компаний",
+      "at": 29.2,
+      "kind": "accent",
+      "until": 33.9
+    },
+    {
+      "text": "Продукты питания",
+      "at": 34.1,
+      "kind": "term",
+      "until": 39.9
+    },
+    {
+      "text": "Полимеры",
+      "at": 35.7,
+      "kind": "term",
+      "until": 39.9
+    },
+    {
+      "text": "ИИ",
+      "at": 37.1,
+      "kind": "term",
+      "until": 39.9
+    },
+    {
+      "text": "E-commerce",
+      "at": 38.7,
+      "kind": "term",
+      "until": 39.9
+    },
+    {
+      "text": "Готовые программы",
+      "at": 41.2,
+      "kind": "accent",
+      "until": 46.6
+    },
+    {
+      "text": "Согласование от 10 дней",
+      "at": 47.5,
+      "kind": "accent",
+      "until": 52.8
+    },
+    {
+      "text": "Пересогласования",
+      "at": 49.8,
+      "kind": "struck",
+      "until": 52.8
+    },
+    {
+      "text": "Своя программа",
+      "at": 53.6,
+      "kind": "accent",
+      "until": 55.6
+    },
+    {
+      "text": "Быстрое согласование",
+      "at": 55.7,
+      "kind": "accent",
+      "until": 57.9
+    },
+    {
+      "text": "Обучение в кампусах",
+      "at": 60.4,
+      "kind": "accent",
+      "until": 64.9
+    },
+    {
+      "text": "Фиксированная стоимость",
+      "at": 67.4,
+      "kind": "accent",
+      "until": 71.8
+    },
+    {
+      "text": "Пишите мне",
+      "at": 71.9,
+      "kind": "accent",
+      "until": 75.8
+    },
+    {
+      "text": "Вечные пересогласования",
+      "at": 75.9,
+      "kind": "struck"
+    }
+  ],
+  "cutaways": [],
+  "moves": [
+    {
+      "at": 0,
+      "until": 1.6,
+      "kind": "punch",
+      "scale": 1.22
+    },
+    {
+      "at": 20.5,
+      "until": 21.6,
+      "kind": "punch",
+      "scale": 1.2
+    },
+    {
+      "at": 46.8,
+      "until": 48.7,
+      "kind": "cut",
+      "scale": 1.12
+    },
+    {
+      "at": 53.0,
+      "until": 55.0,
+      "kind": "cut",
+      "scale": 1.12
+    },
+    {
+      "at": 66.6,
+      "until": 68.9,
+      "kind": "punch",
+      "scale": 1.2
+    },
+    {
+      "at": 71.9,
+      "until": 73.3,
+      "kind": "punch",
+      "scale": 1.2
+    }
+  ],
+  "splitEyesAt": 0.36,
+  "splitSeam": 0.58,
+  "music": "audio/music/gtt-bed-light-long.m4a",
+  "musicVolume": 0.12,
+  "angles": [
+    {
+      "at": 1.67,
+      "until": 4.34,
+      "src": "local/head/s28b-angle.mp4",
+      "from": 2.16,
+      "rate": 0.99,
+      "filter": "brightness(1.02) saturate(1.05)"
+    },
+    {
+      "at": 16.39,
+      "until": 18.66,
+      "src": "local/head/s28b-angle.mp4",
+      "from": 17.9,
+      "rate": 0.99,
+      "filter": "brightness(1.02) saturate(1.05)"
+    },
+    {
+      "at": 22.74,
+      "until": 25.04,
+      "src": "local/head/s28b-angle.mp4",
+      "from": 24.75,
+      "rate": 1.03,
+      "filter": "brightness(1.02) saturate(1.05)"
+    },
+    {
+      "at": 43.12,
+      "until": 45.7,
+      "src": "local/head/s28b-angle.mp4",
+      "from": 46.54,
+      "rate": 0.98,
+      "filter": "brightness(1.02) saturate(1.05)"
+    },
+    {
+      "at": 60.86,
+      "until": 63.25,
+      "src": "local/head/s28b-angle.mp4",
+      "from": 66.39,
+      "rate": 0.97,
+      "filter": "brightness(1.02) saturate(1.05)"
+    },
+    {
+      "at": 68.88,
+      "until": 71.18,
+      "src": "local/head/s28b-angle.mp4",
+      "from": 75.25,
+      "rate": 0.98,
+      "filter": "brightness(1.02) saturate(1.05)"
+    }
+  ],
+  "pips": [
+    {
+      "at": 41.25,
+      "until": 43.7,
+      "items": [
+        {
+          "src": "site/expeditions.jpg",
+          "present": "site",
+          "title": "Экспедиции",
+          "url": "globaltechtour.ru",
+          "scrollTo": 0.05
+        }
+      ]
+    }
+  ],
+  "flips": [
+    {
+      "at": 58.0,
+      "until": 59.45,
+      "items": [
+        {
+          "src": "local/gtt/flip-alibaba.png",
+          "seconds": 0.85
+        },
+        {
+          "src": "local/gtt/flip-deepseek.png"
+        }
+      ],
+      "overlay": true,
+      "widthFraction": 0.34,
+      "centerY": 0.6,
+      "centerX": 0.8
+    },
+    {
+      "at": 65.2,
+      "until": 66.6,
+      "items": [
+        {
+          "src": "local/gtt/flip-bytedance.png",
+          "seconds": 0.75
+        },
+        {
+          "src": "local/gtt/flip-huawei.png"
+        }
+      ],
+      "overlay": true,
+      "widthFraction": 0.34,
+      "centerY": 0.6,
+      "centerX": 0.8
+    }
+  ],
+  "numbers": [
+    {
+      "at": 23.55,
+      "until": 24.3,
+      "text": "1",
+      "label": "",
+      "x": 0.82,
+      "y": 0.3,
+      "size": 0.34,
+      "look": "gradient"
+    },
+    {
+      "at": 27.55,
+      "until": 28.3,
+      "text": "2",
+      "label": "",
+      "x": 0.82,
+      "y": 0.3,
+      "size": 0.34,
+      "look": "gradient"
+    },
+    {
+      "at": 40.55,
+      "until": 41.2,
+      "text": "3",
+      "label": "",
+      "x": 0.82,
+      "y": 0.3,
+      "size": 0.34,
+      "look": "gradient"
+    },
+    {
+      "at": 46.75,
+      "until": 47.5,
+      "text": "4",
+      "label": "",
+      "x": 0.82,
+      "y": 0.3,
+      "size": 0.34,
+      "look": "gradient"
+    },
+    {
+      "at": 52.95,
+      "until": 53.6,
+      "text": "5",
+      "label": "",
+      "x": 0.82,
+      "y": 0.3,
+      "size": 0.34,
+      "look": "gradient"
+    },
+    {
+      "at": 59.45,
+      "until": 60.4,
+      "text": "6",
+      "label": "",
+      "x": 0.82,
+      "y": 0.3,
+      "size": 0.34,
+      "look": "gradient"
+    },
+    {
+      "at": 66.6,
+      "until": 67.4,
+      "text": "7",
+      "label": "",
+      "x": 0.82,
+      "y": 0.3,
+      "size": 0.34,
+      "look": "gradient"
+    }
+  ],
+  "flags": [
+    {
+      "at": 25.85,
+      "until": 27.6,
+      "src": "local/flags/cn.svg",
+      "x": 0.17,
+      "y": 0.36,
+      "widthFraction": 0.28
+    },
+    {
+      "at": 26.35,
+      "until": 27.6,
+      "src": "local/flags/sa.svg",
+      "x": 0.84,
+      "y": 0.36,
+      "widthFraction": 0.28
+    }
+  ],
+  "safeZone": "reels"
+}
