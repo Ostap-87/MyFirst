@@ -47,3 +47,5 @@ export * from "./ArrowChart";
 export * from "./AuroraBackdrop";
 export * from "./ShinyText";
 export * from "./IconOrbit";
+export * from "./BeamsBackdrop";
+export * from "./DotGrid";

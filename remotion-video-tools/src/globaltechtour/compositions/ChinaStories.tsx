@@ -654,7 +654,7 @@ export const ChinaStories: React.FC<ChinaStoriesProps> = ({
           >
             <FlagWave src={f.src} x={f.x} y={f.y} widthFraction={f.widthFraction} />
             {/* «Пузырёк» на каждый флаг: десять флагов подряд — десять хлопков. */}
-            {f.sound ? <Audio src={staticFile(f.sound)} volume={f.soundVolume ?? 0.5} /> : null}
+            {f.sound ? <Audio src={staticFile(f.sound)} volume={() => f.soundVolume ?? 0.5} /> : null}
           </Sequence>
         ))}
         {charts.map((c) => (

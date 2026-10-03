@@ -99,3 +99,5 @@ Shared-MotionLab). Для тёмных сцен берите `screen` или `so
 | `AuroraBackdrop` | Мягкие цветные полосы плывут по тёмному фону (идея React Bits Aurora, от номера кадра) | `colors`, `background`, `speed` (1), `blur` (90), `intensity` (0.75), `seed` (0) |
 | `ShinyText` | Блик пробегает по тексту (идея React Bits Shiny Text) | `color`, `shine`, `periodSeconds` (2.4), `bandWidth` (0.25), `angle` (110) |
 | `IconOrbit` | Иконки Phosphor на орбите вокруг слова, появляются по одной и крутятся (идея React Bits Orbit Images) | `center`, `icons`, `stepFrames` (8), `spinSecondsPerTurn` (16), `radiusFraction` (0.32), `iconFraction` (0.13) |
+| `BeamsBackdrop` | Косые лучи света дышат на тёмном фоне (идея React Bits Beams, от номера кадра) | `color`, `background`, `count` (6), `angle` (−24), `speed` (1), `intensity` (0.55), `blur` (30) |
+| `DotGrid` | Сетка точек, по которой идёт волна от заданной точки (идея React Bits Dot Field) | `color`, `background`, `spacing` (54), `dot` (3), `waveSpeed` (1), `waveLength` (700), `originX`/`originY`, `intensity` |

@@ -3,6 +3,7 @@
 //
 //   npm run head                          что лежит в пуле и на каком этапе
 //   npm run head -- --prepare <ролик>     поворот, паузы, звук, расшифровка
+//   npm run head -- --prepare <ролик> --grade [cinematic|warm|clean|teal]   то же + цветокоррекция
 //   npm run head -- --draft <ролик> --focus 0.38 --hook "Строка 1|Строка 2"
 //                                         идеи монтажа + стол со скриншотами
 //   npm run head -- --cutout <ролик>      вырезать спикера из фона (для stages)
@@ -113,9 +114,23 @@ if (args.prepare) {
   run("ffmpeg", ["-v", "error", "-y", "-ss", "1.5", "-i", norm, "-frames:v", "1", "-q:v", "3", first]);
   shot(first, "исходник после поворота");
 
+  // 1а. Киношная цветокоррекция (--grade [пресет]): scripts/grade.sh,
+  //     пресеты cinematic|warm|clean|teal, сила --grade-strength 0..1.
+  //     Принята владельцем 03.10 после демо «до/после» (docs/sources.md).
+  let source = norm;
+  if (args.grade) {
+    const preset = args.grade === true ? "cinematic" : String(args.grade);
+    const strength = args["grade-strength"] ? String(args["grade-strength"]) : "1";
+    source = resolve(WORK, `${name}-graded.mp4`);
+    run("bash", [resolve(ROOT, "scripts/grade.sh"), norm, source, preset, strength]);
+    const graded = resolve(out, "01a-cvetokorrekciya.jpg");
+    run("ffmpeg", ["-v", "error", "-y", "-ss", "1.5", "-i", source, "-frames:v", "1", "-q:v", "3", graded]);
+    shot(graded, `цветокоррекция ${preset}`);
+  }
+
   // 2. Паузы и мычание.
   const tight = resolve(WORK, `${name}-tight.mp4`);
-  run("node", [resolve(ROOT, "scripts/tighten.mjs"), "--video", rel(norm), "--out", rel(tight)]);
+  run("node", [resolve(ROOT, "scripts/tighten.mjs"), "--video", rel(source), "--out", rel(tight)]);
 
   // 3. Студийный звук. voice.mjs отдаёт только дорожку — картинка
   //    подкладывается без перекодирования.

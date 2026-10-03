@@ -33,7 +33,7 @@ export type IconOrbitProps = Partial<IconOrbitParams>;
 
 export const iconOrbitDefaults: IconOrbitParams = {
   center: "ТУР",
-  icons: ["icons/phosphor/factory-bold.svg", "icons/phosphor/handshake-bold.svg", "icons/phosphor/airplane-tilt-bold.svg", "icons/phosphor/storefront-bold.svg", "icons/phosphor/robot-bold.svg", "icons/phosphor/chart-line-up-bold.svg"],
+  icons: ["icons/phosphor/bold/factory-bold.svg", "icons/phosphor/bold/handshake-bold.svg", "icons/phosphor/bold/airplane-tilt-bold.svg", "icons/phosphor/bold/storefront-bold.svg", "icons/phosphor/bold/robot-bold.svg", "icons/phosphor/bold/chart-line-up-bold.svg"],
   delayInFrames: 0,
   stepFrames: 8,
   spinSecondsPerTurn: 16,

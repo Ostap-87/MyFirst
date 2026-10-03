@@ -79,7 +79,7 @@ export const SourcesLab: React.FC<z.infer<typeof sourcesLabSchema>> = (p) => {
       {/* A. Fresh LUTs: до/после */}
       <Sequence durationInFrames={len(0)} layout="none">
         <Wipe raw={p.raw} graded={p.graded} />
-        <Tag icon="icons/phosphor/sparkle-bold.svg" text="Fresh LUTs: цветокоррекция до / после" />
+        <Tag icon="icons/phosphor/bold/sparkle-bold.svg" text="Fresh LUTs: цветокоррекция до / после" />
         <Sequence from={10} durationInFrames={30} layout="none"><Audio src={staticFile("audio/sfx/swoosh.wav")} volume={0.5} /></Sequence>
       </Sequence>
 
@@ -89,9 +89,9 @@ export const SourcesLab: React.FC<z.infer<typeof sourcesLabSchema>> = (p) => {
         <BalloonTitle lines={["БОЛЕЕ", "*1000", "КОМПАНИЙ"]} delayInFrames={8} charsPerSecond={11} holdFrames={110} centerY={0.26} fontSize={0.15}>
           <AbsoluteFill><Speaker from={SCENES[1]} /></AbsoluteFill>
         </BalloonTitle>
-        <IconBadge icon="icons/phosphor/buildings-bold.svg" at={60} x={0.82} y={0.12} />
-        <IconBadge icon="icons/phosphor/handshake-bold.svg" at={80} x={0.18} y={0.12} />
-        <Tag icon="icons/phosphor/sparkle-bold.svg" text="Phosphor Icons + буквы-шарики" />
+        <IconBadge icon="icons/phosphor/bold/buildings-bold.svg" at={60} x={0.82} y={0.12} />
+        <IconBadge icon="icons/phosphor/bold/handshake-bold.svg" at={80} x={0.18} y={0.12} />
+        <Tag icon="icons/phosphor/bold/sparkle-bold.svg" text="Phosphor Icons + буквы-шарики" />
       </Sequence>
 
       {/* C. Lottie-галочка в чек-листе с иконками */}
@@ -102,13 +102,13 @@ export const SourcesLab: React.FC<z.infer<typeof sourcesLabSchema>> = (p) => {
         <AbsoluteFill style={{ background: "linear-gradient(90deg, rgba(5,10,25,0) 38%, rgba(5,10,25,0.6) 68%)" }} />
         <LottieList
           items={[
-            { icon: "icons/phosphor/buildings-bold.svg", text: "Более 1000 компаний", at: 12 },
-            { icon: "icons/phosphor/check-circle-bold.svg", text: "Быстрое согласование", at: 54 },
-            { icon: "icons/phosphor/handshake-bold.svg", text: "Переговоры с руководством", at: 96 },
-            { icon: "icons/phosphor/users-three-bold.svg", text: "Поддержка после тура", at: 138 },
+            { icon: "icons/phosphor/bold/buildings-bold.svg", text: "Более 1000 компаний", at: 12 },
+            { icon: "icons/phosphor/bold/check-circle-bold.svg", text: "Быстрое согласование", at: 54 },
+            { icon: "icons/phosphor/bold/handshake-bold.svg", text: "Переговоры с руководством", at: 96 },
+            { icon: "icons/phosphor/bold/users-three-bold.svg", text: "Поддержка после тура", at: 138 },
           ]}
         />
-        <Tag icon="icons/phosphor/check-circle-bold.svg" text="LottieFiles: анимированная галочка + Phosphor" />
+        <Tag icon="icons/phosphor/bold/check-circle-bold.svg" text="LottieFiles: анимированная галочка + Phosphor" />
       </Sequence>
 
       {/* D. Mixkit внизу + орбита иконок */}
@@ -119,7 +119,7 @@ export const SourcesLab: React.FC<z.infer<typeof sourcesLabSchema>> = (p) => {
           <AbsoluteFill style={{ background: "rgba(5,10,25,0.25)" }} />
           <IconOrbit center="ТУР" cy={0.22} radiusFraction={0.26} iconFraction={0.11} delayInFrames={10} stepFrames={9} spinSecondsPerTurn={12} />
         </div>
-        <Tag icon="icons/phosphor/globe-hemisphere-east-bold.svg" text="Mixkit: вертикальный сток · React Bits: орбита" />
+        <Tag icon="icons/phosphor/bold/globe-hemisphere-east-bold.svg" text="Mixkit: вертикальный сток · React Bits: орбита" />
       </Sequence>
 
       {/* E. Aurora + Shiny Text при печати сбоку */}
@@ -130,7 +130,7 @@ export const SourcesLab: React.FC<z.infer<typeof sourcesLabSchema>> = (p) => {
         <div style={{ position: "absolute", left: width * 0.5, top: 0, width: width * 0.5, height, WebkitMaskImage: "linear-gradient(90deg, transparent 0%, #000 35%)", maskImage: "linear-gradient(90deg, transparent 0%, #000 35%)", opacity: 1, mixBlendMode: "screen", pointerEvents: "none" }}>
           <AuroraBackdrop background="transparent" intensity={1} blur={55} speed={1.3} />
         </div>
-        <Tag icon="icons/phosphor/sparkle-bold.svg" text="React Bits: Aurora-фон + Shiny Text" />
+        <Tag icon="icons/phosphor/bold/sparkle-bold.svg" text="React Bits: Aurora-фон + Shiny Text" />
       </Sequence>
 
       {/* F. Конфетти на финале */}
@@ -142,7 +142,7 @@ export const SourcesLab: React.FC<z.infer<typeof sourcesLabSchema>> = (p) => {
           <AbsoluteFill><OffthreadVideo src={staticFile("local/lottie/confetti.webm")} transparent muted style={{ width: "100%", height: "100%", objectFit: "cover" }} /></AbsoluteFill>
           <Audio src={staticFile("audio/sfx/swoosh.wav")} volume={0.5} />
         </Sequence>
-        <Tag icon="icons/phosphor/sparkle-bold.svg" text="LottieFiles: конфетти · Phosphor Icons" />
+        <Tag icon="icons/phosphor/bold/sparkle-bold.svg" text="LottieFiles: конфетти · Phosphor Icons" />
       </Sequence>
 
       {/* Музыка тихо под голосом, с входом и выходом */}
