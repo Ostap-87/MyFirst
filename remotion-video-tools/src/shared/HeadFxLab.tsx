@@ -1,6 +1,6 @@
 import { AbsoluteFill, Img, OffthreadVideo, Sequence, staticFile } from "remotion";
 import { z } from "zod";
-import { BackTitle, CheckList, CycleDiagram } from "./components/effects";
+import { BackTitle, CheckList, CycleDiagram, TypingPush } from "./components/effects";
 
 /**
  * Shared-HeadFxLab — проба трёх приёмов для говорящей головы на тестовом
@@ -8,6 +8,8 @@ import { BackTitle, CheckList, CycleDiagram } from "./components/effects";
  *   0–3 с   надпись за спикером (BackTitle, behind);
  *   3–6 с   спикер отъезжает влево, надпись сбоку (BackTitle, side);
  *   6–12 с  чек-лист с галочками (CheckList);
+ *  16–19 с  надпись за спикером на настоящем фоне;
+ *  19–24 с  титры печатаются сбоку, съёмка отъезжает (TypingPush);
  *  12–18 с  круговая диаграмма из стрелок (CycleDiagram).
  * Съёмка и вырезка берутся из уже готового интро (`local/head/s29-intro*`),
  * с 20-й секунды. Рендер:
@@ -26,14 +28,14 @@ export const headFxLabDefaults: z.infer<typeof headFxLabSchema> = {
   cutout: "local/head/s29-intro-cutout.webm",
   offsetSeconds: 20,
   // Вырезка интро есть только в 14.18–19.09, 36.02–37.79, 41.27–46.72, 74.62–78.27.
-  sceneOffsets: [14.3, 74.8, 41.3, 41.3],
+  sceneOffsets: [14.3, 74.8, 41.3, 41.3, 14.3, 41.3],
   background: "video",
 };
 
 const SCENE = 80; // 2,67 с при 30 к/с: сцены влезают в отрезки с вырезкой
 
 export const HeadFxLab: React.FC<z.infer<typeof headFxLabSchema>> = (p) => {
-  const starts = [0, SCENE, SCENE * 2, SCENE * 4];
+  const starts = [0, SCENE, SCENE * 2, SCENE * 4, SCENE * 6, SCENE * 7];
   // Каждая сцена берёт съёмку со своей секунды; `from` — кадр внутри композиции.
   const srcFrame = (from: number) => {
     const i = starts.filter((s) => s <= from).length - 1;
@@ -54,6 +56,9 @@ export const HeadFxLab: React.FC<z.infer<typeof headFxLabSchema>> = (p) => {
       />
       ) : null}
     </AbsoluteFill>
+  );
+  const Raw: React.FC<{ from: number }> = ({ from }) => (
+    <OffthreadVideo src={staticFile(p.footage)} muted trimBefore={srcFrame(from)} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
   );
   const Speaker: React.FC<{ from: number }> = ({ from }) => (
     <OffthreadVideo
@@ -119,6 +124,22 @@ export const HeadFxLab: React.FC<z.infer<typeof headFxLabSchema>> = (p) => {
         <AbsoluteFill style={{ transform: "translateY(18%) scale(0.62)", transformOrigin: "50% 100%", filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.5))" }}>
           <Speaker from={SCENE * 4} />
         </AbsoluteFill>
+      </Sequence>
+
+      {/* 5. Надпись за спикером поверх настоящего фона: съёмка как есть,
+          текст, сверху вырезанный спикер — ничего не размыто и не продублировано */}
+      <Sequence from={SCENE * 6} durationInFrames={SCENE} layout="none">
+        <AbsoluteFill><Raw from={SCENE * 6} /></AbsoluteFill>
+        <BackTitle lines={["БЫСТРОЕ", "*СОГЛАСОВАНИЕ"]} mode="behind" delayInFrames={4} centerY={0.3} fontSize={0.15}>
+          <AbsoluteFill><Speaker from={SCENE * 6} /></AbsoluteFill>
+        </BackTitle>
+      </Sequence>
+
+      {/* 6. Титры печатаются справа, съёмка отъезжает влево, фон тот же */}
+      <Sequence from={SCENE * 7} durationInFrames={SCENE * 2} layout="none">
+        <TypingPush lines={["Более", "*1000", "компаний", "в базе"]} side="right" delayInFrames={6} charsPerSecond={11} pushFraction={0.34} columnFraction={0.44}>
+          <Raw from={SCENE * 7} />
+        </TypingPush>
       </Sequence>
     </AbsoluteFill>
   );
