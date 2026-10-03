@@ -91,3 +91,6 @@ Shared-MotionLab). Для тёмных сцен берите `screen` или `so
 | `FlagWave` | Флаг страны развевается рядом со спикером: выпрыгивает на названии страны, машет полосами, уходит | `src`, `x`, `y`, `widthFraction`, `strips`, `amplitude`, `wavesPerSecond`, `exitFrames` |
 | `BigNumber` | Крупная цифра пункта: резко выскакивает на «во-первых», держится до начала объяснения и исчезает | `text`, `label`, `color`, `x`, `y`, `sizeFraction`, `exitFrames` |
 | `MascotRig` | Оживляет фигурку-стикер без разрезки на слои: цикл кадров плавной деформации (`scripts/cat-warp.py`, лапка ходит вниз-вверх), глаза моргают SVG-заплатками, знак на груди | `framesDir`, `frameCount`, `frameDigits`, `eyesHalf`, `eyesClosed`, `imageWidth`, `imageHeight`, `wavePeriodSeconds`, `breathe`, `markText`, `markX`, `markY`, `markSize`, `markColor`, `blinkEverySeconds`, `blinkFrames`, `background` |
+| `BackTitle` | Крупная надпись за спикером: текст между фоном и вырезанным человеком, либо спикер сдвигается и текст встаёт сбоку | `delayInFrames`, `durationInFrames` |
+| `CheckList` | Чек-лист: пункты появляются по одному, в окошке ставится галочка | `delayInFrames`, `durationInFrames` |
+| `CycleDiagram` | Круговая диаграмма: центр и стрелки-секторы, которые присоединяются по одному и в конце образуют вращающееся кольцо | `delayInFrames`, `durationInFrames` |

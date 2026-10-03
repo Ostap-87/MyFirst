@@ -107,6 +107,7 @@ import { GTTCarouselZoomTest, gttCarouselZoomTestDefaults, gttCarouselZoomTestSc
 import { GTTLuckyCat, gttLuckyCatDefaults, gttLuckyCatSchema } from "./globaltechtour/compositions/LuckyCat";
 import { FlagClip, flagClipDefaults, flagClipSchema } from "./shared/FlagClip";
 import { ChartClip, chartClipDefaults, chartClipSchema } from "./shared/ChartClip";
+import { HeadFxLab, headFxLabDefaults, headFxLabSchema } from "./shared/HeadFxLab";
 // new-composition:imports:end
 
 export const RemotionRoot: React.FC = () => {
@@ -1181,6 +1182,19 @@ export const RemotionRoot: React.FC = () => {
         durationInFrames={105}
       />
                         {/* new-composition:end */}
+
+      {/* Проба приёмов для говорящей головы на тестовом материале:
+          надпись за спикером, чек-лист, круговая диаграмма. */}
+      <Composition
+        id="Shared-HeadFxLab"
+        component={HeadFxLab}
+        schema={headFxLabSchema}
+        defaultProps={headFxLabDefaults}
+        width={1080}
+        height={1920}
+        fps={30}
+        durationInFrames={540}
+      />
 
       {/* Витрина эффектов на нейтральных данных: сюда смотрим, когда
           проверяем новый эффект из src/shared/components/effects. */}

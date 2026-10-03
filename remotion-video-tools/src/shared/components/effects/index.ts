@@ -20,6 +20,9 @@ export * from "./FlipCards";
 export * from "./FlagWave";
 export * from "./BigNumber";
 export * from "./MascotRig";
+export * from "./BackTitle";
+export * from "./CheckList";
+export * from "./CycleDiagram";
 // new-effect:exports:end
 export * from "./ChatOverlay";
 export * from "./CountUp";
