@@ -80,13 +80,14 @@ export const HeadFxLab: React.FC<z.infer<typeof headFxLabSchema>> = (p) => {
         </BalloonTitle>
       </Sequence>
 
-      {/* 3. Чек-лист преимуществ: спикер сдвинут влево, фон тот же */}
+      {/* 3. Чек-лист преимуществ: вся съёмка сдвинута влево, фон тот же, без дубля */}
       <Sequence from={at(2)} durationInFrames={p.scenes[2].frames} layout="none">
-        <Raw scene={2} />
-        <AbsoluteFill style={{ background: "rgba(5,10,25,0.45)" }} />
-        <AbsoluteFill style={{ transform: "translateX(-27%) scale(0.86)", transformOrigin: "50% 100%", filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.45))" }}>
-          <Speaker scene={2} />
+        <AbsoluteFill style={{ background: "#0b1220" }}>
+          <AbsoluteFill style={{ transform: "translateX(-26%) scale(1.27)", transformOrigin: "0% 50%" }}>
+            <OffthreadVideo src={staticFile(p.footage)} muted trimBefore={srcFrame(2)} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+          </AbsoluteFill>
         </AbsoluteFill>
+        <AbsoluteFill style={{ background: "linear-gradient(90deg, rgba(5,10,25,0) 40%, rgba(5,10,25,0.55) 70%)" }} />
         <CheckList
           title="Почему с нами"
           x={0.47}

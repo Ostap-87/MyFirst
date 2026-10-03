@@ -110,7 +110,8 @@ export const CycleDiagram: React.FC<CycleDiagramProps> = (params) => {
   const grow = p.growToFraction > 0
     ? interpolate(frame - allIn, [0, p.growFrames], [0, 1], { easing: Easing.inOut(Easing.cubic), extrapolateLeft: "clamp", extrapolateRight: "clamp" })
     : 0;
-  const maxR = Math.min(width, height) * 0.48;
+  // 0,44 — с учётом наконечников, которые выступают за внешний радиус.
+  const maxR = Math.min(width, height) * 0.44;
   const rOut = Math.min(maxR, width * (p.radiusFraction + (p.growToFraction - p.radiusFraction) * grow));
   const cx = width * p.cx;
   const cy = height * (p.cy + (p.growCy - p.cy) * grow);

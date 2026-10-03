@@ -42,7 +42,7 @@ export const balloonTitleDefaults: BalloonTitleParams = {
   deflate: true,
   fontSize: 0.16,
   centerY: 0.3,
-  color: "#ffffff",
+  color: "#dfe6f2",
   accentColor: "#3b82f6",
   swayDeg: 4,
   swayPx: 14,
@@ -89,8 +89,8 @@ export const BalloonTitle: React.FC<BalloonTitleProps> = ({ children, ...params 
     const accent = raw.startsWith("*");
     const text = clean[li];
     const color = accent ? p.accentColor : p.color;
-    const light = mix(color, "#ffffff", 0.55);
-    const dark = mix(color, "#000000", 0.35);
+    const light = mix(color, "#ffffff", 0.35);
+    const dark = mix(color, "#000000", 0.45);
     const chars = Array.from(text).map((ch, ci) => {
       if (/\s/.test(ch)) return <span key={`sp${li}-${ci}`} style={{ display: "inline-block", width: size * 0.35 }} />;
       const k = index++;
@@ -118,7 +118,7 @@ export const BalloonTitle: React.FC<BalloonTitleProps> = ({ children, ...params 
             transform: `translateY(${lift}px) rotate(${sway}deg) scale(${sc})`,
             transformOrigin: "50% 60%",
             opacity: sc > 0.02 ? 1 : 0,
-            backgroundImage: `linear-gradient(165deg, ${light} 0%, ${color} 45%, ${dark} 100%)`,
+            backgroundImage: `radial-gradient(ellipse 70% 45% at 35% 22%, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0) 60%), linear-gradient(170deg, ${light} 0%, ${color} 40%, ${dark} 100%)`,
             WebkitBackgroundClip: "text",
             backgroundClip: "text",
             color: "transparent",

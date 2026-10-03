@@ -62,7 +62,7 @@ export const TypingPush: React.FC<TypingPushProps> = ({ children, ...params }) =
   // Кегль — по самой длинной строке, чтобы колонка не вылезала за кадр.
   const base = width * p.fontSize;
   const colW = width * p.columnFraction - width * 0.04;
-  const widest = Math.max(1, ...clean.map((t) => measureText({ text: t, fontFamily: family, fontSize: base, fontWeight: 800 }).width));
+  const widest = Math.max(1, ...clean.map((t) => Math.max(measureText({ text: t, fontFamily: family, fontSize: base, fontWeight: 800 }).width, t.length * base * 0.74)));
   const size = base * Math.min(1, colW / widest);
 
   // Съёмка отъезжает вслед за набором: сдвиг растёт с долей набранного,
