@@ -139,40 +139,47 @@ export const RemotionRoot: React.FC = () => {
         schema={robotTalkSchema}
         calculateMetadata={calculateRobotTalkMetadata}
         defaultProps={{
-          footage: "local/head/s28-third.mp4",
-          cutoutSrc: "",
-          camera: [
-            { at: 3.6, until: 7.2, kind: "pushIn" as const, strength: 1, originX: 0.42, originY: 0.4, direction: "right" as const },
-            { at: 30.05, until: 30.5, kind: "whipPan" as const, strength: 1, originX: 0.5, originY: 0.4, direction: "right" as const },
-            { at: 49.5, until: 53.0, kind: "lowAngle" as const, strength: 0.9, originX: 0.5, originY: 0.4, direction: "right" as const },
-            { at: 75.3, until: 79.0, kind: "crane" as const, strength: 1, originX: 0.5, originY: 0.4, direction: "right" as const },
+          segments: [
+            { src: "local/head/s28b.mp4", from: 0, to: 17.0, layout: "front" as const, captionsSrc: "captions/head-s28b.json", cutout: "local/head/s28b-cutout.webm", whipIn: false },
+            { src: "local/head/s28b-angle.mp4", from: 17.8, to: 34.9, layout: "side" as const, captionsSrc: "captions/head-s28b-angle.json", cutout: "", whipIn: true },
+            { src: "local/head/s28b.mp4", from: 34.2, to: 52.1, layout: "front" as const, captionsSrc: "captions/head-s28b.json", cutout: "local/head/s28b-cutout.webm", whipIn: true },
+            { src: "local/head/s28b-angle.mp4", from: 52.0, to: 65.0, layout: "side" as const, captionsSrc: "captions/head-s28b-angle.json", cutout: "", whipIn: true },
+            { src: "local/head/s28b.mp4", from: 65.1, to: 77.8, layout: "front" as const, captionsSrc: "captions/head-s28b.json", cutout: "local/head/s28b-cutout.webm", whipIn: true },
           ],
-          captionsSrc: "captions/head-s28-third.json",
+          footage: "",
+          cutoutSrc: "",
+          captionsSrc: "",
           captionsOffsetSeconds: 0,
-          durationSeconds: 79,
+          durationSeconds: 77.7,
+          camera: [
+            { at: 4.2, until: 8.4, kind: "pushIn" as const, strength: 1, originX: 0.5, originY: 0.36, direction: "right" as const },
+            { at: 12.8, until: 16.8, kind: "dollyZoom" as const, strength: 1, originX: 0.5, originY: 0.5, direction: "right" as const },
+            { at: 47.6, until: 51.4, kind: "lowAngle" as const, strength: 0.9, originX: 0.5, originY: 0.4, direction: "right" as const },
+            { at: 69.5, until: 73.5, kind: "orbit" as const, strength: 1, originX: 0.5, originY: 0.5, direction: "right" as const },
+            { at: 74.0, until: 77.7, kind: "crane" as const, strength: 1, originX: 0.5, originY: 0.4, direction: "right" as const },
+          ],
           safeZone: "stories" as const,
           music: "",
           musicVolume: 0.1,
-          hookTop: "Как делают роботов",
-          hookBottom: "приезжай и посмотри сам",
+          hookTop: "Достало согласовывать",
+          hookBottom: "тур по месяцу?",
           logo: { size: 0.205, ring: true, ringSecondsPerTurn: 16, reassembleEverySeconds: 12, shineEverySeconds: 4 },
           bot: { side: "right" as const, sizeFraction: 0.15, look: -0.6, gestures: [], auto: true, hidden: false, spots: [] },
           cards: [
-            { at: 22.3, until: 30.2, index: "", title: "Что внутри поездки", highlight: "внутри", text: "", items: ["Реальная компания", "R&D-центр", "Руководители проектов"] },
-            { at: 30.4, until: 34.6, index: "01", title: "За 5 дней поймёте рынок", highlight: "за 5 дней", text: "лучше, чем за полгода чтения обзоров", items: [] },
-            { at: 37.6, until: 41.6, index: "02", title: "Кому доверить деньги", highlight: "доверить деньги", text: "и кого обходить стороной", items: [] },
-            { at: 41.8, until: 46.5, index: "03", title: "Более 10 лет на рынке", highlight: "10 лет", text: "свободный китайский, робототехника изнутри", items: [] },
-            { at: 53.2, until: 58.6, index: "", title: "Итог: 3–5 реальных контактов", highlight: "3–5 реальных контактов", text: "с которыми можно подписывать контракт", items: [] },
+            { at: 34.6, until: 42.0, index: "", title: "17 индустрий", highlight: "17 индустрий", text: "", items: ["Пищевое производство", "Полимеры", "Искусственный интеллект", "Электронная коммерция"] },
+            { at: 43.0, until: 47.3, index: "03", title: "Готовые программы", highlight: "Готовые", text: "под каждую индустрию в каждой стране", items: [] },
+            { at: 47.6, until: 52.0, index: "04", title: "Согласование от 10 дней", highlight: "от 10 дней", text: "без бесконечных пересогласований", items: [] },
+            { at: 65.6, until: 69.4, index: "07", title: "Фиксированная стоимость", highlight: "Фиксированная", text: "понятное ценообразование программ", items: [] },
           ],
           factories: [],
           inserts: [
-            { at: 11.3, until: 19.0, src: "local/aura/rd-agibot.mp4", kind: "video" as const, label: "R&D-центр AgiBot", side: "right" as const, fullAfter: 1.6, fullSeconds: 3.6, trimBefore: 0 },
+            { at: 18.2, until: 27.8, src: "local/aura/factory-visit-video.mp4", kind: "video" as const, label: "Визит на завод", side: "right" as const, fullAfter: 2.6, fullSeconds: 3.4, trimBefore: 2 },
           ],
           tickers: [
-            { at: 7.3, until: 11.2, items: [{ name: "AgiBot", city: "Шанхай" }, { name: "Kepler", city: "Шанхай" }, { name: "Fourier", city: "Шанхай" }, { name: "UBTech", city: "Шэньчжэнь" }, { name: "Galbot", city: "Пекин" }] },
+            { at: 56.4, until: 61.6, items: [{ name: "Alibaba", city: "Ханчжоу" }, { name: "DeepSeek", city: "Ханчжоу" }, { name: "ByteDance", city: "Пекин" }, { name: "Huawei", city: "Шэньчжэнь" }] },
           ],
-          stats: [{ at: 15.2, until: 18.6, prefix: "Более", value: 70, suffix: "%", label: "гуманоидов мира собирают в Китае" }],
-          cta: { at: 68.0, title: "16–21 ноября · Robotics Expedition", button: "Оставить заявку", url: "aura-robotics.ru/tours" },
+          stats: [{ at: 30.6, until: 34.0, prefix: "Более", value: 1000, suffix: "", label: "компаний в базе · быстрое согласование" }],
+          cta: { at: 73.8, title: "Пишите — организуем быстро", button: "Написать", url: "t.me/ostapdotcenko" },
         }}
         fps={30}
         width={1080}
