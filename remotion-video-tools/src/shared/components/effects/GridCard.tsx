@@ -27,7 +27,10 @@ export const gridCardSchema = z.object({
   trimBefore: z.number().int().min(0),
 });
 export type GridCardParams = z.infer<typeof gridCardSchema>;
-export type GridCardProps = Partial<GridCardParams>;
+export type GridCardProps = Partial<GridCardParams> & {
+  /** Ручное положение карточки (px) — для хореографии снаружи; встроенный въезд и уход тогда не работают. */
+  rect?: { x: number; y: number; w: number; h: number; tilt: number; opacity: number };
+};
 
 export const gridCardDefaults: GridCardParams = {
   src: "",
@@ -47,29 +50,34 @@ export const gridCardDefaults: GridCardParams = {
   trimBefore: 0,
 };
 
-export const GridCard: React.FC<GridCardProps> = (params) => {
+export const GridCard: React.FC<GridCardProps> = ({ rect, ...params }) => {
   const p = withDefaults(gridCardDefaults, params);
   const frame = useCurrentFrame();
   const { fps, width, height } = useVideoConfig();
-  const w = width * p.widthFraction;
-  const h = w / p.aspect;
+  const w = rect ? rect.w : width * p.widthFraction;
+  const h = rect ? rect.h : w / p.aspect;
   const inS = spring({ frame, fps, config: { damping: 16, stiffness: 120, mass: 0.9 } });
   const out = interpolate(frame, [p.durationInFrames - p.outFrames, p.durationInFrames - 1], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.in(Easing.quad) });
   const dir = p.fromSide === "right" ? 1 : -1;
-  const dx = (1 - inS) * dir * w * 0.9;
+  const dx = rect ? 0 : (1 - inS) * dir * w * 0.9;
+  const left = rect ? rect.x : width * p.cx - w / 2 + dx;
+  const top = rect ? rect.y : height * p.cy - h / 2;
+  const opacity = rect ? rect.opacity : Math.min(inS, out);
+  const tilt = rect ? rect.tilt : p.tilt;
+  const sc = rect ? 1 : 0.9 + 0.1 * inS;
   const cell = Math.round(w / 22);
   const pad = Math.round(w * 0.05);
   return (
-    <AbsoluteFill style={{ perspective: width * 1.6, perspectiveOrigin: `${p.cx * 100}% ${p.cy * 100}%` }}>
+    <AbsoluteFill style={{ perspective: width * 1.6, perspectiveOrigin: `${((left + w / 2) / width) * 100}% ${((top + h / 2) / height) * 100}%` }}>
       <div
         style={{
           position: "absolute",
-          left: width * p.cx - w / 2 + dx,
-          top: height * p.cy - h / 2,
+          left,
+          top,
           width: w,
           height: h,
-          opacity: Math.min(inS, out),
-          transform: `rotateY(${p.tilt}deg) rotateX(4deg) scale(${0.9 + 0.1 * inS})`,
+          opacity,
+          transform: `rotateY(${tilt}deg) rotateX(${tilt === 0 ? 0 : 4}deg) scale(${sc})`,
           transformStyle: "preserve-3d",
           background: "#ffffff",
           border: `${Math.max(2, Math.round(w * 0.004))}px solid ${p.line}`,

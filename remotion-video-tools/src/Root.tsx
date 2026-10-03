@@ -146,23 +146,21 @@ export const RemotionRoot: React.FC = () => {
           musicVolume: 0.1,
           hookTop: "Как делают роботов",
           hookBottom: "приезжай и посмотри сам",
-          logo: { size: 0.24, ring: true, ringSecondsPerTurn: 16, reassembleEverySeconds: 12, shineEverySeconds: 4 },
+          logo: { size: 0.205, ring: true, ringSecondsPerTurn: 16, reassembleEverySeconds: 12, shineEverySeconds: 4 },
           bot: { side: "right" as const, sizeFraction: 0.15, look: -0.6, gestures: [], auto: true, hidden: false, spots: [] },
           cards: [
+            { at: 22.3, until: 30.2, index: "", title: "Что внутри поездки", highlight: "внутри", text: "", items: ["Реальная компания", "R&D-центр", "Руководители проектов"] },
             { at: 30.4, until: 34.6, index: "01", title: "За 5 дней поймёте рынок", highlight: "за 5 дней", text: "лучше, чем за полгода чтения обзоров", items: [] },
             { at: 37.6, until: 41.6, index: "02", title: "Кому доверить деньги", highlight: "доверить деньги", text: "и кого обходить стороной", items: [] },
             { at: 41.8, until: 46.5, index: "03", title: "Более 10 лет на рынке", highlight: "10 лет", text: "свободный китайский, робототехника изнутри", items: [] },
             { at: 53.2, until: 58.6, index: "", title: "Итог: 3–5 реальных контактов", highlight: "3–5 реальных контактов", text: "с которыми можно подписывать контракт", items: [] },
-            { at: 22.3, until: 29.9, index: "", title: "Что внутри поездки", highlight: "внутри", text: "", items: ["Реальная компания", "R&D-центр", "Руководители проектов"] },
           ],
-          factories: [
-            { at: 7.4, until: 11.2, logo: "local/aura/logos/estun.svg", name: "Estun", city: "Нанкин, Китай", note: "" },
-          ],
+          factories: [],
           inserts: [
-            { at: 18.9, until: 22.1, src: "local/aura/rd-agibot.mp4", kind: "video" as const, label: "R&D-центр AgiBot", cx: 0.69, cy: 0.33, widthFraction: 0.5, aspect: 0.8, tilt: -14, trimBefore: 0 },
+            { at: 11.3, until: 19.0, src: "local/aura/rd-agibot.mp4", kind: "video" as const, label: "R&D-центр AgiBot", side: "right" as const, fullAfter: 1.6, fullSeconds: 3.6, trimBefore: 0 },
           ],
           tickers: [
-            { at: 11.3, until: 15.0, items: [{ name: "AgiBot", city: "Шанхай" }, { name: "Kepler", city: "Шанхай" }, { name: "Fourier", city: "Шанхай" }, { name: "UBTech", city: "Шэньчжэнь" }, { name: "Galbot", city: "Пекин" }] },
+            { at: 7.3, until: 11.2, items: [{ name: "AgiBot", city: "Шанхай" }, { name: "Kepler", city: "Шанхай" }, { name: "Fourier", city: "Шанхай" }, { name: "UBTech", city: "Шэньчжэнь" }, { name: "Galbot", city: "Пекин" }] },
           ],
           stats: [{ at: 15.2, until: 18.6, prefix: "Более", value: 70, suffix: "%", label: "гуманоидов мира собирают в Китае" }],
           cta: { at: 68.0, title: "16–21 ноября · Robotics Expedition", button: "Оставить заявку", url: "aura-robotics.ru/tours" },

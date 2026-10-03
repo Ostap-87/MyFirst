@@ -13,12 +13,13 @@ import { withDefaults } from "./media";
  * Всё считается от номера кадра, случайность — random(seed): рендер
  * воспроизводим, зависимостей нет.
  *
- * Жесты как у сайта: wave, nod, scan, point, shrug, jump (длины — DUR).
+ * Жесты как у сайта: wave, nod, scan, point, shrug, jump (длины — DUR), плюс
+ * push — толкает обеими руками (для карточек, которые робот выдвигает).
  * Дополнительно: `walk` (0…1) — шаг ногами и руками, когда робот идёт по
  * кадру; `facing` — поворот корпуса вокруг вертикали, градусы; `look`/`lookY`
  * — куда смотрит голова.
  */
-export const auraBot3DGestureSchema = z.enum(["wave", "nod", "scan", "point", "shrug", "jump"]);
+export const auraBot3DGestureSchema = z.enum(["wave", "nod", "scan", "point", "shrug", "jump", "push"]);
 export type AuraBot3DGesture = z.infer<typeof auraBot3DGestureSchema>;
 
 export const auraBot3DSchema = z.object({
@@ -53,7 +54,7 @@ export const auraBot3DDefaults: AuraBot3DParams = {
   segments: 10,
 };
 
-export const AURA_BOT3D_DUR: Record<AuraBot3DGesture, number> = { wave: 2.8, jump: 1.75, nod: 1.4, scan: 3.0, point: 2.2, shrug: 1.8 };
+export const AURA_BOT3D_DUR: Record<AuraBot3DGesture, number> = { wave: 2.8, jump: 1.75, nod: 1.4, scan: 3.0, point: 2.2, shrug: 1.8, push: 1.2 };
 
 /* ---------- маленькая линейная алгебра ---------- */
 type V3 = [number, number, number];
@@ -313,6 +314,16 @@ export const AuraBot3D: React.FC<AuraBot3DProps> = ({ style, ...params }) => {
     armR.sh.rot[2] = lerp(armR.sh.rot[2], 0.34, e);
     spine.rot[1] += e * 0.18;
     head.rot[1] += e * 0.22;
+  } else if (act === "push") {
+    // Обе руки вперёд, корпус чуть вперёд: толкает карточку.
+    armR.sh.rot[0] = lerp(armR.sh.rot[0], -1.5, e);
+    armL.sh.rot[0] = lerp(armL.sh.rot[0], -1.5, e);
+    armR.sh.rot[2] = lerp(armR.sh.rot[2], 0.1, e);
+    armL.sh.rot[2] = lerp(armL.sh.rot[2], -0.1, e);
+    armR.el.rot[0] = lerp(armR.el.rot[0], -0.05, e);
+    armL.el.rot[0] = lerp(armL.el.rot[0], -0.05, e);
+    spine.rot[0] += e * 0.16;
+    head.rot[0] += e * 0.1;
   } else if (act === "shrug") {
     armR.sh.rot[2] = lerp(armR.sh.rot[2], 0.62, e);
     armL.sh.rot[2] = lerp(armL.sh.rot[2], -0.62, e);

@@ -25,14 +25,13 @@ import theme from "../theme";
  * Aura Head (`Aura-Head`) — говорящая голова в стиле сайта aura-robotics.ru.
  *
  * Тот же конвейер, что у GTT Head (`npm run head -- --prepare/--draft/--render`),
- * но свой фрейм: белая «таблетка» с логотипом AR сверху, рядом — робот-маскот
- * с сайта, который живёт весь ролик и реагирует на монтаж (машет на крючке,
- * кивает на карточке, прыгает на цифре, показывает на вставку и призыв).
- * Субтитры — чёрный Inter на белой плашке, текущее слово под жёлтым
- * маркером, как подсветка ключевых слов на сайте. Карточки фактов 01/02/03,
- * карточки заводов с логотипом и городом, «лист в клетку» для фото и видео
- * роботов, бегущая строка заводов, тёмная полоса с цифрой, призыв-пилюля.
- * Правила — docs/aura-head.md.
+ * но свой фрейм. Правило владельца 03.10: плашки не перекрывают лицо — все
+ * плашки стоят в нижней трети над субтитрами, верх кадра отдан знаку и
+ * роботу. Перечисления — отдельный белый экран: спикер уходит, робот крупно
+ * показывает на пункты. Видео-вставка — через робота: он выдвигает карточку
+ * сбоку, бьёт по ней, карточка разворачивается на весь экран, речь идёт за
+ * кадром, потом карточка сжимается, спикер возвращается, робот задвигает
+ * карточку обратно. Правила — docs/aura-head.md.
  */
 const secondsAt = z.number().min(0);
 const gestureSchema = z.object({ at: secondsAt, kind: auraBot3DGestureSchema });
@@ -78,7 +77,7 @@ export const robotTalkSchema = z.object({
       title: z.string(),
       highlight: z.string().describe("Часть заголовка под жёлтым маркером"),
       text: z.string(),
-      items: z.array(z.string()).describe("Пункты перечисления: появляются по одному, робот подходит и показывает на каждый"),
+      items: z.array(z.string()).describe("Пункты перечисления: белый экран, робот показывает на каждый"),
     }),
   ),
   factories: z.array(
@@ -98,11 +97,9 @@ export const robotTalkSchema = z.object({
       src: z.string(),
       kind: z.enum(["image", "video"]),
       label: z.string(),
-      cx: z.number().min(0).max(1),
-      cy: z.number().min(0).max(1),
-      widthFraction: z.number().min(0.2).max(1),
-      aspect: z.number().min(0.4).max(2.5),
-      tilt: z.number().min(-30).max(30),
+      side: z.enum(["left", "right"]).describe("С какой стороны робот выдвигает карточку"),
+      fullAfter: z.number().min(0).describe("Через сколько секунд после появления карточка раскрывается на весь экран"),
+      fullSeconds: z.number().min(0).describe("Сколько держится на весь экран; 0 — не раскрывать"),
       trimBefore: z.number().min(0),
     }),
   ),
@@ -131,17 +128,20 @@ export const calculateRobotTalkMetadata: CalculateMetadataFunction<RobotTalkProp
   durationInFrames: Math.ceil(props.durationSeconds * 30),
 });
 
-/** Геометрия: доли высоты, как в GTT Head (ChinaStories). */
+/** Геометрия: доли высоты. Плашки якорятся к низу — над субтитрами. */
 const GEO = {
-  stories: { logoTop: 0.09, marksTop: 0.245, captionsBottom: 0.16, rightPad: 0 },
-  reels: { logoTop: 0.1, marksTop: 0.25, captionsBottom: 0.22, rightPad: 0.16 },
+  stories: { logoTop: 0.09, captionsBottom: 0.16, rightPad: 0 },
+  reels: { logoTop: 0.1, captionsBottom: 0.22, rightPad: 0.16 },
 };
 const SIDES = 0.07;
 const AT = (seconds: number, fps: number) => Math.round(seconds * fps);
-const SFX = { pop: "audio/sfx/pop.wav", swoosh: "audio/sfx/swoosh.wav", counter: "audio/sfx/counter.wav", notify: "audio/sfx/notify.wav" };
+const SFX = { pop: "audio/sfx/pop.wav", swoosh: "audio/sfx/swoosh.wav", counter: "audio/sfx/counter.wav", notify: "audio/sfx/notify.wav", click: "audio/sfx/click.wav" };
+const ITEM_EVERY = 0.9; // секунд между пунктами перечисления
+const MOVE = 0.9; // секунд на переход робота между точками
+const SLIDE = 0.8; // секунд на выдвижение карточки
 
-const Sfx: React.FC<{ src: string; volume?: number }> = ({ src, volume = 0.4 }) => (
-  <Sequence durationInFrames={30} layout="none">
+const Sfx: React.FC<{ src: string; volume?: number; at?: number }> = ({ src, volume = 0.4, at = 0 }) => (
+  <Sequence from={at} durationInFrames={30} layout="none">
     <Audio src={staticFile(src)} volume={() => volume} />
   </Sequence>
 );
@@ -182,6 +182,11 @@ const buildPages = (captions: Caption[], offsetMs: number) => {
   return pages;
 };
 
+const smooth = (x: number) => {
+  const t = Math.min(1, Math.max(0, x));
+  return t * t * (3 - 2 * t);
+};
+
 export const RobotTalk: React.FC<RobotTalkProps> = ({
   footage,
   captionsSrc,
@@ -214,14 +219,14 @@ export const RobotTalk: React.FC<RobotTalkProps> = ({
   const accent = theme.colors.accent;
   const muted = theme.colors.muted;
   const line = theme.colors.line;
+  const paper = theme.colors.primary;
   const sideL = width * SIDES;
   const sideR = width * (SIDES + geo.rightPad);
   const contentW = width - sideL - sideR;
-  const marksTopPx = height * geo.marksTop;
+  // Низ плашек: над субтитрами (две строки) с зазором.
+  const plateBottom = height * geo.captionsBottom + fs(0.13);
 
   // ——— Знак на круге и робот рядом ———
-  const ITEM_EVERY = 0.9; // секунд между пунктами перечисления
-  const MOVE = 0.9; // секунд на переход между точками
   const logoD = width * logo.size;
   const logoR = logoD / 2;
   const botHpx = height * bot.sizeFraction; // рост робота в пикселях
@@ -232,31 +237,59 @@ export const RobotTalk: React.FC<RobotTalkProps> = ({
   const groupLeft = Math.max(sideL, (width - sideR + sideL - groupW) / 2);
   const logoCx = bot.side === "right" ? groupLeft + logoR : groupLeft + groupW - logoR;
   const logoCy = headerTop + logoR;
-  const homeSpot = { x: (bot.side === "right" ? logoCx + logoR + botWpx * 0.55 : logoCx - logoR - botWpx * 0.55) / width, y: (logoCy + logoR + botHpx * 0.08) / height, facing: 0 };
+  const homeSpot = { x: (bot.side === "right" ? logoCx + logoR + botWpx * 0.55 : logoCx - logoR - botWpx * 0.55) / width, y: (logoCy + logoR + botHpx * 0.08) / height, facing: 0, scale: 1 };
 
-  // Точки, куда робот ходит: заданные руками плюс автоматические — к карточке с пунктами и обратно.
-  type Spot = { at: number; x: number; y: number; facing: number };
-  const spots: Spot[] = [{ at: 0, ...homeSpot }, ...bot.spots];
+  // ——— Белый экран перечисления ———
+  const listCards = cards.filter((c) => c.items.length > 0);
+  const listNow = listCards.find((c) => second >= c.at && second < c.until);
+  const listBotH = height * 0.42; // робот крупно
+  const listSpot = { x: 0.24, y: 0.78, facing: 48, scale: listBotH / botHpx };
+
+  // ——— Вставки: робот выдвигает карточку, бьёт, карточка на весь экран, сжимается, робот задвигает ———
+  const smallW = width * 0.28;
+  const smallH = smallW / 0.8;
+  const smallY = height * 0.3; // в стороне от лица, на уровне головы; робот стоит снаружи от карточки, у края
+  const insertGeom = (ins: (typeof inserts)[number]) => {
+    const dur = ins.until - ins.at;
+    const fullStart = ins.fullAfter;
+    const fullEnd = Math.min(dur - SLIDE - 0.6, ins.fullAfter + ins.fullSeconds);
+    const hasFull = ins.fullSeconds > 0 && fullEnd > fullStart + 0.2;
+    const outStart = dur - SLIDE; // карточка уезжает
+    const edgeX = ins.side === "left" ? sideL + botWpx * 0.7 : width - sideR - botWpx * 0.7 - smallW;
+    const botX = ins.side === "left" ? (sideL + botWpx * 0.35) / width : (width - sideR - botWpx * 0.35) / width;
+    return { dur, fullStart, fullEnd, hasFull, outStart, edgeX, botX };
+  };
+
+  // Точки, куда робот ходит: заданные руками плюс автоматические.
+  type Spot = { at: number; x: number; y: number; facing: number; scale: number };
+  const spots: Spot[] = [{ at: 0, ...homeSpot }, ...bot.spots.map((sp) => ({ ...sp, scale: 1 }))];
   if (bot.auto) {
-    for (const c of cards.filter((cc) => cc.items.length > 0)) {
-      const cardRight = (sideL + contentW * 0.7) / width;
-      spots.push({ at: c.at, x: cardRight + (botWpx * 0.6) / width, y: (marksTopPx + fs(0.06) + c.items.length * fs(0.075)) / height + 0.02, facing: -55 });
-      spots.push({ at: c.until - 0.2, ...homeSpot });
+    for (const c of listCards) {
+      spots.push({ at: c.at, ...listSpot });
+      spots.push({ at: c.until - 0.3, ...homeSpot });
+    }
+    for (const ins of inserts) {
+      const g = insertGeom(ins);
+      // К краю, где появится карточка, лицом к ней; на уходе — повернуться и толкнуть наружу.
+      spots.push({ at: Math.max(0, ins.at - MOVE), x: g.botX, y: (smallY + smallH) / height + 0.01, facing: ins.side === "left" ? 60 : -60, scale: 1 });
+      spots.push({ at: ins.at + g.dur - 0.2, ...homeSpot });
     }
   }
   spots.sort((a, b) => a.at - b.at);
   const next = [...spots].reverse().find((sp) => sp.at <= second) ?? spots[0];
   const from = spots.filter((sp) => sp.at < next.at).pop() ?? next;
   const moveT = next.at === 0 ? 1 : Math.min(1, Math.max(0, (second - next.at) / MOVE));
-  const ease = moveT * moveT * (3 - 2 * moveT);
+  const ease = smooth(moveT);
   const feetX = (from.x + (next.x - from.x) * ease) * width;
   const feetY = (from.y + (next.y - from.y) * ease) * height;
+  const botScale = from.scale + (next.scale - from.scale) * ease;
   const moving = moveT > 0 && moveT < 1;
   const walk = moving ? Math.sin(moveT * Math.PI) : 0;
   const dir = next.x >= from.x ? 1 : -1;
   const facing = moving ? dir * 70 : next.facing;
-  const botLeft = feetX - botBox / 2;
-  const botTop = feetY - botBox * 0.787;
+  const box = botBox * botScale;
+  const botLeft = feetX - box / 2;
+  const botTop = feetY - box * 0.787;
   const logoIn = spring({ frame, fps, config: { damping: 14, stiffness: 110 } });
 
   // Жесты: заданные руками плюс автоматические на события монтажа.
@@ -269,18 +302,20 @@ export const RobotTalk: React.FC<RobotTalkProps> = ({
     }
     for (const f of factories) gestures.push({ at: AT(f.at + 0.1, fps), kind: "scan" });
     for (const s of stats) gestures.push({ at: AT(s.at + 0.1, fps), kind: "jump" });
-    for (const i of inserts) gestures.push({ at: AT(i.at + 0.2, fps), kind: "point" });
+    for (const ins of inserts) {
+      const g = insertGeom(ins);
+      gestures.push({ at: AT(ins.at, fps), kind: "push" });
+      if (g.hasFull) gestures.push({ at: AT(ins.at + g.fullStart - 0.35, fps), kind: "point" });
+      gestures.push({ at: AT(ins.at + g.outStart - 0.1, fps), kind: "push" });
+    }
     if (cta.title) gestures.push({ at: AT(cta.at + 0.3, fps), kind: "point" });
   }
   gestures.sort((a, b) => a.at - b.at);
-  // Робот смотрит на спикера, а на вставку — в её сторону.
-  const insertNow = inserts.find((i) => second >= i.at && second < i.until);
-  const look = insertNow ? (insertNow.cx < 0.5 ? -1 : 1) : bot.look;
+  const look = listNow ? 0.9 : bot.look;
 
   // ——— Крючок ———
   const hookIn = spring({ frame, fps, config: { damping: 15, stiffness: 120 } });
   const hookOut = interpolate(frame, [AT(2.2, fps), AT(2.7, fps)], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-  const marksTop = marksTopPx;
 
   // ——— Субтитры ———
   const pages = buildPages(captions, captionsOffsetSeconds * 1000);
@@ -296,69 +331,89 @@ export const RobotTalk: React.FC<RobotTalkProps> = ({
         </AbsoluteFill>
       </Sequence>
 
-      {/* Светлая вуаль сверху: белая таблетка и робот должны читаться на любой съёмке. */}
+      {/* Светлая вуаль сверху: знак и робот должны читаться на любой съёмке. */}
       <AbsoluteFill style={{ background: "linear-gradient(180deg, rgba(248,246,243,0.55) 0%, rgba(248,246,243,0) 26%)" }} />
 
-      {/* ——— Вставки «лист в клетку» ——— */}
-      {inserts.map((i, k) => (
-        <Sequence key={`ins-${k}`} from={AT(i.at, fps)} durationInFrames={AT(i.until - i.at, fps)} layout="none">
-          <GridCard src={i.src} kind={i.kind} label={i.label} cx={i.cx} cy={i.cy} widthFraction={i.widthFraction} aspect={i.aspect} tilt={i.tilt} fromSide={i.cx < 0.5 ? "left" : "right"} durationInFrames={AT(i.until - i.at, fps)} trimBefore={Math.round(i.trimBefore * fps)} />
-          <Sfx src={SFX.swoosh} volume={0.3} />
-        </Sequence>
-      ))}
+      {/* ——— Вставки: карточка с видео в руках робота ——— */}
+      {inserts.map((ins, k) => {
+        const g = insertGeom(ins);
+        const dur = AT(g.dur, fps);
+        return (
+          <Sequence key={`ins-${k}`} from={AT(ins.at, fps)} durationInFrames={dur} layout="none">
+            <InsertCard ins={ins} g={g} smallW={smallW} smallH={smallH} smallY={smallY} />
+            <Sfx src={SFX.swoosh} volume={0.3} />
+            {g.hasFull ? <Sfx src={SFX.click} volume={0.5} at={AT(g.fullStart, fps)} /> : null}
+            {g.hasFull ? <Sfx src={SFX.swoosh} volume={0.3} at={AT(g.fullEnd, fps)} /> : null}
+            <Sfx src={SFX.swoosh} volume={0.25} at={AT(g.outStart, fps)} />
+          </Sequence>
+        );
+      })}
+
+      {/* ——— Белый экран перечисления: спикер уходит, робот показывает ——— */}
+      {listCards.map((c, k) => {
+        const dur = AT(c.until - c.at, fps);
+        return (
+          <Sequence key={`list-${k}`} from={AT(c.at, fps)} durationInFrames={dur} layout="none">
+            <ListScene title={c.title} highlight={c.highlight} items={c.items} durationInFrames={dur} fs={fs} ink={ink} accent={accent} paper={paper} muted={muted} mono={mono} left={width * 0.46} right={sideR} top={height * 0.36} every={AT(ITEM_EVERY, fps)} start={AT(MOVE + 0.1, fps)} />
+            <Sfx src={SFX.swoosh} volume={0.3} />
+            {c.items.map((_, i) => (
+              <Sfx key={i} src={SFX.pop} at={AT(MOVE + 0.1 + i * ITEM_EVERY, fps)} />
+            ))}
+          </Sequence>
+        );
+      })}
 
       {/* ——— Шапка: знак на круге с кольцом и робот ——— */}
       <div style={{ position: "absolute", inset: 0, opacity: logoIn }}>
         <AuraLogo size={logoD} cx={logoCx} cy={logoCy} ink={ink} accent={accent} ring={logo.ring} ringSecondsPerTurn={logo.ringSecondsPerTurn} reassembleEverySeconds={logo.reassembleEverySeconds} shineEverySeconds={logo.shineEverySeconds} font={theme.fonts.heading} />
       </div>
       {bot.hidden ? null : (
-        <div style={{ position: "absolute", left: botLeft, top: botTop, width: botBox, height: botBox, opacity: logoIn, pointerEvents: "none" }}>
+        <div style={{ position: "absolute", left: botLeft, top: botTop, width: box, height: box, opacity: logoIn, pointerEvents: "none" }}>
           <AuraBot3D gestures={gestures} look={look} facing={facing} walk={walk} light={theme.colors.primary} dark={ink} accent={accent} jumpHeight={0.5} />
         </div>
       )}
 
-      {/* ——— Крючок: белая и жёлтая плашки ——— */}
+      {/* ——— Крючок: внизу над субтитрами, белая и жёлтая плашки ——— */}
       {hookTop || hookBottom ? (
-        <div style={{ position: "absolute", left: sideL, top: marksTop, width: contentW, opacity: Math.min(hookIn, hookOut), transform: `translateY(${(1 - hookIn) * fs(0.06)}px)`, display: "flex", flexDirection: "column", alignItems: "flex-start", gap: fs(0.012) }}>
-          {hookTop ? <div style={{ background: "#ffffff", color: ink, fontWeight: 800, fontSize: fs(0.066), lineHeight: 1.12, padding: `${fs(0.012)}px ${fs(0.026)}px`, borderRadius: fs(0.018), letterSpacing: "-0.01em" }}>{hookTop}</div> : null}
-          {hookBottom ? <div style={{ background: accent, color: ink, fontWeight: 800, fontSize: fs(0.066), lineHeight: 1.12, padding: `${fs(0.012)}px ${fs(0.026)}px`, borderRadius: fs(0.018), letterSpacing: "-0.01em" }}>{hookBottom}</div> : null}
+        <div style={{ position: "absolute", left: sideL, bottom: plateBottom, width: contentW, opacity: Math.min(hookIn, hookOut), transform: `translateY(${(1 - hookIn) * fs(0.06)}px)`, display: "flex", flexDirection: "column", alignItems: "flex-start", gap: fs(0.012) }}>
+          {hookTop ? <div style={{ background: "#ffffff", color: ink, fontWeight: 800, fontSize: fs(0.062), lineHeight: 1.12, padding: `${fs(0.012)}px ${fs(0.026)}px`, borderRadius: fs(0.018), letterSpacing: "-0.01em" }}>{hookTop}</div> : null}
+          {hookBottom ? <div style={{ background: accent, color: ink, fontWeight: 800, fontSize: fs(0.062), lineHeight: 1.12, padding: `${fs(0.012)}px ${fs(0.026)}px`, borderRadius: fs(0.018), letterSpacing: "-0.01em" }}>{hookBottom}</div> : null}
         </div>
       ) : null}
 
-      {/* ——— Карточки фактов 01/02/03 ——— */}
-      {cards.map((c, k) => {
-        const from = AT(c.at, fps);
-        const dur = AT(c.until - c.at, fps);
-        return (
-          <Sequence key={`card-${k}`} from={from} durationInFrames={dur} layout="none">
-            <Card top={marksTop} left={sideL} width={c.items.length ? contentW * 0.7 : contentW} durationInFrames={dur} fs={fs} line={line}>
-              {c.index ? <div style={{ fontFamily: mono, fontSize: fs(0.026), color: muted, letterSpacing: "0.08em" }}>{c.index}</div> : null}
-              <div style={{ fontWeight: 700, fontSize: fs(0.05), lineHeight: 1.15, letterSpacing: "-0.01em" }}>
-                <Marked text={c.title} highlight={c.highlight} accent={accent} />
-              </div>
-              {c.text ? <div style={{ fontSize: fs(0.032), lineHeight: 1.3, color: muted }}>{c.text}</div> : null}
-              {c.items.length ? <Items items={c.items} every={AT(ITEM_EVERY, fps)} start={AT(MOVE + 0.1, fps)} fs={fs} accent={accent} /> : null}
-            </Card>
-            <Sfx src={SFX.pop} />
-          </Sequence>
-        );
-      })}
+      {/* ——— Карточки фактов 01/02/03: внизу над субтитрами ——— */}
+      {cards
+        .filter((c) => c.items.length === 0)
+        .map((c, k) => {
+          const dur = AT(c.until - c.at, fps);
+          return (
+            <Sequence key={`card-${k}`} from={AT(c.at, fps)} durationInFrames={dur} layout="none">
+              <Card bottom={plateBottom} left={sideL} width={contentW} durationInFrames={dur} fs={fs} line={line}>
+                {c.index ? <div style={{ fontFamily: mono, fontSize: fs(0.026), color: muted, letterSpacing: "0.08em" }}>{c.index}</div> : null}
+                <div style={{ fontWeight: 700, fontSize: fs(0.05), lineHeight: 1.15, letterSpacing: "-0.01em" }}>
+                  <Marked text={c.title} highlight={c.highlight} accent={accent} />
+                </div>
+                {c.text ? <div style={{ fontSize: fs(0.032), lineHeight: 1.3, color: muted }}>{c.text}</div> : null}
+              </Card>
+              <Sfx src={SFX.pop} />
+            </Sequence>
+          );
+        })}
 
       {/* ——— Карточки заводов: логотип, название, город ——— */}
       {factories.map((f, k) => {
-        const from = AT(f.at, fps);
         const dur = AT(f.until - f.at, fps);
         const tile = fs(0.17);
         return (
-          <Sequence key={`fac-${k}`} from={from} durationInFrames={dur} layout="none">
-            <Card top={marksTop} left={sideL} width={contentW} durationInFrames={dur} fs={fs} line={line} row>
+          <Sequence key={`fac-${k}`} from={AT(f.at, fps)} durationInFrames={dur} layout="none">
+            <Card bottom={plateBottom} left={sideL} width={contentW} durationInFrames={dur} fs={fs} line={line} row>
               <div style={{ width: tile, height: tile, borderRadius: fs(0.02), border: `2px solid ${line}`, background: "#fff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                 <Img src={staticFile(f.logo)} style={{ maxWidth: tile * 0.74, maxHeight: tile * 0.6, objectFit: "contain" }} />
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: fs(0.006) }}>
                 <div style={{ fontWeight: 700, fontSize: fs(0.05), lineHeight: 1.1, letterSpacing: "-0.01em" }}>{f.name}</div>
                 <div style={{ fontSize: fs(0.03), color: muted }}>{f.city}</div>
-                {f.note ? <div style={{ fontSize: fs(0.03), lineHeight: 1.3, marginTop: fs(0.006) }}><Marked text={f.note} highlight="" accent={accent} /></div> : null}
+                {f.note ? <div style={{ fontSize: fs(0.03), lineHeight: 1.3, marginTop: fs(0.006) }}>{f.note}</div> : null}
               </div>
             </Card>
             <Sfx src={SFX.pop} />
@@ -382,10 +437,10 @@ export const RobotTalk: React.FC<RobotTalkProps> = ({
         </Sequence>
       ))}
 
-      {/* ——— Призыв: жёлтый блок и чёрная пилюля ——— */}
+      {/* ——— Призыв: жёлтый блок и чёрная пилюля, внизу над субтитрами ——— */}
       {cta.title ? (
         <Sequence from={AT(cta.at, fps)} durationInFrames={Math.max(1, total - AT(cta.at, fps))} layout="none">
-          <Cta title={cta.title} button={cta.button} url={cta.url} fs={fs} ink={ink} accent={accent} top={height * 0.52} left={sideL} width={contentW} />
+          <Cta title={cta.title} button={cta.button} url={cta.url} fs={fs} ink={ink} accent={accent} bottom={plateBottom} left={sideL} width={contentW} />
           <Sfx src={SFX.notify} volume={0.35} />
         </Sequence>
       ) : null}
@@ -427,28 +482,93 @@ export const RobotTalk: React.FC<RobotTalkProps> = ({
   );
 };
 
-/** Пункты перечисления: появляются по одному, с жёлтой точкой. */
-const Items: React.FC<{ items: string[]; every: number; start: number; fs: (f: number) => number; accent: string }> = ({ items, every, start, fs, accent }) => {
+/** Карточка-вставка: выезжает сбоку (её толкает робот), по удару раскрывается на весь экран, сжимается, уезжает. */
+const InsertCard: React.FC<{
+  ins: RobotTalkProps["inserts"][number];
+  g: { dur: number; fullStart: number; fullEnd: number; hasFull: boolean; outStart: number; edgeX: number; botX: number };
+  smallW: number;
+  smallH: number;
+  smallY: number;
+}> = ({ ins, g, smallW, smallH, smallY }) => {
   const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
+  const { fps, width, height } = useVideoConfig();
+  const t = frame / fps;
+  const offX = ins.side === "left" ? -smallW * 1.1 : width + smallW * 0.1;
+  // Фазы: выезд → (раскрытие → полный экран → сжатие) → выезд обратно.
+  const slideIn = smooth(t / SLIDE);
+  const slideOut = t >= g.outStart ? smooth((t - g.outStart) / SLIDE) : 0;
+  const open = g.hasFull ? interpolate(t, [g.fullStart, g.fullStart + 0.45], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.back(1.2)) }) : 0;
+  const close = g.hasFull ? interpolate(t, [g.fullEnd, g.fullEnd + 0.5], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.inOut(Easing.cubic) }) : 0;
+  const full = Math.max(0, Math.min(1, open - close));
+  const smallX = g.edgeX + (offX - g.edgeX) * (1 - slideIn) + (offX - g.edgeX) * slideOut;
+  const x = smallX + (0 - smallX) * full;
+  const y = smallY + (0 - smallY) * full;
+  const w = smallW + (width - smallW) * full;
+  const h = smallH + (height - smallH) * full;
+  const tilt = (ins.side === "left" ? 14 : -14) * (1 - full);
+  return <GridCard src={ins.src} kind={ins.kind} label={ins.label} trimBefore={Math.round(ins.trimBefore * fps)} rect={{ x, y, w, h, tilt, opacity: 1 }} />;
+};
+
+/** Белый экран с перечислением: заголовок и пункты справа, место под робота слева. */
+const ListScene: React.FC<{
+  title: string;
+  highlight: string;
+  items: string[];
+  durationInFrames: number;
+  fs: (f: number) => number;
+  ink: string;
+  accent: string;
+  paper: string;
+  muted: string;
+  mono: string;
+  left: number;
+  right: number;
+  top: number;
+  every: number;
+  start: number;
+}> = ({ title, highlight, items, durationInFrames, fs, ink, accent, paper, muted, mono, left, right, top, every, start }) => {
+  const frame = useCurrentFrame();
+  const { fps, width, height } = useVideoConfig();
+  const inW = interpolate(frame, [0, 12], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.cubic) });
+  const outW = interpolate(frame, [durationInFrames - 12, durationInFrames - 1], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.in(Easing.cubic) });
+  const reveal = Math.min(inW, outW);
+  const cell = Math.round(width / 18);
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: fs(0.012), marginTop: fs(0.012) }}>
-      {items.map((it, i) => {
-        const s = spring({ frame: frame - start - i * every, fps, config: { damping: 14, stiffness: 140 } });
-        return (
-          <div key={i} style={{ display: "flex", alignItems: "center", gap: fs(0.02), fontSize: fs(0.04), fontWeight: 600, opacity: s, transform: `translateX(${(1 - s) * -fs(0.04)}px)` }}>
-            <span style={{ width: fs(0.022), height: fs(0.022), borderRadius: "50%", background: accent, border: "2px solid #262626", flexShrink: 0 }} />
-            {it}
-          </div>
-        );
-      })}
-    </div>
+    <AbsoluteFill style={{ clipPath: `inset(0 ${(1 - reveal) * 100}% 0 0)` }}>
+      <AbsoluteFill style={{ background: paper }}>
+        <svg width={width} height={height} style={{ position: "absolute", inset: 0, opacity: 0.7 }}>
+          <defs>
+            <pattern id="list-grid" width={cell} height={cell} patternUnits="userSpaceOnUse">
+              <path d={`M ${cell} 0 L 0 0 0 ${cell}`} fill="none" stroke="#e6e3df" strokeWidth={1.5} />
+            </pattern>
+          </defs>
+          <rect width={width} height={height} fill="url(#list-grid)" />
+        </svg>
+      </AbsoluteFill>
+      <div style={{ position: "absolute", left, right, top, display: "flex", flexDirection: "column", gap: fs(0.03) }}>
+        <div style={{ fontFamily: mono, fontSize: fs(0.026), color: muted, letterSpacing: "0.08em" }}>{String(items.length).padStart(2, "0")} ПУНКТА</div>
+        <div style={{ fontWeight: 800, fontSize: fs(0.058), lineHeight: 1.1, letterSpacing: "-0.015em", color: ink }}>
+          <Marked text={title} highlight={highlight} accent={accent} />
+        </div>
+        <div style={{ display: "flex", flexDirection: "column", gap: fs(0.02), marginTop: fs(0.01) }}>
+          {items.map((it, i) => {
+            const s = spring({ frame: frame - start - i * every, fps, config: { damping: 14, stiffness: 140 } });
+            return (
+              <div key={i} style={{ display: "flex", alignItems: "center", gap: fs(0.022), opacity: s, transform: `translateX(${(1 - s) * -fs(0.06)}px)` }}>
+                <span style={{ fontFamily: mono, fontSize: fs(0.026), color: muted, width: fs(0.05) }}>{String(i + 1).padStart(2, "0")}</span>
+                <span style={{ background: "#ffffff", border: "2px solid #d9d7d5", borderRadius: fs(0.02), padding: `${fs(0.016)}px ${fs(0.026)}px`, fontWeight: 700, fontSize: fs(0.042), lineHeight: 1.2, color: ink, boxShadow: "0 10px 24px rgba(0,0,0,0.08)" }}>{it}</span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </AbsoluteFill>
   );
 };
 
-/** Белая карточка с рамкой, как карточки «Чем мы занимаемся» на сайте. */
+/** Белая карточка с рамкой, как карточки «Чем мы занимаемся» на сайте; якорь — низ. */
 const Card: React.FC<{
-  top: number;
+  bottom: number;
   left: number;
   width: number;
   durationInFrames: number;
@@ -456,7 +576,7 @@ const Card: React.FC<{
   line: string;
   row?: boolean;
   children: React.ReactNode;
-}> = ({ top, left, width, durationInFrames, fs, line, row, children }) => {
+}> = ({ bottom, left, width, durationInFrames, fs, line, row, children }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const s = spring({ frame, fps, config: { damping: 15, stiffness: 130, mass: 0.8 } });
@@ -466,12 +586,12 @@ const Card: React.FC<{
       style={{
         position: "absolute",
         left,
-        top,
+        bottom,
         width,
         background: "#ffffff",
         border: `2px solid ${line}`,
         borderRadius: fs(0.03),
-        padding: `${fs(0.03)}px ${fs(0.036)}px`,
+        padding: `${fs(0.028)}px ${fs(0.036)}px`,
         boxSizing: "border-box",
         display: "flex",
         flexDirection: row ? "row" : "column",
@@ -479,8 +599,8 @@ const Card: React.FC<{
         gap: row ? fs(0.03) : fs(0.01),
         boxShadow: "0 18px 40px rgba(0,0,0,0.22)",
         opacity: Math.min(s, out),
-        transform: `translateY(${(1 - s) * -fs(0.08)}px) scale(${0.96 + 0.04 * s})`,
-        transformOrigin: "top center",
+        transform: `translateY(${(1 - s) * fs(0.08)}px) scale(${0.96 + 0.04 * s})`,
+        transformOrigin: "bottom center",
       }}
     >
       {children}
@@ -496,7 +616,7 @@ const StatBand: React.FC<{ prefix: string; value: number; suffix: string; label:
   const n = Math.round(interpolate(frame, [4, AT(1.1, fps)], [0, value], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.cubic) }));
   const bandH = height * 0.15;
   return (
-    <div style={{ position: "absolute", left: 0, top: height * 0.55, width, height: bandH, background: ink, color: "#fff", transform: `scaleY(${reveal})`, transformOrigin: "center", opacity: out, display: "flex", flexDirection: "column", justifyContent: "center", paddingLeft: sideL, boxSizing: "border-box" }}>
+    <div style={{ position: "absolute", left: 0, top: height * 0.56, width, height: bandH, background: ink, color: "#fff", transform: `scaleY(${reveal})`, transformOrigin: "center", opacity: out, display: "flex", flexDirection: "column", justifyContent: "center", paddingLeft: sideL, boxSizing: "border-box" }}>
       <div style={{ display: "flex", alignItems: "baseline", gap: fs(0.02) }}>
         {prefix ? <span style={{ fontSize: fs(0.05), fontWeight: 500 }}>{prefix}</span> : null}
         <span style={{ fontSize: fs(0.11), fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1 }}>
@@ -512,13 +632,13 @@ const StatBand: React.FC<{ prefix: string; value: number; suffix: string; label:
   );
 };
 
-const Cta: React.FC<{ title: string; button: string; url: string; fs: (f: number) => number; ink: string; accent: string; top: number; left: number; width: number }> = ({ title, button, url, fs, ink, accent, top, left, width }) => {
+const Cta: React.FC<{ title: string; button: string; url: string; fs: (f: number) => number; ink: string; accent: string; bottom: number; left: number; width: number }> = ({ title, button, url, fs, ink, accent, bottom, left, width }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const s = spring({ frame, fps, config: { damping: 14, stiffness: 110 } });
   const b = spring({ frame: frame - 8, fps, config: { damping: 12, stiffness: 140 } });
   return (
-    <div style={{ position: "absolute", left, top, width, display: "flex", flexDirection: "column", alignItems: "flex-start", gap: fs(0.018), opacity: s, transform: `translateY(${(1 - s) * fs(0.06)}px)` }}>
+    <div style={{ position: "absolute", left, bottom, width, display: "flex", flexDirection: "column", alignItems: "flex-start", gap: fs(0.018), opacity: s, transform: `translateY(${(1 - s) * fs(0.06)}px)` }}>
       <div style={{ background: accent, color: ink, fontWeight: 800, fontSize: fs(0.05), lineHeight: 1.12, padding: `${fs(0.016)}px ${fs(0.028)}px`, borderRadius: fs(0.02), letterSpacing: "-0.01em" }}>{title}</div>
       <div style={{ display: "flex", alignItems: "center", gap: fs(0.02), transform: `scale(${Math.max(0, b)})`, transformOrigin: "left center" }}>
         <div style={{ background: ink, color: "#fff", fontWeight: 600, fontSize: fs(0.036), padding: `${fs(0.016)}px ${fs(0.034)}px`, borderRadius: fs(0.06), boxShadow: "0 10px 20px rgba(0,0,0,0.3)" }}>{button}</div>
