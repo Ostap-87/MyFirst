@@ -106,6 +106,9 @@
 - `GiphySticker` — стикеры и гифки с канала Giphy (`npm run giphy`).
 - `AuroraBackdrop`, `BeamsBackdrop`, `DotGrid`, `ShinyText`, `IconOrbit` — приёмы
   React Bits, переписанные от номера кадра.
+- `CameraFX` — приёмы камеры на плоской съёмке: push in, whip pan, dolly zoom и
+  orbit (через вырезку), low angle, crane (`docs/aura-head.md`, раздел 5).
+- `AuraBot3D`, `AuraLogo`, `GridCard`, `TickerStrip` — фрейм Aura Head.
 
 **Сторонние материалы** (реестр и лицензии — [docs/sources.md](./sources.md),
 восстановление на новой машине — `scripts/fetch-sources.sh`)

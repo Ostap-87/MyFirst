@@ -5,7 +5,6 @@ import {
   Easing,
   Img,
   interpolate,
-  OffthreadVideo,
   Sequence,
   spring,
   staticFile,
@@ -14,7 +13,7 @@ import {
 } from "remotion";
 import type { Caption } from "@remotion/captions";
 import { z } from "zod";
-import { AuraBot3D, auraBot3DGestureSchema, GridCard, TickerStrip } from "../../shared/components/effects";
+import { AuraBot3D, auraBot3DGestureSchema, CameraFX, cameraFxKindSchema, GridCard, TickerStrip } from "../../shared/components/effects";
 import { AuraLogo } from "../components/AuraLogo";
 import { useCaptions } from "../../shared/useCaptions";
 import { useFormat } from "../../shared/format";
@@ -38,6 +37,18 @@ const gestureSchema = z.object({ at: secondsAt, kind: auraBot3DGestureSchema });
 
 export const robotTalkSchema = z.object({
   footage: z.string().describe("Съёмка после --prepare, внутри public"),
+  cutoutSrc: z.string().describe("Вырезка спикера с альфой для dollyZoom и orbit; пусто — без неё"),
+  camera: z.array(
+    z.object({
+      at: secondsAt,
+      until: secondsAt,
+      kind: cameraFxKindSchema,
+      strength: z.number().min(0).max(2),
+      originX: z.number().min(0).max(1),
+      originY: z.number().min(0).max(1),
+      direction: z.enum(["left", "right"]),
+    }),
+  ).describe("Приёмы камеры: pushIn, whipPan, dollyZoom, lowAngle, crane, orbit"),
   captionsSrc: z.string().describe("Пословные субтитры JSON внутри public"),
   captionsOffsetSeconds: z.number().describe("Сдвиг субтитров, если съёмка обрезана"),
   durationSeconds: z.number().min(1),
@@ -189,6 +200,8 @@ const smooth = (x: number) => {
 
 export const RobotTalk: React.FC<RobotTalkProps> = ({
   footage,
+  cutoutSrc,
+  camera,
   captionsSrc,
   captionsOffsetSeconds,
   durationSeconds,
@@ -326,9 +339,7 @@ export const RobotTalk: React.FC<RobotTalkProps> = ({
   return (
     <AbsoluteFill style={{ background: "#0b0b0b", fontFamily: heading, color: ink }}>
       <Sequence durationInFrames={total}>
-        <AbsoluteFill>
-          <OffthreadVideo src={staticFile(footage)} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-        </AbsoluteFill>
+        <CameraFX footage={footage} cutout={cutoutSrc} moves={camera.map((m) => ({ fromFrame: AT(m.at, fps), toFrame: AT(m.until, fps), kind: m.kind, strength: m.strength, originX: m.originX, originY: m.originY, direction: m.direction }))} />
       </Sequence>
 
       {/* Светлая вуаль сверху: знак и робот должны читаться на любой съёмке. */}

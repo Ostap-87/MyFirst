@@ -113,6 +113,7 @@ import { SourcesLab, sourcesLabDefaults, sourcesLabSchema } from "./shared/Sourc
 import { calculateRobotTalkMetadata, RobotTalk, robotTalkSchema } from "./aura-robotics/compositions/RobotTalk";
 import { BotLab, botLabSchema } from "./aura-robotics/labs/BotLab";
 import { LogoLab, logoLabDefaults, logoLabSchema } from "./aura-robotics/labs/LogoLab";
+import { CameraLab, cameraLabDefaults, cameraLabSchema } from "./aura-robotics/labs/CameraLab";
 
 
 export const RemotionRoot: React.FC = () => {
@@ -129,6 +130,7 @@ export const RemotionRoot: React.FC = () => {
         width={1920}
         height={1080}
       />
+      <Composition id="Aura-CameraLab" component={CameraLab} schema={cameraLabSchema} defaultProps={cameraLabDefaults} durationInFrames={810} fps={30} width={1080} height={1920} />
       <Composition id="Aura-LogoLab" component={LogoLab} schema={logoLabSchema} defaultProps={logoLabDefaults} durationInFrames={420} fps={30} width={1920} height={1080} />
       <Composition id="Aura-BotLab" component={BotLab} schema={botLabSchema} defaultProps={{ walk: 0, facing: 0, look: 0 }} durationInFrames={620} fps={30} width={1000} height={1000} />
       <Composition
@@ -138,6 +140,13 @@ export const RemotionRoot: React.FC = () => {
         calculateMetadata={calculateRobotTalkMetadata}
         defaultProps={{
           footage: "local/head/s28-third.mp4",
+          cutoutSrc: "",
+          camera: [
+            { at: 3.6, until: 7.2, kind: "pushIn" as const, strength: 1, originX: 0.42, originY: 0.4, direction: "right" as const },
+            { at: 30.05, until: 30.5, kind: "whipPan" as const, strength: 1, originX: 0.5, originY: 0.4, direction: "right" as const },
+            { at: 49.5, until: 53.0, kind: "lowAngle" as const, strength: 0.9, originX: 0.5, originY: 0.4, direction: "right" as const },
+            { at: 75.3, until: 79.0, kind: "crane" as const, strength: 1, originX: 0.5, originY: 0.4, direction: "right" as const },
+          ],
           captionsSrc: "captions/head-s28-third.json",
           captionsOffsetSeconds: 0,
           durationSeconds: 79,

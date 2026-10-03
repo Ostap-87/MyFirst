@@ -35,9 +35,19 @@ export const auraBot3DSchema = z.object({
   shadow: z.boolean(),
   jumpHeight: z.number().min(0).max(2).describe("Высота прыжка в единицах модели (рост ≈ 3)"),
   segments: z.number().int().min(6).max(16).describe("Сегментов на цилиндр и сферу"),
+  camOrbit: z.number().describe("Орбита камеры вокруг робота, градусы (+ вправо)"),
+  camElevation: z.number().describe("Высота камеры, градусы (− снизу, + сверху)"),
+  camDistance: z.number().min(0.3).max(3).describe("Расстояние камеры, 1 — как на сайте"),
 });
 export type AuraBot3DParams = z.infer<typeof auraBot3DSchema>;
-export type AuraBot3DProps = Partial<AuraBot3DParams> & { style?: React.CSSProperties };
+type Ramp = { from: number; to: number; frames: number };
+export type AuraBot3DProps = Partial<AuraBot3DParams> & {
+  style?: React.CSSProperties;
+  /** Движение камеры от номера кадра: линейно от from к to за frames кадров (сглаженно). */
+  camOrbitFrames?: Ramp;
+  camElevationFrames?: Ramp;
+  camDistanceFrames?: Ramp;
+};
 
 export const auraBot3DDefaults: AuraBot3DParams = {
   gestures: [],
@@ -52,6 +62,9 @@ export const auraBot3DDefaults: AuraBot3DParams = {
   shadow: true,
   jumpHeight: 1.15,
   segments: 10,
+  camOrbit: 0,
+  camElevation: 0,
+  camDistance: 1,
 };
 
 export const AURA_BOT3D_DUR: Record<AuraBot3DGesture, number> = { wave: 2.8, jump: 1.75, nod: 1.4, scan: 3.0, point: 2.2, shrug: 1.8, push: 1.2 };
@@ -230,7 +243,14 @@ const toHex = (v: V3) => "#" + v.map((x) => Math.round(Math.min(1, Math.max(0, x
 
 type Poly = { pts: [number, number][]; fill: string; depth: number; glow?: { x: number; y: number; r: number; a: number } };
 
-export const AuraBot3D: React.FC<AuraBot3DProps> = ({ style, ...params }) => {
+const ramp = (r: Ramp | undefined, frame: number, fallback: number) => {
+  if (!r) return fallback;
+  const t = Math.min(1, Math.max(0, frame / Math.max(1, r.frames)));
+  const e = t * t * (3 - 2 * t);
+  return r.from + (r.to - r.from) * e;
+};
+
+export const AuraBot3D: React.FC<AuraBot3DProps> = ({ style, camOrbitFrames, camElevationFrames, camDistanceFrames, ...params }) => {
   const p = withDefaults(auraBot3DDefaults, params);
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -353,9 +373,19 @@ export const AuraBot3D: React.FC<AuraBot3DProps> = ({ style, ...params }) => {
   }
   rig.robot.rot = [0, (p.facing * Math.PI) / 180, 0];
 
-  // ——— камера и свет (как у сайта) ———
-  const camPos: V3 = [0.9, 2.1, 9.6];
+  // ——— камера и свет (как у сайта); орбита, высота и дистанция — поверх базовой точки ———
   const target: V3 = [0, 1.62, 0];
+  const base: V3 = [0.9, 2.1 - 1.62, 9.6];
+  const baseR = Math.hypot(...base);
+  const az0 = Math.atan2(base[0], base[2]);
+  const el0 = Math.asin(base[1] / baseR);
+  const orbit = ramp(camOrbitFrames, frame, p.camOrbit);
+  const elev = ramp(camElevationFrames, frame, p.camElevation);
+  const dist = ramp(camDistanceFrames, frame, p.camDistance);
+  const az = az0 + (orbit * Math.PI) / 180;
+  const el = Math.max(-1.4, Math.min(1.4, el0 + (elev * Math.PI) / 180));
+  const rr = baseR * dist;
+  const camPos: V3 = [target[0] + rr * Math.sin(az) * Math.cos(el), target[1] + rr * Math.sin(el), target[2] + rr * Math.cos(az) * Math.cos(el)];
   const f = norm(sub(target, camPos));
   const r = norm(cross(f, [0, 1, 0]));
   const u = cross(r, f);
